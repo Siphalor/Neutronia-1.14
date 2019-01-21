@@ -1,57 +1,41 @@
 package team.abnormals.neutronia.blocks;
 
-import net.minecraft.block.BlockSapling;
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
+import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
+import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockAccess;
+import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import net.minecraftforge.common.EnumPlantType;
-import net.minecraftforge.common.IPlantable;
-import team.abnormal.neutronia.base.blocks.BlockFalling;
-
-import javax.annotation.Nullable;
 
 public class BlockMud extends BlockFalling {
 
-    protected static final AxisAlignedBB SOUL_SAND_AABB = new AxisAlignedBB(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D);
+    protected static final VoxelShape SOUL_SAND_AABB = Block.createCubeShape(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D);
 
     public BlockMud() {
-        super(Material.GROUND, "mud");
-        this.setHardness(0.5F);
-        this.setSoundType(SoundType.GROUND);
+        super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.5F).sounds(BlockSoundGroup.GRAVEL).build(), "mud");
     }
 
     public BlockMud(String name) {
-        super(Material.GROUND, name);
-        this.setHardness(0.5F);
-        this.setSoundType(SoundType.GROUND);
+        super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.5F).sounds(BlockSoundGroup.GRAVEL).build(), name);
     }
 
     @Override
-    public boolean canSustainPlant(IBlockState state, IBlockAccess world, BlockPos pos, EnumFacing direction, IPlantable plantable) {
-        return plantable instanceof BlockSapling || plantable.getPlantType(world, pos.offset(direction)) == EnumPlantType.Plains;
-    }
-
-    /**
-     * @deprecated call via {@link IBlockState#getCollisionBoundingBox(IBlockAccess, BlockPos)} whenever possible.
-     * Implementing/overriding is fine.
-     */
-    @Nullable
-    public AxisAlignedBB getCollisionBoundingBox(IBlockState blockState, IBlockAccess worldIn, BlockPos pos) {
+    public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
         return SOUL_SAND_AABB;
     }
 
-    /**
-     * Called When an Entity Collided with the Block
-     */
-    public void onEntityCollision(World worldIn, BlockPos pos, IBlockState state, Entity entityIn) {
-        entityIn.motionX *= 0.4D;
-        entityIn.motionZ *= 0.4D;
+    public boolean hasSolidTopSurface(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1) {
+        return true;
+    }
+
+    public void onEntityCollision(BlockState blockState_1, World world_1, BlockPos blockPos_1, Entity entity_1) {
+        entity_1.velocityX *= 0.4D;
+        entity_1.velocityZ *= 0.4D;
     }
 
 }

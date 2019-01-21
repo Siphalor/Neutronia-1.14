@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "axis=y":  { "model": "neutronia:block/cocoa_bean_sack" },
+    "axis=z":   { "model": "neutronia:block/cocoa_bean_sack", "x": 90 },
+    "axis=x":   { "model": "neutronia:block/cocoa_bean_sack", "x": 90, "y": 90 },
+    "inventory": { "model": "neutronia:item/cocoa_bean_sack" }
+  }
+}

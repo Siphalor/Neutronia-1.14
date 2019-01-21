@@ -10,6 +10,10 @@ public class ModVillagers implements VillagerProfession {
     public static VillagerProfession DOCTOR;
     public static VillagerProfession GUARD;
     public static VillagerProfession VIKING;
+    public static VillagerProfession BARD;
+    public static VillagerProfession DRUID;
+    public static VillagerProfession ARCHER;
+    public static VillagerProfession ENCHANTER;
 
     public static void init() {
         ARTIST = team.abnormals.neutronia.villagers.VillagerProfession.register("artist");
@@ -18,6 +22,10 @@ public class ModVillagers implements VillagerProfession {
         DOCTOR = team.abnormals.neutronia.villagers.VillagerProfession.register("doctor");
         GUARD = team.abnormals.neutronia.villagers.VillagerProfession.register("guard");
         VIKING = team.abnormals.neutronia.villagers.VillagerProfession.register("viking");
+        BARD = team.abnormals.neutronia.villagers.VillagerProfession.register("bard");
+        DRUID = team.abnormals.neutronia.villagers.VillagerProfession.register("druid");
+        ARCHER = team.abnormals.neutronia.villagers.VillagerProfession.register("archer");
+        ENCHANTER = team.abnormals.neutronia.villagers.VillagerProfession.register("enchanter");
         TradeBuilder.createRecipes();
     }
 

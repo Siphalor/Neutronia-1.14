@@ -35,9 +35,8 @@ public class BlockNeutroniaPillar extends BlockModBase implements INeutroniaBloc
     @Override
     public BlockState applyRotation(BlockState blockState_1, Rotation rotation_1) {
         switch (rotation_1) {
-            case ROT_180:
+            case ROT_270:
             case ROT_90:
-
                 switch (blockState_1.get(AXIS)) {
                     case X:
                         return blockState_1.with(AXIS, Direction.Axis.Z);
@@ -46,7 +45,6 @@ public class BlockNeutroniaPillar extends BlockModBase implements INeutroniaBloc
                     default:
                         return blockState_1;
                 }
-
             default:
                 return blockState_1;
         }
@@ -54,7 +52,7 @@ public class BlockNeutroniaPillar extends BlockModBase implements INeutroniaBloc
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
-        return super.getPlacementState(itemPlacementContext_1).with(AXIS, itemPlacementContext_1.getPlayerFacing().getAxis());
+        return super.getPlacementState(itemPlacementContext_1).with(AXIS, itemPlacementContext_1.getFacing().getAxis());
     }
 
 }

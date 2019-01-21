@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "neutronia:block/nether_wart_sack_top",
+    "bottom": "neutronia:block/nether_wart_sack_bottom",
+    "side": "neutronia:block/nether_wart_sack"
+  }
+}

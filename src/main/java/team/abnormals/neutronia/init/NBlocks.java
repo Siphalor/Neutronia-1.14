@@ -187,7 +187,7 @@ public class NBlocks {
         SMALL_SNOW_BRICKS = new BlockNeutroniaBase(Material.PACKED_ICE, "small_snow_bricks");
         SNOW_BRICKS = new BlockNeutroniaBase(Material.PACKED_ICE, "snow_bricks");
         ICE_TILES = new BlockNeutroniaBase(Material.PACKED_ICE, "ice_tiles");
-        ICE_ROD = new BlockRodBase("ice_rod", true);
+//        ICE_ROD = new BlockRodBase("ice_rod", true);
 
         SANDSTONE_PILLAR = new BlockNeutroniaPillar(Material.STONE, "sandstone_pillar");
         RED_SANDSTONE_PILLAR = new BlockNeutroniaPillar(Material.STONE, "red_sandstone_pillar");

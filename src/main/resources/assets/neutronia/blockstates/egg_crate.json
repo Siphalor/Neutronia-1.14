@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "axis=y":  { "model": "neutronia:block/egg_crate" },
+    "axis=z":   { "model": "neutronia:block/egg_crate", "x": 90 },
+    "axis=x":   { "model": "neutronia:block/egg_crate", "x": 90, "y": 90 },
+    "inventory": { "model": "neutronia:item/egg_crate" }
+  }
+}

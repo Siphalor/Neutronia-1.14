@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "": { "model": "neutronia:block/carved_acacia_planks" },
+    "inventory": { "model": "neutronia:block/carved_acacia_planks" }
+  }
+}

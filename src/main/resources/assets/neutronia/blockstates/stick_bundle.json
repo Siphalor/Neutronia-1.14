@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "axis=y":  { "model": "neutronia:block/stick_bundle" },
+    "axis=z":   { "model": "neutronia:block/stick_bundle", "x": 90 },
+    "axis=x":   { "model": "neutronia:block/stick_bundle", "x": 90, "y": 90 },
+    "inventory": { "model": "neutronia:item/stick_bundle" }
+  }
+}

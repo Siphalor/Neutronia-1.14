@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "axis=y":  { "model": "neutronia:block/bamboo_bundle" },
+    "axis=z":   { "model": "neutronia:block/bamboo_bundle", "x": 90 },
+    "axis=x":   { "model": "neutronia:block/bamboo_bundle", "x": 90, "y": 90 },
+    "inventory": { "model": "neutronia:block/bamboo_bundle" }
+  }
+}

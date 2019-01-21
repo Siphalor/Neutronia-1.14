@@ -1,14 +1,12 @@
 package team.abnormals.neutronia.blocks;
 
-import net.minecraft.block.SoundType;
-import net.minecraft.block.material.Material;
+import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.minecraft.block.Material;
 
 public class BlockMelOLantern extends BlockNeutroniaBase {
 
     public BlockMelOLantern() {
-        super("mel_o_lantern", Material.GOURD);
-        setSoundType(SoundType.WOOD);
-        setLightLevel(15);
+        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).lightLevel(15).build(), "mel_o_lantern");
     }
 
 }

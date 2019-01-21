@@ -10,6 +10,7 @@ public class Neutronia implements ModInitializer {
 		CarvedPlanks.init();
 		FrostedGlass.init();
         StorageBlocks.init();
+        NBlocks.init();
 //		CommandRegistry.INSTANCE.register(false, (Locate2Command::register));
 		ModVillagers.init();
 		NEntityTypes.init();
