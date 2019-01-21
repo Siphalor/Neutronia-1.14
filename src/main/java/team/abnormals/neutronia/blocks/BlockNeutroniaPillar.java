@@ -18,6 +18,10 @@ public class BlockNeutroniaPillar extends BlockModBase implements INeutroniaBloc
         setDefaultState(this.stateFactory.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
 
+    public BlockNeutroniaPillar(Settings builder, String name) {
+        super(builder, name);
+    }
+
     public BlockNeutroniaPillar(Material material, String name, float hardnesss, float resistance) {
         super(Settings.of(material).strength(hardnesss, resistance), name);
         setDefaultState(this.stateFactory.getDefaultState().with(AXIS, Direction.Axis.Y));

@@ -12,6 +12,14 @@ public class BlockNeutroniaBase extends BlockModBase implements INeutroniaBlock 
         super(material, name);
     }
 
+    public BlockNeutroniaBase(Settings builder, String name) {
+        super(builder, name);
+    }
+
+    public BlockNeutroniaBase(Material material, String name, float hardness, float resistant) {
+        super(Settings.of(material).strength(hardness, resistant), name);
+    }
+
     @Override
     public BlockRenderLayer getRenderLayer() {
         return BlockRenderLayer.CUTOUT;
