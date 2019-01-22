@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "": { "model": "neutronia:block/jungle_bookshelf" },
+    "inventory": { "model": "neutronia:item/jungle_bookshelf" }
+  }
+}

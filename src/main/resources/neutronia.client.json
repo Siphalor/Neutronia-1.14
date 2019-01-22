@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "team.abnormals.neutronia.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ItemDynamicRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

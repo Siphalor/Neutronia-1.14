@@ -1,0 +1,8 @@
+{
+  "parent": "block/cube_bottom_top",
+  "textures": {
+    "top": "neutronia:block/apple_crate_top",
+    "bottom": "neutronia:block/apple_crate_bottom",
+    "side": "neutronia:block/apple_crate"
+  }
+}

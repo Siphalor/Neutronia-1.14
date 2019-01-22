@@ -5,12 +5,14 @@
   "version": "0.0.1",
   "side": "universal",
   "initializers": [
-    "team.abnormals.neutronia.Neutronia"
+    "team.abnormals.neutronia.Neutronia",
+    "team.abnormals.neutronia.client.renderer.ClientInit"
   ],
   "requires": {
     "fabric": "*"
   },
   "mixins": {
+    "client": "neutronia.client.json",
     "common": "neutronia.common.json"
   }
 }

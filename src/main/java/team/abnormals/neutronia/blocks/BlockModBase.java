@@ -11,8 +11,12 @@ public abstract class BlockModBase extends Block implements IModBlockInfo {
 
     public BlockModBase(Material material, String name) {
         super(Settings.of(material));
-
         register(name, this, ItemGroup.BUILDING_BLOCKS);
+    }
+
+    public BlockModBase(Material material, String name, ItemGroup itemGroup) {
+        super(Settings.of(material));
+        register(name, this, itemGroup);
     }
 
     public BlockModBase(Settings builder, String name) {

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "axis=y":  { "model": "neutronia:block/golden_apple_crate" },
+    "axis=z":   { "model": "neutronia:block/golden_apple_crate", "x": 90 },
+    "axis=x":   { "model": "neutronia:block/golden_apple_crate", "x": 90, "y": 90 }
+  }
+}

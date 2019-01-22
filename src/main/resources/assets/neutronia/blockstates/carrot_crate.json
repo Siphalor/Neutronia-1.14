@@ -2,7 +2,6 @@
   "variants": {
     "axis=y":  { "model": "neutronia:block/carrot_crate" },
     "axis=z":   { "model": "neutronia:block/carrot_crate", "x": 90 },
-    "axis=x":   { "model": "neutronia:block/carrot_crate", "x": 90, "y": 90 },
-    "inventory": { "model": "neutronia:item/carrot_crate" }
+    "axis=x":   { "model": "neutronia:block/carrot_crate", "x": 90, "y": 90 }
   }
 }

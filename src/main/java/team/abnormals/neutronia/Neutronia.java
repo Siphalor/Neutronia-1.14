@@ -11,6 +11,7 @@ public class Neutronia implements ModInitializer {
 		FrostedGlass.init();
         StorageBlocks.init();
         NBlocks.init();
+        NBlockEntities.init();
 //		CommandRegistry.INSTANCE.register(false, (Locate2Command::register));
 		ModVillagers.init();
 		NEntityTypes.init();

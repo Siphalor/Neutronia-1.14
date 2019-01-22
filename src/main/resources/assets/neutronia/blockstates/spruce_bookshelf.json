@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "": { "model": "neutronia:block/spruce_bookshelf" },
+    "inventory": { "model": "neutronia:item/spruce_bookshelf" }
+  }
+}
