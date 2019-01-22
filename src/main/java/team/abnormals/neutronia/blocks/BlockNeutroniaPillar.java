@@ -52,7 +52,7 @@ public class BlockNeutroniaPillar extends BlockModBase implements INeutroniaBloc
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
-        return super.getPlacementState(itemPlacementContext_1).with(AXIS, itemPlacementContext_1.getFacing().getAxis());
+        return super.getPlacementState(itemPlacementContext_1).with(AXIS, itemPlacementContext_1.getFacing().getOpposite().getAxis());
     }
 
 }
