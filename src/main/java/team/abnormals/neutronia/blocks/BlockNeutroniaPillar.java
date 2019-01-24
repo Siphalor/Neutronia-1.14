@@ -33,7 +33,7 @@ public class BlockNeutroniaPillar extends BlockModBase implements INeutroniaBloc
     }
 
     @Override
-    public BlockState applyRotation(BlockState blockState_1, Rotation rotation_1) {
+    public BlockState rotate(BlockState blockState_1, Rotation rotation_1) {
         switch (rotation_1) {
             case ROT_270:
             case ROT_90:

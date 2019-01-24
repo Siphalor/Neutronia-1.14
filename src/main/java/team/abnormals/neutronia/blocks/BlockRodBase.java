@@ -1,10 +1,7 @@
 package team.abnormals.neutronia.blocks;
 
 import net.fabricmc.fabric.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderLayer;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateFactory;
 import net.minecraft.util.Mirror;
@@ -17,9 +14,9 @@ import net.minecraft.world.ViewableWorld;
 
 public class BlockRodBase extends BlockDirectional implements INeutroniaBlock {
 
-    protected static final VoxelShape BB_AXIS_Y = Block.createCubeShape(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
-    protected static final VoxelShape BB_AXIS_Z = Block.createCubeShape(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
-    protected static final VoxelShape BB_AXIS_X = Block.createCubeShape(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
+    protected static final VoxelShape BB_AXIS_Y = Block.createCuboidShape(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
+    protected static final VoxelShape BB_AXIS_Z = Block.createCuboidShape(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
+    protected static final VoxelShape BB_AXIS_X = Block.createCuboidShape(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
 
     @SuppressWarnings("unused")
     public BlockRodBase(String name, boolean emitsLight) {
@@ -34,12 +31,12 @@ public class BlockRodBase extends BlockDirectional implements INeutroniaBlock {
     }
 
     @Override
-    public BlockState applyRotation(BlockState blockState_1, Rotation rotation_1) {
-        return blockState_1.with(FACING, rotation_1.method_10503(blockState_1.get(FACING)));
+    public BlockState rotate(BlockState blockState_1, Rotation rotation_1) {
+        return blockState_1.with(FACING, rotation_1.rotate(blockState_1.get(FACING)));
     }
 
     @Override
-    public BlockState applyMirror(BlockState blockState_1, Mirror mirror_1) {
+    public BlockState mirror(BlockState blockState_1, Mirror mirror_1) {
         return blockState_1.with(FACING, mirror_1.apply(blockState_1.get(FACING)));
     }
 
@@ -73,17 +70,9 @@ public class BlockRodBase extends BlockDirectional implements INeutroniaBlock {
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
-        BlockState iblockstate = itemPlacementContext_1.getWorld().getBlockState(itemPlacementContext_1.getPos().offset(itemPlacementContext_1.getPlayerFacing().getOpposite()));
-
-        if (iblockstate.getBlock() == this) {
-            Direction enumfacing = iblockstate.get(FACING);
-
-            if (enumfacing == itemPlacementContext_1.getFacing()) {
-                return this.getDefaultState().with(FACING, itemPlacementContext_1.getFacing().getOpposite());
-            }
-        }
-
-        return this.getDefaultState().with(FACING, itemPlacementContext_1.getFacing());
+        Direction direction_1 = itemPlacementContext_1.getFacing();
+        BlockState blockState_1 = itemPlacementContext_1.getWorld().getBlockState(itemPlacementContext_1.getBlockPos().offset(direction_1.getOpposite()));
+        return blockState_1.getBlock() == this && blockState_1.get(FACING) == direction_1 ? (BlockState)this.getDefaultState().with(FACING, direction_1.getOpposite()) : this.getDefaultState().with(FACING, direction_1);
     }
 
     @Override

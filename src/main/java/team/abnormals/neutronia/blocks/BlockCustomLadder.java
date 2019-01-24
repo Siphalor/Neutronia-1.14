@@ -21,7 +21,7 @@ public class BlockCustomLadder extends LadderBlock implements INeutroniaBlock {
 
     public BlockCustomLadder(String variant) {
         super(FabricBlockSettings.of(Material.PART).hardness(0.4F).sounds(BlockSoundGroup.LADDER).build());
-        setDefaultState(this.getDefaultState().with(field_11253, Direction.NORTH).with(field_11257, false));
+        setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
         register(variant + "_ladder", this, ItemGroup.DECORATIONS);
     }
 

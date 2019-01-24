@@ -24,7 +24,7 @@ public class TileEntityStoneChestRenderer extends BlockEntityRenderer<TileStoneC
         GlStateManager.depthFunc(515);
         GlStateManager.depthMask(true);
         BlockState var10 = var1.hasWorld() ? var1.getCachedState() : Blocks.CHEST.getDefaultState().with(ChestBlock.FACING, Direction.SOUTH);
-        ChestType var11 = var10.contains(ChestBlock.field_10770) ? var10.get(ChestBlock.field_10770) : ChestType.SINGLE;
+        ChestType var11 = var10.contains(ChestBlock.CHEST_TYPE) ? var10.get(ChestBlock.CHEST_TYPE) : ChestType.SINGLE;
         if (var11 != ChestType.LEFT) {
             boolean var12 = var11 != ChestType.SINGLE;
             ChestEntityModel var13 = this.method_3562(var1, var9, var12);

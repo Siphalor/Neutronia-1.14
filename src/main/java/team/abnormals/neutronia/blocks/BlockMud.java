@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class BlockMud extends BlockFalling {
 
-    protected static final VoxelShape SOUL_SAND_AABB = Block.createCubeShape(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D);
+    protected static final VoxelShape SOUL_SAND_AABB = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 1.0D, 0.875D, 1.0D);
 
     public BlockMud() {
         super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.5F).sounds(BlockSoundGroup.GRAVEL).build(), "mud");
