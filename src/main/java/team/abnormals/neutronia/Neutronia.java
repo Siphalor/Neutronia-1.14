@@ -1,7 +1,10 @@
 package team.abnormals.neutronia;
 
 import net.fabricmc.api.ModInitializer;
+import net.minecraft.world.gen.feature.Feature;
 import team.abnormals.neutronia.init.*;
+
+import java.util.Locale;
 
 public class Neutronia implements ModInitializer {
 
@@ -15,6 +18,8 @@ public class Neutronia implements ModInitializer {
 //		CommandRegistry.INSTANCE.register(false, (Locate2Command::register));
 		ModVillagers.init();
 		NEntityTypes.init();
+
+        Feature.STRUCTURES.put("Pillager_Outpost_Test".toLowerCase(Locale.ROOT), NFeatures.PILLAGER_OUTPOST);
 	}
 
 }

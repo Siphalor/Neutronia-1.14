@@ -3,7 +3,7 @@ package team.abnormals.neutronia.enums;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.StringRepresentable;
 
-public enum WoodenChestTypes implements StringRepresentable {
+public enum CustomChestTypes implements StringRepresentable {
 
     ACACIA("acacia", "acacia.png", 0),
     BIRCH("birch", "birch.png", 1),
@@ -12,21 +12,25 @@ public enum WoodenChestTypes implements StringRepresentable {
     SPRUCE("spruce", "spruce.png", 4),
     BAMBOO("bamboo", "bamboo.png", 5),
     WOODEN_DUNGEON("wooden_dungeon", "wooden_dungeon.png", 6),
-    DUNGEON("dungeon", "dungeon.png", 7);
+    DUNGEON("dungeon", "dungeon.png", 7),
+    STONE("stone", "stone.png", 8),
+    STONE_BRICK("stone_brick", "stone_brick.png", 9),
+    COBBLESTONE("cobblestone", "cobblestone.png", 10),
+    MOSSY_COBBLESTONE("mossy_cobblestone", "mossy_cobblestone.png", 11);
 
     private final String name;
     private final Identifier modelTexture;
     private final Identifier doubleModelTexture;
     private final int id;
 
-    WoodenChestTypes(String name, String modelName, int id) {
+    CustomChestTypes(String name, String modelName, int id) {
         this.name = name + "_chest";
         this.modelTexture = new Identifier("neutronia", "textures/entity/chest/" + modelName);
         this.doubleModelTexture = new Identifier("neutronia", "textures/entity/chest/" + name + "_double.png");
         this.id = id;
     }
 
-    public static WoodenChestTypes getFromName(String name) {
+    public static CustomChestTypes getFromName(String name) {
         switch (name) {
             case "acacia_chest":
                 return ACACIA;
@@ -44,6 +48,44 @@ public enum WoodenChestTypes implements StringRepresentable {
                 return WOODEN_DUNGEON;
             case "dungeon_chest":
                 return DUNGEON;
+            case "stone_chest":
+                return STONE;
+            case "stone_brick_chest":
+                return STONE_BRICK;
+            case "cobblestone_chest":
+                return COBBLESTONE;
+            case "mossy_cobblestone_chest":
+                return MOSSY_COBBLESTONE;
+        }
+        return ACACIA;
+    }
+
+    public static CustomChestTypes getFromID(int id) {
+        switch (id) {
+            case 0:
+                return ACACIA;
+            case 1:
+                return BIRCH;
+            case 2:
+                return DARK_OAK;
+            case 3:
+                return JUNGLE;
+            case 4:
+                return SPRUCE;
+            case 5:
+                return BAMBOO;
+            case 6:
+                return WOODEN_DUNGEON;
+            case 7:
+                return DUNGEON;
+            case 8:
+                return STONE;
+            case 9:
+                return STONE_BRICK;
+            case 10:
+                return COBBLESTONE;
+            case 11:
+                return MOSSY_COBBLESTONE;
         }
         return ACACIA;
     }

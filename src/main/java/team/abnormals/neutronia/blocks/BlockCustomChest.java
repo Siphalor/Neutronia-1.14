@@ -12,7 +12,7 @@ import net.minecraft.tag.ItemTags;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import team.abnormals.neutronia.blocks.entity.TileStoneChest;
-import team.abnormals.neutronia.enums.WoodenChestTypes;
+import team.abnormals.neutronia.enums.CustomChestTypes;
 
 public class BlockCustomChest extends ChestBlock implements INeutroniaBlock {
 
@@ -38,6 +38,6 @@ public class BlockCustomChest extends ChestBlock implements INeutroniaBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockView var1) {
-        return new TileStoneChest(WoodenChestTypes.getFromName(name));
+        return new TileStoneChest(CustomChestTypes.getFromName(name));
     }
 }

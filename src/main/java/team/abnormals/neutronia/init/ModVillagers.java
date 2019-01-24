@@ -14,6 +14,7 @@ public class ModVillagers implements VillagerProfession {
     public static VillagerProfession DRUID;
     public static VillagerProfession ARCHER;
     public static VillagerProfession ENCHANTER;
+    public static VillagerProfession WIZARD;
 
     public static void init() {
         ARTIST = team.abnormals.neutronia.villagers.VillagerProfession.register("artist");
@@ -26,6 +27,7 @@ public class ModVillagers implements VillagerProfession {
         DRUID = team.abnormals.neutronia.villagers.VillagerProfession.register("druid");
         ARCHER = team.abnormals.neutronia.villagers.VillagerProfession.register("archer");
         ENCHANTER = team.abnormals.neutronia.villagers.VillagerProfession.register("enchanter");
+        WIZARD = team.abnormals.neutronia.villagers.VillagerProfession.register("wizard");
         TradeBuilder.createRecipes();
     }
 

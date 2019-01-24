@@ -15,7 +15,7 @@ public class NBlocks {
             STRIPPED_WOOD = new Block[6], WOOD = new Block[6], CARVED_PLANKS = new Block[10], BARRELS = new Block[10],
             FLUID_BARRELS = new Block[10], WOOD_LANTERNS = new Block[10], LADDERS = new Block[9],
             GLAZED_TERRACOTTA_PILLAR = new Block[13], SOUL_STONE = new Block[4];
-    public static BlockCustomChest[] WOODEN_CHESTS = new BlockCustomChest[8];
+    public static BlockCustomChest[] WOODEN_CHESTS = new BlockCustomChest[CustomChestTypes.values().length];
     public static Block CARVED_MELON, MEL_O_LANTERN;
     public static Block PHANTOM_LANTERN, LIT_PHANTOM_LANTERN, phantomItemFrame;
     public static BlockNeutroniaDoor SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR;
@@ -50,7 +50,7 @@ public class NBlocks {
             LADDERS[woodTypes2.getMetadata()] = new BlockCustomLadder(woodTypes2.asString());
         }
 
-        for(WoodenChestTypes woodenChestTypes : WoodenChestTypes.values()) {
+        for(CustomChestTypes woodenChestTypes : CustomChestTypes.values()) {
             WOODEN_CHESTS[woodenChestTypes.getId()] = new BlockCustomChest(woodenChestTypes.asString());
         }
 

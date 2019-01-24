@@ -4,9 +4,9 @@ import net.minecraft.util.StringRepresentable;
 
 public enum SoulStoneVariants implements StringRepresentable {
 
-    NORMAL_SOULSTONE(0, "normal_soulstone"),
+    NORMAL_SOULSTONE(0, "soulstone"),
     CHISELED_SOULSTONE(1, "chiseled_soulstone"),
-    SMOOTH_SOULSTONE(2, "smooth_soulstone"),
+    SMOOTH_SOULSTONE(2, "cut_soulstone"),
     POLISHED_SOULSTONE(3, "polished_soulstone");
 
     private static final SoulStoneVariants[] META_LOOKUP = new SoulStoneVariants[values().length];

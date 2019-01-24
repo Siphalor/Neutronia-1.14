@@ -11,20 +11,24 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.abnormals.neutronia.blocks.entity.TileStoneChest;
-import team.abnormals.neutronia.enums.WoodenChestTypes;
+import team.abnormals.neutronia.enums.CustomChestTypes;
 import team.abnormals.neutronia.init.NBlocks;
 
 @Mixin(ItemDynamicRenderer.class)
 public class ItemDynamicRendererMixin {
 
-	private final TileStoneChest renderAcaciaChest = new TileStoneChest(WoodenChestTypes.ACACIA);
-    private final TileStoneChest renderBirchChest = new TileStoneChest(WoodenChestTypes.BIRCH);
-    private final TileStoneChest renderDarkOakChest = new TileStoneChest(WoodenChestTypes.DARK_OAK);
-    private final TileStoneChest renderJungleChest = new TileStoneChest(WoodenChestTypes.JUNGLE);
-    private final TileStoneChest renderSpruceChest = new TileStoneChest(WoodenChestTypes.SPRUCE);
-    private final TileStoneChest renderBambooChest = new TileStoneChest(WoodenChestTypes.BAMBOO);
-    private final TileStoneChest renderWoodenDungeonChest = new TileStoneChest(WoodenChestTypes.WOODEN_DUNGEON);
-    private final TileStoneChest renderDungeonChest = new TileStoneChest(WoodenChestTypes.DUNGEON);
+	private final TileStoneChest renderAcaciaChest = new TileStoneChest(CustomChestTypes.ACACIA);
+    private final TileStoneChest renderBirchChest = new TileStoneChest(CustomChestTypes.BIRCH);
+    private final TileStoneChest renderDarkOakChest = new TileStoneChest(CustomChestTypes.DARK_OAK);
+    private final TileStoneChest renderJungleChest = new TileStoneChest(CustomChestTypes.JUNGLE);
+    private final TileStoneChest renderSpruceChest = new TileStoneChest(CustomChestTypes.SPRUCE);
+    private final TileStoneChest renderBambooChest = new TileStoneChest(CustomChestTypes.BAMBOO);
+    private final TileStoneChest renderWoodenDungeonChest = new TileStoneChest(CustomChestTypes.WOODEN_DUNGEON);
+    private final TileStoneChest renderDungeonChest = new TileStoneChest(CustomChestTypes.DUNGEON);
+    private final TileStoneChest renderStoneChest = new TileStoneChest(CustomChestTypes.STONE);
+    private final TileStoneChest renderStoneBrickChest = new TileStoneChest(CustomChestTypes.STONE_BRICK);
+    private final TileStoneChest renderCobblestoneChest = new TileStoneChest(CustomChestTypes.COBBLESTONE);
+    private final TileStoneChest renderMossyCobblestoneChest = new TileStoneChest(CustomChestTypes.MOSSY_COBBLESTONE);
 
 	@Inject(at = @At("TAIL"), method = "render")
 	private void method_3166(ItemStack stack, CallbackInfo info) {
@@ -47,6 +51,14 @@ public class ItemDynamicRendererMixin {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderWoodenDungeonChest);
             } else if (block == NBlocks.WOODEN_CHESTS[7]) {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderDungeonChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[8]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderStoneChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[9]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderStoneBrickChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[10]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderCobblestoneChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[11]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderMossyCobblestoneChest);
             }
         }
 	}
