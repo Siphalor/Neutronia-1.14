@@ -41,6 +41,8 @@ public class NBlocks {
     public static Block PACKED_ICE_BRICKS, PACKED_ICE_PILLAR, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES, ICE_ROD;
     public static Block FROSTED_GLASS, FROSTED_GLASS_PANE;
 
+    public static Block SAWMILL;
+
     public static void init() {
         for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
             BOOKSHELVES[woodType.getMetadata()] = new BlockNeutroniaBase(Material.WOOD, String.format("%s_bookshelf", woodType.asString()));
@@ -284,6 +286,8 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("sandy_brick", SANDY_BRICKS, 0, true);
         BlockRegisteringUtils.addSlabAndStair("smooth_dirty_brick", SMOOTH_DIRTY_BRICK, 0, true);
         BlockRegisteringUtils.addSlabAndStair("smooth_sandy_brick", SMOOTH_SANDY_BRICK, 0, true);*/
+
+//        SAWMILL = new BlockSawmill("sawmill");
     }
 
 }

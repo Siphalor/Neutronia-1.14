@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "neutronia:block/sawmill" },
+    "facing=south": { "model": "neutronia:block/sawmill", "y": 180 },
+    "facing=west": { "model": "neutronia:block/sawmill", "y": 270 },
+    "facing=east": { "model": "neutronia:block/sawmill", "y": 90 }
+  }
+}
