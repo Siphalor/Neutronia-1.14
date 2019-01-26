@@ -2,11 +2,13 @@
   "id": "neutronia",
   "name": "Neutronia 1.14",
   "description": "Neutronia is a mod that aims to expand upon the vanilla style, including much more variety to all dimensions. The surface, underground, nether and end have upgraded worldgen, more biomes and structures.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "side": "universal",
   "initializers": [
     "team.abnormals.neutronia.Neutronia",
-    "team.abnormals.neutronia.client.renderer.ClientInit"
+    "team.abnormals.neutronia.client.renderer.ClientInit",
+    "team.abnormals.neutronia.init.NContainerTypes",
+    "team.abnormals.neutronia.init.NGuis"
   ],
   "requires": {
     "fabric": "*"

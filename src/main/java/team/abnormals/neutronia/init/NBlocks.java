@@ -287,7 +287,7 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("smooth_dirty_brick", SMOOTH_DIRTY_BRICK, 0, true);
         BlockRegisteringUtils.addSlabAndStair("smooth_sandy_brick", SMOOTH_SANDY_BRICK, 0, true);*/
 
-//        SAWMILL = new BlockSawmill("sawmill");
+        SAWMILL = new BlockSawmill("sawmill");
     }
 
 }

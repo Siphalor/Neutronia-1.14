@@ -1,5 +1,6 @@
 package team.abnormals.neutronia.blocks;
 
+import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.class_3914;
@@ -25,6 +26,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import team.abnormals.neutronia.container.SawmillContainer;
+import team.abnormals.neutronia.init.NContainerTypes;
 
 public class BlockSawmill extends BlockNeutroniaBase {
 
@@ -51,7 +53,7 @@ public class BlockSawmill extends BlockNeutroniaBase {
     }
 
     public boolean activate(BlockState blockState_1, World world_1, BlockPos blockPos_1, PlayerEntity playerEntity_1, Hand hand_1, BlockHitResult blockHitResult_1) {
-        playerEntity_1.openContainer(blockState_1.createContainerProvider(world_1, blockPos_1));
+        ContainerProviderRegistry.INSTANCE.openContainer(NContainerTypes.SAWMILL_CONTAINER, playerEntity_1, buf -> buf.writeBlockPos(blockPos_1));
         return true;
     }
 
