@@ -1,0 +1,6 @@
+{
+  "variants": {
+    "": { "model": "neutronia:block/acacia_bookshelf" },
+    "inventory": { "model": "neutronia:item/acacia_bookshelf" }
+  }
+}

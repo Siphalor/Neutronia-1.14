@@ -1,0 +1,6 @@
+{
+  "parent": "block/standing_sign",
+  "textures": {
+    "texture": "neutronia:block/acacia_ladder"
+  }
+}

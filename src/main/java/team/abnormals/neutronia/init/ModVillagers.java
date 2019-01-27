@@ -1,8 +1,12 @@
 package team.abnormals.neutronia.init;
 
 import net.minecraft.village.VillagerProfession;
+import net.minecraft.village.VillagerType;
+import net.minecraft.world.biome.Biomes;
 
-public class ModVillagers implements VillagerProfession {
+import static net.minecraft.world.biome.Biomes.*;
+
+public class ModVillagers implements VillagerProfession, VillagerType {
 
     public static VillagerProfession ARTIST;
     public static VillagerProfession RECEPTIONIST;
@@ -15,6 +19,11 @@ public class ModVillagers implements VillagerProfession {
     public static VillagerProfession ARCHER;
     public static VillagerProfession ENCHANTER;
     public static VillagerProfession WIZARD;
+
+    public static VillagerType MUSHROOM;
+    public static VillagerType MOUNTAINS;
+    public static VillagerType COLD_MOUNTAINS;
+    public static VillagerType BADLANDS;
 
     public static void init() {
         ARTIST = team.abnormals.neutronia.villagers.VillagerProfession.register("artist");
@@ -29,6 +38,11 @@ public class ModVillagers implements VillagerProfession {
         ENCHANTER = team.abnormals.neutronia.villagers.VillagerProfession.register("enchanter");
         WIZARD = team.abnormals.neutronia.villagers.VillagerProfession.register("wizard");
         TradeBuilder.createRecipes();
+
+        MUSHROOM = team.abnormals.neutronia.villagers.VillagerType.register("mushroom", MUSHROOM_FIELDS, MUSHROOM_FIELD_SHORE);
+        MOUNTAINS = team.abnormals.neutronia.villagers.VillagerType.register("mountains", Biomes.MOUNTAINS, MOUNTAIN_EDGE, WOODED_MOUNTAINS);
+        COLD_MOUNTAINS = team.abnormals.neutronia.villagers.VillagerType.register("cold_mountains", Biomes.MOUNTAINS, MOUNTAIN_EDGE, WOODED_MOUNTAINS);
+        BADLANDS = team.abnormals.neutronia.villagers.VillagerType.register("badlands", Biomes.BADLANDS, BADLANDS_PLATEAU, ERODED_BADLANDS, WOODED_BADLANDS_PLATEAU);
     }
 
 }
