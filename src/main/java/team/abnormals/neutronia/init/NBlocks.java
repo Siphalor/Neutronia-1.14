@@ -18,7 +18,6 @@ public class NBlocks {
             GLAZED_TERRACOTTA_PILLAR = new Block[13], SOUL_STONE = new Block[4];
     public static BlockCustomChest[] WOODEN_CHESTS = new BlockCustomChest[CustomChestTypes.values().length];
     public static Block CARVED_MELON, MEL_O_LANTERN;
-    public static Block PHANTOM_LANTERN, LIT_PHANTOM_LANTERN, phantomItemFrame;
     public static BlockNeutroniaDoor SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR;
     public static BlockNeutroniaTrapdoor SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
     public static BlockChiseled CHISELED_NETHER_BRICK, CHISELED_PURPUR, CHISELED_BRICKS, CHISELED_END_BRICK, CHISELED_RED_NETHER_BRICK;
@@ -41,14 +40,13 @@ public class NBlocks {
     public static Block MUD, MUD_BRICKS, DRIED_MUD, DRIED_MUD_BRICKS;
     public static Block PACKED_ICE_BRICKS, PACKED_ICE_PILLAR, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES, ICE_ROD;
     public static Block FROSTED_GLASS, FROSTED_GLASS_PANE;
-
-    public static Block IRON_LANTERN, ICE_LANTERN, GOLDEN_LANTERN, PRISMARINE_LANTERN, WROUGHT_IRON_LANTERN;
     public static Block CHAIN, IRON_CHAIN, ICE_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN, WROUGHT_IRON_CHAIN;
-    public static BlockLanternRedstone REDSTONE_LANTERN, REDSTONE_LANTERN_OFF, IRON_REDSTONE_LANTERN, IRON_REDSTONE_LANTERN_OFF, GOLDEN_REDSTONE_LANTERN, GOLDEN_REDSTONE_LANTERN_OFF, WROUGHT_IRON_REDSTONE_LANTERN, WROUGHT_IRON_REDSTONE_LANTERN_OFF;
+    public static Block WROUGHT_IRON_BLOCK, WROUGHT_IRON_DOOR, WROUGHT_IRON_BARS;
 
     public static Block SAWMILL;
 
     public static Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN, BAMBOO_TORCH, THATCH, BAMBOO_PLANKS_STAIR, BAMBOO_PLANKS_SLAB, THATCH_STAIR, THATCH_SLAB;
+    public static Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN, ACIDIAN_BARS;
 
     public static void init() {
         for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
@@ -220,28 +218,6 @@ public class NBlocks {
         FROSTED_GLASS = new BlockFrostedGlass();
         FROSTED_GLASS_PANE = new BlockFrostedGlassPane();
 
-//        IRON_LANTERN = new BlockLantern("iron");
-//        ICE_LANTERN = new BlockLantern("ice");
-//        GOLDEN_LANTERN = new BlockLantern("gold");
-//        PRISMARINE_LANTERN = new BlockLantern("prismarine");
-//        WROUGHT_IRON_LANTERN = new BlockLantern("wrought_iron");
-
-        /*REDSTONE_LANTERN = new BlockLanternRedstone(true);
-        REDSTONE_LANTERN_OFF = new BlockLanternRedstone(false);
-        REDSTONE_LANTERN.setOffBlock(REDSTONE_LANTERN_OFF.getDefaultState());
-        REDSTONE_LANTERN_OFF.setOnBlock(REDSTONE_LANTERN.getDefaultState());
-        IRON_REDSTONE_LANTERN = new BlockLanternRedstone("iron", true);
-        IRON_REDSTONE_LANTERN_OFF = new BlockLanternRedstone("iron", false);
-        IRON_REDSTONE_LANTERN.setOffBlock(IRON_REDSTONE_LANTERN_OFF.getDefaultState());
-        IRON_REDSTONE_LANTERN_OFF.setOnBlock(IRON_REDSTONE_LANTERN.getDefaultState());
-        GOLDEN_REDSTONE_LANTERN = new BlockLanternRedstone("gold", true);
-        GOLDEN_REDSTONE_LANTERN_OFF = new BlockLanternRedstone("gold", false);
-        GOLDEN_REDSTONE_LANTERN.setOffBlock(GOLDEN_REDSTONE_LANTERN_OFF.getDefaultState());
-        GOLDEN_REDSTONE_LANTERN_OFF.setOnBlock(GOLDEN_REDSTONE_LANTERN.getDefaultState());
-        WROUGHT_IRON_REDSTONE_LANTERN = new BlockLanternRedstone("wrought_iron", true);
-        WROUGHT_IRON_REDSTONE_LANTERN_OFF = new BlockLanternRedstone("wrought_iron", false);
-        WROUGHT_IRON_REDSTONE_LANTERN.setOffBlock(WROUGHT_IRON_REDSTONE_LANTERN_OFF.getDefaultState());
-        WROUGHT_IRON_REDSTONE_LANTERN_OFF.setOnBlock(WROUGHT_IRON_REDSTONE_LANTERN.getDefaultState());*/
         CHAIN = new BlockChain();
         IRON_CHAIN = new BlockChain("iron");
         ICE_CHAIN = new BlockChain("ice");
@@ -249,48 +225,50 @@ public class NBlocks {
         PRISMARINE_CHAIN = new BlockChain("prismarine");
         WROUGHT_IRON_CHAIN = new BlockChain("wrought_iron");
 
+        WROUGHT_IRON_BLOCK = new BlockNeutroniaBase(Material.METAL, "wrought_iron_block");
+        WROUGHT_IRON_DOOR = new BlockNeutroniaDoor(Material.METAL, "wrought_iron_door");
+        WROUGHT_IRON_BARS = new BlockNeutroniaPane("wrought_iron_bars", Material.METAL);
+
         for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
             SOUL_STONE[soulStoneTypes.getMetadata()] = new BlockNeutroniaBase(Material.STONE, soulStoneTypes.asString());
-//            BlockRegisteringUtils.addSlabAndStair(soulStoneTypes.getName(), SOUL_STONE[soulStoneTypes.getMetadata()],true);
+            BlockRegisteringUtils.addSlabAndStair(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getMetadata()]);
         }
 
-        BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE,true);
-        BlockRegisteringUtils.addWalls("polished_dark_andesite", POLISHED_DARK_ANDESITE,true);
-        BlockRegisteringUtils.addWalls("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS,true);
-        BlockRegisteringUtils.addWalls("red_nether_brick", Blocks.RED_NETHER_BRICKS,true);
+        BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE);
+        BlockRegisteringUtils.addWalls("polished_dark_andesite", POLISHED_DARK_ANDESITE);
+        BlockRegisteringUtils.addWalls("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
-        BlockRegisteringUtils.addWalls("smooth_end_brick", SMOOTH_END_BRICK,true);
-        BlockRegisteringUtils.addWalls("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS,true);
-        BlockRegisteringUtils.addWalls("smooth_prismarine", SMOOTH_PRISMARINE,true);
-        BlockRegisteringUtils.addWalls("smooth_brick", SMOOTH_BRICK,true);
-        BlockRegisteringUtils.addWalls("smooth_purpur", SMOOTH_PURPUR_BRICK,true);
-        BlockRegisteringUtils.addWalls("smooth_nether_brick", SMOOTH_NETHER_BRICK,true);
-        BlockRegisteringUtils.addWalls("smooth_red_nether_brick", SMOOTH_RED_NETHER_BRICK,true);
-        BlockRegisteringUtils.addWalls("smooth_stone", SMOOTH_STONE,true);
-        BlockRegisteringUtils.addWalls("smooth_stone_brick", SMOOTH_STONE_BRICK,true);
-        BlockRegisteringUtils.addWalls("dirty_brick", DIRTY_BRICKS,true);
-        BlockRegisteringUtils.addWalls("sandy_brick", SANDY_BRICKS,true);
-        BlockRegisteringUtils.addWalls("smooth_dirty_brick", SMOOTH_DIRTY_BRICK,true);
-        BlockRegisteringUtils.addWalls("smooth_sandy_brick", SMOOTH_SANDY_BRICK,true);
+        BlockRegisteringUtils.addWalls("smooth_end_brick", SMOOTH_END_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS);
+        BlockRegisteringUtils.addWalls("smooth_prismarine", SMOOTH_PRISMARINE);
+        BlockRegisteringUtils.addWalls("smooth_brick", SMOOTH_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_purpur", SMOOTH_PURPUR_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_nether_brick", SMOOTH_NETHER_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_red_nether_brick", SMOOTH_RED_NETHER_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_stone", SMOOTH_STONE);
+        BlockRegisteringUtils.addWalls("smooth_stone_brick", SMOOTH_STONE_BRICK);
+        BlockRegisteringUtils.addWalls("dirty_brick", DIRTY_BRICKS);
+        BlockRegisteringUtils.addWalls("sandy_brick", SANDY_BRICKS);
+        BlockRegisteringUtils.addWalls("smooth_dirty_brick", SMOOTH_DIRTY_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_sandy_brick", SMOOTH_SANDY_BRICK);
 
-        BlockRegisteringUtils.addSlabAndStair("dark_andesite", DARK_ANDESITE,true);
-        BlockRegisteringUtils.addSlabAndStair("polished_dark_andesite", POLISHED_DARK_ANDESITE,true);
-        BlockRegisteringUtils.addSlabAndStair("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS,true);
-        BlockRegisteringUtils.addSlabAndStair("prismarine", Blocks.PRISMARINE,true);
+        BlockRegisteringUtils.addSlabAndStair("dark_andesite", DARK_ANDESITE);
+        BlockRegisteringUtils.addSlabAndStair("polished_dark_andesite", POLISHED_DARK_ANDESITE);
+        BlockRegisteringUtils.addSlabAndStair("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
-        BlockRegisteringUtils.addSlabAndStair("smooth_end_stone_brick", SMOOTH_END_BRICK,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_prismarine", SMOOTH_PRISMARINE,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_brick", SMOOTH_BRICK,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_purpur", SMOOTH_PURPUR_BRICK,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_nether_brick", SMOOTH_NETHER_BRICK,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_red_nether_brick", SMOOTH_RED_NETHER_BRICK,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_stone", SMOOTH_STONE,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_stone_brick", SMOOTH_STONE_BRICK,true);
-        BlockRegisteringUtils.addSlabAndStair("dirty_brick", DIRTY_BRICKS,true);
-        BlockRegisteringUtils.addSlabAndStair("sandy_brick", SANDY_BRICKS,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_dirty_brick", SMOOTH_DIRTY_BRICK,true);
-        BlockRegisteringUtils.addSlabAndStair("smooth_sandy_brick", SMOOTH_SANDY_BRICK,true);
+        BlockRegisteringUtils.addSlabAndStair("smooth_end_stone_brick", SMOOTH_END_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("smooth_prismarine", SMOOTH_PRISMARINE);
+        BlockRegisteringUtils.addSlabAndStair("smooth_brick", SMOOTH_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_purpur", SMOOTH_PURPUR_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_nether_brick", SMOOTH_NETHER_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_red_nether_brick", SMOOTH_RED_NETHER_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_stone", SMOOTH_STONE);
+        BlockRegisteringUtils.addSlabAndStair("smooth_stone_brick", SMOOTH_STONE_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("dirty_brick", DIRTY_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("sandy_brick", SANDY_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("smooth_dirty_brick", SMOOTH_DIRTY_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_sandy_brick", SMOOTH_SANDY_BRICK);
 
         SAWMILL = new BlockSawmill("sawmill");
 
@@ -303,6 +281,12 @@ public class NBlocks {
         BAMBOO_PLANKS_SLAB = new BlockNeutroniaSlab("bamboo_planks_slab");
         THATCH_STAIR = new BlockNeutroniaStair(THATCH.getDefaultState(), "thatch_stair");
         THATCH_SLAB = new BlockNeutroniaSlab("thatch_slab");
+
+        ACIDIAN = new BlockNeutroniaBase(Material.STONE, "natural_acidian");
+        ACIDIAN_BRICKS = new BlockNeutroniaBase(Material.STONE, "acidian_bricks");
+        ACIDIAN_PILLAR = new BlockNeutroniaPillar(Material.STONE, "acidian_pillar");
+        CHISELED_ACIDIAN = new BlockNeutroniaBase(Material.STONE, "chiseled_acidian");
+        ACIDIAN_BARS = new BlockNeutroniaPane("acidian_bars", Material.STONE);
     }
 
 }

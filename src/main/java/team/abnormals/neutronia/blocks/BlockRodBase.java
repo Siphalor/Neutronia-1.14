@@ -72,7 +72,7 @@ public class BlockRodBase extends BlockDirectional implements INeutroniaBlock {
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
         Direction direction_1 = itemPlacementContext_1.getFacing();
         BlockState blockState_1 = itemPlacementContext_1.getWorld().getBlockState(itemPlacementContext_1.getBlockPos().offset(direction_1.getOpposite()));
-        return blockState_1.getBlock() == this && blockState_1.get(FACING) == direction_1 ? (BlockState)this.getDefaultState().with(FACING, direction_1.getOpposite()) : this.getDefaultState().with(FACING, direction_1);
+        return blockState_1.getBlock() == this && blockState_1.get(FACING) == direction_1 ? this.getDefaultState().with(FACING, direction_1.getOpposite()) : this.getDefaultState().with(FACING, direction_1);
     }
 
     @Override

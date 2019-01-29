@@ -1,0 +1,7 @@
+{
+  "parent": "block/template_glass_pane_post",
+  "textures": {
+    "edge": "neutronia:block/acidian_bars_top",
+    "pane": "neutronia:block/acidian_bars"
+  }
+}

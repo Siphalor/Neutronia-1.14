@@ -5,14 +5,11 @@ import team.abnormals.neutronia.blocks.*;
 
 public class BlockRegisteringUtils {
 
-    public static void addSlabAndStair(String name, Block block, boolean doit) {
-        addSlabAndStair(name, block, true, true, doit);
+    public static void addSlabAndStair(String name, Block block) {
+        addSlabAndStair(name, block, true, true);
     }
 
-    public static void addSlabAndStair(String name, Block block, boolean slab, boolean stairs, boolean doit) {
-        if (!doit)
-            return;
-
+    public static void addSlabAndStair(String name, Block block, boolean slab, boolean stairs) {
         String stairsName = name + "_stairs";
 
         if (stairs)
@@ -22,14 +19,11 @@ public class BlockRegisteringUtils {
         }
     }
 
-    public static void addFenceAndGate(String name, Block block, boolean doIt) {
-        addFenceAndGate(name, block, true, true, doIt);
+    public static void addFenceAndGate(String name, Block block) {
+        addFenceAndGate(name, block, true, true);
     }
 
-    public static void addFenceAndGate(String name, Block block, boolean fence, boolean fenceGate, boolean doIt) {
-        if (!doIt)
-            return;
-
+    public static void addFenceAndGate(String name, Block block, boolean fence, boolean fenceGate) {
         String wallName;
 
         if (fence) {
@@ -43,10 +37,7 @@ public class BlockRegisteringUtils {
         }
     }
 
-    public static void addWalls(String name, Block block, boolean doit) {
-        if (!doit)
-            return;
-
+    public static void addWalls(String name, Block block) {
         String wallName = name + "_wall";
         new BlockNeutroniaWall(wallName, block.getDefaultState());
     }
