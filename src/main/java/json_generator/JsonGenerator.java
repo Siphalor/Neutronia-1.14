@@ -5,12 +5,12 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.stream.JsonWriter;
-import net.minecraft.util.DyeColor;
 import net.minecraft.util.Identifier;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.text.WordUtils;
+import team.abnormals.neutronia.blocks.pumpkin.BlockPumpkin;
 import team.abnormals.neutronia.enums.WoodTypesVanilla;
 
 import java.io.*;
@@ -40,8 +40,14 @@ public class JsonGenerator {
             genCoralFan(new Identifier(modid, String.format("decorative_%s_coral_fan", coralColor.getName())), new Identifier(modid, String.format("%s_coral_fan", coralColor.getName())));
             genCoralFan(new Identifier(modid, String.format("decorative_dead_%s_coral_fan", coralColor.getName())), new Identifier(modid, String.format("dead_%s_coral_fan", coralColor.getName())));
         }*/
-        for(DyeColor color : DyeColor.values()) {
+        /*for(DyeColor color : DyeColor.values()) {
             genPillarBlock(new Identifier(modid, String.format("%s_glazed_terracotta_pillar", color.getName())), new Identifier(modid, String.format("block/glazed_terracotta_pillars/gtp_pillar_%s_top", color.getName())), new Identifier(modid, String.format("block/glazed_terracotta_pillars/gtp_pillar_%s", color.getName())));
+        }*/
+        for(BlockPumpkin.FaceTypes faceTypes : BlockPumpkin.FaceTypes.values()) {
+            genBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_pumpkin"), new Identifier(modid, "jackOLanterns/carved_pumpkin_" + faceTypes.asString()));
+        }
+        for(BlockPumpkin.FaceTypes faceTypes : BlockPumpkin.FaceTypes.values()) {
+            genBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_pumpkin"), new Identifier(modid, "jackOLanterns/carved_pumpkin_" + faceTypes.asString()));
         }
         for(WoodTypesVanilla type : WoodTypesVanilla.values()) {
 //            genSlab(new Identifier(modid, String.format("")));
@@ -63,7 +69,7 @@ public class JsonGenerator {
         JsonObject variants = new JsonObject();
 
         JsonObject model = new JsonObject();
-        model.addProperty("model", String.format("%s:block/%s", modelPath.getNamespace(), modelPath.getPath()));
+        model.addProperty("model", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
 
         variants.add("", model);
         root.add("variants", variants);
@@ -76,14 +82,14 @@ public class JsonGenerator {
             System.out.printf("Error creating file %s.json" + "\n", modIdAndName.getPath());
         }
 
-        genBlockModel(modId, blockName, textureName);
-        genBlockItemModel(modId, blockName);
+        genBlockModel(modIdAndName, textureName);
+        genBlockItemModel(modIdAndName);
     }
 
-    public static void genBlockModel(String modId, String blockName, String textureName) {
+    public static void genBlockModel(Identifier modIdAndName, Identifier textureName) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Path base = Paths.get("src", "main", "resources", "assets", modId, "models", "block");
+        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "models", "block");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
         }
@@ -92,36 +98,36 @@ public class JsonGenerator {
         root.addProperty("parent", "block/cube_all");
 
         JsonObject textures = new JsonObject();
-        textures.addProperty("all", modId + ":block/" + textureName);
+        textures.addProperty("all", textureName.getNamespace() + ":block/" + textureName.getPath());
         root.add("textures", textures);
 
         String json = gson.toJson(root);
 
         try {
-            FileUtils.writeStringToFile(base.resolve(blockName + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
         } catch (IOException e) {
-            System.out.print(String.format("Error creating file %s.json" + "\n", blockName));
+            System.out.print(String.format("Error creating file %s.json" + "\n", modIdAndName.getPath()));
         }
 
     }
 
-    public static void genBlockItemModel(String modId, String blockName) {
+    public static void genBlockItemModel(Identifier modIdAndName) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Path base = Paths.get("src", "main", "resources", "assets", modId, "models", "item");
+        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "models", "item");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
         }
 
         JsonObject root = new JsonObject();
-        root.addProperty("parent", String.format("%s:block/%s", modId, blockName));
+        root.addProperty("parent", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
 
         String json = gson.toJson(root);
 
         try {
-            FileUtils.writeStringToFile(base.resolve(blockName + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
         } catch (IOException e) {
-            System.out.print(String.format("Error creating file %s.json" + "\n", blockName));
+            System.out.print(String.format("Error creating file %s.json" + "\n", modIdAndName.getPath()));
         }
 
     }
@@ -588,28 +594,6 @@ public class JsonGenerator {
         innerRight.addProperty("model", "minecraft:outer_stairs");
         innerRight.addProperty("y", 270);
         innerRight.addProperty("uvlock", true);
-
-        for (EnumFacing facing : EnumFacing.values()) {
-            for (BlockStairs.EnumHalf enumHalf : BlockStairs.EnumHalf.values()) {
-                for (BlockStairs.EnumShape enumShape : BlockStairs.EnumShape.values()) {
-                    if (Objects.equals(enumShape.getName(), "straight")) {
-                        variants.add(String.format("facing=%s,half=%s,shape=%s", facing.getName(), enumHalf.getName(), enumShape.getName()), straight);
-                    }
-                    if (Objects.equals(enumShape.getName(), "inner_left")) {
-                        variants.add(String.format("facing=%s,half=%s,shape=%s", facing.getName(), enumHalf.getName(), enumShape.getName()), innerLeft);
-                    }
-                    if (Objects.equals(enumShape.getName(), "inner_right")) {
-                        variants.add(String.format("facing=%s,half=%s,shape=%s", facing.getName(), enumHalf.getName(), enumShape.getName()), innerRight);
-                    }
-                    if (Objects.equals(enumShape.getName(), "outer_left")) {
-                        variants.add(String.format("facing=%s,half=%s,shape=%s", facing.getName(), enumHalf.getName(), enumShape.getName()), outerLeft);
-                    }
-                    if (Objects.equals(enumShape.getName(), "outer_right")) {
-                        variants.add(String.format("facing=%s,half=%s,shape=%s", facing.getName(), enumHalf.getName(), enumShape.getName()), outerRight);
-                    }
-                }
-            }
-        }
 
         variants.add("inventory", empty);
         root.add("variants", variants);

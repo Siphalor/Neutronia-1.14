@@ -22,13 +22,13 @@ import net.minecraft.world.World;
 import team.abnormals.neutronia.blocks.BlockModBase;
 import team.abnormals.neutronia.blocks.INeutroniaBlock;
 
-public class BlockPumpkin extends BlockModBase implements INeutroniaBlock {
+public class BlockJackOLantern extends BlockModBase implements INeutroniaBlock {
 
     public static final DirectionProperty FACING = HorizontalFacingBlock.field_11177;
     public static final EnumProperty<FaceTypes> FACE_TYPE = EnumProperty.create("face_type", FaceTypes.class);
 
-    public BlockPumpkin() {
-        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD).build(), "incricate_carved_pumpkin");
+    public BlockJackOLantern() {
+        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD).build(), "incricate_jack_o_lantern");
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH).with(FACE_TYPE, FaceTypes.CREEPER));
     }
 
