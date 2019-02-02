@@ -94,7 +94,7 @@ public class BlockNeutroniaWallSign extends SignBlock implements INeutroniaBlock
     }
 
     static {
-        FACING = HorizontalFacingBlock.FACING;
+        FACING = HorizontalFacingBlock.field_11177;
         FACING_TO_SHAPE = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(0.0D, 4.5D, 14.0D, 16.0D, 12.5D, 16.0D), Direction.SOUTH, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 16.0D, 12.5D, 2.0D), Direction.EAST, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 2.0D, 12.5D, 16.0D), Direction.WEST, Block.createCuboidShape(14.0D, 4.5D, 0.0D, 16.0D, 12.5D, 16.0D)));
     }
 

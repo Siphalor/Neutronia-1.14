@@ -20,7 +20,7 @@ public class SignItem extends WallStandingBlockItem {
    protected boolean afterBlockPlaced(BlockPos blockPos_1, World world_1, PlayerEntity playerEntity_1, ItemStack itemStack_1, BlockState blockState_1) {
       boolean boolean_1 = super.afterBlockPlaced(blockPos_1, world_1, playerEntity_1, itemStack_1, blockState_1);
       if (!world_1.isClient && !boolean_1 && playerEntity_1 != null) {
-         MinecraftClient.getInstance().openGui(new EditSignGui((SignBlockEntity) world_1.getBlockEntity(blockPos_1)));
+         MinecraftClient.getInstance().openScreen(new EditSignGui((SignBlockEntity) world_1.getBlockEntity(blockPos_1)));
       }
 
       return boolean_1;

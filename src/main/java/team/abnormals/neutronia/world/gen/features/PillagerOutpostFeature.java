@@ -3,8 +3,8 @@ package team.abnormals.neutronia.world.gen.features;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.entity.EntityType;
-import net.minecraft.sortme.structures.StructureManager;
-import net.minecraft.sortme.structures.StructureStart;
+import net.minecraft.structure.StructureManager;
+import net.minecraft.structure.StructureStart;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.biome.Biome;
@@ -38,7 +38,7 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
       return field_16656;
    }
 
-   public boolean method_14026(ChunkGenerator<?> chunkGenerator_1, Random random_1, int int_1, int int_2) {
+   public boolean shouldStartAt(ChunkGenerator<?> chunkGenerator_1, Random random_1, int int_1, int int_2) {
       ChunkPos chunkPos_1 = this.method_14018(chunkGenerator_1, random_1, int_1, int_2, 0, 0);
       if (int_1 == chunkPos_1.x && int_2 == chunkPos_1.z) {
          int int_3 = int_1 >> 4;
@@ -56,7 +56,7 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
       }
    }
 
-   public StructureFeature.class_3774 method_14016() {
+   public StructureFeature.StructureStartFactory getStructureStartFactory() {
       return PillagerOutpostFeature.class_3771::new;
    }
 
@@ -73,10 +73,10 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
          super(structureFeature_1, int_1, int_2, biome_1, mutableIntBoundingBox_1, int_3, long_1);
       }
 
-      public void method_16655(ChunkGenerator<?> chunkGenerator_1, StructureManager structureManager_1, int int_1, int int_2, Biome biome_1) {
+      public void initialize(ChunkGenerator<?> chunkGenerator_1, StructureManager structureManager_1, int int_1, int int_2, Biome biome_1) {
          BlockPos blockPos_1 = new BlockPos(int_1 * 16, 90, int_2 * 16);
-         PillagerVillageData.method_16650(chunkGenerator_1, structureManager_1, blockPos_1, this.children, this.field_16715);
-         this.method_14969();
+         PillagerVillageData.method_16650(chunkGenerator_1, structureManager_1, blockPos_1, this.children, this.random);
+         this.setBoundingBoxFromChildren();
       }
    }
 }

@@ -5,7 +5,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.audio.PositionedSoundInstance;
-import net.minecraft.client.gui.ContainerGui;
+import net.minecraft.client.gui.ContainerScreen;
 import net.minecraft.client.render.GuiLighting;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.TranslatableTextComponent;
@@ -17,7 +17,7 @@ import team.abnormals.neutronia.recipe.SawmillingRecipe;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
-public class SawmillGui extends ContainerGui<SawmillContainer> {
+public class SawmillGui extends ContainerScreen<SawmillContainer> {
    private static final Identifier TEXTURE = new Identifier("textures/gui/container/stonecutter.png");
    private float scrollAmount;
    private boolean mouseClicked;
@@ -82,7 +82,7 @@ public class SawmillGui extends ContainerGui<SawmillContainer> {
          int int_6 = int_1 + int_5 % 4 * 16;
          int int_7 = int_5 / 4;
          int int_8 = int_2 + int_7 * 18 + 2;
-         this.client.getItemRenderer().renderItemAndGlowInGui(list_1.get(int_4).getOutput(), int_6, int_8);
+//         this.client.getItemRenderer().renderItemAndGlow(list_1.get(int_4).getOutput(), int_6, int_8);
       }
 
       GuiLighting.disable();

@@ -13,7 +13,7 @@ public class PillagerOutpostFeatureConfig implements FeatureConfig {
    }
 
    public <T> Dynamic<T> serialize(DynamicOps<T> dynamicOps_1) {
-      return new Dynamic(dynamicOps_1, dynamicOps_1.createMap(ImmutableMap.of(dynamicOps_1.createString("probability"), dynamicOps_1.createDouble(this.probability))));
+      return new Dynamic<>(dynamicOps_1, dynamicOps_1.createMap(ImmutableMap.of(dynamicOps_1.createString("probability"), dynamicOps_1.createDouble(this.probability))));
    }
 
    public static <T> PillagerOutpostFeatureConfig deserialize(Dynamic<T> dynamic_1) {

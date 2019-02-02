@@ -7,6 +7,7 @@ import net.minecraft.block.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import team.abnormals.neutronia.blocks.*;
+import team.abnormals.neutronia.blocks.pumpkin.BlockPumpkin;
 import team.abnormals.neutronia.enums.*;
 import team.abnormals.neutronia.utils.registry.BlockRegisteringUtils;
 
@@ -44,6 +45,8 @@ public class NBlocks {
     public static Block WROUGHT_IRON_BLOCK, WROUGHT_IRON_DOOR, WROUGHT_IRON_BARS;
 
     public static Block SAWMILL;
+
+    public static Block PUMPKIN = new BlockPumpkin();
 
     public static Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN, BAMBOO_TORCH, THATCH, BAMBOO_PLANKS_STAIR, BAMBOO_PLANKS_SLAB, THATCH_STAIR, THATCH_SLAB;
     public static Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN, ACIDIAN_BARS;

@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
-import net.minecraft.client.gui.Gui;
+import net.minecraft.client.gui.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
@@ -18,7 +18,7 @@ import team.abnormals.neutronia.blocks.BlockNeutroniaWallSign;
 import team.abnormals.neutronia.blocks.entity.SignBlockEntity;
 
 @Environment(EnvType.CLIENT)
-public class EditSignGui extends Gui {
+public class EditSignGui extends Screen {
    private final SignBlockEntity sign;
    private int ticksSinceOpened;
    private int currentRow;
@@ -55,7 +55,7 @@ public class EditSignGui extends Gui {
 
    private void method_2526() {
       this.sign.markDirty();
-      this.client.openGui(null);
+      this.client.openScreen(null);
    }
 
    public boolean charTyped(char char_1, int int_1) {
