@@ -1,8 +1,8 @@
 {
     "ambientocclusion": false,
     "textures": {
-        "particle": "neutronia:block/acidian_bars",
-        "bars": "neutronia:block/acidian_bars"
+        "particle": "neutronia:block/wrought_iron_bars",
+        "bars": "neutronia:block/wrought_iron_bars"
     },
     "elements": [
         {   "from": [ 8, 0, 7 ],
