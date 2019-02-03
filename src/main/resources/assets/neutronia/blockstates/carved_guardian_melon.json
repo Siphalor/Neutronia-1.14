@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "neutronia:block/carved_guardian_melon"
+    },
+    "facing=south": {
+      "model": "neutronia:block/carved_guardian_melon",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "neutronia:block/carved_guardian_melon",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "neutronia:block/carved_guardian_melon",
+      "y": 270
+    }
+  }
+}

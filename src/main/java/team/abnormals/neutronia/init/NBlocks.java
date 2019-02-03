@@ -7,6 +7,8 @@ import net.minecraft.block.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import team.abnormals.neutronia.blocks.*;
+import team.abnormals.neutronia.blocks.melons.BlockMelOLantern;
+import team.abnormals.neutronia.blocks.melons.BlockMelon;
 import team.abnormals.neutronia.blocks.pumpkin.BlockJackOLantern;
 import team.abnormals.neutronia.blocks.pumpkin.BlockPumpkin;
 import team.abnormals.neutronia.enums.*;
@@ -19,7 +21,6 @@ public class NBlocks {
             FLUID_BARRELS = new Block[10], WOOD_LANTERNS = new Block[10], LADDERS = new Block[9],
             GLAZED_TERRACOTTA_PILLAR = new Block[13], SOUL_STONE = new Block[4];
     public static BlockCustomChest[] WOODEN_CHESTS = new BlockCustomChest[CustomChestTypes.values().length];
-    public static Block CARVED_MELON, MEL_O_LANTERN;
     public static BlockNeutroniaDoor SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR;
     public static BlockNeutroniaTrapdoor SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
     public static BlockChiseled CHISELED_NETHER_BRICK, CHISELED_PURPUR, CHISELED_BRICKS, CHISELED_END_BRICK, CHISELED_RED_NETHER_BRICK;
@@ -50,6 +51,15 @@ public class NBlocks {
     public static Block PUMPKIN = new BlockPumpkin();
     public static Block JACK_O_LANTERN = new BlockJackOLantern();
 
+    public static Block MELON = new BlockMelon(), MEL_O_LANTERN = new BlockMelOLantern();
+
+    public static Block CHEESE_CAKE = new BaseCakeBlock("cheese_cake");
+    public static Block CHOCOLATE_CAKE = new BaseCakeBlock("chocolate_cake");
+    public static Block PUMPKIN_PIE = new PieBlock("pumpkin_pie");
+    public static Block BLUEBERRY_PIE = new PieBlock("blueberry_pie");
+    public static Block SWEET_BERRY_PIE = new PieBlock("sweet_berry_pie");
+    public static Block APPLE_PIE = new PieBlock("apple_pie");
+
     public static Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN, BAMBOO_TORCH, THATCH, BAMBOO_PLANKS_STAIR, BAMBOO_PLANKS_SLAB, THATCH_STAIR, THATCH_SLAB;
     public static Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN, ACIDIAN_BARS;
 
@@ -65,9 +75,6 @@ public class NBlocks {
         for(CustomChestTypes woodenChestTypes : CustomChestTypes.values()) {
             WOODEN_CHESTS[woodenChestTypes.getId()] = new BlockCustomChest(woodenChestTypes.asString());
         }
-
-        CARVED_MELON = new BlockNeutroniaBase(Material.ORGANIC,"carved_melon");
-        MEL_O_LANTERN = new BlockMelOLantern();
 
         SANDSTONE_DOOR = new BlockNeutroniaDoor("sandstone_door");
         SANDSTONE_TRAPDOOR = new BlockNeutroniaTrapdoor("sandstone_trapdoor");

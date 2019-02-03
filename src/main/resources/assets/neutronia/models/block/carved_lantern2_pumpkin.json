@@ -1,6 +1,8 @@
 {
-  "parent": "block/cube_all",
+  "parent": "block/orientable",
   "textures": {
-    "all": "neutronia:block/pumpkins/carved_pumpkin_lantern2"
+    "top": "block/pumpkin_top",
+    "front": "neutronia:block/pumpkins/carved_pumpkin_lantern2",
+    "side": "block/pumpkin_side"
   }
 }

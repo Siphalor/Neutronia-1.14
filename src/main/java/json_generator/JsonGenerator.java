@@ -10,7 +10,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.text.WordUtils;
-import team.abnormals.neutronia.blocks.pumpkin.BlockPumpkin;
+import team.abnormals.neutronia.enums.CarvedFaceTypes;
 import team.abnormals.neutronia.enums.WoodTypesVanilla;
 
 import java.io.*;
@@ -43,11 +43,11 @@ public class JsonGenerator {
         /*for(DyeColor color : DyeColor.values()) {
             genPillarBlock(new Identifier(modid, String.format("%s_glazed_terracotta_pillar", color.getName())), new Identifier(modid, String.format("block/glazed_terracotta_pillars/gtp_pillar_%s_top", color.getName())), new Identifier(modid, String.format("block/glazed_terracotta_pillars/gtp_pillar_%s", color.getName())));
         }*/
-        for(BlockPumpkin.FaceTypes faceTypes : BlockPumpkin.FaceTypes.values()) {
-            genBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_pumpkin"), new Identifier(modid, "jackOLanterns/carved_pumpkin_" + faceTypes.asString()));
-        }
-        for(BlockPumpkin.FaceTypes faceTypes : BlockPumpkin.FaceTypes.values()) {
-            genBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_pumpkin"), new Identifier(modid, "jackOLanterns/carved_pumpkin_" + faceTypes.asString()));
+        for(CarvedFaceTypes faceTypes : CarvedFaceTypes.values()) {
+            genOrientedBlock(new Identifier("minecraft", "carved_" + faceTypes.asString() + "_pumpkin"), new Identifier("minecraft", "pumpkin_top"), new Identifier(modid, "pumpkins/carved_pumpkin_" + faceTypes.asString()), new Identifier("minecraft", "pumpkin_side"));
+            genOrientedBlock(new Identifier("minecraft", faceTypes.asString() + "_jack_o_lantern"), new Identifier("minecraft", "pumpkin_top"), new Identifier(modid, "jack_o_lanterns/jack_o_lantern_" + faceTypes.asString()), new Identifier("minecraft", "pumpkin_side"));
+            genOrientedBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_melon"), new Identifier("minecraft", "melon_top"), new Identifier(modid, "melons/carved_pumpkin_" + faceTypes.asString()), new Identifier("minecraft", "melon_side"));
+            genOrientedBlock(new Identifier(modid, faceTypes.asString() + "_mel_o_lantern"), new Identifier("minecraft", "melon_top"), new Identifier(modid, "mel_o_lanterns/jack_o_lantern_" + faceTypes.asString()), new Identifier("minecraft", "melon_side"));
         }
         for(WoodTypesVanilla type : WoodTypesVanilla.values()) {
 //            genSlab(new Identifier(modid, String.format("")));
@@ -311,45 +311,28 @@ public class JsonGenerator {
         }
 
         JsonObject root = new JsonObject();
-        root.addProperty("_comment", "Generated using Husky's JSON Generator v4.");
-        root.addProperty("forge_marker", 1);
-
-        JsonObject defaults = new JsonObject();
-        defaults.addProperty("model", "block/orientable");
-
-        JsonObject textures = new JsonObject();
-        textures.addProperty("top", topTextureName.getNamespace() + ":block/" + topTextureName.getPath());
-        textures.addProperty("front", frontTextureName.getNamespace() + ":block/" + frontTextureName.getPath());
-        textures.addProperty("side", sidesTextureName.getNamespace() + ":block/" + sidesTextureName.getPath());
-        defaults.add("textures", textures);
-
-        defaults.addProperty("transform", "forge:default-block");
-
-        root.add("defaults", defaults);
 
         JsonObject variants = new JsonObject();
 
-        JsonObject facing = new JsonObject();
-        facing.add("north", new JsonObject());
+        JsonObject north = new JsonObject();
+        north.addProperty("model", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
+        variants.add("facing=north", north);
 
         JsonObject south = new JsonObject();
-        south.addProperty("y", "90");
-        facing.add("south", south);
+        south.addProperty("model", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
+        south.addProperty("y", 90);
+        variants.add("facing=south", south);
 
         JsonObject east = new JsonObject();
-        east.addProperty("y", "180");
-        facing.add("east", east);
+        east.addProperty("model", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
+        east.addProperty("y", 180);
+        variants.add("facing=east", east);
 
         JsonObject west = new JsonObject();
-        west.addProperty("y", "270");
-        facing.add("west", west);
+        west.addProperty("model", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
+        west.addProperty("y", 270);
+        variants.add("facing=west", west);
 
-        variants.add("facing", facing);
-
-        JsonArray empty = new JsonArray();
-        empty.add(new JsonObject());
-
-        variants.add("inventory", empty);
         root.add("variants", variants);
 
         String json = gson.toJson(root);
@@ -360,17 +343,17 @@ public class JsonGenerator {
             System.out.printf("Error creating file %s.json" + "\n", modIdAndName.getPath());
         }
 
-        genBlockOrientedItemModel(modIdAndName, topTextureName, frontTextureName, sidesTextureName);
+        genBlockOrientedBlockModel(modIdAndName, topTextureName, frontTextureName, sidesTextureName);
+        genBlockOrientedItemModel(modIdAndName);
     }
 
-    public static void genBlockOrientedItemModel(Identifier modIdAndName, Identifier topTextureName, Identifier frontTextureName, Identifier sidesTextureName) {
+    public static void genBlockOrientedBlockModel(Identifier modIdAndName, Identifier topTextureName, Identifier frontTextureName, Identifier sidesTextureName) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "models", "item");
+        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "models", "block");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
         }
         JsonObject root = new JsonObject();
-        root.addProperty("_comment", "Generated using Husky's JSON Generator v4.");
         root.addProperty("parent", "block/orientable");
         JsonObject textures = new JsonObject();
         textures.addProperty("top", topTextureName.getNamespace() + ":block/" + topTextureName.getPath());
@@ -382,6 +365,26 @@ public class JsonGenerator {
             FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
         } catch (IOException e) {
             System.out.printf("Error creating file %s.json" + "\n", modIdAndName.getPath());
+        }
+    }
+
+    public static void genBlockOrientedItemModel(Identifier modIdAndName) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "models", "item");
+        if (!base.toFile().exists()) {
+            base.toFile().mkdirs();
+        }
+
+        JsonObject root = new JsonObject();
+        root.addProperty("parent", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
+
+        String json = gson.toJson(root);
+
+        try {
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
+        } catch (IOException e) {
+            System.out.print(String.format("Error creating file %s.json" + "\n", modIdAndName.getPath()));
         }
     }
 

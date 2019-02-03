@@ -1,0 +1,100 @@
+{
+  "variants": {
+    "facing=north,face_type=creeper": {
+      "model": "neutronia:block/carved_creeper_pumpkin"
+    },
+    "facing=south,face_type=creeper": {
+      "model": "neutronia:block/carved_creeper_pumpkin",
+      "y": 180
+    },
+    "facing=west,face_type=creeper": {
+      "model": "neutronia:block/carved_creeper_pumpkin",
+      "y": 270
+    },
+    "facing=east,face_type=creeper": {
+      "model": "neutronia:block/carved_creeper_pumpkin",
+      "y": 90
+    },
+    "face_type": {
+      "creeper": {
+        "model": "neutronia:block/carved_creeper_pumpkin"
+      },
+      "derp": {
+        "model": "neutronia:block/carved_derp_pumpkin"
+      },
+      "dinner": {
+        "model": "neutronia:block/carved_dinner_pumpkin"
+      },
+      "dumb": {
+        "model": "neutronia:block/carved_dumb_pumpkin"
+      },
+      "furnace": {
+        "model": "neutronia:block/carved_furnace_pumpkin"
+      },
+      "ghast": {
+        "model": "neutronia:block/carved_ghast_pumpkin"
+      },
+      "grump": {
+        "model": "neutronia:block/carved_grump_pumpkin"
+      },
+      "guardian": {
+        "model": "neutronia:block/carved_guardian_pumpkin"
+      },
+      "lantern1": {
+        "model": "neutronia:block/carved_lantern1_pumpkin"
+      },
+      "lantern2": {
+        "model": "neutronia:block/carved_lantern2_pumpkin"
+      },
+      "laugh": {
+        "model": "neutronia:block/carved_laugh_pumpkin"
+      },
+      "livid": {
+        "model": "neutronia:block/carved_livid_pumpkin"
+      },
+      "nose": {
+        "model": "neutronia:block/carved_nose_pumpkin"
+      },
+      "observer": {
+        "model": "neutronia:block/carved_observer_pumpkin"
+      },
+      "or": {
+        "model": "neutronia:block/carved_or_pumpkin"
+      },
+      "sad": {
+        "model": "neutronia:block/carved_sad_pumpkin"
+      },
+      "scared": {
+        "model": "neutronia:block/carved_scared_pumpkin"
+      },
+      "smile": {
+        "model": "neutronia:block/carved_smile_pumpkin"
+      },
+      "smirk": {
+        "model": "neutronia:block/carved_smirk_pumpkin"
+      },
+      "sorrow": {
+        "model": "neutronia:block/carved_sorrow_pumpkin"
+      },
+      "spider": {
+        "model": "neutronia:block/carved_spider_pumpkin"
+      },
+      "spook": {
+        "model": "neutronia:block/carved_spook_pumpkin"
+      },
+      "steve": {
+        "model": "neutronia:block/carved_steve_pumpkin"
+      },
+      "surprised": {
+        "model": "neutronia:block/carved_surprised_pumpkin"
+      },
+      "wink": {
+        "model": "neutronia:block/carved_wink_pumpkin"
+      }
+    }
+  },
+  "facing=north": {},
+  "facing=south": {"y": 180},
+  "facing=west":  {"y": 270},
+  "facing=east":  {"y": 90}
+}
