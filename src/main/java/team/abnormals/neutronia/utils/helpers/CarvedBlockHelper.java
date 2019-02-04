@@ -37,6 +37,9 @@ public class CarvedBlockHelper {
         }
         int ordinal = type.ordinal();
         ordinal++;
+        System.out.println("Carvable block: " + carvableBlocks.get(carvable));
+        System.out.println("Carvable block blockstate: " + carvableBlocks.get(carvable).get(type.ordinal()).getDefaultState());
+        System.out.println("Carvable block id: " + carvableBlocks.get(carvable).get(ordinal));
         if(ordinal == carvableBlocks.values().size()) {
             return carvable.getUncarvedBlock().getDefaultState();
         } else {

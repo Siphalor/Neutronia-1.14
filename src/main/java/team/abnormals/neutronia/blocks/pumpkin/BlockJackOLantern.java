@@ -50,7 +50,7 @@ public class BlockJackOLantern extends BlockModBase implements IMinecraftBlock, 
             if (stack.getItem() == Items.SHEARS)
                 world_1.setBlockState(blockPos_1, playerEntity_1.isSneaking() ?
                         CarvedBlockHelper.getLast((ICarvable) getUncarvedBlock(), Registry.BLOCK.getId(this)) :
-                        CarvedBlockHelper.getNext((ICarvable) getUncarvedBlock(), Registry.BLOCK.getId(this)));
+                        CarvedBlockHelper.getNext(this, Registry.BLOCK.getId(this)));
         }
         return super.activate(blockState_1, world_1, blockPos_1, playerEntity_1, hand_1, blockHitResult_1);
     }
