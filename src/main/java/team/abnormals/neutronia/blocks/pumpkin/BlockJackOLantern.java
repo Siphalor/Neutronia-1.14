@@ -1,10 +1,7 @@
 package team.abnormals.neutronia.blocks.pumpkin;
 
 import net.fabricmc.fabric.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -50,7 +47,7 @@ public class BlockJackOLantern extends BlockModBase implements IMinecraftBlock, 
             if (stack.getItem() == Items.SHEARS)
                 world_1.setBlockState(blockPos_1, playerEntity_1.isSneaking() ?
                         CarvedBlockHelper.getLast((ICarvable) getUncarvedBlock(), Registry.BLOCK.getId(this)) :
-                        CarvedBlockHelper.getNext(this, Registry.BLOCK.getId(this)));
+                        CarvedBlockHelper.getNext((ICarvable) getUncarvedBlock(), Registry.BLOCK.getId(this)));
         }
         return super.activate(blockState_1, world_1, blockPos_1, playerEntity_1, hand_1, blockHitResult_1);
     }
@@ -63,6 +60,7 @@ public class BlockJackOLantern extends BlockModBase implements IMinecraftBlock, 
         return blockState_1.rotate(mirror_1.getRotation(blockState_1.get(FACING)));
     }
 
+    @Override
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
         return this.getDefaultState().with(FACING, itemPlacementContext_1.getPlayerHorizontalFacing().getOpposite());
     }
@@ -73,16 +71,16 @@ public class BlockJackOLantern extends BlockModBase implements IMinecraftBlock, 
 
     @Override
     public String getFormatString() {
-        return "%s_jack_o_lantern";
+        return "carved_%s_jack_o_lantern";
     }
 
     @Override
     public CarvedFaceTypes fromIdentifier(Identifier identifier) {
         String[] values = identifier.getPath().split("_");
-        if(values.length == 3){
+        if(values.length == 3) {
             return null;
         }
-        return CarvedFaceTypes.valueOf(values[0].toUpperCase());
+        return CarvedFaceTypes.valueOf(values[1].toUpperCase());
     }
 
     @Override
@@ -94,4 +92,5 @@ public class BlockJackOLantern extends BlockModBase implements IMinecraftBlock, 
     public Block getUncarvedBlock() {
         return NBlocks.JACK_O_LANTERN;
     }
+
 }

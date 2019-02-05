@@ -1,0 +1,8 @@
+{
+  "parent": "block/orientable",
+  "textures": {
+    "top": "minecraft:block/pumpkin_top",
+    "front": "neutronia:block/jack_o_lanterns/jack_o_lantern_laugh",
+    "side": "minecraft:block/pumpkin_side"
+  }
+}

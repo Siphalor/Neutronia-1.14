@@ -18,6 +18,7 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import team.abnormals.neutronia.blocks.BlockModBase;
@@ -33,10 +34,12 @@ public class BlockMelOLantern extends BlockModBase implements INeutroniaBlock, I
 
     public BlockMelOLantern(Identifier identifier) {
         super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).lightLevel(15).sounds(BlockSoundGroup.WOOD).build(), identifier.getPath());
+        this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     public BlockMelOLantern() {
         super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).lightLevel(15).sounds(BlockSoundGroup.WOOD).build(), "mel_o_lantern");
+        this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
         CarvedBlockHelper.init(this);
     }
 
@@ -70,7 +73,7 @@ public class BlockMelOLantern extends BlockModBase implements INeutroniaBlock, I
 
     @Override
     public String getFormatString() {
-        return "%s_mel_o_lantern";
+        return "carved_%s_mel_o_lantern";
     }
 
     @Override

@@ -1,9 +1,10 @@
 {
   "required": true,
-  "package": "team.abnormals.neutronia.mixin",
+  "package": "team.abnormals.neutronia.mixin.client",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "ItemDynamicRendererMixin"
+    "ItemDynamicRendererMixin",
+    "MinecraftClientMixin"
   ],
   "injectors": {
     "defaultRequire": 1

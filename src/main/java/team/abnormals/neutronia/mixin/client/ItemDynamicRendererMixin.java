@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.mixin;
+package team.abnormals.neutronia.mixin.client;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;

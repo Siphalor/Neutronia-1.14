@@ -4,7 +4,9 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "MixinComposter",
-    "MixinVillagerEntity"
+    "MixinVillagerEntity",
+    "FlowerPotBlockMixin",
+    "SeedsItemAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

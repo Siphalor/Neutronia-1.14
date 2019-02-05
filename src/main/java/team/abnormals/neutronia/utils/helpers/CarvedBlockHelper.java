@@ -3,6 +3,7 @@ package team.abnormals.neutronia.utils.helpers;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import team.abnormals.neutronia.enums.CarvedFaceTypes;
 
 import java.util.ArrayList;
@@ -17,14 +18,18 @@ public class CarvedBlockHelper {
     public static void init(ICarvable carvable) {
         List<Block> blocks = new ArrayList<>();
         for(CarvedFaceTypes type : CarvedFaceTypes.values()) {
-            carvableBlocks.put(carvable.newInstance(new Identifier("neutronia", 
-                String.format(carvable.getFormatString(), type.asString()))), blocks);
+            blocks.add(Registry.BLOCK.get(new Identifier("neutronia",
+                    String.format(carvable.getFormatString(), type.asString()))));
+            carvableBlocks.put(carvable.newInstance(new Identifier("neutronia",
+                    String.format(carvable.getFormatString(), type.asString()))), blocks);
         }
     }
 
     public static void initAlt(ICarvable carvable) {
         List<Block> blocks = new ArrayList<>();
         for(CarvedFaceTypes type : CarvedFaceTypes.values()) {
+            blocks.add(Registry.BLOCK.get(new Identifier("minecraft",
+                    String.format(carvable.getFormatString(), type.asString()))));
             carvableBlocks.put(carvable.newInstance(new Identifier("minecraft",
                     String.format(carvable.getFormatString(), type.asString()))), blocks);
         }
