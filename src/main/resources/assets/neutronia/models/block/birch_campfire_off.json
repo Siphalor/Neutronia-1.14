@@ -1,0 +1,6 @@
+{
+  "parent": "neutronia:block/campfire_off",
+  "textures": {
+    "log": "neutronia:block/birch_campfire_log"
+  }
+}

@@ -2,6 +2,6 @@
   "parent": "neutronia:block/campfire",
   "textures": {
     "log": "neutronia:block/spruce_campfire_log",
-    "litlog": "neutronia:block:spruce_campfire_log_lit"
+    "litlog": "neutronia:block/spruce_campfire_log_lit"
   }
 }
