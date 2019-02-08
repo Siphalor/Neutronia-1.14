@@ -16,7 +16,7 @@ public class NEntityTypes {
     }
 
     private static EntityType register(String string_1, EntityType.Builder<? extends Entity> entityType$Builder_1) {
-        return  Registry.register(Registry.ENTITY_TYPE, new Identifier("neutronia", string_1), entityType$Builder_1.disableSaving().build(string_1));
+        return Registry.register(Registry.ENTITY_TYPE, new Identifier("neutronia", string_1), entityType$Builder_1.disableSaving().build(string_1));
     }
 
 }

@@ -22,7 +22,9 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectInstance;
+import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.mob.IllagerEntity;
 import net.minecraft.entity.mob.PillagerEntity;
 import net.minecraft.entity.mob.WitchEntity;
@@ -54,7 +56,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 import java.util.UUID;
 
-public class EntityGuardIllager extends IllagerEntity implements class_3745, RangedAttacker {
+public class EntityGuardIllager extends IllagerEntity implements CrossbowUser, RangedAttacker {
 
     private static final TrackedData<Boolean> field_7334 = DataTracker.registerData(PillagerEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private final BasicInventory inventory = new BasicInventory(5);
@@ -67,34 +69,23 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
 
     public double prevChasingPosX;
     WitchEntity
-    */
-/**
+*
      * Previous Y position of the illager's cape
-     *//*
+
 
     public double prevChasingPosY;
-    */
-/**
+*
      * Previous Z position of the illager's cape
-     *//*
+
 
     public double prevChasingPosZ;
-    */
-/**
+*
      * Current X position of the illager's cape
-     *//*
+
 
     public double chasingPosX;
-    */
-/**
-     * Current Y position of the illager's cape
-     *//*
 
     public double chasingPosY;
-    */
-/**
-     * Current Z position of the illager's cape
-     *//*
 
     public double chasingPosZ;
 
@@ -102,11 +93,11 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
         super(IllagerEntityRegistry.GUARD_ILLAGER, world);
         this.setSize(0.6F, 1.95F);
         this.setEquipmentDropChance(EquipmentSlot.HAND_OFF, 0.4F);
-        ((PathNavigateGround) this.getNavigator()).setBreakDoors(true);
+        ((PathNavigateGround) this.getNavigation()).setBreakDoors(true);
     }
 
-    protected void method_5959() {
-        super.method_5959();
+    protected void initGoals() {
+        super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(2, new StayInsideGoal(this));
         this.goalSelector.add(3, new OpenDoorGoal(this, true));
@@ -198,9 +189,9 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
             } else {
                 Potion potiontype = null;
 
-                if (this.random.nextFloat() < 0.004F && this.getHealth() < this.getMaxHealth()) {
+                if (this.random.nextFloat() < 0.004F && this.getHealth() < this.getHealthMaximum()) {
                     potiontype = Potions.HEALING;
-                } else if (this.rand.nextFloat() < 0.008F && this.getAttackTarget() != null && !this.isPotionActive(MobEffects.SPEED) && this.getAttackTarget().getDistanceSq(this) > 121.0D) {
+                } else if (this.random.nextFloat() < 0.008F && this.getAttacker() != null && !this.addPotionEffect(new StatusEffectInstance(StatusEffects.SPEED)) && this.getAttacker().distanceTo(this) > 121.0D) {
                     potiontype = Potions.SWIFTNESS;
                 }
 
@@ -208,7 +199,7 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
                     this.setEquippedStack(EquipmentSlot.HAND_OFF, PotionUtil.setPotion(new ItemStack(Items.POTION), potiontype));
                     this.potionUseTimer = this.getOffHandStack().getDurability();
                     this.setDrinkingPotion(true);
-                    this.world.playSound(null, this.x, this.y, this.z, SoundEvents.ENTITY_WITCH_DRINK, this.getSoundCategory(), 1.0F, 0.8F + this.rand.nextFloat() * 0.4F);
+                    this.world.playSound(null, this.x, this.y, this.z, SoundEvents.ENTITY_WITCH_DRINK, this.getSoundCategory(), 1.0F, 0.8F + this.random.nextFloat() * 0.4F);
                     EntityAttributeInstance iattributeinstance = this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED);
                     iattributeinstance.removeModifier(MODIFIER);
                     iattributeinstance.addModifier(MODIFIER);
@@ -273,7 +264,7 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
         if (livingBase != null) {
             if (livingBase instanceof PlayerEntity) {
 
-                if (!((PlayerEntity) livingBase).isCreative() && this.isAlive()) {
+                if (!((PlayerEntity) livingBase).isCreative() && this.invalid) {
                     this.world.setEntityState(this, (byte) 13);
                 }
             }
@@ -328,11 +319,6 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
         return ientitylivingdata;
     }
 
-    */
-/**
-     * Gives armor or weapon for entity based on given DifficultyInstance
-     *//*
-
     protected void initEquipment(LocalDifficulty difficulty) {
         this.setEquippedStack(EquipmentSlot.HAND_MAIN, new ItemStack(Items.IRON_SWORD));
     }
@@ -341,11 +327,6 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
         super.updateAITasks();
         this.setAggressive(this.getAttackTarget() != null);
     }
-
-    */
-/**
-     * Returns whether this Entity is on the same team as the given Entity.
-     *//*
 
     public boolean isTeammate(Entity entityIn) {
         if (super.isTeammate(entityIn)) {
@@ -368,4 +349,5 @@ public class EntityGuardIllager extends IllagerEntity implements class_3745, Ran
         return SoundEvents.ENTITY_VINDICATOR_HURT;
     }
 
-}*/
+}
+*/

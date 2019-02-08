@@ -9,7 +9,11 @@ import team.abnormals.neutronia.world.gen.features.PillagerOutpostFeatureConfig;
 
 public class NFeatures {
 
-    public static final StructureFeature<PillagerOutpostFeatureConfig> PILLAGER_OUTPOST = register("pillager_outpost", new PillagerOutpostFeature(PillagerOutpostFeatureConfig::deserialize));
+    public static final StructureFeature<PillagerOutpostFeatureConfig> PILLAGER_MANSION = register("pillager_mansion", new PillagerOutpostFeature(PillagerOutpostFeatureConfig::deserialize));
+
+    static {
+        Feature.STRUCTURES.put("pillager_mansion", PILLAGER_MANSION);
+    }
 
     private static <C extends FeatureConfig, F extends Feature<C>> F register(String string_1, F feature_1) {
         return Registry.register(Registry.FEATURE, string_1, feature_1);

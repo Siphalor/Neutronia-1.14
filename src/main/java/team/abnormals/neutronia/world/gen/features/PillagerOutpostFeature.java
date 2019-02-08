@@ -49,7 +49,7 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
             return false;
          } else {
             Biome biome_1 = chunkGenerator_1.getBiomeSource().getBiome(new BlockPos((int_1 << 4) + 9, 0, (int_2 << 4) + 9));
-            return chunkGenerator_1.hasStructure(biome_1, NFeatures.PILLAGER_OUTPOST);
+            return chunkGenerator_1.hasStructure(biome_1, NFeatures.PILLAGER_MANSION);
          }
       } else {
          return false;
