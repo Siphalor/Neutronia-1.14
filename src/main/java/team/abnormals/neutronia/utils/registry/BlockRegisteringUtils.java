@@ -13,9 +13,9 @@ public class BlockRegisteringUtils {
         String stairsName = name + "_stairs";
 
         if (stairs)
-            new BlockNeutroniaStair(block.getDefaultState(), stairsName);
+            new NeutroniaStairBlock(block.getDefaultState(), stairsName);
         if (slab) {
-            new BlockNeutroniaSlab(name);
+            new NeutroniaSlabBlock(name);
         }
     }
 
@@ -28,18 +28,18 @@ public class BlockRegisteringUtils {
 
         if (fence) {
             wallName = name + "_fence";
-            new BlockNeutroniaFence(wallName, block.getDefaultState());
+            new NeutroniaFenceBlock(wallName, block.getDefaultState());
         }
 
         if (fenceGate) {
             wallName = name + "_fence_gate";
-            new BlockNeutroniaFenceGate(wallName);
+            new NeutroniaFenceGateBlock(wallName);
         }
     }
 
     public static void addWalls(String name, Block block) {
         String wallName = name + "_wall";
-        new BlockNeutroniaWall(wallName, block.getDefaultState());
+        new NeutroniaWallBlock(wallName, block.getDefaultState());
     }
 
 }

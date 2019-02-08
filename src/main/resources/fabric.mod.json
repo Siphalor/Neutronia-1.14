@@ -6,9 +6,7 @@
   "side": "universal",
   "initializers": [
     "team.abnormals.neutronia.Neutronia",
-    "team.abnormals.neutronia.client.renderer.ClientInit",
-    "team.abnormals.neutronia.init.NContainerTypes",
-    "team.abnormals.neutronia.init.NGuis"
+    "team.abnormals.neutronia.client.renderer.ClientInit"
   ],
   "requires": {
     "fabric": "*"

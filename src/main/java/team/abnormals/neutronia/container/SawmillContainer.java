@@ -100,7 +100,7 @@ public class SawmillContainer extends Container {
             this.addSlot(new Slot(playerInventory_1, int_4, 8 + int_4 * 18, 142));
         }
 
-        this.method_17362(this.selectedRecipe);
+//        this.(this.selectedRecipe);
     }
 
     @Environment(EnvType.CLIENT)

@@ -11,7 +11,7 @@ import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import team.abnormals.neutronia.enums.CarvedFaceTypes;
-import team.abnormals.neutronia.enums.WoodTypesVanilla;
+import team.abnormals.neutronia.enums.VanillaWoodTypes3;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -49,7 +49,7 @@ public class JsonGenerator {
             genOrientedBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_melon"), new Identifier("minecraft", "melon_top"), new Identifier(modid, "melons/carved_pumpkin_" + faceTypes.asString()), new Identifier("minecraft", "melon_side"));
             genOrientedBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_mel_o_lantern"), new Identifier("minecraft", "melon_top"), new Identifier(modid, "mel_o_lanterns/jack_o_lantern_" + faceTypes.asString()), new Identifier("minecraft", "melon_side"));
         }
-        for(WoodTypesVanilla type : WoodTypesVanilla.values()) {
+        for(VanillaWoodTypes3 type : VanillaWoodTypes3.values()) {
 //            genSlab(new Identifier(modid, String.format("")));
         }
 //        genSlab(new Identifier("test", "test"), new Identifier("test", "test"), new Identifier("test", "test"), new Identifier("test", "test"));
