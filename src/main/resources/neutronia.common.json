@@ -3,8 +3,14 @@
   "package": "team.abnormals.neutronia.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinComposter",
-    "MixinVillagerEntity"
+    "block.MixinBlock",
+    "block.MixinComposter",
+    "block.MixinLadderBlock",
+    "block.MixinScaffoldingBlock",
+    "block.MixinTrapdoorBlock",
+    "block.MixinVineBlock",
+    "entity.MixinVillagerEntity",
+    "entity.MixinLivingEntity"
   ],
   "injectors": {
     "defaultRequire": 1

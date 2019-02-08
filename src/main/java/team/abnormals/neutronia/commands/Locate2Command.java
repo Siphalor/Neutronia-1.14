@@ -20,8 +20,8 @@ public class Locate2Command {
     public static void register(CommandDispatcher<ServerCommandSource> var0) {
         var0.register((ServerCommandManager.literal("locate2").requires((var0x) ->
             var0x.hasPermissionLevel(2)
-        )).then(ServerCommandManager.literal("pillager_mansion").executes((var0x) ->
-            method_13457(var0x.getSource(), "pillager_mansion")
+        )).then(ServerCommandManager.literal("Pillager_Mansion").executes((var0x) ->
+            method_13457(var0x.getSource(), "Pillager_Mansion")
         )));
     }
 

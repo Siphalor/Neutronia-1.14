@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.mixin;
+package team.abnormals.neutronia.mixin.block;
 
 import net.minecraft.block.ComposterBlock;
 import net.minecraft.item.ItemProvider;

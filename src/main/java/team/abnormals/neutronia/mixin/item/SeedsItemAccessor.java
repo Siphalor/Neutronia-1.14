@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.mixin;
+package team.abnormals.neutronia.mixin.item;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.SeedsItem;

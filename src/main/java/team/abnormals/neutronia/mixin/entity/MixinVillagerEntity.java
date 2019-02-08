@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.mixin;
+package team.abnormals.neutronia.mixin.entity;
 
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;

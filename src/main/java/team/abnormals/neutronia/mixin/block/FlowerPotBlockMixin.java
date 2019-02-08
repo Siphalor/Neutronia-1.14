@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.mixin;
+package team.abnormals.neutronia.mixin.block;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -22,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+import team.abnormals.neutronia.mixin.item.SeedsItemAccessor;
 
 import java.util.Map;
 import java.util.Objects;
