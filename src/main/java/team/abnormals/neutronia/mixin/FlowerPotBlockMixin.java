@@ -27,50 +27,44 @@ import java.util.Map;
 import java.util.Objects;
 
 @Mixin(FlowerPotBlock.class)
-final class FlowerPotBlockMixin {
-  private static final ThreadLocal<ItemStack> NEUTRONIA$HELD_ITEM = new ThreadLocal<>();
+public class FlowerPotBlockMixin {
+    private static final ThreadLocal<ItemStack> NEUTRONIA$HELD_ITEM = new ThreadLocal<>();
 
-  @Shadow
-  @Final
-  private static Map<Block, Block> CONTENT_TO_POTTED;
+    @Shadow
+    @Final
+    private static Map<Block, Block> CONTENT_TO_POTTED;
 
-  private FlowerPotBlockMixin() {}
-
-  @Inject(method = "activate", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"), locals = LocalCapture.CAPTURE_FAILHARD)
-  private void setHeldItem(
-    final BlockState state,
-    final World world,
-    final BlockPos pos,
-    final PlayerEntity player,
-    final Hand hand,
-    final BlockHitResult hit,
-    final CallbackInfoReturnable<Boolean> cir,
-    /* Captured */ final ItemStack heldItem
-  ) {
-    NEUTRONIA$HELD_ITEM.set(heldItem);
-  }
-
-  @Inject(method = "activate", at = @At("RETURN"))
-  private void clearHeldItem(
-    final BlockState state,
-    final World world,
-    final BlockPos pos,
-    final PlayerEntity player,
-    final Hand hand,
-    final BlockHitResult hit,
-    final CallbackInfoReturnable<Boolean> cir
-  ) {
-    NEUTRONIA$HELD_ITEM.remove();
-  }
-
-  @ModifyVariable(method = "activate", at = @At(value = "JUMP", opcode = Opcodes.IFEQ, shift = Shift.BEFORE))
-  private Block checkForCrops(final Block block) {
-    if (Blocks.AIR == block) {
-      final Item item = Objects.requireNonNull(NEUTRONIA$HELD_ITEM.get(), "held item").getItem();
-      if (item instanceof SeedsItem) {
-        return CONTENT_TO_POTTED.getOrDefault(((SeedsItemAccessor) item).getBlock(), Blocks.AIR);
-      }
+    private FlowerPotBlockMixin() {
     }
-    return block;
-  }
+
+    @Inject(method = "activate", at = @At(value = "INVOKE", target = "Lnet/minecraft/item/ItemStack;getItem()Lnet/minecraft/item/Item;"), locals = LocalCapture.CAPTURE_FAILHARD)
+    private void setHeldItem(
+            final BlockState state,
+            final World world,
+            final BlockPos pos,
+            final PlayerEntity player,
+            final Hand hand,
+            final BlockHitResult hit,
+            final CallbackInfoReturnable<Boolean> cir,
+            /* Captured */ final ItemStack heldItem
+    ) {
+        NEUTRONIA$HELD_ITEM.set(heldItem);
+    }
+
+    @Inject(method = "activate", at = @At("RETURN"))
+    private void clearHeldItem(final BlockState state, final World world, final BlockPos pos, final PlayerEntity player, final Hand hand, final BlockHitResult hit,
+                               final CallbackInfoReturnable<Boolean> cir) {
+        NEUTRONIA$HELD_ITEM.remove();
+    }
+
+    @ModifyVariable(method = "activate", at = @At(value = "JUMP", opcode = Opcodes.IFEQ, shift = Shift.BEFORE))
+    private Block checkForCrops(final Block block) {
+        if (Blocks.AIR == block) {
+            final Item item = Objects.requireNonNull(NEUTRONIA$HELD_ITEM.get(), "held item").getItem();
+            if (item instanceof SeedsItem) {
+                return CONTENT_TO_POTTED.getOrDefault(((SeedsItemAccessor) item).getBlock(), Blocks.AIR);
+            }
+        }
+        return block;
+    }
 }

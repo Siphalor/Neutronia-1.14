@@ -21,7 +21,6 @@ public class Neutronia implements ModInitializer {
 		NEntityTypes.init();
 		NRecipeType.init();
 		NRecipeSerializers.init();
-
         OreGeneration.registerOres();
 	}
 

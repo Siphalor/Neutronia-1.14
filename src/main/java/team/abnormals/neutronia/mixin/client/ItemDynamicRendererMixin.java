@@ -10,25 +10,25 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import team.abnormals.neutronia.blocks.entity.TileStoneChest;
+import team.abnormals.neutronia.blocks.entity.StoneChestBlockEntity;
 import team.abnormals.neutronia.enums.CustomChestTypes;
 import team.abnormals.neutronia.init.NBlocks;
 
 @Mixin(ItemDynamicRenderer.class)
 public class ItemDynamicRendererMixin {
 
-	private final TileStoneChest renderAcaciaChest = new TileStoneChest(CustomChestTypes.ACACIA);
-    private final TileStoneChest renderBirchChest = new TileStoneChest(CustomChestTypes.BIRCH);
-    private final TileStoneChest renderDarkOakChest = new TileStoneChest(CustomChestTypes.DARK_OAK);
-    private final TileStoneChest renderJungleChest = new TileStoneChest(CustomChestTypes.JUNGLE);
-    private final TileStoneChest renderSpruceChest = new TileStoneChest(CustomChestTypes.SPRUCE);
-    private final TileStoneChest renderBambooChest = new TileStoneChest(CustomChestTypes.BAMBOO);
-    private final TileStoneChest renderWoodenDungeonChest = new TileStoneChest(CustomChestTypes.WOODEN_DUNGEON);
-    private final TileStoneChest renderDungeonChest = new TileStoneChest(CustomChestTypes.DUNGEON);
-    private final TileStoneChest renderStoneChest = new TileStoneChest(CustomChestTypes.STONE);
-    private final TileStoneChest renderStoneBrickChest = new TileStoneChest(CustomChestTypes.STONE_BRICK);
-    private final TileStoneChest renderCobblestoneChest = new TileStoneChest(CustomChestTypes.COBBLESTONE);
-    private final TileStoneChest renderMossyCobblestoneChest = new TileStoneChest(CustomChestTypes.MOSSY_COBBLESTONE);
+	private final StoneChestBlockEntity renderAcaciaChest = new StoneChestBlockEntity(CustomChestTypes.ACACIA);
+    private final StoneChestBlockEntity renderBirchChest = new StoneChestBlockEntity(CustomChestTypes.BIRCH);
+    private final StoneChestBlockEntity renderDarkOakChest = new StoneChestBlockEntity(CustomChestTypes.DARK_OAK);
+    private final StoneChestBlockEntity renderJungleChest = new StoneChestBlockEntity(CustomChestTypes.JUNGLE);
+    private final StoneChestBlockEntity renderSpruceChest = new StoneChestBlockEntity(CustomChestTypes.SPRUCE);
+    private final StoneChestBlockEntity renderBambooChest = new StoneChestBlockEntity(CustomChestTypes.BAMBOO);
+    private final StoneChestBlockEntity renderWoodenDungeonChest = new StoneChestBlockEntity(CustomChestTypes.WOODEN_DUNGEON);
+    private final StoneChestBlockEntity renderDungeonChest = new StoneChestBlockEntity(CustomChestTypes.DUNGEON);
+    private final StoneChestBlockEntity renderStoneChest = new StoneChestBlockEntity(CustomChestTypes.STONE);
+    private final StoneChestBlockEntity renderStoneBrickChest = new StoneChestBlockEntity(CustomChestTypes.STONE_BRICK);
+    private final StoneChestBlockEntity renderCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.COBBLESTONE);
+    private final StoneChestBlockEntity renderMossyCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.MOSSY_COBBLESTONE);
 
 	@Inject(at = @At("TAIL"), method = "render")
 	private void method_3166(ItemStack stack, CallbackInfo info) {
