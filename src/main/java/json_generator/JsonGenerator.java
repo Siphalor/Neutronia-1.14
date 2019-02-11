@@ -11,6 +11,7 @@ import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.text.WordUtils;
 import team.abnormals.neutronia.enums.CarvedFaceTypes;
+import team.abnormals.neutronia.enums.SoulStoneVariants;
 import team.abnormals.neutronia.enums.VanillaWoodTypes3;
 
 import java.io.*;
@@ -52,7 +53,96 @@ public class JsonGenerator {
         for(VanillaWoodTypes3 type : VanillaWoodTypes3.values()) {
 //            genSlab(new Identifier(modid, String.format("")));
         }
+
+        for(SoulStoneVariants variants : SoulStoneVariants.values()) {
+            genStair(new Identifier(modid, String.format("%s_stairs", variants.asString())), new Identifier(modid, "soulstone"), new Identifier(modid, "soulstone"), new Identifier(modid, variants.asString()));
+        }
 //        genSlab(new Identifier("test", "test"), new Identifier("test", "test"), new Identifier("test", "test"), new Identifier("test", "test"));
+    }
+
+    public static void genStair(Identifier modIdAndName, Identifier bottomTexture, Identifier topTexture, Identifier sideTexture) {
+
+        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "blockstates");
+        if (!base.toFile().exists()) {
+            base.toFile().mkdirs();
+        }
+
+        String baseFile = JsonTemplates.STAIRS.replace("modid", modIdAndName.getNamespace())
+                .replace("block_model2", modIdAndName.getPath() + "_outer")
+                .replace("block_model3", modIdAndName.getPath() + "_inner")
+                .replace("block_model", modIdAndName.getPath());
+
+        try {
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + ".json").toFile(), baseFile, CharEncoding.UTF_8);
+        } catch (IOException e) {
+            System.out.printf("Error creating file %s.json" + "\n", modIdAndName.getPath());
+        }
+
+        genStairBlockJsons(modIdAndName, bottomTexture, topTexture, sideTexture);
+        genStairItemModel(modIdAndName);
+    }
+
+    public static void genStairBlockJsons(Identifier modIdAndName, Identifier bottomTexture, Identifier topTexture, Identifier sideTexture) {
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "models", "block");
+        if (!base.toFile().exists()) {
+            base.toFile().mkdirs();
+        }
+
+        JsonObject textures = new JsonObject();
+        textures.addProperty("bottom", String.format("%s:block/%s", bottomTexture.getNamespace(), bottomTexture.getPath()));
+        textures.addProperty("top", String.format("%s:block/%s", topTexture.getNamespace(), topTexture.getPath()));
+        textures.addProperty("side", String.format("%s:block/%s", sideTexture.getNamespace(), sideTexture.getPath()));
+
+        JsonObject root = new JsonObject();
+        root.addProperty("parent", "block/stairs");
+        root.add("textures", textures);
+
+        String json = gson.toJson(root);
+
+        JsonObject root2 = new JsonObject();
+        root2.addProperty("parent", "block/inner_stairs");
+        root2.add("textures", textures);
+
+        String json2 = gson.toJson(root2);
+
+        JsonObject root3 = new JsonObject();
+        root3.addProperty("parent", "block/outer_stairs");
+        root3.add("textures", textures);
+
+        String json3 = gson.toJson(root3);
+
+        try {
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + "_inner.json").toFile(), StringEscapeUtils.unescapeJson(json2), CharEncoding.UTF_8);
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + "_outer.json").toFile(), StringEscapeUtils.unescapeJson(json3), CharEncoding.UTF_8);
+        } catch (IOException e) {
+            System.out.print(String.format("Error creating file %s.json" + "\n", modIdAndName.getPath()));
+        }
+
+    }
+
+    public static void genStairItemModel(Identifier modIdAndName) {
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "models", "item");
+        if (!base.toFile().exists()) {
+            base.toFile().mkdirs();
+        }
+
+        JsonObject root = new JsonObject();
+        root.addProperty("parent", String.format("%s:block/%s", modIdAndName.getNamespace(), modIdAndName.getPath()));
+
+        String json = gson.toJson(root);
+
+        try {
+            FileUtils.writeStringToFile(base.resolve(modIdAndName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
+        } catch (IOException e) {
+            System.out.print(String.format("Error creating file %s.json" + "\n", modIdAndName.getPath()));
+        }
+
     }
 
     public static void genBlock(Identifier modIdAndName, Identifier textureName) {

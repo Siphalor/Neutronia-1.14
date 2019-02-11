@@ -1,27 +1,28 @@
 package team.abnormals.neutronia.blocks;
 
 import net.fabricmc.fabric.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderLayer;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
+import net.minecraft.block.LanternBlock;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.item.block.BlockItem;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Vec3d;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBlock {
+public class RedstoneLanternBlock extends LanternBlock implements INeutroniaBlock {
 
     public static final DirectionProperty FACING = DirectionProperty.create("facing");
-    public static final BooleanProperty CHAIN_EXTENDED = BooleanProperty.create("chain_extended");      //False = Not Extended, True = Model is Extended
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
 
     public static final double PIXEL_LENGTH = 1D / 16D;
@@ -32,18 +33,28 @@ public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBloc
     public static final VoxelShape LANTERN_UP_AABB = Block.createCuboidShape(PIXEL_LENGTH * 5D, PIXEL_LENGTH * 0D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 11D, PIXEL_LENGTH * 9D, PIXEL_LENGTH * 11D);
     public static final VoxelShape LANTERN_DOWN_AABB = Block.createCuboidShape(PIXEL_LENGTH * 5D, PIXEL_LENGTH * 1D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 11D, PIXEL_LENGTH * 10D, PIXEL_LENGTH * 11D);
     public BlockState onBlock, offBlock;
-    private final boolean isOn;
 
-    public RedstoneLanternBlock(String name, boolean isOn) {
-        super(FabricBlockSettings.of(Material.METAL).lightLevel(isOn ? 15 : 0).build(), isOn ? "lit_" + name + "_redstone_lantern" : name + "_redstone_lantern");
-        this.isOn = isOn;
-        setDefaultState(stateFactory.getDefaultState().with(FACING, Direction.UP).with(CHAIN_EXTENDED, Boolean.FALSE));
+    public RedstoneLanternBlock(String name) {
+        super(FabricBlockSettings.of(Material.METAL).build());
+        setDefaultState(stateFactory.getDefaultState().with(FACING, Direction.UP).with(HANGING, Boolean.FALSE).with(LIT, false));
+        register(getDefaultState().get(LIT) ? "lit_" + name + "_redstone_lantern" : name + "_redstone_lantern", this, ItemGroup.REDSTONE);
     }
 
-    public RedstoneLanternBlock(boolean isOn) {
-        super(FabricBlockSettings.of(Material.METAL).lightLevel(isOn ? 15 : 0).build(), isOn ? "lit_redstone_lantern" : "redstone_lantern");
-        this.isOn = isOn;
-        setDefaultState(stateFactory.getDefaultState().with(FACING, Direction.UP).with(CHAIN_EXTENDED, Boolean.FALSE));
+    public RedstoneLanternBlock() {
+        super(FabricBlockSettings.of(Material.METAL).build());
+        setDefaultState(stateFactory.getDefaultState().with(FACING, Direction.UP).with(HANGING, false).with(LIT, false));
+        register(getDefaultState().get(LIT) ? "lit_redstone_lantern" : "redstone_lantern", this, ItemGroup.REDSTONE);
+    }
+
+    private void register(String name, Block block, ItemGroup tab) {
+        Registry.register(Registry.BLOCK, getPrefix() + name, block);
+        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(tab));
+        item.registerBlockItemMap(Item.BLOCK_ITEM_MAP, item);
+        Registry.register(Registry.ITEM, getPrefix() + name, item);
+    }
+
+    public int getLuminance(BlockState blockState_1) {
+        return blockState_1.get(LIT) ? 15 : 0;
     }
 
     public void setOffBlock(BlockState offBlock) {
@@ -53,39 +64,6 @@ public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBloc
     public void setOnBlock(BlockState onBlock) {
         this.onBlock = onBlock;
     }
-
-    @Override
-    public void onBlockAdded(BlockState blockState_1, World world_1, BlockPos blockPos_1, BlockState blockState_2) {
-        if(!world_1.isClient) {
-            if (this.isOn && !world_1.isReceivingRedstonePower(blockPos_1)) {
-                world_1.setBlockState(blockPos_1, offBlock, 2);
-            } else if (!this.isOn && world_1.isReceivingRedstonePower(blockPos_1)) {
-                world_1.setBlockState(blockPos_1, onBlock, 2);
-            }
-        }
-    }
-
-    @Override
-    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2) {
-        if (!world_1.isClient) {
-            if (this.isOn && !world_1.isReceivingRedstonePower(blockPos_1)) {
-                world_1.getBlockTickScheduler().schedule(blockPos_1, offBlock.getBlock(), 4);
-            } else if (!this.isOn && world_1.isReceivingRedstonePower(blockPos_1)) {
-                world_1.setBlockState(blockPos_1, onBlock, 2);
-            }
-        }
-    }
-
-    @Override
-    public void onRandomTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {
-        if(world_1.isClient) {
-            if (this.isOn && !world_1.isReceivingRedstonePower(blockPos_1)) {
-                world_1.setBlockState(blockPos_1, offBlock, 2);
-            }
-        }
-    }
-
-
 
     @Override
     public VoxelShape getRayTraceShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1) {
@@ -117,12 +95,33 @@ public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBloc
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
-        return this.getDefaultState().with(FACING, itemPlacementContext_1.getFacing()).with(CHAIN_EXTENDED, itemPlacementContext_1.getFacing() == Direction.UP);
+        return this.getDefaultState().with(FACING, itemPlacementContext_1.getFacing()).with(LIT, itemPlacementContext_1.getWorld().isReceivingRedstonePower(itemPlacementContext_1.getBlockPos())).with(HANGING, itemPlacementContext_1.getFacing() == Direction.UP);
+    }
+
+    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2) {
+        if (!world_1.isClient) {
+            boolean boolean_1 = blockState_1.get(LIT);
+            if (boolean_1 != world_1.isReceivingRedstonePower(blockPos_1)) {
+                if (boolean_1) {
+                    world_1.getBlockTickScheduler().schedule(blockPos_1, this, 4);
+                } else {
+                    world_1.setBlockState(blockPos_1, blockState_1.method_11572(LIT), 2);
+                }
+            }
+        }
+    }
+
+    public void onScheduledTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {
+        if (!world_1.isClient) {
+            if (blockState_1.get(LIT) && !world_1.isReceivingRedstonePower(blockPos_1)) {
+                world_1.setBlockState(blockPos_1, blockState_1.method_11572(LIT), 2);
+            }
+        }
     }
 
     @Override
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(FACING, CHAIN_EXTENDED);
+        stateFactory$Builder_1.with(FACING, HANGING, LIT);
     }
 
     @Override
