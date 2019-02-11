@@ -37,8 +37,7 @@ public class APIInternals {
             public static final DummyTaskInfo INSTANCE = new DummyTaskInfo();
 
             @Override
-            public TaskInfo.Mutable withTaskName(String name) {
-                return this;
+            public void withTaskName(String name) {
             }
 
             @Override

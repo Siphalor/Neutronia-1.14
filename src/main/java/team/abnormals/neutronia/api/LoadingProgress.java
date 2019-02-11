@@ -23,7 +23,7 @@ public interface LoadingProgress {
 
         interface Mutable extends TaskInfo {
 
-            TaskInfo.Mutable withTaskName(String name);
+            void withTaskName(String name);
 
         }
 

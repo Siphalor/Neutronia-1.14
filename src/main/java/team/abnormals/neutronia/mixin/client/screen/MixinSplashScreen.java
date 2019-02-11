@@ -7,14 +7,18 @@ import net.minecraft.client.font.FontType;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.client.gui.SplashScreen;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.abnormals.neutronia.LoadingProgressImpl;
 import team.abnormals.neutronia.api.LoadingProgress;
+import team.abnormals.neutronia.client.gui.ProgressBarUtils;
 
 import java.util.Collections;
+
+import static org.lwjgl.opengl.GL11.glColor3ub;
 
 @Mixin(SplashScreen.class)
 public abstract class MixinSplashScreen extends Screen {
@@ -50,31 +54,10 @@ public abstract class MixinSplashScreen extends Screen {
 
     @Inject(method = "draw(IIF)V", at = @At("RETURN"))
     private void draw(int int_1, int int_2, float float_1, CallbackInfo ci) {
-//        drawLoadCircle();
         drawProgress();
     }
 
-    /*private void drawLoadCircle() {
-        LoadingSpiceConfig cfg = LoadingSpiceConfig.INSTANCE;
-
-        LoadingIconRenderer.draw(width, height, prog, cfg.splashIconAlign, cfg.splashIconSize, cfg.splashIconGrid, cfg.splashIconColor, cfg.splashIconTexture);
-        if (System.currentTimeMillis() - lastDraw > cfg.splashIconAnimSpeed) {
-            lastDraw = System.currentTimeMillis();
-            prog++;
-        }
-    }*/
-
-    @Inject(method = "method_18103(IIIIFF)V", at = @At("HEAD"), cancellable = true)
-    private void method_18103(int int_1, int int_2, int int_3, int int_4, float float_1, float float_2, CallbackInfo ci) {
-//        ci.cancel();
-    }
-
-    // smh
-
     private void drawProgress() {
-//        int color = LoadingSpiceConfig.INSTANCE.splashTextColor.getRGB();
-
-//        final FontRenderer fr = client.fontRenderer;
         if (fr == null) {
             final FontStorage fontStorage_1 = new FontStorage(client.getTextureManager(), new Identifier("loading"));
             fontStorage_1.method_2004(Collections.singletonList(FontType.BITMAP.createLoader(new JsonParser().parse(JSON).getAsJsonObject()).load(client.getResourceManager())));
@@ -102,6 +85,11 @@ public abstract class MixinSplashScreen extends Screen {
             fr.draw(task.getText(), 2, height - (fr.fontHeight + 1) * (count - i + 1) - 1, 0x000000);
         }
 
+        ProgressBarUtils.renderMemoryBar(fr,this.width / 2 - 150, 100, this.width / 2 + 150, 115, 1.0F - MathHelper.clamp(-1L, 0.0F, 1.0F));
+    }
+
+    public void setColor(int color) {
+        glColor3ub((byte) ((color >> 16) & 0xFF), (byte) ((color >> 8) & 0xFF), (byte) (color & 0xFF));
     }
 
 }

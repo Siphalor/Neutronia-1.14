@@ -56,9 +56,8 @@ public class LoadingProgressImpl implements LoadingProgress {
         }
 
         @Override
-        public TaskInfoImpl withTaskName(String name) {
+        public void withTaskName(String name) {
             this.name = name;
-            return this;
         }
 
         /* @Nullable */

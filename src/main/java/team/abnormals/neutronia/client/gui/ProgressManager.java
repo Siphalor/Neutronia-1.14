@@ -99,7 +99,7 @@ public class ProgressManager {
         private long startTime = System.nanoTime();
         private long lastTime = startTime;
 
-        private ProgressBar(String title, int steps) {
+        public ProgressBar(String title, int steps) {
             this.title = title;
             this.steps = steps;
         }

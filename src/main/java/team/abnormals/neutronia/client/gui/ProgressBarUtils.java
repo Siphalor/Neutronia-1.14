@@ -1,22 +1,32 @@
 package team.abnormals.neutronia.client.gui;
 
 import net.minecraft.client.font.FontRenderer;
+import net.minecraft.util.math.MathHelper;
+import org.apache.commons.lang3.StringUtils;
 
+import static net.minecraft.client.gui.Drawable.drawRect;
 import static org.lwjgl.opengl.GL11.*;
 
 public class ProgressBarUtils {
 
     private static final int barWidth = 400;
-    private static final int barHeight = 20;
+    private static final int barHeight = 15;
     private static final int textHeight2 = 20;
     private static final int fontColor = 0x000000;
-    private static final int barBorderColor = 0xC0C0C0;
+    private static final int barBorderColor = 0x000000;
     private static final int barColor = 0xCB3D35;
     private static final int barBackgroundColor = 0xFFFFFF;
-    private final int barOffset = 55;
+    private static final int memoryGoodColor = 0xFF78CB34;
+    private static final int memoryWarnColor = 0xFFE6E84A;
+    private static final int memoryLowColor = 0xFFE42F2F;
+    private static float memoryColorPercent;
+    private static long memoryColorChangeTime;
 
     public static void setColor(int color) {
-        glColor3ub((byte) ((color >> 16) & 0xFF), (byte) ((color >> 8) & 0xFF), (byte) (color & 0xFF));
+        byte byte1 = (byte) ((color >> 16) & 0xFF);
+        byte byte2 = (byte) ((color >> 8) & 0xFF);
+        byte byte3 = (byte) (color & 0xFF);
+        glColor3ub(byte1, byte2, byte3);
     }
 
     public static void drawBox(int w, int h) {
@@ -28,35 +38,43 @@ public class ProgressBarUtils {
         glEnd();
     }
 
-    public static void drawBar(FontRenderer fontRenderer, ProgressManager.ProgressBar b) {
-        glPushMatrix();
-        // title - message
-        setColor(fontColor);
-        glScalef(2, 2, 1);
-        glEnable(GL_TEXTURE_2D);
-        fontRenderer.draw(b.getTitle() + " - " + b.getMessage(), 0, 0, 0x000000);
-        glDisable(GL_TEXTURE_2D);
-        glPopMatrix();
-        // border
-        glPushMatrix();
-        glTranslatef(0, textHeight2, 0);
-        setColor(barBorderColor);
-        drawBox(barWidth, barHeight);
-        // interior
-        setColor(barBackgroundColor);
-        glTranslatef(1, 1, 0);
-        drawBox(barWidth - 2, barHeight - 2);
-        // slidy part
-        setColor(barColor);
-        drawBox((barWidth - 2) * (b.getStep() + 1) / (b.getSteps() + 1), barHeight - 2); // Step can sometimes be 0.
-        // progress text
-        String progress = "" + b.getStep() + "/" + b.getSteps();
-        glTranslatef(((float) barWidth - 2) / 2 - fontRenderer.getStringWidth(progress), 2, 0);
-        setColor(fontColor);
-        glScalef(2, 2, 1);
-        glEnable(GL_TEXTURE_2D);
-        fontRenderer.draw(progress, 0, 0, 0x000000);
-        glPopMatrix();
+    public static void renderMemoryBar(FontRenderer fontRenderer, int xMin, int yMin, int xMax, int yMax, float fadeAmount) {
+        int maxMemory = bytesToMb(Runtime.getRuntime().maxMemory());
+        int totalMemory = bytesToMb(Runtime.getRuntime().totalMemory());
+        int freeMemory = bytesToMb(Runtime.getRuntime().freeMemory());
+        int usedMemory = totalMemory - freeMemory;
+        float usedMemoryPercent = usedMemory / (float) maxMemory;
+        //xMax for the inner bar
+        int activeBarWidth = MathHelper.ceil((float)(xMax - xMin - 2) * usedMemoryPercent);
+        int memoryBarColor;
+        if (memoryColorPercent < 0.75f) {
+            memoryBarColor = memoryGoodColor;
+        }
+        else if (memoryColorPercent < 0.85f) {
+            memoryBarColor = memoryWarnColor;
+        }
+        else {
+            memoryBarColor = memoryLowColor;
+        }
+        //Title
+        fontRenderer.draw("Memory Used / Total", xMin + 20, yMax - 13, 0x000000);
+        //Draws the outer border
+        drawRect(xMin - 1, yMin - 1, xMax + 1, yMax + 1, 0xFF000000);
+        //Draws the inner white
+        drawRect(xMin, yMin, xMax, yMax, 0xFFFFFFFF);
+        //Draws the inner bar
+        drawRect(xMin + 1, yMin + 1, xMin + activeBarWidth, yMax - 1, memoryBarColor);
+        //Progress text
+        String progress = getMemoryString(usedMemory) + " / " + getMemoryString(maxMemory);
+        fontRenderer.draw(progress, xMin + 20, yMax - 9, 0x000000);
+    }
+
+    private static int bytesToMb(long bytes) {
+        return (int) (bytes / 1024L / 1024L);
+    }
+
+    private static String getMemoryString(int memory) {
+        return StringUtils.leftPad(Integer.toString(memory), 4, ' ') + " MB";
     }
 
 }
