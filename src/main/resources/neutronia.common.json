@@ -9,8 +9,8 @@
     "block.MixinScaffoldingBlock",
     "block.MixinTrapdoorBlock",
     "block.MixinVineBlock",
-    "entity.MixinVillagerEntity",
-    "entity.MixinLivingEntity"
+    "entity.MixinLivingEntity",
+    "world.VillageGeneratorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

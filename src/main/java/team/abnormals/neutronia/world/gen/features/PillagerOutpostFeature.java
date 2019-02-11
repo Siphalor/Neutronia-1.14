@@ -19,15 +19,19 @@ import java.util.Random;
 import java.util.function.Function;
 
 public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpostFeatureConfig> {
-   private static final List<Biome.SpawnEntry> field_16656;
+    private static final List<Biome.SpawnEntry> field_16656;
 
-   public PillagerOutpostFeature(Function<Dynamic<?>, ? extends PillagerOutpostFeatureConfig> function_1) {
-      super(function_1);
-   }
+    static {
+        field_16656 = Lists.newArrayList(new Biome.SpawnEntry(EntityType.PILLAGER, 1, 1, 1));
+    }
 
-   public String getName() {
-      return "Pillager_Mansion";
-   }
+    public PillagerOutpostFeature(Function<Dynamic<?>, ? extends PillagerOutpostFeatureConfig> function_1) {
+        super(function_1);
+    }
+
+    public String getName() {
+        return "Pillager_Mansion";
+    }
 
     public int method_14021() {
         return 3;
@@ -42,7 +46,7 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
         if (int_1 == chunkPos_1.x && int_2 == chunkPos_1.z) {
             int int_3 = int_1 >> 4;
             int int_4 = int_2 >> 4;
-            random_1.setSeed((long)(int_3 ^ int_4 << 4) ^ chunkGenerator_1.getSeed());
+            random_1.setSeed((long) (int_3 ^ int_4 << 4) ^ chunkGenerator_1.getSeed());
             random_1.nextInt();
             if (random_1.nextInt(5) != 0) {
                 return false;
@@ -61,10 +65,6 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
 
     protected int method_13774() {
         return 165745296;
-    }
-
-    static {
-        field_16656 = Lists.newArrayList(new Biome.SpawnEntry(EntityType.PILLAGER, 1, 1, 1));
     }
 
     public static class class_3771 extends StructureStart {

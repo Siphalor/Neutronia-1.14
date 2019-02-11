@@ -1,6 +1,6 @@
 package team.abnormals.neutronia.blocks.pumpkin;
 
-import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.HorizontalFacingBlock;
@@ -32,7 +32,7 @@ public class PumpkinBlock extends BaseModBlock implements IMinecraftBlock, ICarv
 
     public static final DirectionProperty FACING = HorizontalFacingBlock.field_11177;
 
-    public PumpkinBlock(Identifier identifier){
+    public PumpkinBlock(Identifier identifier) {
         super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD).build(), identifier);
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
     }
@@ -79,7 +79,7 @@ public class PumpkinBlock extends BaseModBlock implements IMinecraftBlock, ICarv
     @Override
     public CarvedFaceTypes fromIdentifier(Identifier identifier) {
         String[] values = identifier.getPath().split("_");
-        if(values.length == 2){
+        if (values.length == 2) {
             return null;
         }
         return CarvedFaceTypes.valueOf(values[1].toUpperCase());

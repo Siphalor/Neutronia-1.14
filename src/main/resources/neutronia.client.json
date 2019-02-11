@@ -4,7 +4,15 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ItemDynamicRendererMixin",
-    "MinecraftClientMixin"
+    "MinecraftClientMixin",
+    "screen.MixinSplashScreen",
+    "screen.MixinGuiMain",
+    "progress.MixinMinecraftClient",
+    "progress.MixinModelLoader",
+    "progress.MixinSpriteAtlasTexture",
+    "progress.MixinTextureStitcher",
+    "MixinGameRenderer",
+    "MixinClientBrandRetriever"
   ],
   "injectors": {
     "defaultRequire": 1

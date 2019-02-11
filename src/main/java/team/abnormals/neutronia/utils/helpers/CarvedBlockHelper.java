@@ -17,7 +17,7 @@ public class CarvedBlockHelper {
 
     public static void init(ICarvable carvable) {
         List<Block> blocks = new ArrayList<>();
-        for(CarvedFaceTypes type : CarvedFaceTypes.values()) {
+        for (CarvedFaceTypes type : CarvedFaceTypes.values()) {
             blocks.add(Registry.BLOCK.get(new Identifier("neutronia",
                     String.format(carvable.getFormatString(), type.asString()))));
             carvableBlocks.put(carvable.newInstance(new Identifier("neutronia",
@@ -27,7 +27,7 @@ public class CarvedBlockHelper {
 
     public static void initAlt(ICarvable carvable) {
         List<Block> blocks = new ArrayList<>();
-        for(CarvedFaceTypes type : CarvedFaceTypes.values()) {
+        for (CarvedFaceTypes type : CarvedFaceTypes.values()) {
             blocks.add(Registry.BLOCK.get(new Identifier("minecraft",
                     String.format(carvable.getFormatString(), type.asString()))));
             carvableBlocks.put(carvable.newInstance(new Identifier("minecraft",
@@ -35,9 +35,9 @@ public class CarvedBlockHelper {
         }
     }
 
-    public static BlockState getNext(ICarvable carvable, Identifier identifier){
+    public static BlockState getNext(ICarvable carvable, Identifier identifier) {
         CarvedFaceTypes type = carvable.fromIdentifier(identifier);
-        if(type == null){
+        if (type == null) {
             return carvableBlocks.get(carvable).get(0).getDefaultState();
         }
         int ordinal = type.ordinal();
@@ -45,25 +45,25 @@ public class CarvedBlockHelper {
         System.out.println("Carvable block: " + carvableBlocks.get(carvable));
         System.out.println("Carvable block blockstate: " + carvableBlocks.get(carvable).get(type.ordinal()).getDefaultState());
         System.out.println("Carvable block id: " + carvableBlocks.get(carvable).get(ordinal));
-        if(ordinal == carvableBlocks.values().size()) {
+        if (ordinal == carvableBlocks.values().size()) {
             return carvable.getUncarvedBlock().getDefaultState();
         } else {
             return carvableBlocks.get(carvable).get(ordinal).getDefaultState();
         }
     }
 
-    public static BlockState getLast(ICarvable carvable, Identifier identifier){
+    public static BlockState getLast(ICarvable carvable, Identifier identifier) {
         CarvedFaceTypes type = carvable.fromIdentifier(identifier);
-        if(type == null){
+        if (type == null) {
             return carvableBlocks.get(carvable).get(carvableBlocks.get(carvable).size() - 1).getDefaultState();
         }
         int ordinal = type.ordinal();
         ordinal--;
-        if(ordinal == -1){
+        if (ordinal == -1) {
             return carvable.getUncarvedBlock().getDefaultState();
         } else {
             return carvableBlocks.get(carvable).get(ordinal).getDefaultState();
-        }            
+        }
     }
 
 }

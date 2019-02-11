@@ -24,8 +24,13 @@ import team.abnormals.neutronia.blocks.entity.SignBlockEntity;
 import java.util.Map;
 
 public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaBlock {
-        public static final DirectionProperty FACING;
+    public static final DirectionProperty FACING;
     private static final Map<Direction, VoxelShape> FACING_TO_SHAPE;
+
+    static {
+        FACING = HorizontalFacingBlock.field_11177;
+        FACING_TO_SHAPE = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(0.0D, 4.5D, 14.0D, 16.0D, 12.5D, 16.0D), Direction.SOUTH, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 16.0D, 12.5D, 2.0D), Direction.EAST, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 2.0D, 12.5D, 16.0D), Direction.WEST, Block.createCuboidShape(14.0D, 4.5D, 0.0D, 16.0D, 12.5D, 16.0D)));
+    }
 
     public NeutroniaWallSignBlock(String name) {
         super(Settings.of(Material.WOOD));
@@ -59,7 +64,7 @@ public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaBlock
         Direction[] var7 = directions_1;
         int var8 = directions_1.length;
 
-        for(int var9 = 0; var9 < var8; ++var9) {
+        for (int var9 = 0; var9 < var8; ++var9) {
             Direction direction_1 = var7[var9];
             if (direction_1.getAxis().isHorizontal()) {
                 Direction direction_2 = direction_1.getOpposite();
@@ -91,11 +96,6 @@ public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaBlock
 
     private void register(String name) {
         Registry.register(Registry.BLOCK, getPrefix() + name, this);
-    }
-
-    static {
-        FACING = HorizontalFacingBlock.field_11177;
-        FACING_TO_SHAPE = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(0.0D, 4.5D, 14.0D, 16.0D, 12.5D, 16.0D), Direction.SOUTH, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 16.0D, 12.5D, 2.0D), Direction.EAST, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 2.0D, 12.5D, 16.0D), Direction.WEST, Block.createCuboidShape(14.0D, 4.5D, 0.0D, 16.0D, 12.5D, 16.0D)));
     }
 
 }

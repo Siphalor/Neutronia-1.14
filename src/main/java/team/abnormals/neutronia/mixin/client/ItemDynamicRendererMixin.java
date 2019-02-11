@@ -17,7 +17,7 @@ import team.abnormals.neutronia.init.NBlocks;
 @Mixin(ItemDynamicRenderer.class)
 public class ItemDynamicRendererMixin {
 
-	private final StoneChestBlockEntity renderAcaciaChest = new StoneChestBlockEntity(CustomChestTypes.ACACIA);
+    private final StoneChestBlockEntity renderAcaciaChest = new StoneChestBlockEntity(CustomChestTypes.ACACIA);
     private final StoneChestBlockEntity renderBirchChest = new StoneChestBlockEntity(CustomChestTypes.BIRCH);
     private final StoneChestBlockEntity renderDarkOakChest = new StoneChestBlockEntity(CustomChestTypes.DARK_OAK);
     private final StoneChestBlockEntity renderJungleChest = new StoneChestBlockEntity(CustomChestTypes.JUNGLE);
@@ -30,9 +30,9 @@ public class ItemDynamicRendererMixin {
     private final StoneChestBlockEntity renderCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.COBBLESTONE);
     private final StoneChestBlockEntity renderMossyCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.MOSSY_COBBLESTONE);
 
-	@Inject(at = @At("TAIL"), method = "render")
-	private void method_3166(ItemStack stack, CallbackInfo info) {
-		Item item = stack.getItem();
+    @Inject(at = @At("TAIL"), method = "render")
+    private void method_3166(ItemStack stack, CallbackInfo info) {
+        Item item = stack.getItem();
         if (item instanceof BlockItem) {
             Block block = ((BlockItem) item).getBlock();
             if (block == NBlocks.WOODEN_CHESTS[0]) {
@@ -61,5 +61,5 @@ public class ItemDynamicRendererMixin {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderMossyCobblestoneChest);
             }
         }
-	}
+    }
 }

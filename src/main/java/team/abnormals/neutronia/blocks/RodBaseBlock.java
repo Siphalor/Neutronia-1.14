@@ -1,7 +1,10 @@
 package team.abnormals.neutronia.blocks;
 
-import net.fabricmc.fabric.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderLayer;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Material;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateFactory;
 import net.minecraft.util.Mirror;

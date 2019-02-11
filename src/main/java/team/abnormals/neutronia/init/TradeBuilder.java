@@ -22,7 +22,7 @@ class TradeBuilder {
     private static final Logger LOGGER = LogManager.getLogger();
 
     static void createRecipes() {
-        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(ARTIST, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[] {
+        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(ARTIST, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[]{
                 new BuyItemFactory(new ItemStack(Items.RED_DYE), new PriceRange(18, 22)),
                 new BuyItemFactory(new ItemStack(Items.GREEN_DYE), new PriceRange(18, 22)),
                 new BuyItemFactory(new ItemStack(Items.PURPLE_DYE), new PriceRange(18, 22)),
@@ -58,11 +58,11 @@ class TradeBuilder {
                 new BuyItemFactory(new ItemStack(Items.WHITE_BANNER), new PriceRange(18, 22))
         })));
 
-        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(RECEPTIONIST, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[] {
+        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(RECEPTIONIST, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[]{
                 new BuyItemFactory(Items.BOOK, new PriceRange(18, 22))
         })));
 
-        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(CARPENTER, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[] {
+        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(CARPENTER, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[]{
                 new BuyItemFactory(Blocks.ACACIA_PLANKS, new PriceRange(18, 22)),
                 new BuyItemFactory(Blocks.BIRCH_PLANKS, new PriceRange(18, 22)),
                 new BuyItemFactory(Blocks.DARK_OAK_PLANKS, new PriceRange(18, 22)),

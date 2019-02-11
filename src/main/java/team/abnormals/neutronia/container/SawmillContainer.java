@@ -31,17 +31,22 @@ import java.util.List;
 
 public class SawmillContainer extends Container {
     static final ImmutableList<Item> field_17626;
+
+    static {
+        field_17626 = ImmutableList.of(Items.field_8118, Items.field_8113, Items.field_8191, Items.field_8842, Items.field_8651, Items.field_8404, Items.field_8583, Items.field_8684, Items.field_8170, Items.field_8125, Items.field_8820, Items.field_8652, Items.field_8415, Items.field_8624, Items.field_8767, Items.field_8334, Items.field_8072, Items.field_8808, Items.field_8248, Items.field_8362, Items.field_8472, Items.field_8785, Items.field_8284, Items.field_8219, Items.field_8888, Items.field_8210, Items.field_8201, Items.field_8439, Items.field_8587, Items.field_8458);
+    }
+
+    public final Inventory inventory;
+    public final PlayerInventory playerInventory;
+    final Slot inputSlot;
+    final Slot outputSlot;
     private final class_3914 field_17630;
     private final Property selectedRecipe;
     private final World world;
     private List<SawmillingRecipe> availableRecipes;
     private ItemStack inputStack;
     private long lastTakeTime;
-    final Slot inputSlot;
-    final Slot outputSlot;
     private Runnable contentsChangedListener;
-    public final Inventory inventory;
-    public final PlayerInventory playerInventory;
 
     public SawmillContainer(int int_1, PlayerInventory playerInventory_1) {
         this(int_1, playerInventory_1, class_3914.field_17304);
@@ -90,13 +95,13 @@ public class SawmillContainer extends Container {
         });
 
         int int_4;
-        for(int_4 = 0; int_4 < 3; ++int_4) {
-            for(int int_3 = 0; int_3 < 9; ++int_3) {
+        for (int_4 = 0; int_4 < 3; ++int_4) {
+            for (int int_3 = 0; int_3 < 9; ++int_3) {
                 this.addSlot(new Slot(playerInventory_1, int_3 + int_4 * 9 + 9, 8 + int_3 * 18, 84 + int_4 * 18));
             }
         }
 
-        for(int_4 = 0; int_4 < 9; ++int_4) {
+        for (int_4 = 0; int_4 < 9; ++int_4) {
             this.addSlot(new Slot(playerInventory_1, int_4, 8 + int_4 * 18, 142));
         }
 
@@ -223,9 +228,5 @@ public class SawmillContainer extends Container {
         this.field_17630.method_17393((world_1, blockPos_1) -> {
             this.dropInventory(playerEntity_1, playerEntity_1.world, this.inventory);
         });
-    }
-
-    static {
-        field_17626 = ImmutableList.of(Items.field_8118, Items.field_8113, Items.field_8191, Items.field_8842, Items.field_8651, Items.field_8404, Items.field_8583, Items.field_8684, Items.field_8170, Items.field_8125, Items.field_8820, Items.field_8652, Items.field_8415, Items.field_8624, Items.field_8767, Items.field_8334, Items.field_8072, Items.field_8808, Items.field_8248, Items.field_8362, Items.field_8472, Items.field_8785, Items.field_8284, Items.field_8219, Items.field_8888, Items.field_8210, Items.field_8201, Items.field_8439, Items.field_8587, Items.field_8458);
     }
 }

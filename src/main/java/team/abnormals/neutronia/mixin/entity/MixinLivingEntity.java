@@ -12,17 +12,17 @@ import team.abnormals.neutronia.api.Climbable;
 
 @Mixin(LivingEntity.class)
 final class MixinLivingEntity {
-  @Inject(
-    method = "canClimb",
-    at = @At(value = "RETURN", ordinal = 2),
-    locals = LocalCapture.CAPTURE_FAILHARD,
-    allow = 1,
-    cancellable = true
-  )
-  private void canClimb(final CallbackInfoReturnable<Boolean> cir, final BlockState state, final Block block) {
-    if (block instanceof Climbable) {
-      final LivingEntity self = (LivingEntity) (Object) this;
-      cir.setReturnValue(((Climbable) block).canClimb(self, state, self.getPos()));
+    @Inject(
+            method = "canClimb",
+            at = @At(value = "RETURN", ordinal = 2),
+            locals = LocalCapture.CAPTURE_FAILHARD,
+            allow = 1,
+            cancellable = true
+    )
+    private void canClimb(final CallbackInfoReturnable<Boolean> cir, final BlockState state, final Block block) {
+        if (block instanceof Climbable) {
+            final LivingEntity self = (LivingEntity) (Object) this;
+            cir.setReturnValue(((Climbable) block).canClimb(self, state, self.getPos()));
+        }
     }
-  }
 }

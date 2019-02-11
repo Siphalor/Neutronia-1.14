@@ -23,6 +23,10 @@ public class NeutroniaSignBlock extends SignBlock implements INeutroniaBlock {
 
     public static final IntegerProperty ROTATION;
 
+    static {
+        ROTATION = Properties.ROTATION_16;
+    }
+
     public NeutroniaSignBlock(String name) {
         super(Block.Settings.of(Material.WOOD));
         this.setDefaultState(this.stateFactory.getDefaultState().with(ROTATION, 0).with(WATERLOGGED, false));
@@ -35,7 +39,7 @@ public class NeutroniaSignBlock extends SignBlock implements INeutroniaBlock {
 
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
         FluidState fluidState_1 = itemPlacementContext_1.getWorld().getFluidState(itemPlacementContext_1.getBlockPos());
-        return this.getDefaultState().with(ROTATION, MathHelper.floor((double)((180.0F + itemPlacementContext_1.getPlayerYaw()) * 16.0F / 360.0F) + 0.5D) & 15).with(WATERLOGGED, fluidState_1.getFluid() == Fluids.WATER);
+        return this.getDefaultState().with(ROTATION, MathHelper.floor((double) ((180.0F + itemPlacementContext_1.getPlayerYaw()) * 16.0F / 360.0F) + 0.5D) & 15).with(WATERLOGGED, fluidState_1.getFluid() == Fluids.WATER);
     }
 
     public BlockState getStateForNeighborUpdate(BlockState blockState_1, Direction direction_1, BlockState blockState_2, IWorld iWorld_1, BlockPos blockPos_1, BlockPos blockPos_2) {
@@ -61,10 +65,6 @@ public class NeutroniaSignBlock extends SignBlock implements INeutroniaBlock {
 
     private void register(String name) {
         Registry.register(Registry.BLOCK, getPrefix() + name, this);
-    }
-
-    static {
-        ROTATION = Properties.ROTATION_16;
     }
 
 }

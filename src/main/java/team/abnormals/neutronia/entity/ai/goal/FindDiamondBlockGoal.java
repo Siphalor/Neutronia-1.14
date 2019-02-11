@@ -37,7 +37,7 @@ public class FindDiamondBlockGoal extends MoveToTargetPosGoal {
 
     public void tick() {
         super.tick();
-        this.owner.getLookControl().lookAt((double)this.targetPos.getX() + 0.5D, (double)(this.targetPos.getY() + 1), (double)this.targetPos.getZ() + 0.5D, 10.0F, (float)this.owner.method_5978());
+        this.owner.getLookControl().lookAt((double) this.targetPos.getX() + 0.5D, (double) (this.targetPos.getY() + 1), (double) this.targetPos.getZ() + 0.5D, 10.0F, (float) this.owner.method_5978());
         if (this.hasReached()) {
             IWorld iWorld_1 = this.owner.world;
             BlockPos blockPos_1 = this.targetPos.up();

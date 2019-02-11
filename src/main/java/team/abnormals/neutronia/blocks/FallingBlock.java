@@ -32,6 +32,12 @@ public class FallingBlock extends BaseModBlock implements INeutroniaBlock {
         super(builder, name);
     }
 
+    public static boolean canFallThrough(BlockState blockState_1) {
+        Block block_1 = blockState_1.getBlock();
+        Material material_1 = blockState_1.getMaterial();
+        return blockState_1.isAir() || block_1 == Blocks.FIRE || material_1.isLiquid() || material_1.isReplaceable();
+    }
+
     public void onBlockAdded(BlockState blockState_1, World world_1, BlockPos blockPos_1, BlockState blockState_2) {
         world_1.getBlockTickScheduler().schedule(blockPos_1, this, this.getTickRate(world_1));
     }
@@ -56,14 +62,14 @@ public class FallingBlock extends BaseModBlock implements INeutroniaBlock {
                 }
 
                 BlockPos blockPos_2;
-                for(blockPos_2 = blockPos_1.down(); canFallThrough(world_1.getBlockState(blockPos_2)) && blockPos_2.getY() > 0; blockPos_2 = blockPos_2.down()) {
+                for (blockPos_2 = blockPos_1.down(); canFallThrough(world_1.getBlockState(blockPos_2)) && blockPos_2.getY() > 0; blockPos_2 = blockPos_2.down()) {
                 }
 
                 if (blockPos_2.getY() > 0) {
                     world_1.setBlockState(blockPos_2.up(), this.getDefaultState());
                 }
             } else if (!world_1.isClient) {
-                FallingBlockEntity fallingBlockEntity_1 = new FallingBlockEntity(world_1, (double)blockPos_1.getX() + 0.5D, (double)blockPos_1.getY(), (double)blockPos_1.getZ() + 0.5D, world_1.getBlockState(blockPos_1));
+                FallingBlockEntity fallingBlockEntity_1 = new FallingBlockEntity(world_1, (double) blockPos_1.getX() + 0.5D, (double) blockPos_1.getY(), (double) blockPos_1.getZ() + 0.5D, world_1.getBlockState(blockPos_1));
                 this.configureFallingBlockEntity(fallingBlockEntity_1);
                 world_1.spawnEntity(fallingBlockEntity_1);
             }
@@ -78,12 +84,6 @@ public class FallingBlock extends BaseModBlock implements INeutroniaBlock {
         return 2;
     }
 
-    public static boolean canFallThrough(BlockState blockState_1) {
-        Block block_1 = blockState_1.getBlock();
-        Material material_1 = blockState_1.getMaterial();
-        return blockState_1.isAir() || block_1 == Blocks.FIRE || material_1.isLiquid() || material_1.isReplaceable();
-    }
-
     public void onLanding(World world_1, BlockPos blockPos_1, BlockState blockState_1, BlockState blockState_2) {
     }
 
@@ -95,9 +95,9 @@ public class FallingBlock extends BaseModBlock implements INeutroniaBlock {
         if (random_1.nextInt(16) == 0) {
             BlockPos blockPos_2 = blockPos_1.down();
             if (canFallThrough(world_1.getBlockState(blockPos_2))) {
-                double double_1 = (double)((float)blockPos_1.getX() + random_1.nextFloat());
-                double double_2 = (double)blockPos_1.getY() - 0.05D;
-                double double_3 = (double)((float)blockPos_1.getZ() + random_1.nextFloat());
+                double double_1 = (double) ((float) blockPos_1.getX() + random_1.nextFloat());
+                double double_2 = (double) blockPos_1.getY() - 0.05D;
+                double double_3 = (double) ((float) blockPos_1.getZ() + random_1.nextFloat());
                 world_1.addParticle(new BlockStateParticleParameters(ParticleTypes.FALLING_DUST, blockState_1), double_1, double_2, double_3, 0.0D, 0.0D, 0.0D);
             }
         }
