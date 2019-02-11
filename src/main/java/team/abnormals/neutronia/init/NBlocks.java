@@ -1,6 +1,6 @@
 package team.abnormals.neutronia.init;
 
-import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
@@ -63,6 +63,9 @@ public class NBlocks {
     public static final Block BLUEBERRY_PIE = new PieBlock("blueberry_pie");
     public static final Block SWEET_BERRY_PIE = new PieBlock("sweet_berry_pie");
     public static final Block APPLE_PIE = new PieBlock("apple_pie");
+
+    public static final Block STICK_BUNDLE, CHORUS_BUNDLE, SUGAR_CANE_BUNDLE, BAMBOO_BUNDLE, NETHER_WART_SACK, COCOA_BEAN_SACK, GUNPOWDER_SACK,
+            EGG_CRATE, BEETROOT_CRATE, POTATO_CRATE, CARROT_CRATE, APPLE_CRATE, GOLDEN_APPLE_CRATE, CACTUS_BUNDLE;
 
     public static final Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN, BAMBOO_TORCH, THATCH, BAMBOO_PLANKS_STAIR, BAMBOO_PLANKS_SLAB, THATCH_STAIR, THATCH_SLAB;
     public static final Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN, ACIDIAN_BARS;
@@ -329,6 +332,23 @@ public class NBlocks {
         ACIDIAN_PILLAR = new NeutroniaPillarBlock(Material.STONE, "acidian_pillar");
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
         ACIDIAN_BARS = new NeutroniaPaneBlock("acidian_bars", Material.STONE);
+
+        STICK_BUNDLE = new NeutroniaPillarBlock(Material.WOOD, "stick_bundle");
+        CHORUS_BUNDLE = new NeutroniaPillarBlock(Material.PLANT, "chorus_bundle");
+        SUGAR_CANE_BUNDLE = new NeutroniaPillarBlock(Material.PLANT, "sugar_cane_bundle");
+        BAMBOO_BUNDLE = new NeutroniaPillarBlock(Material.PLANT, "bamboo_bundle");
+        CACTUS_BUNDLE = new CactusBundleBlock();
+
+        NETHER_WART_SACK = new NeutroniaPillarBlock(Material.WOOL, "nether_wart_sack");
+        COCOA_BEAN_SACK = new NeutroniaPillarBlock(Material.WOOL, "cocoa_bean_sack");
+        GUNPOWDER_SACK = new NeutroniaPillarBlock(Material.WOOL, "gunpowder_sack");
+
+        EGG_CRATE = new NeutroniaPillarBlock(Material.WOOD, "egg_crate");
+        BEETROOT_CRATE = new NeutroniaPillarBlock(Material.WOOD, "beetroot_crate");
+        POTATO_CRATE = new NeutroniaPillarBlock(Material.WOOD, "potato_crate");
+        CARROT_CRATE = new NeutroniaPillarBlock(Material.WOOD, "carrot_crate");
+        APPLE_CRATE = new NeutroniaPillarBlock(Material.WOOD, "apple_crate");
+        GOLDEN_APPLE_CRATE = new NeutroniaPillarBlock(Material.WOOD, "golden_apple_crate");
 
         TREATED_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "treated_planks");
         TREATED_SIDLING = new NeutroniaBaseBlock(Material.WOOD, "treated_sidling");

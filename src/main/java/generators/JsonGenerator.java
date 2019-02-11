@@ -1,4 +1,4 @@
-package json_generator;
+package generators;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -1303,69 +1303,6 @@ public class JsonGenerator {
             e.printStackTrace();
         }
 
-    }
-
-    public static void genRecipe(String modId, String name, boolean isShaped, String row1, String row2, String row3, String[] keys, String[] values, int[] data, String result, String craftingGroup, int resultCount) {
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        Path base = Paths.get("src", "main", "resources", "assets", modId, "recipes");
-        if (!base.toFile().exists()) {
-            base.toFile().mkdirs();
-        }
-        JsonObject root = new JsonObject();
-        root.addProperty("_comment", "Generated using Husky's JSON Generator v4.");
-        if (isShaped) {
-            root.addProperty("type", "forge:ore_shaped");
-            if (!craftingGroup.equalsIgnoreCase("")) root.addProperty("group", craftingGroup);
-            JsonArray pattern = new JsonArray();
-            if (!row1.equalsIgnoreCase(" ")) pattern.add(row1);
-            if (!row2.equalsIgnoreCase(" ")) pattern.add(row2);
-            if (!row3.equalsIgnoreCase(" ")) pattern.add(row3);
-            root.add("pattern", pattern);
-            JsonObject key = new JsonObject();
-            for (int i = 0; i <= keys.length - 1; i++) {
-                if (!values[i].equalsIgnoreCase("")) {
-                    JsonObject item = new JsonObject();
-                    item.addProperty("item", values[i]);
-                    key.add(keys[i], item);
-                    if (data != null)
-                        if (data[i] != 0) item.addProperty("data", data[i]);
-                }
-            }
-            root.add("key", key);
-            JsonObject resultName = new JsonObject();
-            resultName.addProperty("item", result);
-            if (resultCount > 1) resultName.addProperty("count", resultCount);
-            root.add("result", resultName);
-            String json = gson.toJson(root);
-            try {
-                FileUtils.writeStringToFile(base.resolve(name + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
-            } catch (IOException e) {
-                System.out.printf("Error creating recipe file %s.json" + "\n", name);
-            }
-        } else {
-            root.addProperty("type", "forge:ore_shapeless");
-            if (!craftingGroup.equalsIgnoreCase("")) root.addProperty("group", craftingGroup);
-            JsonArray ingredients = new JsonArray();
-            for (int i2 = 0; i2 <= values.length - 1; i2++) {
-                if (!values[i2].equalsIgnoreCase("")) {
-                    JsonObject item = new JsonObject();
-                    item.addProperty("item", values[i2]);
-                    ingredients.add(item);
-                    if (data != null) item.addProperty("data", data[i2]);
-                }
-            }
-            root.add("ingredients", ingredients);
-            JsonObject resultName = new JsonObject();
-            resultName.addProperty("item", result);
-            if (resultCount > 1) resultName.addProperty("count", resultCount);
-            root.add("result", resultName);
-            String json = gson.toJson(root);
-            try {
-                FileUtils.writeStringToFile(base.resolve(name + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
-            } catch (IOException e) {
-                System.out.printf("Error creating recipe file %s.json" + "\n", name);
-            }
-        }
     }
 
     public static void genItemModel(String modId, String itemName, String textureName) {

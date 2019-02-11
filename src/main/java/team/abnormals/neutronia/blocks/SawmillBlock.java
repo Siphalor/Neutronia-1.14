@@ -1,7 +1,7 @@
 package team.abnormals.neutronia.blocks;
 
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
-import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.class_3914;
 import net.minecraft.client.network.ClientDummyContainerProvider;

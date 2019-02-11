@@ -1,6 +1,6 @@
 package team.abnormals.neutronia.blocks;
 
-import net.fabricmc.fabric.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.CampfireBlock;
 import net.minecraft.block.Material;

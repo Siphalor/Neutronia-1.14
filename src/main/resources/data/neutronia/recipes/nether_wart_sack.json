@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "neutronia:storage_sacks",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:nether_wart"
+    }
+  },
+  "result": {
+    "item": "neutronia:nether_wart_sack"
+  }
+}

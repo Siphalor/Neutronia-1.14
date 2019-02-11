@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "neutronia:storage_bundles",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:cactus"
+    }
+  },
+  "result": {
+    "item": "neutronia:cactus_bundle"
+  }
+}
