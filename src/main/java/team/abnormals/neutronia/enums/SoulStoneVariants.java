@@ -5,7 +5,7 @@ import net.minecraft.util.StringRepresentable;
 public enum SoulStoneVariants implements StringRepresentable {
 
     NORMAL_SOULSTONE(0, "soulstone"),
-    CHISELED_SOULSTONE(1, "chiseled_soulstone"),
+    CHISELED_SOULSTONE(1, "carved_soulstone"),
     SMOOTH_SOULSTONE(2, "cut_soulstone"),
     POLISHED_SOULSTONE(3, "polished_soulstone");
 

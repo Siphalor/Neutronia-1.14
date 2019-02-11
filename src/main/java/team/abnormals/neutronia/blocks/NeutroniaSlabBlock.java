@@ -12,7 +12,7 @@ public class NeutroniaSlabBlock extends SlabBlock implements INeutroniaBlock {
 
     public NeutroniaSlabBlock(String name) {
         super(Settings.of(Material.WOOD));
-        register(name, this);
+        register(name + "_slab", this);
     }
 
     private void register(String name, Block block) {

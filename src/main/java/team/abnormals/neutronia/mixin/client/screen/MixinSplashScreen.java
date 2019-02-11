@@ -66,7 +66,7 @@ public abstract class MixinSplashScreen extends Screen {
 
     @Inject(method = "method_18103(IIIIFF)V", at = @At("HEAD"), cancellable = true)
     private void method_18103(int int_1, int int_2, int int_3, int int_4, float float_1, float float_2, CallbackInfo ci) {
-        ci.cancel();
+//        ci.cancel();
     }
 
     // smh

@@ -4,7 +4,10 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.LanternBlock;
 import net.minecraft.block.Material;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.state.StateFactory;
@@ -32,7 +35,6 @@ public class RedstoneLanternBlock extends LanternBlock implements INeutroniaBloc
     public static final VoxelShape LANTERN_EAST_AABB = Block.createCuboidShape(PIXEL_LENGTH * 3.5D, PIXEL_LENGTH * 1D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 9.5D, PIXEL_LENGTH * 10D, PIXEL_LENGTH * 11D);
     public static final VoxelShape LANTERN_UP_AABB = Block.createCuboidShape(PIXEL_LENGTH * 5D, PIXEL_LENGTH * 0D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 11D, PIXEL_LENGTH * 9D, PIXEL_LENGTH * 11D);
     public static final VoxelShape LANTERN_DOWN_AABB = Block.createCuboidShape(PIXEL_LENGTH * 5D, PIXEL_LENGTH * 1D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 11D, PIXEL_LENGTH * 10D, PIXEL_LENGTH * 11D);
-    private final boolean isOn;
     public BlockState onBlock, offBlock;
 
     public RedstoneLanternBlock(String name) {
@@ -61,9 +63,9 @@ public class RedstoneLanternBlock extends LanternBlock implements INeutroniaBloc
     @Override
     public void onBlockAdded(BlockState blockState_1, World world_1, BlockPos blockPos_1, BlockState blockState_2) {
         if (!world_1.isClient) {
-            if (this.isOn && !world_1.isReceivingRedstonePower(blockPos_1)) {
+            if (getDefaultState().get(LIT) && !world_1.isReceivingRedstonePower(blockPos_1)) {
                 world_1.setBlockState(blockPos_1, offBlock, 2);
-            } else if (!this.isOn && world_1.isReceivingRedstonePower(blockPos_1)) {
+            } else if (!getDefaultState().get(LIT) && world_1.isReceivingRedstonePower(blockPos_1)) {
                 world_1.setBlockState(blockPos_1, onBlock, 2);
             }
         }
@@ -76,7 +78,7 @@ public class RedstoneLanternBlock extends LanternBlock implements INeutroniaBloc
     @Override
     public void onRandomTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {
         if (world_1.isClient) {
-            if (this.isOn && !world_1.isReceivingRedstonePower(blockPos_1)) {
+            if (getDefaultState().get(LIT) && !world_1.isReceivingRedstonePower(blockPos_1)) {
                 world_1.setBlockState(blockPos_1, offBlock, 2);
             }
         }

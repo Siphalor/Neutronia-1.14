@@ -1,6 +1,3 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "neutronia:block/polished_soul_stone"
-  }
+  "parent": "neutronia:block/polished_soulstone"
 }

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/carved_soulstone_slab"
+    },
+    "type=top": {
+      "model": "neutronia:block/carved_soulstone_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/carved_soulstone"
+    }
+  }
+}

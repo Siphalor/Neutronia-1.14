@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/polished_soulstone_slab"
+    },
+    "type=top": {
+      "model": "neutronia:block/polished_soulstone_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/polished_soulstone"
+    }
+  }
+}

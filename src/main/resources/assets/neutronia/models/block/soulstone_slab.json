@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "neutronia:block/soulstone_bottom",
+    "side": "neutronia:block/soulstone",
+    "top": "neutronia:block/soulstone_top"
+  }
+}
