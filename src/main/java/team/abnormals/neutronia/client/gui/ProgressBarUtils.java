@@ -3,22 +3,20 @@ package team.abnormals.neutronia.client.gui;
 import net.minecraft.client.font.FontRenderer;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL11.glPopMatrix;
 
 public class ProgressBarUtils {
 
     private static final int barWidth = 400;
     private static final int barHeight = 20;
     private static final int textHeight2 = 20;
-    private final int barOffset = 55;
-
     private static final int fontColor = 0x000000;
     private static final int barBorderColor = 0xC0C0C0;
     private static final int barColor = 0xCB3D35;
     private static final int barBackgroundColor = 0xFFFFFF;
+    private final int barOffset = 55;
 
     public static void setColor(int color) {
-        glColor3ub((byte)((color >> 16) & 0xFF), (byte)((color >> 8) & 0xFF), (byte)(color & 0xFF));
+        glColor3ub((byte) ((color >> 16) & 0xFF), (byte) ((color >> 8) & 0xFF), (byte) (color & 0xFF));
     }
 
     public static void drawBox(int w, int h) {
@@ -53,7 +51,7 @@ public class ProgressBarUtils {
         drawBox((barWidth - 2) * (b.getStep() + 1) / (b.getSteps() + 1), barHeight - 2); // Step can sometimes be 0.
         // progress text
         String progress = "" + b.getStep() + "/" + b.getSteps();
-        glTranslatef(((float)barWidth - 2) / 2 - fontRenderer.getStringWidth(progress), 2, 0);
+        glTranslatef(((float) barWidth - 2) / 2 - fontRenderer.getStringWidth(progress), 2, 0);
         setColor(fontColor);
         glScalef(2, 2, 1);
         glEnable(GL_TEXTURE_2D);

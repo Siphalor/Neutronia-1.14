@@ -6,7 +6,6 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import team.abnormals.neutronia.blocks.BarrelBaseBlock;
 import team.abnormals.neutronia.blocks.*;
 import team.abnormals.neutronia.blocks.melons.MelOLanternBlock;
 import team.abnormals.neutronia.blocks.melons.MelonBlock;
@@ -83,7 +82,7 @@ public class NBlocks {
             LADDERS[woodTypes2.getMetadata()] = new CustomLadderBlock(woodTypes2.asString());
         }
 
-        for(CustomChestTypes woodenChestTypes : CustomChestTypes.values()) {
+        for (CustomChestTypes woodenChestTypes : CustomChestTypes.values()) {
             WOODEN_CHESTS[woodenChestTypes.getId()] = new CustomChestBlock(woodenChestTypes.asString());
         }
 
@@ -112,7 +111,7 @@ public class NBlocks {
         WILLOW_DOOR = new NeutroniaDoorBlock(Material.WOOD, "willow_door");
         WILLOW_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "willow_trapdoor");
 
-        for(ModTreeTypes modTreeTypes : ModTreeTypes.values()) {
+        for (ModTreeTypes modTreeTypes : ModTreeTypes.values()) {
             STRIPPED_LOGS[modTreeTypes.getMetadata()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", modTreeTypes.asString()));
         }
 
@@ -121,7 +120,7 @@ public class NBlocks {
             STRIPPED_LOG_CAMPFIRE[woodType.getMetadata()] = new CampfireBaseBlock(String.format("stripped_%s", woodType.asString()));
         }
 
-        for(VanillaWoodTypes3 woodType : VanillaWoodTypes3.values()) {
+        for (VanillaWoodTypes3 woodType : VanillaWoodTypes3.values()) {
             CARVED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
             PATTERNED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
         }

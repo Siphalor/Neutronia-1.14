@@ -79,7 +79,7 @@ public class MelonBlock extends BaseModBlock implements INeutroniaBlock, ICarvab
     @Override
     public CarvedFaceTypes fromIdentifier(Identifier identifier) {
         String[] values = identifier.getPath().split("_");
-        if(values.length == 2){
+        if (values.length == 2) {
             return null;
         }
         return CarvedFaceTypes.valueOf(values[1].toUpperCase());

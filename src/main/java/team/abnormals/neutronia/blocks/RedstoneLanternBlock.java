@@ -31,8 +31,8 @@ public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBloc
     public static final VoxelShape LANTERN_EAST_AABB = Block.createCuboidShape(PIXEL_LENGTH * 3.5D, PIXEL_LENGTH * 1D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 9.5D, PIXEL_LENGTH * 10D, PIXEL_LENGTH * 11D);
     public static final VoxelShape LANTERN_UP_AABB = Block.createCuboidShape(PIXEL_LENGTH * 5D, PIXEL_LENGTH * 0D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 11D, PIXEL_LENGTH * 9D, PIXEL_LENGTH * 11D);
     public static final VoxelShape LANTERN_DOWN_AABB = Block.createCuboidShape(PIXEL_LENGTH * 5D, PIXEL_LENGTH * 1D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 11D, PIXEL_LENGTH * 10D, PIXEL_LENGTH * 11D);
-    public BlockState onBlock, offBlock;
     private final boolean isOn;
+    public BlockState onBlock, offBlock;
 
     public RedstoneLanternBlock(String name, boolean isOn) {
         super(FabricBlockSettings.of(Material.METAL).lightLevel(isOn ? 15 : 0).build(), isOn ? "lit_" + name + "_redstone_lantern" : name + "_redstone_lantern");
@@ -56,7 +56,7 @@ public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBloc
 
     @Override
     public void onBlockAdded(BlockState blockState_1, World world_1, BlockPos blockPos_1, BlockState blockState_2) {
-        if(!world_1.isClient) {
+        if (!world_1.isClient) {
             if (this.isOn && !world_1.isReceivingRedstonePower(blockPos_1)) {
                 world_1.setBlockState(blockPos_1, offBlock, 2);
             } else if (!this.isOn && world_1.isReceivingRedstonePower(blockPos_1)) {
@@ -78,13 +78,12 @@ public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBloc
 
     @Override
     public void onRandomTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {
-        if(world_1.isClient) {
+        if (world_1.isClient) {
             if (this.isOn && !world_1.isReceivingRedstonePower(blockPos_1)) {
                 world_1.setBlockState(blockPos_1, offBlock, 2);
             }
         }
     }
-
 
 
     @Override
@@ -110,8 +109,8 @@ public class RedstoneLanternBlock extends BaseModBlock implements INeutroniaBloc
 
     @Override
     public OffsetType getOffsetType() {
-        if(getDefaultState().get(FACING) == Direction.UP) return OffsetType.XZ;
-        else if(getDefaultState().get(FACING) == Direction.DOWN) return OffsetType.XYZ;
+        if (getDefaultState().get(FACING) == Direction.UP) return OffsetType.XZ;
+        else if (getDefaultState().get(FACING) == Direction.DOWN) return OffsetType.XYZ;
         else return OffsetType.NONE;
     }
 

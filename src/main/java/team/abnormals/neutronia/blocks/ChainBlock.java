@@ -31,7 +31,7 @@ public class ChainBlock extends BaseModBlock implements INeutroniaBlock {
 
     @Override
     public Vec3d getOffsetPos(BlockState state, BlockView worldIn, BlockPos pos) {
-        if(worldIn.getBlockState(pos.down()).getBlock() instanceof LanternBlock || worldIn.getBlockState(pos.down()).getBlock() instanceof RedstoneLanternBlock) {
+        if (worldIn.getBlockState(pos.down()).getBlock() instanceof LanternBlock || worldIn.getBlockState(pos.down()).getBlock() instanceof RedstoneLanternBlock) {
             return worldIn.getBlockState(pos.down()).getBlock().getOffsetPos(state, worldIn, pos);
         }
         return new Vec3d(0D, 0D, 0D);

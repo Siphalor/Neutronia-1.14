@@ -25,10 +25,12 @@ public class APIInternals {
         }
 
         @Override
-        public void popTask(TaskInfo ti) {}
+        public void popTask(TaskInfo ti) {
+        }
 
         @Override
-        public void popTask() {}
+        public void popTask() {
+        }
 
         private static class DummyTaskInfo implements TaskInfo.Mutable {
 

@@ -28,19 +28,21 @@ public abstract class MixinVillagerEntity extends AbstractVillagerEntity {
         super(entityType_1, world_1);
     }
 
-    @Shadow public abstract void setVillagerData(VillagerData villagerData_1);
+    @Shadow
+    public abstract VillagerData getVillagerData();
 
-    @Shadow public abstract VillagerData getVillagerData();
+    @Shadow
+    public abstract void setVillagerData(VillagerData villagerData_1);
 
     @Inject(
             method = "prepareEntityData(Lnet/minecraft/world/IWorld;Lnet/minecraft/world/LocalDifficulty;Lnet/minecraft/entity/SpawnType;Lnet/minecraft/entity/EntityData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/entity/EntityData;",
             at = @At(value = "RETURN", ordinal = 2),
-    locals = LocalCapture.CAPTURE_FAILHARD,
-    allow = 1,
-    cancellable = true
-            )
+            locals = LocalCapture.CAPTURE_FAILHARD,
+            allow = 1,
+            cancellable = true
+    )
     private EntityData prepareEntityData(CallbackInfoReturnable info, IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
-        if(spawnType_1 == SpawnType.BREEDING) {
+        if (spawnType_1 == SpawnType.BREEDING) {
             System.out.println("This is a test");
             this.setVillagerData(this.getVillagerData().withType(VillagerType.forBiome(iWorld_1.getBiome(new BlockPos(this)))).withProfession(Registry.VILLAGER_PROFESSION.getRandom(iWorld_1.getRandom())));
         }

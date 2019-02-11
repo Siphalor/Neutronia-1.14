@@ -7,7 +7,8 @@ public class MiniCfgParser {
 
     public static final MiniCfgParser INSTANCE = new MiniCfgParser();
 
-    private MiniCfgParser() {}
+    private MiniCfgParser() {
+    }
 
     public void parse(MiniCfgProcessor processor, List<String> lines) {
         for (String line : lines) {

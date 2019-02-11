@@ -2,7 +2,7 @@ package therealfarfetchd.minicfg;
 
 import net.minecraft.util.Identifier;
 
-import java.awt.Color;
+import java.awt.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;

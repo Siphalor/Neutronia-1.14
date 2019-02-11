@@ -1,7 +1,7 @@
 package team.abnormals.neutronia.blocks;
 
-import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.minecraft.block.*;
 import net.minecraft.class_3914;
 import net.minecraft.client.network.ClientDummyContainerProvider;
@@ -30,9 +30,14 @@ import team.abnormals.neutronia.init.NContainerTypes;
 
 public class SawmillBlock extends NeutroniaBaseBlock {
 
-    private static final TranslatableTextComponent field_17650 = new TranslatableTextComponent("container.sawmill");
     public static final DirectionProperty FACING;
     protected static final VoxelShape SHAPE;
+    private static final TranslatableTextComponent field_17650 = new TranslatableTextComponent("container.sawmill");
+
+    static {
+        FACING = HorizontalFacingBlock.field_11177;
+        SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
+    }
 
     public SawmillBlock(String name) {
         super(FabricBlockSettings.of(Material.STONE).hardness(3.5F).build(), name);
@@ -83,11 +88,6 @@ public class SawmillBlock extends NeutroniaBaseBlock {
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
         stateFactory$Builder_1.with(FACING);
-    }
-
-    static {
-        FACING = HorizontalFacingBlock.field_11177;
-        SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
     }
 
 }

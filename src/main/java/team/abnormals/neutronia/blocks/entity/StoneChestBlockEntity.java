@@ -8,13 +8,11 @@ public class StoneChestBlockEntity extends ChestBlockEntity {
 
     private final CustomChestTypes stoneChestType;
 
-    public StoneChestBlockEntity()
-    {
+    public StoneChestBlockEntity() {
         this(CustomChestTypes.ACACIA);
     }
 
-    public StoneChestBlockEntity(CustomChestTypes type)
-    {
+    public StoneChestBlockEntity(CustomChestTypes type) {
         super(NBlockEntities.TILE_STONE_CHEST);
         this.stoneChestType = type;
     }

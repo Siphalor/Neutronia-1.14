@@ -7,13 +7,13 @@ public class ShapedRecipeIngredients {
     private String pattern;
     private ItemStack stack;
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     private ShapedRecipeIngredients(String pattern, ItemStack stack) {
         this.pattern = pattern;
         this.stack = stack;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getPattern() {

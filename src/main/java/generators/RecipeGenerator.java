@@ -35,12 +35,12 @@ public class RecipeGenerator {
         root.addProperty("type", "minecraft:crafting_shaped");
         if (!group.equalsIgnoreCase("")) root.addProperty("group", group);
         JsonArray pattern = new JsonArray();
-        for(String row : rows) {
+        for (String row : rows) {
             if (!row.equalsIgnoreCase(" ")) pattern.add(row);
         }
         root.add("pattern", pattern);
         JsonObject key = new JsonObject();
-        if(!shapedRecipeIngredients.getPattern().equalsIgnoreCase("")) {
+        if (!shapedRecipeIngredients.getPattern().equalsIgnoreCase("")) {
             JsonObject item = new JsonObject();
             item.addProperty("item", Registry.ITEM.getId(shapedRecipeIngredients.getStack().getItem()).toString());
             key.add(shapedRecipeIngredients.getPattern(), item);
@@ -52,7 +52,7 @@ public class RecipeGenerator {
         root.add("result", resultName);
         String json = gson.toJson(root);
         try {
-            if(!base.resolve(recipeName.getPath() + ".json").toFile().exists())
+            if (!base.resolve(recipeName.getPath() + ".json").toFile().exists())
                 FileUtils.writeStringToFile(base.resolve(recipeName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
         } catch (IOException e) {
             System.out.printf("Error creating recipe file %s.json" + "\n", recipeName.getPath());
@@ -81,7 +81,7 @@ public class RecipeGenerator {
         root.add("result", resultName);
         String json = gson.toJson(root);
         try {
-            if(!base.resolve(recipeName.getPath() + ".json").toFile().exists())
+            if (!base.resolve(recipeName.getPath() + ".json").toFile().exists())
                 FileUtils.writeStringToFile(base.resolve(recipeName.getPath() + ".json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
         } catch (IOException e) {
             System.out.printf("Error creating recipe file %s.json" + "\n", recipeName.getPath());

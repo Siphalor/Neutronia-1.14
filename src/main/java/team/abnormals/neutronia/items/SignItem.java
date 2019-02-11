@@ -13,17 +13,17 @@ import team.abnormals.neutronia.client.gui.ingame.EditSignScreen;
 
 public class SignItem extends WallStandingBlockItem {
 
-   public SignItem(Item.Settings item$Settings_1, Block block_1, Block block_2) {
-      super(block_1, block_2, item$Settings_1);
-   }
+    public SignItem(Item.Settings item$Settings_1, Block block_1, Block block_2) {
+        super(block_1, block_2, item$Settings_1);
+    }
 
-   protected boolean afterBlockPlaced(BlockPos blockPos_1, World world_1, PlayerEntity playerEntity_1, ItemStack itemStack_1, BlockState blockState_1) {
-      boolean boolean_1 = super.afterBlockPlaced(blockPos_1, world_1, playerEntity_1, itemStack_1, blockState_1);
-      if (!world_1.isClient && !boolean_1 && playerEntity_1 != null) {
-         MinecraftClient.getInstance().openScreen(new EditSignScreen((SignBlockEntity) world_1.getBlockEntity(blockPos_1)));
-      }
+    protected boolean afterBlockPlaced(BlockPos blockPos_1, World world_1, PlayerEntity playerEntity_1, ItemStack itemStack_1, BlockState blockState_1) {
+        boolean boolean_1 = super.afterBlockPlaced(blockPos_1, world_1, playerEntity_1, itemStack_1, blockState_1);
+        if (!world_1.isClient && !boolean_1 && playerEntity_1 != null) {
+            MinecraftClient.getInstance().openScreen(new EditSignScreen((SignBlockEntity) world_1.getBlockEntity(blockPos_1)));
+        }
 
-      return boolean_1;
-   }
+        return boolean_1;
+    }
 
 }

@@ -19,11 +19,9 @@
 
 package team.abnormals.neutronia.utils;
 
-public class ClassNameUtils
-{
-    public static String shortName(Class<?> clz)
-    {
+public class ClassNameUtils {
+    public static String shortName(Class<?> clz) {
         String nm = clz.getName();
-        return nm.indexOf('.') > -1 ? nm.substring(nm.lastIndexOf('.')+1) : nm;
+        return nm.indexOf('.') > -1 ? nm.substring(nm.lastIndexOf('.') + 1) : nm;
     }
 }

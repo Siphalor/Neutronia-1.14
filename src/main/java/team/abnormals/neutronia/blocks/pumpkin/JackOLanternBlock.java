@@ -1,7 +1,10 @@
 package team.abnormals.neutronia.blocks.pumpkin;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.HorizontalFacingBlock;
+import net.minecraft.block.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -77,7 +80,7 @@ public class JackOLanternBlock extends BaseModBlock implements IMinecraftBlock, 
     @Override
     public CarvedFaceTypes fromIdentifier(Identifier identifier) {
         String[] values = identifier.getPath().split("_");
-        if(values.length == 3) {
+        if (values.length == 3) {
             return null;
         }
         return CarvedFaceTypes.valueOf(values[1].toUpperCase());

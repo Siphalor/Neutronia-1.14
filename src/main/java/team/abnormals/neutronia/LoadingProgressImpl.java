@@ -9,10 +9,10 @@ import java.util.List;
 public class LoadingProgressImpl implements LoadingProgress {
 
     public static final LoadingProgressImpl INSTANCE = new LoadingProgressImpl();
-
-    private LoadingProgressImpl() {}
-
     /* @Nullable */ private TaskInfoImpl current = null;
+
+    private LoadingProgressImpl() {
+    }
 
     @Override
     public TaskInfo.Mutable pushTask() {

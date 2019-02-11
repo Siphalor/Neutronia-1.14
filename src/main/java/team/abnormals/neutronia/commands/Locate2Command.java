@@ -19,9 +19,9 @@ public class Locate2Command {
 
     public static void register(CommandDispatcher<ServerCommandSource> var0) {
         var0.register((ServerCommandManager.literal("locate2").requires((var0x) ->
-            var0x.hasPermissionLevel(2)
+                var0x.hasPermissionLevel(2)
         )).then(ServerCommandManager.literal("Pillager_Mansion").executes((var0x) ->
-            method_13457(var0x.getSource(), "Pillager_Mansion")
+                method_13457(var0x.getSource(), "Pillager_Mansion")
         )));
     }
 
@@ -43,7 +43,7 @@ public class Locate2Command {
     private static float method_13439(int var0, int var1, int var2, int var3) {
         int var4 = var2 - var0;
         int var5 = var3 - var1;
-        return MathHelper.sqrt((float)(var4 * var4 + var5 * var5));
+        return MathHelper.sqrt((float) (var4 * var4 + var5 * var5));
     }
 
 }

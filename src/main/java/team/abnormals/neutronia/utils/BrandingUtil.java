@@ -19,19 +19,19 @@ package team.abnormals.neutronia.utils;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 public final class BrandingUtil {
-	public static final String FABRIC = "fabric";
-	public static final String NEUTRONIA = "neutronia";
-	public static final String FABRIC_AND_NEUTRONIA = "fabric_neutronia";
-	public static final String VANILLA = "vanilla";
+    public static final String FABRIC = "fabric";
+    public static final String NEUTRONIA = "neutronia";
+    public static final String FABRIC_AND_NEUTRONIA = "fabric_neutronia";
+    public static final String VANILLA = "vanilla";
 
-	private BrandingUtil() {
-	}
+    private BrandingUtil() {
+    }
 
-	public static void brand(final CallbackInfoReturnable<String> cir) {
-		if (cir.getReturnValue().equals(VANILLA)) {
-			cir.setReturnValue(FABRIC_AND_NEUTRONIA);
-		} else {
-			cir.setReturnValue(cir.getReturnValue() + "," + FABRIC_AND_NEUTRONIA);
-		}
-	}
+    public static void brand(final CallbackInfoReturnable<String> cir) {
+        if (cir.getReturnValue().equals(VANILLA)) {
+            cir.setReturnValue(FABRIC_AND_NEUTRONIA);
+        } else {
+            cir.setReturnValue(cir.getReturnValue() + "," + FABRIC_AND_NEUTRONIA);
+        }
+    }
 }

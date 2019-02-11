@@ -40,10 +40,10 @@ public class StoneChestBlockEntityRenderer extends BlockEntityRenderer<StoneChes
 
             GlStateManager.pushMatrix();
             GlStateManager.enableRescaleNormal();
-            GlStateManager.translatef((float)var2, (float)var4 + 1.0F, (float)var6 + 1.0F);
+            GlStateManager.translatef((float) var2, (float) var4 + 1.0F, (float) var6 + 1.0F);
             GlStateManager.scalef(1.0F, -1.0F, -1.0F);
             float var14 = var10.get(ChestBlock.FACING).asRotation();
-            if ((double)Math.abs(var14) > 1.0E-5D) {
+            if ((double) Math.abs(var14) > 1.0E-5D) {
                 GlStateManager.translatef(0.5F, 0.5F, 0.5F);
                 GlStateManager.rotatef(var14, 0.0F, 1.0F, 0.0F);
                 GlStateManager.translatef(-0.5F, -0.5F, -0.5F);
@@ -75,7 +75,7 @@ public class StoneChestBlockEntityRenderer extends BlockEntityRenderer<StoneChes
     }
 
     private void method_3561(StoneChestBlockEntity var1, float var2, ChestEntityModel var3) {
-        float var4 = ((ChestAnimationProgress)var1).getAnimationProgress(var2);
+        float var4 = ((ChestAnimationProgress) var1).getAnimationProgress(var2);
         var4 = 1.0F - var4;
         var4 = 1.0F - var4 * var4 * var4;
         var3.method_2798().pitch = -(var4 * 1.5707964F);

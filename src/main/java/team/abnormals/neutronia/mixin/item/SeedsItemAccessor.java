@@ -7,6 +7,6 @@ import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(SeedsItem.class)
 public interface SeedsItemAccessor {
-  @Accessor
-  Block getBlock();
+    @Accessor
+    Block getBlock();
 }

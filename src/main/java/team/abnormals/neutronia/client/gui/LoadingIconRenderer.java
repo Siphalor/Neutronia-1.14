@@ -1,22 +1,15 @@
 package team.abnormals.neutronia.client.gui;
 
+import com.mojang.blaze3d.platform.GlStateManager.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexFormats;
 import net.minecraft.util.Identifier;
-import com.mojang.blaze3d.platform.GlStateManager.DestFactor;
-import com.mojang.blaze3d.platform.GlStateManager.SourceFactor;
 
-import java.awt.Color;
+import java.awt.*;
 
-import static com.mojang.blaze3d.platform.GlStateManager.blendFunc;
-import static com.mojang.blaze3d.platform.GlStateManager.color4f;
-import static com.mojang.blaze3d.platform.GlStateManager.disableBlend;
-import static com.mojang.blaze3d.platform.GlStateManager.enableBlend;
-import static com.mojang.blaze3d.platform.GlStateManager.popMatrix;
-import static com.mojang.blaze3d.platform.GlStateManager.pushMatrix;
-import static com.mojang.blaze3d.platform.GlStateManager.translatef;
+import static com.mojang.blaze3d.platform.GlStateManager.*;
 import static org.lwjgl.opengl.GL11.GL_QUADS;
 
 public class LoadingIconRenderer {

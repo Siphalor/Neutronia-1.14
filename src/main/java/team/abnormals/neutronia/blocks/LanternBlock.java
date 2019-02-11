@@ -1,7 +1,10 @@
 package team.abnormals.neutronia.blocks;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockRenderLayer;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Material;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.BooleanProperty;
@@ -61,12 +64,12 @@ public class LanternBlock extends net.minecraft.block.LanternBlock implements IN
 
     @Override
     public Vec3d getOffsetPos(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1) {
-        if(blockState_1.get(FACING) == Direction.UP) {
+        if (blockState_1.get(FACING) == Direction.UP) {
             long i = MathHelper.hashCode(blockPos_1.getX(), 0, blockPos_1.getZ());
-            return new Vec3d(((double)((float)(i >> 16 & 15L) / 15.0F) - 0.5D) * 0.5D, 0.0D, ((double)((float)(i >> 24 & 15L) / 15.0F) - 0.5D) * 0.5D);
-        } else if(blockState_1.get(FACING) == Direction.DOWN) {
+            return new Vec3d(((double) ((float) (i >> 16 & 15L) / 15.0F) - 0.5D) * 0.5D, 0.0D, ((double) ((float) (i >> 24 & 15L) / 15.0F) - 0.5D) * 0.5D);
+        } else if (blockState_1.get(FACING) == Direction.DOWN) {
             long i = MathHelper.hashCode(blockPos_1.getX(), 0, blockPos_1.getZ());
-            return new Vec3d(((double)((float)(i >> 16 & 15L) / 15.0F) - 0.5D) * 0.5D, ((double)((float)(i >> 20 & 15L) / 15.0F) - 1.0D) * 0.2D, ((double)((float)(i >> 24 & 15L) / 15.0F) - 0.5D) * 0.5D);
+            return new Vec3d(((double) ((float) (i >> 16 & 15L) / 15.0F) - 0.5D) * 0.5D, ((double) ((float) (i >> 20 & 15L) / 15.0F) - 1.0D) * 0.2D, ((double) ((float) (i >> 24 & 15L) / 15.0F) - 0.5D) * 0.5D);
         } else {
             return Vec3d.ZERO;
         }

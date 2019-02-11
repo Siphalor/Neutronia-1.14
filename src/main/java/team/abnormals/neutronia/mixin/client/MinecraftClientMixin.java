@@ -17,32 +17,33 @@ import team.abnormals.neutronia.init.NBlocks;
 @Mixin(MinecraftClient.class)
 public abstract class MinecraftClientMixin {
 
-	@Shadow private ItemColorMap itemColorMap;
+    @Shadow
+    private ItemColorMap itemColorMap;
+    @Shadow
+    private BlockColorMap blockColorMap;
 
-	@Shadow
-	public abstract BlockColorMap getBlockColorMap();
+    @Shadow
+    public abstract BlockColorMap getBlockColorMap();
 
-	@Shadow private BlockColorMap blockColorMap;
-
-	@Inject(at = @At("RETURN"), method = "init()V")
-	public void afterInit(CallbackInfo info) {
-	    getBlockColorMap().register((var0x, var1, var2, var3) -> {
+    @Inject(at = @At("RETURN"), method = "init()V")
+    public void afterInit(CallbackInfo info) {
+        getBlockColorMap().register((var0x, var1, var2, var3) -> {
             if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().world != null) {
                 return blockColorMap.getRenderColor(var0x, MinecraftClient.getInstance().player.world, new BlockPos(MinecraftClient.getInstance().player), var3);
             } else {
                 return blockColorMap.getRenderColor(var0x, null, null, var3);
             }
         }, NBlocks.POTTED_GRASS, NBlocks.POTTED_TALL_GRASS);
-		itemColorMap.register((stack, tintIndex) -> {
-			if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().world != null) {
-				return blockColorMap.getRenderColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), MinecraftClient.getInstance().player.world, new BlockPos(MinecraftClient.getInstance().player), tintIndex);
-			} else {
-				BlockState blockState_1 = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
-				return blockColorMap.getRenderColor(blockState_1, null, null, tintIndex);
-			}
-		}, Blocks.GRASS_BLOCK, Blocks.GRASS, Blocks.FERN, Blocks.VINE, Blocks.OAK_LEAVES, Blocks.SPRUCE_LEAVES,
+        itemColorMap.register((stack, tintIndex) -> {
+                    if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().world != null) {
+                        return blockColorMap.getRenderColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), MinecraftClient.getInstance().player.world, new BlockPos(MinecraftClient.getInstance().player), tintIndex);
+                    } else {
+                        BlockState blockState_1 = ((BlockItem) stack.getItem()).getBlock().getDefaultState();
+                        return blockColorMap.getRenderColor(blockState_1, null, null, tintIndex);
+                    }
+                }, Blocks.GRASS_BLOCK, Blocks.GRASS, Blocks.FERN, Blocks.VINE, Blocks.OAK_LEAVES, Blocks.SPRUCE_LEAVES,
                 Blocks.BIRCH_LEAVES, Blocks.JUNGLE_LEAVES, Blocks.ACACIA_LEAVES, Blocks.DARK_OAK_LEAVES, Blocks.LILY_PAD,
                 Blocks.TALL_GRASS, Blocks.LARGE_FERN, NBlocks.POTTED_GRASS, NBlocks.POTTED_TALL_GRASS);
 
-	}
+    }
 }

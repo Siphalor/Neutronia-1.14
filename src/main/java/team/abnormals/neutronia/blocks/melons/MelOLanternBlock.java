@@ -79,7 +79,7 @@ public class MelOLanternBlock extends BaseModBlock implements INeutroniaBlock, I
     @Override
     public CarvedFaceTypes fromIdentifier(Identifier identifier) {
         String[] values = identifier.getPath().split("_");
-        if(values.length == 3){
+        if (values.length == 3) {
             return null;
         }
         return CarvedFaceTypes.valueOf(values[1].toUpperCase());

@@ -6,12 +6,12 @@ public class ShapelessRecipeIngredients {
 
     private ItemStack stack;
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     private ShapelessRecipeIngredients(ItemStack stack) {
         this.stack = stack;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public ItemStack getStack() {

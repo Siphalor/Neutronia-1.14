@@ -43,13 +43,13 @@ public class JsonGenerator {
         /*for(DyeColor color : DyeColor.values()) {
             genPillarBlock(new Identifier(modid, String.format("%s_glazed_terracotta_pillar", color.getName())), new Identifier(modid, String.format("block/glazed_terracotta_pillars/gtp_pillar_%s_top", color.getName())), new Identifier(modid, String.format("block/glazed_terracotta_pillars/gtp_pillar_%s", color.getName())));
         }*/
-        for(CarvedFaceTypes faceTypes : CarvedFaceTypes.values()) {
+        for (CarvedFaceTypes faceTypes : CarvedFaceTypes.values()) {
             genOrientedBlock(new Identifier("minecraft", "carved_" + faceTypes.asString() + "_pumpkin"), new Identifier("minecraft", "pumpkin_top"), new Identifier(modid, "pumpkins/carved_pumpkin_" + faceTypes.asString()), new Identifier("minecraft", "pumpkin_side"));
             genOrientedBlock(new Identifier("minecraft", "carved_" + faceTypes.asString() + "_jack_o_lantern"), new Identifier("minecraft", "pumpkin_top"), new Identifier(modid, "jack_o_lanterns/jack_o_lantern_" + faceTypes.asString()), new Identifier("minecraft", "pumpkin_side"));
             genOrientedBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_melon"), new Identifier("minecraft", "melon_top"), new Identifier(modid, "melons/carved_pumpkin_" + faceTypes.asString()), new Identifier("minecraft", "melon_side"));
             genOrientedBlock(new Identifier(modid, "carved_" + faceTypes.asString() + "_mel_o_lantern"), new Identifier("minecraft", "melon_top"), new Identifier(modid, "mel_o_lanterns/jack_o_lantern_" + faceTypes.asString()), new Identifier("minecraft", "melon_side"));
         }
-        for(VanillaWoodTypes3 type : VanillaWoodTypes3.values()) {
+        for (VanillaWoodTypes3 type : VanillaWoodTypes3.values()) {
 //            genSlab(new Identifier(modid, String.format("")));
         }
 //        genSlab(new Identifier("test", "test"), new Identifier("test", "test"), new Identifier("test", "test"), new Identifier("test", "test"));
