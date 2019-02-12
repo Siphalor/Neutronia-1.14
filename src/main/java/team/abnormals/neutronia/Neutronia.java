@@ -5,10 +5,16 @@ import net.fabricmc.fabric.api.registry.CommandRegistry;
 import team.abnormals.neutronia.commands.Locate2Command;
 import team.abnormals.neutronia.init.*;
 import team.abnormals.neutronia.world.gen.features.OreGeneration;
+import therealfarfetchd.minicfg.MiniCfg;
+import therealfarfetchd.minicfg.MiniCfgParser;
+import therealfarfetchd.minicfg.MiniCfgProcessor;
+
+import java.util.LinkedList;
 
 public class Neutronia implements ModInitializer {
 
     public static final String MODID = "neutronia";
+    public static final MiniCfg CONFIG = new LoadingSpiceConfig();
 
     @Override
     public void onInitialize() {

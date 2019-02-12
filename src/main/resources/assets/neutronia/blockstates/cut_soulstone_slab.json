@@ -4,7 +4,7 @@
       "model": "neutronia:block/cut_soulstone_slab"
     },
     "type=top": {
-      "model": "neutronia:block/cut_soulstone_slab"
+      "model": "neutronia:block/cut_soulstone_slab_top"
     },
     "type=double": {
       "model": "neutronia:block/cut_soulstone"

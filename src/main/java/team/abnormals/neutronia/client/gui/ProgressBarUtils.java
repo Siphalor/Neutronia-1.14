@@ -66,7 +66,7 @@ public class ProgressBarUtils {
         drawRect(xMin + 1, yMin + 1, xMin + activeBarWidth, yMax - 1, memoryBarColor);
         //Progress text
         String progress = getMemoryString(usedMemory) + " / " + getMemoryString(maxMemory);
-        fontRenderer.draw(progress, xMin + 20, yMax - 9, 0x000000);
+        fontRenderer.draw(progress, xMin + 20, yMax - 11, 0x000000);
     }
 
     private static int bytesToMb(long bytes) {

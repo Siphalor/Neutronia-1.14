@@ -1,5 +1,6 @@
 plugins {
 	id 'fabric-loom' version '0.2.0-SNAPSHOT'
+    id 'java'
 }
 
 sourceCompatibility = 1.8
@@ -7,15 +8,36 @@ targetCompatibility = 1.8
 
 archivesBaseName = "neutronia"
 version = "0.0.2"
+def minecraftVersion = "19w06a"
+def yarnVersion = "19w06a.+"
+def fabricVersion = "0.2.0.92"
+def fabricLoaderVersion = "0.3.5.+"
+
+processResources {
+    filesMatching('fabric.mod.json') {
+        expand 'version': project.version
+    }
+    inputs.property "version", project.version
+}
 
 minecraft {
 }
 
-dependencies {
-	minecraft "com.mojang:minecraft:19w06a"
-	mappings "net.fabricmc:yarn:19w06a.+"
-	modCompile "net.fabricmc:fabric-loader:0.3.+"
+repositories {
+    maven { url "https://jitpack.io" }
+    maven { url "https://tehnut.info/maven" }
+    maven { url "https://maven.modmuss50.me" }
+}
 
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modCompile "net.fabricmc:fabric:0.2.+"
+dependencies {
+    minecraft  "com.mojang:minecraft:${minecraftVersion}"
+    mappings   "net.fabricmc:yarn:${yarnVersion}"
+    modCompile "net.fabricmc:fabric-loader:${fabricLoaderVersion}"
+    modCompile "mcp.mobius.waila:Hwyla:1.14-+"
+    modCompile "com.github.shedaniel:RoughlyEnoughItems:2.2.0.50"
+    modCompile "prospector.modmenu:ModMenu:1.0.0-+"
+    modCompile "info.tehnut.pluginloader:plugin-loader:1.14-+"
+
+    // Fabric API. This is technically optional, but you probably want it anyway.
+    modCompile "net.fabricmc:fabric:${fabricVersion}"
 }

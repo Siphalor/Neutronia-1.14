@@ -4,7 +4,7 @@
       "model": "neutronia:block/soulstone_slab"
     },
     "type=top": {
-      "model": "neutronia:block/soulstone_slab"
+      "model": "neutronia:block/soulstone_slab_top"
     },
     "type=double": {
       "model": "neutronia:block/soulstone"
