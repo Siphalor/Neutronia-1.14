@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "neutronia:block/mel_o_lantern" },
+    "facing=east":  { "model": "neutronia:block/mel_o_lantern", "y": 90 },
+    "facing=south": { "model": "neutronia:block/mel_o_lantern", "y": 180 },
+    "facing=west":  { "model": "neutronia:block/mel_o_lantern", "y": 270 }
+  }
+}
