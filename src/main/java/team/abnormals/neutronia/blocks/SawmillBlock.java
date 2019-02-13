@@ -8,10 +8,7 @@ import net.minecraft.client.network.ClientDummyContainerProvider;
 import net.minecraft.container.NameableContainerProvider;
 import net.minecraft.entity.VerticalEntityPosition;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemPlacementContext;
-import net.minecraft.item.block.BlockItem;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.text.TranslatableTextComponent;
@@ -21,7 +18,6 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
@@ -42,15 +38,6 @@ public class SawmillBlock extends NeutroniaBaseBlock {
     public SawmillBlock(String name) {
         super(FabricBlockSettings.of(Material.STONE).hardness(3.5F).build(), name);
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
-
-        register(name, this);
-    }
-
-    private void register(String name, Block block) {
-        Registry.register(Registry.BLOCK, getPrefix() + name, block);
-        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(ItemGroup.DECORATIONS));
-        item.registerBlockItemMap(Item.BLOCK_ITEM_MAP, item);
-        Registry.register(Registry.ITEM, getPrefix() + name, item);
     }
 
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {

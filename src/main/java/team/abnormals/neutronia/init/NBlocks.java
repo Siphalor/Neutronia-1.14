@@ -69,7 +69,7 @@ public class NBlocks {
 
     public static final Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN, BAMBOO_TORCH, THATCH, BAMBOO_PLANKS_STAIR, BAMBOO_PLANKS_SLAB, THATCH_STAIR, THATCH_SLAB;
     public static final Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN, ACIDIAN_BARS;
-    public static final Block TREATED_PLANKS, TREATED_SIDLING;
+    public static final Block TREATED_PLANKS, TREATED_SIDING;
     public static final Block POTTED_BEETROOT, POTTED_CARROTS, POTTED_CHORUS, POTTED_GRASS, POTTED_LILAC,
             POTTED_MELON, POTTED_NETHER_WART, POTTED_PEONY, POTTED_POTATOES, POTTED_PUMPKIN, POTTED_ROSE_BUSH, POTTED_SUGAR_CANE,
             POTTED_SUNFLOWER, POTTED_TALL_GRASS, POTTED_WHEAT;
@@ -322,13 +322,15 @@ public class NBlocks {
         BAMBOO_WALL_SIGN = new NeutroniaWallSignBlock("bamboo_wall_sign");
         BAMBOO_TORCH = new NeutroniaTorchBlock("bamboo_torch");
         THATCH = new NeutroniaBaseBlock(Material.ORGANIC, "thatch");
-        BAMBOO_PLANKS_STAIR = new NeutroniaStairBlock(BAMBOO_PLANKS.getDefaultState(), "bamboo_planks_stair");
-        BAMBOO_PLANKS_SLAB = new NeutroniaSlabBlock("bamboo_planks_slab");
-        THATCH_STAIR = new NeutroniaStairBlock(THATCH.getDefaultState(), "thatch_stair");
-        THATCH_SLAB = new NeutroniaSlabBlock("thatch_slab");
+        BAMBOO_PLANKS_STAIR = new NeutroniaStairBlock(BAMBOO_PLANKS.getDefaultState(), "bamboo_planks");
+        BAMBOO_PLANKS_SLAB = new NeutroniaSlabBlock("bamboo_planks");
+        THATCH_STAIR = new NeutroniaStairBlock(THATCH.getDefaultState(), "thatch");
+        THATCH_SLAB = new NeutroniaSlabBlock("thatch");
 
         ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "natural_acidian");
+        BlockRegisteringUtils.addSlabAndStair("natural_acidian", ACIDIAN);
         ACIDIAN_BRICKS = new NeutroniaBaseBlock(Material.STONE, "acidian_bricks");
+        BlockRegisteringUtils.addSlabAndStair("acidian_bricks", ACIDIAN_BRICKS);
         ACIDIAN_PILLAR = new NeutroniaPillarBlock(Material.STONE, "acidian_pillar");
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
         ACIDIAN_BARS = new NeutroniaPaneBlock("acidian_bars", Material.STONE);
@@ -351,7 +353,9 @@ public class NBlocks {
         GOLDEN_APPLE_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "golden_apple_crate");
 
         TREATED_PLANKS = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "treated_planks");
-        TREATED_SIDLING = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "treated_sidling");
+        BlockRegisteringUtils.addSlabAndStair("treated_planks", TREATED_PLANKS);
+        TREATED_SIDING = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "treated_siding");
+        BlockRegisteringUtils.addSlabAndStair("treated_siding", TREATED_SIDING);
 
         POTTED_BEETROOT = new NeutroniaFlowerPotBlock("potted_beetroot", Blocks.BEETROOTS);
         POTTED_CARROTS = new NeutroniaFlowerPotBlock("potted_carrots", Blocks.CARROTS);

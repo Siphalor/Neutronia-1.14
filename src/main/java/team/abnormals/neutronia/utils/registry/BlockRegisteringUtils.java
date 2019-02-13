@@ -10,13 +10,8 @@ public class BlockRegisteringUtils {
     }
 
     public static void addSlabAndStair(String name, Block block, boolean slab, boolean stairs) {
-        String stairsName = name + "_stairs";
-
-        if (stairs)
-            new NeutroniaStairBlock(block.getDefaultState(), stairsName);
-        if (slab) {
-            new NeutroniaSlabBlock(name);
-        }
+        if (stairs) new NeutroniaStairBlock(block.getDefaultState(), name);
+        if (slab) new NeutroniaSlabBlock(name);
     }
 
     public static void addFenceAndGate(String name, Block block) {
