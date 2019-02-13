@@ -1,8 +1,10 @@
 package team.abnormals.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.entity.Entity;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import team.abnormals.neutronia.init.NDamageSources;
@@ -10,7 +12,7 @@ import team.abnormals.neutronia.init.NDamageSources;
 public class CactusBundleBlock extends NeutroniaPillarBlock {
 
     public CactusBundleBlock() {
-        super(Material.CACTUS, "cactus_bundle");
+        super(FabricBlockSettings.of(Material.CACTUS).sounds(BlockSoundGroup.GRASS).breakInstantly().build(), "cactus_bundle");
     }
 
     /**

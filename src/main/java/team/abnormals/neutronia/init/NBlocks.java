@@ -6,6 +6,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
+import net.minecraft.sound.BlockSoundGroup;
 import team.abnormals.neutronia.blocks.*;
 import team.abnormals.neutronia.blocks.melons.MelOLanternBlock;
 import team.abnormals.neutronia.blocks.melons.MelonBlock;
@@ -332,25 +333,25 @@ public class NBlocks {
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
         ACIDIAN_BARS = new NeutroniaPaneBlock("acidian_bars", Material.STONE);
 
-        STICK_BUNDLE = new NeutroniaPillarBlock(Material.WOOD, "stick_bundle");
-        CHORUS_BUNDLE = new NeutroniaPillarBlock(Material.PLANT, "chorus_bundle");
-        SUGAR_CANE_BUNDLE = new NeutroniaPillarBlock(Material.PLANT, "sugar_cane_bundle");
-        BAMBOO_BUNDLE = new NeutroniaPillarBlock(Material.PLANT, "bamboo_bundle");
+        STICK_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "stick_bundle");
+        CHORUS_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP).build(), "chorus_bundle");
+        SUGAR_CANE_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP).build(), "sugar_cane_bundle");
+        BAMBOO_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.BAMBOO).sounds(BlockSoundGroup.BAMBOO).build(), "bamboo_bundle");
         CACTUS_BUNDLE = new CactusBundleBlock();
 
-        NETHER_WART_SACK = new NeutroniaPillarBlock(Material.WOOL, "nether_wart_sack");
-        COCOA_BEAN_SACK = new NeutroniaPillarBlock(Material.WOOL, "cocoa_bean_sack");
-        GUNPOWDER_SACK = new NeutroniaPillarBlock(Material.WOOL, "gunpowder_sack");
+        NETHER_WART_SACK = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).build(), "nether_wart_sack");
+        COCOA_BEAN_SACK = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).build(), "cocoa_bean_sack");
+        GUNPOWDER_SACK = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).build(), "gunpowder_sack");
 
-        EGG_CRATE = new NeutroniaPillarBlock(Material.WOOD, "egg_crate");
-        BEETROOT_CRATE = new NeutroniaPillarBlock(Material.WOOD, "beetroot_crate");
-        POTATO_CRATE = new NeutroniaPillarBlock(Material.WOOD, "potato_crate");
-        CARROT_CRATE = new NeutroniaPillarBlock(Material.WOOD, "carrot_crate");
-        APPLE_CRATE = new NeutroniaPillarBlock(Material.WOOD, "apple_crate");
-        GOLDEN_APPLE_CRATE = new NeutroniaPillarBlock(Material.WOOD, "golden_apple_crate");
+        EGG_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "egg_crate");
+        BEETROOT_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "beetroot_crate");
+        POTATO_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "potato_crate");
+        CARROT_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "carrot_crate");
+        APPLE_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "apple_crate");
+        GOLDEN_APPLE_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "golden_apple_crate");
 
-        TREATED_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "treated_planks");
-        TREATED_SIDLING = new NeutroniaBaseBlock(Material.WOOD, "treated_sidling");
+        TREATED_PLANKS = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "treated_planks");
+        TREATED_SIDLING = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "treated_sidling");
 
         POTTED_BEETROOT = new NeutroniaFlowerPotBlock("potted_beetroot", Blocks.BEETROOTS);
         POTTED_CARROTS = new NeutroniaFlowerPotBlock("potted_carrots", Blocks.CARROTS);

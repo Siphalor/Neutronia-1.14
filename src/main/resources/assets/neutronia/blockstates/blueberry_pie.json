@@ -1,8 +1,8 @@
 {
   "variants": {
-    "bites=0": { "model": "block/cake" },
-    "bites=1": { "model": "block/cake_slice1" },
-    "bites=2": { "model": "block/cake_slice2" },
-    "bites=3": { "model": "block/cake_slice3" }
+    "bites=0": { "model": "neutronia:block/blueberry_pie" },
+    "bites=1": { "model": "neutronia:block/blueberry_pie_eat_1" },
+    "bites=2": { "model": "neutronia:block/blueberry_pie_eat_2" },
+    "bites=3": { "model": "neutronia:block/blueberry_pie_eat_3" }
   }
 }
