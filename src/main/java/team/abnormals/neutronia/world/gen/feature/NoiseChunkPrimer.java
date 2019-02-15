@@ -1,9 +1,8 @@
 package team.abnormals.neutronia.world.gen.feature;
 
 import net.minecraft.block.BlockState;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.world.chunk.ChunkPrimer;
-import net.minecraft.world.gen.ChunkRandom;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.ChunkRegion;
 
 public class NoiseChunkPrimer {
     private final int horizontalGranularity;
@@ -19,7 +18,7 @@ public class NoiseChunkPrimer {
         this.noiseHeight = noiseHeight;
     }
 
-    public void primeChunk(ChunkRandom primer, double[] sampledNoise, Handler handler) {
+    public void primeChunk(ChunkRegion primer, double[] sampledNoise, Handler handler) {
         int sampleWidth = this.noiseWidth + 1;
         int sampleHeight = this.noiseHeight + 1;
 
@@ -63,7 +62,7 @@ public class NoiseChunkPrimer {
                                 int blockZ = noiseZ * this.horizontalGranularity + localZ;
                                 BlockState state = handler.getState(density, blockX, blockY, blockZ);
                                 if (state != null) {
-                                    primer.setBlockState(blockX, blockY, blockZ, state);
+                                    primer.setBlockState(new BlockPos(blockX, blockY, blockZ), state, 2);
                                 }
                                 density += densityStep;
                             }
