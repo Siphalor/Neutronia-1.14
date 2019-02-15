@@ -1,3 +1,4 @@
+/*
 package team.abnormals.neutronia.world.gen.feature;
 
 import net.minecraft.block.BlockState;
@@ -63,7 +64,7 @@ public class NoiseChunkPrimer {
                                 int blockZ = noiseZ * this.horizontalGranularity + localZ;
                                 BlockState state = handler.getState(density, blockX, blockY, blockZ);
                                 if (state != null) {
-                                    primer.setBlockState(blockX, blockY, blockZ, state);
+                                    primer.(blockX, blockY, blockZ, state);
                                 }
                                 density += densityStep;
                             }
@@ -85,4 +86,4 @@ public class NoiseChunkPrimer {
     public interface Handler {
         BlockState getState(double density, int x, int y, int z);
     }
-}
+}*/
