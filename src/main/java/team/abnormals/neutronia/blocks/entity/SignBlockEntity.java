@@ -4,7 +4,7 @@ import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.entity.BlockEntity;
-import net.minecraft.client.network.packet.BlockEntityUpdateClientPacket;
+import net.minecraft.client.network.packet.BlockEntityUpdateS2CPacket;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.command.CommandOutput;
@@ -95,8 +95,8 @@ public class SignBlockEntity extends BlockEntity {
         return this.textBeingEdited[int_1];
     }
 
-    public BlockEntityUpdateClientPacket toUpdatePacket() {
-        return new BlockEntityUpdateClientPacket(this.pos, 9, this.toInitialChunkDataTag());
+    public BlockEntityUpdateS2CPacket toUpdatePacket() {
+        return new BlockEntityUpdateS2CPacket(this.pos, 9, this.toInitialChunkDataTag());
     }
 
     public CompoundTag toInitialChunkDataTag() {

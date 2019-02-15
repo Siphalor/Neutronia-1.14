@@ -10,7 +10,7 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.resource.language.I18n;
 import net.minecraft.client.util.SelectionManager;
-import net.minecraft.server.network.packet.UpdateSignServerPacket;
+import net.minecraft.server.network.packet.UpdateSignC2SPacket;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.text.StringTextComponent;
 import team.abnormals.neutronia.blocks.NeutroniaSignBlock;
@@ -43,7 +43,7 @@ public class EditSignScreen extends Screen {
         this.client.keyboard.enableRepeatEvents(false);
         ClientPlayNetworkHandler clientPlayNetworkHandler_1 = this.client.getNetworkHandler();
         if (clientPlayNetworkHandler_1 != null) {
-            clientPlayNetworkHandler_1.sendPacket(new UpdateSignServerPacket(this.sign.getPos(), this.sign.getTextOnRow(0), this.sign.getTextOnRow(1), this.sign.getTextOnRow(2), this.sign.getTextOnRow(3)));
+            clientPlayNetworkHandler_1.sendPacket(new UpdateSignC2SPacket(this.sign.getPos(), this.sign.getTextOnRow(0), this.sign.getTextOnRow(1), this.sign.getTextOnRow(2), this.sign.getTextOnRow(3)));
         }
 
         this.sign.setEditable(true);

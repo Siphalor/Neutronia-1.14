@@ -33,7 +33,7 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
         return "Pillager_Mansion";
     }
 
-    public int method_14021() {
+    public int getRadius() {
         return 3;
     }
 
@@ -42,7 +42,7 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
     }
 
     public boolean shouldStartAt(ChunkGenerator<?> chunkGenerator_1, Random random_1, int int_1, int int_2) {
-        ChunkPos chunkPos_1 = this.method_14018(chunkGenerator_1, random_1, int_1, int_2, 0, 0);
+        ChunkPos chunkPos_1 = this.getStart(chunkGenerator_1, random_1, int_1, int_2, 0, 0);
         if (int_1 == chunkPos_1.x && int_2 == chunkPos_1.z) {
             int int_3 = int_1 >> 4;
             int int_4 = int_2 >> 4;
@@ -60,10 +60,10 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
     }
 
     public StructureFeature.StructureStartFactory getStructureStartFactory() {
-        return net.minecraft.world.gen.feature.PillagerOutpostFeature.class_3771::new;
+        return class_3771::new;
     }
 
-    protected int method_13774() {
+    protected int getSeedModifier() {
         return 165745296;
     }
 

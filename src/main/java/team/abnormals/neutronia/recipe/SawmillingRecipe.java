@@ -21,7 +21,7 @@ public class SawmillingRecipe extends class_3972 {
     }
 
     public boolean matches(Inventory inventory_1, World world_1) {
-        return this.input.matches(inventory_1.getInvStack(0));
+        return this.field_17642.matches(inventory_1.getInvStack(0));
     }
 
     public static class Serilizer<T extends SawmillingRecipe> implements RecipeSerializer<SawmillingRecipe> {
@@ -58,9 +58,9 @@ public class SawmillingRecipe extends class_3972 {
 
         @Override
         public void write(PacketByteBuf var1, SawmillingRecipe var2) {
-            var1.writeString(var2.group);
-            var2.input.write(var1);
-            var1.writeItemStack(var2.output);
+            var1.writeString(var2.field_17645);
+            var2.field_17642.write(var1);
+            var1.writeItemStack(var2.field_17643);
         }
 
         public interface RecipeFactory<T extends SawmillingRecipe> {

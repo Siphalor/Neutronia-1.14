@@ -1,3 +1,4 @@
+/*
 package team.abnormals.neutronia.world.gen.feature;
 
 import net.minecraft.block.BlockState;
@@ -84,4 +85,4 @@ public class NoiseChunkPrimer {
     public interface Handler {
         BlockState getState(double density, int x, int y, int z);
     }
-}
+}*/

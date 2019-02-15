@@ -16,7 +16,7 @@ public abstract class MixinMinecraftClient {
         LoadingProgressImpl.INSTANCE.pushTask().withTaskName("Loading models");
     }
 
-    @Inject(method = "init()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ReloadableResourceManager;addListener(Lnet/minecraft/resource/ResourceReloadListener;)V", ordinal = 6, shift = Shift.AFTER))
+    @Inject(method = "init()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/resource/ReloadableResourceManager;registerListener(Lnet/minecraft/resource/ResourceReloadListener;)V", ordinal = 6, shift = Shift.AFTER))
     void onModelLoadEnd(CallbackInfo ci) {
         LoadingProgressImpl.INSTANCE.popTask();
     }
