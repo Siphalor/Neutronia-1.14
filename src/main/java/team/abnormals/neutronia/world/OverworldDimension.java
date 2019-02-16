@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.world.dimension;
+package team.abnormals.neutronia.world;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -25,18 +25,18 @@ import net.minecraft.world.chunk.WorldChunk;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.Heightmap;
+import net.minecraft.world.gen.chunk.OverworldChunkGenerator;
+import net.minecraft.world.gen.chunk.OverworldChunkGeneratorConfig;
 import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.level.LevelGeneratorType;
-import team.abnormals.neutronia.world.WorldAether;
 
 public class OverworldDimension extends Dimension {
-
    public OverworldDimension(World world_1, DimensionType dimensionType_1) {
       super(world_1, dimensionType_1);
    }
 
    public DimensionType getType() {
-      return WorldAether.OVERWORLD;
+      return DimensionType.OVERWORLD;
    }
 
    public ChunkGenerator<? extends ChunkGeneratorConfig> createChunkGenerator() {

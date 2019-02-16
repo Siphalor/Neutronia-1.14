@@ -9,7 +9,8 @@
     "block.MixinScaffoldingBlock",
     "block.MixinTrapdoorBlock",
     "block.MixinVineBlock",
-    "entity.MixinLivingEntity"
+    "entity.MixinLivingEntity",
+    "generationRelated.CommonMixinOverworldDimension"
   ],
   "injectors": {
     "defaultRequire": 1

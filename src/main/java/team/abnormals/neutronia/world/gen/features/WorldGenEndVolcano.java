@@ -9,7 +9,7 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import team.abnormals.neutronia.utils.FastNoise;
+import team.abnormals.neutronia.utils.FastNoiseAlt;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +21,7 @@ public class WorldGenEndVolcano extends Feature<DefaultFeatureConfig> {
 	private final BlockState volcMainState;
 	private final BlockState volcSecondaryState;
 	private final BlockState volcLiquid;
-	private final FastNoise perlin;
+	private final FastNoiseAlt perlin;
 	private final static BlockState AIR = Blocks.AIR.getDefaultState();
 	
 	public WorldGenEndVolcano(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1, BlockState mainBlock, BlockState subBlock, BlockState liquid) {
@@ -29,8 +29,8 @@ public class WorldGenEndVolcano extends Feature<DefaultFeatureConfig> {
 		this.volcMainState = mainBlock;
 		this.volcSecondaryState = subBlock;
 		this.volcLiquid = liquid;
-		perlin = new FastNoise();
-		perlin.SetNoiseType(FastNoise.NoiseType.Perlin);
+		perlin = new FastNoiseAlt();
+		perlin.SetNoiseType(FastNoiseAlt.NoiseType.Perlin);
 		perlin.SetFrequency(0.1F);
 	}
 
