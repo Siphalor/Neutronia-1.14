@@ -11,6 +11,7 @@ public class OreGeneration {
         for (Biome biome : Registry.BIOME) {
             biome.addStructureFeature(PILLAGER_MANSION, new PillagerOutpostFeatureConfig(0.4D));
             biome.addStructureFeature(CARTOGRAPHER_CAMP, new PillagerOutpostFeatureConfig(0.4D));
+
         }
     }
 }

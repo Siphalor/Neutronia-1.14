@@ -19,7 +19,7 @@ public class ImprovedOverworldLevelType {
      */
     public static LevelGeneratorType getType(){
         LevelGeneratorType val;
-        int id=7;
+        int id;
         Field types = null;
 
         for(Field f : LevelGeneratorType.class.getDeclaredFields()){
@@ -33,10 +33,10 @@ public class ImprovedOverworldLevelType {
             LOGGER.info("field found");
 
             try {
-                LevelGeneratorType newTypes[] = new LevelGeneratorType[LevelGeneratorType.TYPES.length+1];
+                LevelGeneratorType[] newTypes = new LevelGeneratorType[LevelGeneratorType.TYPES.length + 1];
 
                 System.arraycopy(LevelGeneratorType.TYPES, 0, newTypes, 0, LevelGeneratorType.TYPES.length);
-                newTypes[newTypes.length-1] = null;
+                newTypes[newTypes.length - 1] = null;
 
                 types.setAccessible(true);
                 Field modifies = Field.class.getDeclaredField("modifiers");

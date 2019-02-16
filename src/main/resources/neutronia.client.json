@@ -11,10 +11,7 @@
     "progress.MixinModelLoader",
     "progress.MixinSpriteAtlasTexture",
     "progress.MixinTextureStitcher",
-    "MixinGameRenderer",
-    "MixinClientBrandRetriever",
-    "generationRelated.ClientMixinWorld",
-    "generationRelated.ClientMixinNewWorldGui"
+    "MixinClientBrandRetriever"
   ],
   "injectors": {
     "defaultRequire": 1
