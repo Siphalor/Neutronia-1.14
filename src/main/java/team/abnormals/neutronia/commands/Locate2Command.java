@@ -21,7 +21,7 @@ public class Locate2Command {
         var0.register((ServerCommandManager.literal("locate2").requires((var0x) ->
                 var0x.hasPermissionLevel(2)
         )).then(ServerCommandManager.literal("Pillager_Mansion").executes((var0x) ->
-                method_13457(var0x.getSource(), "Pillager_Mansion")
+                method_13457(var0x.getSource(), "neutronia:pillager_mansion")
         )));
     }
 

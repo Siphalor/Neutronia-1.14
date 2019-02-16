@@ -9,8 +9,8 @@ import team.abnormals.neutronia.world.gen.features.PillagerOutpostFeatureConfig;
 
 public class NFeatures {
 
-    public static final StructureFeature<PillagerOutpostFeatureConfig> PILLAGER_MANSION = register("pillager_mansion", new PillagerOutpostFeature(PillagerOutpostFeatureConfig::deserialize));
-    public static final StructureFeature<PillagerOutpostFeatureConfig> CARTOGRAPHER_CAMP = register("cartographer_camp", new PillagerOutpostFeature(PillagerOutpostFeatureConfig::deserialize));
+    public static final StructureFeature<PillagerOutpostFeatureConfig> PILLAGER_MANSION = register("pillager_mansion", new PillagerOutpostFeature());
+    public static final StructureFeature<PillagerOutpostFeatureConfig> CARTOGRAPHER_CAMP = register("cartographer_camp", new PillagerOutpostFeature());
 
     static {
         Feature.STRUCTURES.put("Pillager_Mansion", PILLAGER_MANSION);

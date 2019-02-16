@@ -35,8 +35,8 @@ dependencies {
     mappings   "net.fabricmc:yarn:${yarnVersion}"
     modCompile "net.fabricmc:fabric-loader:${fabricLoaderVersion}"
     modCompile "mcp.mobius.waila:Hwyla:1.14-+"
-    modCompile "com.github.shedaniel:RoughlyEnoughItems:2.2.0.50"
-    modCompile "prospector.modmenu:ModMenu:1.0.0-+"
+    modCompile "com.github.shedaniel:RoughlyEnoughItems:2.+"
+    modCompile "io.github.prospector.modmenu:ModMenu:1.+"
     modCompile "info.tehnut.pluginloader:plugin-loader:1.14-+"
 
     // Fabric API. This is technically optional, but you probably want it anyway.

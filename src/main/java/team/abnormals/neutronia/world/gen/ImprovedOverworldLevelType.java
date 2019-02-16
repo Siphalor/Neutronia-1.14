@@ -63,7 +63,6 @@ public class ImprovedOverworldLevelType {
             c.setAccessible(true);
             LOGGER.info("Level Type Constructor Found");
             val = c.newInstance(id, "improved_overworld");
-            val.setCustomizable(true);
         } catch (Exception e) {
             LOGGER.error("Unable to get and call LevelGeneratorType Constructor",e);
             return null;

@@ -1,7 +1,6 @@
 package team.abnormals.neutronia.world.gen.features;
 
 import com.google.common.collect.Lists;
-import com.mojang.datafixers.Dynamic;
 import net.minecraft.entity.EntityType;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructureStart;
@@ -16,7 +15,6 @@ import team.abnormals.neutronia.init.NFeatures;
 
 import java.util.List;
 import java.util.Random;
-import java.util.function.Function;
 
 public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpostFeatureConfig> {
     private static final List<Biome.SpawnEntry> field_16656;
@@ -25,8 +23,8 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
         field_16656 = Lists.newArrayList(new Biome.SpawnEntry(EntityType.PILLAGER, 1, 1, 1));
     }
 
-    public PillagerOutpostFeature(Function<Dynamic<?>, ? extends PillagerOutpostFeatureConfig> function_1) {
-        super(function_1);
+    public PillagerOutpostFeature() {
+        super(PillagerOutpostFeatureConfig::deserialize);
     }
 
     public String getName() {

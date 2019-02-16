@@ -54,7 +54,7 @@ public class OverworldDimension extends Dimension {
          FixedBiomeSourceConfig fixedBiomeSourceConfig_1 = biomeSourceType_1.getConfig().setBiome(flatChunkGeneratorConfig_1.getBiome());
          return chunkGeneratorType_1.create(this.world, biomeSourceType_1.applyConfig(fixedBiomeSourceConfig_1), flatChunkGeneratorConfig_1);
       } else if (levelGeneratorType_1 == LevelGeneratorType.DEBUG_ALL_BLOCK_STATES) {
-         FixedBiomeSourceConfig fixedBiomeSourceConfig_2 = biomeSourceType_1.getConfig().setBiome(Biomes.biome);
+         FixedBiomeSourceConfig fixedBiomeSourceConfig_2 = biomeSourceType_1.getConfig().setBiome(Biomes.DEFAULT);
          return chunkGeneratorType_2.create(this.world, biomeSourceType_1.applyConfig(fixedBiomeSourceConfig_2), chunkGeneratorType_2.createSettings());
       } else if (levelGeneratorType_1 != LevelGeneratorType.BUFFET) {
          OverworldChunkGeneratorConfig overworldChunkGeneratorConfig_2 = chunkGeneratorType_5.createSettings();

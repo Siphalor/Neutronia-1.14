@@ -6,7 +6,8 @@
   "side": "universal",
   "initializers": [
     "team.abnormals.neutronia.Neutronia",
-    "team.abnormals.neutronia.client.ClientInit"
+    "team.abnormals.neutronia.client.ClientInit",
+    "team.abnormals.test.ExampleMod"
   ],
   "requires": {
     "fabric": "*"

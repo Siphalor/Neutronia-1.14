@@ -1,14 +1,25 @@
 package team.abnormals.neutronia;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.mojang.datafixers.Dynamic;
+import com.mojang.datafixers.types.JsonOps;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.CommandRegistry;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
+import net.minecraft.datafixers.NbtOps;
+import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.source.BiomeSource;
-import net.minecraft.world.gen.ProbabilityConfig;
+import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
+import net.minecraft.world.biome.source.*;
 import net.minecraft.world.gen.carver.Carver;
 import net.minecraft.world.gen.carver.CarverConfig;
-import net.minecraft.world.gen.chunk.ChunkGeneratorType;
+import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.level.LevelGeneratorType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,7 +30,10 @@ import team.abnormals.neutronia.world.OverworldChunkGeneratorConfig;
 import team.abnormals.neutronia.world.gen.ImprovedOverworldLevelType;
 import team.abnormals.neutronia.world.gen.features.OreGeneration;
 
-import java.lang.reflect.*;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.function.Supplier;
 
 public class Neutronia implements ModInitializer {
@@ -46,20 +60,6 @@ public class Neutronia implements ModInitializer {
         NRecipeSerializers.init();
         OreGeneration.registerOres();
         NRecipes.init();
-
-        final Field fieldA;
-        try {
-            fieldA = Carver.class.getDeclaredField( "CAVE" );
-            fieldA.setAccessible(true);
-
-            Field modifiersField = Field.class.getDeclaredField( "modifiers" );
-            modifiersField.setAccessible( true );
-            modifiersField.setInt( fieldA, fieldA.getModifiers() & ~Modifier.FINAL );
-
-            fieldA.set(null, register("cave", new team.abnormals.neutronia.world.gen.carver.CaveCarver(ProbabilityConfig::deserialize, 256)));
-        } catch (ReflectiveOperationException e) {
-            e.printStackTrace();
-        }
     }
 
     private static <C extends CarverConfig, F extends Carver<C>> F register(String string_1, F carver_1) {
@@ -105,6 +105,90 @@ public class Neutronia implements ModInitializer {
             return new OverworldChunkGenerator(w,biomesource,gensettings);
         }
 
+        public ChunkGenerator<? extends ChunkGeneratorConfig> createGenerator(World world) {
+            ChunkGeneratorType<CavesChunkGeneratorConfig, CavesChunkGenerator> chunkGeneratorType_3 = ChunkGeneratorType.CAVES;
+            ChunkGeneratorType<FloatingIslandsChunkGeneratorConfig, FloatingIslandsChunkGenerator> chunkGeneratorType_4 = ChunkGeneratorType.FLOATING_ISLANDS;
+            ChunkGeneratorType<OverworldChunkGeneratorConfig, OverworldChunkGenerator> chunkGeneratorType_5 = getChunkGeneratorType(OverworldChunkGeneratorConfig::new);
+            BiomeSourceType<FixedBiomeSourceConfig, FixedBiomeSource> biomeSourceType_1 = BiomeSourceType.FIXED;
+            BiomeSourceType<VanillaLayeredBiomeSourceConfig, VanillaLayeredBiomeSource> biomeSourceType_2 = BiomeSourceType.VANILLA_LAYERED;
+            BiomeSourceType<CheckerboardBiomeSourceConfig, CheckerboardBiomeSource> biomeSourceType_3 = BiomeSourceType.CHECKERBOARD;
+
+            BiomeSource biomeSource_1 = null;
+            JsonElement jsonElement_1 = Dynamic.convert(NbtOps.INSTANCE, JsonOps.INSTANCE, world.getLevelProperties().getGeneratorOptions());
+            JsonObject jsonObject_1 = jsonElement_1.getAsJsonObject();
+            if (jsonObject_1.has("biome_source") && jsonObject_1.getAsJsonObject("biome_source").has("type") && jsonObject_1.getAsJsonObject("biome_source").has("options")) {
+                BiomeSourceType<?, ?> biomeSourceType_4 = Registry.BIOME_SOURCE_TYPE.get(new Identifier(jsonObject_1.getAsJsonObject("biome_source").getAsJsonPrimitive("type").getAsString()));
+                JsonObject jsonObject_2 = jsonObject_1.getAsJsonObject("biome_source").getAsJsonObject("options");
+                Biome[] biomes_1 = new Biome[]{Biomes.OCEAN};
+                if (jsonObject_2.has("biomes")) {
+                    JsonArray jsonArray_1 = jsonObject_2.getAsJsonArray("biomes");
+                    biomes_1 = jsonArray_1.size() > 0 ? new Biome[jsonArray_1.size()] : new Biome[]{Biomes.OCEAN};
+
+                    for(int int_1 = 0; int_1 < jsonArray_1.size(); ++int_1) {
+                        biomes_1[int_1] = Registry.BIOME.getOptional(new Identifier(jsonArray_1.get(int_1).getAsString())).orElse(Biomes.OCEAN);
+                    }
+                }
+
+                if (BiomeSourceType.FIXED == biomeSourceType_4) {
+                    FixedBiomeSourceConfig fixedBiomeSourceConfig_3 = biomeSourceType_1.getConfig().setBiome(biomes_1[0]);
+                    biomeSource_1 = biomeSourceType_1.applyConfig(fixedBiomeSourceConfig_3);
+                }
+
+                if (BiomeSourceType.CHECKERBOARD == biomeSourceType_4) {
+                    int int_2 = jsonObject_2.has("size") ? jsonObject_2.getAsJsonPrimitive("size").getAsInt() : 2;
+                    CheckerboardBiomeSourceConfig checkerboardBiomeSourceConfig_1 = biomeSourceType_3.getConfig().method_8777(biomes_1).method_8780(int_2);
+                    biomeSource_1 = biomeSourceType_3.applyConfig(checkerboardBiomeSourceConfig_1);
+                }
+
+                if (BiomeSourceType.VANILLA_LAYERED == biomeSourceType_4) {
+                    VanillaLayeredBiomeSourceConfig vanillaLayeredBiomeSourceConfig_1 = biomeSourceType_2.getConfig().setGeneratorSettings(new net.minecraft.world.gen.chunk.OverworldChunkGeneratorConfig()).setLevelProperties(world.getLevelProperties());
+                    biomeSource_1 = biomeSourceType_2.applyConfig(vanillaLayeredBiomeSourceConfig_1);
+                }
+            }
+
+            if (biomeSource_1 == null) {
+                biomeSource_1 = biomeSourceType_1.applyConfig(biomeSourceType_1.getConfig().setBiome(Biomes.OCEAN));
+            }
+
+            BlockState blockState_1 = Blocks.STONE.getDefaultState();
+            BlockState blockState_2 = Blocks.WATER.getDefaultState();
+            if (jsonObject_1.has("chunk_generator") && jsonObject_1.getAsJsonObject("chunk_generator").has("options")) {
+                String string_2;
+                if (jsonObject_1.getAsJsonObject("chunk_generator").getAsJsonObject("options").has("default_block")) {
+                    string_2 = jsonObject_1.getAsJsonObject("chunk_generator").getAsJsonObject("options").getAsJsonPrimitive("default_block").getAsString();
+                    blockState_1 = Registry.BLOCK.get(new Identifier(string_2)).getDefaultState();
+                }
+
+                if (jsonObject_1.getAsJsonObject("chunk_generator").getAsJsonObject("options").has("default_fluid")) {
+                    string_2 = jsonObject_1.getAsJsonObject("chunk_generator").getAsJsonObject("options").getAsJsonPrimitive("default_fluid").getAsString();
+                    blockState_2 = Registry.BLOCK.get(new Identifier(string_2)).getDefaultState();
+                }
+            }
+
+            if (jsonObject_1.has("chunk_generator") && jsonObject_1.getAsJsonObject("chunk_generator").has("type")) {
+                ChunkGeneratorType<?, ?> chunkGeneratorType_6 = Registry.CHUNK_GENERATOR_TYPE.get(new Identifier(jsonObject_1.getAsJsonObject("chunk_generator").getAsJsonPrimitive("type").getAsString()));
+                if (ChunkGeneratorType.CAVES == chunkGeneratorType_6) {
+                    CavesChunkGeneratorConfig cavesChunkGeneratorConfig_1 = chunkGeneratorType_3.createSettings();
+                    cavesChunkGeneratorConfig_1.setDefaultBlock(blockState_1);
+                    cavesChunkGeneratorConfig_1.setDefaultFluid(blockState_2);
+                    return chunkGeneratorType_3.create(world, biomeSource_1, cavesChunkGeneratorConfig_1);
+                }
+
+                if (ChunkGeneratorType.FLOATING_ISLANDS == chunkGeneratorType_6) {
+                    FloatingIslandsChunkGeneratorConfig floatingIslandsChunkGeneratorConfig_1 = chunkGeneratorType_4.createSettings();
+                    floatingIslandsChunkGeneratorConfig_1.withCenter(new BlockPos(0, 64, 0));
+                    floatingIslandsChunkGeneratorConfig_1.setDefaultBlock(blockState_1);
+                    floatingIslandsChunkGeneratorConfig_1.setDefaultFluid(blockState_2);
+                    return chunkGeneratorType_4.create(world, biomeSource_1, floatingIslandsChunkGeneratorConfig_1);
+                }
+            }
+
+            OverworldChunkGeneratorConfig overworldChunkGeneratorConfig_1 = chunkGeneratorType_5.createSettings();
+            overworldChunkGeneratorConfig_1.setDefaultBlock(blockState_1);
+            overworldChunkGeneratorConfig_1.setDefaultFluid(blockState_2);
+            return chunkGeneratorType_5.create(world, biomeSource_1, overworldChunkGeneratorConfig_1);
+        }
+
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) {
             if(args.length == 3 &&
@@ -113,9 +197,7 @@ public class Neutronia implements ModInitializer {
                     args[2] instanceof OverworldChunkGeneratorConfig
             ){
 
-                return createProxy((World)args[0],
-                        (BiomeSource)args[1],
-                        (OverworldChunkGeneratorConfig)args[2]);
+                return createGenerator((World)args[0]);
             }
             throw(new UnsupportedOperationException("Unknown Method: " + method.toString()));
         }
