@@ -26,8 +26,8 @@ public class ExampleMod implements ModInitializer {
 		{
 			if(biome.getCategory() != Biome.Category.OCEAN && biome.getCategory() != Biome.Category.RIVER)
 			{
-				biome.addStructureFeature(pillagerMansionFeature, new PillagerOutpostFeatureConfig(10000000));
-				biome.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(pillagerMansionFeature, new PillagerOutpostFeatureConfig(100), Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(10)));
+				biome.addStructureFeature(pillagerMansionFeature, new PillagerOutpostFeatureConfig(10));
+				biome.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(pillagerMansionFeature, new PillagerOutpostFeatureConfig(10), Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(0)));
 			}
 		}
 
