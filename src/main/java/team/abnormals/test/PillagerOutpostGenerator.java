@@ -18,9 +18,9 @@ import java.util.List;
 
 public class PillagerOutpostGenerator {
     static {
-        StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MODID, "pillager_outpost/base_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_outpost/base_plate"), 1)), StructurePool.Projection.RIGID));
+        StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MODID, "pillager_outpost/base_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_outpost/base_plate"), 1)), StructurePool.Projection.TERRAIN_MATCHING));
         StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MODID, "pillager_outpost/feature_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_plate"), 1)), StructurePool.Projection.TERRAIN_MATCHING));
-        StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MODID, "pillager_outpost/features"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_cage1"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_cage2"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_logs"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_tent1"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_tent2"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_targets"), 1), Pair.of(EmptyPoolElement.INSTANCE, 6)), StructurePool.Projection.RIGID));
+        StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MODID, "pillager_outpost/features"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_cage1"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_cage2"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_logs"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_tent1"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_tent2"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_targets"), 1), Pair.of(EmptyPoolElement.INSTANCE, 6)), StructurePool.Projection.TERRAIN_MATCHING));
     }
 
     public static void addPieces(ChunkGenerator<?> chunkGenerator_1, StructureManager structureManager_1, BlockPos blockPos_1, List<StructurePiece> list_1, ChunkRandom chunkRandom_1) {
@@ -29,11 +29,11 @@ public class PillagerOutpostGenerator {
 
     public static class Piece extends PoolStructurePiece {
         public Piece(StructureManager structureManager_1, StructurePoolElement structurePoolElement_1, BlockPos blockPos_1, int int_1, Rotation rotation_1) {
-            super(ExampleMod.pillagerMansionPieceType, structureManager_1, structurePoolElement_1, blockPos_1, int_1, rotation_1);
+            super(ExampleMod.PILLAGER_MANSION_PIECE, structureManager_1, structurePoolElement_1, blockPos_1, int_1, rotation_1);
         }
 
         public Piece(StructureManager structureManager_1, CompoundTag compoundTag_1) {
-            super(structureManager_1, compoundTag_1, ExampleMod.pillagerMansionPieceType);
+            super(structureManager_1, compoundTag_1, ExampleMod.PILLAGER_MANSION_PIECE);
         }
     }
 }

@@ -8,9 +8,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.village.Villager;
-import net.minecraft.village.VillagerRecipe;
-import net.minecraft.village.VillagerTrades;
+import net.minecraft.village.Trader;
+import net.minecraft.village.TraderRecipe;
+import net.minecraft.village.Trades;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +22,7 @@ class TradeBuilder {
     private static final Logger LOGGER = LogManager.getLogger();
 
     static void createRecipes() {
-        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(ARTIST, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[]{
+        Trades.PROFESSION_TO_LEVELED_TRADE.put(ARTIST, copyToFastUtilMap(ImmutableMap.of(1, new Trades.Factory[]{
                 new BuyItemFactory(new ItemStack(Items.RED_DYE), new PriceRange(18, 22)),
                 new BuyItemFactory(new ItemStack(Items.GREEN_DYE), new PriceRange(18, 22)),
                 new BuyItemFactory(new ItemStack(Items.PURPLE_DYE), new PriceRange(18, 22)),
@@ -58,11 +58,11 @@ class TradeBuilder {
                 new BuyItemFactory(new ItemStack(Items.WHITE_BANNER), new PriceRange(18, 22))
         })));
 
-        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(RECEPTIONIST, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[]{
+        Trades.PROFESSION_TO_LEVELED_TRADE.put(RECEPTIONIST, copyToFastUtilMap(ImmutableMap.of(1, new Trades.Factory[]{
                 new BuyItemFactory(Items.BOOK, new PriceRange(18, 22))
         })));
 
-        VillagerTrades.PROFESSION_TO_LEVELED_TRADE.put(CARPENTER, copyToFastUtilMap(ImmutableMap.of(1, new VillagerTrades.Factory[]{
+        Trades.PROFESSION_TO_LEVELED_TRADE.put(CARPENTER, copyToFastUtilMap(ImmutableMap.of(1, new Trades.Factory[]{
                 new BuyItemFactory(Blocks.ACACIA_PLANKS, new PriceRange(18, 22)),
                 new BuyItemFactory(Blocks.BIRCH_PLANKS, new PriceRange(18, 22)),
                 new BuyItemFactory(Blocks.DARK_OAK_PLANKS, new PriceRange(18, 22)),
@@ -93,7 +93,7 @@ class TradeBuilder {
         })));
     }
 
-    private static Int2ObjectMap<VillagerTrades.Factory[]> copyToFastUtilMap(ImmutableMap<Integer, VillagerTrades.Factory[]> immutableMap_1) {
+    private static Int2ObjectMap<Trades.Factory[]> copyToFastUtilMap(ImmutableMap<Integer, Trades.Factory[]> immutableMap_1) {
         return new Int2ObjectOpenHashMap<>(immutableMap_1);
     }
 
@@ -115,7 +115,7 @@ class TradeBuilder {
         }
     }
 
-    static class BuyItemFactory implements VillagerTrades.Factory {
+    static class BuyItemFactory implements Trades.Factory {
         Item bought;
         PriceRange range;
 
@@ -129,8 +129,8 @@ class TradeBuilder {
             this.range = villagerTrades$PriceRange_1;
         }
 
-        public VillagerRecipe create(Villager villager_1, Random random_1) {
-            return new VillagerRecipe(new ItemStack(Items.EMERALD, this.range == null ? 1 : this.range.getPrice(random_1)), new ItemStack(this.bought));
+        public TraderRecipe create(Trader villager_1, Random random_1) {
+            return new TraderRecipe(new ItemStack(Items.EMERALD, this.range == null ? 1 : this.range.getPrice(random_1)), new ItemStack(this.bought));
         }
     }
 }

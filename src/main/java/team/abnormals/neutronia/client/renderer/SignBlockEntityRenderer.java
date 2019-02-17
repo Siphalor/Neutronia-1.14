@@ -6,7 +6,7 @@ import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.StandingSignBlock;
 import net.minecraft.block.WallSignBlock;
-import net.minecraft.client.font.FontRenderer;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.render.BufferBuilder;
 import net.minecraft.client.render.Tessellator;
@@ -57,7 +57,7 @@ public class SignBlockEntityRenderer extends BlockEntityRenderer<SignBlockEntity
         GlStateManager.scalef(0.6666667F, -0.6666667F, -0.6666667F);
         this.model.render();
         GlStateManager.popMatrix();
-        FontRenderer fontRenderer_1 = this.getFontRenderer();
+        TextRenderer fontRenderer_1 = this.getFontRenderer();
         GlStateManager.translatef(0.0F, 0.33333334F, 0.046666667F);
         GlStateManager.scalef(0.010416667F, -0.010416667F, 0.010416667F);
         GlStateManager.normal3f(0.0F, 0.0F, -0.010416667F);

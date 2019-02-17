@@ -9,7 +9,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.class_3914;
+import net.minecraft.container.BlockContext;
 import net.minecraft.container.Container;
 import net.minecraft.container.Property;
 import net.minecraft.container.Slot;
@@ -40,7 +40,7 @@ public class SawmillContainer extends Container {
     public final PlayerInventory playerInventory;
     final Slot inputSlot;
     final Slot outputSlot;
-    private final class_3914 field_17630;
+    private final BlockContext blockContext_1;
     private final Property selectedRecipe;
     private final World world;
     private List<SawmillingRecipe> availableRecipes;
@@ -49,10 +49,10 @@ public class SawmillContainer extends Container {
     private Runnable contentsChangedListener;
 
     public SawmillContainer(int int_1, PlayerInventory playerInventory_1) {
-        this(int_1, playerInventory_1, class_3914.field_17304);
+        this(int_1, playerInventory_1, BlockContext.field_17304);
     }
 
-    public SawmillContainer(int int_1, PlayerInventory playerInventory_1, final class_3914 class_3914_1) {
+    public SawmillContainer(int int_1, PlayerInventory playerInventory_1, final BlockContext blockContext_1) {
         super(null, int_1);
         this.selectedRecipe = Property.create();
         this.availableRecipes = Lists.newArrayList();
@@ -66,7 +66,7 @@ public class SawmillContainer extends Container {
                 SawmillContainer.this.contentsChangedListener.run();
             }
         };
-        this.field_17630 = class_3914_1;
+        this.blockContext_1 = blockContext_1;
         this.world = playerInventory_1.player.world;
         this.playerInventory = playerInventory_1;
         this.inputSlot = this.addSlot(new Slot(this.inventory, 0, 20, 33));
@@ -82,7 +82,7 @@ public class SawmillContainer extends Container {
                 }
 
                 itemStack_1.getItem().onCrafted(itemStack_1, playerEntity_1.world, playerEntity_1);
-                class_3914_1.method_17393((world_1, blockPos_1) -> {
+                blockContext_1.run((world_1, blockPos_1) -> {
                     long long_1 = world_1.getTime();
                     if (SawmillContainer.this.lastTakeTime != long_1) {
                         world_1.playSound(null, blockPos_1, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundCategory.BLOCK, 1.0F, 1.0F);
@@ -129,7 +129,7 @@ public class SawmillContainer extends Container {
     }
 
     public boolean canUse(PlayerEntity playerEntity_1) {
-        return canUse(this.field_17630, playerEntity_1, NBlocks.SAWMILL);
+        return canUse(this.blockContext_1, playerEntity_1, NBlocks.SAWMILL);
     }
 
     public boolean onButtonClick(PlayerEntity playerEntity_1, int int_1) {
@@ -225,7 +225,7 @@ public class SawmillContainer extends Container {
     public void close(PlayerEntity playerEntity_1) {
         super.close(playerEntity_1);
         this.inventory.removeInvStack(1);
-        this.field_17630.method_17393((world_1, blockPos_1) -> {
+        this.blockContext_1.run((world_1, blockPos_1) -> {
             this.dropInventory(playerEntity_1, playerEntity_1.world, this.inventory);
         });
     }

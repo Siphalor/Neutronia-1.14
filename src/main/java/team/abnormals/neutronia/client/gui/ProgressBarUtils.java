@@ -1,6 +1,6 @@
 package team.abnormals.neutronia.client.gui;
 
-import net.minecraft.client.font.FontRenderer;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.util.math.MathHelper;
 import org.apache.commons.lang3.StringUtils;
 
@@ -38,7 +38,7 @@ public class ProgressBarUtils {
         glEnd();
     }
 
-    public static void renderMemoryBar(FontRenderer fontRenderer, int xMin, int yMin, int xMax, int yMax, float fadeAmount) {
+    public static void renderMemoryBar(TextRenderer fontRenderer, int xMin, int yMin, int xMax, int yMax, float fadeAmount) {
         int maxMemory = bytesToMb(Runtime.getRuntime().maxMemory());
         int totalMemory = bytesToMb(Runtime.getRuntime().totalMemory());
         int freeMemory = bytesToMb(Runtime.getRuntime().freeMemory());

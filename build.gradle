@@ -1,25 +1,14 @@
 plugins {
 	id 'fabric-loom' version '0.2.0-SNAPSHOT'
-    id 'java'
-    id 'maven'
+	id 'maven-publish'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = "neutronia"
-version = "0.0.2"
-def minecraftVersion = "19w07a"
-def yarnVersion = "19w07a.+"
-def fabricVersion = "0.2.1.94"
-def fabricLoaderVersion = "0.3.5.+"
-
-processResources {
-    filesMatching('fabric.mod.json') {
-        expand 'version': project.version
-    }
-    inputs.property "version", project.version
-}
+archivesBaseName = project.archives_base_name
+version = project.version
+group = project.maven_group
 
 minecraft {
 }
@@ -27,18 +16,58 @@ minecraft {
 repositories {
     maven { url "https://jitpack.io" }
     maven { url "https://tehnut.info/maven" }
-    maven { url "https://maven.modmuss50.me" }
+    maven { url "https://maven.fabricmc.net" }
 }
 
 dependencies {
-    minecraft  "com.mojang:minecraft:${minecraftVersion}"
-    mappings   "net.fabricmc:yarn:${yarnVersion}"
-    modCompile "net.fabricmc:fabric-loader:${fabricLoaderVersion}"
-    modCompile "mcp.mobius.waila:Hwyla:1.14-+"
-    modCompile "com.github.shedaniel:RoughlyEnoughItems:2.+"
-    modCompile "io.github.prospector.modmenu:ModMenu:1.+"
-    modCompile "info.tehnut.pluginloader:plugin-loader:1.14-+"
+    minecraft  "com.mojang:minecraft:${project.minecraft_version}"
+    mappings   "net.fabricmc:yarn:${project.yarn_mappings}"
+    modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 
-    // Fabric API. This is technically optional, but you probably want it anyway.
-    modCompile "net.fabricmc:fabric:${fabricVersion}"
+    modCompile "mcp.mobius.waila:Hwyla:${project.full_mc_version}-${project.newest_version}"
+    modCompile "com.github.shedaniel:RoughlyEnoughItems:2.${project.newest_version}"
+    modCompile "io.github.prospector.modmenu:ModMenu:1.${project.newest_version}"
+    modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
+    
+    modCompile "net.fabricmc:fabric:${project.fabric_version}"
+}
+
+processResources {
+	inputs.property "version", project.version
+	from(sourceSets.main.resources.srcDirs) {
+		include "fabric.mod.json"
+		expand "version": project.version
+	}
+	from(sourceSets.main.resources.srcDirs) {
+		exclude "fabric.mod.json"
+	}
+}
+
+tasks.withType(JavaCompile) {
+	options.encoding = "UTF-8"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+	classifier = "sources"
+	from sourceSets.main.allSource
+}
+
+jar {
+	from "LICENSE"
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			artifact(jar) {
+				builtBy remapJar
+			}
+			artifact(sourcesJar) {
+				builtBy remapSourcesJar
+			}
+		}
+	}
+	repositories {
+		mavenLocal()
+	}
 }

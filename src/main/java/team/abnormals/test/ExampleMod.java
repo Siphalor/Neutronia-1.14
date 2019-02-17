@@ -14,20 +14,20 @@ import team.abnormals.neutronia.Neutronia;
 
 public class ExampleMod implements ModInitializer {
 
-	public static final StructurePieceType pillagerMansionPieceType = Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Neutronia.MODID, "pillager_mansion_piece"), PillagerOutpostGenerator.Piece::new);
-	public static final StructureFeature<PillagerOutpostFeatureConfig> pillagerMansionFeature = Registry.register(Registry.FEATURE, new Identifier(Neutronia.MODID, "pillager_mansion_feature"), new PillagerOutpostFeature());
-	public static final StructureFeature<?> pillagerMansion = Registry.register(Registry.STRUCTURE_FEATURE, new Identifier(Neutronia.MODID, "pillager_mansion"), pillagerMansionFeature);
+	public static final StructurePieceType PILLAGER_MANSION_PIECE = Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Neutronia.MODID, "pillager_mansion_piece"), PillagerOutpostGenerator.Piece::new);
+	public static final StructureFeature<PillagerOutpostFeatureConfig> PILLAGER_MANSION_FEATURE = Registry.register(Registry.FEATURE, new Identifier(Neutronia.MODID, "pillager_mansion_feature"), new PillagerOutpostFeature());
+	public static final StructureFeature<?> PILLAGER_MANSION = Registry.register(Registry.STRUCTURE_FEATURE, new Identifier(Neutronia.MODID, "pillager_mansion"), PILLAGER_MANSION_FEATURE);
 
 	@Override
 	public void onInitialize() {
-		Feature.STRUCTURES.put("Pillager_Mansion", pillagerMansionFeature);
+		Feature.STRUCTURES.put("Pillager_Mansion", PILLAGER_MANSION_FEATURE);
 
 		for(Biome biome : Registry.BIOME)
 		{
 			if(biome.getCategory() != Biome.Category.OCEAN && biome.getCategory() != Biome.Category.RIVER)
 			{
-				biome.addStructureFeature(pillagerMansionFeature, new PillagerOutpostFeatureConfig(10));
-				biome.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(pillagerMansionFeature, new PillagerOutpostFeatureConfig(10), Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(0)));
+				biome.addStructureFeature(PILLAGER_MANSION_FEATURE, new PillagerOutpostFeatureConfig(10000000));
+				biome.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(PILLAGER_MANSION_FEATURE, new PillagerOutpostFeatureConfig(10000000), Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(0)));
 			}
 		}
 

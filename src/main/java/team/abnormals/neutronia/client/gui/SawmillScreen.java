@@ -31,7 +31,7 @@ public class SawmillScreen extends ContainerScreen<SawmillContainer> {
 
     public void draw(int int_1, int int_2, float float_1) {
         super.draw(int_1, int_2, float_1);
-        this.drawMousoverTooltip(int_1, int_2);
+        this.drawMouseoverTooltip(int_1, int_2);
     }
 
     protected void drawForeground(int int_1, int int_2) {

@@ -3,8 +3,8 @@ package team.abnormals.neutronia.blocks;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.minecraft.block.*;
-import net.minecraft.class_3914;
 import net.minecraft.client.network.ClientDummyContainerProvider;
+import net.minecraft.container.BlockContext;
 import net.minecraft.container.NameableContainerProvider;
 import net.minecraft.entity.VerticalEntityPosition;
 import net.minecraft.entity.player.PlayerEntity;
@@ -50,7 +50,7 @@ public class SawmillBlock extends NeutroniaBaseBlock {
     }
 
     public NameableContainerProvider createContainerProvider(BlockState blockState_1, World world_1, BlockPos blockPos_1) {
-        return new ClientDummyContainerProvider((int_1, playerInventory_1, playerEntity_1) -> new SawmillContainer(int_1, playerInventory_1, class_3914.method_17392(world_1, blockPos_1)), field_17650);
+        return new ClientDummyContainerProvider((int_1, playerInventory_1, playerEntity_1) -> new SawmillContainer(int_1, playerInventory_1, BlockContext.create(world_1, blockPos_1)), field_17650);
     }
 
     public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {

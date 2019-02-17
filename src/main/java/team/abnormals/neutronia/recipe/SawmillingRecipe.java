@@ -1,9 +1,9 @@
 package team.abnormals.neutronia.recipe;
 
 import com.google.gson.JsonObject;
-import net.minecraft.class_3972;
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.recipe.CuttingRecipe;
 import net.minecraft.recipe.Ingredient;
 import net.minecraft.recipe.RecipeSerializer;
 import net.minecraft.util.Identifier;
@@ -14,14 +14,14 @@ import net.minecraft.world.World;
 import team.abnormals.neutronia.init.NRecipeSerializers;
 import team.abnormals.neutronia.init.NRecipeType;
 
-public class SawmillingRecipe extends class_3972 {
+public class SawmillingRecipe extends CuttingRecipe {
 
     public SawmillingRecipe(Identifier identifier_1, String string_1, Ingredient ingredient_1, ItemStack itemStack_1) {
         super(NRecipeType.SAWMILLING, NRecipeSerializers.SAWMILLING, identifier_1, string_1, ingredient_1, itemStack_1);
     }
 
     public boolean matches(Inventory inventory_1, World world_1) {
-        return this.field_17642.matches(inventory_1.getInvStack(0));
+        return this.ingredient.matches(inventory_1.getInvStack(0));
     }
 
     public static class Serilizer<T extends SawmillingRecipe> implements RecipeSerializer<SawmillingRecipe> {
@@ -58,9 +58,9 @@ public class SawmillingRecipe extends class_3972 {
 
         @Override
         public void write(PacketByteBuf var1, SawmillingRecipe var2) {
-            var1.writeString(var2.field_17645);
-            var2.field_17642.write(var1);
-            var1.writeItemStack(var2.field_17643);
+            var1.writeString(var2.group);
+            var2.ingredient.write(var1);
+            var1.writeItemStack(var2.result);
         }
 
         public interface RecipeFactory<T extends SawmillingRecipe> {

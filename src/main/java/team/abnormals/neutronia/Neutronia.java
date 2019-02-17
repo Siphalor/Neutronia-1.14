@@ -60,6 +60,7 @@ public class Neutronia implements ModInitializer {
         NRecipeSerializers.init();
         OreGeneration.registerOres();
         NRecipes.init();
+        new NPaintingMotives();
     }
 
     private static <C extends CarverConfig, F extends Carver<C>> F register(String string_1, F carver_1) {

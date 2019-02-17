@@ -5,9 +5,13 @@ import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
 import team.abnormals.neutronia.blocks.entity.SignBlockEntity;
 import team.abnormals.neutronia.blocks.entity.StoneChestBlockEntity;
+import team.abnormals.neutronia.client.entity.render.BlackBearEntityRenderer;
+import team.abnormals.neutronia.client.entity.render.BrownBearEntityRenderer;
 import team.abnormals.neutronia.client.entity.render.VillagerEntityRenderer;
 import team.abnormals.neutronia.client.renderer.SignBlockEntityRenderer;
 import team.abnormals.neutronia.client.renderer.StoneChestBlockEntityRenderer;
+import team.abnormals.neutronia.entity.passive.BlackBearEntity;
+import team.abnormals.neutronia.entity.passive.BrownBearEntity;
 import team.abnormals.neutronia.entity.passive.VillagerPlusEntity;
 
 public class ClientInit implements ClientModInitializer {
@@ -18,5 +22,10 @@ public class ClientInit implements ClientModInitializer {
                 new VillagerEntityRenderer(entityRenderDispatcher, context.getResourceManager()));
         BlockEntityRendererRegistry.INSTANCE.register(StoneChestBlockEntity.class, new StoneChestBlockEntityRenderer());
         BlockEntityRendererRegistry.INSTANCE.register(SignBlockEntity.class, new SignBlockEntityRenderer());
+
+        EntityRendererRegistry.INSTANCE.register(BrownBearEntity.class, (entityRenderDispatcher, context) ->
+                new BrownBearEntityRenderer(entityRenderDispatcher));
+        EntityRendererRegistry.INSTANCE.register(BlackBearEntity.class, (entityRenderDispatcher, context) ->
+                new BlackBearEntityRenderer(entityRenderDispatcher));
     }
 }

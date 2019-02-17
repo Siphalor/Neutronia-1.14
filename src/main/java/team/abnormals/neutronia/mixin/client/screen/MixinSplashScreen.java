@@ -1,9 +1,9 @@
 package team.abnormals.neutronia.mixin.client.screen;
 
 import com.google.gson.JsonParser;
-import net.minecraft.client.font.FontRenderer;
 import net.minecraft.client.font.FontStorage;
 import net.minecraft.client.font.FontType;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.client.gui.SplashScreen;
 import net.minecraft.util.Identifier;
@@ -50,7 +50,7 @@ public abstract class MixinSplashScreen extends Screen {
     private int prog = 0;
     private long lastDraw;
     private LoadingProgress.TaskInfo[] tasks = new LoadingProgress.TaskInfo[5];
-    private FontRenderer fr;
+    private TextRenderer fr;
 
     @Inject(method = "draw(IIF)V", at = @At("RETURN"))
     private void draw(int int_1, int int_2, float float_1, CallbackInfo ci) {
@@ -60,8 +60,8 @@ public abstract class MixinSplashScreen extends Screen {
     private void drawProgress() {
         if (fr == null) {
             final FontStorage fontStorage_1 = new FontStorage(client.getTextureManager(), new Identifier("loading"));
-            fontStorage_1.method_2004(Collections.singletonList(FontType.BITMAP.createLoader(new JsonParser().parse(JSON).getAsJsonObject()).load(client.getResourceManager())));
-            fr = new FontRenderer(client.getTextureManager(), fontStorage_1);
+            fontStorage_1.setFonts(Collections.singletonList(FontType.BITMAP.createLoader(new JsonParser().parse(JSON).getAsJsonObject()).load(client.getResourceManager())));
+            fr = new TextRenderer(client.getTextureManager(), fontStorage_1);
         }
 
         int count = 0;

@@ -3,7 +3,7 @@ package team.abnormals.neutronia.mixin.entity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnType;
-import net.minecraft.entity.passive.AbstractVillagerEntity;
+import net.minecraft.entity.passive.AbstractTraderEntity;
 import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.util.math.BlockPos;
@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 @SuppressWarnings("InvalidInjectorMethodSignature")
 @Mixin(VillagerEntity.class)
-public abstract class MixinVillagerEntity extends AbstractVillagerEntity {
+public abstract class MixinVillagerEntity extends AbstractTraderEntity {
 
     public MixinVillagerEntity(EntityType<?> entityType_1, World world_1) {
         super(entityType_1, world_1);
