@@ -1,6 +1,5 @@
 package team.abnormals.neutronia.init;
 
-import net.minecraft.client.render.entity.PaintingEntityRenderer;
 import net.minecraft.entity.decoration.painting.PaintingMotive;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
