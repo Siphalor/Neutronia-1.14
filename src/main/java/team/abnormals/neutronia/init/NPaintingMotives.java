@@ -10,6 +10,10 @@ public class NPaintingMotives {
     public static final PaintingMotive TAIGA_LAKE = register("taiga_lake", 16, 16);
     public static final PaintingMotive END_ISLAND = register("end_island", 16, 16);
     public static final PaintingMotive THE_NETHER = register("the_nether", 32, 32);
+    public static final PaintingMotive SAVANNA_SUNSET = register("savanna_sunset", 48, 16);
+    public static final PaintingMotive SAVANNA_SUNRISE = register("savanna_sunrise", 16, 32);
+    public static final PaintingMotive WILLOW_TREE = register("the_nether", 16, 16);
+
     public static final PaintingMotive FOUR_X_FOUR_BOOKSHELF = register("4x4_bookshelf", 32, 32);
     public static final PaintingMotive BLUE_AND_GOLD_FANCY_BANNER = register("blue_and_gold_fancy_banner", 16, 32);
     public static final PaintingMotive BLUE_BANNER = register("blue_banner", 16, 32);
@@ -18,6 +22,10 @@ public class NPaintingMotives {
     public static final PaintingMotive OLD_GREEN_BANNER = register("old_green_banner", 16, 32);
     public static final PaintingMotive PURPLE_PIRATE_BANNER = register("purple_pirate_banner", 16, 32);
     public static final PaintingMotive RED_FANCY_BANNER = register("red_fancy_banner", 16, 32);
+
+    public static final PaintingMotive PIRATE_GIRL = register("red_fancy_banner", 32, 32);
+    public static final PaintingMotive COWBOY = register("red_fancy_banner", 32, 32);
+    public static final PaintingMotive KING = register("king", 32, 32);
 
     private static PaintingMotive register(String string_1, int width, int textureY) {
         return Registry.register(Registry.MOTIVE, new Identifier(Neutronia.MODID, string_1), new PaintingMotive(width, textureY));

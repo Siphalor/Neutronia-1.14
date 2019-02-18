@@ -10,6 +10,10 @@ import net.fabricmc.fabric.api.registry.CommandRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.datafixers.NbtOps;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.ListTag;
+import net.minecraft.nbt.NbtIo;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -19,6 +23,7 @@ import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.source.*;
 import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.level.LevelGeneratorType;
+import org.apache.commons.compress.utils.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.abnormals.neutronia.commands.Locate2Command;
@@ -28,10 +33,16 @@ import team.abnormals.neutronia.world.OverworldChunkGeneratorConfig;
 import team.abnormals.neutronia.world.gen.ImprovedOverworldLevelType;
 import team.abnormals.neutronia.world.gen.features.OreGeneration;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Objects;
 import java.util.function.Supplier;
 
 public class Neutronia implements ModInitializer {
@@ -59,6 +70,30 @@ public class Neutronia implements ModInitializer {
         OreGeneration.registerOres();
         NRecipes.init();
         new NPaintingMotives();
+
+        if (MinecraftServer.class.getClassLoader().getResource("data/minecraft/structures/village/plains/villagers/armorer.nbt") != null)
+        {
+            CompoundTag tag;
+            ListTag entityTag;
+            CompoundTag nbtTag;
+
+            try {
+                InputStream url = MinecraftServer.class.getClassLoader().getResourceAsStream("data/minecraft/structures/village/plains/villagers/armorer.nbt");
+                InputStream secondStream = MinecraftServer.class.getClassLoader().getResourceAsStream("data/minecraft/structures/village/plains/villagers/armorer.nbt");
+                tag = NbtIo.readCompressed(Objects.requireNonNull(url));
+                entityTag = (ListTag) tag.getTag("entities");
+                nbtTag = Objects.requireNonNull(entityTag).getCompoundTag(0);
+                nbtTag.putString("id", "neutronia:social_villager_male");
+                entityTag.add(0,nbtTag);
+                tag.put("entities", entityTag);
+                OutputStream output = Files.newOutputStream(Paths.get(""));
+                IOUtils.copy(Objects.requireNonNull(secondStream), output);
+                NbtIo.writeCompressed(tag, output);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
