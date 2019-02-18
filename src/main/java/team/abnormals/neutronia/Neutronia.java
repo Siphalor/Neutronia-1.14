@@ -17,8 +17,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.source.*;
-import net.minecraft.world.gen.carver.Carver;
-import net.minecraft.world.gen.carver.CarverConfig;
 import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.level.LevelGeneratorType;
 import org.apache.logging.log4j.LogManager;
@@ -61,10 +59,6 @@ public class Neutronia implements ModInitializer {
         OreGeneration.registerOres();
         NRecipes.init();
         new NPaintingMotives();
-    }
-
-    private static <C extends CarverConfig, F extends Carver<C>> F register(String string_1, F carver_1) {
-        return Registry.register(Registry.CARVER, string_1, carver_1);
     }
 
     /**
