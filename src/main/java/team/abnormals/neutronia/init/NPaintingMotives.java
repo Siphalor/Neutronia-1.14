@@ -13,6 +13,7 @@ public class NPaintingMotives {
     public static final PaintingMotive SAVANNA_SUNSET = register("savanna_sunset", 48, 16);
     public static final PaintingMotive SAVANNA_SUNRISE = register("savanna_sunrise", 16, 32);
     public static final PaintingMotive WILLOW_TREE = register("the_nether", 16, 16);
+    public static final PaintingMotive ECHOLOCATION = register("echolocation", 32, 32);
 
     public static final PaintingMotive FOUR_X_FOUR_BOOKSHELF = register("4x4_bookshelf", 32, 32);
     public static final PaintingMotive BLUE_AND_GOLD_FANCY_BANNER = register("blue_and_gold_fancy_banner", 16, 32);
