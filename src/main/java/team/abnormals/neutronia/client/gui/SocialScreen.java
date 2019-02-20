@@ -6,7 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.InputListener;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.entity.player.PlayerEntity;
-import team.abnormals.neutronia.entity.SocialVillagerBase;
+import team.abnormals.neutronia.entity.SocialVillager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
 @Environment(EnvType.CLIENT)
 public class SocialScreen extends Screen implements InputListener {
 
-	private SocialVillagerBase target;
+	private SocialVillager target;
 	private PlayerEntity talker;
 	private SocialButton charmButton;
 	private SocialButton apologyButton;
@@ -24,7 +24,7 @@ public class SocialScreen extends Screen implements InputListener {
 	private SocialButton tradeButton;
 	public List<SocialButton> positiveButtons = new ArrayList<>();
 	public List<SocialButton> neutralButtons = new ArrayList<>();
-	public SocialScreen(SocialVillagerBase entity, PlayerEntity player)
+	public SocialScreen(SocialVillager entity, PlayerEntity player)
 	{
 		super();
 		this.target = entity;
@@ -56,7 +56,7 @@ public class SocialScreen extends Screen implements InputListener {
 		neutralButtons.add(tradeButton);
 		
 	}
-	public SocialVillagerBase getTarget()
+	public SocialVillager getTarget()
 	{
 		return this.target;
 	}

@@ -42,19 +42,19 @@ public class TextureAssembler {
     private Identifier yellowEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/yellow.png");
 
     //Hair male
-    private Identifier blackHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black.png");
+    private Identifier blackHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black1.png");
     private Identifier blackHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black2.png");
     private Identifier blackHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black3.png");
     private Identifier blackHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black4.png");
-    private Identifier brownHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown.png");
+    private Identifier brownHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown1.png");
     private Identifier brownHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown2.png");
     private Identifier brownHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown3.png");
     private Identifier brownHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown4.png");
-    private Identifier blondeHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde.png");
+    private Identifier blondeHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde1.png");
     private Identifier blondeHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde2.png");
     private Identifier blondeHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde3.png");
     private Identifier blondeHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde4.png");
-    private Identifier redHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red.png");
+    private Identifier redHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red1.png");
     private Identifier redHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red2.png");
     private Identifier redHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red3.png");
     private Identifier redHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red4.png");
@@ -113,46 +113,46 @@ public class TextureAssembler {
                 inputstream.close();
                 switch (hairColor) {
                     case "Black":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairMale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairMale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairMale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairMale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairMale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairMale4).getInputStream();
                         }
                         break;
                     case "Blonde":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairMale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairMale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairMale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairMale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairMale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairMale4).getInputStream();
                         }
                         break;
                     case "Brown":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairMale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairMale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairMale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairMale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairMale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairMale4).getInputStream();
                         }
                         break;
                     case "Red":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairMale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairMale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairMale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairMale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairMale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairMale4).getInputStream();
                         }
                         break;
@@ -202,48 +202,48 @@ public class TextureAssembler {
                 inputstream.close();
                 switch (this.hairColor) {
                     case "Black":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale4).getInputStream();
                         }
 
                         break;
                     case "Blonde":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale4).getInputStream();
                         }
 
                         break;
                     case "Brown":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale4).getInputStream();
                         }
                         break;
                     case "Red":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale1).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale4).getInputStream();
                         }
                         break;
@@ -293,48 +293,48 @@ public class TextureAssembler {
                 inputstream.close();
                 switch (this.hairColor) {
                     case "Black":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blackHairFemale4).getInputStream();
                         }
 
                         break;
                     case "Blonde":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(blondeHairFemale4).getInputStream();
                         }
 
                         break;
                     case "Brown":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(brownHairFemale4).getInputStream();
                         }
                         break;
                     case "Red":
-                        if (hairstyle.equals(0)) {
+                        if (hairstyle.equals(1)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale1).getInputStream();
-                        } else if (hairstyle.equals(1)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale2).getInputStream();
                         } else if (hairstyle.equals(2)) {
-                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale3).getInputStream();
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale2).getInputStream();
                         } else if (hairstyle.equals(3)) {
+                            inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale3).getInputStream();
+                        } else if (hairstyle.equals(4)) {
                             inputstream = MinecraftClient.getInstance().getResourceManager().getResource(redHairFemale4).getInputStream();
                         }
                         break;

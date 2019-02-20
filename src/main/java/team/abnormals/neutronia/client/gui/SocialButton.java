@@ -5,7 +5,7 @@ import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.StringTextComponent;
 import net.minecraft.text.TranslatableTextComponent;
-import team.abnormals.neutronia.entity.SocialVillagerBase;
+import team.abnormals.neutronia.entity.SocialVillager;
 
 import java.util.List;
 import java.util.Random;
@@ -67,7 +67,7 @@ public class SocialButton extends ButtonWidget {
 		}
 		else if (this.getText().equals("Charm"))
 		{
-			SocialVillagerBase target = screen.getTarget();
+			SocialVillager target = screen.getTarget();
 			PlayerEntity talker = screen.getTalker();
 			if (target.getCharmed())
 			{
@@ -92,7 +92,7 @@ public class SocialButton extends ButtonWidget {
 		}
 		else if (this.getText().equals("Apologize"))
 		{
-			SocialVillagerBase target = screen.getTarget();
+			SocialVillager target = screen.getTarget();
 			PlayerEntity talker = screen.getTalker();
 			int opinion = target.getOpinion(talker.getUuid());
 			if (opinion >= 0)
@@ -157,7 +157,7 @@ public class SocialButton extends ButtonWidget {
 		}
 		else if(this.getText().equals("Examine"))
 		{
-			SocialVillagerBase target = screen.getTarget();
+			SocialVillager target = screen.getTarget();
 			PlayerEntity talker = screen.getTalker();
 			int opinion = target.getOpinion(talker.getUuid());
 			if (opinion >= 0 && opinion < 25)
