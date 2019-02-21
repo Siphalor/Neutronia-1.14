@@ -1,106 +1,74 @@
 package team.abnormals.neutronia.entity.ai.goal;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.ai.goal.MoveToTargetPosGoal;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
+import net.minecraft.world.World;
 import team.abnormals.neutronia.entity.passive.VillagerPlusEntity;
 
 public class FindDiamondBlockGoal extends MoveToTargetPosGoal {
 
     private final VillagerPlusEntity owner;
-    private int field_6456;
+    private int timer;
 
     public FindDiamondBlockGoal(VillagerPlusEntity villagerEntity_1, double double_1) {
         super(villagerEntity_1, double_1, 16);
         this.owner = villagerEntity_1;
     }
 
-    public boolean canStart() {
-        if (this.counter <= 0) {
-            if (!this.owner.world.getGameRules().getBoolean("mobGriefing")) {
-                return false;
-            }
-
-            this.field_6456 = -1;
-        }
-
-        return super.canStart();
+    public double getDesiredSquaredDistanceToTarget() {
+        return 4.0D;
     }
 
-    public boolean shouldContinue() {
-        return this.field_6456 >= 0 && super.shouldContinue();
-    }
-
-    public void tick() {
-        super.tick();
-        this.owner.getLookControl().lookAt((double) this.targetPos.getX() + 0.5D, (double) (this.targetPos.getY() + 1), (double) this.targetPos.getZ() + 0.5D, 10.0F, (float) this.owner.method_5978());
-        if (this.hasReached()) {
-            IWorld iWorld_1 = this.owner.world;
-            BlockPos blockPos_1 = this.targetPos.up();
-            BlockState blockState_1 = iWorld_1.getBlockState(blockPos_1);
-            Block block_1 = blockState_1.getBlock();
-            if (this.field_6456 == 0 && block_1 == Blocks.DIAMOND_BLOCK) {
-                iWorld_1.breakBlock(blockPos_1, true);
-            } else if (this.field_6456 == 1 && blockState_1.isAir()) {
-                /*BasicInventory basicInventory_1 = this.owner.method_18011();
-
-                for(int int_1 = 0; int_1 < basicInventory_1.getInvSize(); ++int_1) {
-                    ItemStack itemStack_1 = basicInventory_1.getInvStack(int_1);
-                    boolean boolean_1 = false;
-                    if (!itemStack_1.isEmpty()) {
-                        if (itemStack_1.getItem() == Items.WHEAT_SEEDS) {
-                            iWorld_1.setBlockState(blockPos_1, Blocks.WHEAT.getDefaultState(), 3);
-                            boolean_1 = true;
-                        } else if (itemStack_1.getItem() == Items.POTATO) {
-                            iWorld_1.setBlockState(blockPos_1, Blocks.POTATOES.getDefaultState(), 3);
-                            boolean_1 = true;
-                        } else if (itemStack_1.getItem() == Items.CARROT) {
-                            iWorld_1.setBlockState(blockPos_1, Blocks.CARROTS.getDefaultState(), 3);
-                            boolean_1 = true;
-                        } else if (itemStack_1.getItem() == Items.BEETROOT_SEEDS) {
-                            iWorld_1.setBlockState(blockPos_1, Blocks.BEETROOTS.getDefaultState(), 3);
-                            boolean_1 = true;
-                        }
-                    }
-
-                    if (boolean_1) {
-                        itemStack_1.subtractAmount(1);
-                        if (itemStack_1.isEmpty()) {
-                            basicInventory_1.setInvStack(int_1, ItemStack.EMPTY);
-                        }
-                        break;
-                    }
-                }*/
-            }
-
-            this.field_6456 = -1;
-            this.counter = 10;
-        }
-
+    public boolean shouldResetPath() {
+        return this.tryingTime % 100 == 0;
     }
 
     protected boolean isTargetPos(ViewableWorld viewableWorld_1, BlockPos blockPos_1) {
-        Block block_1 = viewableWorld_1.getBlockState(blockPos_1).getBlock();
-        if (block_1 == Blocks.DIAMOND_BLOCK) {
-            blockPos_1 = blockPos_1.up();
-            BlockState blockState_1 = viewableWorld_1.getBlockState(blockPos_1);
-            block_1 = blockState_1.getBlock();
-            if (block_1 == Blocks.DIAMOND_BLOCK && (this.field_6456 == 0 || this.field_6456 < 0)) {
-                this.field_6456 = 0;
-                return true;
-            }
+        BlockState blockState_1 = viewableWorld_1.getBlockState(blockPos_1);
+        return blockState_1.getBlock() == Blocks.DIAMOND_BLOCK || blockState_1.getBlock() == Blocks.DIAMOND_ORE;
+    }
 
-            if (blockState_1.isAir() && (this.field_6456 == 1 || this.field_6456 < 0)) {
-                this.field_6456 = 1;
-                return true;
+    public void tick() {
+        if (this.hasReached()) {
+            if (this.timer >= 40) {
+                this.eatSweetBerry();
+            } else {
+                ++this.timer;
             }
+        } else if (!this.hasReached() && owner.getRand().nextFloat() < 0.05F) {
+            owner.playSound(SoundEvents.ENTITY_FOX_SNIFF, 1.0F, 1.0F);
         }
 
-        return false;
+        super.tick();
+    }
+
+    protected void eatSweetBerry() {
+        World world_1 = this.owner.world;
+        BlockState blockState_1 = world_1.getBlockState(this.targetPos);
+        if (blockState_1.getBlock() == Blocks.DIAMOND_BLOCK || blockState_1.getBlock() == Blocks.DIAMOND_ORE) {
+            ItemStack itemStack_1 = owner.getEquippedStack(EquipmentSlot.HAND_MAIN);
+            if (itemStack_1.isEmpty()) {
+                owner.setEquippedStack(EquipmentSlot.HAND_MAIN, new ItemStack(Items.SWEET_BERRIES));
+            }
+            owner.playSound(SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, 1.0F, 1.0F);
+            world_1.setBlockState(this.targetPos, Blocks.AIR.getDefaultState(), 2);
+        }
+    }
+
+    public boolean canStart() {
+        return super.canStart();
+    }
+
+    public void start() {
+        this.timer = 0;
+        super.start();
     }
 
 }

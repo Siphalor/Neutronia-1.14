@@ -9,7 +9,9 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.World;
+import team.abnormals.neutronia.entity.ai.goal.FindDiamondBlockGoal;
 import team.abnormals.neutronia.init.NEntityTypes;
 
 public class VillagerPlusEntity extends PassiveEntity {
@@ -35,6 +37,7 @@ public class VillagerPlusEntity extends PassiveEntity {
         this.goalSelector.add(1, new FleeEntityGoal<>(this, IllusionerEntity.class, 12.0F, 0.6D, 0.6D));
         this.goalSelector.add(2, new class_1365(this));
         this.goalSelector.add(3, new StayInsideGoal(this));
+        this.goalSelector.add(3, new FindDiamondBlockGoal(this, 1.0));
         this.goalSelector.add(4, new OpenDoorGoal(this, true));
         this.goalSelector.add(5, new class_1370(this, 0.6D));
         this.goalSelector.add(9, new class_1358(this, PlayerEntity.class, 3.0F, 1.0F));
@@ -51,6 +54,18 @@ public class VillagerPlusEntity extends PassiveEntity {
     @Override
     public PassiveEntity createChild(PassiveEntity passiveEntity) {
         return new VillagerPlusEntity(world);
+    }
+
+    @Override
+    public void writeCustomDataToTag(CompoundTag compoundTag_1) {
+        super.writeCustomDataToTag(compoundTag_1);
+        compoundTag_1.putString("Gender", "Male");
+        compoundTag_1.putString("Profession", "Nitwit");
+    }
+
+    @Override
+    public void readCustomDataFromTag(CompoundTag compoundTag_1) {
+        super.readCustomDataFromTag(compoundTag_1);
     }
 
 }

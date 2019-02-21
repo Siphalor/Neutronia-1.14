@@ -16,10 +16,11 @@ public class ExampleMod implements ModInitializer {
 
 	public static final StructurePieceType PILLAGER_MANSION_PIECE = Registry.register(Registry.STRUCTURE_PIECE, new Identifier(Neutronia.MODID, "pillager_mansion_piece"), PillagerOutpostGenerator.Piece::new);
 	public static final StructureFeature<PillagerOutpostFeatureConfig> PILLAGER_MANSION_FEATURE = Registry.register(Registry.FEATURE, new Identifier(Neutronia.MODID, "pillager_mansion_feature"), new PillagerOutpostFeature());
-	public static final StructureFeature<?> PILLAGER_MANSION = Registry.register(Registry.STRUCTURE_FEATURE, new Identifier(Neutronia.MODID, "pillager_mansion"), PILLAGER_MANSION_FEATURE);
 
 	@Override
 	public void onInitialize() {
+		Registry.register(Registry.STRUCTURE_FEATURE, new Identifier(Neutronia.MODID, "pillager_mansion"), PILLAGER_MANSION_FEATURE);
+
 		Feature.STRUCTURES.put("Pillager_Mansion", PILLAGER_MANSION_FEATURE);
 
 		for(Biome biome : Registry.BIOME)

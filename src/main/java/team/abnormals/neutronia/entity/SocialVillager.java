@@ -1,11 +1,19 @@
 package team.abnormals.neutronia.entity;
 
+import net.minecraft.class_1358;
+import net.minecraft.class_1365;
+import net.minecraft.class_1370;
+import net.minecraft.class_1394;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.pathing.EntityMobNavigation;
+import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
+import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
@@ -30,7 +38,7 @@ public class SocialVillager extends PassiveEntity {
     public static TrackedData<String> sexUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public String firstName;
     public String lastName;
-    protected HashMap<UUID, Integer> opinions = new HashMap<UUID, Integer>();
+    private HashMap<UUID, Integer> opinions = new HashMap<>();
     private String hairColor;
     private String eyeColor;
     private String skinColor;
@@ -49,6 +57,8 @@ public class SocialVillager extends PassiveEntity {
 
     public SocialVillager(EntityType<?> type, World world) {
         super(type, world);
+        ((EntityMobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
+        this.setCanPickUpLoot(true);
         Random r = new Random();
         if (hairColor == null || hairColor.equals("")) {
 
@@ -78,6 +88,31 @@ public class SocialVillager extends PassiveEntity {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    protected void initGoals() {
+        super.initGoals();
+        this.goalSelector.add(0, new SwimGoal(this));
+        this.goalSelector.add(2, new StayInsideGoal(this));
+        this.goalSelector.add(3, new OpenDoorGoal(this, true));
+        this.goalSelector.add(1, new FleeEntityGoal<>(this, ZombieEntity.class, 8.0F, 0.6D, 0.6D));
+        this.goalSelector.add(1, new FleeEntityGoal<>(this, EvokerEntity.class, 12.0F, 0.8D, 0.8D));
+        this.goalSelector.add(1, new FleeEntityGoal<>(this, VindicatorEntity.class, 8.0F, 0.8D, 0.8D));
+        this.goalSelector.add(1, new FleeEntityGoal<>(this, VexEntity.class, 8.0F, 0.6D, 0.6D));
+        this.goalSelector.add(1, new FleeEntityGoal<>(this, PillagerEntity.class, 15.0F, 0.6D, 0.6D));
+        this.goalSelector.add(1, new FleeEntityGoal<>(this, IllusionerEntity.class, 12.0F, 0.6D, 0.6D));
+        this.goalSelector.add(2, new class_1365(this));
+        this.goalSelector.add(4, new OpenDoorGoal(this, true));
+        this.goalSelector.add(5, new class_1370(this, 0.6D));
+        this.goalSelector.add(9, new class_1358(this, PlayerEntity.class, 3.0F, 1.0F));
+        this.goalSelector.add(9, new class_1394(this, 0.6D));
+        this.goalSelector.add(10, new LookAtEntityGoal(this, MobEntity.class, 8.0F));
+    }
+
+    protected void initAttributes() {
+        super.initAttributes();
+        this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
     }
 
     protected void initDataTracker() {
@@ -120,7 +155,14 @@ public class SocialVillager extends PassiveEntity {
         if (!opinions.containsKey(person.getUuid())) {
             opinions.put(person.getUuid(), rand.nextInt(50) - 25);
         }
+    }
 
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
     }
 
     @Override
@@ -279,7 +321,7 @@ public class SocialVillager extends PassiveEntity {
         InputStream stream = MinecraftClient.getInstance().getResourceManager().getResource(malenames).getInputStream();
         InputStream stream2 = MinecraftClient.getInstance().getResourceManager().getResource(neutralnames).getInputStream();
         InputStream stream3 = MinecraftClient.getInstance().getResourceManager().getResource(femalenames).getInputStream();
-        if(gender.equals("Male")) {
+        if (gender.equals("Male")) {
             Scanner scanner = new Scanner(stream);
             StringBuilder builder = new StringBuilder();
             while (scanner.hasNextLine()) {

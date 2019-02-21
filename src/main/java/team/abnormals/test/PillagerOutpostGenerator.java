@@ -17,6 +17,7 @@ import team.abnormals.neutronia.Neutronia;
 import java.util.List;
 
 public class PillagerOutpostGenerator {
+
     static {
         StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MODID, "pillager_outpost/base_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_outpost/base_plate"), 1)), StructurePool.Projection.TERRAIN_MATCHING));
         StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MODID, "pillager_outpost/feature_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_outpost/feature_plate"), 1)), StructurePool.Projection.TERRAIN_MATCHING));
@@ -24,7 +25,7 @@ public class PillagerOutpostGenerator {
     }
 
     public static void addPieces(ChunkGenerator<?> chunkGenerator_1, StructureManager structureManager_1, BlockPos blockPos_1, List<StructurePiece> list_1, ChunkRandom chunkRandom_1) {
-        StructurePoolBasedGenerator.addPieces(new Identifier(Neutronia.MODID, "pillager_outpost/base_plates"), 7, PillagerOutpostGenerator.Piece::new, chunkGenerator_1, structureManager_1, blockPos_1, list_1, chunkRandom_1);
+        StructurePoolBasedGenerator.addPieces(new Identifier(Neutronia.MODID, "pillager_outpost/base_plate"), 7, PillagerOutpostGenerator.Piece::new, chunkGenerator_1, structureManager_1, blockPos_1, list_1, chunkRandom_1);
     }
 
     public static class Piece extends PoolStructurePiece {

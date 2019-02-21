@@ -23,6 +23,7 @@ public class TextureAssembler {
     //Outfits
     private Identifier outfit1Female = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/clothes/outfit1.png");
     private Identifier outfit1Male = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/clothes/outfit1.png");
+    private Identifier outfit1Genderless = new Identifier(Neutronia.MODID, "textures/entity/npcs/genderless/clothes/outfit1.png");
 
     //Skin
     private Identifier lightSkinMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/skin/light.png");
@@ -74,8 +75,8 @@ public class TextureAssembler {
     private Identifier blackHairFemale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/black4.png");
     private Identifier redHairFemale1 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red1.png");
     private Identifier redHairFemale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red2.png");
-    private Identifier redHairFemale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/hair/female/red3.png");
-    private Identifier redHairFemale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/hair/female/red4.png");
+    private Identifier redHairFemale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red3.png");
+    private Identifier redHairFemale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red4.png");
 
     public TextureAssembler(String eyeColor, String hairColor, String skinColor, Integer hairstyle, String gender) {
         this.eyeColor = eyeColor;
@@ -276,7 +277,7 @@ public class TextureAssembler {
                 eyeImage = ImageIO.read(inputstream);
                 inputstream.close();
             } else {
-                inputstream = MinecraftClient.getInstance().getResourceManager().getResource(outfit1Female).getInputStream();
+                inputstream = MinecraftClient.getInstance().getResourceManager().getResource(outfit1Genderless).getInputStream();
                 outfitImage = ImageIO.read(inputstream);
                 switch (this.skinColor) {
                     case "Light":
