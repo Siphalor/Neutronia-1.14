@@ -138,7 +138,7 @@ public class SignBlockEntity extends BlockEntity {
             if (style_1 != null && style_1.getClickEvent() != null) {
                 ClickEvent clickEvent_1 = style_1.getClickEvent();
                 if (clickEvent_1.getAction() == ClickEvent.Action.RUN_COMMAND) {
-                    playerEntity_1.getServer().getCommandManager().execute(this.getCommandSource((ServerPlayerEntity) playerEntity_1), clickEvent_1.getValue());
+                    Objects.requireNonNull(playerEntity_1.getServer()).getCommandManager().execute(this.getCommandSource((ServerPlayerEntity) playerEntity_1), clickEvent_1.getValue());
                 }
             }
         }
@@ -146,7 +146,7 @@ public class SignBlockEntity extends BlockEntity {
         return true;
     }
 
-    public ServerCommandSource getCommandSource(ServerPlayerEntity serverPlayerEntity_1) {
+    private ServerCommandSource getCommandSource(ServerPlayerEntity serverPlayerEntity_1) {
         String string_1 = serverPlayerEntity_1 == null ? "Sign" : serverPlayerEntity_1.getName().getString();
         TextComponent textComponent_1 = serverPlayerEntity_1 == null ? new StringTextComponent("Sign") : serverPlayerEntity_1.getDisplayName();
         return new ServerCommandSource(CommandOutput.field_17395, new Vec3d((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D), Vec2f.ZERO, (ServerWorld) this.world, 2, string_1, textComponent_1, this.world.getServer(), serverPlayerEntity_1);

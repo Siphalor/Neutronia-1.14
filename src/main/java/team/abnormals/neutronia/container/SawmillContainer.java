@@ -49,7 +49,7 @@ public class SawmillContainer extends Container {
     private Runnable contentsChangedListener;
 
     public SawmillContainer(int int_1, PlayerInventory playerInventory_1) {
-        this(int_1, playerInventory_1, BlockContext.field_17304);
+        this(int_1, playerInventory_1, BlockContext.EMPTY);
     }
 
     public SawmillContainer(int int_1, PlayerInventory playerInventory_1, final BlockContext blockContext_1) {

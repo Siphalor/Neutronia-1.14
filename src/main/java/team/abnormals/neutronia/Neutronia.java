@@ -10,10 +10,6 @@ import net.fabricmc.fabric.api.registry.CommandRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.datafixers.NbtOps;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.nbt.ListTag;
-import net.minecraft.nbt.NbtIo;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -23,7 +19,6 @@ import net.minecraft.world.biome.Biomes;
 import net.minecraft.world.biome.source.*;
 import net.minecraft.world.gen.chunk.*;
 import net.minecraft.world.level.LevelGeneratorType;
-import org.apache.commons.compress.utils.IOUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.abnormals.neutronia.commands.Locate2Command;
@@ -33,67 +28,34 @@ import team.abnormals.neutronia.world.OverworldChunkGeneratorConfig;
 import team.abnormals.neutronia.world.gen.ImprovedOverworldLevelType;
 import team.abnormals.neutronia.world.gen.features.OreGeneration;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.Objects;
 import java.util.function.Supplier;
 
 public class Neutronia implements ModInitializer {
 
     public static final String MODID = "neutronia";
 
-    public static LevelGeneratorType IMPROVED_OVERWORLD_LEVEL_TYPE = null;
-    public static ChunkGeneratorType<OverworldChunkGeneratorConfig, OverworldChunkGenerator> IMPROVED_OVERWORLD;
-
     @Override
     public void onInitialize() {
-        IMPROVED_OVERWORLD_LEVEL_TYPE = ImprovedOverworldLevelType.getType();
+        LevelGeneratorType IMPROVED_OVERWORLD_LEVEL_TYPE = ImprovedOverworldLevelType.getType();
         OverworldGeneratorCreator factory = new OverworldGeneratorCreator();
-        IMPROVED_OVERWORLD = factory.getChunkGeneratorType(OverworldChunkGeneratorConfig::new);
+        ChunkGeneratorType<OverworldChunkGeneratorConfig, OverworldChunkGenerator> IMPROVED_OVERWORLD = factory.getChunkGeneratorType(OverworldChunkGeneratorConfig::new);
         Registry.register(Registry.CHUNK_GENERATOR_TYPE, "neutronia:improved_overworld", IMPROVED_OVERWORLD);
 
         new NBlocks();
-        NItems.init();
+        new NItems();
         NBlockEntities.init();
         CommandRegistry.INSTANCE.register(false, (Locate2Command::register));
         ModVillagers.init();
-        NEntityTypes.init();
+        new NEntityTypes();
         NRecipeType.init();
         NRecipeSerializers.init();
         OreGeneration.registerOres();
         NRecipes.init();
         new NPaintingMotives();
-
-        if (MinecraftServer.class.getClassLoader().getResource("data/minecraft/structures/village/plains/villagers/armorer.nbt") != null)
-        {
-            CompoundTag tag;
-            ListTag entityTag;
-            CompoundTag nbtTag;
-
-            try {
-                InputStream url = MinecraftServer.class.getClassLoader().getResourceAsStream("data/minecraft/structures/village/plains/villagers/armorer.nbt");
-                InputStream secondStream = MinecraftServer.class.getClassLoader().getResourceAsStream("data/minecraft/structures/village/plains/villagers/armorer.nbt");
-                tag = NbtIo.readCompressed(Objects.requireNonNull(url));
-                entityTag = (ListTag) tag.getTag("entities");
-                nbtTag = Objects.requireNonNull(entityTag).getCompoundTag(0);
-                nbtTag.putString("id", "neutronia:social_villager_male");
-                entityTag.add(0,nbtTag);
-                tag.put("entities", entityTag);
-                OutputStream output = Files.newOutputStream(Paths.get(""));
-                IOUtils.copy(Objects.requireNonNull(secondStream), output);
-                NbtIo.writeCompressed(tag, output);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     /**
@@ -155,7 +117,7 @@ public class Neutronia implements ModInitializer {
                     biomes_1 = jsonArray_1.size() > 0 ? new Biome[jsonArray_1.size()] : new Biome[]{Biomes.OCEAN};
 
                     for(int int_1 = 0; int_1 < jsonArray_1.size(); ++int_1) {
-                        biomes_1[int_1] = Registry.BIOME.getOptional(new Identifier(jsonArray_1.get(int_1).getAsString())).orElse(Biomes.OCEAN);
+                        biomes_1[int_1] = Registry.BIOME.getOrEmpty(new Identifier(jsonArray_1.get(int_1).getAsString())).orElse(Biomes.OCEAN);
                     }
                 }
 

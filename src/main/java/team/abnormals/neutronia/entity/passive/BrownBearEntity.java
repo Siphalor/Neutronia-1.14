@@ -230,7 +230,7 @@ public class BrownBearEntity extends AnimalEntity {
             return false;
          } else {
             if (super.canStart()) {
-               List<BrownBearEntity> list_1 = BrownBearEntity.this.world.getVisibleEntities(BrownBearEntity.class, BrownBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
+               List<BrownBearEntity> list_1 = BrownBearEntity.this.world.method_18467(BrownBearEntity.class, BrownBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
                Iterator var2 = list_1.iterator();
 
                while(var2.hasNext()) {

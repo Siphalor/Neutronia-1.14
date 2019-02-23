@@ -15,15 +15,15 @@ import net.minecraft.world.gen.feature.StructureFeature;
 import java.util.List;
 import java.util.Random;
 
-public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpostFeatureConfig> {
+public class PillagerMansionFeature extends AbstractTempleFeature<PillagerMansionFeatureConfig> {
     private static final List<Biome.SpawnEntry> field_16656;
 
     static {
         field_16656 = Lists.newArrayList(new Biome.SpawnEntry(EntityType.PILLAGER, 1, 1, 1));
     }
 
-    public PillagerOutpostFeature() {
-        super(PillagerOutpostFeatureConfig::deserialize);
+    public PillagerMansionFeature() {
+        super(PillagerMansionFeatureConfig::deserialize);
     }
 
     public String getName() {
@@ -57,21 +57,21 @@ public class PillagerOutpostFeature extends AbstractTempleFeature<PillagerOutpos
     }
 
     public StructureStartFactory getStructureStartFactory() {
-        return class_3771::new;
+        return PillagerMansionStart::new;
     }
 
     protected int getSeedModifier() {
         return 165745296;
     }
 
-    public static class class_3771 extends StructureStart {
-        public class_3771(StructureFeature<?> structureFeature_1, int int_1, int int_2, Biome biome_1, MutableIntBoundingBox mutableIntBoundingBox_1, int int_3, long long_1) {
+    public static class PillagerMansionStart extends StructureStart {
+        public PillagerMansionStart(StructureFeature<?> structureFeature_1, int int_1, int int_2, Biome biome_1, MutableIntBoundingBox mutableIntBoundingBox_1, int int_3, long long_1) {
             super(structureFeature_1, int_1, int_2, biome_1, mutableIntBoundingBox_1, int_3, long_1);
         }
 
         public void initialize(ChunkGenerator<?> chunkGenerator_1, StructureManager structureManager_1, int int_1, int int_2, Biome biome_1) {
             BlockPos blockPos_1 = new BlockPos(int_1 * 16, 90, int_2 * 16);
-            PillagerOutpostGenerator.addPieces(chunkGenerator_1, structureManager_1, blockPos_1, this.children, this.random);
+            PillagerMansionGenerator.addPieces(chunkGenerator_1, structureManager_1, blockPos_1, this.children, this.random);
             this.setBoundingBoxFromChildren();
         }
     }

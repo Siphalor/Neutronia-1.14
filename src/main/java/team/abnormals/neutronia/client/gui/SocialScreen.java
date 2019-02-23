@@ -34,24 +34,24 @@ public class SocialScreen extends Screen implements InputListener {
 	public void initialize(MinecraftClient client, int int1, int int2)
 	{
 		super.initialize(client, int1, int2);
-		this.addButton(new SocialButton(1, (width - 50), (height - 60), 50, 20, "Socialize"));
-		this.addButton(new SocialButton(3, (width - 50), (height - 40), 50, 20, "Influence"));
-		this.addButton(charmButton = new SocialButton(4, (width - 100), (height - 60), 50, 20, "Charm"));
+		this.addButton(new SocialButton((width - 50), (height - 60), 50, 20, "Socialize"));
+		this.addButton(new SocialButton((width - 50), (height - 40), 50, 20, "Influence"));
+		this.addButton(charmButton = new SocialButton((width - 100), (height - 60), 50, 20, "Charm"));
 		charmButton.visible = false;
 		positiveButtons.add(charmButton);
-		this.addButton(apologyButton = new SocialButton(5, (width - 150), (height - 60), 50, 20, "Apologize"));
+		this.addButton(apologyButton = new SocialButton((width - 150), (height - 60), 50, 20, "Apologize"));
 		apologyButton.visible = false;
 		positiveButtons.add(apologyButton);
-		this.addButton(examineButton = new SocialButton(6, (width - 200), (height - 60), 50, 20, "Examine"));
+		this.addButton(examineButton = new SocialButton((width - 200), (height - 60), 50, 20, "Examine"));
 		examineButton.visible = false;
 		positiveButtons.add(examineButton);
-		this.addButton(recruitButton = new SocialButton(7, (width - 100), (height - 40), 50, 20, "Recruit"));
+		this.addButton(recruitButton = new SocialButton((width - 100), (height - 40), 50, 20, "Recruit"));
 		recruitButton.visible = false;
 		neutralButtons.add(recruitButton);
-		this.addButton(favorButton = new SocialButton(8, (width - 150), (height - 40), 50, 20, "Favor"));
+		this.addButton(favorButton = new SocialButton((width - 150), (height - 40), 50, 20, "Favor"));
 		favorButton.visible = false;
 		neutralButtons.add(favorButton);
-		this.addButton(tradeButton = new SocialButton(9, (width - 200), (height - 40), 50, 20, "Barter"));
+		this.addButton(tradeButton = new SocialButton((width - 200), (height - 40), 50, 20, "Barter"));
 		tradeButton.visible = false;
 		neutralButtons.add(tradeButton);
 		

@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 public abstract class MixinVillagerEntity extends AbstractTraderEntity {
 
     public MixinVillagerEntity(EntityType<?> entityType_1, World world_1) {
-        super(entityType_1, world_1);
+        super((EntityType<? extends AbstractTraderEntity>) entityType_1, world_1);
     }
 
     @Shadow

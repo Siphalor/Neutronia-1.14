@@ -19,7 +19,7 @@ public abstract class VillagerPlusBase extends PassiveEntity {
     public String gender;
     public VillagerPlusProfession proffesion;
 
-    protected VillagerPlusBase(EntityType<?> type, World world) {
+    protected VillagerPlusBase(EntityType<? extends net.minecraft.entity.passive.PassiveEntity> type, World world) {
         super(type, world);
         unifiedSetup();
         this.dataTracker.set(genderUnified, gender);

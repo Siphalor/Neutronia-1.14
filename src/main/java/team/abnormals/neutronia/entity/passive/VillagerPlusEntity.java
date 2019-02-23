@@ -22,7 +22,6 @@ public class VillagerPlusEntity extends PassiveEntity {
 
     public VillagerPlusEntity(String villagerName, World world_1) {
         super(NEntityTypes.VILLAGER_PLUS, world_1);
-        this.setSize(0.6F, 1.95F);
         this.setCanPickUpLoot(true);
     }
 

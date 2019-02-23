@@ -4,7 +4,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.util.math.MathHelper;
 import org.apache.commons.lang3.StringUtils;
 
-import static net.minecraft.client.gui.Drawable.drawRect;
+import static net.minecraft.client.gui.DrawableHelper.drawRect;
 import static org.lwjgl.opengl.GL11.*;
 
 public class ProgressBarUtils {

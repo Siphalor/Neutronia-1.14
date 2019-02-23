@@ -228,7 +228,7 @@ public class BlackBearEntity extends AnimalEntity {
             return false;
          } else {
             if (super.canStart()) {
-               List<BlackBearEntity> list_1 = BlackBearEntity.this.world.getVisibleEntities(BlackBearEntity.class, BlackBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
+               List<BlackBearEntity> list_1 = BlackBearEntity.this.world.method_18467(BlackBearEntity.class, BlackBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
 
                for (BlackBearEntity brownBearEntity_1 : list_1) {
                   if (brownBearEntity_1.isChild()) {
