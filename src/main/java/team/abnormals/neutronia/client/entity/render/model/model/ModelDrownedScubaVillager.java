@@ -1,14 +1,14 @@
 package team.abnormals.neutronia.client.entity.render.model.model;
 
-import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.Cuboid;
+import net.minecraft.client.render.entity.model.BipedEntityModel;
 import net.minecraft.entity.Entity;
 
 /**
  * Drowned Scuba Villager - Undefined
  * Created using Tabula 7.0.0
  */
-public class ModelDrownedScubaVillager extends ModelBiped {
+public class ModelDrownedScubaVillager extends BipedEntityModel {
 
     public Cuboid Tank1;
     public Cuboid Tank2;

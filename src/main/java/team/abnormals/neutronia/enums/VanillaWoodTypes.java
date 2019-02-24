@@ -4,11 +4,13 @@ import net.minecraft.block.MaterialColor;
 import net.minecraft.util.StringRepresentable;
 
 public enum VanillaWoodTypes implements StringRepresentable {
-    SPRUCE(0, "spruce", MaterialColor.SPRUCE),
-    BIRCH(1, "birch", MaterialColor.SAND),
-    JUNGLE(2, "jungle", MaterialColor.DIRT),
-    ACACIA(3, "acacia", MaterialColor.ORANGE),
-    DARK_OAK(4, "dark_oak", MaterialColor.BROWN);
+
+    OAK(0, "oak", MaterialColor.BROWN),
+    SPRUCE(1, "spruce", MaterialColor.BLACK),
+    BIRCH(2, "birch", MaterialColor.SAND),
+    JUNGLE(3, "jungle", MaterialColor.DIRT),
+    ACACIA(4, "acacia", MaterialColor.ORANGE),
+    DARK_OAK(5, "dark_oak", MaterialColor.BROWN);
 
     private static final VanillaWoodTypes[] META_LOOKUP = new VanillaWoodTypes[values().length];
 
@@ -52,7 +54,7 @@ public enum VanillaWoodTypes implements StringRepresentable {
     /**
      * The color which represents this entry on a map.
      */
-    public MaterialColor getMapColor() {
+    public MaterialColor getMaterialColor() {
         return this.mapColor;
     }
 

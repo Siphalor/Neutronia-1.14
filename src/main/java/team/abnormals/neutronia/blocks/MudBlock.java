@@ -34,7 +34,7 @@ public class MudBlock extends FallingBlock {
     }
 
     public void onEntityCollision(BlockState blockState_1, World world_1, BlockPos blockPos_1, Entity entity_1) {
-        entity_1.setVelocity(entity_1.getVelocity().method_18805(0.4D, 1.0D, 0.4D));
+        entity_1.setVelocity(entity_1.getVelocity().subtract(0.4D, 1.0D, 0.4D));
     }
 
     public void onScheduledTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {

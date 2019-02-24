@@ -19,11 +19,12 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
+import team.abnormals.neutronia.INeutroniaInfo;
 import team.abnormals.neutronia.blocks.entity.SignBlockEntity;
 
 import java.util.Map;
 
-public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaBlock {
+public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaInfo {
     public static final DirectionProperty FACING;
     private static final Map<Direction, VoxelShape> FACING_TO_SHAPE;
 

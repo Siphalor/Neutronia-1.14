@@ -8,8 +8,9 @@ import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaButtonBlock extends AbstractButtonBlock implements INeutroniaBlock {
+public class NeutroniaButtonBlock extends AbstractButtonBlock implements INeutroniaInfo {
 
     private final String bareName;
 

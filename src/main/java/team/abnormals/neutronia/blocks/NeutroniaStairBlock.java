@@ -7,8 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaStairBlock extends StairsBlock implements INeutroniaBlock {
+public class NeutroniaStairBlock extends StairsBlock implements INeutroniaInfo {
 
     public NeutroniaStairBlock(BlockState blockState_1, String name) {
         super(blockState_1, Settings.copy(blockState_1.getBlock()));

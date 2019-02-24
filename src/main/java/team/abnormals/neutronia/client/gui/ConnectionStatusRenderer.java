@@ -19,7 +19,7 @@ import static org.lwjgl.opengl.GL11.GL_QUADS;
 
 public class ConnectionStatusRenderer {
 
-    private static final Identifier TEXTURE = new Identifier(Neutronia.MODID, "textures/sploadicons.png");
+    private static final Identifier TEXTURE = new Identifier(Neutronia.MOD_ID, "textures/sploadicons.png");
 
     private static long rxProg = 0;
     private static long txProg = 0;

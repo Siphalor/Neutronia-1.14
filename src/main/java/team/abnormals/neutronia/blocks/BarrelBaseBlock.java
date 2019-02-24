@@ -9,8 +9,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class BarrelBaseBlock extends BarrelBlock implements INeutroniaBlock {
+public class BarrelBaseBlock extends BarrelBlock implements INeutroniaInfo {
 
     public BarrelBaseBlock(String name) {
         super(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build());

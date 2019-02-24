@@ -8,8 +8,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaFenceBlock extends FenceBlock implements INeutroniaBlock {
+public class NeutroniaFenceBlock extends FenceBlock implements INeutroniaInfo {
 
     public NeutroniaFenceBlock(String name, BlockState state) {
         super(FabricBlockSettings.of(state.getMaterial()).hardness(2.0F).resistance(5.0F).sounds(state.getSoundGroup()).build());

@@ -17,8 +17,8 @@ public class LoadingSpiceConfig extends MiniCfg {
     public boolean useExtTextureDir = false;
     public String extTextureDir = "ext_resources";
 
-    public Identifier loadingIconTexture = new Identifier(Neutronia.MODID, "textures/loadingcircle.png");
-    public Identifier splashIconTexture = new Identifier(Neutronia.MODID, "textures/loadingcircle.png");
+    public Identifier loadingIconTexture = new Identifier(Neutronia.MOD_ID, "textures/loadingcircle.png");
+    public Identifier splashIconTexture = new Identifier(Neutronia.MOD_ID, "textures/loadingcircle.png");
 
     public int[] loadingIconGrid = {4, 4};
     public int[] splashIconGrid = {4, 4};

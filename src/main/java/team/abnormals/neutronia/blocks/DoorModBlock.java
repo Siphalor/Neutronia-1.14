@@ -11,8 +11,9 @@ import net.minecraft.item.block.TallBlockItem;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
+import team.abnormals.neutronia.IModInfo;
 
-public abstract class DoorModBlock extends DoorBlock implements IModBlockInfo {
+public abstract class DoorModBlock extends DoorBlock implements IModInfo {
 
     private final String bareName;
 

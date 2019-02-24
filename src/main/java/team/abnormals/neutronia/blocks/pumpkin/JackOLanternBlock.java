@@ -22,13 +22,13 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import team.abnormals.neutronia.blocks.BaseModBlock;
-import team.abnormals.neutronia.blocks.IMinecraftBlock;
+import team.abnormals.neutronia.IMinecraftInfo;
 import team.abnormals.neutronia.enums.CarvedFaceTypes;
 import team.abnormals.neutronia.init.NBlocks;
 import team.abnormals.neutronia.utils.helpers.CarvedBlockHelper;
 import team.abnormals.neutronia.utils.helpers.ICarvable;
 
-public class JackOLanternBlock extends BaseModBlock implements IMinecraftBlock, ICarvable {
+public class JackOLanternBlock extends BaseModBlock implements IMinecraftInfo, ICarvable {
 
     public static final DirectionProperty FACING = HorizontalFacingBlock.field_11177;
 

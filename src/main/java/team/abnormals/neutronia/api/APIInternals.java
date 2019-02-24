@@ -10,7 +10,7 @@ import java.util.List;
 public class APIInternals {
 
     static LoadingProgress getLoadingProgress() {
-        if (FabricLoader.getInstance().isModLoaded(Neutronia.MODID)) {
+        if (FabricLoader.getInstance().isModLoaded(Neutronia.MOD_ID)) {
             return LoadingProgressImpl.INSTANCE;
         } else {
             return DummyLoadingProgress.INSTANCE;

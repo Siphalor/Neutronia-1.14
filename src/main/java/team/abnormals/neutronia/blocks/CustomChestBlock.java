@@ -11,10 +11,11 @@ import net.minecraft.item.block.BlockItem;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
+import team.abnormals.neutronia.INeutroniaInfo;
 import team.abnormals.neutronia.blocks.entity.StoneChestBlockEntity;
 import team.abnormals.neutronia.enums.CustomChestTypes;
 
-public class CustomChestBlock extends ChestBlock implements INeutroniaBlock {
+public class CustomChestBlock extends ChestBlock implements INeutroniaInfo {
 
     private String name;
 

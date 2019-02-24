@@ -5,8 +5,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaBaseBlock extends BaseModBlock implements INeutroniaBlock {
+public class NeutroniaBaseBlock extends BaseModBlock implements INeutroniaInfo {
 
     public NeutroniaBaseBlock(Material material, String name) {
         super(material, name);

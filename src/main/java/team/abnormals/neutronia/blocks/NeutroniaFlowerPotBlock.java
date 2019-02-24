@@ -5,8 +5,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.block.Material;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaFlowerPotBlock extends FlowerPotBlock implements INeutroniaBlock {
+public class NeutroniaFlowerPotBlock extends FlowerPotBlock implements INeutroniaInfo {
 
     public NeutroniaFlowerPotBlock(String name, Block block_1) {
         super(block_1, FabricBlockSettings.of(Material.PART).breakInstantly().build());

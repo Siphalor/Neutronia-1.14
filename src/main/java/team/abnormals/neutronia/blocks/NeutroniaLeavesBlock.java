@@ -9,8 +9,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaLeavesBlock extends LeavesBlock implements INeutroniaBlock {
+public class NeutroniaLeavesBlock extends LeavesBlock implements INeutroniaInfo {
 
     public NeutroniaLeavesBlock(String name) {
         super(FabricBlockSettings.of(Material.LEAVES).hardness(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).build());

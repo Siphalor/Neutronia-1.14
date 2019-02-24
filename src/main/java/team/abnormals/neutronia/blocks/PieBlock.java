@@ -22,8 +22,9 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class PieBlock extends Block implements INeutroniaBlock {
+public class PieBlock extends Block implements INeutroniaInfo {
 
     public static final IntegerProperty BITES;
     protected static final VoxelShape[] field_10738;

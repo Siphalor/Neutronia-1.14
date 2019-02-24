@@ -9,8 +9,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaFenceGateBlock extends FenceGateBlock implements INeutroniaBlock {
+public class NeutroniaFenceGateBlock extends FenceGateBlock implements INeutroniaInfo {
 
     public NeutroniaFenceGateBlock(String name) {
         super(FabricBlockSettings.of(Material.WOOD).hardness(3.0F).sounds(BlockSoundGroup.WOOD).build());

@@ -1,8 +1,8 @@
 package team.abnormals.neutronia.client.entity.render.model.model;
 
-import net.minecraft.client.render.entity.model.EntityModel;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.model.Cuboid;
-import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 
 /**
@@ -32,11 +32,11 @@ public class ModelGrubworm extends EntityModel {
     @Override
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
         GlStateManager.pushMatrix();
-        GlStateManager.translate(this.Head.offsetX, this.Head.offsetY, this.Head.offsetZ);
-        GlStateManager.translate(this.Head.rotationPointX * f5, this.Head.rotationPointY * f5, this.Head.rotationPointZ * f5);
-        GlStateManager.scale(2.0D, 2.0D, 2.0D);
-        GlStateManager.translate(-this.Head.offsetX, -this.Head.offsetY, -this.Head.offsetZ);
-        GlStateManager.translate(-this.Head.rotationPointX * f5, -this.Head.rotationPointY * f5, -this.Head.rotationPointZ * f5);
+        GlStateManager.translatef(this.Head.x, this.Head.y, this.Head.z);
+        GlStateManager.translatef(this.Head.rotationPointX * f5, this.Head.rotationPointY * f5, this.Head.rotationPointZ * f5);
+        GlStateManager.scaled(2.0D, 2.0D, 2.0D);
+        GlStateManager.translatef(-this.Head.x, -this.Head.y, -this.Head.z);
+        GlStateManager.translatef(-this.Head.rotationPointX * f5, -this.Head.rotationPointY * f5, -this.Head.rotationPointZ * f5);
         this.Head.render(f5);
         GlStateManager.popMatrix();
         this.Body1.render(f5);

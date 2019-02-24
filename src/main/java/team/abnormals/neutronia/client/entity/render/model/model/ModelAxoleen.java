@@ -1,8 +1,8 @@
 package team.abnormals.neutronia.client.entity.render.model.model;
 
-import net.minecraft.client.render.entity.model.EntityModel;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.model.Cuboid;
-import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 
 /**
@@ -88,11 +88,11 @@ public class ModelAxoleen extends EntityModel {
     public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
         this.BlowHole2.render(f5);
         GlStateManager.pushMatrix();
-        GlStateManager.translate(this.Lips.offsetX, this.Lips.offsetY, this.Lips.offsetZ);
-        GlStateManager.translate(this.Lips.rotationPointX * f5, this.Lips.rotationPointY * f5, this.Lips.rotationPointZ * f5);
-        GlStateManager.scale(1.0D, 0.9D, 1.0D);
-        GlStateManager.translate(-this.Lips.offsetX, -this.Lips.offsetY, -this.Lips.offsetZ);
-        GlStateManager.translate(-this.Lips.rotationPointX * f5, -this.Lips.rotationPointY * f5, -this.Lips.rotationPointZ * f5);
+        GlStateManager.translatef(this.Lips.x, this.Lips.y, this.Lips.z);
+        GlStateManager.translatef(this.Lips.rotationPointX * f5, this.Lips.rotationPointY * f5, this.Lips.rotationPointZ * f5);
+        GlStateManager.scaled(1.0D, 0.9D, 1.0D);
+        GlStateManager.translatef(-this.Lips.x, -this.Lips.y, -this.Lips.z);
+        GlStateManager.translatef(-this.Lips.rotationPointX * f5, -this.Lips.rotationPointY * f5, -this.Lips.rotationPointZ * f5);
         this.Lips.render(f5);
         GlStateManager.popMatrix();
         this.BlowHole3.render(f5);

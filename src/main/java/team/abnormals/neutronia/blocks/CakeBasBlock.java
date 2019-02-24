@@ -9,8 +9,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class CakeBasBlock extends CakeBlock implements INeutroniaBlock {
+public class CakeBasBlock extends CakeBlock implements INeutroniaInfo {
 
     public CakeBasBlock(String name) {
         super(FabricBlockSettings.of(Material.CAKE).hardness(0.5F).sounds(BlockSoundGroup.WOOL).build());

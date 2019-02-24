@@ -8,8 +8,9 @@ import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.Direction;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaPillarBlock extends BaseModBlock implements INeutroniaBlock {
+public class NeutroniaPillarBlock extends BaseModBlock implements INeutroniaInfo {
 
     private static final EnumProperty<Direction.Axis> AXIS = EnumProperty.create("axis", Direction.Axis.class);
 
@@ -52,7 +53,7 @@ public class NeutroniaPillarBlock extends BaseModBlock implements INeutroniaBloc
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
-        return super.getPlacementState(itemPlacementContext_1).with(AXIS, itemPlacementContext_1.getPlayerHorizontalFacing().getOpposite().getAxis());
+        return this.getDefaultState().with(AXIS, itemPlacementContext_1.getFacing().getAxis());
     }
 
 }

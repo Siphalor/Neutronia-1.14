@@ -20,7 +20,7 @@ public class NBlocks {
 
     public static final Block[] BOOKSHELVES = new Block[9], PATTERNED_PLANKS = new Block[6], WOOD = new Block[6],
             CARVED_PLANKS = new Block[10], BARRELS = new Block[5], WOOD_LANTERNS = new Block[10],
-            LADDERS = new Block[9], LOG_CAMPFIRE = new Block[5], STRIPPED_LOG_CAMPFIRE = new Block[VanillaWoodTypes4.values().length], STRIPPED_LOGS = new Block[ModTreeTypes.values().length];
+            LADDERS = new Block[9], LOG_CAMPFIRE = new Block[5], STRIPPED_LOG_CAMPFIRE = new Block[VanillaAndModdedMinusBambooWoodTypes.values().length], STRIPPED_LOGS = new Block[NewWoodTypes.values().length];
     public static final Block[] GLAZED_TERRACOTTA_PILLAR = new Block[13], SOUL_STONE = new Block[4];
     public static final Block PALM_LOG, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING;
     public static final Block WILLOW_LOG, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
@@ -75,11 +75,13 @@ public class NBlocks {
             POTTED_SUNFLOWER, POTTED_TALL_GRASS, POTTED_WHEAT;
 
     static {
-        for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
+        for (VanillaMinusOakWoodTypes woodType : VanillaMinusOakWoodTypes.values()) {
             BOOKSHELVES[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("%s_bookshelf", woodType.asString()));
+            BARRELS[woodType.getMetadata()] = new BarrelBaseBlock(woodType.asString());
+            LOG_CAMPFIRE[woodType.getMetadata()] = new CampfireBaseBlock(woodType.asString());
         }
 
-        for (VanillaWoodTypes2 woodTypes2 : VanillaWoodTypes2.values()) {
+        for (LadderVariants woodTypes2 : LadderVariants.values()) {
             LADDERS[woodTypes2.getMetadata()] = new CustomLadderBlock(woodTypes2.asString());
         }
 
@@ -116,16 +118,16 @@ public class NBlocks {
         WILLOW_DOOR = new NeutroniaDoorBlock(Material.WOOD, "willow_door");
         WILLOW_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "willow_trapdoor");
 
-        for (ModTreeTypes modTreeTypes : ModTreeTypes.values()) {
-            STRIPPED_LOGS[modTreeTypes.getMetadata()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", modTreeTypes.asString()));
+        for (NewWoodTypes newWoodTypes : NewWoodTypes.values()) {
+            STRIPPED_LOGS[newWoodTypes.getMetadata()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", newWoodTypes.asString()));
         }
 
-        for (VanillaWoodTypes4 woodType : VanillaWoodTypes4.values()) {
+        for (VanillaAndModdedMinusBambooWoodTypes woodType : VanillaAndModdedMinusBambooWoodTypes.values()) {
             WOOD_LANTERNS[woodType.getMetadata()] = new WoodenLanternBlock(woodType);
             STRIPPED_LOG_CAMPFIRE[woodType.getMetadata()] = new CampfireBaseBlock(String.format("stripped_%s", woodType.asString()));
         }
 
-        for (VanillaWoodTypes3 woodType : VanillaWoodTypes3.values()) {
+        for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
             CARVED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
             BlockRegisteringUtils.addSlabAndStair(String.format("carved_%s_planks", woodType.asString()), CARVED_PLANKS[woodType.getMetadata()]);
             BlockRegisteringUtils.addFenceAndGate(String.format("carved_%s_planks", woodType.asString()), CARVED_PLANKS[woodType.getMetadata()]);
@@ -134,12 +136,7 @@ public class NBlocks {
             BlockRegisteringUtils.addFenceAndGate(String.format("patterned_%s_planks", woodType.asString()), PATTERNED_PLANKS[woodType.getMetadata()]);
         }
 
-        for (VanillaWoodTypes vanillaWoodTypes : VanillaWoodTypes.values()) {
-            BARRELS[vanillaWoodTypes.getMetadata()] = new BarrelBaseBlock(vanillaWoodTypes.asString());
-            LOG_CAMPFIRE[vanillaWoodTypes.getMetadata()] = new CampfireBaseBlock(vanillaWoodTypes.asString());
-        }
-
-        for (EnumGTPVariants color : EnumGTPVariants.values()) {
+        for (GlazedTerracottaPillarVariants color : GlazedTerracottaPillarVariants.values()) {
             GLAZED_TERRACOTTA_PILLAR[color.getId()] = new NeutroniaPillarBlock(Material.STONE, String.format("%s_glazed_terracotta_pillar", color.asString()));
         }
 
@@ -320,8 +317,9 @@ public class NBlocks {
         WROUGHT_IRON_BARS = new NeutroniaPaneBlock("wrought_iron_bars", Material.METAL);
 
         for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
-            SOUL_STONE[soulStoneTypes.getMetadata()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
-            BlockRegisteringUtils.addSlabAndStair(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getMetadata()]);
+            SOUL_STONE[soulStoneTypes.getIndex()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
+            BlockRegisteringUtils.addSlabAndStair(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]);
+            BlockRegisteringUtils.addWalls(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]);
         }
 
         BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE);

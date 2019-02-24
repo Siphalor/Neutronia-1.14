@@ -21,62 +21,62 @@ public class TextureAssembler {
     private String gender;
 
     //Outfits
-    private Identifier outfit1Female = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/clothes/outfit1.png");
-    private Identifier outfit1Male = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/clothes/outfit1.png");
-    private Identifier outfit1Genderless = new Identifier(Neutronia.MODID, "textures/entity/npcs/genderless/clothes/outfit1.png");
+    private Identifier outfit1Female = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/clothes/outfit1.png");
+    private Identifier outfit1Male = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/clothes/outfit1.png");
+    private Identifier outfit1Genderless = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/genderless/clothes/outfit1.png");
 
     //Skin
-    private Identifier lightSkinMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/skin/light.png");
-    private Identifier medSkinMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/skin/medium.png");
-    private Identifier darkSkinMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/skin/dark.png");
-    private Identifier lightSkinFemale = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/skin/light.png");
-    private Identifier mediumSkinFemale = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/skin/medium.png");
-    private Identifier darkSkinFemale = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/skin/dark.png");
+    private Identifier lightSkinMale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/skin/light.png");
+    private Identifier medSkinMale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/skin/medium.png");
+    private Identifier darkSkinMale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/skin/dark.png");
+    private Identifier lightSkinFemale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/skin/light.png");
+    private Identifier mediumSkinFemale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/skin/medium.png");
+    private Identifier darkSkinFemale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/skin/dark.png");
 
     //Eyes
-    private Identifier blackEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/black.png");
-    private Identifier blueEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/blue.png");
-    private Identifier brownEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/brown.png");
-    private Identifier greenEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/green.png");
-    private Identifier limeEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/lime.png");
-    private Identifier pinkEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/pink.png");
-    private Identifier yellowEyes = new Identifier(Neutronia.MODID, "textures/entity/npcs/eyes/yellow.png");
+    private Identifier blackEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/black.png");
+    private Identifier blueEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/blue.png");
+    private Identifier brownEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/brown.png");
+    private Identifier greenEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/green.png");
+    private Identifier limeEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/lime.png");
+    private Identifier pinkEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/pink.png");
+    private Identifier yellowEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/yellow.png");
 
     //Hair male
-    private Identifier blackHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black1.png");
-    private Identifier blackHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black2.png");
-    private Identifier blackHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black3.png");
-    private Identifier blackHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/black4.png");
-    private Identifier brownHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown1.png");
-    private Identifier brownHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown2.png");
-    private Identifier brownHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown3.png");
-    private Identifier brownHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/brown4.png");
-    private Identifier blondeHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde1.png");
-    private Identifier blondeHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde2.png");
-    private Identifier blondeHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde3.png");
-    private Identifier blondeHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/blonde4.png");
-    private Identifier redHairMale = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red1.png");
-    private Identifier redHairMale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red2.png");
-    private Identifier redHairMale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red3.png");
-    private Identifier redHairMale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/male/hair/red4.png");
+    private Identifier blackHairMale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/black1.png");
+    private Identifier blackHairMale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/black2.png");
+    private Identifier blackHairMale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/black3.png");
+    private Identifier blackHairMale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/black4.png");
+    private Identifier brownHairMale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/brown1.png");
+    private Identifier brownHairMale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/brown2.png");
+    private Identifier brownHairMale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/brown3.png");
+    private Identifier brownHairMale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/brown4.png");
+    private Identifier blondeHairMale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/blonde1.png");
+    private Identifier blondeHairMale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/blonde2.png");
+    private Identifier blondeHairMale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/blonde3.png");
+    private Identifier blondeHairMale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/blonde4.png");
+    private Identifier redHairMale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/red1.png");
+    private Identifier redHairMale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/red2.png");
+    private Identifier redHairMale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/red3.png");
+    private Identifier redHairMale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/male/hair/red4.png");
 
     //Hair female
-    private Identifier blondeHairFemale = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/blonde1.png");
-    private Identifier blondeHairFemale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/blonde2.png");
-    private Identifier blondeHairFemale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/blonde3.png");
-    private Identifier blondeHairFemale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/blonde4.png");
-    private Identifier brownHairFemale = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/brown1.png");
-    private Identifier brownHairFemale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/brown2.png");
-    private Identifier brownHairFemale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/brown3.png");
-    private Identifier brownHairFemale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/brown4.png");
-    private Identifier blackHairFemale = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/black1.png");
-    private Identifier blackHairFemale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/black2.png");
-    private Identifier blackHairFemale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/black3.png");
-    private Identifier blackHairFemale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/black4.png");
-    private Identifier redHairFemale1 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red1.png");
-    private Identifier redHairFemale2 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red2.png");
-    private Identifier redHairFemale3 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red3.png");
-    private Identifier redHairFemale4 = new Identifier(Neutronia.MODID, "textures/entity/npcs/female/hair/red4.png");
+    private Identifier blondeHairFemale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/blonde1.png");
+    private Identifier blondeHairFemale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/blonde2.png");
+    private Identifier blondeHairFemale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/blonde3.png");
+    private Identifier blondeHairFemale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/blonde4.png");
+    private Identifier brownHairFemale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/brown1.png");
+    private Identifier brownHairFemale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/brown2.png");
+    private Identifier brownHairFemale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/brown3.png");
+    private Identifier brownHairFemale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/brown4.png");
+    private Identifier blackHairFemale = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/black1.png");
+    private Identifier blackHairFemale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/black2.png");
+    private Identifier blackHairFemale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/black3.png");
+    private Identifier blackHairFemale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/black4.png");
+    private Identifier redHairFemale1 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/red1.png");
+    private Identifier redHairFemale2 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/red2.png");
+    private Identifier redHairFemale3 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/red3.png");
+    private Identifier redHairFemale4 = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/female/hair/red4.png");
 
     public TextureAssembler(String eyeColor, String hairColor, String skinColor, Integer hairstyle, String gender) {
         this.eyeColor = eyeColor;

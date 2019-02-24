@@ -2,6 +2,7 @@ package team.abnormals.neutronia.enums;
 
 import net.minecraft.util.Identifier;
 import net.minecraft.util.StringRepresentable;
+import team.abnormals.neutronia.Neutronia;
 
 public enum CustomChestTypes implements StringRepresentable {
 
@@ -25,8 +26,8 @@ public enum CustomChestTypes implements StringRepresentable {
 
     CustomChestTypes(String name, String modelName, int id) {
         this.name = name + "_chest";
-        this.modelTexture = new Identifier("neutronia", "textures/entity/chest/" + modelName);
-        this.doubleModelTexture = new Identifier("neutronia", "textures/entity/chest/" + name + "_double.png");
+        this.modelTexture = new Identifier(Neutronia.MOD_ID, "textures/entity/chest/" + modelName);
+        this.doubleModelTexture = new Identifier(Neutronia.MOD_ID, "textures/entity/chest/" + name + "_double.png");
         this.id = id;
     }
 

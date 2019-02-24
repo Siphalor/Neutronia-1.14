@@ -6,8 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class BushModBlock extends PlantBlock implements INeutroniaBlock {
+public class BushModBlock extends PlantBlock implements INeutroniaInfo {
 
     public BushModBlock(String name, Material material) {
         super(Settings.of(material));

@@ -10,8 +10,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class CampfireBaseBlock extends CampfireBlock implements INeutroniaBlock {
+public class CampfireBaseBlock extends CampfireBlock implements INeutroniaInfo {
 
     public CampfireBaseBlock(String name) {
         super(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F).sounds(BlockSoundGroup.WOOD).lightLevel(15).ticksRandomly().build());

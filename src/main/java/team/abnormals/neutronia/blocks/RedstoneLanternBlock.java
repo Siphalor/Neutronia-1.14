@@ -20,10 +20,11 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import team.abnormals.neutronia.INeutroniaInfo;
 
 import java.util.Random;
 
-public class RedstoneLanternBlock extends LanternBlock implements INeutroniaBlock {
+public class RedstoneLanternBlock extends LanternBlock implements INeutroniaInfo {
 
     public static final DirectionProperty FACING = DirectionProperty.create("facing");
     public static final BooleanProperty LIT = BooleanProperty.create("lit");

@@ -7,8 +7,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.IModInfo;
 
-public abstract class BaseModBlock extends Block implements IModBlockInfo {
+public abstract class BaseModBlock extends Block implements IModInfo {
 
     public BaseModBlock(Material material, String name) {
         super(Settings.of(material));

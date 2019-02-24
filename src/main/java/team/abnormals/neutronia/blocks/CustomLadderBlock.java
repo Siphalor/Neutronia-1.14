@@ -13,9 +13,10 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 import team.abnormals.neutronia.api.Climbable;
 
-public class CustomLadderBlock extends LadderBlock implements INeutroniaBlock, Climbable {
+public class CustomLadderBlock extends LadderBlock implements INeutroniaInfo, Climbable {
 
     public CustomLadderBlock(String variant) {
         super(FabricBlockSettings.of(Material.PART).hardness(0.4F).sounds(BlockSoundGroup.LADDER).build());

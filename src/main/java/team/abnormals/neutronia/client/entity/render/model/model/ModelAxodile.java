@@ -1,8 +1,8 @@
 package team.abnormals.neutronia.client.entity.render.model.model;
 
-import net.minecraft.client.render.entity.model.EntityModel;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.model.Cuboid;
-import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 
 /**
@@ -93,11 +93,11 @@ public class ModelAxodile extends EntityModel {
         this.body.render(f5);
         this.shell01.render(f5);
         GlStateManager.pushMatrix();
-        GlStateManager.translate(this.lowerJaw.offsetX, this.lowerJaw.offsetY, this.lowerJaw.offsetZ);
-        GlStateManager.translate(this.lowerJaw.rotationPointX * f5, this.lowerJaw.rotationPointY * f5, this.lowerJaw.rotationPointZ * f5);
-        GlStateManager.scale(0.9D, 1.0D, 1.0D);
-        GlStateManager.translate(-this.lowerJaw.offsetX, -this.lowerJaw.offsetY, -this.lowerJaw.offsetZ);
-        GlStateManager.translate(-this.lowerJaw.rotationPointX * f5, -this.lowerJaw.rotationPointY * f5, -this.lowerJaw.rotationPointZ * f5);
+        GlStateManager.translatef(this.lowerJaw.x, this.lowerJaw.y, this.lowerJaw.z);
+        GlStateManager.translatef(this.lowerJaw.rotationPointX * f5, this.lowerJaw.rotationPointY * f5, this.lowerJaw.rotationPointZ * f5);
+        GlStateManager.scaled(0.9D, 1.0D, 1.0D);
+        GlStateManager.translatef(-this.lowerJaw.x, -this.lowerJaw.y, -this.lowerJaw.z);
+        GlStateManager.translatef(-this.lowerJaw.rotationPointX * f5, -this.lowerJaw.rotationPointY * f5, -this.lowerJaw.rotationPointZ * f5);
         this.lowerJaw.render(f5);
         GlStateManager.popMatrix();
         this.shell02.render(f5);

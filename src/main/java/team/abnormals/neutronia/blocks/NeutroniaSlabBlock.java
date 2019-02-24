@@ -7,8 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaSlabBlock extends SlabBlock implements INeutroniaBlock {
+public class NeutroniaSlabBlock extends SlabBlock implements INeutroniaInfo {
 
     public NeutroniaSlabBlock(String name) {
         super(Settings.of(Material.WOOD));

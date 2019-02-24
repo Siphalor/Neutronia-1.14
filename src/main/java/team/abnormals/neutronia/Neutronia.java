@@ -36,7 +36,7 @@ import java.util.function.Supplier;
 
 public class Neutronia implements ModInitializer {
 
-    public static final String MODID = "neutronia";
+    public static final String MOD_ID = "neutronia";
 
     @Override
     public void onInitialize() {

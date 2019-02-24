@@ -7,8 +7,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaPaneBlock extends PaneBlock implements INeutroniaBlock {
+public class NeutroniaPaneBlock extends PaneBlock implements INeutroniaInfo {
 
     public NeutroniaPaneBlock(String name, Material material) {
         this(Settings.of(material), name);

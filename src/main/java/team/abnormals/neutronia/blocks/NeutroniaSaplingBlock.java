@@ -10,8 +10,9 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class NeutroniaSaplingBlock extends SaplingBlock implements INeutroniaBlock {
+public class NeutroniaSaplingBlock extends SaplingBlock implements INeutroniaInfo {
 
     public NeutroniaSaplingBlock(String name, SaplingGenerator saplingGenerator_1) {
         super(saplingGenerator_1, FabricBlockSettings.of(Material.PLANT).noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.GRASS).build());

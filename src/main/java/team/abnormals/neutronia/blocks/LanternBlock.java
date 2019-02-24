@@ -15,8 +15,9 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
+import team.abnormals.neutronia.INeutroniaInfo;
 
-public class LanternBlock extends net.minecraft.block.LanternBlock implements INeutroniaBlock {
+public class LanternBlock extends net.minecraft.block.LanternBlock implements INeutroniaInfo {
 
     public static final DirectionProperty FACING = DirectionProperty.create("facing");
     public static final BooleanProperty HANGING = BooleanProperty.create("hanging");      //False = Not Extended, True = Model is Extended

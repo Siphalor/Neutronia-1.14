@@ -9,32 +9,32 @@ public enum SoulStoneVariants implements StringRepresentable {
     SMOOTH_SOULSTONE(2, "cut_soulstone"),
     POLISHED_SOULSTONE(3, "polished_soulstone");
 
-    private static final SoulStoneVariants[] META_LOOKUP = new SoulStoneVariants[values().length];
+    private static final SoulStoneVariants[] INDEX_LOOKUP = new SoulStoneVariants[values().length];
 
     static {
-        for (SoulStoneVariants blockstone$enumtype : values()) {
-            META_LOOKUP[blockstone$enumtype.getMetadata()] = blockstone$enumtype;
+        for (SoulStoneVariants type : values()) {
+            INDEX_LOOKUP[type.getIndex()] = type;
         }
     }
 
-    private final int meta;
+    private final int index;
     private final String name;
 
-    SoulStoneVariants(int p_i46384_3_, String p_i46384_5_) {
-        this.meta = p_i46384_3_;
-        this.name = p_i46384_5_;
+    SoulStoneVariants(int index, String name) {
+        this.index = index;
+        this.name = name;
     }
 
     public static SoulStoneVariants byMetadata(int meta) {
-        if (meta < 0 || meta >= META_LOOKUP.length) {
+        if (meta < 0 || meta >= INDEX_LOOKUP.length) {
             meta = 0;
         }
 
-        return META_LOOKUP[meta];
+        return INDEX_LOOKUP[meta];
     }
 
-    public int getMetadata() {
-        return this.meta;
+    public int getIndex() {
+        return this.index;
     }
 
     public String toString() {

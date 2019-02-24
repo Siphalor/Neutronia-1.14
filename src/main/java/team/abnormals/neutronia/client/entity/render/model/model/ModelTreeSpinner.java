@@ -1,8 +1,8 @@
 package team.abnormals.neutronia.client.entity.render.model.model;
 
-import net.minecraft.client.render.entity.model.EntityModel;
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.minecraft.client.model.Cuboid;
-import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 
 /**
@@ -76,19 +76,19 @@ public class ModelTreeSpinner extends EntityModel {
         this.PropellerPart3.render(f5);
         this.PropellerPart2.render(f5);
         GlStateManager.pushMatrix();
-        GlStateManager.translate(this.Propeller.offsetX, this.Propeller.offsetY, this.Propeller.offsetZ);
-        GlStateManager.translate(this.Propeller.rotationPointX * f5, this.Propeller.rotationPointY * f5, this.Propeller.rotationPointZ * f5);
-        GlStateManager.scale(0.85D, 0.85D, 0.85D);
-        GlStateManager.translate(-this.Propeller.offsetX, -this.Propeller.offsetY, -this.Propeller.offsetZ);
-        GlStateManager.translate(-this.Propeller.rotationPointX * f5, -this.Propeller.rotationPointY * f5, -this.Propeller.rotationPointZ * f5);
+        GlStateManager.translatef(this.Propeller.x, this.Propeller.y, this.Propeller.z);
+        GlStateManager.translatef(this.Propeller.rotationPointX * f5, this.Propeller.rotationPointY * f5, this.Propeller.rotationPointZ * f5);
+        GlStateManager.scaled(0.85D, 0.85D, 0.85D);
+        GlStateManager.translatef(-this.Propeller.x, -this.Propeller.y, -this.Propeller.z);
+        GlStateManager.translatef(-this.Propeller.rotationPointX * f5, -this.Propeller.rotationPointY * f5, -this.Propeller.rotationPointZ * f5);
         this.Propeller.render(f5);
         GlStateManager.popMatrix();
         GlStateManager.pushMatrix();
-        GlStateManager.translate(this.Head.offsetX, this.Head.offsetY, this.Head.offsetZ);
-        GlStateManager.translate(this.Head.rotationPointX * f5, this.Head.rotationPointY * f5, this.Head.rotationPointZ * f5);
-        GlStateManager.scale(1.5D, 1.5D, 1.5D);
-        GlStateManager.translate(-this.Head.offsetX, -this.Head.offsetY, -this.Head.offsetZ);
-        GlStateManager.translate(-this.Head.rotationPointX * f5, -this.Head.rotationPointY * f5, -this.Head.rotationPointZ * f5);
+        GlStateManager.translatef(this.Head.x, this.Head.y, this.Head.z);
+        GlStateManager.translatef(this.Head.rotationPointX * f5, this.Head.rotationPointY * f5, this.Head.rotationPointZ * f5);
+        GlStateManager.scaled(1.5D, 1.5D, 1.5D);
+        GlStateManager.translatef(-this.Head.x, -this.Head.y, -this.Head.z);
+        GlStateManager.translatef(-this.Head.rotationPointX * f5, -this.Head.rotationPointY * f5, -this.Head.rotationPointZ * f5);
         this.Head.render(f5);
         GlStateManager.popMatrix();
         this.PropellerPart4.render(f5);

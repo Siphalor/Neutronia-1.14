@@ -23,9 +23,10 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
+import team.abnormals.neutronia.INeutroniaInfo;
 import team.abnormals.neutronia.blocks.entity.SignBlockEntity;
 
-public class NeutroniaSignBlock extends SignBlock implements INeutroniaBlock {
+public class NeutroniaSignBlock extends SignBlock implements INeutroniaInfo {
 
     public static final IntegerProperty ROTATION;
 
