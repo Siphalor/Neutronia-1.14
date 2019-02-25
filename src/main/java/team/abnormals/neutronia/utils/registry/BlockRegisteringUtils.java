@@ -37,4 +37,8 @@ public class BlockRegisteringUtils {
         new NeutroniaWallBlock(wallName, block.getDefaultState());
     }
 
+    public static void addButtonAndPressurePlate(String name, Block block) {
+
+    }
+
 }
