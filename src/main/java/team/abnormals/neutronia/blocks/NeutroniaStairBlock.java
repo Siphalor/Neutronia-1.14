@@ -13,7 +13,7 @@ public class NeutroniaStairBlock extends StairsBlock implements INeutroniaInfo {
 
     public NeutroniaStairBlock(BlockState blockState_1, String name) {
         super(blockState_1, Settings.copy(blockState_1.getBlock()));
-        register(name + "_stair", this);
+        register(name + "_stairs", this);
     }
 
     private void register(String name, Block block) {

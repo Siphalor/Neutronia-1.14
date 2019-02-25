@@ -30,7 +30,6 @@ dependencies {
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
     
     modCompile "net.fabricmc:fabric:${project.fabric_version}"
-    implementation 'org.jetbrains:annotations:15.0'
 }
 
 processResources {

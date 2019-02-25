@@ -32,7 +32,6 @@ public class SocialVillagerRenderer extends MobEntityRenderer{
 			return new Identifier("minecraft:dynamic/" + entity.getDataTracker().get(SocialVillager.serverUUID) + "_1");
 		}
         SocialVillager entityIn = (SocialVillager) entity;
-        System.out.printf("Gender: %s", entityIn.getSex());
         boolean female = entityIn.getSex().equals("Female");
         this.model = new PlayerEntityModel<>(0.0F, female);
 		String hairColor = entityIn.getDataTracker().get(SocialVillager.hairColorUnified);

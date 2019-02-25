@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
+import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
@@ -15,6 +16,7 @@ import team.abnormals.neutronia.blocks.pumpkin.PumpkinBlock;
 import team.abnormals.neutronia.blocks.sapling.PalmSaplingGenerator;
 import team.abnormals.neutronia.enums.*;
 import team.abnormals.neutronia.utils.registry.BlockRegisteringUtils;
+import team.abnormals.neutronia.utils.registry.BlockRegistryBuilder;
 
 public class NBlocks {
 
@@ -91,16 +93,16 @@ public class NBlocks {
 
         PALM_LOG = new NeutroniaPillarBlock(Material.WOOD, "palm_log");
         PALM_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "palm_planks");
-        BlockRegisteringUtils.addSlabAndStair("palm_planks", PALM_PLANKS);
-        BlockRegisteringUtils.addFenceAndGate("palm_planks", PALM_PLANKS);
+        BlockRegistryBuilder.getInstance("palm", PALM_PLANKS)
+                .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         PALM_LEAVES = new NeutroniaLeavesBlock("palm_leaves");
         PALM_LOG_TOP = new NeutroniaBaseBlock(Material.WOOD, "palm_top_log");
         PALM_SAPLING = new NeutroniaSaplingBlock("palm_sapling", new PalmSaplingGenerator());
 
         WILLOW_LOG = new NeutroniaPillarBlock(Material.WOOD, "willow_log");
         WILLOW_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "willow_planks");
-        BlockRegisteringUtils.addSlabAndStair("willow_planks", WILLOW_PLANKS);
-        BlockRegisteringUtils.addFenceAndGate("willow_planks", WILLOW_PLANKS);
+        BlockRegistryBuilder.getInstance("willow", WILLOW_PLANKS)
+                .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         WILLOW_LEAVES = new NeutroniaLeavesBlock("willow_leaves");
         WILLOW_SAPLING = new NeutroniaSaplingBlock("willow_sapling", new PalmSaplingGenerator());
         WILLOW_UNDERWATER_SAPLING = new NeutroniaSaplingBlock("underwater_willow_sapling", new PalmSaplingGenerator());
@@ -129,11 +131,11 @@ public class NBlocks {
 
         for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
             CARVED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
-            BlockRegisteringUtils.addSlabAndStair(String.format("carved_%s_planks", woodType.asString()), CARVED_PLANKS[woodType.getMetadata()]);
-            BlockRegisteringUtils.addFenceAndGate(String.format("carved_%s_planks", woodType.asString()), CARVED_PLANKS[woodType.getMetadata()]);
+            BlockRegistryBuilder.getInstance(String.format("carved_%s", woodType.asString()), CARVED_PLANKS[woodType.getMetadata()])
+                    .slab().stair().button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
             PATTERNED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
-            BlockRegisteringUtils.addSlabAndStair(String.format("patterned_%s_planks", woodType.asString()), PATTERNED_PLANKS[woodType.getMetadata()]);
-            BlockRegisteringUtils.addFenceAndGate(String.format("patterned_%s_planks", woodType.asString()), PATTERNED_PLANKS[woodType.getMetadata()]);
+            BlockRegistryBuilder.getInstance(String.format("patterned_%s", woodType.asString()), PATTERNED_PLANKS[woodType.getMetadata()])
+                    .slab().stair().button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
         }
 
         for (GlazedTerracottaPillarVariants color : GlazedTerracottaPillarVariants.values()) {
@@ -361,20 +363,20 @@ public class NBlocks {
         SAWMILL = new SawmillBlock("sawmill");
 
         BAMBOO_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bamboo_planks");
-        BlockRegisteringUtils.addSlabAndStair("bamboo_planks", BAMBOO_PLANKS);
-        BlockRegisteringUtils.addFenceAndGate("bamboo_planks", BAMBOO_PLANKS);
+        BlockRegistryBuilder.getInstance("bamboo", BAMBOO_PLANKS)
+                .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         BAMBOO_SIGN = new NeutroniaSignBlock("bamboo_sign");
         BAMBOO_WALL_SIGN = new NeutroniaWallSignBlock("bamboo_wall_sign");
         BAMBOO_TORCH = new NeutroniaTorchBlock("bamboo_torch");
         THATCH = new NeutroniaBaseBlock(Material.ORGANIC, "thatch");
-        BlockRegisteringUtils.addSlabAndStair("thatch", THATCH);
+        BlockRegistryBuilder.getInstance("palm", PALM_PLANKS).slab().stair();
 
         ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "natural_acidian");
-        BlockRegisteringUtils.addSlabAndStair("natural_acidian", ACIDIAN);
-        BlockRegisteringUtils.addWalls("natural_acidian", ACIDIAN);
+        BlockRegistryBuilder.getInstance("natural_acidian", ACIDIAN)
+                .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_BRICKS = new NeutroniaBaseBlock(Material.STONE, "acidian_bricks");
-        BlockRegisteringUtils.addSlabAndStair("acidian_bricks", ACIDIAN_BRICKS);
-        BlockRegisteringUtils.addWalls("acidian_bricks", ACIDIAN_BRICKS);
+        BlockRegistryBuilder.getInstance("acidian_bricks", ACIDIAN_BRICKS)
+                .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_PILLAR = new NeutroniaPillarBlock(Material.STONE, "acidian_pillar");
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
         ACIDIAN_BARS = new NeutroniaPaneBlock("acidian_bars", Material.STONE);
@@ -397,11 +399,11 @@ public class NBlocks {
         GOLDEN_APPLE_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "golden_apple_crate");
 
         TREATED_PLANKS = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "treated_planks");
-        BlockRegisteringUtils.addSlabAndStair("treated_planks", TREATED_PLANKS);
-        BlockRegisteringUtils.addFenceAndGate("treated_planks", TREATED_PLANKS);
+        BlockRegistryBuilder.getInstance("treated_planks", TREATED_PLANKS)
+                .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         TREATED_SIDING = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build(), "treated_siding");
-        BlockRegisteringUtils.addSlabAndStair("treated_siding", TREATED_SIDING);
-        BlockRegisteringUtils.addFenceAndGate("treated_siding", TREATED_SIDING);
+        BlockRegistryBuilder.getInstance("treated_siding", TREATED_SIDING)
+                .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
 
         POTTED_BEETROOT = new NeutroniaFlowerPotBlock("potted_beetroot", Blocks.BEETROOTS);
         POTTED_CARROTS = new NeutroniaFlowerPotBlock("potted_carrots", Blocks.CARROTS);

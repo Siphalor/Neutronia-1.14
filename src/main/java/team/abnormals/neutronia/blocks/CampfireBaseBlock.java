@@ -16,7 +16,7 @@ public class CampfireBaseBlock extends CampfireBlock implements INeutroniaInfo {
 
     public CampfireBaseBlock(String name) {
         super(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F).sounds(BlockSoundGroup.WOOD).lightLevel(15).ticksRandomly().build());
-        register(name + "_campfire", this, ItemGroup.BUILDING_BLOCKS);
+        register(name + "_campfire", this, ItemGroup.DECORATIONS);
     }
 
     private void register(String name, Block block, ItemGroup tab) {
