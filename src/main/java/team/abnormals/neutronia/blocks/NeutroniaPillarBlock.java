@@ -53,7 +53,7 @@ public class NeutroniaPillarBlock extends BaseModBlock implements INeutroniaInfo
 
     @Override
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
-        return this.getDefaultState().with(AXIS, itemPlacementContext_1.getFacing().getAxis());
+        return this.getDefaultState().with(AXIS, itemPlacementContext_1.getFacing().getOpposite().getAxis());
     }
 
 }

@@ -132,10 +132,10 @@ public class NBlocks {
         for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
             CARVED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
             BlockRegistryBuilder.getInstance(String.format("carved_%s", woodType.asString()), CARVED_PLANKS[woodType.getMetadata()])
-                    .slab().stair().button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
+                    .slab().stair();
             PATTERNED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
             BlockRegistryBuilder.getInstance(String.format("patterned_%s", woodType.asString()), PATTERNED_PLANKS[woodType.getMetadata()])
-                    .slab().stair().button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
+                    .slab().stair();
         }
 
         for (GlazedTerracottaPillarVariants color : GlazedTerracottaPillarVariants.values()) {
@@ -253,6 +253,29 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("diorite_tile", DIORITE_TILE);
         BlockRegisteringUtils.addSlabAndStair("granite_tile", GRANITE_TILE);
         BlockRegisteringUtils.addSlabAndStair("stone_brick_tile", STONE_BRICK_TILE);
+
+        BlockRegistryBuilder.getInstance("andesite", Blocks.ANDESITE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("granite", Blocks.GRANITE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("diorite", Blocks.DIORITE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("stone_bricks", Blocks.STONE_BRICKS)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("cracked_stone_bricks", Blocks.CRACKED_STONE_BRICKS)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("cobblestone", Blocks.COBBLESTONE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("polished_andesite", Blocks.STONE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("polished_granite", Blocks.STONE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+        BlockRegistryBuilder.getInstance("polished_diorite", Blocks.STONE)
+                .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
 
         ROPE_COIL = new NeutroniaPillarBlock(Material.WOOL, "rope_coil");
 
