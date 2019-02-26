@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import team.abnormals.neutronia.mixin.item.SeedsItemAccessor;
+import team.abnormals.neutronia.items.SeedsItemAccessor;
 
 import java.util.Map;
 import java.util.Objects;
