@@ -9,10 +9,7 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.container.BlockContext;
-import net.minecraft.container.Container;
-import net.minecraft.container.Property;
-import net.minecraft.container.Slot;
+import net.minecraft.container.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.BasicInventory;
@@ -30,11 +27,7 @@ import team.hollow.neutronia.recipe.SawmillingRecipe;
 import java.util.List;
 
 public class SawmillContainer extends Container {
-    static final ImmutableList<Item> field_17626;
-
-    static {
-        field_17626 = ImmutableList.of(Items.field_8118, Items.field_8113, Items.field_8191, Items.field_8842, Items.field_8651, Items.field_8404, Items.field_8583, Items.field_8684, Items.field_8170, Items.field_8125, Items.field_8820, Items.field_8652, Items.field_8415, Items.field_8624, Items.field_8767, Items.field_8334, Items.field_8072, Items.field_8808, Items.field_8248, Items.field_8362, Items.field_8472, Items.field_8785, Items.field_8284, Items.field_8219, Items.field_8888, Items.field_8210, Items.field_8201, Items.field_8439, Items.field_8587, Items.field_8458);
-    }
+    private static final ImmutableList<Item> field_17626 = ImmutableList.of(Items.OAK_LOG, Items.BIRCH_LOG, Items.SPRUCE_LOG, Items.ACACIA_LOG, Items.DARK_OAK_LOG, Items.JUNGLE_LOG, Items.STRIPPED_OAK_LOG, Items.STRIPPED_ACACIA_LOG, Items.STRIPPED_BIRCH_LOG, Items.STRIPPED_DARK_OAK_LOG, Items.STRIPPED_JUNGLE_LOG, Items.STRIPPED_SPRUCE_LOG);
 
     public final Inventory inventory;
     public final PlayerInventory playerInventory;

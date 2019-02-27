@@ -36,7 +36,7 @@ public class SawmillScreen extends ContainerScreen<SawmillContainer> {
 
     protected void drawForeground(int int_1, int int_2) {
         this.fontRenderer.draw(this.name.getFormattedText(), 8.0F, 4.0F, 4210752);
-        this.fontRenderer.draw(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.containerHeight - 94), 4210752);
+        this.fontRenderer.draw(this.playerInventory.getDisplayName().getFormattedText(), 8.0F, (float) (this.height - 94), 4210752);
     }
 
     protected void drawBackground(float float_1, int int_1, int int_2) {
@@ -45,7 +45,7 @@ public class SawmillScreen extends ContainerScreen<SawmillContainer> {
         this.client.getTextureManager().bindTexture(TEXTURE);
         int int_3 = this.left;
         int int_4 = this.top;
-        this.drawTexturedRect(int_3, int_4, 0, 0, this.containerWidth, this.containerHeight);
+        this.drawTexturedRect(int_3, int_4, 0, 0, this.width, this.height);
         int int_5 = (int) (41.0F * this.scrollAmount);
         this.drawTexturedRect(int_3 + 119, int_4 + 15 + int_5, 176 + (this.shouldScroll() ? 0 : 12), 0, 12, 15);
         int int_6 = this.left + 52;
@@ -61,7 +61,7 @@ public class SawmillScreen extends ContainerScreen<SawmillContainer> {
             int int_8 = int_3 + int_7 % 4 * 16;
             int int_9 = int_7 / 4;
             int int_10 = int_4 + int_9 * 18 + 2;
-            int int_11 = this.containerHeight;
+            int int_11 = this.height;
             if (int_6 == this.container.method_17862()) {
                 int_11 += 18;
             } else if (int_1 >= int_8 && int_2 >= int_10 && int_1 < int_8 + 16 && int_2 < int_10 + 18) {

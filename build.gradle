@@ -25,7 +25,7 @@ dependencies {
     modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modCompile "mcp.mobius.waila:Hwyla:${project.full_mc_version}-${project.newest_version}"
-    modCompile "com.github.shedaniel:RoughlyEnoughItems:93a92494f0"
+    modCompile "com.github.shedaniel:RoughlyEnoughItems:65585d8"
     modCompile "io.github.prospector.modmenu:ModMenu:1.${project.newest_version}"
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
     
