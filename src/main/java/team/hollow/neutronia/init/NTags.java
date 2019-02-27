@@ -7,7 +7,7 @@ import net.minecraft.util.Identifier;
 public class NTags {
 
     static {
-        registerTag(TagType.BLOCK, new Identifier(""));
+        registerTag(TagType.BLOCK, new Identifier("neutronia", "test"), "neutronia:test");
     }
 
     private static void registerTag(TagType type, Identifier tag, String... entries) {

@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.entity.passive;
+package team.hollow.neutronia.entity.passive;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,7 +29,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
-import team.abnormals.neutronia.init.NEntityTypes;
+import team.hollow.neutronia.init.NEntityTypes;
 
 public class EntityPenguin extends AnimalEntity {
 	private static final TrackedData<Boolean> IS_SLIDING = DataTracker.registerData(EntityPenguin.class,

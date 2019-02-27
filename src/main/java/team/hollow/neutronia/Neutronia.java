@@ -56,6 +56,7 @@ public class Neutronia implements ModInitializer {
         OreGeneration.registerOres();
         NRecipes.init();
         new NPaintingMotives();
+        new NTags();
     }
 
     /**
