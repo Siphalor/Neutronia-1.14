@@ -1,8 +1,7 @@
 package generators;
 
 import net.minecraft.util.Identifier;
-import team.abnormals.neutronia.enums.CarvedFaceTypes;
-import team.abnormals.neutronia.enums.SoulStoneVariants;
+import team.hollow.neutronia.enums.SoulStoneVariants;
 
 public class MainGenerators {
 

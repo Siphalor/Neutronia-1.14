@@ -5,9 +5,9 @@
   "version": "${version}",
   "side": "universal",
   "initializers": [
-    "team.abnormals.neutronia.Neutronia",
-    "team.abnormals.neutronia.client.ClientInit",
-    "team.abnormals.test.ExampleMod"
+    "team.hollow.neutronia.Neutronia",
+    "team.hollow.neutronia.client.ClientInit",
+    "team.hollow.test.ExampleMod"
   ],
   "requires": {
     "fabric": "*"

@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "team.abnormals.neutronia.mixin.client",
+  "package": "team.hollow.neutronia.mixin.client",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ItemDynamicRendererMixin",

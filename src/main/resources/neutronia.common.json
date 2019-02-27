@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "team.abnormals.neutronia.mixin",
+  "package": "team.hollow.neutronia.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "block.MixinComposter",
