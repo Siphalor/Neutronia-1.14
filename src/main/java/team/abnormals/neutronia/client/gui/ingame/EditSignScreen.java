@@ -30,7 +30,7 @@ public class EditSignScreen extends Screen {
 
     protected void onInitialized() {
         this.client.keyboard.enableRepeatEvents(true);
-        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height / 4 + 120, I18n.translate("gui.done")) {
+        this.addButton(new ButtonWidget(this.screenWidth / 2 - 100, this.screenHeight / 4 + 120, I18n.translate("gui.done")) {
             public void onPressed(double double_1, double double_2) {
                 EditSignScreen.this.method_2526();
             }
@@ -83,10 +83,10 @@ public class EditSignScreen extends Screen {
 
     public void draw(int int_1, int int_2, float float_1) {
         this.drawBackground();
-        this.drawStringCentered(this.fontRenderer, I18n.translate("sign.edit"), this.width / 2, 40, 16777215);
+        this.drawStringCentered(this.fontRenderer, I18n.translate("sign.edit"), this.screenWidth / 2, 40, 16777215);
         GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.pushMatrix();
-        GlStateManager.translatef((float)(this.width / 2), 0.0F, 50.0F);
+        GlStateManager.translatef((float)(this.screenWidth / 2), 0.0F, 50.0F);
         GlStateManager.scalef(-93.75F, -93.75F, -93.75F);
         GlStateManager.rotatef(180.0F, 0.0F, 1.0F, 0.0F);
         BlockState blockState_1 = this.sign.getCachedState();

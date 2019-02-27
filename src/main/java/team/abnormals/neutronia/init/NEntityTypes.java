@@ -7,13 +7,14 @@ import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import team.abnormals.neutronia.entity.ArcticWolfEntity;
 import team.abnormals.neutronia.entity.AxolotlEntity;
 import team.abnormals.neutronia.entity.EntityOlDiggy;
 import team.abnormals.neutronia.entity.SocialVillager;
 import team.abnormals.neutronia.entity.passive.BlackBearEntity;
 import team.abnormals.neutronia.entity.passive.BrownBearEntity;
+import team.abnormals.neutronia.entity.passive.EntityPenguin;
 import team.abnormals.neutronia.entity.passive.VillagerPlusEntity;
-import team.abnormals.neutronia.entity.ArcticWolfEntity;
 
 public class NEntityTypes {
 
@@ -25,6 +26,7 @@ public class NEntityTypes {
     public static final EntityType ARCTIC_WOLF;
 //    public static final EntityType JUNGLE_FROG;
     public static final EntityType AXOLOTL;
+    public static final EntityType PENGUIN;
 
     static {
         VILLAGER_PLUS = register("villager_plus", FabricEntityTypeBuilder.<VillagerPlusEntity>create(EntityCategory.CREATURE, (var1, var2) -> new VillagerPlusEntity(var2)).size(EntitySize.constant(0.6F, 1.95F)));
@@ -35,6 +37,7 @@ public class NEntityTypes {
         ARCTIC_WOLF = register("arctic_wolf", FabricEntityTypeBuilder.<ArcticWolfEntity>create(EntityCategory.CREATURE, (var1, var2) -> new ArcticWolfEntity(var2)).size(EntitySize.constant(0.5F, 1.95F)));
 //        JUNGLE_FROG = register("jungle_frog", FabricEntityTypeBuilder.<AxolotlEntity>create(EntityCategory.CREATURE, (var1, var2) -> new EntityJungle(var2)));
         AXOLOTL = register("axolotl", FabricEntityTypeBuilder.<AxolotlEntity>create(EntityCategory.CREATURE, (var1, var2) -> new AxolotlEntity(var2)));
+        PENGUIN = register("penguin", FabricEntityTypeBuilder.<EntityPenguin>create(EntityCategory.CREATURE, (var1, var2) -> new EntityPenguin(var2)).size(EntitySize.constant(0.6F, 1.1F)));
     }
 
     private static EntityType register(String string_1, FabricEntityTypeBuilder<? extends Entity> entityType$Builder_1) {
