@@ -7,7 +7,7 @@ import team.hollow.neutronia.world.gen.feature.PalmTreeFeature;
 
 import java.util.Random;
 
-public class PalmSaplingGenerator extends SaplingGenerator {
+public class BaobabSaplingGenerator extends SaplingGenerator {
 
     @Override
     protected AbstractTreeFeature<DefaultFeatureConfig> createTreeFeature(Random var1) {

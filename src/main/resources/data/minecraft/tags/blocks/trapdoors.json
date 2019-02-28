@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:willow_trapdoor",
+    "neutronia:palm_trapdoor",
+    "neutronia:bamboo_trapdoor",
+    "neutronia:sandstone_trapdoor",
+    "neutronia:red_sandstone_trapdoor",
+    "neutronia:ice_trapdoor"
+  ]
+}

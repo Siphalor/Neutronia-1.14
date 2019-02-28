@@ -1,4 +1,4 @@
-package team.abnormals.neutronia.entity.wip;
+package team.hollow.neutronia.entity.wip;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;

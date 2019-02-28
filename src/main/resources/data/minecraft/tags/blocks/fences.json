@@ -2,6 +2,9 @@
   "replace": false,
   "values": [
     "neutronia:palm_fence",
-    "neutronia:willow_fence"
+    "neutronia:willow_fence",
+    "neutronia:bamboo_fence",
+    "neutronia:treated_planks_fence",
+    "neutronia:treated_siding_fence"
   ]
 }

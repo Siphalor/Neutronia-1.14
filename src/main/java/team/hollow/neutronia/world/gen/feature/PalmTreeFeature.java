@@ -14,7 +14,7 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-public class SavannaTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
+public class PalmTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
 
     private static final BlockState LOG;
     private static final BlockState LOG_TOP;
@@ -26,7 +26,7 @@ public class SavannaTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig
         LEAVES = NBlocks.PALM_LEAVES.getDefaultState();
     }
 
-    public SavannaTreeFeature(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1, boolean boolean_1) {
+    public PalmTreeFeature(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1, boolean boolean_1) {
         super(function_1, boolean_1);
     }
 

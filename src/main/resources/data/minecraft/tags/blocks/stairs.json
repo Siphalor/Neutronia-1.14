@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:willow_stairs",
+    "neutronia:palm_stairs",
+    "neutronia:treated_planks_stairs",
+    "neutronia:treated_siding_stairs"
+  ]
+}

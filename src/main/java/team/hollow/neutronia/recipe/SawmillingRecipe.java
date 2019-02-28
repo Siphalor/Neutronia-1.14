@@ -21,7 +21,7 @@ public class SawmillingRecipe extends CuttingRecipe {
     }
 
     public boolean matches(Inventory inventory_1, World world_1) {
-        return this.ingredient.matches(inventory_1.getInvStack(0));
+        return this.ingredient.method_8093(inventory_1.getInvStack(0));
     }
 
     public static class Serilizer<T extends SawmillingRecipe> implements RecipeSerializer<SawmillingRecipe> {

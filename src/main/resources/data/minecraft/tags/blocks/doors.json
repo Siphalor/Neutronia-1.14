@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:willow_door",
+    "neutronia:palm_door",
+    "neutronia:bamboo_door",
+    "neutronia:sandstone_door",
+    "neutronia:red_sandstone_door",
+    "neutronia:ice_door"
+  ]
+}

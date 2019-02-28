@@ -14,6 +14,7 @@ import team.hollow.neutronia.blocks.melons.MelonBlock;
 import team.hollow.neutronia.blocks.pumpkin.JackOLanternBlock;
 import team.hollow.neutronia.blocks.pumpkin.PumpkinBlock;
 import team.hollow.neutronia.blocks.sapling.PalmSaplingGenerator;
+import team.hollow.neutronia.blocks.sapling.WillowSaplingGenerator;
 import team.hollow.neutronia.enums.*;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
@@ -24,7 +25,7 @@ public class NBlocks {
             CARVED_PLANKS = new Block[10], BARRELS = new Block[5], WOOD_LANTERNS = new Block[10],
             LADDERS = new Block[9], LOG_CAMPFIRE = new Block[5], STRIPPED_LOG_CAMPFIRE = new Block[VanillaAndModdedMinusBambooWoodTypes.values().length], STRIPPED_LOGS = new Block[NewWoodTypes.values().length];
     public static final Block[] GLAZED_TERRACOTTA_PILLAR = new Block[13], SOUL_STONE = new Block[4];
-    public static final Block PALM_LOG, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING;
+    public static final Block PALM_LOG, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING, COCONUT;
     public static final Block WILLOW_LOG, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
     public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestTypes.values().length];
     public static final NeutroniaDoorBlock SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR;
@@ -98,14 +99,15 @@ public class NBlocks {
         PALM_LEAVES = new NeutroniaLeavesBlock("palm_leaves");
         PALM_LOG_TOP = new NeutroniaBaseBlock(Material.WOOD, "palm_top_log");
         PALM_SAPLING = new NeutroniaSaplingBlock("palm_sapling", new PalmSaplingGenerator());
+        COCONUT = new CoconutBlock();
 
         WILLOW_LOG = new NeutroniaPillarBlock(Material.WOOD, "willow_log");
         WILLOW_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "willow_planks");
         BlockRegistryBuilder.getInstance("willow", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         WILLOW_LEAVES = new NeutroniaLeavesBlock("willow_leaves");
-        WILLOW_SAPLING = new NeutroniaSaplingBlock("willow_sapling", new PalmSaplingGenerator());
-        WILLOW_UNDERWATER_SAPLING = new NeutroniaSaplingBlock("underwater_willow_sapling", new PalmSaplingGenerator());
+        WILLOW_SAPLING = new NeutroniaSaplingBlock("willow_sapling", new WillowSaplingGenerator());
+        WILLOW_UNDERWATER_SAPLING = new NeutroniaWaterloggedSaplingBlock("underwater_willow_sapling", new WillowSaplingGenerator());
 
         SANDSTONE_DOOR = new NeutroniaDoorBlock("sandstone_door");
         SANDSTONE_TRAPDOOR = new NeutroniaTrapdoorBlock("sandstone_trapdoor");

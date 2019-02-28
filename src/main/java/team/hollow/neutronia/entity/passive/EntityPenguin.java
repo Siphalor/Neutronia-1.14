@@ -143,7 +143,7 @@ public class EntityPenguin extends AnimalEntity {
 	 */
 	@Override
 	public boolean isBreedingItem(ItemStack stack) {
-		return TEMPTATION_ITEMS.matches(stack);
+		return TEMPTATION_ITEMS.method_8093(stack);
 	}
 
     @Override

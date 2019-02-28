@@ -4,13 +4,15 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
+import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 
 import java.util.Random;
 
-public abstract class BoulderFeature extends MidnightAbstractFeature {
+public abstract class BoulderFeature extends MidnightAbstractFeature<DefaultFeatureConfig> {
     protected final float radius;
 
     protected BoulderFeature(float radius) {
+        super(DefaultFeatureConfig::deserialize);
         this.radius = radius;
     }
 

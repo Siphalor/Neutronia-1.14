@@ -1,0 +1,22 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:palm_planks",
+    "neutronia:willow_planks",
+    "neutronia:bamboo_planks",
+    "neutronia:carved_oak_planks",
+    "neutronia:carved_spruce_planks",
+    "neutronia:carved_birch_planks",
+    "neutronia:carved_jungle_planks",
+    "neutronia:carved_acacia_planks",
+    "neutronia:carved_dark_oak_planks",
+    "neutronia:patterned_oak_planks",
+    "neutronia:patterned_spruce_planks",
+    "neutronia:patterned_birch_planks",
+    "neutronia:patterned_jungle_planks",
+    "neutronia:patterned_acacia_planks",
+    "neutronia:patterned_dark_oak_planks",
+    "neutronia:treated_planks",
+    "neutronia:treated_siding"
+  ]
+}
