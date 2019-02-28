@@ -128,7 +128,6 @@ public class NBlocks {
 
         for (VanillaAndModdedMinusBambooWoodTypes woodType : VanillaAndModdedMinusBambooWoodTypes.values()) {
             WOOD_LANTERNS[woodType.getMetadata()] = new WoodenLanternBlock(woodType);
-            STRIPPED_LOG_CAMPFIRE[woodType.getMetadata()] = new CampfireBaseBlock(String.format("stripped_%s", woodType.asString()));
         }
 
         for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
@@ -138,6 +137,7 @@ public class NBlocks {
             PATTERNED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
             BlockRegistryBuilder.getInstance(String.format("patterned_%s", woodType.asString()), PATTERNED_PLANKS[woodType.getMetadata()])
                     .slab().stair();
+            STRIPPED_LOG_CAMPFIRE[woodType.getMetadata()] = new CampfireBaseBlock(String.format("stripped_%s", woodType.asString()));
         }
 
         for (GlazedTerracottaPillarVariants color : GlazedTerracottaPillarVariants.values()) {

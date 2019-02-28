@@ -1,6 +1,6 @@
 {
     "parent": "block/button_inventory",
     "textures": {
-        "texture": "block/acacia_planks"
+        "texture": "neutronia:block/willow_planks"
     }
 }

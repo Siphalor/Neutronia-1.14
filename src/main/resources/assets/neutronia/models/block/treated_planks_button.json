@@ -1,0 +1,6 @@
+{
+    "parent": "block/button",
+    "textures": {
+        "texture": "neutronia:block/treated_planks"
+    }
+}
