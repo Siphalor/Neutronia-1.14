@@ -77,7 +77,80 @@ public class NBlocks {
             POTTED_MELON, POTTED_NETHER_WART, POTTED_PEONY, POTTED_POTATOES, POTTED_PUMPKIN, POTTED_ROSE_BUSH, POTTED_SUGAR_CANE,
             POTTED_SUNFLOWER, POTTED_TALL_GRASS, POTTED_WHEAT;
 
+    public static final Block ORANGE_CORAL_BLOCK, LIME_CORAL_BLOCK, GREEN_CORAL_BLOCK, CYAN_CORAL_BLOCK, LIGHT_BLUE_CORAL_BLOCK,
+            BLACK_CORAL_BLOCK;
+    public static final Block DEAD_ORANGE_CORAL_BLOCK, DEAD_LIME_CORAL_BLOCK, DEAD_GREEN_CORAL_BLOCK, DEAD_CYAN_CORAL_BLOCK, DEAD_LIGHT_BLUE_CORAL_BLOCK,
+            DEAD_BLACK_CORAL_BLOCK;
+    public static final Block ORANGE_CORAL_FAN, LIME_CORAL_FAN, GREEN_CORAL_FAN, CYAN_CORAL_FAN, LIGHT_BLUE_CORAL_FAN,
+            BLACK_CORAL_FAN;
+    public static final Block DEAD_ORANGE_CORAL_FAN, DEAD_LIME_CORAL_FAN, DEAD_GREEN_CORAL_FAN, DEAD_CYAN_CORAL_FAN, DEAD_LIGHT_BLUE_CORAL_FAN,
+            DEAD_BLACK_CORAL_FAN;
+    public static final Block ORANGE_CORAL_WALL_FAN, LIME_CORAL_WALL_FAN, GREEN_CORAL_WALL_FAN, CYAN_CORAL_WALL_FAN, LIGHT_BLUE_CORAL_WALL_FAN,
+            BLACK_CORAL_WALL_FAN;
+    public static final Block DEAD_ORANGE_CORAL_WALL_FAN, DEAD_LIME_CORAL_WALL_FAN, DEAD_GREEN_CORAL_WALL_FAN, DEAD_CYAN_CORAL_WALL_FAN, DEAD_LIGHT_BLUE_CORAL_WALL_FAN,
+            DEAD_BLACK_CORAL_WALL_FAN;
+    public static final Block ORANGE_CORAL, LIME_CORAL, GREEN_CORAL, CYAN_CORAL, LIGHT_BLUE_CORAL,
+            BLACK_CORAL;
+    public static final Block DEAD_ORANGE_CORAL, DEAD_LIME_CORAL, DEAD_GREEN_CORAL, DEAD_CYAN_CORAL, DEAD_LIGHT_BLUE_CORAL,
+            DEAD_BLACK_CORAL;
+
     static {
+        DEAD_ORANGE_CORAL_BLOCK = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIME_CORAL_BLOCK = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_GREEN_CORAL_BLOCK = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_CYAN_CORAL_BLOCK = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIGHT_BLUE_CORAL_BLOCK = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_BLACK_CORAL_BLOCK = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+
+        ORANGE_CORAL_BLOCK = new NeutroniaBaseCoralBlockBlock(DEAD_ORANGE_CORAL_BLOCK, "orange_coral_block");
+        LIME_CORAL_BLOCK = new NeutroniaBaseCoralBlockBlock(DEAD_LIME_CORAL_BLOCK, "lime_coral_block");
+        GREEN_CORAL_BLOCK = new NeutroniaBaseCoralBlockBlock(DEAD_GREEN_CORAL_BLOCK, "green_coral_block");
+        CYAN_CORAL_BLOCK = new NeutroniaBaseCoralBlockBlock(DEAD_CYAN_CORAL_BLOCK, "cyan_coral_block");
+        LIGHT_BLUE_CORAL_BLOCK = new NeutroniaBaseCoralBlockBlock(DEAD_LIGHT_BLUE_CORAL_BLOCK, "light_blue_coral_block");
+        BLACK_CORAL_BLOCK = new NeutroniaBaseCoralBlockBlock(DEAD_BLACK_CORAL_BLOCK, "black_coral_block");
+
+        DEAD_ORANGE_CORAL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIME_CORAL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_GREEN_CORAL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_CYAN_CORAL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIGHT_BLUE_CORAL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_BLACK_CORAL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+
+        ORANGE_CORAL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_ORANGE_CORAL_FAN, "orange_coral_block");
+        LIME_CORAL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_LIME_CORAL_FAN, "lime_coral_block");
+        GREEN_CORAL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_GREEN_CORAL_FAN, "green_coral_block");
+        CYAN_CORAL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_CYAN_CORAL_FAN, "cyan_coral_block");
+        LIGHT_BLUE_CORAL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_LIGHT_BLUE_CORAL_FAN, "light_blue_coral_block");
+        BLACK_CORAL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_BLACK_CORAL_FAN, "black_coral_block");
+
+        DEAD_ORANGE_CORAL_WALL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIME_CORAL_WALL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_GREEN_CORAL_WALL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_CYAN_CORAL_WALL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIGHT_BLUE_CORAL_WALL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_BLACK_CORAL_WALL_FAN = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+
+        ORANGE_CORAL_WALL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_ORANGE_CORAL_WALL_FAN, "orange_coral_block");
+        LIME_CORAL_WALL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_LIME_CORAL_WALL_FAN, "lime_coral_block");
+        GREEN_CORAL_WALL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_GREEN_CORAL_WALL_FAN, "green_coral_block");
+        CYAN_CORAL_WALL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_CYAN_CORAL_WALL_FAN, "cyan_coral_block");
+        LIGHT_BLUE_CORAL_WALL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_LIGHT_BLUE_CORAL_WALL_FAN, "light_blue_coral_block");
+        BLACK_CORAL_WALL_FAN = new NeutroniaBaseCoralBlockBlock(DEAD_BLACK_CORAL_WALL_FAN, "black_coral_block");
+
+        DEAD_ORANGE_CORAL = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIME_CORAL = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_GREEN_CORAL = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_CYAN_CORAL = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_LIGHT_BLUE_CORAL = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+        DEAD_BLACK_CORAL = new NeutroniaBaseDeadCoralBlockBlock("dead_orange_coral_block");
+
+        ORANGE_CORAL = new NeutroniaBaseCoralBlockBlock(DEAD_ORANGE_CORAL, "orange_coral_block");
+        LIME_CORAL = new NeutroniaBaseCoralBlockBlock(DEAD_LIME_CORAL, "lime_coral_block");
+        GREEN_CORAL = new NeutroniaBaseCoralBlockBlock(DEAD_GREEN_CORAL, "green_coral_block");
+        CYAN_CORAL = new NeutroniaBaseCoralBlockBlock(DEAD_CYAN_CORAL, "cyan_coral_block");
+        LIGHT_BLUE_CORAL = new NeutroniaBaseCoralBlockBlock(DEAD_LIGHT_BLUE_CORAL, "light_blue_coral_block");
+        BLACK_CORAL = new NeutroniaBaseCoralBlockBlock(DEAD_BLACK_CORAL, "black_coral_block");
+
         for (VanillaMinusOakWoodTypes woodType : VanillaMinusOakWoodTypes.values()) {
             BOOKSHELVES[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("%s_bookshelf", woodType.asString()));
             BARRELS[woodType.getMetadata()] = new BarrelBaseBlock(woodType.asString());
