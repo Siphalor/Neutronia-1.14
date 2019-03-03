@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "neutronia:block/dark_oak_lectern" },
+        "facing=south": { "model": "neutronia:block/dark_oak_lectern", "y": 180 },
+        "facing=west":  { "model": "neutronia:block/dark_oak_lectern", "y": 270 },
+        "facing=east":  { "model": "neutronia:block/dark_oak_lectern", "y": 90 }
+    }
+}

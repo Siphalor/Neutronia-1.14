@@ -1,0 +1,7 @@
+{
+    "parent": "block/door_top",
+    "textures": {
+        "bottom": "neutronia:block/ice_door_bottom",
+        "top": "neutronia:block/ice_door_top"
+    }
+}

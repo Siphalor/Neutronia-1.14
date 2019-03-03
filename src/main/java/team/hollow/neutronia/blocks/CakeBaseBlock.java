@@ -11,9 +11,9 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.INeutroniaInfo;
 
-public class CakeBasBlock extends CakeBlock implements INeutroniaInfo {
+public class CakeBaseBlock extends CakeBlock implements INeutroniaInfo {
 
-    public CakeBasBlock(String name) {
+    public CakeBaseBlock(String name) {
         super(FabricBlockSettings.of(Material.CAKE).hardness(0.5F).sounds(BlockSoundGroup.WOOL).build());
         register(name, this, ItemGroup.FOOD);
     }

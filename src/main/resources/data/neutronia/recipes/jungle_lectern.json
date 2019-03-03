@@ -1,0 +1,23 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"group": "lecterns",
+	"pattern": [
+		"SSS",
+		" B ",
+		"SWS"
+	],
+	"key": {
+		"S": {
+			"item": "minecraft:jungle_slab"
+		},
+		"B": {
+			"item": "neutronia:jungle_bookshelf"
+		},
+		"W": {
+			"item": "minecraft:cyan_wool"
+		}
+	},
+	"result": {
+		"item": "neutronia:jungle_lectern"
+	}
+}
