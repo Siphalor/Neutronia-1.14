@@ -133,8 +133,10 @@ public class EntityMummy extends ZombieEntity implements IDesertCreature
 
     */
 /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     *//*
+ * (abstract) Protected helper method to write subclass entity data to NBT.
+ * <p>
+ * (abstract) Protected helper method to read subclass entity data from NBT.
+ *//*
 
     public void writeEntityToNBT(NBTTagCompound compound)
     {
@@ -144,8 +146,8 @@ public class EntityMummy extends ZombieEntity implements IDesertCreature
 
     */
 /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     *//*
+ * (abstract) Protected helper method to read subclass entity data from NBT.
+ *//*
 
     public void readEntityFromNBT(NBTTagCompound compound)
     {

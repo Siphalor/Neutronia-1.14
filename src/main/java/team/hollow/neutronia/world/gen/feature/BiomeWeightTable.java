@@ -9,7 +9,7 @@ public class BiomeWeightTable {
     private final float[] table;
 
     public BiomeWeightTable(int radius) {
-        this.radius =  radius;
+        this.radius = radius;
         this.diameter = (radius * 2) + 1;
 
         this.table = new float[this.diameter * this.diameter];

@@ -120,7 +120,7 @@ public class ArcticWolfEntity extends TameableEntity {
     public void writeCustomDataToTag(CompoundTag compoundTag_1) {
         super.writeCustomDataToTag(compoundTag_1);
         compoundTag_1.putBoolean("Angry", this.isAngry());
-        compoundTag_1.putByte("CollarColor", (byte)this.getCollarColor().getId());
+        compoundTag_1.putByte("CollarColor", (byte) this.getCollarColor().getId());
     }
 
     public void readCustomDataFromTag(CompoundTag compoundTag_1) {
@@ -210,8 +210,8 @@ public class ArcticWolfEntity extends TameableEntity {
             }
 
             if (this.timeWolfIsShaking > 0.4F) {
-                float float_1 = (float)this.getBoundingBox().minY;
-                int int_1 = (int)(MathHelper.sin((this.timeWolfIsShaking - 0.4F) * 3.1415927F) * 7.0F);
+                float float_1 = (float) this.getBoundingBox().minY;
+                int int_1 = (int) (MathHelper.sin((this.timeWolfIsShaking - 0.4F) * 3.1415927F) * 7.0F);
                 Vec3d vec3d_1 = this.getVelocity();
 
                 for (int j = 0; j < int_1; ++j) {
@@ -318,7 +318,7 @@ public class ArcticWolfEntity extends TameableEntity {
                         return true;
                     }
                 } else if (itemstack.getItem() instanceof DyeItem) {
-                    DyeColor dyeColor_1 = ((DyeItem)itemstack.getItem()).getColor();
+                    DyeColor dyeColor_1 = ((DyeItem) itemstack.getItem()).getColor();
                     if (dyeColor_1 != this.getCollarColor()) {
                         this.setCollarColor(dyeColor_1);
                         if (!player.abilities.creativeMode) {
@@ -349,10 +349,10 @@ public class ArcticWolfEntity extends TameableEntity {
                     this.field_6321.method_6311(true);
                     this.setHealth(20.0F);
                     this.method_6180(true);
-                    this.world.summonParticle(this, (byte)7);
+                    this.world.summonParticle(this, (byte) 7);
                 } else {
                     this.method_6180(false);
-                    this.world.summonParticle(this, (byte)6);
+                    this.world.summonParticle(this, (byte) 6);
                 }
             }
 
@@ -502,7 +502,7 @@ public class ArcticWolfEntity extends TameableEntity {
 
         public boolean canStart() {
             if (super.canStart() && this.field_6390 instanceof LlamaEntity) {
-                return !this.wolf.isTamed() && this.method_6720((LlamaEntity)this.field_6390);
+                return !this.wolf.isTamed() && this.method_6720((LlamaEntity) this.field_6390);
             } else {
                 return false;
             }

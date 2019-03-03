@@ -11,24 +11,25 @@ import java.lang.reflect.Modifier;
 public class ImprovedOverworldLevelType {
     private static final Logger LOGGER = LogManager.getLogger("ImprovedOverworldType");
 
-    /** Code to add the new level to the type list
+    /**
+     * Code to add the new level to the type list
      * (1) extends the LevelGeneratorType list by one
      * (2) Creates a new LevelGeneratorType instance
      *
      * @return The LevelGeneratorType entry if successful
      */
-    public static LevelGeneratorType getType(){
+    public static LevelGeneratorType getType() {
         LevelGeneratorType val;
         int id;
         Field types = null;
 
-        for(Field f : LevelGeneratorType.class.getDeclaredFields()){
-            if(f.getType()==LevelGeneratorType[].class){
+        for (Field f : LevelGeneratorType.class.getDeclaredFields()) {
+            if (f.getType() == LevelGeneratorType[].class) {
                 types = f;
             }
         }
 
-        if(types != null){
+        if (types != null) {
             LOGGER.info("count =  " + LevelGeneratorType.TYPES.length);
             LOGGER.info("field found");
 
@@ -43,8 +44,8 @@ public class ImprovedOverworldLevelType {
                 modifies.setAccessible(true);
 
                 modifies.setInt(types, types.getModifiers() & ~Modifier.FINAL);
-                types.set(null,newTypes);
-                id=LevelGeneratorType.TYPES.length - 1;
+                types.set(null, newTypes);
+                id = LevelGeneratorType.TYPES.length - 1;
             } catch (IllegalAccessException | NoSuchFieldException e) {
                 LOGGER.error("Unable to find Generator Type Field");
                 return null;
@@ -52,8 +53,7 @@ public class ImprovedOverworldLevelType {
 
 
             LOGGER.info("count =  " + LevelGeneratorType.TYPES.length + " / id = " + id);
-        }
-        else{
+        } else {
             LOGGER.error("Unable to find Generator Type Field");
             return null;
         }
@@ -64,7 +64,7 @@ public class ImprovedOverworldLevelType {
             LOGGER.info("Level Type Constructor Found");
             val = c.newInstance(id, "improved_overworld");
         } catch (Exception e) {
-            LOGGER.error("Unable to get and call LevelGeneratorType Constructor",e);
+            LOGGER.error("Unable to get and call LevelGeneratorType Constructor", e);
             return null;
         }
 

@@ -29,6 +29,12 @@ import java.util.function.Function;
 public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
     private static final BlockState LOG;
     private static final BlockState LEAVES;
+
+    static {
+        LOG = NBlocks.WILLOW_LOG.getDefaultState();
+        LEAVES = NBlocks.WILLOW_LEAVES.getDefaultState();
+    }
+
     protected final int height;
     private final boolean hasVinesAndCocoa;
     private final BlockState log;
@@ -52,7 +58,7 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
         if (blockPos_1.getY() >= 1 && blockPos_1.getY() + int_1 + 1 <= 256) {
             int int_9;
             int int_18;
-            for(int int_2 = blockPos_1.getY(); int_2 <= blockPos_1.getY() + 1 + int_1; ++int_2) {
+            for (int int_2 = blockPos_1.getY(); int_2 <= blockPos_1.getY() + 1 + int_1; ++int_2) {
                 int int_3 = 1;
                 if (int_2 == blockPos_1.getY()) {
                     int_3 = 0;
@@ -64,8 +70,8 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
 
                 Mutable blockPos$Mutable_1 = new Mutable();
 
-                for(int_9 = blockPos_1.getX() - int_3; int_9 <= blockPos_1.getX() + int_3 && boolean_1; ++int_9) {
-                    for(int_18 = blockPos_1.getZ() - int_3; int_18 <= blockPos_1.getZ() + int_3 && boolean_1; ++int_18) {
+                for (int_9 = blockPos_1.getX() - int_3; int_9 <= blockPos_1.getX() + int_3 && boolean_1; ++int_9) {
+                    for (int_18 = blockPos_1.getZ() - int_3; int_18 <= blockPos_1.getZ() + int_3 && boolean_1; ++int_18) {
                         if (int_2 >= 0 && int_2 < 256) {
                             if (!canTreeReplace(modifiableTestableWorld_1, blockPos$Mutable_1.set(int_9, int_2, int_18))) {
                                 boolean_1 = false;
@@ -86,14 +92,14 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
                 int int_20;
                 BlockPos blockPos_4;
                 int int_21;
-                for(int_21 = blockPos_1.getY() - 3 + int_1; int_21 <= blockPos_1.getY() + int_1; ++int_21) {
+                for (int_21 = blockPos_1.getY() - 3 + int_1; int_21 <= blockPos_1.getY() + int_1; ++int_21) {
                     int_9 = int_21 - (blockPos_1.getY() + int_1);
                     int_18 = 1 - int_9 / 2;
 
-                    for(int int_11 = blockPos_1.getX() - int_18; int_11 <= blockPos_1.getX() + int_18; ++int_11) {
+                    for (int int_11 = blockPos_1.getX() - int_18; int_11 <= blockPos_1.getX() + int_18; ++int_11) {
                         int_19 = int_11 - blockPos_1.getX();
 
-                        for(int_20 = blockPos_1.getZ() - int_18; int_20 <= blockPos_1.getZ() + int_18; ++int_20) {
+                        for (int_20 = blockPos_1.getZ() - int_18; int_20 <= blockPos_1.getZ() + int_18; ++int_20) {
                             int int_14 = int_20 - blockPos_1.getZ();
                             if (Math.abs(int_19) != int_18 || Math.abs(int_14) != int_18 || random_1.nextInt(2) != 0 && int_9 != 0) {
                                 blockPos_4 = new BlockPos(int_11, int_21, int_20);
@@ -105,7 +111,7 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
                     }
                 }
 
-                for(int_21 = 0; int_21 < int_1; ++int_21) {
+                for (int_21 = 0; int_21 < int_1; ++int_21) {
                     if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_1.up(int_21)) || isReplaceablePlant(modifiableTestableWorld_1, blockPos_1.up(int_21))) {
                         this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.up(int_21), this.log);
                         if (this.hasVinesAndCocoa && int_21 > 0) {
@@ -129,13 +135,13 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
                 }
 
                 if (this.hasVinesAndCocoa) {
-                    for(int_21 = blockPos_1.getY() - 3 + int_1; int_21 <= blockPos_1.getY() + int_1; ++int_21) {
+                    for (int_21 = blockPos_1.getY() - 3 + int_1; int_21 <= blockPos_1.getY() + int_1; ++int_21) {
                         int_9 = int_21 - (blockPos_1.getY() + int_1);
                         int_18 = 2 - int_9 / 2;
                         Mutable blockPos$Mutable_2 = new Mutable();
 
-                        for(int_19 = blockPos_1.getX() - int_18; int_19 <= blockPos_1.getX() + int_18; ++int_19) {
-                            for(int_20 = blockPos_1.getZ() - int_18; int_20 <= blockPos_1.getZ() + int_18; ++int_20) {
+                        for (int_19 = blockPos_1.getX() - int_18; int_19 <= blockPos_1.getX() + int_18; ++int_19) {
+                            for (int_20 = blockPos_1.getZ() - int_18; int_20 <= blockPos_1.getZ() + int_18; ++int_20) {
                                 blockPos$Mutable_2.set(int_19, int_21, int_20);
                                 if (isLeaves(modifiableTestableWorld_1, blockPos$Mutable_2)) {
                                     BlockPos blockPos_3 = blockPos$Mutable_2.west();
@@ -163,11 +169,11 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
                     }
 
                     if (random_1.nextInt(5) == 0 && int_1 > 5) {
-                        for(int_21 = 0; int_21 < 2; ++int_21) {
+                        for (int_21 = 0; int_21 < 2; ++int_21) {
                             Iterator var22 = Type.HORIZONTAL.iterator();
 
-                            while(var22.hasNext()) {
-                                Direction direction_1 = (Direction)var22.next();
+                            while (var22.hasNext()) {
+                                Direction direction_1 = (Direction) var22.next();
                                 if (random_1.nextInt(4 - int_21) == 0) {
                                     Direction direction_2 = direction_1.getOpposite();
                                     this.makeCocoa(modifiableTestableWorld_1, random_1.nextInt(3), blockPos_1.add(direction_2.getOffsetX(), int_1 - 5 + int_21, direction_2.getOffsetZ()), direction_1);
@@ -191,26 +197,21 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
     }
 
     private void makeCocoa(ModifiableWorld modifiableWorld_1, int int_1, BlockPos blockPos_1, Direction direction_1) {
-        this.setBlockState(modifiableWorld_1, blockPos_1, (BlockState)((BlockState)Blocks.COCOA.getDefaultState().with(CocoaBlock.AGE, int_1)).with(CocoaBlock.field_11177, direction_1));
+        this.setBlockState(modifiableWorld_1, blockPos_1, (BlockState) ((BlockState) Blocks.COCOA.getDefaultState().with(CocoaBlock.AGE, int_1)).with(CocoaBlock.field_11177, direction_1));
     }
 
     private void makeVine(ModifiableWorld modifiableWorld_1, BlockPos blockPos_1, BooleanProperty booleanProperty_1) {
-        this.setBlockState(modifiableWorld_1, blockPos_1, (BlockState)Blocks.VINE.getDefaultState().with(booleanProperty_1, true));
+        this.setBlockState(modifiableWorld_1, blockPos_1, (BlockState) Blocks.VINE.getDefaultState().with(booleanProperty_1, true));
     }
 
     private void makeVineColumn(ModifiableTestableWorld modifiableTestableWorld_1, BlockPos blockPos_1, BooleanProperty booleanProperty_1) {
         this.makeVine(modifiableTestableWorld_1, blockPos_1, booleanProperty_1);
         int int_1 = 4;
 
-        for(blockPos_1 = blockPos_1.down(); isAir(modifiableTestableWorld_1, blockPos_1) && int_1 > 0; --int_1) {
+        for (blockPos_1 = blockPos_1.down(); isAir(modifiableTestableWorld_1, blockPos_1) && int_1 > 0; --int_1) {
             this.makeVine(modifiableTestableWorld_1, blockPos_1, booleanProperty_1);
             blockPos_1 = blockPos_1.down();
         }
 
-    }
-
-    static {
-        LOG = NBlocks.WILLOW_LOG.getDefaultState();
-        LEAVES = NBlocks.WILLOW_LEAVES.getDefaultState();
     }
 }

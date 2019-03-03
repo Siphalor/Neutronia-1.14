@@ -17,17 +17,14 @@ import team.hollow.neutronia.world.gen.features.OreGeneration;
 import java.util.List;
 import java.util.Random;
 
-public class MyGenerator
-{
+public class MyGenerator {
     public static final Identifier id = new Identifier("igloo/top");
 
-    public static void addParts(StructureManager structureManager, BlockPos blockPos, Rotation rotation, List<StructurePiece> list_1, Random random, DefaultFeatureConfig defaultFeatureConfig)
-    {
+    public static void addParts(StructureManager structureManager, BlockPos blockPos, Rotation rotation, List<StructurePiece> list_1, Random random, DefaultFeatureConfig defaultFeatureConfig) {
         list_1.add(new MyGenerator.Piece(structureManager, id, blockPos, rotation));
     }
 
-    public static class Piece extends SimpleStructurePiece
-    {
+    public static class Piece extends SimpleStructurePiece {
         private final Rotation rotation;
         private final Identifier identifier;
 
@@ -40,8 +37,7 @@ public class MyGenerator
             this.setStructureData(structureManager_1);
         }
 
-        public Piece(StructureManager structureManager, Identifier identifier, BlockPos pos, Rotation rotation)
-        {
+        public Piece(StructureManager structureManager, Identifier identifier, BlockPos pos, Rotation rotation) {
             super(OreGeneration.myStructurePieceType, 0);
 
             this.rotation = rotation;
@@ -51,25 +47,22 @@ public class MyGenerator
             this.setStructureData(structureManager);
         }
 
-        public void setStructureData(StructureManager structureManager)
-        {
+        public void setStructureData(StructureManager structureManager) {
             Structure structure_1 = structureManager.getStructureOrBlank(this.identifier);
             StructurePlacementData structurePlacementData_1 = (new StructurePlacementData()).setRotation(this.rotation).setMirrored(Mirror.NONE).setPosition(pos).addProcessor(BlockIgnoreStructureProcessor.IGNORE_STRUCTURE_BLOCKS);
             this.setStructureData(structure_1, this.pos, structurePlacementData_1);
         }
 
         @Override
-        protected void handleMetadata(String s, BlockPos blockPos, IWorld iWorld, Random random, MutableIntBoundingBox mutableIntBoundingBox)
-        {
+        protected void handleMetadata(String s, BlockPos blockPos, IWorld iWorld, Random random, MutableIntBoundingBox mutableIntBoundingBox) {
 
         }
 
         @Override
-        public boolean generate(IWorld iWorld_1, Random random_1, MutableIntBoundingBox mutableIntBoundingBox_1, ChunkPos chunkPos_1)
-        {
+        public boolean generate(IWorld iWorld_1, Random random_1, MutableIntBoundingBox mutableIntBoundingBox_1, ChunkPos chunkPos_1) {
             int yHeight = iWorld_1.getTop(Heightmap.Type.WORLD_SURFACE_WG, this.pos.getX() + 8, this.pos.getZ() + 8);
             this.pos = this.pos.add(0, yHeight - 1, 0);
-            return  super.generate(iWorld_1, random_1, mutableIntBoundingBox_1, chunkPos_1);
+            return super.generate(iWorld_1, random_1, mutableIntBoundingBox_1, chunkPos_1);
         }
     }
 }

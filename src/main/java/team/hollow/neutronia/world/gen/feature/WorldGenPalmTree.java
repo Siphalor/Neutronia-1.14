@@ -13,28 +13,26 @@ import team.hollow.neutronia.init.NBlocks;
 import java.util.Random;
 import java.util.Set;
 
-public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
-{
+public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> {
     private static final BlockState LOG = NBlocks.PALM_LOG.getDefaultState();
-    
-    private static final BlockState LEAF = NBlocks.PALM_LEAVES.getDefaultState()
-    		.with(NeutroniaLeavesBlock.PERSISTENT, Boolean.FALSE);
-    
-    private static final BlockState COCONUT = NBlocks.COCONUT.getDefaultState();
-    
-	public WorldGenPalmTree()
-	{
-		super(DefaultFeatureConfig::deserialize, true);
-	}
 
-	@Override
-	public boolean generate(Set<BlockPos> pos, ModifiableTestableWorld modifiableTestableWorld, Random random_1, BlockPos blockPos_1) {
+    private static final BlockState LEAF = NBlocks.PALM_LEAVES.getDefaultState()
+            .with(NeutroniaLeavesBlock.PERSISTENT, Boolean.FALSE);
+
+    private static final BlockState COCONUT = NBlocks.COCONUT.getDefaultState();
+
+    public WorldGenPalmTree() {
+        super(DefaultFeatureConfig::deserialize, true);
+    }
+
+    @Override
+    public boolean generate(Set<BlockPos> pos, ModifiableTestableWorld modifiableTestableWorld, Random random_1, BlockPos blockPos_1) {
         int int_1 = random_1.nextInt(3) + random_1.nextInt(3) + 5;
         boolean boolean_1 = true;
         if (blockPos_1.getY() >= 1 && blockPos_1.getY() + int_1 + 1 <= 256) {
             int int_8;
             int int_9;
-            for(int int_2 = blockPos_1.getY(); int_2 <= blockPos_1.getY() + 1 + int_1; ++int_2) {
+            for (int int_2 = blockPos_1.getY(); int_2 <= blockPos_1.getY() + 1 + int_1; ++int_2) {
                 int int_3 = 1;
                 if (int_2 == blockPos_1.getY()) {
                     int_3 = 0;
@@ -46,8 +44,8 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
 
                 BlockPos.Mutable blockPos$Mutable_1 = new BlockPos.Mutable();
 
-                for(int_8 = blockPos_1.getX() - int_3; int_8 <= blockPos_1.getX() + int_3 && boolean_1; ++int_8) {
-                    for(int_9 = blockPos_1.getZ() - int_3; int_9 <= blockPos_1.getZ() + int_3 && boolean_1; ++int_9) {
+                for (int_8 = blockPos_1.getX() - int_3; int_8 <= blockPos_1.getX() + int_3 && boolean_1; ++int_8) {
+                    for (int_9 = blockPos_1.getZ() - int_3; int_9 <= blockPos_1.getZ() + int_3 && boolean_1; ++int_9) {
                         if (int_2 >= 0 && int_2 < 256) {
                             if (!canTreeReplace(modifiableTestableWorld, blockPos$Mutable_1.set(int_8, int_2, int_9))) {
                                 boolean_1 = false;
@@ -71,7 +69,7 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
                 int int_10 = 0;
 
                 int int_17;
-                for(int int_11 = 0; int_11 < int_1; ++int_11) {
+                for (int int_11 = 0; int_11 < int_1; ++int_11) {
                     int_17 = blockPos_1.getY() + int_11;
                     if (int_11 >= int_6 && int_7 > 0) {
                         int_8 += direction_1.getOffsetX();
@@ -89,8 +87,8 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
                 BlockPos blockPos_3 = new BlockPos(int_8, int_10, int_9);
 
                 int int_18;
-                for(int_17 = -3; int_17 <= 3; ++int_17) {
-                    for(int_18 = -3; int_18 <= 3; ++int_18) {
+                for (int_17 = -3; int_17 <= 3; ++int_17) {
+                    for (int_18 = -3; int_18 <= 3; ++int_18) {
                         if (Math.abs(int_17) != 3 || Math.abs(int_18) != 3) {
                             this.addLeaves(modifiableTestableWorld, blockPos_3.add(int_17, 0, int_18));
                         }
@@ -99,8 +97,8 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
 
                 blockPos_3 = blockPos_3.up();
 
-                for(int_17 = -1; int_17 <= 1; ++int_17) {
-                    for(int_18 = -1; int_18 <= 1; ++int_18) {
+                for (int_17 = -1; int_17 <= 1; ++int_17) {
+                    for (int_18 = -1; int_18 <= 1; ++int_18) {
                         this.addLeaves(modifiableTestableWorld, blockPos_3.add(int_17, 0, int_18));
                     }
                 }
@@ -118,7 +116,7 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
                     int_10 = 0;
 
                     int int_23;
-                    for(int int_19 = int_17; int_19 < int_1 && int_18 > 0; --int_18) {
+                    for (int int_19 = int_17; int_19 < int_1 && int_18 > 0; --int_18) {
                         if (int_19 >= 1) {
                             int_23 = blockPos_1.getY() + int_19;
                             int_8 += direction_2.getOffsetX();
@@ -137,8 +135,8 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
                         BlockPos blockPos_5 = new BlockPos(int_8, int_10, int_9);
 
                         int int_24;
-                        for(int_23 = -2; int_23 <= 2; ++int_23) {
-                            for(int_24 = -2; int_24 <= 2; ++int_24) {
+                        for (int_23 = -2; int_23 <= 2; ++int_23) {
+                            for (int_24 = -2; int_24 <= 2; ++int_24) {
                                 if (Math.abs(int_23) != 2 || Math.abs(int_24) != 2) {
                                     this.addLeaves(modifiableTestableWorld, blockPos_5.add(int_23, 0, int_24));
                                 }
@@ -147,8 +145,8 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
 
                         blockPos_5 = blockPos_5.up();
 
-                        for(int_23 = -1; int_23 <= 1; ++int_23) {
-                            for(int_24 = -1; int_24 <= 1; ++int_24) {
+                        for (int_23 = -1; int_23 <= 1; ++int_23) {
+                            for (int_24 = -1; int_24 <= 1; ++int_24) {
                                 this.addLeaves(modifiableTestableWorld, blockPos_5.add(int_23, 0, int_24));
                             }
                         }
@@ -162,7 +160,7 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
         } else {
             return false;
         }
-	}
+    }
 
     private void addLog(Set<BlockPos> set_1, ModifiableWorld modifiableWorld_1, BlockPos blockPos_1) {
         this.setBlockState(set_1, modifiableWorld_1, blockPos_1, LOG);
@@ -173,5 +171,5 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig>
             this.setBlockState(modifiableTestableWorld, blockPos_1, LEAF);
         }
     }
-	
+
 }

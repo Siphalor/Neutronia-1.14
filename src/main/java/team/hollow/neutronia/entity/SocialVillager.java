@@ -57,7 +57,7 @@ public class SocialVillager extends PassiveEntity {
 
     public SocialVillager(EntityType<? extends net.minecraft.entity.passive.PassiveEntity> type, World world) {
         super(type, world);
-        ((EntityMobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
+        ((EntityMobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
         Random r = new Random();
         if (hairColor == null || hairColor.equals("")) {

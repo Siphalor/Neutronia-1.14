@@ -13,7 +13,7 @@ import java.io.InputStream;
 
 @Environment(value = EnvType.CLIENT)
 public class TextureAssembler {
-    
+
     private String eyeColor;
     private String hairColor;
     private String skinColor;

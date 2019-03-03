@@ -26,7 +26,6 @@ import static org.lwjgl.opengl.GL11.glColor3ub;
 @Mixin(SplashScreen.class)
 public abstract class MixinSplashScreen extends class_4071 {
 
-    @Shadow @Final private MinecraftClient field_18217;
     private static final String JSON =
             "{\n" +
                     "    \"type\": \"bitmap\",\n" +
@@ -51,7 +50,9 @@ public abstract class MixinSplashScreen extends class_4071 {
                     "        \"\\u2261\\u00b1\\u2265\\u2264\\u2320\\u2321\\u00f7\\u2248\\u00b0\\u2219\\u00b7\\u221a\\u207f\\u00b2\\u25a0\\u0000\"\n" +
                     "    ]\n" +
                     "}";
-
+    @Shadow
+    @Final
+    private MinecraftClient field_18217;
     private LoadingProgress.TaskInfo[] tasks = new LoadingProgress.TaskInfo[5];
     private TextRenderer fr;
 
@@ -88,7 +89,7 @@ public abstract class MixinSplashScreen extends class_4071 {
             fr.draw(task.getText(), 2, this.field_18217.window.getScaledHeight() - (fr.fontHeight + 1) * (count - i + 1) - 1, 0x000000);
         }
 
-        ProgressBarUtils.renderMemoryBar(fr,this.field_18217.window.getScaledWidth() / 2 - 150, 100, this.field_18217.window.getScaledHeight() / 2 + 150, 115, 1.0F - MathHelper.clamp(-1L, 0.0F, 1.0F));
+        ProgressBarUtils.renderMemoryBar(fr, this.field_18217.window.getScaledWidth() / 2 - 150, 100, this.field_18217.window.getScaledHeight() / 2 + 150, 115, 1.0F - MathHelper.clamp(-1L, 0.0F, 1.0F));
     }
 
     public void setColor(int color) {

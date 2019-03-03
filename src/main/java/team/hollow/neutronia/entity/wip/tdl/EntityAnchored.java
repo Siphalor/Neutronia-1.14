@@ -94,8 +94,10 @@ public class EntityAnchored extends ZombieEntity implements RangedAttacker {
 
     */
 /**
-     * Checks that the entity is not colliding with any blocks / liquids
-     *//*
+ * Checks that the entity is not colliding with any blocks / liquids
+ * <p>
+ * TODO: Change Sounds...
+ *//*
 
     public boolean isNotColliding() {
         return this.world.checkNoEntityCollision(this.getEntityBoundingBox(), this) && this.world.getCollisionBoxes(this, this.getEntityBoundingBox()).isEmpty();
@@ -143,8 +145,8 @@ public class EntityAnchored extends ZombieEntity implements RangedAttacker {
 
     */
 /**
-     * TODO: Change Sounds...
-     *//*
+ * TODO: Change Sounds...
+ *//*
 
     @Override
     protected SoundEvent getAmbientSound() {

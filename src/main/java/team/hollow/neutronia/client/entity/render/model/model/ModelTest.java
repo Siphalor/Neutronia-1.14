@@ -2,8 +2,8 @@
 
 package team.hollow.neutronia.client.entity.render.model.model;
 
-import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.model.Cuboid;
+import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.entity.Entity;
 
 public class ModelTest extends EntityModel {

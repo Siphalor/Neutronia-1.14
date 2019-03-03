@@ -47,6 +47,5 @@ public class JsonTemplates {
             "    }\n" +
             "}\n";
 
-    
 
 }

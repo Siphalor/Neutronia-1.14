@@ -5,15 +5,10 @@ import net.minecraft.entity.ai.EntityAIWatchClosest;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.mob.MobEntityWithAi;
-import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import team.hdt.neutronia.base.util.handlers.LootTableHandler;
-
-import javax.annotation.Nullable;
 
 public class EntityGreatHunger extends MobEntityWithAi {
 

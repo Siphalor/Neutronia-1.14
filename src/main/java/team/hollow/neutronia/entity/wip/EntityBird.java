@@ -1,6 +1,5 @@
 package team.hollow.neutronia.entity.wip;
 
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAISwimming;
 import net.minecraft.pathfinding.PathNodeType;
 import net.minecraft.util.EnumFacing;

@@ -7,14 +7,14 @@ import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import team.hollow.neutronia.entity.ArcticWolfEntity;
 import team.hollow.neutronia.entity.AxolotlEntity;
 import team.hollow.neutronia.entity.EntityOlDiggy;
 import team.hollow.neutronia.entity.SocialVillager;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.BrownBearEntity;
-import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
-import team.hollow.neutronia.entity.ArcticWolfEntity;
 import team.hollow.neutronia.entity.passive.EntityPenguin;
+import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
 
 public class NEntityTypes {
 
@@ -24,7 +24,7 @@ public class NEntityTypes {
     public static final EntityType SOCIAL_VILLAGER;
     public static final EntityType OL_DIGGY;
     public static final EntityType ARCTIC_WOLF;
-//    public static final EntityType JUNGLE_FROG;
+    //    public static final EntityType JUNGLE_FROG;
     public static final EntityType AXOLOTL;
     public static final EntityType PENGUIN;
 

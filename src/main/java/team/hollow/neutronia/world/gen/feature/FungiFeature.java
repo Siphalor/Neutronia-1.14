@@ -11,7 +11,7 @@ import team.hollow.neutronia.blocks.NeutroniaBushBlock;
 import java.util.Random;
 
 public class FungiFeature extends MidnightAbstractFeature<DefaultFeatureConfig> {
-    private static final BlockState[] FUNGI_STATES = new BlockState[] {
+    private static final BlockState[] FUNGI_STATES = new BlockState[]{
             Blocks.BROWN_MUSHROOM_BLOCK.getDefaultState(),
             Blocks.RED_MUSHROOM_BLOCK.getDefaultState()
     };

@@ -2,7 +2,6 @@ package team.abnormals.neutronia.entity.wip.tdl;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.MoverType;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;

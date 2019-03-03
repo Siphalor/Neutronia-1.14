@@ -64,10 +64,10 @@ public class NeutroniaSignBlock extends SignBlock implements INeutroniaInfo {
         } else {
             BlockEntity blockEntity_1 = world_1.getBlockEntity(blockPos_1);
             if (blockEntity_1 instanceof SignBlockEntity) {
-                SignBlockEntity signBlockEntity_1 = (SignBlockEntity)blockEntity_1;
+                SignBlockEntity signBlockEntity_1 = (SignBlockEntity) blockEntity_1;
                 ItemStack itemStack_1 = playerEntity_1.getStackInHand(hand_1);
                 if (itemStack_1.getItem() instanceof DyeItem) {
-                    boolean boolean_1 = signBlockEntity_1.setTextColor(((DyeItem)itemStack_1.getItem()).getColor());
+                    boolean boolean_1 = signBlockEntity_1.setTextColor(((DyeItem) itemStack_1.getItem()).getColor());
                     if (boolean_1 && !playerEntity_1.isCreative()) {
                         itemStack_1.subtractAmount(1);
                     }

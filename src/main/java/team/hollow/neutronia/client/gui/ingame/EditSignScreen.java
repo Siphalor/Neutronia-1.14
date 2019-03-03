@@ -86,13 +86,13 @@ public class EditSignScreen extends Screen {
         this.drawStringCentered(this.fontRenderer, I18n.translate("sign.edit"), this.screenWidth / 2, 40, 16777215);
         GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
         GlStateManager.pushMatrix();
-        GlStateManager.translatef((float)(this.screenWidth / 2), 0.0F, 50.0F);
+        GlStateManager.translatef((float) (this.screenWidth / 2), 0.0F, 50.0F);
         GlStateManager.scalef(-93.75F, -93.75F, -93.75F);
         GlStateManager.rotatef(180.0F, 0.0F, 1.0F, 0.0F);
         BlockState blockState_1 = this.sign.getCachedState();
         float float_4;
         if (blockState_1.getBlock().matches(BlockTags.STANDING_SIGNS)) {
-            float_4 = (float)(blockState_1.get(NeutroniaSignBlock.ROTATION) * 360) / 16.0F;
+            float_4 = (float) (blockState_1.get(NeutroniaSignBlock.ROTATION) * 360) / 16.0F;
         } else {
             float_4 = blockState_1.get(NeutroniaWallSignBlock.FACING).asRotation();
         }
