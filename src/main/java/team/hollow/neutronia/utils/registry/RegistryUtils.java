@@ -4,17 +4,59 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
+import net.minecraft.item.block.WallStandingBlockItem;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import team.hollow.neutronia.IModInfo;
+import team.hollow.neutronia.Neutronia;
 
 public class RegistryUtils {
 
-    public static Block register(String name, Block block, IModInfo blockInfo, ItemGroup itemGroup) {
-        Registry.register(Registry.BLOCK, blockInfo.getPrefix() + name, block);
-        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(itemGroup));
-        item.registerBlockItemMap(Item.BLOCK_ITEM_MAP, item);
-        Registry.register(Registry.ITEM, blockInfo.getPrefix() + name, item);
-        return Registry.register(Registry.BLOCK, name, block);
+    public static void register(Identifier name, Block block, ItemGroup itemGroup) {
+        Registry.register(Registry.BLOCK, name, block);
+        Registry.register(Registry.ITEM, name, new BlockItem(block, new Item.Settings().itemGroup(itemGroup)));
+    }
+
+    public static Block registerTest(Identifier name, Block block, ItemGroup itemGroup) {
+        register(name, block, itemGroup);
+        return block;
+    }
+
+    public static Block registerTest(String name, Block block, ItemGroup itemGroup) {
+        register(new Identifier(Neutronia.MOD_ID, name), block, itemGroup);
+        return block;
+    }
+
+    public static Block registerTest(Block block, String name) {
+        register(new Identifier(Neutronia.MOD_ID, name), block, ItemGroup.DECORATIONS);
+        return block;
+    }
+
+    public static Block registerTest(Block block, Block wallBlock, String name) {
+        registerWallStandingBlockNeutroniaWithBI(name, block, wallBlock, ItemGroup.DECORATIONS);
+        return block;
+    }
+
+    public static Block registerTestNoBI(Block block, String name) {
+        registerNeutroniaWithoutBI(name, block);
+        return block;
+    }
+
+    private static void registerNeutroniaWithoutBI(String name, Block block) {
+        Registry.register(Registry.BLOCK, new Identifier(Neutronia.MOD_ID, name), block);
+    }
+
+    private static void registerWallStandingBlockNeutroniaWithBI(String name, Block block, Block wallBlock, ItemGroup tab) {
+        Registry.register(Registry.BLOCK, new Identifier(Neutronia.MOD_ID, name), block);
+        Registry.register(Registry.ITEM, new Identifier(Neutronia.MOD_ID, name), new WallStandingBlockItem(block, wallBlock, new Item.Settings().itemGroup(tab)));
+    }
+
+    private void registerMinecraftWithoutBI(String name, Block block) {
+        Registry.register(Registry.BLOCK, new Identifier("minecraft", name), block);
+    }
+
+    private void registerWallStandingBlockMinecraftWithBI(String name, Block block, Block wallBlock, ItemGroup tab) {
+        Registry.register(Registry.BLOCK, new Identifier("minecraft", name), block);
+        Registry.register(Registry.ITEM, new Identifier("minecraft", name), new WallStandingBlockItem(block, wallBlock, new Item.Settings().itemGroup(tab)));
     }
 
 }

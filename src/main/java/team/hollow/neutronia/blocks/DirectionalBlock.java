@@ -11,12 +11,8 @@ public abstract class DirectionalBlock extends BaseModBlock {
         super(materialIn, name);
     }
 
-    public DirectionalBlock(Settings builder, String name) {
+    public DirectionalBlock(FabricBlockSettings builder, String name) {
         super(builder, name);
-    }
-
-    public DirectionalBlock(FabricBlockSettings blockSettings, String name) {
-        super(blockSettings.build(), name);
     }
 
 }

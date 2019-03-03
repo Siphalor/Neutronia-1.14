@@ -1,3 +1,6 @@
 {
-  "parent": "neutronia:block/apple_pie"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "neutronia:item/apple_pie"
+  }
 }

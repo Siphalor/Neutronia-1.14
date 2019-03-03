@@ -1,11 +1,11 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"bottom": "neutronia:block/blueberry_pie_top",
-		"top": "neutronia:block/blueberry_pie_top",
-		"side": "neutronia:block/blueberry_pie_side",
-		"particle": "neutronia:block/blueberry_pie_side",
-		"inside": "neutronia:block/blueberry_pie_inner"
+		"bottom": "neutronia:block/blue_berries_top",
+		"top": "neutronia:block/blue_berries_top",
+		"side": "neutronia:block/blue_berries_side",
+		"particle": "neutronia:block/blue_berries_side",
+		"inside": "neutronia:block/blue_berries_inner"
 	},
 	"elements": [
 		{

@@ -1,48 +1,33 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.block.BlockItem;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
-import team.hollow.neutronia.IModInfo;
+import team.hollow.neutronia.Neutronia;
+import team.hollow.neutronia.utils.registry.RegistryUtils;
 
-public abstract class BaseModBlock extends Block implements IModInfo {
+public abstract class BaseModBlock extends Block {
 
     public BaseModBlock(Material material, String name) {
-        super(Settings.of(material));
-        register(name, this, ItemGroup.BUILDING_BLOCKS);
+        super(FabricBlockSettings.of(material).build());
+        RegistryUtils.register(new Identifier(Neutronia.MOD_ID, name), this, ItemGroup.BUILDING_BLOCKS);
     }
 
     public BaseModBlock(Material material, String name, ItemGroup itemGroup) {
-        super(Settings.of(material));
-        register(name, this, itemGroup);
+        super(FabricBlockSettings.of(material).build());
+        RegistryUtils.register(new Identifier(Neutronia.MOD_ID, name), this, itemGroup);
     }
 
-    public BaseModBlock(Settings builder, String name) {
-        super(builder);
-        register(name, this, ItemGroup.BUILDING_BLOCKS);
+    public BaseModBlock(FabricBlockSettings builder, String name) {
+        super(builder.build());
+        RegistryUtils.register(new Identifier(Neutronia.MOD_ID, name), this, ItemGroup.BUILDING_BLOCKS);
     }
 
-    public BaseModBlock(Settings builder, Identifier name) {
-        super(builder);
-        register(name, this, ItemGroup.BUILDING_BLOCKS);
-    }
-
-    private void register(String name, Block block, ItemGroup tab) {
-        Registry.register(Registry.BLOCK, getPrefix() + name, block);
-        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(tab));
-        item.registerBlockItemMap(Item.BLOCK_ITEM_MAP, item);
-        Registry.register(Registry.ITEM, getPrefix() + name, item);
-    }
-
-    private void register(Identifier name, Block block, ItemGroup tab) {
-        Registry.register(Registry.BLOCK, name, block);
-        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(tab));
-        item.registerBlockItemMap(Item.BLOCK_ITEM_MAP, item);
-        Registry.register(Registry.ITEM, name, item);
+    public BaseModBlock(FabricBlockSettings builder, Identifier name) {
+        super(builder.build());
+        RegistryUtils.register(name, this, ItemGroup.BUILDING_BLOCKS);
     }
 
 }

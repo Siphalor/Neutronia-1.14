@@ -36,7 +36,7 @@ public class SawmillBlock extends NeutroniaBaseBlock {
     }
 
     public SawmillBlock(String name) {
-        super(FabricBlockSettings.of(Material.STONE).hardness(3.5F).build(), name);
+        super(FabricBlockSettings.of(Material.STONE).hardness(3.5F), name);
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
     }
 

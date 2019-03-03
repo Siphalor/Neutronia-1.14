@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.TorchBlock;
@@ -12,7 +13,7 @@ import team.hollow.neutronia.INeutroniaInfo;
 public class NeutroniaTorchBlock extends TorchBlock implements INeutroniaInfo {
 
     public NeutroniaTorchBlock(String name) {
-        super(Settings.of(Material.WOOD));
+        super(FabricBlockSettings.of(Material.WOOD).build());
         register(name, this);
     }
 

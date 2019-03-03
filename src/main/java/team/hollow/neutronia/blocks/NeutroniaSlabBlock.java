@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.SlabBlock;
@@ -12,7 +13,7 @@ import team.hollow.neutronia.INeutroniaInfo;
 public class NeutroniaSlabBlock extends SlabBlock implements INeutroniaInfo {
 
     public NeutroniaSlabBlock(String name) {
-        super(Settings.of(Material.WOOD));
+        super(FabricBlockSettings.of(Material.WOOD).build());
         register(name + "_slab", this);
     }
 

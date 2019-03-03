@@ -22,23 +22,22 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import team.hollow.neutronia.blocks.BaseModBlock;
-import team.hollow.neutronia.IMinecraftInfo;
 import team.hollow.neutronia.enums.CarvedFaceTypes;
 import team.hollow.neutronia.init.NBlocks;
 import team.hollow.neutronia.utils.helpers.CarvedBlockHelper;
 import team.hollow.neutronia.utils.helpers.ICarvable;
 
-public class PumpkinBlock extends BaseModBlock implements IMinecraftInfo, ICarvable {
+public class PumpkinBlock extends BaseModBlock implements ICarvable {
 
     public static final DirectionProperty FACING = HorizontalFacingBlock.field_11177;
 
     public PumpkinBlock(Identifier identifier) {
-        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD).build(), identifier);
+        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD), new Identifier("minecraft", identifier.getPath()));
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     public PumpkinBlock() {
-        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD).build(), "carved_pumpkin");
+        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD), new Identifier("minecraft", "carved_pumpkin"));
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
         CarvedBlockHelper.initAlt(this);
     }

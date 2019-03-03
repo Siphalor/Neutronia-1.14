@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
@@ -21,7 +22,7 @@ public class ChiseledBlock extends BaseModBlock implements INeutroniaInfo {
     protected Item chiselItem;
 
     public ChiseledBlock(Material material, String name, float hardness, float resistance, Item chiselItem) {
-        super(Block.Settings.of(material).strength(hardness, resistance), name);
+        super(FabricBlockSettings.of(material).strength(hardness, resistance), name);
         setDefaultState(this.getDefaultState().with(FILLED, false));
         this.chiselItem = chiselItem;
     }

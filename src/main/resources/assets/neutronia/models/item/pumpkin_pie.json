@@ -1,3 +1,6 @@
 {
-  "parent": "neutronia:block/pumpkin_pie"
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "item/pumpkin_pie"
+  }
 }

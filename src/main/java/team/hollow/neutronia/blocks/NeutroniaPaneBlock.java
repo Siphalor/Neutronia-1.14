@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.PaneBlock;
@@ -12,11 +13,11 @@ import team.hollow.neutronia.INeutroniaInfo;
 public class NeutroniaPaneBlock extends PaneBlock implements INeutroniaInfo {
 
     public NeutroniaPaneBlock(String name, Material material) {
-        this(Settings.of(material), name);
+        this(FabricBlockSettings.of(material), name);
     }
 
-    public NeutroniaPaneBlock(Settings builder, String name) {
-        super(builder);
+    public NeutroniaPaneBlock(FabricBlockSettings builder, String name) {
+        super(builder.build());
         register(name, this, ItemGroup.BUILDING_BLOCKS);
     }
 

@@ -5,17 +5,10 @@ import net.minecraft.util.math.MathHelper;
 import org.apache.commons.lang3.StringUtils;
 
 import static net.minecraft.client.gui.DrawableHelper.drawRect;
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL11.glColor3ub;
 
 public class ProgressBarUtils {
 
-    private static final int barWidth = 400;
-    private static final int barHeight = 15;
-    private static final int textHeight2 = 20;
-    private static final int fontColor = 0x000000;
-    private static final int barBorderColor = 0x000000;
-    private static final int barColor = 0xCB3D35;
-    private static final int barBackgroundColor = 0xFFFFFF;
     private static final int memoryGoodColor = 0xFF78CB34;
     private static final int memoryWarnColor = 0xFFE6E84A;
     private static final int memoryLowColor = 0xFFE42F2F;
@@ -29,15 +22,6 @@ public class ProgressBarUtils {
         glColor3ub(byte1, byte2, byte3);
     }
 
-    public static void drawBox(int w, int h) {
-        glBegin(GL_QUADS);
-        glVertex2f(0, 0);
-        glVertex2f(0, h);
-        glVertex2f(w, h);
-        glVertex2f(w, 0);
-        glEnd();
-    }
-
     public static void renderMemoryBar(TextRenderer fontRenderer, int xMin, int yMin, int xMax, int yMax, float fadeAmount) {
         int maxMemory = bytesToMb(Runtime.getRuntime().maxMemory());
         int totalMemory = bytesToMb(Runtime.getRuntime().totalMemory());
@@ -45,15 +29,13 @@ public class ProgressBarUtils {
         int usedMemory = totalMemory - freeMemory;
         float usedMemoryPercent = usedMemory / (float) maxMemory;
         //xMax for the inner bar
-        int activeBarWidth = MathHelper.ceil((float)(xMax - xMin - 2) * usedMemoryPercent);
+        int activeBarWidth = MathHelper.ceil((float) (xMax - xMin - 2) * usedMemoryPercent);
         int memoryBarColor;
         if (memoryColorPercent < 0.75f) {
             memoryBarColor = memoryGoodColor;
-        }
-        else if (memoryColorPercent < 0.85f) {
+        } else if (memoryColorPercent < 0.85f) {
             memoryBarColor = memoryWarnColor;
-        }
-        else {
+        } else {
             memoryBarColor = memoryLowColor;
         }
         //Title

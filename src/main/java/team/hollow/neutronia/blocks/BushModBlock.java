@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Material;
 import net.minecraft.block.PlantBlock;
 import net.minecraft.item.Item;
@@ -11,7 +12,7 @@ import team.hollow.neutronia.INeutroniaInfo;
 public class BushModBlock extends PlantBlock implements INeutroniaInfo {
 
     public BushModBlock(String name, Material material) {
-        super(Settings.of(material));
+        super(FabricBlockSettings.of(material).build());
         register(name);
     }
 

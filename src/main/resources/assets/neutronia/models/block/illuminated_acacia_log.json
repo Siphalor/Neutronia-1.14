@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "neutronia:block/illuminated_acacia_log_top",
+    "side": "neutronia:block/illuminated_acacia_log"
+  }
+}

@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.WallBlock;
@@ -12,7 +13,7 @@ import team.hollow.neutronia.INeutroniaInfo;
 public class NeutroniaWallBlock extends WallBlock implements INeutroniaInfo {
 
     public NeutroniaWallBlock(String name, BlockState state) {
-        super(Settings.of(state.getMaterial()));
+        super(FabricBlockSettings.of(state.getMaterial()).build());
         register(name, this, ItemGroup.BUILDING_BLOCKS);
     }
 

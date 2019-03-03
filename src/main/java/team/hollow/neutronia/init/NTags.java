@@ -1,17 +1,17 @@
 package team.hollow.neutronia.init;
 
-import io.github.cottonmc.cotton.tags.TagEntryManager;
-import io.github.cottonmc.cotton.tags.TagType;
+import net.fabricmc.fabric.api.tag.TagRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
+import team.hollow.neutronia.Neutronia;
 
 public class NTags {
 
-    static {
-        registerTag(TagType.BLOCK, new Identifier("neutronia", "test"), "neutronia:test");
-    }
+    public static final Tag<Block> LECTERNS = registerBlockTag("lecterns");
 
-    private static void registerTag(TagType type, Identifier tag, String... entries) {
-        TagEntryManager.registerToTag(type, tag, entries);
+    public static Tag<Block> registerBlockTag(String id) {
+        return TagRegistry.block(new Identifier(Neutronia.MOD_ID, id));
     }
 
 }

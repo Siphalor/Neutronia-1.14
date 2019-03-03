@@ -2,6 +2,7 @@ package team.hollow.neutronia.blocks;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -29,7 +30,7 @@ public class FallingBlock extends BaseModBlock implements INeutroniaInfo {
         super(materialIn, name);
     }
 
-    public FallingBlock(Settings builder, String name) {
+    public FallingBlock(FabricBlockSettings builder, String name) {
         super(builder, name);
     }
 

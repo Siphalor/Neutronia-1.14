@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
@@ -8,9 +9,8 @@ import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.Direction;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class NeutroniaPillarBlock extends BaseModBlock implements INeutroniaInfo {
+public class NeutroniaPillarBlock extends BaseModBlock {
 
     private static final EnumProperty<Direction.Axis> AXIS = EnumProperty.create("axis", Direction.Axis.class);
 
@@ -19,12 +19,12 @@ public class NeutroniaPillarBlock extends BaseModBlock implements INeutroniaInfo
         setDefaultState(this.stateFactory.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
 
-    public NeutroniaPillarBlock(Settings builder, String name) {
+    public NeutroniaPillarBlock(FabricBlockSettings builder, String name) {
         super(builder, name);
     }
 
     public NeutroniaPillarBlock(Material material, String name, float hardnesss, float resistance) {
-        super(Settings.of(material).strength(hardnesss, resistance), name);
+        super(FabricBlockSettings.of(material).strength(hardnesss, resistance), name);
         setDefaultState(this.stateFactory.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
 

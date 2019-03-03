@@ -7,9 +7,11 @@ import com.mojang.datafixers.Dynamic;
 import com.mojang.datafixers.types.JsonOps;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.registry.CommandRegistry;
+import net.fabricmc.fabric.impl.registry.CompostingChanceRegistryImpl;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.datafixers.NbtOps;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
@@ -46,6 +48,7 @@ public class Neutronia implements ModInitializer {
         Registry.register(Registry.CHUNK_GENERATOR_TYPE, "neutronia:improved_overworld", IMPROVED_OVERWORLD);
 
         new NBlocks();
+        new NLightBlocks();
         new NItems();
         NBlockEntities.init();
         CommandRegistry.INSTANCE.register(false, (Locate2Command::register));
@@ -56,46 +59,47 @@ public class Neutronia implements ModInitializer {
         OreGeneration.registerOres();
         NRecipes.init();
         new NPaintingMotives();
-        new NTags();
+        CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
+        CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
+        CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
     }
 
     /**
      * This is a bit hacky,
      * The short of it is we want to register the wastelands as CHUNK_GENERATOR_TYPE
-     *
+     * <p>
      * However  ChunkGeneratorType requires a factory interface ChunkGeneratorFactory
      * that is package private.  (thus we can't use the interface directly)
-     *
+     * <p>
      * The folowing class uses reflection to become an instance of "ChunkGeneratorFactory"
      * as well as reflection to create the ChunkGeneratorType object to pass in the
      * interface object
      */
-    private class OverworldGeneratorCreator implements InvocationHandler
-    {
+    private class OverworldGeneratorCreator implements InvocationHandler {
         private Object factoryProxy;
         private Class factoryClass;
 
-        OverworldGeneratorCreator(){
+        OverworldGeneratorCreator() {
             //reflection hack, dev = mapped in dev enviroment, prod = intermediate value
             String dev_name = "net.minecraft.world.gen.chunk.ChunkGeneratorFactory";
             String prod_name = "net.minecraft.class_2801";
 
             try {
                 factoryClass = Class.forName(dev_name);
-            } catch (ClassNotFoundException e1){
+            } catch (ClassNotFoundException e1) {
                 try {
                     factoryClass = Class.forName(prod_name);
-                }catch (ClassNotFoundException e2){
-                    throw(new RuntimeException("Unable to find " + dev_name));
+                } catch (ClassNotFoundException e2) {
+                    throw (new RuntimeException("Unable to find " + dev_name));
                 }
             }
             factoryProxy = Proxy.newProxyInstance(factoryClass.getClassLoader(),
-                    new Class[] {factoryClass},
+                    new Class[]{factoryClass},
                     this);
         }
 
         public OverworldChunkGenerator createProxy(World w, BiomeSource biomesource, OverworldChunkGeneratorConfig gensettings) {
-            return new OverworldChunkGenerator(w,biomesource,gensettings);
+            return new OverworldChunkGenerator(w, biomesource, gensettings);
         }
 
         public ChunkGenerator<? extends ChunkGeneratorConfig> createGenerator(World world) {
@@ -117,7 +121,7 @@ public class Neutronia implements ModInitializer {
                     JsonArray jsonArray_1 = jsonObject_2.getAsJsonArray("biomes");
                     biomes_1 = jsonArray_1.size() > 0 ? new Biome[jsonArray_1.size()] : new Biome[]{Biomes.OCEAN};
 
-                    for(int int_1 = 0; int_1 < jsonArray_1.size(); ++int_1) {
+                    for (int int_1 = 0; int_1 < jsonArray_1.size(); ++int_1) {
                         biomes_1[int_1] = Registry.BIOME.getOrEmpty(new Identifier(jsonArray_1.get(int_1).getAsString())).orElse(Biomes.OCEAN);
                     }
                 }
@@ -184,31 +188,30 @@ public class Neutronia implements ModInitializer {
 
         @Override
         public Object invoke(Object proxy, Method method, Object[] args) {
-            if(args.length == 3 &&
+            if (args.length == 3 &&
                     args[0] instanceof World &&
                     args[1] instanceof BiomeSource &&
                     args[2] instanceof OverworldChunkGeneratorConfig
-            ){
+            ) {
 
-                return createGenerator((World)args[0]);
+                return createGenerator((World) args[0]);
             }
-            throw(new UnsupportedOperationException("Unknown Method: " + method.toString()));
+            throw (new UnsupportedOperationException("Unknown Method: " + method.toString()));
         }
 
-        public ChunkGeneratorType<OverworldChunkGeneratorConfig, OverworldChunkGenerator> getChunkGeneratorType(Supplier<OverworldChunkGeneratorConfig> supplier){
+        public ChunkGeneratorType<OverworldChunkGeneratorConfig, OverworldChunkGenerator> getChunkGeneratorType(Supplier<OverworldChunkGeneratorConfig> supplier) {
             Constructor<?>[] initlst = ChunkGeneratorType.class.getDeclaredConstructors();
             final Logger log = LogManager.getLogger("ChunkGenErr");
 
-            for(Constructor<?> init : initlst){
+            for (Constructor<?> init : initlst) {
                 init.setAccessible(true);
-                if(init.getParameterCount() != 3){
+                if (init.getParameterCount() != 3) {
                     continue; //skip
                 }
                 //lets try it
                 try {
                     return (ChunkGeneratorType<OverworldChunkGeneratorConfig, OverworldChunkGenerator>) init.newInstance(factoryProxy, true, supplier);
-                }
-                catch (Exception e){
+                } catch (Exception e) {
                     log.error("Error in calling Chunk Generator Type", e);
                 }
             }

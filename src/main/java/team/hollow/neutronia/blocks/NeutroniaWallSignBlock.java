@@ -2,6 +2,7 @@ package team.hollow.neutronia.blocks;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.VerticalEntityPosition;
@@ -34,7 +35,7 @@ public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaInfo 
     }
 
     public NeutroniaWallSignBlock(String name) {
-        super(Settings.of(Material.WOOD));
+        super(FabricBlockSettings.of(Material.WOOD).build());
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
         register(name);
     }

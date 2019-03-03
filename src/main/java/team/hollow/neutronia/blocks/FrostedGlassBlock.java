@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
@@ -10,7 +11,7 @@ import team.hollow.neutronia.INeutroniaInfo;
 public class FrostedGlassBlock extends BaseModBlock implements INeutroniaInfo {
 
     public FrostedGlassBlock() {
-        super(Settings.of(Material.GLASS).strength(3.0F, 10.0F), "frosted_glass");
+        super(FabricBlockSettings.of(Material.GLASS).strength(3.0F, 10.0F), "frosted_glass");
     }
 
     @Override

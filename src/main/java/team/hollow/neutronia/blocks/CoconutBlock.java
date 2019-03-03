@@ -13,18 +13,16 @@ import team.hollow.neutronia.init.NBlocks;
 
 public class CoconutBlock extends NeutroniaBaseBlock {
 
-	public CoconutBlock()
-	{
-		super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.4F).resistance(7.0F).sounds(BlockSoundGroup.WOOD).build(), "coconut");
-	}
+    public CoconutBlock() {
+        super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.4F).resistance(7.0F).sounds(BlockSoundGroup.WOOD), "coconut");
+    }
 
     @Override
     public boolean canPlaceAt(BlockState blockState_1, ViewableWorld viewableWorld_1, BlockPos blockPos_1) {
         return this.canBlockStay(viewableWorld_1, blockPos_1);
     }
 
-    public boolean canBlockStay(ViewableWorld worldIn, BlockPos pos)
-    {
+    public boolean canBlockStay(ViewableWorld worldIn, BlockPos pos) {
         BlockState iblockstate = worldIn.getBlockState(pos.up());
         return iblockstate.getBlock() == NBlocks.PALM_LEAVES;
     }
@@ -41,13 +39,12 @@ public class CoconutBlock extends NeutroniaBaseBlock {
 
     @Override
     public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2) {
-        if(!this.canBlockStay(world_1, blockPos_1)) {
+        if (!this.canBlockStay(world_1, blockPos_1)) {
             this.dropBlock(world_1, blockPos_1, blockState_1);
         }
     }
 
-    private void dropBlock(World worldIn, BlockPos pos, BlockState state)
-    {
+    private void dropBlock(World worldIn, BlockPos pos, BlockState state) {
         worldIn.clearBlockState(pos);
         dropStacks(state, worldIn, pos);
     }

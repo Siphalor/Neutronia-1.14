@@ -1,9 +1,9 @@
 {
     "textures": {
-        "particle": "neutronia:block/blueberry_pie_side",
-        "bottom": "neutronia:block/blueberry_pie_bottom",
-        "top": "neutronia:block/blueberry_pie_top",
-        "side": "neutronia:block/blueberry_pie_side"
+        "particle": "neutronia:block/blue_berries_side",
+        "bottom": "neutronia:block/blue_berries_bottom",
+        "top": "neutronia:block/blue_berries_top",
+        "side": "neutronia:block/blue_berries_side"
     },
     "elements": [
         {   "from": [ 1, 0, 1 ],

@@ -13,7 +13,9 @@ public enum VanillaAndModdedMinusBambooWoodTypes implements StringRepresentable 
     DARK_OAK(5, "dark_oak", MaterialColor.BROWN),
     WILLOW(6, "willow", MaterialColor.LIME),
     PALM(7, "palm", MaterialColor.DIRT),
-    CHERRY(8, "cherry", MaterialColor.RED);
+    MANGROVE(8, "mangrove", MaterialColor.GRAY),
+    RED_MANGROVE(9, "red_mangrove", MaterialColor.PINK),
+    BAOBAB(10, "baobab", MaterialColor.PURPLE);
 
     private static final VanillaAndModdedMinusBambooWoodTypes[] META_LOOKUP = new VanillaAndModdedMinusBambooWoodTypes[values().length];
 
