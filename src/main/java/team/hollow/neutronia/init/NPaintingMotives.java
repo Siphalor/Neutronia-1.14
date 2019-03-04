@@ -39,7 +39,7 @@ public class NPaintingMotives {
     public static final PaintingMotive SLIME = register("slime", 16, 16);
     public static final PaintingMotive SO_YOU_THINK_YOU_COUL_FIGHT_A_GOD = register("so_you_think_you_can_fight_a_god", 128, 80);
     public static final PaintingMotive STEVE = register("steve", 16, 16);
-    public static final PaintingMotive STICK_WITH_ME = register("stick_with_me", 32, 32);
+    public static final PaintingMotive STICK_BY_ME = register("stick_by_me", 32, 32);
     public static final PaintingMotive SWIPER = register("swiper", 16, 16);
     public static final PaintingMotive TAIGA_LAKE = register("taiga_lake", 16, 16);
     public static final PaintingMotive THE_DEVIL_BELOW = register("the_devil_below", 32, 32);
