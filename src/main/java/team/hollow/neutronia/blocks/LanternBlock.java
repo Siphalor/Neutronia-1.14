@@ -6,8 +6,8 @@ import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateFactory;
-import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.DirectionProperty;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -15,12 +15,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class LanternBlock extends net.minecraft.block.LanternBlock implements INeutroniaInfo {
+public class LanternBlock extends net.minecraft.block.LanternBlock {
 
     public static final DirectionProperty FACING = DirectionProperty.create("facing");
-    public static final BooleanProperty HANGING = BooleanProperty.create("hanging");      //False = Not Extended, True = Model is Extended
 
     public static final double PIXEL_LENGTH = 1D / 16D;
 
@@ -32,13 +30,7 @@ public class LanternBlock extends net.minecraft.block.LanternBlock implements IN
     public static final VoxelShape LANTERN_DOWN_AABB = Block.createCuboidShape(PIXEL_LENGTH * 5D, PIXEL_LENGTH * 1D, PIXEL_LENGTH * 5D, PIXEL_LENGTH * 11D, PIXEL_LENGTH * 10D, PIXEL_LENGTH * 11D);
 
     public LanternBlock() {
-        super(FabricBlockSettings.of(Material.METAL).lightLevel(15).build());
-        setDefaultState(stateFactory.getDefaultState().with(FACING, Direction.UP).with(HANGING, false));
-    }
-
-    public LanternBlock(String name) {
-        super(FabricBlockSettings.of(Material.METAL).lightLevel(15).build());
-        name = name + "_lantern";
+        super(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build());
         setDefaultState(stateFactory.getDefaultState().with(FACING, Direction.UP).with(HANGING, false));
     }
 
@@ -83,7 +75,9 @@ public class LanternBlock extends net.minecraft.block.LanternBlock implements IN
 
     @Override
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(HANGING, FACING);
+        stateFactory$Builder_1 = new StateFactory.Builder<>(this);
+        super.appendProperties(stateFactory$Builder_1);
+        stateFactory$Builder_1.with(FACING);
     }
 
     @Override
