@@ -18,7 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.Random;
 
-import static team.hollow.neutronia.init.ModVillagers.*;
+import static team.hollow.neutronia.init.NVillagers.*;
 
 class TradeBuilder {
     private static final Logger LOGGER = LogManager.getLogger();

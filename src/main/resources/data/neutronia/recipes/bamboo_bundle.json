@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "neutronia:storage_bundles",
+  "group": "storage_bundles",
   "pattern": [
     "###",
     "###",

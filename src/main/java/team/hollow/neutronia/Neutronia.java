@@ -39,8 +39,6 @@ import java.util.function.Supplier;
 public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
-    public static final String NAME = "Neutronia";
-    public static final String VERSION = "0.0.3";
 
     @Override
     public void onInitialize() {
@@ -54,12 +52,12 @@ public class Neutronia implements ModInitializer {
         new NItems();
         NBlockEntities.init();
         CommandRegistry.INSTANCE.register(false, (Locate2Command::register));
-        ModVillagers.init();
+        new NVillagers();
         new NEntityTypes();
         NRecipeType.init();
         NRecipeSerializers.init();
         OreGeneration.registerOres();
-        NRecipes.init();
+//        new NRecipes();
         new NPaintingMotives();
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
