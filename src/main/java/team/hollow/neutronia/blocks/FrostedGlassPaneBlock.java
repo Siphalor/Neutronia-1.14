@@ -7,7 +7,7 @@ import net.minecraft.block.Material;
 public class FrostedGlassPaneBlock extends NeutroniaPaneBlock {
 
     public FrostedGlassPaneBlock() {
-        super(FabricBlockSettings.of(Material.GLASS).strength(3.0F, 10.0F), "frosted_glass_pane");
+        super(FabricBlockSettings.of(Material.GLASS).strength(3.0F, 10.0F));
     }
 
     @Override

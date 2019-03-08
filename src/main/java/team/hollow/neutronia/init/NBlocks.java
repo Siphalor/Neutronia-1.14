@@ -34,9 +34,10 @@ public class NBlocks {
     public static final Block MANGROVE_LOG, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR, MANGROVE_BOOKSHELF, MANGROVE_LADDER;
     public static final Block RED_MANGROVE_LOG, RED_MANGROVE_PLANKS, RED_MANGROVE_LEAVES, RED_MANGROVE_SAPLING, RED_MANGROVE_DOOR, RED_MANGROVE_TRAPDOOR, RED_MANGROVE_BOOKSHELF, RED_MANGROVE_LADDER;
     public static final Block BAOBAB_LOG, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR, BAOBAB_BOOKSHELF, BAOBAB_LADDER;
-    public static final Block GRATE, IRON_GRATE, GOLD_GRATE;
+    public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
+    public static final Block WROUGHT_IRON_BLOCK, WROUGHT_IRON_BARS;
     public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestTypes.values().length];
-    public static final NeutroniaDoorBlock SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR;
+    public static final NeutroniaDoorBlock SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
     public static final NeutroniaTrapdoorBlock SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
     public static final Block CHISELED_PRISMARINE, CHISELED_PRISMARINE_BRICKS, CHISELED_DARK_PRISMARINE, CUT_PRISMARINE, CUT_PRISMARINE_BRICKS, CUT_DARK_PRISMARINE, ENGRAVED_PRISMARINE, ENGRAVED_PRISMARINE_BRICKS, ENGRAVED_DARK_PRISMARINE;
     public static final Block OBSIDIAN_BRICKS, OBSIDIAN_COBBLE, OBSIDIAN_PILLAR, CHISELED_OBSIDIAN, GLOWING_OBSIDIAN;
@@ -57,7 +58,7 @@ public class NBlocks {
     public static final Block MUD, MUD_BRICKS, DRIED_MUD, DRIED_MUD_BRICKS;
     public static final Block PACKED_ICE_BRICKS, PACKED_ICE_PILLAR, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES;
     public static final Block FROSTED_GLASS, FROSTED_GLASS_PANE;
-    public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
+    public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, WROUGHT_IRON_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
 
     public static Block SAWMILL;
 
@@ -169,7 +170,7 @@ public class NBlocks {
         for (VanillaMinusOakWoodTypes woodType : VanillaMinusOakWoodTypes.values()) {
             BOOKSHELVES[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("%s_bookshelf", woodType.asString()));
             BARRELS[woodType.getMetadata()] = RegistryUtils.registerTest(new Identifier(Neutronia.MOD_ID, woodType.asString() + "_barrel"),
-                    new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build()), ItemGroup.REDSTONE);
+                    new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build()), ItemGroup.DECORATIONS);
             LOG_CAMPFIRE[woodType.getMetadata()] = new CampfireBaseBlock(woodType.asString());
             LECTERNS[woodType.getMetadata()] = new NeutroniaBaseLectern(woodType.asString());
         }
@@ -229,6 +230,7 @@ public class NBlocks {
         GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "grate");
         IRON_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "iron_grate");
         GOLD_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "gold_grate");
+        WROUGHT_IRON_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "wrought_iron_grate");
 
         IRON_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "iron_scaffolding");
         GOLD_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "gold_scaffolding");
@@ -251,6 +253,10 @@ public class NBlocks {
         RED_MANGROVE_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "red_mangrove_trapdoor");
         BAOBAB_DOOR = new NeutroniaDoorBlock(Material.WOOD, "baobab_door");
         BAOBAB_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "baobab_trapdoor");
+        WROUGHT_IRON_DOOR = new NeutroniaDoorBlock(Material.METAL, "wrought_iron_door");
+
+        WROUGHT_IRON_BLOCK = RegistryUtils.registerTest(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).build()), "wrought_iron_block");
+        WROUGHT_IRON_BARS = RegistryUtils.registerTest(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), "wrought_iron_bars");
 
         for (NewWoodTypes newWoodTypes : NewWoodTypes.values()) {
             STRIPPED_LOGS[newWoodTypes.getMetadata()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", newWoodTypes.asString()));
@@ -460,11 +466,12 @@ public class NBlocks {
         DARK_PRISMARINE_COLUMN = new NeutroniaPillarBlock(Material.STONE, "dark_prismarine_column", 1.5F, 10.0F);
 
         FROSTED_GLASS = new FrostedGlassBlock();
-        FROSTED_GLASS_PANE = new FrostedGlassPaneBlock();
+        FROSTED_GLASS_PANE = RegistryUtils.registerTest(new FrostedGlassPaneBlock(), "frosted_glass_pane");
 
         CHAIN = new ChainBlock();
         IRON_CHAIN = new ChainBlock("iron");
         ICE_CHAIN = new ChainBlock("ice");
+        WROUGHT_IRON_CHAIN = new ChainBlock("wrought_iron");
         GOLD_CHAIN = new ChainBlock("gold");
         PRISMARINE_CHAIN = new ChainBlock("prismarine");
 
@@ -529,7 +536,7 @@ public class NBlocks {
                 .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_PILLAR = new NeutroniaPillarBlock(Material.STONE, "acidian_pillar");
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
-        ACIDIAN_BARS = new NeutroniaPaneBlock("acidian_bars", Material.STONE);
+        ACIDIAN_BARS = RegistryUtils.registerTest(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.GLASS, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), "acidian_bars");
 
         STICK_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "stick_bundle");
         CHORUS_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP), "chorus_bundle");

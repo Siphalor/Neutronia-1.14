@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "neutronia:block/mangrove_planks",
+    "side": "neutronia:block/mangrove_bookshelf"
+  }
+}
