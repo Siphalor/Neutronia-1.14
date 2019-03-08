@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:pillar_coral_block",
+    "neutronia:lime_brain_coral_block",
+    "neutronia:green_bubble_coral_block",
+    "neutronia:acan_coral_block",
+    "neutronia:antipathes_coral_block",
+    "neutronia:staghorn_coral_block"
+  ]
+}

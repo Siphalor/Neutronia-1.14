@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.block.BlockItem;
+import net.minecraft.item.block.ScaffoldingItem;
 import net.minecraft.item.block.WallStandingBlockItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -28,6 +29,12 @@ public class RegistryUtils {
 
     public static Block registerTest(Block block, String name) {
         register(new Identifier(Neutronia.MOD_ID, name), block, ItemGroup.DECORATIONS);
+        return block;
+    }
+
+    public static Block registerScaffolding(Block block, String name) {
+        Registry.register(Registry.BLOCK, name, block);
+        Registry.register(Registry.ITEM, name, new ScaffoldingItem(block, new Item.Settings().itemGroup(ItemGroup.DECORATIONS)));
         return block;
     }
 

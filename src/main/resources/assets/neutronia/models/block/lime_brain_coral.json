@@ -1,0 +1,6 @@
+{
+    "parent": "block/cross",
+    "textures": {
+        "cross": "neutronia:block/lime_brain_coral"
+    }
+}

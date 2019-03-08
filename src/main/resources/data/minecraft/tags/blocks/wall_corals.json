@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:pillar_coral_wall_fan",
+    "neutronia:lime_brain_coral_wall_fan",
+    "neutronia:green_bubble_coral_wall_fan",
+    "neutronia:acan_coral_wall_fan",
+    "neutronia:antipathes_coral_wall_fan",
+    "neutronia:staghorn_coral_wall_fan"
+  ]
+}

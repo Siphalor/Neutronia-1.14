@@ -1,0 +1,6 @@
+{
+    "parent": "block/coral_wall_fan",
+    "textures": {
+        "fan": "neutronia:block/antipathes_coral_fan"
+    }
+}

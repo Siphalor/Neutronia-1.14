@@ -1,0 +1,6 @@
+{
+    "parent": "block/coral_fan",
+    "textures": {
+        "fan": "neutronia:block/lime_brain_coral_fan"
+    }
+}

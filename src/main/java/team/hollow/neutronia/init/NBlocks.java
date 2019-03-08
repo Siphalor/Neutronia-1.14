@@ -25,13 +25,15 @@ public class NBlocks {
     public static final Block[] BOOKSHELVES = new Block[9], PATTERNED_PLANKS = new Block[6], WOOD = new Block[6],
             CARVED_PLANKS = new Block[10], BARRELS = new Block[5], WOOD_LANTERNS = new Block[VanillaAndModdedMinusBambooWoodTypes.values().length],
             LADDERS = new Block[9], LOG_CAMPFIRE = new Block[5], STRIPPED_LOG_CAMPFIRE = new Block[VanillaAndModdedMinusBambooWoodTypes.values().length],
-            STRIPPED_LOGS = new Block[NewWoodTypes.values().length], LECTERNS = new Block[5];
+            STRIPPED_LOGS = new Block[NewWoodTypes.values().length], LECTERNS = new Block[5], WOODEN_SCAFFOLDING = new Block[6];
+    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
     public static final Block[] GLAZED_TERRACOTTA_PILLAR = new Block[13], SOUL_STONE = new Block[4];
     public static final Block PALM_LOG, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING, COCONUT;
     public static final Block WILLOW_LOG, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
-    public static final Block MANGROVE_LOG, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR;
-    public static final Block RED_MANGROVE_LOG, RED_MANGROVE_PLANKS, RED_MANGROVE_LEAVES, RED_MANGROVE_SAPLING, RED_MANGROVE_DOOR, RED_MANGROVE_TRAPDOOR;
-    public static final Block BAOBAB_LOG, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR;
+    public static final Block MANGROVE_LOG, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR, MANGROVE_BOOKSHELF, MANGROVE_LADDER;
+    public static final Block RED_MANGROVE_LOG, RED_MANGROVE_PLANKS, RED_MANGROVE_LEAVES, RED_MANGROVE_SAPLING, RED_MANGROVE_DOOR, RED_MANGROVE_TRAPDOOR, RED_MANGROVE_BOOKSHELF, RED_MANGROVE_LADDER;
+    public static final Block BAOBAB_LOG, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR, BAOBAB_BOOKSHELF, BAOBAB_LADDER;
+    public static final Block GRATE, IRON_GRATE, GOLD_GRATE;
     public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestTypes.values().length];
     public static final NeutroniaDoorBlock SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR;
     public static final NeutroniaTrapdoorBlock SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
@@ -79,14 +81,14 @@ public class NBlocks {
     public static final Block POTTED_BEETROOT, POTTED_CARROTS, POTTED_CHORUS, POTTED_GRASS, POTTED_LILAC, POTTED_MELON, POTTED_NETHER_WART, POTTED_PEONY,
             POTTED_POTATOES, POTTED_PUMPKIN, POTTED_ROSE_BUSH, POTTED_SUGAR_CANE, POTTED_SUNFLOWER, POTTED_TALL_GRASS, POTTED_WHEAT;
 
-    public static final Block PILLAR_CORAL_BLOCK, LIME_BRAIN_CORAL_BLOCK, GREEN_BUBBLE_CORAL_BLOCK, ACAN_CORAL_BLOCK, LIGHT_BLUE_CORAL_BLOCK, BLACK_CORAL_BLOCK;
-    public static final Block DEAD_PILLAR_CORAL_BLOCK, DEAD_LIME_BRAIN_CORAL_BLOCK, DEAD_GREEN_BUBBLE_CORAL_BLOCK, DEAD_ACAN_CORAL_BLOCK, DEAD_LIGHT_BLUE_CORAL_BLOCK, DEAD_BLACK_CORAL_BLOCK;
-    public static final Block PILLAR_CORAL_FAN, LIME_BRAIN_CORAL_FAN, GREEN_BUBBLE_CORAL_FAN, ACAN_CORAL_FAN, LIGHT_BLUE_CORAL_FAN, BLACK_CORAL_FAN;
-    public static final Block DEAD_PILLAR_CORAL_FAN, DEAD_LIME_BRAIN_CORAL_FAN, DEAD_GREEN_BUBBLE_CORAL_FAN, DEAD_ACAN_CORAL_FAN, DEAD_LIGHT_BLUE_CORAL_FAN, DEAD_BLACK_CORAL_FAN;
-    public static final Block PILLAR_CORAL_WALL_FAN, LIME_BRAIN_CORAL_WALL_FAN, GREEN_BUBBLE_CORAL_WALL_FAN, ACAN_CORAL_WALL_FAN, LIGHT_BLUE_CORAL_WALL_FAN, BLACK_CORAL_WALL_FAN;
-    public static final Block DEAD_PILLAR_CORAL_WALL_FAN, DEAD_LIME_BRAIN_CORAL_WALL_FAN, DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, DEAD_ACAN_CORAL_WALL_FAN, DEAD_LIGHT_BLUE_CORAL_WALL_FAN, DEAD_BLACK_CORAL_WALL_FAN;
-    public static final Block PILLAR_CORAL, LIME_BRAIN_CORAL, GREEN_BUBBLE_CORAL, ACAN_CORAL, LIGHT_BLUE_CORAL, BLACK_CORAL;
-    public static final Block DEAD_PILLAR_CORAL, DEAD_LIME_BRAIN_CORAL, DEAD_GREEN_BUBBLE_CORAL, DEAD_ACAN_CORAL, DEAD_LIGHT_BLUE_CORAL, DEAD_BLACK_CORAL;
+    public static final Block PILLAR_CORAL_BLOCK, LIME_BRAIN_CORAL_BLOCK, GREEN_BUBBLE_CORAL_BLOCK, ACAN_CORAL_BLOCK, ANTIPATHES_CORAL_BLOCK, STAGHORN_CORAL_BLOCK;
+    public static final Block DEAD_PILLAR_CORAL_BLOCK, DEAD_LIME_BRAIN_CORAL_BLOCK, DEAD_GREEN_BUBBLE_CORAL_BLOCK, DEAD_ACAN_CORAL_BLOCK, DEAD_ANTIPATHES_CORAL_BLOCK, DEAD_STAGHORN_CORAL_BLOCK;
+    public static final Block PILLAR_CORAL_FAN, LIME_BRAIN_CORAL_FAN, GREEN_BUBBLE_CORAL_FAN, ACAN_CORAL_FAN, ANTIPATHES_CORAL_FAN, STAGHORN_CORAL_FAN;
+    public static final Block DEAD_PILLAR_CORAL_FAN, DEAD_LIME_BRAIN_CORAL_FAN, DEAD_GREEN_BUBBLE_CORAL_FAN, DEAD_ACAN_CORAL_FAN, DEAD_ANTIPATHES_CORAL_FAN, DEAD_STAGHORN_CORAL_FAN;
+    public static final Block PILLAR_CORAL_WALL_FAN, LIME_BRAIN_CORAL_WALL_FAN, GREEN_BUBBLE_CORAL_WALL_FAN, ACAN_CORAL_WALL_FAN, ANTIPATHES_CORAL_WALL_FAN, STAGHORN_CORAL_WALL_FAN;
+    public static final Block DEAD_PILLAR_CORAL_WALL_FAN, DEAD_LIME_BRAIN_CORAL_WALL_FAN, DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, DEAD_ACAN_CORAL_WALL_FAN, DEAD_ANTIPATHES_CORAL_WALL_FAN, DEAD_STAGHORN_CORAL_WALL_FAN;
+    public static final Block PILLAR_CORAL, LIME_BRAIN_CORAL, GREEN_BUBBLE_CORAL, ACAN_CORAL, ANTIPATHES_CORAL, STAGHORN_CORAL;
+    public static final Block DEAD_PILLAR_CORAL, DEAD_LIME_BRAIN_CORAL, DEAD_GREEN_BUBBLE_CORAL, DEAD_ACAN_CORAL, DEAD_ANTIPATHES_CORAL, DEAD_STAGHORN_CORAL;
 
     public static final Block BLUE_BERRY_BUSH, GOOSEBERRY_BUSH, WITHER_BERRY_BUSH, GREEN_GRAPE_BUSH, PURPLE_GRAPE_BUSH;
     public static Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN;
@@ -97,57 +99,57 @@ public class NBlocks {
         DEAD_LIME_BRAIN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_lime_brain_coral_block");
         DEAD_GREEN_BUBBLE_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_green_bubble_coral_block");
         DEAD_ACAN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_acan_coral_block");
-        DEAD_LIGHT_BLUE_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_light_blue_coral_block");
-        DEAD_BLACK_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_black_coral_block");
+        DEAD_ANTIPATHES_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_antipathes_coral_block");
+        DEAD_STAGHORN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_staghorn_coral_block");
 
         PILLAR_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_PILLAR_CORAL_BLOCK), "pillar_coral_block");
         LIME_BRAIN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_LIME_BRAIN_CORAL_BLOCK), "lime_brain_coral_block");
         GREEN_BUBBLE_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_GREEN_BUBBLE_CORAL_BLOCK), "green_bubble_coral_block");
         ACAN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_ACAN_CORAL_BLOCK), "acan_coral_block");
-        LIGHT_BLUE_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_LIGHT_BLUE_CORAL_BLOCK), "light_blue_coral_block");
-        BLACK_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_BLACK_CORAL_BLOCK), "black_coral_block");
+        ANTIPATHES_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_ANTIPATHES_CORAL_BLOCK), "antipathes_coral_block");
+        STAGHORN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_STAGHORN_CORAL_BLOCK), "staghorn_coral_block");
 
         DEAD_PILLAR_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_pillar_coral_wall_fan");
         DEAD_LIME_BRAIN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_lime_brain_coral_wall_fan");
         DEAD_GREEN_BUBBLE_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_green_bubble_coral_wall_fan");
         DEAD_ACAN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_acan_coral_wall_fan");
-        DEAD_LIGHT_BLUE_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_light_blue_coral_wall_fan");
-        DEAD_BLACK_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_black_coral_wall_fan");
+        DEAD_ANTIPATHES_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_antipathes_coral_wall_fan");
+        DEAD_STAGHORN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_staghorn_coral_wall_fan");
 
         PILLAR_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_PILLAR_CORAL_WALL_FAN), "pillar_coral_wall_fan");
         LIME_BRAIN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_LIME_BRAIN_CORAL_WALL_FAN), "lime_brain_coral_wall_fan");
         GREEN_BUBBLE_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_GREEN_BUBBLE_CORAL_WALL_FAN), "green_bubble_coral_wall_fan");
         ACAN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_ACAN_CORAL_WALL_FAN), "acan_coral_wall_fan");
-        LIGHT_BLUE_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_LIGHT_BLUE_CORAL_WALL_FAN), "light_blue_coral_wall_fan");
-        BLACK_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_BLACK_CORAL_WALL_FAN), "black_coral_wall_fan");
+        ANTIPATHES_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_ANTIPATHES_CORAL_WALL_FAN), "antipathes_coral_wall_fan");
+        STAGHORN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_STAGHORN_CORAL_WALL_FAN), "staghorn_coral_wall_fan");
 
         DEAD_PILLAR_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_PILLAR_CORAL_WALL_FAN, "dead_pillar_coral_fan");
         DEAD_LIME_BRAIN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_LIME_BRAIN_CORAL_WALL_FAN, "dead_lime_brain_coral_fan");
         DEAD_GREEN_BUBBLE_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, "dead_green_bubble_coral_fan");
         DEAD_ACAN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_ACAN_CORAL_WALL_FAN, "dead_acan_coral_fan");
-        DEAD_LIGHT_BLUE_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_LIGHT_BLUE_CORAL_WALL_FAN, "dead_light_blue_coral_fan");
-        DEAD_BLACK_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_BLACK_CORAL_WALL_FAN, "dead_black_coral_fan");
+        DEAD_ANTIPATHES_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_ANTIPATHES_CORAL_WALL_FAN, "dead_antipathes_coral_fan");
+        DEAD_STAGHORN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_STAGHORN_CORAL_WALL_FAN, "dead_staghorn_coral_fan");
 
         PILLAR_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_PILLAR_CORAL_FAN), PILLAR_CORAL_WALL_FAN, "pillar_coral_fan");
         LIME_BRAIN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_LIME_BRAIN_CORAL_FAN), LIME_BRAIN_CORAL_WALL_FAN, "lime_brain_coral_fan");
         GREEN_BUBBLE_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_GREEN_BUBBLE_CORAL_FAN), GREEN_BUBBLE_CORAL_WALL_FAN, "green_bubble_coral_fan");
         ACAN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_ACAN_CORAL_FAN), ACAN_CORAL_WALL_FAN, "acan_coral_fan");
-        LIGHT_BLUE_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_LIGHT_BLUE_CORAL_FAN), LIGHT_BLUE_CORAL_WALL_FAN, "light_blue_coral_fan");
-        BLACK_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_BLACK_CORAL_FAN), BLACK_CORAL_WALL_FAN, "black_coral_fan");
+        ANTIPATHES_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_ANTIPATHES_CORAL_FAN), ANTIPATHES_CORAL_WALL_FAN, "antipathes_coral_fan");
+        STAGHORN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_STAGHORN_CORAL_FAN), STAGHORN_CORAL_WALL_FAN, "staghorn_coral_fan");
 
         DEAD_PILLAR_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_pillar_coral");
         DEAD_LIME_BRAIN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_lime_brain_coral");
         DEAD_GREEN_BUBBLE_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_green_bubble_coral");
         DEAD_ACAN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_acan_coral");
-        DEAD_LIGHT_BLUE_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_light_blue_coral");
-        DEAD_BLACK_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_black_coral");
+        DEAD_ANTIPATHES_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_antipathes_coral");
+        DEAD_STAGHORN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_staghorn_coral");
 
         PILLAR_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_PILLAR_CORAL), "pillar_coral");
         LIME_BRAIN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_LIME_BRAIN_CORAL), "lime_brain_coral");
         GREEN_BUBBLE_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_GREEN_BUBBLE_CORAL), "green_bubble_coral");
         ACAN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_ACAN_CORAL), "acan_coral");
-        LIGHT_BLUE_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_LIGHT_BLUE_CORAL), "light_blue_coral");
-        BLACK_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_BLACK_CORAL), "black_coral");
+        ANTIPATHES_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_ANTIPATHES_CORAL), "antipathes_coral");
+        STAGHORN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_STAGHORN_CORAL), "staghorn_coral");
 
         BLUE_BERRY_BUSH = new NeutroniaBlueberryBushBlock();
         GOOSEBERRY_BUSH = new NeutroniaGooseberryBushBlock();
@@ -202,6 +204,8 @@ public class NBlocks {
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         MANGROVE_LEAVES = new NeutroniaLeavesBlock("mangrove_leaves");
         MANGROVE_SAPLING = new NeutroniaSaplingBlock("mangrove_sapling", new MangroveSaplingGenerator());
+        MANGROVE_BOOKSHELF = new NeutroniaBaseBlock(Material.WOOD, "mangrove_bookshelf");
+        MANGROVE_LADDER = new CustomLadderBlock("mangrove");
 
         RED_MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "red_mangrove_log");
         RED_MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_planks");
@@ -209,6 +213,8 @@ public class NBlocks {
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         RED_MANGROVE_LEAVES = new NeutroniaLeavesBlock("red_mangrove_leaves");
         RED_MANGROVE_SAPLING = new NeutroniaSaplingBlock("red_mangrove_sapling", new MangroveSaplingGenerator());
+        RED_MANGROVE_BOOKSHELF = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_bookshelf");
+        RED_MANGROVE_LADDER = new CustomLadderBlock("red_mangrove");
 
         BAOBAB_LOG = new NeutroniaPillarBlock(Material.WOOD, "baobab_log");
         BAOBAB_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "baobab_planks");
@@ -216,6 +222,15 @@ public class NBlocks {
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         BAOBAB_LEAVES = new NeutroniaLeavesBlock("baobab_leaves");
         BAOBAB_SAPLING = new NeutroniaSaplingBlock("baobab_sapling", new BaobabSaplingGenerator());
+        BAOBAB_BOOKSHELF = new NeutroniaBaseBlock(Material.WOOD, "baobab_bookshelf");
+        BAOBAB_LADDER = new CustomLadderBlock("baobab");
+
+        GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "grate");
+        IRON_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "iron_grate");
+        GOLD_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "gold_grate");
+
+        IRON_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "iron_scaffolding");
+        GOLD_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "gold_scaffolding");
 
         SANDSTONE_DOOR = new NeutroniaDoorBlock("sandstone_door");
         SANDSTONE_TRAPDOOR = new NeutroniaTrapdoorBlock("sandstone_trapdoor");
@@ -245,13 +260,10 @@ public class NBlocks {
         }
 
         for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
-            CARVED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
-            BlockRegistryBuilder.getInstance(String.format("carved_%s", woodType.asString()), CARVED_PLANKS[woodType.getMetadata()])
-                    .slab().stair();
-            PATTERNED_PLANKS[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
-            BlockRegistryBuilder.getInstance(String.format("patterned_%s", woodType.asString()), PATTERNED_PLANKS[woodType.getMetadata()])
-                    .slab().stair();
-            STRIPPED_LOG_CAMPFIRE[woodType.getMetadata()] = new CampfireBaseBlock(String.format("stripped_%s", woodType.asString()));
+            CARVED_PLANKS[woodType.getIndex()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
+            PATTERNED_PLANKS[woodType.getIndex()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
+            STRIPPED_LOG_CAMPFIRE[woodType.getIndex()] = new CampfireBaseBlock(String.format("stripped_%s", woodType.asString()));
+            WOODEN_SCAFFOLDING[woodType.getIndex()] = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.PART, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), String.format("%s_scaffolding", woodType.asString()));
         }
 
         for (GlazedTerracottaPillarVariants color : GlazedTerracottaPillarVariants.values()) {
