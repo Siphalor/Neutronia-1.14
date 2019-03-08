@@ -92,7 +92,7 @@ public class NBlocks {
     public static final Block DEAD_PILLAR_CORAL, DEAD_LIME_BRAIN_CORAL, DEAD_GREEN_BUBBLE_CORAL, DEAD_ACAN_CORAL, DEAD_ANTIPATHES_CORAL, DEAD_STAGHORN_CORAL;
 
     public static final Block BLUE_BERRY_BUSH, GOOSEBERRY_BUSH, WITHER_BERRY_BUSH, GREEN_GRAPE_BUSH, PURPLE_GRAPE_BUSH;
-    public static final Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN;
+    public static final Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN, ICE_LANTERN;
     public static Block REDSTONE_GOLD_LANTERN, REDSTONE_IRON_LANTERN;
 
     static {
@@ -161,7 +161,8 @@ public class NBlocks {
         IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "iron_lantern");
         GOLD_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "gold_lantern");
         WROUGHT_IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "wrought_iron_lantern");
-        PRISMARINE_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "prismarine_lantern");
+        PRISMARINE_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.GLASS).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "prismarine_lantern");
+        ICE_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.PACKED_ICE).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "ice_lantern");
 
         /*REDSTONE_IRON_LANTERN = RegistryUtils.registerTest(new RedstoneLanternBlock(), "redstone_iron_lantern");
         REDSTONE_GOLD_LANTERN = RegistryUtils.registerTest(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
