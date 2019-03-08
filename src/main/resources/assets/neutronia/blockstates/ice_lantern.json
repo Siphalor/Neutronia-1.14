@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "hanging=true": { "model": "neutronia:block/hanging_ice_lantern"},
+        "hanging=false": { "model": "neutronia:block/ice_lantern"}
+  }
+}

@@ -1,0 +1,6 @@
+{
+    "variants": {
+        "hanging=true": { "model": "neutronia:block/hanging_wrought_iron_lantern"},
+        "hanging=false": { "model": "neutronia:block/wrought_iron_lantern"}
+  }
+}
