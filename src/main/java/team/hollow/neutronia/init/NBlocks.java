@@ -1,6 +1,7 @@
 package team.hollow.neutronia.init;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.minecraft.block.LanternBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
@@ -58,7 +59,7 @@ public class NBlocks {
     public static final Block FROSTED_GLASS, FROSTED_GLASS_PANE;
     public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
 
-    public static final Block SAWMILL;
+    public static Block SAWMILL;
 
     public static final Block PUMPKIN = new PumpkinBlock();
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
@@ -91,7 +92,7 @@ public class NBlocks {
     public static final Block DEAD_PILLAR_CORAL, DEAD_LIME_BRAIN_CORAL, DEAD_GREEN_BUBBLE_CORAL, DEAD_ACAN_CORAL, DEAD_ANTIPATHES_CORAL, DEAD_STAGHORN_CORAL;
 
     public static final Block BLUE_BERRY_BUSH, GOOSEBERRY_BUSH, WITHER_BERRY_BUSH, GREEN_GRAPE_BUSH, PURPLE_GRAPE_BUSH;
-    public static Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN;
+    public static final Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN;
     public static Block REDSTONE_GOLD_LANTERN, REDSTONE_IRON_LANTERN;
 
     static {
@@ -157,12 +158,12 @@ public class NBlocks {
         GREEN_GRAPE_BUSH = new NeutroniaGreenGrapeBushBlock();
         PURPLE_GRAPE_BUSH = new NeutroniaPurpleGrapeBushBlock();
 
-        /*IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(), "iron_lantern");
-        GOLD_LANTERN = RegistryUtils.registerTest(new LanternBlock(), "gold_lantern");
-        WROUGHT_IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(), "wrought_iron_lantern");
-        PRISMARINE_LANTERN = RegistryUtils.registerTest(new LanternBlock(), "prismarine_lantern");
+        IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "iron_lantern");
+        GOLD_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "gold_lantern");
+        WROUGHT_IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "wrought_iron_lantern");
+        PRISMARINE_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "prismarine_lantern");
 
-        REDSTONE_IRON_LANTERN = RegistryUtils.registerTest(new RedstoneLanternBlock(), "redstone_iron_lantern");
+        /*REDSTONE_IRON_LANTERN = RegistryUtils.registerTest(new RedstoneLanternBlock(), "redstone_iron_lantern");
         REDSTONE_GOLD_LANTERN = RegistryUtils.registerTest(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
 
         for (VanillaMinusOakWoodTypes woodType : VanillaMinusOakWoodTypes.values()) {
@@ -509,7 +510,7 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("smooth_dirty_brick", SMOOTH_DIRTY_BRICK);
         BlockRegisteringUtils.addSlabAndStair("smooth_sandy_brick", SMOOTH_SANDY_BRICK);
 
-        SAWMILL = new SawmillBlock("sawmill");
+//        SAWMILL = new SawmillBlock("sawmill");
 
         BAMBOO_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bamboo_planks");
         BlockRegistryBuilder.getInstance("bamboo", BAMBOO_PLANKS)

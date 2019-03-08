@@ -1,9 +1,7 @@
 package team.hollow.neutronia.init;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.minecraft.util.Identifier;
-import team.hollow.neutronia.container.SawmillContainer;
 
 public class NContainerTypes implements ModInitializer {
 
@@ -11,7 +9,7 @@ public class NContainerTypes implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ContainerProviderRegistry.INSTANCE.registerFactory(SAWMILL_CONTAINER, (syncId, identifier, player, buf) -> new SawmillContainer(syncId, player.inventory));
+//        ContainerProviderRegistry.INSTANCE.registerFactory(SAWMILL_CONTAINER, (syncId, identifier, player, buf) -> new SawmillContainer(syncId, player.inventory));
     }
 
 }
