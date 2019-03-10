@@ -2,13 +2,13 @@ package team.hollow.neutronia.client.entity.render.model.model;
 
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
 
 /**
  * ModelOlDiggy - Undefined
  * Created using Tabula 7.0.0
  */
-public class ModelOlDiggy extends EntityModel {
+public class ModelOlDiggy<T extends LivingEntity> extends EntityModel<T> {
     public Cuboid Head;
     public Cuboid HeadLayer;
     public Cuboid RightLeg;
@@ -63,7 +63,7 @@ public class ModelOlDiggy extends EntityModel {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    public void render(T entity, float f, float f1, float f2, float f3, float f4, float f5) {
         this.BodyLayer.render(f5);
         this.Head.render(f5);
         this.LeftArm.render(f5);

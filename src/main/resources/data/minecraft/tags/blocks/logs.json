@@ -1,7 +1,10 @@
 {
   "replace": false,
   "values": [
-    "neutronia:willow_log",
-    "neutronia:palm_log"
+    "#neutronia:willow_logs",
+    "#neutronia:palm_logs",
+    "#neutronia:mangrove_logs",
+    "#neutronia:red_mangrove_logs",
+    "#neutronia:baobab_logs"
   ]
 }

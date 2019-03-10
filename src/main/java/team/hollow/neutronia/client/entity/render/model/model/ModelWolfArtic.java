@@ -1,14 +1,14 @@
 package team.hollow.neutronia.client.entity.render.model.model;
 
-import net.minecraft.client.render.entity.model.EntityModel;
 import net.minecraft.client.model.Cuboid;
-import net.minecraft.entity.Entity;
+import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.entity.LivingEntity;
 
 /**
  * ModelWolfArtic - AguilaDaddy
  * Created using Tabula 7.0.0
  */
-public class ModelWolfArtic extends EntityModel {
+public class ModelWolfArtic<T extends LivingEntity> extends EntityModel<T> {
     public Cuboid field_78179_f;
     public Cuboid field_78186_h;
     public Cuboid field_78183_b;
@@ -62,7 +62,7 @@ public class ModelWolfArtic extends EntityModel {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    public void render(T entity, float f, float f1, float f2, float f3, float f4, float f5) {
         this.field_78185_a2.render(f5);
         this.field_78185_a3.render(f5);
         this.field_78183_b.render(f5);

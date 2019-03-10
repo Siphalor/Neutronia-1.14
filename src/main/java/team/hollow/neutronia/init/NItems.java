@@ -6,6 +6,8 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.SpawnEggItem;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.registry.Registry;
+import team.hollow.neutronia.items.NotebookItem;
+import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 import static team.hollow.neutronia.init.NEntityTypes.SOCIAL_VILLAGER;
 
@@ -18,6 +20,7 @@ public class NItems {
     public static final Item WITHER_BERRIES;
     public static final Item GREEN_GRAPES;
     public static final Item PURPLE_GRAPES;
+    public static final Item NOTEBOOK;
 
     static {
 //        BAMBOO_SIGN = Registry.register(Registry.ITEM, new Identifier("neutronia", "bamboo_sign"), new SignItem((new Item.Settings()).stackSize(16).itemGroup(ItemGroup.DECORATIONS), NBlocks.BAMBOO_SIGN, NBlocks.BAMBOO_WALL_SIGN));
@@ -27,6 +30,7 @@ public class NItems {
         WITHER_BERRIES = Registry.register(Registry.ITEM, "neutronia:wither_berries", new FoodCropItem(2, 0.1F, NBlocks.WITHER_BERRY_BUSH, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PLACE, (new Item.Settings()).itemGroup(ItemGroup.FOOD)));
         GREEN_GRAPES = Registry.register(Registry.ITEM, "neutronia:green_grapes", new FoodCropItem(2, 0.1F, NBlocks.GREEN_GRAPE_BUSH, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PLACE, (new Item.Settings()).itemGroup(ItemGroup.FOOD)));
         PURPLE_GRAPES = Registry.register(Registry.ITEM, "neutronia:purple_grapes", new FoodCropItem(2, 0.1F, NBlocks.PURPLE_GRAPE_BUSH, SoundEvents.BLOCK_SWEET_BERRY_BUSH_PLACE, (new Item.Settings()).itemGroup(ItemGroup.FOOD)));
+        NOTEBOOK = RegistryUtils.registerItem(new NotebookItem(), "notebook");
     }
 
 }

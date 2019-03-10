@@ -39,6 +39,12 @@ import java.util.function.Supplier;
 public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
+    public static final String PREFIX = "neutronia:";
+    private static final Logger LOGGER = LogManager.getLogger();
+
+    public static Logger getLogger() {
+        return LOGGER;
+    }
 
     @Override
     public void onInitialize() {

@@ -57,13 +57,20 @@ public class RegistryUtils {
         Registry.register(Registry.ITEM, new Identifier(Neutronia.MOD_ID, name), new WallStandingBlockItem(block, wallBlock, new Item.Settings().itemGroup(tab)));
     }
 
-    private void registerMinecraftWithoutBI(String name, Block block) {
+    private Block registerMinecraftWithoutBI(String name, Block block) {
         Registry.register(Registry.BLOCK, new Identifier("minecraft", name), block);
+        return block;
     }
 
-    private void registerWallStandingBlockMinecraftWithBI(String name, Block block, Block wallBlock, ItemGroup tab) {
+    private Block registerWallStandingBlockMinecraftWithBI(String name, Block block, Block wallBlock, ItemGroup tab) {
         Registry.register(Registry.BLOCK, new Identifier("minecraft", name), block);
         Registry.register(Registry.ITEM, new Identifier("minecraft", name), new WallStandingBlockItem(block, wallBlock, new Item.Settings().itemGroup(tab)));
+        return block;
+    }
+
+    public static Item registerItem(Item item, String name) {
+        Registry.register(Registry.ITEM, new Identifier(Neutronia.MOD_ID, name), item);
+        return item;
     }
 
 }

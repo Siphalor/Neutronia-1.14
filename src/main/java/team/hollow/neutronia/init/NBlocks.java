@@ -26,14 +26,15 @@ public class NBlocks {
     public static final Block[] BOOKSHELVES = new Block[9], PATTERNED_PLANKS = new Block[6], WOOD = new Block[6],
             CARVED_PLANKS = new Block[10], BARRELS = new Block[5], WOOD_LANTERNS = new Block[VanillaAndModdedMinusBambooWoodTypes.values().length],
             LADDERS = new Block[9], LOG_CAMPFIRE = new Block[5], STRIPPED_LOG_CAMPFIRE = new Block[VanillaAndModdedMinusBambooWoodTypes.values().length],
-            STRIPPED_LOGS = new Block[NewWoodTypes.values().length], LECTERNS = new Block[5], WOODEN_SCAFFOLDING = new Block[6];
+            STRIPPED_LOGS = new Block[NewWoodTypes.values().length], STRIPPED_WOOD = new Block[NewWoodTypes.values().length], LECTERNS = new Block[5],
+            WOODEN_SCAFFOLDING = new Block[6];
     public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
     public static final Block[] GLAZED_TERRACOTTA_PILLAR = new Block[13], SOUL_STONE = new Block[4];
-    public static final Block PALM_LOG, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING, COCONUT;
-    public static final Block WILLOW_LOG, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
-    public static final Block MANGROVE_LOG, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR, MANGROVE_BOOKSHELF, MANGROVE_LADDER;
-    public static final Block RED_MANGROVE_LOG, RED_MANGROVE_PLANKS, RED_MANGROVE_LEAVES, RED_MANGROVE_SAPLING, RED_MANGROVE_DOOR, RED_MANGROVE_TRAPDOOR, RED_MANGROVE_BOOKSHELF, RED_MANGROVE_LADDER;
-    public static final Block BAOBAB_LOG, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR, BAOBAB_BOOKSHELF, BAOBAB_LADDER;
+    public static final Block PALM_LOG, PALM_WOOD, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING, COCONUT;
+    public static final Block WILLOW_LOG, WILLOW_WOOD, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
+    public static final Block MANGROVE_LOG, MANGROVE_WOOD, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR, MANGROVE_BOOKSHELF, MANGROVE_LADDER;
+    public static final Block RED_MANGROVE_LOG, RED_MANGROVE_WOOD, RED_MANGROVE_PLANKS, RED_MANGROVE_LEAVES, RED_MANGROVE_SAPLING, RED_MANGROVE_DOOR, RED_MANGROVE_TRAPDOOR, RED_MANGROVE_BOOKSHELF, RED_MANGROVE_LADDER;
+    public static final Block BAOBAB_LOG, BAOBAB_WOOD, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR, BAOBAB_BOOKSHELF, BAOBAB_LADDER;
     public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
     public static final Block WROUGHT_IRON_BLOCK, WROUGHT_IRON_BARS;
     public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestTypes.values().length];
@@ -185,6 +186,8 @@ public class NBlocks {
         }
 
         PALM_LOG = new NeutroniaPillarBlock(Material.WOOD, "palm_log");
+        PALM_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "palm_wood");
         PALM_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "palm_planks");
         BlockRegistryBuilder.getInstance("palm", PALM_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -194,6 +197,8 @@ public class NBlocks {
         COCONUT = new CoconutBlock();
 
         WILLOW_LOG = new NeutroniaPillarBlock(Material.WOOD, "willow_log");
+        WILLOW_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "willow_wood");
         WILLOW_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "willow_planks");
         BlockRegistryBuilder.getInstance("willow", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -202,6 +207,8 @@ public class NBlocks {
         WILLOW_UNDERWATER_SAPLING = new NeutroniaWaterloggedSaplingBlock("underwater_willow_sapling", new WillowSaplingGenerator());
 
         MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "mangrove_log");
+        MANGROVE_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "mangrove_wood");
         MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "mangrove_planks");
         BlockRegistryBuilder.getInstance("mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -211,6 +218,8 @@ public class NBlocks {
         MANGROVE_LADDER = new CustomLadderBlock("mangrove");
 
         RED_MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "red_mangrove_log");
+        RED_MANGROVE_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "red_mangrove_wood");
         RED_MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_planks");
         BlockRegistryBuilder.getInstance("red_mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -220,6 +229,8 @@ public class NBlocks {
         RED_MANGROVE_LADDER = new CustomLadderBlock("red_mangrove");
 
         BAOBAB_LOG = new NeutroniaPillarBlock(Material.WOOD, "baobab_log");
+        BAOBAB_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "baobab_wood");
         BAOBAB_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "baobab_planks");
         BlockRegistryBuilder.getInstance("baobab", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -260,7 +271,9 @@ public class NBlocks {
         WROUGHT_IRON_BARS = RegistryUtils.registerTest(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), "wrought_iron_bars");
 
         for (NewWoodTypes newWoodTypes : NewWoodTypes.values()) {
-            STRIPPED_LOGS[newWoodTypes.getMetadata()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", newWoodTypes.asString()));
+            STRIPPED_LOGS[newWoodTypes.getIndex()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", newWoodTypes.asString()));
+            STRIPPED_WOOD[newWoodTypes.getIndex()] = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                    .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), String.format("stripped_%s_wood", newWoodTypes.asString()));
         }
 
         for (VanillaAndModdedMinusBambooWoodTypes woodType : VanillaAndModdedMinusBambooWoodTypes.values()) {
@@ -545,16 +558,16 @@ public class NBlocks {
         BAMBOO_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.BAMBOO).sounds(BlockSoundGroup.BAMBOO), "bamboo_bundle");
         CACTUS_BUNDLE = new CactusBundleBlock();
 
-        NETHER_WART_SACK = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "nether_wart_sack");
-        COCOA_BEAN_SACK = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "cocoa_bean_sack");
-        GUNPOWDER_SACK = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "gunpowder_sack");
+        NETHER_WART_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "nether_wart_sack");
+        COCOA_BEAN_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "cocoa_bean_sack");
+        GUNPOWDER_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "gunpowder_sack");
 
-        EGG_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "egg_crate");
-        BEETROOT_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "beetroot_crate");
-        POTATO_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "potato_crate");
-        CARROT_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "carrot_crate");
-        APPLE_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "apple_crate");
-        GOLDEN_APPLE_CRATE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "golden_apple_crate");
+        EGG_CRATE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "egg_crate");
+        BEETROOT_CRATE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "beetroot_crate");
+        POTATO_CRATE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "potato_crate");
+        CARROT_CRATE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "carrot_crate");
+        APPLE_CRATE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "apple_crate");
+        GOLDEN_APPLE_CRATE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "golden_apple_crate");
 
         TREATED_PLANKS = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "treated_planks");
         BlockRegistryBuilder.getInstance("treated_planks", TREATED_PLANKS)

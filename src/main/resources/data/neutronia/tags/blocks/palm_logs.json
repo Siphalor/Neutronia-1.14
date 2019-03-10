@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:palm_log",
+    "neutronia:palm_wood",
+    "neutronia:stripped_palm_log",
+    "neutronia:stripped_palm_wood"
+  ]
+}

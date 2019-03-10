@@ -16,7 +16,7 @@ public enum NewWoodTypes implements StringRepresentable {
 
     static {
         for (NewWoodTypes blockplanks$enumtype : values()) {
-            META_LOOKUP[blockplanks$enumtype.getMetadata()] = blockplanks$enumtype;
+            META_LOOKUP[blockplanks$enumtype.getIndex()] = blockplanks$enumtype;
         }
     }
 
@@ -47,7 +47,7 @@ public enum NewWoodTypes implements StringRepresentable {
         return META_LOOKUP[meta];
     }
 
-    public int getMetadata() {
+    public int getIndex() {
         return this.meta;
     }
 

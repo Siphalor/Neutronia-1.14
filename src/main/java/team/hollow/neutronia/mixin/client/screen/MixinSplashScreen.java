@@ -1,7 +1,6 @@
 package team.hollow.neutronia.mixin.client.screen;
 
 import com.google.gson.JsonParser;
-import net.minecraft.class_4071;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.FontStorage;
 import net.minecraft.client.font.FontType;
@@ -24,7 +23,7 @@ import java.util.Collections;
 import static org.lwjgl.opengl.GL11.glColor3ub;
 
 @Mixin(SplashScreen.class)
-public abstract class MixinSplashScreen extends class_4071 {
+public abstract class MixinSplashScreen {
 
     private static final String JSON =
             "{\n" +
@@ -52,7 +51,7 @@ public abstract class MixinSplashScreen extends class_4071 {
                     "}";
     @Shadow
     @Final
-    private MinecraftClient field_18217;
+    private MinecraftClient client;
     private LoadingProgress.TaskInfo[] tasks = new LoadingProgress.TaskInfo[5];
     private TextRenderer fr;
 
@@ -63,9 +62,9 @@ public abstract class MixinSplashScreen extends class_4071 {
 
     private void drawProgress() {
         if (fr == null) {
-            final FontStorage fontStorage_1 = new FontStorage(field_18217.getTextureManager(), new Identifier("loading"));
-            fontStorage_1.setFonts(Collections.singletonList(FontType.BITMAP.createLoader(new JsonParser().parse(JSON).getAsJsonObject()).load(field_18217.getResourceManager())));
-            fr = new TextRenderer(field_18217.getTextureManager(), fontStorage_1);
+            final FontStorage fontStorage_1 = new FontStorage(client.getTextureManager(), new Identifier("loading"));
+            fontStorage_1.setFonts(Collections.singletonList(FontType.BITMAP.createLoader(new JsonParser().parse(JSON).getAsJsonObject()).load(client.getResourceManager())));
+            fr = new TextRenderer(client.getTextureManager(), fontStorage_1);
         }
 
         int count = 0;
@@ -81,15 +80,15 @@ public abstract class MixinSplashScreen extends class_4071 {
             }
         }
 
-        fr.draw("Loading...", 2, this.field_18217.window.getScaledHeight() - fr.fontHeight - 2, 0x000000);
+        fr.draw("Loading...", 2, this.client.window.getScaledHeight() - fr.fontHeight - 2, 0x000000);
 
         for (int i = 0; i < count; i++) {
             LoadingProgress.TaskInfo task = tasks[i];
 
-            fr.draw(task.getText(), 2, this.field_18217.window.getScaledHeight() - (fr.fontHeight + 1) * (count - i + 1) - 1, 0x000000);
+            fr.draw(task.getText(), 2, this.client.window.getScaledHeight() - (fr.fontHeight + 1) * (count - i + 1) - 1, 0x000000);
         }
 
-        ProgressBarUtils.renderMemoryBar(fr, this.field_18217.window.getScaledWidth() / 2 - 150, 100, this.field_18217.window.getScaledHeight() / 2 + 150, 115, 1.0F - MathHelper.clamp(-1L, 0.0F, 1.0F));
+        ProgressBarUtils.renderMemoryBar(fr, this.client.window.getScaledWidth() / 2 - 150, 100, this.client.window.getScaledHeight() / 2 + 150, 115, 1.0F - MathHelper.clamp(-1L, 0.0F, 1.0F));
     }
 
     public void setColor(int color) {

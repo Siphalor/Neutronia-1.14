@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:red_mangrove_log",
+    "neutronia:red_mangrove_wood",
+    "neutronia:stripped_red_mangrove_log",
+    "neutronia:stripped_red_mangrove_wood"
+  ]
+}

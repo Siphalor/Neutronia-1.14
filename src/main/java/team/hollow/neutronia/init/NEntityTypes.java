@@ -7,10 +7,7 @@ import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import team.hollow.neutronia.entity.ArcticWolfEntity;
-import team.hollow.neutronia.entity.AxolotlEntity;
-import team.hollow.neutronia.entity.EntityOlDiggy;
-import team.hollow.neutronia.entity.SocialVillager;
+import team.hollow.neutronia.entity.*;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.BrownBearEntity;
 import team.hollow.neutronia.entity.passive.EntityPenguin;
@@ -27,6 +24,10 @@ public class NEntityTypes {
     //    public static final EntityType JUNGLE_FROG;
     public static final EntityType AXOLOTL;
     public static final EntityType PENGUIN;
+    public static final EntityType GREAT_HUNGER;
+    public static final EntityType SHADOW_PHANTOM;
+    public static final EntityType ENDER_PHANTOM;
+    public static final EntityType BLOOD_PHANTOM;
 
     static {
         VILLAGER_PLUS = register("villager_plus", FabricEntityTypeBuilder.<VillagerPlusEntity>create(EntityCategory.CREATURE, (var1, var2) -> new VillagerPlusEntity(var2)).size(EntitySize.constant(0.6F, 1.95F)));
@@ -38,6 +39,10 @@ public class NEntityTypes {
 //        JUNGLE_FROG = register("jungle_frog", FabricEntityTypeBuilder.<AxolotlEntity>create(EntityCategory.CREATURE, (var1, var2) -> new EntityJungle(var2)));
         AXOLOTL = register("axolotl", FabricEntityTypeBuilder.<AxolotlEntity>create(EntityCategory.CREATURE, (var1, var2) -> new AxolotlEntity(var2)));
         PENGUIN = register("penguin", FabricEntityTypeBuilder.<EntityPenguin>create(EntityCategory.CREATURE, (var1, var2) -> new EntityPenguin(var2)).size(EntitySize.constant(0.6F, 1.1F)));
+        GREAT_HUNGER = register("great_hunger", FabricEntityTypeBuilder.<EntityGreatHunger>create(EntityCategory.CREATURE, (var1, var2) -> new EntityGreatHunger(var2)).size(EntitySize.constant(0.6F, 1.1F)));
+        SHADOW_PHANTOM = register("shadow_phantom", FabricEntityTypeBuilder.<EntityShadowPhantom>create(EntityCategory.CREATURE, (var1, var2) -> new EntityShadowPhantom(var2)).size(EntitySize.constant(0.6F, 1.1F)));
+        ENDER_PHANTOM = register("ender_phantom", FabricEntityTypeBuilder.<EntityEnderPhantom>create(EntityCategory.CREATURE, (var1, var2) -> new EntityEnderPhantom(var2)).size(EntitySize.constant(0.6F, 1.1F)));
+        BLOOD_PHANTOM = register("blood_phantom", FabricEntityTypeBuilder.<EntityBloodPhantom>create(EntityCategory.CREATURE, (var1, var2) -> new EntityBloodPhantom(var2)).size(EntitySize.constant(0.6F, 1.1F)));
     }
 
     private static EntityType register(String string_1, FabricEntityTypeBuilder<? extends Entity> entityType$Builder_1) {

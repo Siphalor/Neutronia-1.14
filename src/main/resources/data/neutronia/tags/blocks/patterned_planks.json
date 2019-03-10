@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "neutronia:patterned_oak_planks",
+    "neutronia:patterned_spruce_planks",
+    "neutronia:patterned_birch_planks",
+    "neutronia:patterned_jungle_planks",
+    "neutronia:patterned_acacia_planks",
+    "neutronia:patterned_dark_oak_planks"
+  ]
+}
