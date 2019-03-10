@@ -20,9 +20,9 @@ public class EntityOlDiggy extends MobEntityWithAi {
     @Override
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeContainer().get(EntityAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
-        this.getAttributeContainer().get(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
-        this.getAttributeContainer().get(EntityAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
+        this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
+        this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.23000000417232513D);
+        this.getAttributeInstance(EntityAttributes.FOLLOW_RANGE).setBaseValue(48.0D);
     }
 
 }

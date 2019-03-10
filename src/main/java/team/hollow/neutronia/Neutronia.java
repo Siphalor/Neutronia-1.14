@@ -39,8 +39,9 @@ import java.util.function.Supplier;
 public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
+    public static final String MOD_NAME = "Neutronia";
     public static final String PREFIX = "neutronia:";
-    private static final Logger LOGGER = LogManager.getLogger();
+    private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
 
     public static Logger getLogger() {
         return LOGGER;
@@ -68,6 +69,16 @@ public class Neutronia implements ModInitializer {
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
+    }
+
+    public static void log(Object object)
+    {
+        LOGGER.info(object.toString());
+    }
+
+    public static Identifier locate(String location)
+    {
+        return new Identifier(MOD_ID, location);
     }
 
     /**

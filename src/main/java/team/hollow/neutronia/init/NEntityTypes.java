@@ -1,5 +1,6 @@
 package team.hollow.neutronia.init;
 
+import net.fabricmc.fabric.api.entity.EntityTrackingRegistry;
 import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCategory;
@@ -15,19 +16,20 @@ import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
 
 public class NEntityTypes {
 
-    public static final EntityType VILLAGER_PLUS;
-    public static final EntityType BLACK_BEAR;
-    public static final EntityType BROWN_BEAR;
-    public static final EntityType SOCIAL_VILLAGER;
-    public static final EntityType OL_DIGGY;
-    public static final EntityType ARCTIC_WOLF;
+    public static final EntityType<VillagerPlusEntity> VILLAGER_PLUS;
+    public static final EntityType<BlackBearEntity> BLACK_BEAR;
+    public static final EntityType<BrownBearEntity> BROWN_BEAR;
+    public static final EntityType<SocialVillager> SOCIAL_VILLAGER;
+    public static final EntityType<EntityOlDiggy> OL_DIGGY;
+    public static final EntityType<ArcticWolfEntity> ARCTIC_WOLF;
     //    public static final EntityType JUNGLE_FROG;
-    public static final EntityType AXOLOTL;
-    public static final EntityType PENGUIN;
-    public static final EntityType GREAT_HUNGER;
-    public static final EntityType SHADOW_PHANTOM;
-    public static final EntityType ENDER_PHANTOM;
-    public static final EntityType BLOOD_PHANTOM;
+    public static final EntityType<AxolotlEntity> AXOLOTL;
+    public static final EntityType<EntityPenguin> PENGUIN;
+    public static final EntityType<EntityGreatHunger> GREAT_HUNGER;
+    public static final EntityType<EntityShadowPhantom> SHADOW_PHANTOM;
+    public static final EntityType<EntityEnderPhantom> ENDER_PHANTOM;
+    public static final EntityType<EntityBloodPhantom> BLOOD_PHANTOM;
+    public static final EntityType<AlbadonEntity> ALBADON;
 
     static {
         VILLAGER_PLUS = register("villager_plus", FabricEntityTypeBuilder.<VillagerPlusEntity>create(EntityCategory.CREATURE, (var1, var2) -> new VillagerPlusEntity(var2)).size(EntitySize.constant(0.6F, 1.95F)));
@@ -43,10 +45,16 @@ public class NEntityTypes {
         SHADOW_PHANTOM = register("shadow_phantom", FabricEntityTypeBuilder.<EntityShadowPhantom>create(EntityCategory.CREATURE, (var1, var2) -> new EntityShadowPhantom(var2)).size(EntitySize.constant(0.6F, 1.1F)));
         ENDER_PHANTOM = register("ender_phantom", FabricEntityTypeBuilder.<EntityEnderPhantom>create(EntityCategory.CREATURE, (var1, var2) -> new EntityEnderPhantom(var2)).size(EntitySize.constant(0.6F, 1.1F)));
         BLOOD_PHANTOM = register("blood_phantom", FabricEntityTypeBuilder.<EntityBloodPhantom>create(EntityCategory.CREATURE, (var1, var2) -> new EntityBloodPhantom(var2)).size(EntitySize.constant(0.6F, 1.1F)));
+        ALBADON = register("albadon", FabricEntityTypeBuilder.<AlbadonEntity>create(EntityCategory.CREATURE, (var1, var2) -> new AlbadonEntity(var2)));
     }
 
-    private static EntityType register(String string_1, FabricEntityTypeBuilder<? extends Entity> entityType$Builder_1) {
-        return Registry.register(Registry.ENTITY_TYPE, new Identifier("neutronia", string_1), entityType$Builder_1.disableSaving().build());
+    private static void trackEntity(EntityType<?> type, int trackingDistance, int updateIntervalTicks, boolean alwaysUpdateVelocity)
+    {
+        EntityTrackingRegistry.INSTANCE.register(type, trackingDistance, updateIntervalTicks, alwaysUpdateVelocity);
+    }
+
+    private static <X extends Entity> EntityType<X> register(String string_1, FabricEntityTypeBuilder<? extends Entity> entityType$Builder_1) {
+        return (EntityType<X>) Registry.register(Registry.ENTITY_TYPE, new Identifier("neutronia", string_1), entityType$Builder_1.disableSaving().build());
     }
 
 }

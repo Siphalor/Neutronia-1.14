@@ -84,4 +84,5 @@ public class ModelWolfArtic<T extends LivingEntity> extends EntityModel<T> {
         Cuboid.rotationPointY = y;
         Cuboid.rotationPointZ = z;
     }
+
 }
