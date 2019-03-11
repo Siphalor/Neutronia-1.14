@@ -37,7 +37,7 @@ public class PalisadeBlock extends NeutroniaFenceBlock {
         BlockState blockState_2 = blockView_1.getBlockState(blockPos_3);
         BlockState blockState_3 = blockView_1.getBlockState(blockPos_4);
         BlockState blockState_4 = blockView_1.getBlockState(blockPos_5);
-        return Objects.requireNonNull(super.getPlacementState(itemPlacementContext_1)).with(NORTH, this.method_10184(blockState_1, Block.isFaceFullSquare(blockState_1.getCollisionShape(blockView_1, blockPos_2), Direction.SOUTH), Direction.SOUTH)).with(EAST, this.method_10184(blockState_2, Block.isFaceFullSquare(blockState_2.getCollisionShape(blockView_1, blockPos_3), Direction.WEST), Direction.WEST)).with(SOUTH, this.method_10184(blockState_3, Block.isFaceFullSquare(blockState_3.getCollisionShape(blockView_1, blockPos_4), Direction.NORTH), Direction.NORTH)).with(WEST, this.method_10184(blockState_4, Block.isFaceFullSquare(blockState_4.getCollisionShape(blockView_1, blockPos_5), Direction.EAST), Direction.EAST)).with(WATERLOGGED, fluidState_1.getFluid() == Fluids.WATER);
+        return Objects.requireNonNull(super.getPlacementState(itemPlacementContext_1)).with(NORTH, this.canConnect(blockState_1, Block.isFaceFullSquare(blockState_1.getCollisionShape(blockView_1, blockPos_2), Direction.SOUTH), Direction.SOUTH)).with(EAST, this.canConnect(blockState_2, Block.isFaceFullSquare(blockState_2.getCollisionShape(blockView_1, blockPos_3), Direction.WEST), Direction.WEST)).with(SOUTH, this.canConnect(blockState_3, Block.isFaceFullSquare(blockState_3.getCollisionShape(blockView_1, blockPos_4), Direction.NORTH), Direction.NORTH)).with(WEST, this.canConnect(blockState_4, Block.isFaceFullSquare(blockState_4.getCollisionShape(blockView_1, blockPos_5), Direction.EAST), Direction.EAST)).with(WATERLOGGED, fluidState_1.getFluid() == Fluids.WATER);
     }
 
     public BlockState getStateForNeighborUpdate(BlockState blockState_1, Direction direction_1, BlockState blockState_2, IWorld iWorld_1, BlockPos blockPos_1, BlockPos blockPos_2) {
@@ -45,7 +45,7 @@ public class PalisadeBlock extends NeutroniaFenceBlock {
             iWorld_1.getFluidTickScheduler().schedule(blockPos_1, Fluids.WATER, Fluids.WATER.getTickRate(iWorld_1));
         }
 
-        return direction_1.getAxis().method_10180() == Direction.Type.HORIZONTAL ? blockState_1.with(FACING_PROPERTIES.get(direction_1), this.method_10184(blockState_2, Block.isFaceFullSquare(blockState_2.getCollisionShape(iWorld_1, blockPos_2), direction_1.getOpposite()), direction_1.getOpposite())) : super.getStateForNeighborUpdate(blockState_1, direction_1, blockState_2, iWorld_1, blockPos_1, blockPos_2);
+        return direction_1.getAxis().method_10180() == Direction.Type.HORIZONTAL ? blockState_1.with(FACING_PROPERTIES.get(direction_1), this.canConnect(blockState_2, Block.isFaceFullSquare(blockState_2.getCollisionShape(iWorld_1, blockPos_2), direction_1.getOpposite()), direction_1.getOpposite())) : super.getStateForNeighborUpdate(blockState_1, direction_1, blockState_2, iWorld_1, blockPos_1, blockPos_2);
     }
 
     @Override

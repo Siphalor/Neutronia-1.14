@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/bamboo_slab"
+    },
+    "type=top": {
+      "model": "neutronia:block/bamboo_slab_top"
+    },
+    "type=double": {
+      "model": "neutronia:block/bamboo"
+    }
+  }
+}

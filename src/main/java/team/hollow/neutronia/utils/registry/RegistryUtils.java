@@ -17,18 +17,19 @@ public class RegistryUtils {
         Registry.register(Registry.ITEM, name, new BlockItem(block, new Item.Settings().itemGroup(itemGroup)));
     }
 
-    public static Block registerTest(Identifier name, Block block, ItemGroup itemGroup) {
+    public static Block registerTest(Block block, Identifier name, ItemGroup itemGroup) {
         register(name, block, itemGroup);
         return block;
     }
 
     public static Block registerTest(String name, Block block, ItemGroup itemGroup) {
-        register(new Identifier(Neutronia.MOD_ID, name), block, itemGroup);
+    public static Block registerTest(Block block, String name) {
+        register(new Identifier(Neutronia.MOD_ID, name), block, ItemGroup.DECORATIONS);
         return block;
     }
 
-    public static Block registerTest(Block block, String name) {
-        register(new Identifier(Neutronia.MOD_ID, name), block, ItemGroup.DECORATIONS);
+    public static Block registerTest(Block block, String name, ItemGroup itemGroup) {
+        register(new Identifier(Neutronia.MOD_ID, name), block, itemGroup);
         return block;
     }
 
@@ -55,17 +56,6 @@ public class RegistryUtils {
     private static void registerWallStandingBlockNeutroniaWithBI(String name, Block block, Block wallBlock, ItemGroup tab) {
         Registry.register(Registry.BLOCK, new Identifier(Neutronia.MOD_ID, name), block);
         Registry.register(Registry.ITEM, new Identifier(Neutronia.MOD_ID, name), new WallStandingBlockItem(block, wallBlock, new Item.Settings().itemGroup(tab)));
-    }
-
-    private Block registerMinecraftWithoutBI(String name, Block block) {
-        Registry.register(Registry.BLOCK, new Identifier("minecraft", name), block);
-        return block;
-    }
-
-    private Block registerWallStandingBlockMinecraftWithBI(String name, Block block, Block wallBlock, ItemGroup tab) {
-        Registry.register(Registry.BLOCK, new Identifier("minecraft", name), block);
-        Registry.register(Registry.ITEM, new Identifier("minecraft", name), new WallStandingBlockItem(block, wallBlock, new Item.Settings().itemGroup(tab)));
-        return block;
     }
 
     public static Item registerItem(Item item, String name) {
