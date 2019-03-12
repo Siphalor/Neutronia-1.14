@@ -17,32 +17,32 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder slab() {
-        new NeutroniaSlabBlock(name);
+        RegistryUtils.register(new NeutroniaSlabBlock(), name);
         return this;
     }
 
     public BlockRegistryBuilder stair() {
-        new NeutroniaStairBlock(block.getDefaultState(), name);
+        RegistryUtils.register(new NeutroniaStairBlock(block.getDefaultState()), name);
         return this;
     }
 
     public BlockRegistryBuilder fence() {
-        new NeutroniaFenceBlock(name + "_fence", block.getDefaultState());
+        RegistryUtils.register(new NeutroniaFenceBlock(block.getDefaultState()), name + "_fence");
         return this;
     }
 
     public BlockRegistryBuilder fenceGate() {
-        new NeutroniaFenceGateBlock(name + "_fence_gate");
+        RegistryUtils.register(new NeutroniaFenceGateBlock(), name + "_fence_gate");
         return this;
     }
 
     public BlockRegistryBuilder wall() {
-        new NeutroniaWallBlock(name + "_wall", block.getDefaultState());
+        RegistryUtils.register(new NeutroniaWallBlock(block.getDefaultState()), name + "_wall");
         return this;
     }
 
     public BlockRegistryBuilder button(boolean wooden) {
-        new NeutroniaButtonBlock(name + "_button", wooden);
+        RegistryUtils.register(new NeutroniaButtonBlock(wooden), name + "_button");
         return this;
     }
 
@@ -57,7 +57,7 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder trapdoor() {
-        new NeutroniaTrapdoorBlock(name + "_trapdoor");
+        RegistryUtils.register(new NeutroniaTrapdoorBlock(), name + "_trapdoor");
         return this;
     }
 
