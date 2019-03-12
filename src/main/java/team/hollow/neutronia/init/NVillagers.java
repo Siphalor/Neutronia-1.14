@@ -23,6 +23,7 @@ public class NVillagers implements VillagerProfession, VillagerType {
     public static final VillagerType COLD_MOUNTAINS;
     public static final VillagerType BADLANDS;
     public static final VillagerType ICE_SPIKES;
+    public static final VillagerType OCEAN;
 
     static {
         ARTIST = team.hollow.neutronia.villagers.VillagerProfession.register("artist");
@@ -43,6 +44,7 @@ public class NVillagers implements VillagerProfession, VillagerType {
         COLD_MOUNTAINS = team.hollow.neutronia.villagers.VillagerType.register("cold_mountains", Biomes.SNOWY_MOUNTAINS, Biomes.SNOWY_TAIGA_MOUNTAINS);
         BADLANDS = team.hollow.neutronia.villagers.VillagerType.register("badlands", Biomes.BADLANDS, Biomes.BADLANDS_PLATEAU, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS_PLATEAU);
         ICE_SPIKES = team.hollow.neutronia.villagers.VillagerType.register("ice_spikes", Biomes.ICE_SPIKES);
+        OCEAN = team.hollow.neutronia.villagers.VillagerType.register("ocean", Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN);
     }
 
 }

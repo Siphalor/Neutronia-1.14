@@ -98,61 +98,61 @@ public class NBlocks {
     public static Block REDSTONE_GOLD_LANTERN, REDSTONE_IRON_LANTERN;
 
     static {
-        DEAD_PILLAR_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_pillar_coral_block", ItemGroup.BUILDING_BLOCKS);
-        DEAD_LIME_BRAIN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_lime_brain_coral_block", ItemGroup.BUILDING_BLOCKS);
-        DEAD_GREEN_BUBBLE_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_green_bubble_coral_block", ItemGroup.BUILDING_BLOCKS);
-        DEAD_ACAN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_acan_coral_block", ItemGroup.BUILDING_BLOCKS);
-        DEAD_ANTIPATHES_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_antipathes_coral_block", ItemGroup.BUILDING_BLOCKS);
-        DEAD_STAGHORN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlockBlock(), "dead_staghorn_coral_block", ItemGroup.BUILDING_BLOCKS);
+        DEAD_PILLAR_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseDeadCoralBlockBlock(), new Identifier(Neutronia.MOD_ID, "dead_pillar_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        DEAD_LIME_BRAIN_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseDeadCoralBlockBlock(), new Identifier(Neutronia.MOD_ID, "dead_lime_brain_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        DEAD_GREEN_BUBBLE_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseDeadCoralBlockBlock(), new Identifier(Neutronia.MOD_ID, "dead_green_bubble_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        DEAD_ACAN_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseDeadCoralBlockBlock(), new Identifier(Neutronia.MOD_ID, "dead_acan_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        DEAD_ANTIPATHES_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseDeadCoralBlockBlock(), new Identifier(Neutronia.MOD_ID, "dead_antipathes_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        DEAD_STAGHORN_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseDeadCoralBlockBlock(), new Identifier(Neutronia.MOD_ID, "dead_staghorn_coral_block"), ItemGroup.BUILDING_BLOCKS);
 
-        PILLAR_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_PILLAR_CORAL_BLOCK), "pillar_coral_block", ItemGroup.BUILDING_BLOCKS);
-        LIME_BRAIN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_LIME_BRAIN_CORAL_BLOCK), "lime_brain_coral_block", ItemGroup.BUILDING_BLOCKS);
-        GREEN_BUBBLE_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_GREEN_BUBBLE_CORAL_BLOCK), "green_bubble_coral_block", ItemGroup.BUILDING_BLOCKS);
-        ACAN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_ACAN_CORAL_BLOCK), "acan_coral_block", ItemGroup.BUILDING_BLOCKS);
-        ANTIPATHES_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_ANTIPATHES_CORAL_BLOCK), "antipathes_coral_block", ItemGroup.BUILDING_BLOCKS);
-        STAGHORN_CORAL_BLOCK = RegistryUtils.registerTest(new NeutroniaBaseCoralBlockBlock(DEAD_STAGHORN_CORAL_BLOCK), "staghorn_coral_block", ItemGroup.BUILDING_BLOCKS);
+        PILLAR_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseCoralBlockBlock(DEAD_PILLAR_CORAL_BLOCK), new Identifier(Neutronia.MOD_ID, "pillar_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        LIME_BRAIN_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseCoralBlockBlock(DEAD_LIME_BRAIN_CORAL_BLOCK), new Identifier(Neutronia.MOD_ID, "lime_brain_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        GREEN_BUBBLE_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseCoralBlockBlock(DEAD_GREEN_BUBBLE_CORAL_BLOCK), new Identifier(Neutronia.MOD_ID, "green_bubble_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        ACAN_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseCoralBlockBlock(DEAD_ACAN_CORAL_BLOCK), new Identifier(Neutronia.MOD_ID, "acan_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        ANTIPATHES_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseCoralBlockBlock(DEAD_ANTIPATHES_CORAL_BLOCK), new Identifier(Neutronia.MOD_ID, "antipathes_coral_block"), ItemGroup.BUILDING_BLOCKS);
+        STAGHORN_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseCoralBlockBlock(DEAD_STAGHORN_CORAL_BLOCK), new Identifier(Neutronia.MOD_ID, "staghorn_coral_block"), ItemGroup.BUILDING_BLOCKS);
 
-        DEAD_PILLAR_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_pillar_coral_wall_fan");
-        DEAD_LIME_BRAIN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_lime_brain_coral_wall_fan");
-        DEAD_GREEN_BUBBLE_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_green_bubble_coral_wall_fan");
-        DEAD_ACAN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_acan_coral_wall_fan");
-        DEAD_ANTIPATHES_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_antipathes_coral_wall_fan");
-        DEAD_STAGHORN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_staghorn_coral_wall_fan");
+        DEAD_PILLAR_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_pillar_coral_wall_fan");
+        DEAD_LIME_BRAIN_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_lime_brain_coral_wall_fan");
+        DEAD_GREEN_BUBBLE_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_green_bubble_coral_wall_fan");
+        DEAD_ACAN_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_acan_coral_wall_fan");
+        DEAD_ANTIPATHES_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_antipathes_coral_wall_fan");
+        DEAD_STAGHORN_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseDeadWallCoralFanBlock(), "dead_staghorn_coral_wall_fan");
 
-        PILLAR_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_PILLAR_CORAL_WALL_FAN), "pillar_coral_wall_fan");
-        LIME_BRAIN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_LIME_BRAIN_CORAL_WALL_FAN), "lime_brain_coral_wall_fan");
-        GREEN_BUBBLE_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_GREEN_BUBBLE_CORAL_WALL_FAN), "green_bubble_coral_wall_fan");
-        ACAN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_ACAN_CORAL_WALL_FAN), "acan_coral_wall_fan");
-        ANTIPATHES_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_ANTIPATHES_CORAL_WALL_FAN), "antipathes_coral_wall_fan");
-        STAGHORN_CORAL_WALL_FAN = RegistryUtils.registerTestNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_STAGHORN_CORAL_WALL_FAN), "staghorn_coral_wall_fan");
+        PILLAR_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_PILLAR_CORAL_WALL_FAN), "pillar_coral_wall_fan");
+        LIME_BRAIN_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_LIME_BRAIN_CORAL_WALL_FAN), "lime_brain_coral_wall_fan");
+        GREEN_BUBBLE_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_GREEN_BUBBLE_CORAL_WALL_FAN), "green_bubble_coral_wall_fan");
+        ACAN_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_ACAN_CORAL_WALL_FAN), "acan_coral_wall_fan");
+        ANTIPATHES_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_ANTIPATHES_CORAL_WALL_FAN), "antipathes_coral_wall_fan");
+        STAGHORN_CORAL_WALL_FAN = RegistryUtils.registerNoBI(new NeutroniaBaseCoralWallFanBlock(DEAD_STAGHORN_CORAL_WALL_FAN), "staghorn_coral_wall_fan");
 
-        DEAD_PILLAR_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_PILLAR_CORAL_WALL_FAN, "dead_pillar_coral_fan");
-        DEAD_LIME_BRAIN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_LIME_BRAIN_CORAL_WALL_FAN, "dead_lime_brain_coral_fan");
-        DEAD_GREEN_BUBBLE_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, "dead_green_bubble_coral_fan");
-        DEAD_ACAN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_ACAN_CORAL_WALL_FAN, "dead_acan_coral_fan");
-        DEAD_ANTIPATHES_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_ANTIPATHES_CORAL_WALL_FAN, "dead_antipathes_coral_fan");
-        DEAD_STAGHORN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralFanBlock(), DEAD_STAGHORN_CORAL_WALL_FAN, "dead_staghorn_coral_fan");
+        DEAD_PILLAR_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseDeadCoralFanBlock(), DEAD_PILLAR_CORAL_WALL_FAN, "dead_pillar_coral_fan");
+        DEAD_LIME_BRAIN_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseDeadCoralFanBlock(), DEAD_LIME_BRAIN_CORAL_WALL_FAN, "dead_lime_brain_coral_fan");
+        DEAD_GREEN_BUBBLE_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseDeadCoralFanBlock(), DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, "dead_green_bubble_coral_fan");
+        DEAD_ACAN_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseDeadCoralFanBlock(), DEAD_ACAN_CORAL_WALL_FAN, "dead_acan_coral_fan");
+        DEAD_ANTIPATHES_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseDeadCoralFanBlock(), DEAD_ANTIPATHES_CORAL_WALL_FAN, "dead_antipathes_coral_fan");
+        DEAD_STAGHORN_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseDeadCoralFanBlock(), DEAD_STAGHORN_CORAL_WALL_FAN, "dead_staghorn_coral_fan");
 
-        PILLAR_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_PILLAR_CORAL_FAN), PILLAR_CORAL_WALL_FAN, "pillar_coral_fan");
-        LIME_BRAIN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_LIME_BRAIN_CORAL_FAN), LIME_BRAIN_CORAL_WALL_FAN, "lime_brain_coral_fan");
-        GREEN_BUBBLE_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_GREEN_BUBBLE_CORAL_FAN), GREEN_BUBBLE_CORAL_WALL_FAN, "green_bubble_coral_fan");
-        ACAN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_ACAN_CORAL_FAN), ACAN_CORAL_WALL_FAN, "acan_coral_fan");
-        ANTIPATHES_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_ANTIPATHES_CORAL_FAN), ANTIPATHES_CORAL_WALL_FAN, "antipathes_coral_fan");
-        STAGHORN_CORAL_FAN = RegistryUtils.registerTest(new NeutroniaBaseCoralFanBlock(DEAD_STAGHORN_CORAL_FAN), STAGHORN_CORAL_WALL_FAN, "staghorn_coral_fan");
+        PILLAR_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseCoralFanBlock(DEAD_PILLAR_CORAL_FAN), PILLAR_CORAL_WALL_FAN, "pillar_coral_fan");
+        LIME_BRAIN_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseCoralFanBlock(DEAD_LIME_BRAIN_CORAL_FAN), LIME_BRAIN_CORAL_WALL_FAN, "lime_brain_coral_fan");
+        GREEN_BUBBLE_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseCoralFanBlock(DEAD_GREEN_BUBBLE_CORAL_FAN), GREEN_BUBBLE_CORAL_WALL_FAN, "green_bubble_coral_fan");
+        ACAN_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseCoralFanBlock(DEAD_ACAN_CORAL_FAN), ACAN_CORAL_WALL_FAN, "acan_coral_fan");
+        ANTIPATHES_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseCoralFanBlock(DEAD_ANTIPATHES_CORAL_FAN), ANTIPATHES_CORAL_WALL_FAN, "antipathes_coral_fan");
+        STAGHORN_CORAL_FAN = RegistryUtils.register(new NeutroniaBaseCoralFanBlock(DEAD_STAGHORN_CORAL_FAN), STAGHORN_CORAL_WALL_FAN, "staghorn_coral_fan");
 
-        DEAD_PILLAR_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_pillar_coral");
-        DEAD_LIME_BRAIN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_lime_brain_coral");
-        DEAD_GREEN_BUBBLE_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_green_bubble_coral");
-        DEAD_ACAN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_acan_coral");
-        DEAD_ANTIPATHES_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_antipathes_coral");
-        DEAD_STAGHORN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseDeadCoralBlock(), "dead_staghorn_coral");
+        DEAD_PILLAR_CORAL = RegistryUtils.register(new NeutroniaBaseDeadCoralBlock(), new Identifier(Neutronia.MOD_ID, "dead_pillar_coral"));
+        DEAD_LIME_BRAIN_CORAL = RegistryUtils.register(new NeutroniaBaseDeadCoralBlock(), new Identifier(Neutronia.MOD_ID, "dead_lime_brain_coral"));
+        DEAD_GREEN_BUBBLE_CORAL = RegistryUtils.register(new NeutroniaBaseDeadCoralBlock(), new Identifier(Neutronia.MOD_ID, "dead_green_bubble_coral"));
+        DEAD_ACAN_CORAL = RegistryUtils.register(new NeutroniaBaseDeadCoralBlock(), new Identifier(Neutronia.MOD_ID, "dead_acan_coral"));
+        DEAD_ANTIPATHES_CORAL = RegistryUtils.register(new NeutroniaBaseDeadCoralBlock(), new Identifier(Neutronia.MOD_ID, "dead_antipathes_coral"));
+        DEAD_STAGHORN_CORAL = RegistryUtils.register(new NeutroniaBaseDeadCoralBlock(), new Identifier(Neutronia.MOD_ID, "dead_staghorn_coral"));
 
-        PILLAR_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_PILLAR_CORAL), "pillar_coral");
-        LIME_BRAIN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_LIME_BRAIN_CORAL), "lime_brain_coral");
-        GREEN_BUBBLE_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_GREEN_BUBBLE_CORAL), "green_bubble_coral");
-        ACAN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_ACAN_CORAL), "acan_coral");
-        ANTIPATHES_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_ANTIPATHES_CORAL), "antipathes_coral");
-        STAGHORN_CORAL = RegistryUtils.registerTest(new NeutroniaBaseCoralBlock(DEAD_STAGHORN_CORAL), "staghorn_coral");
+        PILLAR_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_PILLAR_CORAL), new Identifier(Neutronia.MOD_ID, "pillar_coral"));
+        LIME_BRAIN_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_LIME_BRAIN_CORAL), new Identifier(Neutronia.MOD_ID, "lime_brain_coral"));
+        GREEN_BUBBLE_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_GREEN_BUBBLE_CORAL), new Identifier(Neutronia.MOD_ID, "green_bubble_coral"));
+        ACAN_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_ACAN_CORAL), new Identifier(Neutronia.MOD_ID, "acan_coral"));
+        ANTIPATHES_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_ANTIPATHES_CORAL), new Identifier(Neutronia.MOD_ID, "antipathes_coral"));
+        STAGHORN_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_STAGHORN_CORAL), new Identifier(Neutronia.MOD_ID, "staghorn_coral"));
 
         BLUE_BERRY_BUSH = new NeutroniaBlueberryBushBlock();
         GOOSEBERRY_BUSH = new NeutroniaGooseberryBushBlock();
@@ -160,22 +160,22 @@ public class NBlocks {
         GREEN_GRAPE_BUSH = new NeutroniaGreenGrapeBushBlock();
         PURPLE_GRAPE_BUSH = new NeutroniaPurpleGrapeBushBlock();
 
-        IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "iron_lantern");
-        GOLD_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "gold_lantern");
-        WROUGHT_IRON_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "wrought_iron_lantern");
-        PRISMARINE_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.GLASS).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "prismarine_lantern");
-        ICE_LANTERN = RegistryUtils.registerTest(new LanternBlock(FabricBlockSettings.of(Material.PACKED_ICE).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), "ice_lantern");
+        IRON_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(Neutronia.MOD_ID, "iron_lantern"));
+        GOLD_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(Neutronia.MOD_ID, "gold_lantern"));
+        WROUGHT_IRON_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(Neutronia.MOD_ID, "wrought_iron_lantern"));
+        PRISMARINE_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.GLASS).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(Neutronia.MOD_ID, "prismarine_lantern"));
+        ICE_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.PACKED_ICE).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(Neutronia.MOD_ID, "ice_lantern"));
 
-        /*REDSTONE_IRON_LANTERN = RegistryUtils.registerTest(new RedstoneLanternBlock(), "redstone_iron_lantern");
-        REDSTONE_GOLD_LANTERN = RegistryUtils.registerTest(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
+        /*REDSTONE_IRON_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_iron_lantern");
+        REDSTONE_GOLD_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
 
         for (VanillaMinusOakWoodTypes woodType : VanillaMinusOakWoodTypes.values()) {
             BOOKSHELVES[woodType.getMetadata()] = new NeutroniaBaseBlock(Material.WOOD, String.format("%s_bookshelf", woodType.asString()));
-            BARRELS[woodType.getMetadata()] = RegistryUtils.registerTest(new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build()),
+            BARRELS[woodType.getMetadata()] = RegistryUtils.register(new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build()),
                     new Identifier(Neutronia.MOD_ID, woodType.asString() + "_barrel"), ItemGroup.DECORATIONS);
-            LOG_CAMPFIRE[woodType.getMetadata()] = RegistryUtils.registerTest(new CampfireBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F)
-                    .sounds(BlockSoundGroup.WOOD).lightLevel(15).ticksRandomly().build()), String.format("%s_campfire", woodType.asString()));
-            LECTERNS[woodType.getMetadata()] = RegistryUtils.registerTest(new NeutroniaBaseLectern(), String.format("%s_lectern", woodType.asString()), ItemGroup.REDSTONE);
+            LOG_CAMPFIRE[woodType.getMetadata()] = RegistryUtils.register(new CampfireBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F)
+                    .sounds(BlockSoundGroup.WOOD).lightLevel(15).ticksRandomly().build()), new Identifier(Neutronia.MOD_ID, String.format("%s_campfire", woodType.asString())));
+            LECTERNS[woodType.getMetadata()] = RegistryUtils.register(new NeutroniaBaseLectern(), new Identifier(Neutronia.MOD_ID, String.format("%s_lectern", woodType.asString())), ItemGroup.REDSTONE);
         }
 
         for (LadderVariants woodTypes2 : LadderVariants.values()) {
@@ -187,8 +187,8 @@ public class NBlocks {
         }
 
         PALM_LOG = new NeutroniaPillarBlock(Material.WOOD, "palm_log");
-        PALM_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "palm_wood");
+        PALM_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "palm_wood"));
         PALM_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "palm_planks");
         BlockRegistryBuilder.getInstance("palm", PALM_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -198,8 +198,8 @@ public class NBlocks {
         COCONUT = new CoconutBlock();
 
         WILLOW_LOG = new NeutroniaPillarBlock(Material.WOOD, "willow_log");
-        WILLOW_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "willow_wood");
+        WILLOW_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "willow_wood"));
         WILLOW_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "willow_planks");
         BlockRegistryBuilder.getInstance("willow", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -208,8 +208,8 @@ public class NBlocks {
         WILLOW_UNDERWATER_SAPLING = new NeutroniaWaterloggedSaplingBlock("underwater_willow_sapling", new WillowSaplingGenerator());
 
         MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "mangrove_log");
-        MANGROVE_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "mangrove_wood");
+        MANGROVE_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "mangrove_wood"));
         MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "mangrove_planks");
         BlockRegistryBuilder.getInstance("mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -219,8 +219,8 @@ public class NBlocks {
         MANGROVE_LADDER = new CustomLadderBlock("mangrove");
 
         RED_MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "red_mangrove_log");
-        RED_MANGROVE_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "red_mangrove_wood");
+        RED_MANGROVE_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "red_mangrove_wood"));
         RED_MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_planks");
         BlockRegistryBuilder.getInstance("red_mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -230,8 +230,8 @@ public class NBlocks {
         RED_MANGROVE_LADDER = new CustomLadderBlock("red_mangrove");
 
         BAOBAB_LOG = new NeutroniaPillarBlock(Material.WOOD, "baobab_log");
-        BAOBAB_WOOD = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), "baobab_wood");
+        BAOBAB_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "baobab_wood"));
         BAOBAB_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "baobab_planks");
         BlockRegistryBuilder.getInstance("baobab", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -268,13 +268,13 @@ public class NBlocks {
         BAOBAB_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "baobab_trapdoor");
         WROUGHT_IRON_DOOR = new NeutroniaDoorBlock(Material.METAL, "wrought_iron_door");
 
-        WROUGHT_IRON_BLOCK = RegistryUtils.registerTest(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).build()), "wrought_iron_block");
-        WROUGHT_IRON_BARS = RegistryUtils.registerTest(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), "wrought_iron_bars");
+        WROUGHT_IRON_BLOCK = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).build()), new Identifier(Neutronia.MOD_ID, "wrought_iron_block"));
+        WROUGHT_IRON_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(Neutronia.MOD_ID, "wrought_iron_bars"));
 
         for (NewWoodTypes newWoodTypes : NewWoodTypes.values()) {
             STRIPPED_LOGS[newWoodTypes.getIndex()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", newWoodTypes.asString()));
-            STRIPPED_WOOD[newWoodTypes.getIndex()] = RegistryUtils.registerTest(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                    .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), String.format("stripped_%s_wood", newWoodTypes.asString()));
+            STRIPPED_WOOD[newWoodTypes.getIndex()] = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+                    .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, String.format("stripped_%s_wood", newWoodTypes.asString())));
         }
 
         for (VanillaAndModdedMinusBambooWoodTypes woodType : VanillaAndModdedMinusBambooWoodTypes.values()) {
@@ -481,7 +481,7 @@ public class NBlocks {
         DARK_PRISMARINE_COLUMN = new NeutroniaPillarBlock(Material.STONE, "dark_prismarine_column", 1.5F, 10.0F);
 
         FROSTED_GLASS = new FrostedGlassBlock();
-        FROSTED_GLASS_PANE = RegistryUtils.registerTest(new FrostedGlassPaneBlock(), "frosted_glass_pane");
+        FROSTED_GLASS_PANE = RegistryUtils.register(new FrostedGlassPaneBlock(), new Identifier(Neutronia.MOD_ID, "frosted_glass_pane"));
 
         CHAIN = new ChainBlock();
         IRON_CHAIN = new ChainBlock("iron");
@@ -551,7 +551,7 @@ public class NBlocks {
                 .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_PILLAR = new NeutroniaPillarBlock(Material.STONE, "acidian_pillar");
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
-        ACIDIAN_BARS = RegistryUtils.registerTest(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.GLASS, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), "acidian_bars");
+        ACIDIAN_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.GLASS, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(Neutronia.MOD_ID, "acidian_bars"));
 
         STICK_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "stick_bundle");
         CHORUS_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP), "chorus_bundle");
