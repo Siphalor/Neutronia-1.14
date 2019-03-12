@@ -3,11 +3,10 @@ package team.hollow.neutronia.network;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.PacketByteBuf;
 
-public interface IPacket
-{
-	void read(PacketByteBuf buf);
+public interface IPacket {
+    void read(PacketByteBuf buf);
 
-	void write(PacketByteBuf buf);
+    void write(PacketByteBuf buf);
 
-	Identifier getID();
+    Identifier getID();
 }

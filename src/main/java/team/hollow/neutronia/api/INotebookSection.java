@@ -5,13 +5,12 @@ import team.hollow.neutronia.utils.DataHolder;
 
 import java.util.List;
 
-public interface INotebookSection
-{
-	Identifier getID();
+public interface INotebookSection {
+    Identifier getID();
 
-	boolean isVisibleTo(DataHolder player);
+    boolean isVisibleTo(DataHolder player);
 
-	List<INotebookElement> getElements(DataHolder player, int page);
+    List<INotebookElement> getElements(DataHolder player, int page);
 
-	int getPageCount(DataHolder player);
+    int getPageCount(DataHolder player);
 }

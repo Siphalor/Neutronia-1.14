@@ -46,6 +46,14 @@ public class Neutronia implements ModInitializer {
         return LOGGER;
     }
 
+    public static void log(Object object) {
+        LOGGER.info(object.toString());
+    }
+
+    public static Identifier locate(String location) {
+        return new Identifier(MOD_ID, location);
+    }
+
     @Override
     public void onInitialize() {
         LevelGeneratorType IMPROVED_OVERWORLD_LEVEL_TYPE = ImprovedOverworldLevelType.getType();
@@ -68,16 +76,6 @@ public class Neutronia implements ModInitializer {
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
-    }
-
-    public static void log(Object object)
-    {
-        LOGGER.info(object.toString());
-    }
-
-    public static Identifier locate(String location)
-    {
-        return new Identifier(MOD_ID, location);
     }
 
     /**

@@ -1139,7 +1139,7 @@ public class FastNoise {
     }
 
     private float SinglePerlin(int seed, float x) {
-        int before = (int) FastFloor(x) & 255;
+        int before = FastFloor(x) & 255;
         x -= FastFloor(x);
         float u = InterpQuinticFunc(x);
         float gradA = ValCoord1D(seed, x);

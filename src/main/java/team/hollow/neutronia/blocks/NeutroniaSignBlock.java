@@ -24,7 +24,7 @@ import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 
-public class NeutroniaSignBlock extends SignBlock{
+public class NeutroniaSignBlock extends SignBlock {
 
     public static final IntegerProperty ROTATION;
 

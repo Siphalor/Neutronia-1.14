@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FenceBlock;
 
-public class NeutroniaFenceBlock extends FenceBlock{
+public class NeutroniaFenceBlock extends FenceBlock {
 
     public NeutroniaFenceBlock(BlockState state) {
         super(FabricBlockSettings.of(state.getMaterial()).hardness(2.0F).resistance(5.0F).sounds(state.getSoundGroup()).build());

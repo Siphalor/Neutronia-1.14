@@ -48,8 +48,7 @@ public class NEntityTypes {
         ALBADON = register("albadon", FabricEntityTypeBuilder.<AlbadonEntity>create(EntityCategory.CREATURE, (var1, var2) -> new AlbadonEntity(var2)));
     }
 
-    private static void trackEntity(EntityType<?> type, int trackingDistance, int updateIntervalTicks, boolean alwaysUpdateVelocity)
-    {
+    private static void trackEntity(EntityType<?> type, int trackingDistance, int updateIntervalTicks, boolean alwaysUpdateVelocity) {
         EntityTrackingRegistry.INSTANCE.register(type, trackingDistance, updateIntervalTicks, alwaysUpdateVelocity);
     }
 

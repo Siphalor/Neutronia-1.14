@@ -19,7 +19,7 @@ import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
 
-public class PieBlock extends Block{
+public class PieBlock extends Block {
 
     public static final IntegerProperty BITES;
     protected static final VoxelShape[] field_10738;

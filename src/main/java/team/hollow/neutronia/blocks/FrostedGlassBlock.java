@@ -7,7 +7,7 @@ import net.minecraft.block.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
-public class FrostedGlassBlock extends BaseModBlock{
+public class FrostedGlassBlock extends BaseModBlock {
 
     public FrostedGlassBlock() {
         super(FabricBlockSettings.of(Material.GLASS).strength(3.0F, 10.0F), "frosted_glass");

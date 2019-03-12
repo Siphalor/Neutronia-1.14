@@ -10,7 +10,7 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
-public class ChainBlock extends BaseModBlock{
+public class ChainBlock extends BaseModBlock {
 
     public ChainBlock() {
         super(Material.METAL, "chain");

@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class RedstoneLanternBlock extends LanternBlock{
+public class RedstoneLanternBlock extends LanternBlock {
 
     public static final DirectionProperty FACING = DirectionProperty.create("facing");
     public static final BooleanProperty LIT = BooleanProperty.create("lit");
@@ -36,6 +36,10 @@ public class RedstoneLanternBlock extends LanternBlock{
     public RedstoneLanternBlock() {
         super(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build());
         setDefaultState(stateFactory.getDefaultState().with(FACING, Direction.UP).with(HANGING, false).with(LIT, false));
+    }
+
+    protected static Direction method_16370(BlockState blockState_1) {
+        return blockState_1.get(HANGING) ? Direction.DOWN : Direction.UP;
     }
 
     public int getLuminance(BlockState blockState_1) {
@@ -61,10 +65,6 @@ public class RedstoneLanternBlock extends LanternBlock{
                 return !method_9581(block_1) && boolean_1;
             }
         }
-    }
-
-    protected static Direction method_16370(BlockState blockState_1) {
-        return blockState_1.get(HANGING) ? Direction.DOWN : Direction.UP;
     }
 
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {

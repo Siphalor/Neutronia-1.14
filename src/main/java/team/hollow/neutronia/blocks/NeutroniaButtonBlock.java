@@ -5,7 +5,7 @@ import net.minecraft.block.Material;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
-public class NeutroniaButtonBlock extends AbstractButtonBlock{
+public class NeutroniaButtonBlock extends AbstractButtonBlock {
 
     boolean wooden;
 

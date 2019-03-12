@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class FallingBlock extends BaseModBlock{
+public class FallingBlock extends BaseModBlock {
     public static boolean fallInstantly;
 
     public FallingBlock(String name) {

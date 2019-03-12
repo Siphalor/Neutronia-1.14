@@ -21,23 +21,18 @@ public class Utils {
     private static final boolean DEBUG_LOAD_MINECRAFT = false;
 
     public static boolean findFiles(ModContainer mod, String base, Function<Path, Boolean> preprocessor, BiFunction<Path, Path, Boolean> processor,
-                                    boolean defaultUnfoundRoot, boolean visitAllFiles)
-    {
+                                    boolean defaultUnfoundRoot, boolean visitAllFiles) {
 
         File source = mod.getRoot().toFile();
 
-        if ("minecraft".equals(mod.getMetadata().getId()))
-        {
+        if ("minecraft".equals(mod.getMetadata().getId())) {
             if (!DEBUG_LOAD_MINECRAFT)
                 return true;
 
-            try
-            {
+            try {
                 URI tmp = RecipeManager.class.getResource("/assets/.mcassetsroot").toURI();
                 source = new File(tmp.resolve("..").getPath());
-            }
-            catch (URISyntaxException e)
-            {
+            } catch (URISyntaxException e) {
                 System.out.printf("Error finding Minecraft jar: ", e);
                 return false;
             }
@@ -46,68 +41,50 @@ public class Utils {
         FileSystem fs = null;
         boolean success = true;
 
-        try
-        {
+        try {
             Path root = null;
 
-            if (source.isFile())
-            {
-                try
-                {
+            if (source.isFile()) {
+                try {
                     fs = FileSystems.newFileSystem(source.toPath(), null);
                     root = fs.getPath("/" + base);
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     System.out.printf("Error loading FileSystem from jar: ", e);
                     return false;
                 }
-            }
-            else if (source.isDirectory())
-            {
+            } else if (source.isDirectory()) {
                 root = source.toPath().resolve(base);
             }
 
             if (root == null || !Files.exists(root))
                 return defaultUnfoundRoot;
 
-            if (preprocessor != null)
-            {
+            if (preprocessor != null) {
                 Boolean cont = preprocessor.apply(root);
                 if (cont == null || !cont)
                     return false;
             }
 
-            if (processor != null)
-            {
+            if (processor != null) {
                 Iterator<Path> itr = null;
-                try
-                {
+                try {
                     itr = Files.walk(root).iterator();
-                }
-                catch (IOException e)
-                {
+                } catch (IOException e) {
                     System.out.printf("Error iterating filesystem for: {}", mod.getMetadata().getId(), e);
                     return false;
                 }
 
-                while (itr.hasNext())
-                {
+                while (itr.hasNext()) {
                     Boolean cont = processor.apply(root, itr.next());
 
-                    if (visitAllFiles)
-                    {
+                    if (visitAllFiles) {
                         success &= cont != null && cont;
-                    }
-                    else if (cont == null || !cont)
-                    {
+                    } else if (cont == null || !cont) {
                         return false;
                     }
                 }
             }
-        }
-        finally
-        {
+        } finally {
             IOUtils.closeQuietly(fs);
         }
 

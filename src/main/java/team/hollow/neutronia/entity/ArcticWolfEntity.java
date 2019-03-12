@@ -427,7 +427,7 @@ public class ArcticWolfEntity extends TameableEntity {
     }
 
     public ArcticWolfEntity createChild(PassiveEntity ageable) {
-        ArcticWolfEntity wolfEntity_1 = (ArcticWolfEntity) NEntityTypes.ARCTIC_WOLF.create(this.world);
+        ArcticWolfEntity wolfEntity_1 = NEntityTypes.ARCTIC_WOLF.create(this.world);
         UUID uUID_1 = this.method_6139();
         if (uUID_1 != null) {
             Objects.requireNonNull(wolfEntity_1).setOwnerUuid(uUID_1);

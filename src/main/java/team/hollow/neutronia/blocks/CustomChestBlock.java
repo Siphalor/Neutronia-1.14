@@ -9,7 +9,7 @@ import net.minecraft.world.BlockView;
 import team.hollow.neutronia.blocks.entity.StoneChestBlockEntity;
 import team.hollow.neutronia.enums.CustomChestTypes;
 
-public class CustomChestBlock extends ChestBlock{
+public class CustomChestBlock extends ChestBlock {
 
     private String type;
 

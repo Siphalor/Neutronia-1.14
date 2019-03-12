@@ -147,7 +147,7 @@ public class BrownBearEntity extends AnimalEntity {
     }
 
     public boolean method_6600() {
-        return (Boolean) this.dataTracker.get(field_6840);
+        return this.dataTracker.get(field_6840);
     }
 
     public void method_6603(boolean boolean_1) {
@@ -170,7 +170,7 @@ public class BrownBearEntity extends AnimalEntity {
             entityData_1 = new BrownBearEntity.class_1458();
         }
 
-        return (EntityData) entityData_1;
+        return entityData_1;
     }
 
     static class class_1458 implements EntityData {
@@ -189,7 +189,7 @@ public class BrownBearEntity extends AnimalEntity {
         }
 
         public boolean canStart() {
-            return !BrownBearEntity.this.isChild() && !BrownBearEntity.this.isOnFire() ? false : super.canStart();
+            return (BrownBearEntity.this.isChild() || BrownBearEntity.this.isOnFire()) && super.canStart();
         }
     }
 
@@ -233,7 +233,7 @@ public class BrownBearEntity extends AnimalEntity {
 
     class class_1457 extends FollowTargetGoal<PlayerEntity> {
         public class_1457() {
-            super(BrownBearEntity.this, PlayerEntity.class, 20, true, true, (Predicate) null);
+            super(BrownBearEntity.this, PlayerEntity.class, 20, true, true, null);
         }
 
         public boolean canStart() {
@@ -252,7 +252,7 @@ public class BrownBearEntity extends AnimalEntity {
                     }
                 }
 
-                BrownBearEntity.this.setTarget((LivingEntity) null);
+                BrownBearEntity.this.setTarget(null);
                 return false;
             }
         }

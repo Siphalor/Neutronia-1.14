@@ -23,7 +23,7 @@ import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 
 import java.util.Map;
 
-public class NeutroniaWallSignBlock extends SignBlock{
+public class NeutroniaWallSignBlock extends SignBlock {
     public static final DirectionProperty FACING;
     private static final Map<Direction, VoxelShape> FACING_TO_SHAPE;
 
