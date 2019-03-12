@@ -40,7 +40,6 @@ public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
     public static final String MOD_NAME = "Neutronia";
-    public static final String PREFIX = "neutronia:";
     private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
 
     public static Logger getLogger() {

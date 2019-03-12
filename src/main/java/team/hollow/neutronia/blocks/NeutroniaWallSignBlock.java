@@ -15,17 +15,15 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
-import team.hollow.neutronia.INeutroniaInfo;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 
 import java.util.Map;
 
-public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaInfo {
+public class NeutroniaWallSignBlock extends SignBlock{
     public static final DirectionProperty FACING;
     private static final Map<Direction, VoxelShape> FACING_TO_SHAPE;
 
@@ -34,10 +32,9 @@ public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaInfo 
         FACING_TO_SHAPE = Maps.newEnumMap(ImmutableMap.of(Direction.NORTH, Block.createCuboidShape(0.0D, 4.5D, 14.0D, 16.0D, 12.5D, 16.0D), Direction.SOUTH, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 16.0D, 12.5D, 2.0D), Direction.EAST, Block.createCuboidShape(0.0D, 4.5D, 0.0D, 2.0D, 12.5D, 16.0D), Direction.WEST, Block.createCuboidShape(14.0D, 4.5D, 0.0D, 16.0D, 12.5D, 16.0D)));
     }
 
-    public NeutroniaWallSignBlock(String name) {
+    public NeutroniaWallSignBlock() {
         super(FabricBlockSettings.of(Material.WOOD).build());
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
-        register(name);
     }
 
     @Override
@@ -94,10 +91,6 @@ public class NeutroniaWallSignBlock extends SignBlock implements INeutroniaInfo 
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
         stateFactory$Builder_1.with(FACING, WATERLOGGED);
-    }
-
-    private void register(String name) {
-        Registry.register(Registry.BLOCK, getPrefix() + name, this);
     }
 
 }

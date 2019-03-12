@@ -14,9 +14,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class ChiseledBlock extends BaseModBlock implements INeutroniaInfo {
+public class ChiseledBlock extends BaseModBlock{
 
     public static final BooleanProperty FILLED = BooleanProperty.create("filled");
     protected Item chiselItem;

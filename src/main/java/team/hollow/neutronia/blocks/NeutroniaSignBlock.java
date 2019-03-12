@@ -18,15 +18,13 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
-import team.hollow.neutronia.INeutroniaInfo;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 
-public class NeutroniaSignBlock extends SignBlock implements INeutroniaInfo {
+public class NeutroniaSignBlock extends SignBlock{
 
     public static final IntegerProperty ROTATION;
 
@@ -34,10 +32,9 @@ public class NeutroniaSignBlock extends SignBlock implements INeutroniaInfo {
         ROTATION = Properties.ROTATION_16;
     }
 
-    public NeutroniaSignBlock(String name) {
+    public NeutroniaSignBlock() {
         super(Block.Settings.of(Material.WOOD));
         this.setDefaultState(this.stateFactory.getDefaultState().with(ROTATION, 0).with(WATERLOGGED, false));
-        register(name);
     }
 
     public boolean canPlaceAt(BlockState blockState_1, ViewableWorld viewableWorld_1, BlockPos blockPos_1) {
@@ -91,10 +88,6 @@ public class NeutroniaSignBlock extends SignBlock implements INeutroniaInfo {
     @Override
     public BlockEntity createBlockEntity(BlockView blockView_1) {
         return new SignBlockEntity();
-    }
-
-    private void register(String name) {
-        Registry.register(Registry.BLOCK, getPrefix() + name, this);
     }
 
 }

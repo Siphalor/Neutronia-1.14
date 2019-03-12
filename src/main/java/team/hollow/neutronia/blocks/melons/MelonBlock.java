@@ -21,14 +21,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import team.hollow.neutronia.INeutroniaInfo;
 import team.hollow.neutronia.blocks.BaseModBlock;
 import team.hollow.neutronia.enums.CarvedFaceTypes;
 import team.hollow.neutronia.init.NBlocks;
 import team.hollow.neutronia.utils.helpers.CarvedBlockHelper;
 import team.hollow.neutronia.utils.helpers.ICarvable;
 
-public class MelonBlock extends BaseModBlock implements INeutroniaInfo, ICarvable {
+public class MelonBlock extends BaseModBlock implements ICarvable {
 
     public static final DirectionProperty FACING = Properties.FACING_HORIZONTAL;
 

@@ -12,22 +12,22 @@ public abstract class BaseModBlock extends Block {
 
     public BaseModBlock(Material material, String name) {
         super(FabricBlockSettings.of(material).build());
-        RegistryUtils.register(new Identifier(Neutronia.MOD_ID, name), this, ItemGroup.BUILDING_BLOCKS);
+        RegistryUtils.register(this, new Identifier(Neutronia.MOD_ID, name), ItemGroup.BUILDING_BLOCKS);
     }
 
     public BaseModBlock(Material material, String name, ItemGroup itemGroup) {
         super(FabricBlockSettings.of(material).build());
-        RegistryUtils.register(new Identifier(Neutronia.MOD_ID, name), this, itemGroup);
+        RegistryUtils.register(this, new Identifier(Neutronia.MOD_ID, name), itemGroup);
     }
 
     public BaseModBlock(FabricBlockSettings builder, String name) {
         super(builder.build());
-        RegistryUtils.register(new Identifier(Neutronia.MOD_ID, name), this, ItemGroup.BUILDING_BLOCKS);
+        RegistryUtils.register(this, new Identifier(Neutronia.MOD_ID, name), ItemGroup.BUILDING_BLOCKS);
     }
 
     public BaseModBlock(FabricBlockSettings builder, Identifier name) {
         super(builder.build());
-        RegistryUtils.register(name, this, ItemGroup.BUILDING_BLOCKS);
+        RegistryUtils.register(this, name, ItemGroup.BUILDING_BLOCKS);
     }
 
 }

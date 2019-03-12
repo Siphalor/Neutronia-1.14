@@ -2,7 +2,6 @@ package team.hollow.neutronia.client.entity.render;
 
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
 import net.minecraft.client.render.entity.MobEntityRenderer;
-import net.minecraft.entity.Entity;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.client.entity.render.model.model.ModelOlDiggy;

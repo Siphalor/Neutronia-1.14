@@ -37,9 +37,9 @@ public class NBlocks {
     public static final Block BAOBAB_LOG, BAOBAB_WOOD, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR, BAOBAB_BOOKSHELF, BAOBAB_LADDER;
     public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
     public static final Block WROUGHT_IRON_BLOCK, WROUGHT_IRON_BARS;
-    public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestTypes.values().length];
+    public static final Block[] WOODEN_CHESTS = new Block[CustomChestTypes.values().length];
     public static final NeutroniaDoorBlock SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
-    public static final NeutroniaTrapdoorBlock SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
+    public static final Block SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
     public static final Block CHISELED_PRISMARINE, CHISELED_PRISMARINE_BRICKS, CHISELED_DARK_PRISMARINE, CUT_PRISMARINE, CUT_PRISMARINE_BRICKS, CUT_DARK_PRISMARINE, ENGRAVED_PRISMARINE, ENGRAVED_PRISMARINE_BRICKS, ENGRAVED_DARK_PRISMARINE;
     public static final Block OBSIDIAN_BRICKS, OBSIDIAN_COBBLE, OBSIDIAN_PILLAR, CHISELED_OBSIDIAN, GLOWING_OBSIDIAN;
     public static final Block SMOOTH_END_BRICK, SMOOTH_PRISMARINE_BRICKS, SMOOTH_PRISMARINE, SMOOTH_DARK_PRISMARINE, SMOOTH_OBSIDIAN, SMOOTH_PURPUR_BRICK, SMOOTH_NETHER_BRICK, SMOOTH_RED_NETHER_BRICK, SMOOTH_STONE, SMOOTH_STONE_BRICK;
@@ -179,11 +179,11 @@ public class NBlocks {
         }
 
         for (LadderVariants woodTypes2 : LadderVariants.values()) {
-            LADDERS[woodTypes2.getMetadata()] = new CustomLadderBlock(woodTypes2.asString());
+            LADDERS[woodTypes2.getMetadata()] = RegistryUtils.register(new CustomLadderBlock(), new Identifier(Neutronia.MOD_ID, woodTypes2.asString()));
         }
 
         for (CustomChestTypes woodenChestTypes : CustomChestTypes.values()) {
-            WOODEN_CHESTS[woodenChestTypes.getId()] = new CustomChestBlock(woodenChestTypes.asString());
+            WOODEN_CHESTS[woodenChestTypes.getId()] = RegistryUtils.register(new CustomChestBlock(woodenChestTypes.asString()), new Identifier(Neutronia.MOD_ID, woodenChestTypes.asString()));
         }
 
         PALM_LOG = new NeutroniaPillarBlock(Material.WOOD, "palm_log");
@@ -192,9 +192,9 @@ public class NBlocks {
         PALM_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "palm_planks");
         BlockRegistryBuilder.getInstance("palm", PALM_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        PALM_LEAVES = new NeutroniaLeavesBlock("palm_leaves");
+        PALM_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "palm_leaves"));
         PALM_LOG_TOP = new NeutroniaBaseBlock(Material.WOOD, "palm_top_log");
-        PALM_SAPLING = new NeutroniaSaplingBlock("palm_sapling", new PalmSaplingGenerator());
+        PALM_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new PalmSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "palm_sapling"));
         COCONUT = new CoconutBlock();
 
         WILLOW_LOG = new NeutroniaPillarBlock(Material.WOOD, "willow_log");
@@ -203,9 +203,9 @@ public class NBlocks {
         WILLOW_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "willow_planks");
         BlockRegistryBuilder.getInstance("willow", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        WILLOW_LEAVES = new NeutroniaLeavesBlock("willow_leaves");
-        WILLOW_SAPLING = new NeutroniaSaplingBlock("willow_sapling", new WillowSaplingGenerator());
-        WILLOW_UNDERWATER_SAPLING = new NeutroniaWaterloggedSaplingBlock("underwater_willow_sapling", new WillowSaplingGenerator());
+        WILLOW_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "willow_leaves"));
+        WILLOW_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new WillowSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "willow_sapling"));
+        WILLOW_UNDERWATER_SAPLING = RegistryUtils.register(new NeutroniaWaterloggedSaplingBlock(new WillowSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "underwater_willow_sapling"));
 
         MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "mangrove_log");
         MANGROVE_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
@@ -213,10 +213,10 @@ public class NBlocks {
         MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "mangrove_planks");
         BlockRegistryBuilder.getInstance("mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        MANGROVE_LEAVES = new NeutroniaLeavesBlock("mangrove_leaves");
-        MANGROVE_SAPLING = new NeutroniaSaplingBlock("mangrove_sapling", new MangroveSaplingGenerator());
+        MANGROVE_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "mangrove_leaves"));
+        MANGROVE_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new MangroveSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "mangrove_sapling"));
         MANGROVE_BOOKSHELF = new NeutroniaBaseBlock(Material.WOOD, "mangrove_bookshelf");
-        MANGROVE_LADDER = new CustomLadderBlock("mangrove");
+        MANGROVE_LADDER = RegistryUtils.register(new CustomLadderBlock(), new Identifier(Neutronia.MOD_ID, "mangrove"));
 
         RED_MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "red_mangrove_log");
         RED_MANGROVE_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
@@ -224,10 +224,10 @@ public class NBlocks {
         RED_MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_planks");
         BlockRegistryBuilder.getInstance("red_mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        RED_MANGROVE_LEAVES = new NeutroniaLeavesBlock("red_mangrove_leaves");
-        RED_MANGROVE_SAPLING = new NeutroniaSaplingBlock("red_mangrove_sapling", new MangroveSaplingGenerator());
+        RED_MANGROVE_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "red_mangrove_leaves"));
+        RED_MANGROVE_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new MangroveSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "red_mangrove_sapling"));
         RED_MANGROVE_BOOKSHELF = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_bookshelf");
-        RED_MANGROVE_LADDER = new CustomLadderBlock("red_mangrove");
+        RED_MANGROVE_LADDER = RegistryUtils.register(new CustomLadderBlock(), new Identifier(Neutronia.MOD_ID, "red_mangrove"));
 
         BAOBAB_LOG = new NeutroniaPillarBlock(Material.WOOD, "baobab_log");
         BAOBAB_WOOD = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
@@ -235,37 +235,37 @@ public class NBlocks {
         BAOBAB_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "baobab_planks");
         BlockRegistryBuilder.getInstance("baobab", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        BAOBAB_LEAVES = new NeutroniaLeavesBlock("baobab_leaves");
-        BAOBAB_SAPLING = new NeutroniaSaplingBlock("baobab_sapling", new BaobabSaplingGenerator());
+        BAOBAB_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "baobab_leaves"));
+        BAOBAB_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new BaobabSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "baobab_sapling"));
         BAOBAB_BOOKSHELF = new NeutroniaBaseBlock(Material.WOOD, "baobab_bookshelf");
-        BAOBAB_LADDER = new CustomLadderBlock("baobab");
+        BAOBAB_LADDER = RegistryUtils.register(new CustomLadderBlock(), new Identifier(Neutronia.MOD_ID, "mangrove"));
 
-        GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "grate");
-        IRON_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "iron_grate");
-        GOLD_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "gold_grate");
-        WROUGHT_IRON_GRATE = new NeutroniaTrapdoorBlock(Material.METAL, "wrought_iron_grate");
+        GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
+        IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "iron_grate");
+        GOLD_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "gold_grate");
+        WROUGHT_IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "wrought_iron_grate");
 
         IRON_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "iron_scaffolding");
         GOLD_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "gold_scaffolding");
 
         SANDSTONE_DOOR = new NeutroniaDoorBlock("sandstone_door");
-        SANDSTONE_TRAPDOOR = new NeutroniaTrapdoorBlock("sandstone_trapdoor");
+        SANDSTONE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(),"sandstone_trapdoor");
         RED_SANDSTONE_DOOR = new NeutroniaDoorBlock("red_sandstone_door");
-        RED_SANDSTONE_TRAPDOOR = new NeutroniaTrapdoorBlock("red_sandstone_trapdoor");
+        RED_SANDSTONE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(),"red_sandstone_trapdoor");
         ICE_DOOR = new NeutroniaDoorBlock(Material.ICE, "ice_door");
-        ICE_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.ICE, "ice_trapdoor");
+        ICE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.ICE), "ice_trapdoor");
         BAMBOO_DOOR = new NeutroniaDoorBlock("bamboo_door");
-        BAMBOO_TRAPDOOR = new NeutroniaTrapdoorBlock("bamboo_trapdoor");
+        BAMBOO_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(), "bamboo_trapdoor");
         PALM_DOOR = new NeutroniaDoorBlock(Material.WOOD, "palm_door");
-        PALM_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "palm_trapdoor");
+        PALM_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "palm_trapdoor");
         WILLOW_DOOR = new NeutroniaDoorBlock(Material.WOOD, "willow_door");
-        WILLOW_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "willow_trapdoor");
+        WILLOW_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "willow_trapdoor");
         MANGROVE_DOOR = new NeutroniaDoorBlock(Material.WOOD, "mangrove_door");
-        MANGROVE_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "mangrove_trapdoor");
+        MANGROVE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "mangrove_trapdoor");
         RED_MANGROVE_DOOR = new NeutroniaDoorBlock(Material.WOOD, "red_mangrove_door");
-        RED_MANGROVE_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "red_mangrove_trapdoor");
+        RED_MANGROVE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "red_mangrove_trapdoor");
         BAOBAB_DOOR = new NeutroniaDoorBlock(Material.WOOD, "baobab_door");
-        BAOBAB_TRAPDOOR = new NeutroniaTrapdoorBlock(Material.WOOD, "baobab_trapdoor");
+        BAOBAB_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "baobab_trapdoor");
         WROUGHT_IRON_DOOR = new NeutroniaDoorBlock(Material.METAL, "wrought_iron_door");
 
         WROUGHT_IRON_BLOCK = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).build()), new Identifier(Neutronia.MOD_ID, "wrought_iron_block"));
@@ -284,7 +284,7 @@ public class NBlocks {
         for (VanillaWoodTypes woodType : VanillaWoodTypes.values()) {
             CARVED_PLANKS[woodType.getIndex()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
             PATTERNED_PLANKS[woodType.getIndex()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
-            STRIPPED_LOG_CAMPFIRE[woodType.getIndex()] = new CampfireBaseBlock(String.format("stripped_%s", woodType.asString()));
+            STRIPPED_LOG_CAMPFIRE[woodType.getIndex()] = RegistryUtils.register(new CampfireBaseBlock(), String.format("stripped_%s", woodType.asString()));
             WOODEN_SCAFFOLDING[woodType.getIndex()] = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.PART, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), String.format("%s_scaffolding", woodType.asString()));
         }
 
@@ -537,9 +537,9 @@ public class NBlocks {
         BAMBOO_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bamboo_planks");
         BlockRegistryBuilder.getInstance("bamboo", BAMBOO_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        BAMBOO_SIGN = new NeutroniaSignBlock("bamboo_sign");
-        BAMBOO_WALL_SIGN = new NeutroniaWallSignBlock("bamboo_wall_sign");
-        BAMBOO_TORCH = new NeutroniaTorchBlock("bamboo_torch");
+        BAMBOO_SIGN = RegistryUtils.register(new NeutroniaSignBlock(), "bamboo_sign");
+        BAMBOO_WALL_SIGN = RegistryUtils.register(new NeutroniaWallSignBlock(), "bamboo_wall_sign");
+        BAMBOO_TORCH = RegistryUtils.register(new NeutroniaTorchBlock(), "bamboo_torch");
         THATCH = new NeutroniaBaseBlock(Material.ORGANIC, "thatch");
         BlockRegistryBuilder.getInstance("thatch", THATCH).slab().stair();
 
@@ -577,21 +577,21 @@ public class NBlocks {
         BlockRegistryBuilder.getInstance("treated_siding", TREATED_SIDING)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
 
-        POTTED_BEETROOT = new NeutroniaFlowerPotBlock("potted_beetroot", Blocks.BEETROOTS);
-        POTTED_CARROTS = new NeutroniaFlowerPotBlock("potted_carrots", Blocks.CARROTS);
-        POTTED_CHORUS = new NeutroniaFlowerPotBlock("potted_chorus", Blocks.CHORUS_FLOWER);
-        POTTED_GRASS = new NeutroniaFlowerPotBlock("potted_grass", Blocks.GRASS);
-        POTTED_LILAC = new NeutroniaFlowerPotBlock("potted_lilac", Blocks.LILAC);
-        POTTED_MELON = new NeutroniaFlowerPotBlock("potted_melon", Blocks.MELON);
-        POTTED_NETHER_WART = new NeutroniaFlowerPotBlock("potted_nether_wart", Blocks.NETHER_WART);
-        POTTED_PEONY = new NeutroniaFlowerPotBlock("potted_peony", Blocks.PEONY);
-        POTTED_POTATOES = new NeutroniaFlowerPotBlock("potted_potatoes", Blocks.POTATOES);
-        POTTED_PUMPKIN = new NeutroniaFlowerPotBlock("potted_pumpkin", Blocks.PUMPKIN);
-        POTTED_ROSE_BUSH = new NeutroniaFlowerPotBlock("potted_rose_bush", Blocks.ROSE_BUSH);
-        POTTED_SUGAR_CANE = new NeutroniaFlowerPotBlock("potted_sugar_cane", Blocks.SUGAR_CANE);
-        POTTED_SUNFLOWER = new NeutroniaFlowerPotBlock("potted_sunflower", Blocks.SUNFLOWER);
-        POTTED_TALL_GRASS = new NeutroniaFlowerPotBlock("potted_tall_grass", Blocks.TALL_GRASS);
-        POTTED_WHEAT = new NeutroniaFlowerPotBlock("potted_wheat", Blocks.WHEAT);
+        POTTED_BEETROOT = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.BEETROOTS), "potted_beetroot");
+        POTTED_CARROTS = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.CARROTS), "potted_carrots");
+        POTTED_CHORUS = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.CHORUS_FLOWER), "potted_chorus");
+        POTTED_GRASS = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.GRASS), "potted_grass");
+        POTTED_LILAC = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.LILAC), "potted_lilac");
+        POTTED_MELON = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.MELON), "potted_melon");
+        POTTED_NETHER_WART = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.NETHER_WART), "potted_nether_wart");
+        POTTED_PEONY = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.PEONY), "potted_peony");
+        POTTED_POTATOES = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.POTATOES), "potted_potatoes");
+        POTTED_PUMPKIN = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.PUMPKIN), "potted_pumpkin");
+        POTTED_ROSE_BUSH = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.ROSE_BUSH), "potted_rose_bush");
+        POTTED_SUGAR_CANE = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.SUGAR_CANE), "potted_sugar_cane");
+        POTTED_SUNFLOWER = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.SUNFLOWER), "potted_sunflower");
+        POTTED_TALL_GRASS = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.TALL_GRASS), "potted_tall_grass");
+        POTTED_WHEAT = RegistryUtils.register(new NeutroniaFlowerPotBlock(Blocks.WHEAT), "potted_wheat");
     }
 
 

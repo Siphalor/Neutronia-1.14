@@ -6,9 +6,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class FrostedGlassBlock extends BaseModBlock implements INeutroniaInfo {
+public class FrostedGlassBlock extends BaseModBlock{
 
     public FrostedGlassBlock() {
         super(FabricBlockSettings.of(Material.GLASS).strength(3.0F, 10.0F), "frosted_glass");

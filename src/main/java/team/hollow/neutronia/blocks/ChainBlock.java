@@ -9,9 +9,8 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class ChainBlock extends BaseModBlock implements INeutroniaInfo {
+public class ChainBlock extends BaseModBlock{
 
     public ChainBlock() {
         super(Material.METAL, "chain");

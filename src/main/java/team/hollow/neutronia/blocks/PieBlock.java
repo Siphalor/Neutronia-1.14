@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.VerticalEntityPosition;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.block.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateFactory;
@@ -16,15 +13,13 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class PieBlock extends Block implements INeutroniaInfo {
+public class PieBlock extends Block{
 
     public static final IntegerProperty BITES;
     protected static final VoxelShape[] field_10738;
@@ -37,14 +32,6 @@ public class PieBlock extends Block implements INeutroniaInfo {
     public PieBlock(String name) {
         super(FabricBlockSettings.of(Material.CAKE).hardness(0.5F).sounds(BlockSoundGroup.WOOL).build());
         this.setDefaultState(this.stateFactory.getDefaultState().with(BITES, 0));
-        register(name, this, ItemGroup.FOOD);
-    }
-
-    private void register(String name, Block block, ItemGroup tab) {
-        Registry.register(Registry.BLOCK, getPrefix() + name, block);
-        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(tab));
-        item.registerBlockItemMap(Item.BLOCK_ITEM_MAP, item);
-        Registry.register(Registry.ITEM, getPrefix() + name, item);
     }
 
     public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {

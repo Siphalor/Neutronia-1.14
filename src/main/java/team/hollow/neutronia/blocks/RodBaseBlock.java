@@ -14,9 +14,8 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.ViewableWorld;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class RodBaseBlock extends DirectionalBlock implements INeutroniaInfo {
+public class RodBaseBlock extends DirectionalBlock{
 
     protected static final VoxelShape BB_AXIS_Y = Block.createCuboidShape(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
     protected static final VoxelShape BB_AXIS_Z = Block.createCuboidShape(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);

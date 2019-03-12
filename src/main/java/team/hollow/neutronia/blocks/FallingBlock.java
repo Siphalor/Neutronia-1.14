@@ -15,11 +15,10 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
-import team.hollow.neutronia.INeutroniaInfo;
 
 import java.util.Random;
 
-public class FallingBlock extends BaseModBlock implements INeutroniaInfo {
+public class FallingBlock extends BaseModBlock{
     public static boolean fallInstantly;
 
     public FallingBlock(String name) {

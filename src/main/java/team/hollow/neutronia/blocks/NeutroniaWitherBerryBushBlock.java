@@ -22,16 +22,14 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
-import net.minecraft.util.registry.Registry;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import team.hollow.neutronia.INeutroniaInfo;
 import team.hollow.neutronia.init.NItems;
 
 import java.util.Random;
 
-public class NeutroniaWitherBerryBushBlock extends PlantBlock implements Fertilizable, INeutroniaInfo {
+public class NeutroniaWitherBerryBushBlock extends PlantBlock implements Fertilizable {
     public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
@@ -45,7 +43,6 @@ public class NeutroniaWitherBerryBushBlock extends PlantBlock implements Fertili
     public NeutroniaWitherBerryBushBlock() {
         super(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).build());
         this.setDefaultState(this.stateFactory.getDefaultState().with(AGE, 0));
-        this.register("wither_berry_bush", this);
     }
 
     @Environment(EnvType.CLIENT)
@@ -115,10 +112,6 @@ public class NeutroniaWitherBerryBushBlock extends PlantBlock implements Fertili
     public void grow(World world_1, Random random_1, BlockPos blockPos_1, BlockState blockState_1) {
         int int_1 = Math.min(3, blockState_1.get(AGE) + 1);
         world_1.setBlockState(blockPos_1, blockState_1.with(AGE, int_1), 2);
-    }
-
-    private void register(String name, Block block) {
-        Registry.register(Registry.BLOCK, getPrefix() + name, block);
     }
 
 }

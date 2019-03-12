@@ -2,9 +2,8 @@ package team.hollow.neutronia.blocks;
 
 import net.minecraft.block.Material;
 import net.minecraft.item.ItemGroup;
-import team.hollow.neutronia.INeutroniaInfo;
 
-public class NeutroniaDoorBlock extends DoorModBlock implements INeutroniaInfo {
+public class NeutroniaDoorBlock extends DoorModBlock {
 
     public NeutroniaDoorBlock(String name) {
         this(Material.WOOD, name);
