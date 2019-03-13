@@ -47,7 +47,7 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder pressurePlate(PressurePlateBlock.Type type) {
-        new NeutroniaPressurePlateBlockImpl(name, block.getMaterial(block.getDefaultState()), type);
+        RegistryUtils.register(new NeutroniaPressurePlateBlockImpl(block.getMaterial(block.getDefaultState()), type), name);
         return this;
     }
 

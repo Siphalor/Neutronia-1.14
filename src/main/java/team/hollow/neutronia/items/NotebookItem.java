@@ -15,7 +15,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import team.hollow.neutronia.client.gui.NotebookScreen;
-import team.hollow.neutronia.init.ArcaneMagicConstants;
+import team.hollow.neutronia.init.NConstants;
 import team.hollow.neutronia.notebook.NotebookSectionRegistry;
 
 public class NotebookItem extends Item {
@@ -27,9 +27,9 @@ public class NotebookItem extends Item {
     public void onEntityTick(ItemStack stack, World world, Entity entity, int slot, boolean selected) {
         if (!world.isClient) {
             CompoundTag tag = stack.getOrCreateTag();
-            if (!tag.containsKey(ArcaneMagicConstants.NOTEBOOK_SECTION_KEY)) {
-                tag.putString(ArcaneMagicConstants.NOTEBOOK_SECTION_KEY, NotebookSectionRegistry.CONTENTS.getID().toString());
-                tag.putInt(ArcaneMagicConstants.NOTEBOOK_PAGE_KEY, 0);
+            if (!tag.containsKey(NConstants.NOTEBOOK_SECTION_KEY)) {
+                tag.putString(NConstants.NOTEBOOK_SECTION_KEY, NotebookSectionRegistry.CONTENTS.getID().toString());
+                tag.putInt(NConstants.NOTEBOOK_PAGE_KEY, 0);
             }
         }
     }

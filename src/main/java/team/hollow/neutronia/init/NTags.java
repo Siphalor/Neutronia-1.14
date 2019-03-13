@@ -9,6 +9,7 @@ import team.hollow.neutronia.Neutronia;
 public class NTags {
 
     public static final Tag<Block> LECTERNS = registerBlockTag("lecterns");
+    public static final Tag<Block> CLIMBABLE = registerBlockTag("climbable");
 
     public static Tag<Block> registerBlockTag(String id) {
         return TagRegistry.block(new Identifier(Neutronia.MOD_ID, id));

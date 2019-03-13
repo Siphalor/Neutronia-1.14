@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.PacketByteBuf;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.init.ArcaneMagicConstants;
+import team.hollow.neutronia.init.NConstants;
 import team.hollow.neutronia.init.NItems;
 
 public class NotebookUpdatePacket implements IPacket {
@@ -54,8 +54,8 @@ public class NotebookUpdatePacket implements IPacket {
             }
 
             if (stack.getItem() == NItems.NOTEBOOK) {
-                stack.getOrCreateTag().putString(ArcaneMagicConstants.NOTEBOOK_SECTION_KEY, message.section);
-                stack.getOrCreateTag().putInt(ArcaneMagicConstants.NOTEBOOK_PAGE_KEY, message.page);
+                stack.getOrCreateTag().putString(NConstants.NOTEBOOK_SECTION_KEY, message.section);
+                stack.getOrCreateTag().putInt(NConstants.NOTEBOOK_PAGE_KEY, message.page);
             }
         }
     }

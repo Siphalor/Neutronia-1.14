@@ -1,0 +1,11 @@
+{
+	"replace": false,
+	"values": [
+		"minecraft:ladder",
+		"neutronia:spruce_ladder",
+		"neutronia:birch_ladder",
+		"neutronia:jungle_ladder",
+		"neutronia:acacia_ladder",
+		"neutronia:dark_oak_ladder"
+	]
+}

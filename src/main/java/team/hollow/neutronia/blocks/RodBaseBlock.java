@@ -1,10 +1,7 @@
 package team.hollow.neutronia.blocks;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderLayer;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateFactory;
 import net.minecraft.util.Mirror;
@@ -15,30 +12,28 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.ViewableWorld;
 
-public class RodBaseBlock extends DirectionalBlock {
+public class RodBaseBlock extends FacingBlock {
 
     protected static final VoxelShape BB_AXIS_Y = Block.createCuboidShape(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
     protected static final VoxelShape BB_AXIS_Z = Block.createCuboidShape(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
     protected static final VoxelShape BB_AXIS_X = Block.createCuboidShape(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
 
     @SuppressWarnings("unused")
-    public RodBaseBlock(String name, boolean emitsLight) {
-        super(emitsLight ? FabricBlockSettings.of(Material.STONE).strength(0.3F, 1.0F).lightLevel(13) : FabricBlockSettings.of(Material.STONE), name);
+    public RodBaseBlock(boolean emitsLight) {
+        super(emitsLight ? FabricBlockSettings.of(Material.STONE).strength(0.3F, 1.0F).lightLevel(13).build() : FabricBlockSettings.of(Material.STONE).build());
         this.setDefaultState(this.getDefaultState().with(FACING, Direction.UP));
     }
 
     @SuppressWarnings("unused")
-    public RodBaseBlock(Material material, String name, boolean emitsLight) {
-        super(emitsLight ? FabricBlockSettings.of(material).hardness(0.3F).lightLevel(13) : FabricBlockSettings.of(material), name);
+    public RodBaseBlock(Material material, boolean emitsLight) {
+        super(emitsLight ? FabricBlockSettings.of(material).hardness(0.3F).lightLevel(13).build() : FabricBlockSettings.of(material).build());
         this.setDefaultState(this.getDefaultState().with(FACING, Direction.UP));
     }
 
-    @Override
     public BlockState rotate(BlockState blockState_1, Rotation rotation_1) {
         return blockState_1.with(FACING, rotation_1.rotate(blockState_1.get(FACING)));
     }
 
-    @Override
     public BlockState mirror(BlockState blockState_1, Mirror mirror_1) {
         return blockState_1.with(FACING, mirror_1.apply(blockState_1.get(FACING)));
     }

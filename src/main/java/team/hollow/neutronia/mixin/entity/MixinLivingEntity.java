@@ -8,7 +8,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import team.hollow.neutronia.api.Climbable;
+import team.hollow.neutronia.init.NTags;
 
 @Mixin(LivingEntity.class)
 final class MixinLivingEntity {
@@ -20,9 +20,8 @@ final class MixinLivingEntity {
             cancellable = true
     )
     private void canClimb(final CallbackInfoReturnable<Boolean> cir, final BlockState state, final Block block) {
-        if (block instanceof Climbable) {
-            final LivingEntity self = (LivingEntity) (Object) this;
-            cir.setReturnValue(((Climbable) block).canClimb(self, state, self.getPos()));
+        if (block.matches(NTags.CLIMBABLE)) {
+            cir.setReturnValue(true);
         }
     }
 }

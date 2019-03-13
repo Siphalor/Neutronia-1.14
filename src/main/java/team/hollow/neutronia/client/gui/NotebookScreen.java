@@ -13,7 +13,7 @@ import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.api.INotebookElement;
 import team.hollow.neutronia.api.INotebookSection;
-import team.hollow.neutronia.init.ArcaneMagicConstants;
+import team.hollow.neutronia.init.NConstants;
 import team.hollow.neutronia.network.ArcaneMagicPacketHandler;
 import team.hollow.neutronia.network.NotebookUpdatePacket;
 import team.hollow.neutronia.notebook.ContentsNotebookSection;
@@ -36,9 +36,9 @@ public class NotebookScreen extends Screen {
 
     public NotebookScreen(ItemStack stack) {
         CompoundTag tag = stack.getTag();
-        if (tag != null && tag.containsKey(ArcaneMagicConstants.NOTEBOOK_SECTION_KEY)) {
-            INotebookSection section = NotebookSectionRegistry.get(Identifier.create(tag.getString(ArcaneMagicConstants.NOTEBOOK_SECTION_KEY)));
-            int page = tag.getInt(ArcaneMagicConstants.NOTEBOOK_PAGE_KEY);
+        if (tag != null && tag.containsKey(NConstants.NOTEBOOK_SECTION_KEY)) {
+            INotebookSection section = NotebookSectionRegistry.get(Identifier.create(tag.getString(NConstants.NOTEBOOK_SECTION_KEY)));
+            int page = tag.getInt(NConstants.NOTEBOOK_PAGE_KEY);
 
             this.section = section;
 
@@ -138,30 +138,30 @@ public class NotebookScreen extends Screen {
     }
 
     private boolean overRightArrow() {
-        int xTop = (client.window.getScaledWidth() / 2) - (ArcaneMagicConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (ArcaneMagicConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int right = xTop + 142;
 
-        return scaledMouseX >= right + 85 && scaledMouseY >= yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 21 && scaledMouseX <= right + 103 && scaledMouseY <= yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 11;
+        return scaledMouseX >= right + 85 && scaledMouseY >= yTop + NConstants.NOTEBOOK_HEIGHT - 21 && scaledMouseX <= right + 103 && scaledMouseY <= yTop + NConstants.NOTEBOOK_HEIGHT - 11;
     }
 
     private boolean overLeftArrow() {
-        int xTop = (client.window.getScaledWidth() / 2) - (ArcaneMagicConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (ArcaneMagicConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int left = xTop + 17;
 
-        return scaledMouseX >= left + 10 && scaledMouseY >= yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 21 && scaledMouseX <= left + 28 && scaledMouseY <= yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 11;
+        return scaledMouseX >= left + 10 && scaledMouseY >= yTop + NConstants.NOTEBOOK_HEIGHT - 21 && scaledMouseX <= left + 28 && scaledMouseY <= yTop + NConstants.NOTEBOOK_HEIGHT - 11;
     }
 
     private boolean overBackArrow() {
         //right + 85, yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 21
-        int xTop = (client.window.getScaledWidth() / 2) - (ArcaneMagicConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (ArcaneMagicConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int right = xTop + 142;
-        return scaledMouseX >= right - 15 && scaledMouseY >= yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 21 && scaledMouseX <= right && scaledMouseY <= yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 10;
+        return scaledMouseX >= right - 15 && scaledMouseY >= yTop + NConstants.NOTEBOOK_HEIGHT - 21 && scaledMouseX <= right && scaledMouseY <= yTop + NConstants.NOTEBOOK_HEIGHT - 10;
     }
 
     @Override
@@ -174,17 +174,17 @@ public class NotebookScreen extends Screen {
 
         GlStateManager.pushMatrix();
 
-        int xTop = (client.window.getScaledWidth() / 2) - (ArcaneMagicConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (ArcaneMagicConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int left = xTop + 17;
         int right = xTop + 142;
 
-        client.getTextureManager().bindTexture(ArcaneMagicConstants.NOTEBOOK_TEXTURE);
-        DrawableHelper.drawTexturedRect(xTop, yTop, 0, 0, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_HEIGHT, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_HEIGHT, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_TEX_HEIGHT);
+        client.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
+        DrawableHelper.drawTexturedRect(xTop, yTop, 0, 0, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
 
         if (section instanceof ContentsNotebookSection) {
-            DrawableHelper.drawTexturedRect(xTop + 133, yTop + 156, 136, 180, 5, 11, 5, 11, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_TEX_HEIGHT);
+            DrawableHelper.drawTexturedRect(xTop + 133, yTop + 156, 136, 180, 5, 11, 5, 11, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
         // Intro page
@@ -202,18 +202,18 @@ public class NotebookScreen extends Screen {
             GlStateManager.popMatrix();
         }
 
-        client.getTextureManager().bindTexture(ArcaneMagicConstants.NOTEBOOK_TEXTURE);
+        client.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
 
         if (leftPage + 1 < section.getPageCount((DataHolder) client.player)) {
-            RenderUtils.drawTexturedRect(right + 85, yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 21, overRightArrow() ? 23 : 0, 180, 18, 10, 18, 10, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_TEX_HEIGHT);
+            RenderUtils.drawTexturedRect(right + 85, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overRightArrow() ? 23 : 0, 180, 18, 10, 18, 10, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
         if (leftPage > 0) {
-            RenderUtils.drawTexturedRect(left + 10, yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 21, overLeftArrow() ? 23 : 0, 193, 18, 10, 18, 10, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_TEX_HEIGHT);
+            RenderUtils.drawTexturedRect(left + 10, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overLeftArrow() ? 23 : 0, 193, 18, 10, 18, 10, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
         if (!(section instanceof ContentsNotebookSection)) {
-            RenderUtils.drawTexturedRect(right - 15, yTop + ArcaneMagicConstants.NOTEBOOK_HEIGHT - 21, overBackArrow() ? 66 : 46, 193, 15, 11, 15, 11, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_TEX_HEIGHT);
+            RenderUtils.drawTexturedRect(right - 15, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overBackArrow() ? 66 : 46, 193, 15, 11, 15, 11, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
         for (INotebookElement element : this.leftElements) {

@@ -456,6 +456,7 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("snow_bricks", SNOW_BRICKS);
         ICE_TILES = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_tiles");
         BlockRegisteringUtils.addSlabAndStair("ice_tiles", ICE_TILES);
+        RegistryUtils.register(new RodBaseBlock(true), "ice_rod");
 
         SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandstone_pillar");
         RED_SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "red_sandstone_pillar");
@@ -529,8 +530,8 @@ public class NBlocks {
         BAMBOO_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bamboo_planks");
         BlockRegistryBuilder.getInstance("bamboo", BAMBOO_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        BAMBOO_SIGN = RegistryUtils.register(new NeutroniaSignBlock(), "bamboo_sign");
-        BAMBOO_WALL_SIGN = RegistryUtils.register(new NeutroniaWallSignBlock(), "bamboo_wall_sign");
+        BAMBOO_SIGN = RegistryUtils.register(new StandingSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).build()), "bamboo_sign");
+        BAMBOO_WALL_SIGN = RegistryUtils.register(new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).build()), "bamboo_wall_sign");
         BAMBOO_TORCH = RegistryUtils.register(new NeutroniaTorchBlock(), "bamboo_torch");
         THATCH = new NeutroniaBaseBlock(Material.ORGANIC, "thatch");
         BlockRegistryBuilder.getInstance("thatch", THATCH).slab().stair();

@@ -28,7 +28,6 @@ import team.hollow.neutronia.init.*;
 import team.hollow.neutronia.world.OverworldChunkGenerator;
 import team.hollow.neutronia.world.OverworldChunkGeneratorConfig;
 import team.hollow.neutronia.world.gen.ImprovedOverworldLevelType;
-import team.hollow.neutronia.world.gen.features.OreGeneration;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
@@ -68,33 +67,17 @@ public class Neutronia implements ModInitializer {
         CommandRegistry.INSTANCE.register(false, (Locate2Command::register));
         new NVillagers();
         new NEntityTypes();
-        NRecipeType.init();
-        NRecipeSerializers.init();
-        OreGeneration.registerOres();
-//        new NRecipes();
         new NPaintingMotives();
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
     }
 
-    /**
-     * This is a bit hacky,
-     * The short of it is we want to register the wastelands as CHUNK_GENERATOR_TYPE
-     * <p>
-     * However  ChunkGeneratorType requires a factory interface ChunkGeneratorFactory
-     * that is package private.  (thus we can't use the interface directly)
-     * <p>
-     * The folowing class uses reflection to become an instance of "ChunkGeneratorFactory"
-     * as well as reflection to create the ChunkGeneratorType object to pass in the
-     * interface object
-     */
     private class OverworldGeneratorCreator implements InvocationHandler {
         private Object factoryProxy;
         private Class factoryClass;
 
         OverworldGeneratorCreator() {
-            //reflection hack, dev = mapped in dev enviroment, prod = intermediate value
             String dev_name = "net.minecraft.world.gen.chunk.ChunkGeneratorFactory";
             String prod_name = "net.minecraft.class_2801";
 
@@ -110,10 +93,6 @@ public class Neutronia implements ModInitializer {
             factoryProxy = Proxy.newProxyInstance(factoryClass.getClassLoader(),
                     new Class[]{factoryClass},
                     this);
-        }
-
-        public OverworldChunkGenerator createProxy(World w, BiomeSource biomesource, OverworldChunkGeneratorConfig gensettings) {
-            return new OverworldChunkGenerator(w, biomesource, gensettings);
         }
 
         public ChunkGenerator<? extends ChunkGeneratorConfig> createGenerator(World world) {

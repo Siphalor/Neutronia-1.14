@@ -8,7 +8,7 @@ import net.minecraft.item.ItemProvider;
 import net.minecraft.item.ItemStack;
 import team.hollow.neutronia.api.INotebookElement;
 import team.hollow.neutronia.api.INotebookSection;
-import team.hollow.neutronia.init.ArcaneMagicConstants;
+import team.hollow.neutronia.init.NConstants;
 import team.hollow.neutronia.utils.RenderUtils;
 
 class NotebookElement {
@@ -19,8 +19,8 @@ class NotebookElement {
 
         @Override
         public int draw(Screen screen, int x, int y, int mouseX, int mouseY, int xTop, int yTop) {
-            MinecraftClient.getInstance().getTextureManager().bindTexture(ArcaneMagicConstants.NOTEBOOK_TEXTURE);
-            DrawableHelper.drawTexturedRect(xTop - 8, yTop + 11, 0, 206, 140, 31, 140, 30, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_TEX_HEIGHT);
+            MinecraftClient.getInstance().getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
+            DrawableHelper.drawTexturedRect(xTop - 8, yTop + 11, 0, 206, 140, 31, 140, 30, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
             RenderUtils.drawCustomSizedSplitString(xTop + 17 - 8, yTop + 18, 1, 119, 0x218e15, false, false, unlocalized, keys);
             return 27 + padding;
         }
@@ -34,8 +34,8 @@ class NotebookElement {
         @Override
         public int draw(Screen screen, int x, int y, int mouseX, int mouseY, int xTop, int yTop) {
             int height = RenderUtils.drawCustomSizedSplitString(x + 57, y, 1, 116, 0, false, true, unlocalized) + 3;
-            MinecraftClient.getInstance().getTextureManager().bindTexture(ArcaneMagicConstants.NOTEBOOK_TEXTURE);
-            height += RenderUtils.drawTexturedRect(x + 14, y + height, 46, 180, 85, 3, 85, 3, ArcaneMagicConstants.NOTEBOOK_WIDTH, ArcaneMagicConstants.NOTEBOOK_TEX_HEIGHT) + 3;
+            MinecraftClient.getInstance().getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
+            height += RenderUtils.drawTexturedRect(x + 14, y + height, 46, 180, 85, 3, 85, 3, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT) + 3;
             return height + padding;
         }
     }

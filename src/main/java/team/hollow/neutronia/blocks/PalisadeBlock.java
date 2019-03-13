@@ -19,8 +19,8 @@ public class PalisadeBlock extends NeutroniaFenceBlock {
     public static final BooleanProperty POST = BooleanProperty.create("post");
     public static final BooleanProperty POST_TOP = BooleanProperty.create("post_top");
 
-    public PalisadeBlock(String name, BlockState state) {
-        super(name, state);
+    public PalisadeBlock(BlockState state) {
+        super(state);
         setDefaultState(this.stateFactory.getDefaultState().with(POST, false).with(POST_TOP, false).with(NORTH, false).with(EAST, false).with(SOUTH, false).with(WEST, false).with(WATERLOGGED, false));
     }
 
