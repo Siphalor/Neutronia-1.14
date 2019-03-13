@@ -26,6 +26,11 @@ public class RegistryUtils {
         return block;
     }
 
+    public static Block register(Block block, String name, ItemGroup itemGroup) {
+        register(block, new Identifier(Neutronia.MOD_ID, name), itemGroup);
+        return block;
+    }
+
     public static Block registerScaffolding(Block block, String name) {
         Registry.register(Registry.BLOCK, name, block);
         Registry.register(Registry.ITEM, name, new ScaffoldingItem(block, new Item.Settings().itemGroup(ItemGroup.DECORATIONS)));

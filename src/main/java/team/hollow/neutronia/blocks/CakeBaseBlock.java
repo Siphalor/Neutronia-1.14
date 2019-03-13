@@ -7,7 +7,7 @@ import net.minecraft.sound.BlockSoundGroup;
 
 public class CakeBaseBlock extends CakeBlock {
 
-    public CakeBaseBlock(String name) {
+    public CakeBaseBlock() {
         super(FabricBlockSettings.of(Material.CAKE).hardness(0.5F).sounds(BlockSoundGroup.WOOL).build());
     }
 

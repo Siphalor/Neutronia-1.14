@@ -11,11 +11,10 @@ public enum VanillaAndModdedMinusBambooWoodTypes implements StringRepresentable 
     JUNGLE(3, "jungle", MaterialColor.DIRT),
     ACACIA(4, "acacia", MaterialColor.ORANGE),
     DARK_OAK(5, "dark_oak", MaterialColor.BROWN),
-    WILLOW(6, "willow", MaterialColor.LIME),
-    PALM(7, "palm", MaterialColor.DIRT),
-    MANGROVE(8, "mangrove", MaterialColor.GRAY),
-    RED_MANGROVE(9, "red_mangrove", MaterialColor.PINK),
-    BAOBAB(10, "baobab", MaterialColor.PURPLE);
+    PALM(6, "palm", MaterialColor.DIRT),
+    MANGROVE(7, "mangrove", MaterialColor.GRAY),
+    RED_MANGROVE(8, "red_mangrove", MaterialColor.PINK),
+    BAOBAB(9, "baobab", MaterialColor.PURPLE);
 
     private static final VanillaAndModdedMinusBambooWoodTypes[] META_LOOKUP = new VanillaAndModdedMinusBambooWoodTypes[values().length];
 

@@ -30,6 +30,7 @@ import team.hollow.neutronia.init.NItems;
 import java.util.Random;
 
 public class NeutroniaBlueberryBushBlock extends PlantBlock implements Fertilizable {
+
     public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;

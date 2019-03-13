@@ -15,8 +15,9 @@ public class NeutroniaButtonBlock extends AbstractButtonBlock {
     }
 
     @Override
-    protected SoundEvent getClickSound(boolean wooden) {
-        return wooden ? SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON : SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF;
+    protected SoundEvent getClickSound(boolean pressed) {
+        return this.wooden ? pressed ? SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_ON : SoundEvents.BLOCK_WOODEN_BUTTON_CLICK_OFF :
+                pressed ? SoundEvents.BLOCK_STONE_BUTTON_CLICK_ON : SoundEvents.BLOCK_STONE_BUTTON_CLICK_OFF;
     }
 
 }

@@ -12,7 +12,7 @@
                 {
                     "type": "item",
                     "weight": 3,
-                    "name": "neutronia:phantom_membrane",
+                    "name": "minecraft:phantom_membrane",
                     "quality": 1,
                     "functions": [
                         {

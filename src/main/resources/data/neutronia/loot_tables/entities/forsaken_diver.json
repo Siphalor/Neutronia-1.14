@@ -12,7 +12,7 @@
                 {
                     "type": "item",
                     "weight": 1,
-                    "name": "neutronia:trident",
+                    "name": "minecraft:trident",
                     "quality": 1,
                     "functions": [
                         {
@@ -27,7 +27,7 @@
                 {
                     "type": "item",
                     "weight": 3,
-                    "name": "neutronia:heart_of_the_sea",
+                    "name": "minecraft:heart_of_the_sea",
                     "functions": [
                         {
                             "function": "set_count",

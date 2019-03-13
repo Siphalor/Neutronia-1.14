@@ -12,7 +12,7 @@
         {
           "type": "item",
           "weight": 1,
-          "name": "neutronia:bandage",
+          "name": "minecraft:rotten_flesh",
           "quality": 1,
           "functions": [
             {

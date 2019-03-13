@@ -2,6 +2,7 @@ package team.hollow.neutronia.utils.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.item.ItemGroup;
 import team.hollow.neutronia.blocks.*;
 
 public class BlockRegistryBuilder {
@@ -17,12 +18,12 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder slab() {
-        RegistryUtils.register(new NeutroniaSlabBlock(), name);
+        RegistryUtils.register(new NeutroniaSlabBlock(), name + "_slab", ItemGroup.BUILDING_BLOCKS);
         return this;
     }
 
     public BlockRegistryBuilder stair() {
-        RegistryUtils.register(new NeutroniaStairBlock(block.getDefaultState()), name);
+        RegistryUtils.register(new NeutroniaStairBlock(block.getDefaultState()), name + "_stair", ItemGroup.BUILDING_BLOCKS);
         return this;
     }
 
@@ -32,32 +33,22 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder fenceGate() {
-        RegistryUtils.register(new NeutroniaFenceGateBlock(), name + "_fence_gate");
+        RegistryUtils.register(new NeutroniaFenceGateBlock(), name + "_fence_gate", ItemGroup.REDSTONE);
         return this;
     }
 
     public BlockRegistryBuilder wall() {
-        RegistryUtils.register(new NeutroniaWallBlock(block.getDefaultState()), name + "_wall");
+        RegistryUtils.register(new NeutroniaWallBlock(block.getDefaultState()), name + "_wall", ItemGroup.BUILDING_BLOCKS);
         return this;
     }
 
     public BlockRegistryBuilder button(boolean wooden) {
-        RegistryUtils.register(new NeutroniaButtonBlock(wooden), name + "_button");
+        RegistryUtils.register(new NeutroniaButtonBlock(wooden), name + "_button", ItemGroup.REDSTONE);
         return this;
     }
 
     public BlockRegistryBuilder pressurePlate(PressurePlateBlock.Type type) {
-        RegistryUtils.register(new NeutroniaPressurePlateBlockImpl(block.getMaterial(block.getDefaultState()), type), name);
-        return this;
-    }
-
-    public BlockRegistryBuilder door() {
-        new NeutroniaDoorBlock(name);
-        return this;
-    }
-
-    public BlockRegistryBuilder trapdoor() {
-        RegistryUtils.register(new NeutroniaTrapdoorBlock(), name + "_trapdoor");
+        RegistryUtils.register(new NeutroniaPressurePlateBlock(block.getMaterial(block.getDefaultState()), type), name + "_pressure_plate", ItemGroup.REDSTONE);
         return this;
     }
 
