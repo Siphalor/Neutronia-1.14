@@ -4,10 +4,10 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.FlowerPotBlock;
+import net.minecraft.class_4178;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.SeedsItem;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -62,7 +62,7 @@ public class FlowerPotBlockMixin {
     private Block checkForCrops(final Block block) {
         if (Blocks.AIR == block) {
             final Item item = Objects.requireNonNull(NEUTRONIA$HELD_ITEM.get(), "held item").getItem();
-            if (item instanceof SeedsItem) {
+            if (item instanceof class_4178) {
                 return CONTENT_TO_POTTED.getOrDefault(((SeedsItemAccessor) item).getBlock(), Blocks.AIR);
             }
         }

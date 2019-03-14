@@ -38,7 +38,7 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder wall() {
-        RegistryUtils.register(new NeutroniaWallBlock(block.getDefaultState()), name + "_wall", ItemGroup.BUILDING_BLOCKS);
+        RegistryUtils.register(new NeutroniaWallBlock(block.getDefaultState()), name + "_wall", ItemGroup.DECORATIONS);
         return this;
     }
 

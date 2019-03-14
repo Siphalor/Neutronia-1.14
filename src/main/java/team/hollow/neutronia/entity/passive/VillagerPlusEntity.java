@@ -1,10 +1,12 @@
 package team.hollow.neutronia.entity.passive;
 
 import net.minecraft.class_1358;
-import net.minecraft.class_1365;
 import net.minecraft.class_1370;
 import net.minecraft.class_1394;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.FleeEntityGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.pathing.EntityMobNavigation;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -22,6 +24,7 @@ public class VillagerPlusEntity extends PassiveEntity {
 
     public VillagerPlusEntity(String villagerName, World world_1) {
         super(NEntityTypes.VILLAGER_PLUS, world_1);
+        this.setCanPickUpLoot(true);((EntityMobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
     }
 
@@ -34,10 +37,7 @@ public class VillagerPlusEntity extends PassiveEntity {
         this.goalSelector.add(1, new FleeEntityGoal<>(this, VexEntity.class, 8.0F, 0.6D, 0.6D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, PillagerEntity.class, 15.0F, 0.6D, 0.6D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, IllusionerEntity.class, 12.0F, 0.6D, 0.6D));
-        this.goalSelector.add(2, new class_1365(this));
-        this.goalSelector.add(3, new StayInsideGoal(this));
         this.goalSelector.add(3, new FindDiamondBlockGoal(this, 1.0));
-        this.goalSelector.add(4, new OpenDoorGoal(this, true));
         this.goalSelector.add(5, new class_1370(this, 0.6D));
         this.goalSelector.add(9, new class_1358(this, PlayerEntity.class, 3.0F, 1.0F));
         this.goalSelector.add(9, new class_1394(this, 0.6D));

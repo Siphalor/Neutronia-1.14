@@ -1,13 +1,14 @@
 package team.hollow.neutronia.entity;
 
 import net.minecraft.class_1358;
-import net.minecraft.class_1365;
 import net.minecraft.class_1370;
 import net.minecraft.class_1394;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.ai.goal.*;
+import net.minecraft.entity.ai.goal.FleeEntityGoal;
+import net.minecraft.entity.ai.goal.LookAtEntityGoal;
+import net.minecraft.entity.ai.goal.SwimGoal;
 import net.minecraft.entity.ai.pathing.EntityMobNavigation;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
@@ -87,23 +88,20 @@ public class SocialVillager extends PassiveEntity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        ((EntityMobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
+        this.setCanPickUpLoot(true);
     }
 
     @Override
     protected void initGoals() {
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(2, new StayInsideGoal(this));
-        this.goalSelector.add(3, new OpenDoorGoal(this, true));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, ZombieEntity.class, 8.0F, 0.6D, 0.6D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, EvokerEntity.class, 12.0F, 0.8D, 0.8D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, VindicatorEntity.class, 8.0F, 0.8D, 0.8D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, VexEntity.class, 8.0F, 0.6D, 0.6D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, PillagerEntity.class, 15.0F, 0.6D, 0.6D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, IllusionerEntity.class, 12.0F, 0.6D, 0.6D));
-        this.goalSelector.add(2, new class_1365(this));
-        this.goalSelector.add(4, new OpenDoorGoal(this, true));
         this.goalSelector.add(5, new class_1370(this, 0.6D));
         this.goalSelector.add(9, new class_1358(this, PlayerEntity.class, 3.0F, 1.0F));
         this.goalSelector.add(9, new class_1394(this, 0.6D));

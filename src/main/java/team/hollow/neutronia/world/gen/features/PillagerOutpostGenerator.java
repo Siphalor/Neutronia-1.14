@@ -12,6 +12,7 @@ import net.minecraft.structure.processor.BlockRotStructureProcessor;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import team.hollow.neutronia.Neutronia;
@@ -31,8 +32,8 @@ public class PillagerOutpostGenerator {
     }
 
     public static class Piece extends PoolStructurePiece {
-        public Piece(StructureManager structureManager_1, StructurePoolElement structurePoolElement_1, BlockPos blockPos_1, int int_1, Rotation rotation_1) {
-            super(StructurePieceType.PILLAGER_OUTPOST, structureManager_1, structurePoolElement_1, blockPos_1, int_1, rotation_1);
+        public Piece(StructureManager structureManager_1, StructurePoolElement structurePoolElement_1, BlockPos blockPos_1, int int_1, Rotation rotation_1, MutableIntBoundingBox mutableIntBoundingBox_1) {
+            super(StructurePieceType.PILLAGER_OUTPOST, structureManager_1, structurePoolElement_1, blockPos_1, int_1, rotation_1, mutableIntBoundingBox_1);
         }
 
         public Piece(StructureManager structureManager_1, CompoundTag compoundTag_1) {
