@@ -17,7 +17,7 @@ public class SocialButton extends ButtonWidget {
         super(int_2, int_3, int_4, int_5, string_1);
     }
 
-    public void onPressed(double d1, double d2) {
+    public void onPressed() {
         SocialScreen screen = (SocialScreen) MinecraftClient.getInstance().currentScreen;
         switch (this.getText()) {
             case "Socialize": {

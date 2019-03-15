@@ -59,10 +59,8 @@ public class WolfBegGoal extends Goal {
 
     private boolean method_6244(PlayerEntity playerEntity_1) {
         Hand[] var2 = Hand.values();
-        int var3 = var2.length;
 
-        for (int var4 = 0; var4 < var3; ++var4) {
-            Hand hand_1 = var2[var4];
+        for (Hand hand_1 : var2) {
             ItemStack itemStack_1 = playerEntity_1.getStackInHand(hand_1);
             if (this.owner.isTamed() && itemStack_1.getItem() == Items.BONE) {
                 return true;

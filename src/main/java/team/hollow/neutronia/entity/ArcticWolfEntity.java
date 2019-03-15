@@ -388,7 +388,7 @@ public class ArcticWolfEntity extends TameableEntity {
      */
     public boolean isBreedingItem(ItemStack stack) {
         Item item_1 = stack.getItem();
-        return item_1.method_19263() && item_1.method_19264().method_19232();
+        return item_1.method_19263() && Objects.requireNonNull(item_1.method_19264()).method_19232();
     }
 
     /**
