@@ -5,13 +5,7 @@
   "mixins": [
     "ItemDynamicRendererMixin",
     "MinecraftClientMixin",
-    "screen.MixinSplashScreen",
-    "screen.MixinGuiMain",
-    "progress.MixinMinecraftClient",
-    "progress.MixinModelLoader",
-    "progress.MixinSpriteAtlasTexture",
-    "progress.MixinTextureStitcher",
-    "MixinClientBrandRetriever"
+    "screen.MixinGuiMain"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -21,7 +21,7 @@ public class SocialButton extends ButtonWidget {
         SocialScreen screen = (SocialScreen) MinecraftClient.getInstance().currentScreen;
         switch (this.getText()) {
             case "Socialize": {
-                List<SocialButton> buttons = screen.positiveButtons;
+                List<SocialButton> buttons = Objects.requireNonNull(screen).positiveButtons;
                 List<SocialButton> otherButtons = screen.neutralButtons;
                 if (buttons.get(0).visible) {
                     for (SocialButton button : buttons) {

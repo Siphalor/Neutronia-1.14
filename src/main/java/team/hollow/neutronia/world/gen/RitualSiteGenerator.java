@@ -1,6 +1,9 @@
 package team.hollow.neutronia.world.gen;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
+import com.mojang.datafixers.Dynamic;
+import com.mojang.datafixers.types.DynamicOps;
 import com.mojang.datafixers.util.Pair;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,21 +13,18 @@ import net.minecraft.sortme.rule.AlwaysTrueRuleTest;
 import net.minecraft.sortme.rule.RandomBlockMatchRuleTest;
 import net.minecraft.sortme.rule.RandomBlockStateMatchRuleTest;
 import net.minecraft.state.property.Property;
-import net.minecraft.structure.PoolStructurePiece;
-import net.minecraft.structure.StructureManager;
-import net.minecraft.structure.StructurePiece;
+import net.minecraft.structure.*;
 import net.minecraft.structure.pool.SinglePoolElement;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePool.Projection;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
 import net.minecraft.structure.pool.StructurePoolElement;
-import net.minecraft.structure.processor.BlockRotStructureProcessor;
-import net.minecraft.structure.processor.RuleStructureProcessor;
-import net.minecraft.structure.processor.StructureProcessorRule;
+import net.minecraft.structure.processor.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableIntBoundingBox;
+import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import team.hollow.neutronia.world.SmallStructuresRegistry;
@@ -85,12 +85,62 @@ public class RitualSiteGenerator {
 	}
 	
 	static {
-		StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier("neutronia", "ritual_sites"), new Identifier("empty"),
-				ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:ritual_sites/overgrown", ImmutableList.of(new RuleStructureProcessor(getMossify(0.6F)),
-                        new RuleStructureProcessor(getCrack(0.25F)), new BlockRotStructureProcessor(0.9F))), 1),
-					Pair.of(new SinglePoolElement("neutronia:ritual_sites/sacrifice", ImmutableList.of(new RuleStructureProcessor(getMossify(0.3F)))), 1)
-				), Projection.TERRAIN_MATCHING)
-		);
+        ImmutableList<StructureProcessor> mildDecay = ImmutableList.of(/* new RuleStructureProcessor(getMossify(0.2F)) */);
+
+        StructurePoolBasedGenerator.REGISTRY.add(
+                new StructurePool(
+                        new Identifier("neutronia", "ritual_sites"),
+                        new Identifier("empty"),
+                        ImmutableList.of(
+                                Pair.of(
+                                        new SinglePoolElement(
+                                                "neutronia:ritual_sites/overgrown",
+                                                ImmutableList.of(
+                                                        new RuleStructureProcessor(getMossify(0.6F)),
+                                                        new RuleStructureProcessor(getCrack(0.25F)),
+                                                        new BlockRotStructureProcessor(0.9F)
+                                                )
+                                        ),
+                                        0
+                                ),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/sacrifice", mildDecay), 0),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/altar", mildDecay), 1)
+                        ),
+                        Projection.RIGID
+                )
+        );
+        StructurePoolBasedGenerator.REGISTRY.add(
+                new StructurePool(
+                        new Identifier("neutronia", "ritual_sites/ritual_ground/paths"),
+                        new Identifier("neutronia", "ritual_sites/ritual_ground/terminators"),
+                        ImmutableList.of(
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/straight", mildDecay), 3),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/corner", mildDecay), 3),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/t", mildDecay), 2),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/cross", mildDecay), 1),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/end", mildDecay), 9)
+                        ),
+                        Projection.TERRAIN_MATCHING
+                )
+        );
+        StructurePoolBasedGenerator.REGISTRY.add(
+                new StructurePool(new Identifier("neutronia", "ritual_sites/ritual_ground/areas"), new Identifier("empty"), ImmutableList.of(
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/areas/animal_pen", mildDecay), 1),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/areas/lantern", mildDecay), 1),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/areas/lectern", mildDecay), 1),
+                                Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/areas/pool", mildDecay), 1)
+                        ),
+                        Projection.RIGID
+                )
+        );
+        StructurePoolBasedGenerator.REGISTRY.add(
+                new StructurePool(
+                        new Identifier("neutronia", "ritual_sites/ritual_ground/terminators"),
+                        new Identifier("empty"),
+                        ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/end", mildDecay), 1)),
+                        Projection.TERRAIN_MATCHING
+                )
+        );
 	}
 	
 	public static class Piece extends PoolStructurePiece {
@@ -102,4 +152,32 @@ public class RitualSiteGenerator {
 			super(manager, compound, SmallStructuresRegistry.RITUAL_SITE_PIECE_TYPE);
 		}
 	}
+
+    public static class TranslateStructureProcessor extends StructureProcessor {
+
+        private BlockPos pos;
+
+        public TranslateStructureProcessor(BlockPos offset) {
+            this.pos = offset;
+        }
+
+        @Override
+        public Structure.StructureBlockInfo process(ViewableWorld var1, BlockPos var2, Structure.StructureBlockInfo var3, Structure.StructureBlockInfo var4, StructurePlacementData var5) {
+            BlockPos offset = var3.pos.add(pos.getX(), pos.getY(), pos.getZ());
+            return new Structure.StructureBlockInfo(offset, var3.state, var3.tag);
+        }
+
+        @Override
+        protected StructureProcessorType getType() {
+            return null;
+        }
+
+        @Override
+        protected <T> Dynamic<T> method_16666(DynamicOps<T> var1) {
+            return new Dynamic<>(var1, var1.createMap(ImmutableMap.of(var1.createString("offsetX"), var1.createInt(pos.getX()), var1.createString("offsetY"),
+                    var1.createInt(pos.getY()), var1.createString("offsetZ"), var1.createInt(pos.getZ()))));
+        }
+
+    }
+
 }

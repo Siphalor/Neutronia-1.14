@@ -7,7 +7,7 @@ sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
 archivesBaseName = project.archives_base_name
-version = project.version
+version = project.mod_version
 group = project.maven_group
 
 minecraft {
@@ -27,11 +27,11 @@ dependencies {
     modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modCompile "mcp.mobius.waila:Hwyla:${project.full_mc_version}-${project.newest_version}"
-    modCompile 'roughly-enough-items:RoughlyEnoughItems:2.3.2.55'
-	modCompile "cloth:Cloth:0.1.0.4"
+    modCompile 'roughly-enough-items:RoughlyEnoughItems:2.4.1.65'
+	modCompile "cloth:Cloth:0.1.1.6"
     modCompile "io.github.prospector.modmenu:ModMenu:1.${project.newest_version}"
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
-    modCompile "com.jamieswhiteshirt:developer-mode:1.0.4"
+    modCompile "com.jamieswhiteshirt:developer-mode:1.0.5"
     
     modCompile "net.fabricmc:fabric:${project.fabric_version}"
 }
