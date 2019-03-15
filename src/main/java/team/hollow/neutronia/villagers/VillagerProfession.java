@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.villagers;
 
 import net.minecraft.util.Identifier;
@@ -11,4 +12,4 @@ public interface VillagerProfession {
             }
         });
     }
-}
+}*/

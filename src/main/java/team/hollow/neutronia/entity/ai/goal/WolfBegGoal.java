@@ -9,6 +9,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.world.World;
 import team.hollow.neutronia.entity.ArcticWolfEntity;
 
+import java.util.EnumSet;
+
 public class WolfBegGoal extends Goal {
     private final ArcticWolfEntity owner;
     private final World world;
@@ -22,7 +24,7 @@ public class WolfBegGoal extends Goal {
         this.world = wolfEntity_1.world;
         this.chance = float_1;
         this.field_18085 = (new class_4051()).method_18418((double) float_1).method_18417().method_18421().method_18423();
-        this.setControlBits(2);
+        this.setControlBits(EnumSet.of(Goal.class_4134.LOOK));
     }
 
     public boolean canStart() {

@@ -21,7 +21,7 @@ import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.ArrowEntity;
 import net.minecraft.item.DyeItem;
-import net.minecraft.item.FoodItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.CompoundTag;
@@ -43,7 +43,7 @@ import java.util.UUID;
 import static net.minecraft.entity.passive.WolfEntity.field_18004;
 
 public class ArcticWolfEntity extends TameableEntity {
-    private static final TrackedData<Float> DATA_HEALTH_ID = DataTracker.registerData(ArcticWolfEntity.class, TrackedDataHandlerRegistry.FLOAT);
+    private static final TrackedData<Float> HEALTH = DataTracker.registerData(ArcticWolfEntity.class, TrackedDataHandlerRegistry.FLOAT);
     private static final TrackedData<Boolean> BEGGING = DataTracker.registerData(ArcticWolfEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final TrackedData<Integer> COLLAR_COLOR = DataTracker.registerData(ArcticWolfEntity.class, TrackedDataHandlerRegistry.INTEGER);
     private float headRotationCourse;
@@ -103,12 +103,12 @@ public class ArcticWolfEntity extends TameableEntity {
     }
 
     protected void mobTick() {
-        this.dataTracker.set(DATA_HEALTH_ID, this.getHealth());
+        this.dataTracker.set(HEALTH, this.getHealth());
     }
 
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(DATA_HEALTH_ID, this.getHealth());
+        this.dataTracker.startTracking(HEALTH, this.getHealth());
         this.dataTracker.startTracking(BEGGING, false);
         this.dataTracker.startTracking(COLLAR_COLOR, DyeColor.RED.getId());
     }
@@ -136,7 +136,7 @@ public class ArcticWolfEntity extends TameableEntity {
         if (this.isAngry()) {
             return SoundEvents.ENTITY_WOLF_GROWL;
         } else if (this.random.nextInt(3) == 0) {
-            return this.isTamed() && this.dataTracker.get(DATA_HEALTH_ID) < 10.0F ? SoundEvents.ENTITY_WOLF_WHINE : SoundEvents.ENTITY_WOLF_PANT;
+            return this.isTamed() && this.dataTracker.get(HEALTH) < 10.0F ? SoundEvents.ENTITY_WOLF_WHINE : SoundEvents.ENTITY_WOLF_PANT;
         } else {
             return SoundEvents.ENTITY_WOLF_AMBIENT;
         }
@@ -303,18 +303,17 @@ public class ArcticWolfEntity extends TameableEntity {
 
     public boolean interactMob(PlayerEntity player, Hand hand) {
         ItemStack itemstack = player.getStackInHand(hand);
+        Item item_1 = itemstack.getItem();
 
         if (this.isTamed()) {
             if (!itemstack.isEmpty()) {
-                if (itemstack.getItem() instanceof FoodItem) {
-                    FoodItem itemfood = (FoodItem) itemstack.getItem();
-
-                    if (itemfood.isWolfFood() && this.dataTracker.get(DATA_HEALTH_ID) < 20.0F) {
+                if (item_1.method_19263()) {
+                    if (Objects.requireNonNull(item_1.method_19264()).method_19232() && this.dataTracker.get(HEALTH) < 20.0F) {
                         if (!player.abilities.creativeMode) {
                             itemstack.subtractAmount(1);
                         }
 
-                        this.heal((float) itemfood.getHungerRestored(itemstack));
+                        this.heal((float) Objects.requireNonNull(item_1.method_19264()).method_19230());
                         return true;
                     }
                 } else if (itemstack.getItem() instanceof DyeItem) {
@@ -379,7 +378,7 @@ public class ArcticWolfEntity extends TameableEntity {
         if (this.isAngry()) {
             return 1.5393804F;
         } else {
-            return this.isTamed() ? (0.55F - (this.getHealthMaximum() - this.dataTracker.get(DATA_HEALTH_ID)) * 0.02F) * 3.1415927F : 0.62831855F;
+            return this.isTamed() ? (0.55F - (this.getHealthMaximum() - this.dataTracker.get(HEALTH)) * 0.02F) * 3.1415927F : 0.62831855F;
         }
     }
 
@@ -388,7 +387,8 @@ public class ArcticWolfEntity extends TameableEntity {
      * the animal type)
      */
     public boolean isBreedingItem(ItemStack stack) {
-        return stack.getItem() instanceof FoodItem && ((FoodItem) stack.getItem()).isWolfFood();
+        Item item_1 = stack.getItem();
+        return item_1.method_19263() && item_1.method_19264().method_19232();
     }
 
     /**
