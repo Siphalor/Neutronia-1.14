@@ -18,7 +18,6 @@ import team.hollow.neutronia.network.ArcaneMagicPacketHandler;
 import team.hollow.neutronia.network.NotebookUpdatePacket;
 import team.hollow.neutronia.notebook.ContentsNotebookSection;
 import team.hollow.neutronia.notebook.NotebookSectionRegistry;
-import team.hollow.neutronia.utils.DataHolder;
 import team.hollow.neutronia.utils.RenderUtils;
 
 import java.util.ArrayList;
@@ -28,6 +27,7 @@ import java.util.List;
 public class NotebookScreen extends Screen {
     private INotebookSection section;
     private int leftPage = 0;
+    private int contentsPage = 0;
     private int scaledMouseX = 0;
     private int scaledMouseY = 0;
 
@@ -39,31 +39,42 @@ public class NotebookScreen extends Screen {
         if (tag != null && tag.containsKey(NConstants.NOTEBOOK_SECTION_KEY)) {
             INotebookSection section = NotebookSectionRegistry.get(Identifier.create(tag.getString(NConstants.NOTEBOOK_SECTION_KEY)));
             int page = tag.getInt(NConstants.NOTEBOOK_PAGE_KEY);
+            int contentsPage = tag.getInt(NConstants.NOTEBOOK_CONTENTS_PAGE_KEY);
 
             this.section = section;
 
             if (section != null) {
                 this.leftPage = page;
+                this.contentsPage = contentsPage;
             }
         }
     }
 
     private void setSection(INotebookSection section) {
         this.leftPage = 0;
-        this.section = NotebookSectionRegistry.CONTENTS;
+        this.section = section;
+
+        if (this.section == NotebookSectionRegistry.CONTENTS)
+        {
+            this.leftPage = contentsPage;
+        }
         this.leftElements.clear();
         this.rightElements.clear();
 
-        this.leftElements = this.section.getElements((DataHolder) client.player, 0);
-        this.rightElements = this.section.getElements((DataHolder) client.player, 1);
+        this.leftElements = this.section.getElements(client.player, 0);
+        this.rightElements = this.section.getElements(client.player, 1);
     }
 
     private void pageChanged() {
+        if (this.section == NotebookSectionRegistry.CONTENTS)
+        {
+            this.contentsPage = leftPage;
+        }
         this.leftElements.clear();
         this.rightElements.clear();
 
-        this.leftElements = this.section.getElements((DataHolder) client.player, this.leftPage);
-        this.rightElements = this.section.getElements((DataHolder) client.player, this.leftPage + 1);
+        this.leftElements = this.section.getElements(client.player, this.leftPage);
+        this.rightElements = this.section.getElements(client.player, this.leftPage + 1);
     }
 
     @Override
@@ -72,7 +83,7 @@ public class NotebookScreen extends Screen {
         if (section != null) {
             int page = leftPage;
             setSection(section);
-            if (page <= section.getPageCount((DataHolder) client.player)) {
+            if (page <= section.getPageCount(client.player)) {
                 this.leftPage = page;
                 pageChanged();
             }
@@ -84,7 +95,7 @@ public class NotebookScreen extends Screen {
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int button) {
                 if (button == 0) {
-                    if (leftPage + 1 < section.getPageCount((DataHolder) client.player) && overRightArrow()) {
+                    if (leftPage + 1 < section.getPageCount(client.player) && overRightArrow()) {
                         leftPage += 2;
                         pageChanged();
                         client.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
@@ -204,7 +215,7 @@ public class NotebookScreen extends Screen {
 
         client.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
 
-        if (leftPage + 1 < section.getPageCount((DataHolder) client.player)) {
+        if (leftPage + 1 < section.getPageCount(client.player)) {
             RenderUtils.drawTexturedRect(right + 85, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overRightArrow() ? 23 : 0, 180, 18, 10, 18, 10, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
@@ -234,7 +245,7 @@ public class NotebookScreen extends Screen {
     @Override
     public void onClosed() {
         if (this.section != null) {
-            ArcaneMagicPacketHandler.sendToServer(new NotebookUpdatePacket(this.section.getID().toString(), this.leftPage));
+            ArcaneMagicPacketHandler.sendToServer(new NotebookUpdatePacket(this.section.getID().toString(), this.leftPage, this.contentsPage));
         }
     }
 

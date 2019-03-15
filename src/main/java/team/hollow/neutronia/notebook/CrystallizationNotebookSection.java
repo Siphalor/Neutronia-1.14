@@ -1,11 +1,11 @@
 package team.hollow.neutronia.notebook;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.api.INotebookElement;
 import team.hollow.neutronia.api.INotebookSection;
-import team.hollow.neutronia.utils.DataHolder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,12 +17,7 @@ public class CrystallizationNotebookSection implements INotebookSection {
     }
 
     @Override
-    public boolean isVisibleTo(DataHolder player) {
-        return true;
-    }
-
-    @Override
-    public List<INotebookElement> getElements(DataHolder player, int page) {
+    public List<INotebookElement> getElements(ClientPlayerEntity player, int page) {
         List<INotebookElement> elements = new ArrayList<>();
         if (page == 0) {
             elements.add(new NotebookElement.SmallHeading("notebook.arcanemagic.crystallization.title", MinecraftClient.getInstance().player.getEntityName()).withPadding(3));
@@ -47,7 +42,7 @@ public class CrystallizationNotebookSection implements INotebookSection {
     }
 
     @Override
-    public int getPageCount(DataHolder player) {
+    public int getPageCount(ClientPlayerEntity player) {
         return 5;
     }
 }

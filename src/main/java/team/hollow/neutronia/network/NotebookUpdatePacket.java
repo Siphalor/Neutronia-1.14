@@ -13,19 +13,22 @@ public class NotebookUpdatePacket implements IPacket {
 
     private String section;
     private int page;
+    private int contentsPage;
 
     private NotebookUpdatePacket() {
     }
 
-    public NotebookUpdatePacket(String section, int page) {
+    public NotebookUpdatePacket(String section, int page, int contentsPage) {
         this.section = section;
         this.page = page;
+        this.contentsPage = contentsPage;
     }
 
     @Override
     public void read(PacketByteBuf buf) {
         section = buf.readString(buf.readInt());
         page = buf.readInt();
+        contentsPage = buf.readInt();
     }
 
     @Override
@@ -33,6 +36,7 @@ public class NotebookUpdatePacket implements IPacket {
         buf.writeInt(section.length());
         buf.writeString(section);
         buf.writeInt(page);
+        buf.writeInt(contentsPage);
     }
 
     @Override
@@ -56,6 +60,7 @@ public class NotebookUpdatePacket implements IPacket {
             if (stack.getItem() == NItems.NOTEBOOK) {
                 stack.getOrCreateTag().putString(NConstants.NOTEBOOK_SECTION_KEY, message.section);
                 stack.getOrCreateTag().putInt(NConstants.NOTEBOOK_PAGE_KEY, message.page);
+                stack.getOrCreateTag().putInt(NConstants.NOTEBOOK_CONTENTS_PAGE_KEY, message.contentsPage);
             }
         }
     }
