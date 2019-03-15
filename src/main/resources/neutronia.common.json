@@ -3,8 +3,9 @@
   "package": "team.hollow.neutronia.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "entity.DrownedEntityMixin",
-    "item.MixinBookOnLectern"
+    "item.MixinBookOnLectern",
+    "world.TaigaMixin",
+    "world.VillageGeneratorMixin"
   ],
   "injectors": {
     "defaultRequire": 1

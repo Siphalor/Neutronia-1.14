@@ -14,5 +14,6 @@ public class NConstants {
 
     public static final String NOTEBOOK_SECTION_KEY = "NotebookSection";
     public static final String NOTEBOOK_PAGE_KEY = "NotebookPage";
+    public static final String NOTEBOOK_UPDATES_KEY = "NotebookUpdates";
 
 }
