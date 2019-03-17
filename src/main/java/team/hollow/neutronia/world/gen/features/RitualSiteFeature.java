@@ -11,8 +11,8 @@ import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.AbstractTempleFeature;
 import net.minecraft.world.gen.feature.StructureFeature;
-import team.hollow.neutronia.world.SmallStructuresRegistry;
 import team.hollow.neutronia.world.gen.RitualSiteGenerator;
+import team.hollow.test.ExampleMod;
 
 import java.util.Random;
 import java.util.function.Function;
@@ -30,7 +30,7 @@ public class RitualSiteFeature extends AbstractTempleFeature<RitualSiteFeatureCo
 	
 	@Override
 	public String getName() {
-		return "smallst:ritual_site";
+		return "neutronia:ritual_site";
 	}
 	
 	@Override
@@ -59,7 +59,7 @@ public class RitualSiteFeature extends AbstractTempleFeature<RitualSiteFeatureCo
         ChunkPos chunkPos_1 = this.getStart(chunkGenerator_1, random_1, int_1, int_2, 0, 0);
         if(int_1 == chunkPos_1.x && int_2 == chunkPos_1.z) {
             Biome biome_1 = chunkGenerator_1.getBiomeSource().getBiome(new BlockPos((int_1 << 4) + 9, 0, (int_2 << 4) + 9));
-            return chunkGenerator_1.hasStructure(biome_1, SmallStructuresRegistry.RITUAL_SITE_FEATURE);
+            return chunkGenerator_1.hasStructure(biome_1, ExampleMod.RITUAL_SITE_FEATURE);
         } else {
             return false;
         }

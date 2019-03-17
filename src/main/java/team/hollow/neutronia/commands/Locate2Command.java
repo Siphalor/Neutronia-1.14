@@ -18,11 +18,13 @@ public class Locate2Command {
     private static final SimpleCommandExceptionType FAILED_EXCEPTION = new SimpleCommandExceptionType(new TranslatableTextComponent("commands.locate.failed"));
 
     public static void register(CommandDispatcher<ServerCommandSource> var0) {
-        var0.register((ServerCommandManager.literal("locate2").requires((var0x) ->
-                var0x.hasPermissionLevel(2)
-        )).then(ServerCommandManager.literal("Pillager_Mansion").executes((var0x) ->
-                method_13457(var0x.getSource(), "neutronia:pillager_mansion")
-        )));
+        var0.register((ServerCommandManager.literal("locate2").requires((commandContext_1) ->
+                commandContext_1.hasPermissionLevel(2)
+        )).then(ServerCommandManager.literal("Pillager_Mansion").executes((commandContext_1) ->
+                method_13457(commandContext_1.getSource(), "neutronia:pillager_mansion")
+        )).then(ServerCommandManager.literal("Ritual_Site").executes((commandContext_1) ->
+                method_13457(commandContext_1.getSource(), "neutronia:ritual_site"))
+        ));
     }
 
     private static int method_13457(ServerCommandSource var0, String var1) throws CommandSyntaxException {

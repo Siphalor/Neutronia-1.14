@@ -27,69 +27,110 @@ import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import team.hollow.neutronia.world.SmallStructuresRegistry;
+import team.hollow.neutronia.Neutronia;
+import team.hollow.test.ExampleMod;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RitualSiteGenerator {
-	
-	public static void addPieces(ChunkGenerator<?> chunkGenerator_1, StructureManager structureManager_1, BlockPos blockPos_1, List<StructurePiece> list_1, ChunkRandom chunkRandom_1) {
-		StructurePoolBasedGenerator.addPieces(new Identifier("neutronia", "ritual_sites"), 7, Piece::new, chunkGenerator_1, structureManager_1, blockPos_1, list_1, chunkRandom_1);
-	}
-	
-	@SuppressWarnings({
-		"unchecked", "rawtypes"
-	})
-	private static List<StructureProcessorRule> getSameState(Block block, float probability, Block replace) {
-		List<StructureProcessorRule> out = new ArrayList<>();
-		for(BlockState bs: block.getStateFactory().getStates()) {
-			BlockState rbs = replace.getDefaultState();
-			for(Property prop: bs.getProperties()) {
-				rbs = rbs.with(prop, bs.get(prop));
-			}
-			
-			out.add(new StructureProcessorRule(new RandomBlockStateMatchRuleTest(bs, probability), AlwaysTrueRuleTest.INSTANCE, rbs));
-		}
-		return out;
-	}
-	
-	private static List<StructureProcessorRule> getMossify(float mossify) {
-		List<StructureProcessorRule> decay = new ArrayList<>();
-		
-		decay.add(new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.STONE_BRICKS, mossify), AlwaysTrueRuleTest.INSTANCE, Blocks.MOSSY_STONE_BRICKS.getDefaultState()));
-		decay.addAll(getSameState(Blocks.STONE_BRICK_SLAB, mossify, Blocks.MOSSY_STONE_BRICK_SLAB));
-		decay.addAll(getSameState(Blocks.STONE_BRICK_STAIRS, mossify, Blocks.MOSSY_STONE_BRICK_STAIRS));
-		decay.addAll(getSameState(Blocks.STONE_BRICK_WALL, mossify, Blocks.MOSSY_STONE_BRICK_WALL));
-		
-		decay.add(new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.COBBLESTONE, mossify), AlwaysTrueRuleTest.INSTANCE, Blocks.MOSSY_COBBLESTONE.getDefaultState()));
-		decay.addAll(getSameState(Blocks.COBBLESTONE_SLAB, mossify, Blocks.MOSSY_COBBLESTONE_SLAB));
-		decay.addAll(getSameState(Blocks.COBBLESTONE_STAIRS, mossify, Blocks.MOSSY_COBBLESTONE_STAIRS));
-		decay.addAll(getSameState(Blocks.COBBLESTONE_WALL, mossify, Blocks.MOSSY_COBBLESTONE_WALL));
-		return decay;
-	}
-	
-	private static List<StructureProcessorRule> getCrack(float crack) {
-		List<StructureProcessorRule> decay = new ArrayList<>();
-		
-		decay.add(new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.STONE_BRICKS, crack), AlwaysTrueRuleTest.INSTANCE, Blocks.COBBLESTONE.getDefaultState()));
-		decay.addAll(getSameState(Blocks.STONE_BRICK_SLAB, crack, Blocks.COBBLESTONE_SLAB));
-		decay.addAll(getSameState(Blocks.STONE_BRICK_STAIRS, crack, Blocks.COBBLESTONE_STAIRS));
-		decay.addAll(getSameState(Blocks.STONE_BRICK_WALL, crack, Blocks.COBBLESTONE_WALL));
-		
-		decay.add(new StructureProcessorRule(new RandomBlockMatchRuleTest(Blocks.MOSSY_STONE_BRICKS, crack), AlwaysTrueRuleTest.INSTANCE, Blocks.MOSSY_COBBLESTONE.getDefaultState()));
-		decay.addAll(getSameState(Blocks.MOSSY_STONE_BRICK_SLAB, crack, Blocks.MOSSY_COBBLESTONE_SLAB));
-		decay.addAll(getSameState(Blocks.MOSSY_STONE_BRICK_STAIRS, crack, Blocks.MOSSY_COBBLESTONE_STAIRS));
-		decay.addAll(getSameState(Blocks.MOSSY_STONE_BRICK_WALL, crack, Blocks.MOSSY_COBBLESTONE_WALL));
-		return decay;
-	}
-	
-	static {
+
+    public static void addPieces(
+            ChunkGenerator<?> chunkGenerator_1,
+            StructureManager structureManager_1,
+            BlockPos blockPos_1,
+            List<StructurePiece> list_1,
+            ChunkRandom chunkRandom_1
+    ) {
+        StructurePoolBasedGenerator.addPieces(
+                new Identifier(Neutronia.MOD_ID, "ritual_sites"),
+                4,
+                Piece::new,
+                chunkGenerator_1,
+                structureManager_1,
+                blockPos_1,
+                list_1,
+                chunkRandom_1
+        );
+    }
+
+    @SuppressWarnings({
+            "unchecked", "rawtypes"
+    })
+    private static List<StructureProcessorRule> getSameState(Block block, float probability, Block replace) {
+        List<StructureProcessorRule> out = new ArrayList<>();
+        for(BlockState bs: block.getStateFactory().getStates()) {
+            BlockState rbs = replace.getDefaultState();
+            for(Property prop: bs.getProperties()) {
+                rbs = rbs.with(prop, bs.get(prop));
+            }
+
+            out.add(new StructureProcessorRule(new RandomBlockStateMatchRuleTest(bs, probability), AlwaysTrueRuleTest.INSTANCE, rbs));
+        }
+        return out;
+    }
+
+    private static List<StructureProcessorRule> getMossify(float mossify) {
+        List<StructureProcessorRule> decay = new ArrayList<>();
+
+        decay.add(
+                new StructureProcessorRule(
+                        new RandomBlockMatchRuleTest(Blocks.STONE_BRICKS, mossify),
+                        AlwaysTrueRuleTest.INSTANCE,
+                        Blocks.MOSSY_STONE_BRICKS.getDefaultState()
+                )
+        );
+        decay.addAll(getSameState(Blocks.STONE_BRICK_SLAB, mossify, Blocks.MOSSY_STONE_BRICK_SLAB));
+        decay.addAll(getSameState(Blocks.STONE_BRICK_STAIRS, mossify, Blocks.MOSSY_STONE_BRICK_STAIRS));
+        decay.addAll(getSameState(Blocks.STONE_BRICK_WALL, mossify, Blocks.MOSSY_STONE_BRICK_WALL));
+
+        decay.add(
+                new StructureProcessorRule(
+                        new RandomBlockMatchRuleTest(Blocks.COBBLESTONE, mossify),
+                        AlwaysTrueRuleTest.INSTANCE,
+                        Blocks.MOSSY_COBBLESTONE.getDefaultState()
+                )
+        );
+        decay.addAll(getSameState(Blocks.COBBLESTONE_SLAB, mossify, Blocks.MOSSY_COBBLESTONE_SLAB));
+        decay.addAll(getSameState(Blocks.COBBLESTONE_STAIRS, mossify, Blocks.MOSSY_COBBLESTONE_STAIRS));
+        decay.addAll(getSameState(Blocks.COBBLESTONE_WALL, mossify, Blocks.MOSSY_COBBLESTONE_WALL));
+        return decay;
+    }
+
+    private static List<StructureProcessorRule> getCrack(float crack) {
+        List<StructureProcessorRule> decay = new ArrayList<>();
+
+        decay.add(
+                new StructureProcessorRule(
+                        new RandomBlockMatchRuleTest(Blocks.STONE_BRICKS, crack),
+                        AlwaysTrueRuleTest.INSTANCE,
+                        Blocks.COBBLESTONE.getDefaultState()
+                )
+        );
+        decay.addAll(getSameState(Blocks.STONE_BRICK_SLAB, crack, Blocks.COBBLESTONE_SLAB));
+        decay.addAll(getSameState(Blocks.STONE_BRICK_STAIRS, crack, Blocks.COBBLESTONE_STAIRS));
+        decay.addAll(getSameState(Blocks.STONE_BRICK_WALL, crack, Blocks.COBBLESTONE_WALL));
+
+        decay.add(
+                new StructureProcessorRule(
+                        new RandomBlockMatchRuleTest(Blocks.MOSSY_STONE_BRICKS, crack),
+                        AlwaysTrueRuleTest.INSTANCE,
+                        Blocks.MOSSY_COBBLESTONE.getDefaultState()
+                )
+        );
+        decay.addAll(getSameState(Blocks.MOSSY_STONE_BRICK_SLAB, crack, Blocks.MOSSY_COBBLESTONE_SLAB));
+        decay.addAll(getSameState(Blocks.MOSSY_STONE_BRICK_STAIRS, crack, Blocks.MOSSY_COBBLESTONE_STAIRS));
+        decay.addAll(getSameState(Blocks.MOSSY_STONE_BRICK_WALL, crack, Blocks.MOSSY_COBBLESTONE_WALL));
+        return decay;
+    }
+
+    static {
+
         ImmutableList<StructureProcessor> mildDecay = ImmutableList.of(/* new RuleStructureProcessor(getMossify(0.2F)) */);
 
         StructurePoolBasedGenerator.REGISTRY.add(
                 new StructurePool(
-                        new Identifier("neutronia", "ritual_sites"),
+                        new Identifier(Neutronia.MOD_ID, "ritual_sites"),
                         new Identifier("empty"),
                         ImmutableList.of(
                                 Pair.of(
@@ -111,8 +152,8 @@ public class RitualSiteGenerator {
         );
         StructurePoolBasedGenerator.REGISTRY.add(
                 new StructurePool(
-                        new Identifier("neutronia", "ritual_sites/ritual_ground/paths"),
-                        new Identifier("neutronia", "ritual_sites/ritual_ground/terminators"),
+                        new Identifier(Neutronia.MOD_ID, "ritual_sites/ritual_ground/paths"),
+                        new Identifier(Neutronia.MOD_ID, "ritual_sites/ritual_ground/terminators"),
                         ImmutableList.of(
                                 Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/straight", mildDecay), 3),
                                 Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/corner", mildDecay), 3),
@@ -124,7 +165,10 @@ public class RitualSiteGenerator {
                 )
         );
         StructurePoolBasedGenerator.REGISTRY.add(
-                new StructurePool(new Identifier("neutronia", "ritual_sites/ritual_ground/areas"), new Identifier("empty"), ImmutableList.of(
+                new StructurePool(
+                        new Identifier(Neutronia.MOD_ID, "ritual_sites/ritual_ground/areas"),
+                        new Identifier("empty"),
+                        ImmutableList.of(
                                 Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/areas/animal_pen", mildDecay), 1),
                                 Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/areas/lantern", mildDecay), 1),
                                 Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/areas/lectern", mildDecay), 1),
@@ -135,23 +179,30 @@ public class RitualSiteGenerator {
         );
         StructurePoolBasedGenerator.REGISTRY.add(
                 new StructurePool(
-                        new Identifier("neutronia", "ritual_sites/ritual_ground/terminators"),
+                        new Identifier(Neutronia.MOD_ID, "ritual_sites/ritual_ground/terminators"),
                         new Identifier("empty"),
                         ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:ritual_sites/ritual_ground/paths/end", mildDecay), 1)),
                         Projection.TERRAIN_MATCHING
                 )
         );
-	}
-	
-	public static class Piece extends PoolStructurePiece {
-		Piece(StructureManager manager, StructurePoolElement element, BlockPos blockPos, int delta, Rotation rot, MutableIntBoundingBox mutableIntBoundingBox) {
-			super(SmallStructuresRegistry.RITUAL_SITE_PIECE_TYPE, manager, element, blockPos, delta, rot, mutableIntBoundingBox);
-		}
-		
-		public Piece(StructureManager manager, CompoundTag compound) {
-			super(manager, compound, SmallStructuresRegistry.RITUAL_SITE_PIECE_TYPE);
-		}
-	}
+    }
+
+    public static class Piece extends PoolStructurePiece {
+        public Piece(
+                StructureManager manager,
+                StructurePoolElement element,
+                BlockPos blockPos,
+                int delta,
+                Rotation rot,
+                MutableIntBoundingBox boundingBox
+        ) {
+            super(ExampleMod.RITUAL_SITE_PIECE_TYPE, manager, element, blockPos, delta - 2, rot, boundingBox);
+        }
+
+        public Piece(StructureManager manager, CompoundTag compound) {
+            super(manager, compound, ExampleMod.RITUAL_SITE_PIECE_TYPE);
+        }
+    }
 
     public static class TranslateStructureProcessor extends StructureProcessor {
 

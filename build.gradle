@@ -27,11 +27,10 @@ dependencies {
     modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modCompile "mcp.mobius.waila:Hwyla:${project.full_mc_version}-${project.newest_version}"
-    modCompile 'roughly-enough-items:RoughlyEnoughItems:2.4.1.65'
-	modCompile "cloth:Cloth:0.1.1.6"
+	modCompile "cloth:Cloth:0.1.${project.newest_version}"
     modCompile "io.github.prospector.modmenu:ModMenu:1.${project.newest_version}"
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
-    modCompile "com.jamieswhiteshirt:developer-mode:1.0.5"
+    modCompile "com.jamieswhiteshirt:developer-mode:1.0.${project.newest_version}"
     
     modCompile "net.fabricmc:fabric:${project.fabric_version}"
 }
