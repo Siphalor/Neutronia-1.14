@@ -4,7 +4,8 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "item.MixinBookOnLectern",
-    "world.VillageGeneratorMixin"
+    "world.VillageGeneratorMixin",
+    "commands.LocateCommandMixin"
   ],
   "injectors": {
     "defaultRequire": 1

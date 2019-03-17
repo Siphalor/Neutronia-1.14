@@ -23,7 +23,7 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder stair() {
-        RegistryUtils.register(new NeutroniaStairBlock(block.getDefaultState()), name + "_stair", ItemGroup.BUILDING_BLOCKS);
+        RegistryUtils.register(new NeutroniaStairBlock(block.getDefaultState()), name + "_stairs", ItemGroup.BUILDING_BLOCKS);
         return this;
     }
 

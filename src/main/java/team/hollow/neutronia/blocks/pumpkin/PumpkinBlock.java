@@ -1,10 +1,7 @@
 package team.hollow.neutronia.blocks.pumpkin;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.HorizontalFacingBlock;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -37,7 +34,7 @@ public class PumpkinBlock extends BaseModBlock implements ICarvable {
     }
 
     public PumpkinBlock() {
-        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD), new Identifier("minecraft", "carved_pumpkin"));
+        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD), new Identifier("neutronia", "carved_pumpkin"));
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
         CarvedBlockHelper.initAlt(this);
     }

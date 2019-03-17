@@ -1,9 +1,12 @@
 package team.hollow.neutronia;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.fabricmc.fabric.api.registry.CommandRegistry;
 import net.fabricmc.fabric.impl.registry.CompostingChanceRegistryImpl;
+import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
+import net.minecraft.util.ActionResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.hollow.neutronia.commands.Locate2Command;
@@ -31,6 +34,16 @@ public class Neutronia implements ModInitializer {
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
+
+        UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+            if(world.getBlockState(hitResult.getBlockPos()).getBlock() == Blocks.PUMPKIN) {
+                if(player.getStackInHand(hand).getItem() == Items.SHEARS) {
+                    world.setBlockState(hitResult.getBlockPos(), NBlocks.PUMPKIN.getDefaultState());
+                    return ActionResult.SUCCESS;
+                }
+            }
+            return ActionResult.PASS;
+        });
 
         System.out.println("+----------+ Mod Initialized");
     }

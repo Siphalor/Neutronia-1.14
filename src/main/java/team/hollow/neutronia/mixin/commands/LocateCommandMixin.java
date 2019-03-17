@@ -1,0 +1,66 @@
+package team.hollow.neutronia.mixin.commands;
+
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.builder.LiteralArgumentBuilder;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
+import com.mojang.brigadier.tree.LiteralCommandNode;
+import net.minecraft.server.command.LocateCommand;
+import net.minecraft.server.command.ServerCommandManager;
+import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.TextComponent;
+import net.minecraft.text.TextFormatter;
+import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.text.event.ClickEvent;
+import net.minecraft.text.event.HoverEvent;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
+import org.spongepowered.asm.mixin.Final;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Redirect;
+
+@Mixin(LocateCommand.class)
+public class LocateCommandMixin {
+
+    @Final
+    @Shadow
+    private static final SimpleCommandExceptionType FAILED_EXCEPTION = new SimpleCommandExceptionType(new TranslatableTextComponent("commands.locate.failed"));
+
+    @Redirect(method = "register(Lcom/mojang/brigadier/CommandDispatcher;)V", at = @At(value = "INVOKE", target = "Lcom/mojang/brigadier/CommandDispatcher;register(Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;)Lcom/mojang/brigadier/tree/LiteralCommandNode;"))
+    private static LiteralCommandNode register(CommandDispatcher dispatcher, final LiteralArgumentBuilder command) {
+        command.then(ServerCommandManager.literal("Pillager_Mansion").executes((commandContext_1) ->
+                method_13457(commandContext_1.getSource(), "neutronia:pillager_mansion"))
+        ).then(ServerCommandManager.literal("Ritual_Site").executes((commandContext_1) ->
+                method_13457(commandContext_1.getSource(), "neutronia:ritual_site"))
+        );
+        final LiteralCommandNode build = command.build();
+        dispatcher.getRoot().addChild(build);
+        return build;
+    }
+
+    @Shadow
+    private static int method_13457(ServerCommandSource var0, String var1) throws CommandSyntaxException {
+        BlockPos var2 = new BlockPos(var0.getPosition());
+        BlockPos var3 = var0.getWorld().locateStructure(var1, var2, 100, false);
+        if (var3 == null) {
+            throw FAILED_EXCEPTION.create();
+        } else {
+            int var4 = MathHelper.floor(method_13439(var2.getX(), var2.getZ(), var3.getX(), var3.getZ()));
+            TextComponent var5 = TextFormatter.bracketed(new TranslatableTextComponent("chat.coordinates", var3.getX(), "~", var3.getZ())).modifyStyle((var1x) ->
+                    var1x.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tp @s " + var3.getX() + " ~ " + var3.getZ()))
+                            .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableTextComponent("chat.coordinates.tooltip"))));
+            var0.sendFeedback(new TranslatableTextComponent("commands.locate.success", var1, var5, var4), false);
+            return var4;
+        }
+    }
+
+    @Shadow
+    private static float method_13439(int var0, int var1, int var2, int var3) {
+        int var4 = var2 - var0;
+        int var5 = var3 - var1;
+        return MathHelper.sqrt((float) (var4 * var4 + var5 * var5));
+    }
+
+}
