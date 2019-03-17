@@ -9,7 +9,6 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.chunk.ChunkPos;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.feature.AbstractTempleFeature;
 import net.minecraft.world.gen.feature.StructureFeature;
 import team.hollow.neutronia.world.gen.RitualSiteGenerator;
 import team.hollow.test.ExampleMod;
@@ -17,7 +16,7 @@ import team.hollow.test.ExampleMod;
 import java.util.Random;
 import java.util.function.Function;
 
-public class RitualSiteFeature extends AbstractTempleFeature<RitualSiteFeatureConfig> {
+public class RitualSiteFeature extends StructureFeature<RitualSiteFeatureConfig> {
 	
 	public RitualSiteFeature(Function<Dynamic<?>, ? extends RitualSiteFeatureConfig> fn) {
 		super(fn);
@@ -78,11 +77,6 @@ public class RitualSiteFeature extends AbstractTempleFeature<RitualSiteFeatureCo
 			this.setBoundingBoxFromChildren();
 		}
 		
-	}
-
-	@Override
-	protected int getSeedModifier() {
-		return 0;
 	}
 	
 }

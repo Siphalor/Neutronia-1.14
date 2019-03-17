@@ -27,18 +27,22 @@ public class PillagerMansionFeature extends AbstractTempleFeature<PillagerMansio
         super(PillagerMansionFeatureConfig::deserialize);
     }
 
+    @Override
     public String getName() {
         return "neutronia:pillager_mansion";
     }
 
+    @Override
     public int getRadius() {
         return 3;
     }
 
+    @Override
     public List<Biome.SpawnEntry> getMonsterSpawns() {
         return MONSTER_SPAWN;
     }
 
+    @Override
     public boolean shouldStartAt(ChunkGenerator<?> chunkGenerator_1, Random random_1, int int_1, int int_2) {
         ChunkPos chunkPos_1 = this.getStart(chunkGenerator_1, random_1, int_1, int_2, 0, 0);
         if (int_1 == chunkPos_1.x && int_2 == chunkPos_1.z) {
@@ -57,10 +61,12 @@ public class PillagerMansionFeature extends AbstractTempleFeature<PillagerMansio
         }
     }
 
+    @Override
     public StructureFeature.StructureStartFactory getStructureStartFactory() {
         return Start::new;
     }
 
+    @Override
     protected int getSeedModifier() {
         return 165745296;
     }

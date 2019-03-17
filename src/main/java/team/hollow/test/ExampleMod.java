@@ -16,15 +16,20 @@ import team.hollow.neutronia.world.gen.features.*;
 
 public class ExampleMod implements ModInitializer {
 
-    public static final StructurePieceType PILLAGER_MANSION_PIECE = Registry.register(
-            Registry.STRUCTURE_PIECE,
-            new Identifier(Neutronia.MOD_ID, "pillager_mansion"),
-            PillagerMansionGenerator.Piece::new
-    );
     public static final StructureFeature<PillagerMansionFeatureConfig> PILLAGER_MANSION_FEATURE = Registry.register(
             Registry.FEATURE,
             new Identifier(Neutronia.MOD_ID, "pillager_mansion"),
             new PillagerMansionFeature()
+    );
+    public static final StructureFeature<?> PILLAGER_MANSION_STRUCTURE = Registry.register(
+            Registry.STRUCTURE_FEATURE,
+            new Identifier(Neutronia.MOD_ID, "pillager_mansion"),
+            PILLAGER_MANSION_FEATURE
+    );
+    public static final StructurePieceType PILLAGER_MANSION_PIECE = Registry.register(
+            Registry.STRUCTURE_PIECE,
+            new Identifier(Neutronia.MOD_ID, "pillager_mansion"),
+            PillagerMansionGenerator.Piece::new
     );
 
     public static final StructureFeature<RitualSiteFeatureConfig> RITUAL_SITE_FEATURE = Registry.register(
@@ -32,13 +37,11 @@ public class ExampleMod implements ModInitializer {
             new Identifier(Neutronia.MOD_ID, "ritual_site"),
             new RitualSiteFeature(RitualSiteFeatureConfig::deserialize)
     );
-
     public static final StructureFeature<?> RITUAL_SITE_STRUCTURE = Registry.register(
             Registry.STRUCTURE_FEATURE,
             new Identifier(Neutronia.MOD_ID, "ritual_site"),
             RITUAL_SITE_FEATURE
     );
-
     public static final StructurePieceType RITUAL_SITE_PIECE_TYPE = Registry.register(
             Registry.STRUCTURE_PIECE,
             new Identifier(Neutronia.MOD_ID, "ritual_site"),
@@ -47,24 +50,22 @@ public class ExampleMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        Registry.register(Registry.STRUCTURE_FEATURE, new Identifier(Neutronia.MOD_ID, "pillager_mansion"), PILLAGER_MANSION_FEATURE);
-
         Feature.STRUCTURES.put("pillager_mansion", PILLAGER_MANSION_FEATURE);
-        for (Biome biome : Registry.BIOME) {
-            if (biome.getCategory() != Biome.Category.OCEAN && biome.getCategory() != Biome.Category.RIVER) {
-				biome.addStructureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1));
-				biome.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1),
+        for (Biome b : Registry.BIOME) {
+            if (b.getCategory() != Biome.Category.OCEAN && b.getCategory() != Biome.Category.RIVER) {
+				b.addStructureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1));
+				b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1),
                         Decorator.NOPE, new NopeDecoratorConfig()));
             }
         }
 
-        /*Feature.STRUCTURES.put("ritual_site", RITUAL_SITE_FEATURE);
+        Feature.STRUCTURES.put("ritual_site", RITUAL_SITE_FEATURE);
         for(Biome b: Registry.BIOME) {
             if(b.getCategory() == Biome.Category.TAIGA) {
                 b.addStructureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1));
                 b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1),
                         Decorator.NOPE, new NopeDecoratorConfig()));
             }
-        }*/
+        }
     }
 }
