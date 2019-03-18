@@ -29,6 +29,9 @@ public class ItemDynamicRendererMixin {
     private final StoneChestBlockEntity renderStoneBrickChest = new StoneChestBlockEntity(CustomChestTypes.STONE_BRICK);
     private final StoneChestBlockEntity renderCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.COBBLESTONE);
     private final StoneChestBlockEntity renderMossyCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.MOSSY_COBBLESTONE);
+    private final StoneChestBlockEntity renderMangroveChest = new StoneChestBlockEntity(CustomChestTypes.MANGROVE);
+    private final StoneChestBlockEntity renderRedMangroveChest = new StoneChestBlockEntity(CustomChestTypes.RED_MANGROVE);
+    private final StoneChestBlockEntity renderBaobabChest = new StoneChestBlockEntity(CustomChestTypes.BAOBAB);
 
     @Inject(at = @At("TAIL"), method = "render")
     private void method_3166(ItemStack stack, CallbackInfo info) {
@@ -59,6 +62,12 @@ public class ItemDynamicRendererMixin {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderCobblestoneChest);
             } else if (block == NBlocks.WOODEN_CHESTS[11]) {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderMossyCobblestoneChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[12]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderMangroveChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[13]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderRedMangroveChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[14]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBaobabChest);
             }
         }
     }

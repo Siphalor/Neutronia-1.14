@@ -448,15 +448,15 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("dried_mud_bricks", DRIED_MUD_BRICKS);
         BlockRegisteringUtils.addWalls("dried_mud_bricks", DRIED_MUD_BRICKS);
 
-        PACKED_ICE_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "packed_ice_bricks");
-        BlockRegisteringUtils.addSlabAndStair("packed_ice_bricks", PACKED_ICE_BRICKS);
-        PACKED_ICE_PILLAR = new NeutroniaPillarBlock(Material.PACKED_ICE, "packed_ice_pillar");
+        PACKED_ICE_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_bricks");
+//        BlockRegisteringUtils.addSlabAndStair("ice_bricks", PACKED_ICE_BRICKS);
+        PACKED_ICE_PILLAR = new NeutroniaPillarBlock(Material.PACKED_ICE, "ice_pillar");
+        ICE_TILES = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_tiles");
+//        BlockRegisteringUtils.addSlabAndStair("ice_tiles", ICE_TILES);
+        RegistryUtils.register(new RodBaseBlock(true), "ice_rod");
         SMALL_SNOW_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "small_snow_bricks");
         SNOW_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "snow_bricks");
-        BlockRegisteringUtils.addSlabAndStair("snow_bricks", SNOW_BRICKS);
-        ICE_TILES = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_tiles");
-        BlockRegisteringUtils.addSlabAndStair("ice_tiles", ICE_TILES);
-        RegistryUtils.register(new RodBaseBlock(true), "ice_rod");
+//        BlockRegisteringUtils.addSlabAndStair("snow_bricks", SNOW_BRICKS);
 
         SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandstone_pillar");
         RED_SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "red_sandstone_pillar");

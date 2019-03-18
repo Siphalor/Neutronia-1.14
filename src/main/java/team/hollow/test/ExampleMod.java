@@ -58,12 +58,11 @@ public class ExampleMod implements ModInitializer {
                         Decorator.NOPE, new NopeDecoratorConfig()));
             }
         }
-
         Feature.STRUCTURES.put("neutronia:ritual_site", RITUAL_SITE_FEATURE);
         for(Biome b: Registry.BIOME) {
             if(b.getCategory() == Biome.Category.TAIGA) {
-                b.addStructureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1));
-                b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1),
+                b.addStructureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(100));
+                b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(100),
                         Decorator.NOPE, new NopeDecoratorConfig()));
             }
         }

@@ -17,8 +17,8 @@ public class ClientInit implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        EntityRendererRegistry.INSTANCE.register(VillagerPlusEntity.class, (entityRenderDispatcher, context) ->
-                new VillagerEntityRenderer(entityRenderDispatcher, context.getResourceManager()));
+        EntityRendererRegistry.INSTANCE.register(VillagerPlusEntity.class, (manager, context) ->
+                new VillagerEntityRenderer(manager, context.getResourceManager()));
         BlockEntityRendererRegistry.INSTANCE.register(StoneChestBlockEntity.class, new StoneChestBlockEntityRenderer());
         BlockEntityRendererRegistry.INSTANCE.register(SignBlockEntity.class, new SignBlockEntityRenderer());
 
