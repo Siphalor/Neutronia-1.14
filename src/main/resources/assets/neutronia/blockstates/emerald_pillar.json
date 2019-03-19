@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/emerald_pillar" }
+    "axis=y":  { "model": "neutronia:block/emerald_pillar" },
+    "axis=z":   { "model": "neutronia:block/emerald_pillar", "x": 90 },
+    "axis=x":   { "model": "neutronia:block/emerald_pillar", "x": 90, "y": 90 }
   }
 }

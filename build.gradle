@@ -31,6 +31,7 @@ dependencies {
     modCompile "io.github.prospector.modmenu:ModMenu:1.${project.newest_version}"
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
     modCompile "com.jamieswhiteshirt:developer-mode:1.0.${project.newest_version}"
+    modCompile "com.github.Ladysnake:Satin:f75e6ac7cd"
     
     modCompile "net.fabricmc:fabric:${project.fabric_version}"
 }

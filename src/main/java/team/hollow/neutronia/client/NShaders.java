@@ -7,6 +7,6 @@ import net.minecraft.util.Identifier;
 public class NShaders {
 
     public static final ManagedShaderEffect GREYSCALE_SHADER = ShaderEffectManager.getInstance()
-            .manage(new Identifier("minecraft", "shaders/post/green.json"));
+            .manage(new Identifier("minecraft", "shaders/post/creeper.json"));
 
 }
