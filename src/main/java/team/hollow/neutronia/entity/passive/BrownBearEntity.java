@@ -3,7 +3,6 @@ package team.hollow.neutronia.entity.passive;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
-import net.minecraft.class_1399;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.LivingEntity;
@@ -14,7 +13,7 @@ import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
-import net.minecraft.entity.mob.MobEntityWithAi;
+import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.passive.AnimalEntity;
 import net.minecraft.entity.passive.FoxEntity;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -34,7 +33,6 @@ import team.hollow.neutronia.init.NEntityTypes;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class BrownBearEntity extends AnimalEntity {
     private static final TrackedData<Boolean> field_6840;
@@ -262,7 +260,7 @@ public class BrownBearEntity extends AnimalEntity {
         }
     }
 
-    class class_1459 extends class_1399 {
+    class class_1459 extends AvoidGoal {
         public class_1459() {
             super(BrownBearEntity.this);
         }
@@ -276,7 +274,7 @@ public class BrownBearEntity extends AnimalEntity {
 
         }
 
-        protected void method_6319(MobEntityWithAi mobEntityWithAi_1, LivingEntity livingEntity_1) {
+        protected void method_6319(MobEntity mobEntityWithAi_1, LivingEntity livingEntity_1) {
             if (mobEntityWithAi_1 instanceof BrownBearEntity && !mobEntityWithAi_1.isChild()) {
                 super.method_6319(mobEntityWithAi_1, livingEntity_1);
             }

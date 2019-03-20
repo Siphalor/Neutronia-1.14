@@ -9,7 +9,7 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.pathing.EntityMobNavigation;
+import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
 import net.minecraft.entity.data.TrackedData;
@@ -58,7 +58,7 @@ public class SocialVillager extends PassiveEntity {
 
     public SocialVillager(EntityType<? extends net.minecraft.entity.passive.PassiveEntity> type, World world) {
         super(type, world);
-        ((EntityMobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
+        ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
         Random r = new Random();
         if (hairColor == null || hairColor.equals("")) {
@@ -88,7 +88,6 @@ public class SocialVillager extends PassiveEntity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        ((EntityMobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
     }
 

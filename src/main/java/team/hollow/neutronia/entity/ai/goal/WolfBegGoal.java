@@ -1,6 +1,6 @@
 package team.hollow.neutronia.entity.ai.goal;
 
-import net.minecraft.class_4051;
+import net.minecraft.entity.ai.TargetPredicate;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -15,7 +15,7 @@ public class WolfBegGoal extends Goal {
     private final ArcticWolfEntity owner;
     private final World world;
     private final float chance;
-    private final class_4051 field_18085;
+    private final TargetPredicate field_18085;
     private PlayerEntity begFrom;
     private int timer;
 
@@ -23,8 +23,8 @@ public class WolfBegGoal extends Goal {
         this.owner = wolfEntity_1;
         this.world = wolfEntity_1.world;
         this.chance = float_1;
-        this.field_18085 = (new class_4051()).method_18418((double) float_1).method_18417().method_18421().method_18423();
-        this.setControlBits(EnumSet.of(Goal.class_4134.LOOK));
+        this.field_18085 = (new TargetPredicate()).setBaseMaxDistance((double) float_1).includeInvulnerable().includeTeammates().ignoreEntityTargetRules();
+        this.setControlBits(EnumSet.of(Goal.ControlBit.LOOK));
     }
 
     public boolean canStart() {

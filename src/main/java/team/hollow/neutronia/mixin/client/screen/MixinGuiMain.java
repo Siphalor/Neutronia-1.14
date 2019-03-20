@@ -1,10 +1,8 @@
 package team.hollow.neutronia.mixin.client.screen;
 
-import ladysnake.satin.api.managed.ShaderEffectManager;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.MainMenuScreen;
 import net.minecraft.client.gui.Screen;
-import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

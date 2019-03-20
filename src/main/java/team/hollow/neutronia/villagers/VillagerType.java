@@ -12,7 +12,7 @@ public interface VillagerType {
             }
         });
         for (Biome biome : biomes) {
-            net.minecraft.village.VillagerType.biomeToType.put(biome, villagerType);
+            net.minecraft.village.VillagerType.BIOME_TO_TYPE.put(biome, villagerType);
         }
         return villagerType;
     }

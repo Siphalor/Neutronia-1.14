@@ -59,9 +59,9 @@ public class ArcticWolfEntity extends TameableEntity {
     }
 
     protected void initEntityAI() {
-        this.field_6321 = new class_1386(this);
+        this.sitGoal = new SitGoal(this);
         this.goalSelector.add(1, new SwimGoal(this));
-        this.goalSelector.add(2, this.field_6321);
+        this.goalSelector.add(2, this.sitGoal);
         this.goalSelector.add(3, new ArcticWolfEntity.AIAvoidEntity<>(this, LlamaEntity.class, 24.0F, 1.5D, 1.5D));
         this.goalSelector.add(4, new PounceAtTargetGoal(this, 0.4F));
         this.goalSelector.add(5, new MeleeAttackGoal(this, 1.0D, true));
@@ -71,11 +71,11 @@ public class ArcticWolfEntity extends TameableEntity {
         this.goalSelector.add(9, new WolfBegGoal(this, 8.0F));
         this.goalSelector.add(10, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(10, new LookAroundGoal(this));
-        this.targetSelector.add(1, new class_1403(this));
+        this.targetSelector.add(1, new TrackAttackerGoal(this));
         this.targetSelector.add(2, new AttackWithOwnerGoal(this));
-        this.targetSelector.add(3, (new class_1399(this)).method_6318());
-        this.targetSelector.add(4, new class_1404<>(this, AnimalEntity.class, false, field_18004));
-        this.targetSelector.add(4, new class_1404<>(this, TurtleEntity.class, false, TurtleEntity.BABY_TURTLE_ON_LAND_FILTER));
+        this.targetSelector.add(3, (new AvoidGoal(this)).method_6318());
+        this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, AnimalEntity.class, false, field_18004));
+        this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, TurtleEntity.class, false, TurtleEntity.BABY_TURTLE_ON_LAND_FILTER));
         this.targetSelector.add(5, new FollowTargetGoal<>(this, AbstractSkeletonEntity.class, false));
     }
 
@@ -267,8 +267,8 @@ public class ArcticWolfEntity extends TameableEntity {
         } else {
             Entity entity = source.getAttacker();
 
-            if (this.field_6321 != null) {
-                this.field_6321.method_6311(false);
+            if (this.sitGoal != null) {
+                this.sitGoal.setEnabledWithOwner(false);
             }
 
             if (entity != null && !(entity instanceof PlayerEntity) && !(entity instanceof ArrowEntity)) {
@@ -307,13 +307,13 @@ public class ArcticWolfEntity extends TameableEntity {
 
         if (this.isTamed()) {
             if (!itemstack.isEmpty()) {
-                if (item_1.method_19263()) {
-                    if (Objects.requireNonNull(item_1.method_19264()).method_19232() && this.dataTracker.get(HEALTH) < 20.0F) {
+                if (item_1.isFood()) {
+                    if (Objects.requireNonNull(item_1.getFoodSetting()).isWolfFood() && this.dataTracker.get(HEALTH) < 20.0F) {
                         if (!player.abilities.creativeMode) {
                             itemstack.subtractAmount(1);
                         }
 
-                        this.heal((float) Objects.requireNonNull(item_1.method_19264()).method_19230());
+                        this.heal((float) Objects.requireNonNull(item_1.getFoodSetting()).getHunger());
                         return true;
                     }
                 } else if (itemstack.getItem() instanceof DyeItem) {
@@ -330,7 +330,7 @@ public class ArcticWolfEntity extends TameableEntity {
             }
 
             if (this.isOwner(player) && !this.world.isClient && !this.isBreedingItem(itemstack)) {
-                this.field_6321.method_6311(!this.isSitting());
+                this.sitGoal.setEnabledWithOwner(!this.isSitting());
                 this.field_6282 = false;
                 this.navigation.stop();
                 this.setTarget(null);
@@ -345,7 +345,7 @@ public class ArcticWolfEntity extends TameableEntity {
                     this.method_6170(player);
                     this.navigation.stop();
                     this.setTarget(null);
-                    this.field_6321.method_6311(true);
+                    this.sitGoal.setEnabledWithOwner(true);
                     this.setHealth(20.0F);
                     this.method_6180(true);
                     this.world.summonParticle(this, (byte) 7);
@@ -388,7 +388,7 @@ public class ArcticWolfEntity extends TameableEntity {
      */
     public boolean isBreedingItem(ItemStack stack) {
         Item item_1 = stack.getItem();
-        return item_1.method_19263() && Objects.requireNonNull(item_1.method_19264()).method_19232();
+        return item_1.isFood() && Objects.requireNonNull(item_1.getFoodSetting()).isWolfFood();
     }
 
     /**

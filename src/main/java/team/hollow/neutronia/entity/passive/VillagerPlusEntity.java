@@ -6,7 +6,7 @@ import net.minecraft.class_1394;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.ai.goal.SwimGoal;
-import net.minecraft.entity.ai.pathing.EntityMobNavigation;
+import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -24,7 +24,8 @@ public class VillagerPlusEntity extends PassiveEntity {
 
     public VillagerPlusEntity(String villagerName, World world_1) {
         super(NEntityTypes.VILLAGER_PLUS, world_1);
-        this.setCanPickUpLoot(true);((EntityMobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
+        this.setCanPickUpLoot(true);
+        ((MobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
     }
 

@@ -5,7 +5,7 @@ import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
-import net.minecraft.sortme.OptionMainHand;
+import net.minecraft.util.AbsoluteHand;
 import net.minecraft.world.World;
 
 public class AdventurerVillagerEntity extends LivingEntity {
@@ -30,7 +30,7 @@ public class AdventurerVillagerEntity extends LivingEntity {
     }
 
     @Override
-    public OptionMainHand getMainHand() {
+    public AbsoluteHand getMainHand() {
         return null;
     }
 
