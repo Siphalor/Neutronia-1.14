@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "upgrade_aquatic:block/dead_staghorn_coral_block"
+        "all": "neutronia:block/dead_staghorn_coral_block"
     }
 }
