@@ -6,13 +6,18 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.SpawnEggItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.entity.*;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.BrownBearEntity;
 import team.hollow.neutronia.entity.passive.EntityPenguin;
 import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
+import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 public class NEntityTypes {
 
@@ -52,8 +57,10 @@ public class NEntityTypes {
         EntityTrackingRegistry.INSTANCE.register(type, trackingDistance, updateIntervalTicks, alwaysUpdateVelocity);
     }
 
-    private static <X extends Entity> EntityType<X> register(String string_1, FabricEntityTypeBuilder<? extends Entity> entityType$Builder_1) {
-        return (EntityType<X>) Registry.register(Registry.ENTITY_TYPE, new Identifier("neutronia", string_1), entityType$Builder_1.disableSaving().build());
+    private static <X extends Entity> EntityType register(String string_1, FabricEntityTypeBuilder<? extends Entity> entityType$Builder_1, int primaryEggColor, int secondaryEggColor) {
+        EntityType<X> entityType = (EntityType<X>) Registry.register(Registry.ENTITY_TYPE, new Identifier(Neutronia.MOD_ID, string_1), entityType$Builder_1.disableSaving().build());
+        RegistryUtils.registerItem(new SpawnEggItem(entityType, primaryEggColor, secondaryEggColor, new Item.Settings().itemGroup(ItemGroup.MISC)), String.format("%s_spawn_egg", string_1));
+        return entityType;
     }
 
 }
