@@ -24,7 +24,7 @@ public class WolfBegGoal extends Goal {
         this.world = wolfEntity_1.world;
         this.chance = float_1;
         this.field_18085 = (new TargetPredicate()).setBaseMaxDistance((double) float_1).includeInvulnerable().includeTeammates().ignoreEntityTargetRules();
-        this.setControlBits(EnumSet.of(Goal.ControlBit.LOOK));
+        this.setControlBits(EnumSet.of(Goal.class_4134.LOOK));
     }
 
     public boolean canStart() {

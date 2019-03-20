@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.client.entity.render;
 
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -21,3 +22,4 @@ public class RenderBloodPhantom extends MobEntityRenderer<EntityBloodPhantom, Ph
     }
 
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.client.entity.render;
 
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -20,4 +21,4 @@ public class RenderShadowPhantom extends MobEntityRenderer<EntityShadowPhantom, 
         return SCORP_TEXTURE;
     }
 
-}
+}*/

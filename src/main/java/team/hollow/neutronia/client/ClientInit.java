@@ -30,12 +30,12 @@ public class ClientInit implements ClientModInitializer {
                 new SocialVillagerRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(EntityOlDiggy.class, (manager, context) ->
                 new RenderOlDiggy(manager));
-        EntityRendererRegistry.INSTANCE.register(EntityShadowPhantom.class, (manager, context) ->
+        /*EntityRendererRegistry.INSTANCE.register(EntityShadowPhantom.class, (manager, context) ->
                 new RenderShadowPhantom(manager));
         EntityRendererRegistry.INSTANCE.register(EntityEnderPhantom.class, (manager, context) ->
                 new RenderEnderPhantom(manager));
         EntityRendererRegistry.INSTANCE.register(EntityBloodPhantom.class, (manager, context) ->
-                new RenderBloodPhantom(manager));
+                new RenderBloodPhantom(manager));*/
         EntityRendererRegistry.INSTANCE.register(ArcticWolfEntity.class, (manager, context) ->
                 new ArcticWolfEntityRenderer(manager));
     }

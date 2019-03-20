@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity;
 
 import net.minecraft.entity.mob.PhantomEntity;
@@ -11,4 +12,4 @@ public class EntityEnderPhantom extends PhantomEntity {
     }
 
 
-}
+}*/

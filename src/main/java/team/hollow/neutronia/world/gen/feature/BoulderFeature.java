@@ -41,7 +41,7 @@ public abstract class BoulderFeature extends MidnightAbstractFeature<DefaultFeat
         BlockPos maxPos = origin.add(radiusCeil, radiusCeil, radiusCeil);
         double dist;
         for (BlockPos pos : BlockPos.iterateBoxPositions(minPos, maxPos)) {
-            if ((dist = pos.distanceTo(origin)) <= radiusSquare) {
+            if ((dist = pos.squaredDistanceTo(origin)) <= radiusSquare) {
                 setBlockState(world, pos, getStateForPlacement(world, origin, pos, dist, radiusSquare, random));
             }
         }
