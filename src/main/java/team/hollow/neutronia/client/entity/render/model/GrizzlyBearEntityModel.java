@@ -5,11 +5,11 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.QuadrupedEntityModel;
-import team.hollow.neutronia.entity.passive.BrownBearEntity;
+import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
 
 @Environment(EnvType.CLIENT)
-public class BrownBearEntityModel<T extends BrownBearEntity> extends QuadrupedEntityModel<T> {
-    public BrownBearEntityModel() {
+public class GrizzlyBearEntityModel<T extends GrizzlyBearEntity> extends QuadrupedEntityModel<T> {
+    public GrizzlyBearEntityModel() {
         super(12, 0.0F);
         this.textureWidth = 128;
         this.textureHeight = 64;
@@ -50,10 +50,9 @@ public class BrownBearEntityModel<T extends BrownBearEntity> extends QuadrupedEn
         this.field_3537 += 2.0F;
     }
 
-    public void method_17113(T polarBearEntity_1, float float_1, float float_2, float float_3, float float_4, float float_5, float float_6) {
-        this.method_17114(polarBearEntity_1, float_1, float_2, float_3, float_4, float_5, float_6);
+    public void render(T polarBearEntity_1, float float_1, float float_2, float float_3, float float_4, float float_5, float float_6) {
+        this.setAngles(polarBearEntity_1, float_1, float_2, float_3, float_4, float_5, float_6);
         if (this.isChild) {
-            float float_7 = 2.0F;
             this.field_3540 = 16.0F;
             this.field_3537 = 4.0F;
             GlStateManager.pushMatrix();
@@ -81,7 +80,7 @@ public class BrownBearEntityModel<T extends BrownBearEntity> extends QuadrupedEn
 
     }
 
-    public void method_17114(T polarBearEntity_1, float float_1, float float_2, float float_3, float float_4, float float_5, float float_6) {
+    public void setAngles(T polarBearEntity_1, float float_1, float float_2, float float_3, float float_4, float float_5, float float_6) {
         super.setAngles(polarBearEntity_1, float_1, float_2, float_3, float_4, float_5, float_6);
         float float_7 = float_3 - (float) polarBearEntity_1.age;
         float float_8 = polarBearEntity_1.method_6601(float_7);
@@ -103,11 +102,4 @@ public class BrownBearEntityModel<T extends BrownBearEntity> extends QuadrupedEn
         var10000.pitch += float_8 * 3.1415927F * 0.15F;
     }
 
-    public void setAngles(T var1, float var2, float var3, float var4, float var5, float var6, float var7) {
-        this.method_17114(var1, var2, var3, var4, var5, var6, var7);
-    }
-
-    public void render(T var1, float var2, float var3, float var4, float var5, float var6, float var7) {
-        this.method_17113(var1, var2, var3, var4, var5, var6, var7);
-    }
 }

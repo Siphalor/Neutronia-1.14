@@ -1,4 +1,4 @@
-package team.hollow.neutronia.world.gen.features;
+package team.hollow.neutronia.world.gen.features.pillager_mansion;
 
 import com.google.common.collect.Lists;
 import net.minecraft.entity.EntityType;
@@ -34,7 +34,7 @@ public class PillagerMansionFeature extends AbstractTempleFeature<PillagerMansio
 
     @Override
     public int getRadius() {
-        return 3;
+        return 8;
     }
 
     @Override

@@ -2,13 +2,13 @@ package team.hollow.neutronia.client.entity.render.model.model;
 
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.entity.Entity;
+import team.hollow.neutronia.entity.AxolotlEntity;
 
 /**
  * Axolotl - Undefined
  * Created using Tabula 7.0.0
  */
-public class ModelAxolotl extends EntityModel {
+public class ModelAxolotl<T extends AxolotlEntity> extends EntityModel<T> {
     public Cuboid Head;
     public Cuboid Fins;
     public Cuboid Body;
@@ -68,7 +68,7 @@ public class ModelAxolotl extends EntityModel {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    public void render(T entity, float f, float f1, float f2, float f3, float f4, float f5) {
         this.Head.render(f5);
         this.Tail1.render(f5);
         this.Fins.render(f5);

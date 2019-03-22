@@ -80,12 +80,12 @@ public class ArcticWolfEntity extends TameableEntity {
 
     protected void initAttributes() {
         super.initAttributes();
-        this.getAttributeContainer().get(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.30000001192092896D);
+        this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.30000001192092896D);
 
         if (this.isTamed()) {
-            this.getAttributeContainer().get(EntityAttributes.MAX_HEALTH).setBaseValue(20.0D);
+            this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(20.0D);
         } else {
-            this.getAttributeContainer().get(EntityAttributes.MAX_HEALTH).setBaseValue(8.0D);
+            this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(8.0D);
         }
 
         this.getAttributeContainer().register(EntityAttributes.ATTACK_DAMAGE).setBaseValue(2.0D);
@@ -279,7 +279,7 @@ public class ArcticWolfEntity extends TameableEntity {
     }
 
     public boolean attack(Entity entityIn) {
-        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeContainer().get(EntityAttributes.ATTACK_DAMAGE).getValue()));
+        boolean flag = entityIn.damage(DamageSource.mob(this), (float) ((int) this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).getValue()));
 
         if (flag) {
             this.dealDamage(this, entityIn);
@@ -292,12 +292,12 @@ public class ArcticWolfEntity extends TameableEntity {
         super.setTamed(tamed);
 
         if (tamed) {
-            this.getAttributeContainer().get(EntityAttributes.MAX_HEALTH).setBaseValue(20.0D);
+            this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(20.0D);
         } else {
-            this.getAttributeContainer().get(EntityAttributes.MAX_HEALTH).setBaseValue(8.0D);
+            this.getAttributeInstance(EntityAttributes.MAX_HEALTH).setBaseValue(8.0D);
         }
 
-        this.getAttributeContainer().get(EntityAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
+        this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE).setBaseValue(4.0D);
     }
 
     public boolean interactMob(PlayerEntity player, Hand hand) {

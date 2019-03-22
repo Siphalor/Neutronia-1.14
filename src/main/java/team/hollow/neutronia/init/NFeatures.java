@@ -4,8 +4,8 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
-import team.hollow.neutronia.world.gen.features.PillagerMansionFeature;
-import team.hollow.neutronia.world.gen.features.PillagerMansionFeatureConfig;
+import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeature;
+import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeatureConfig;
 
 public class NFeatures {
 

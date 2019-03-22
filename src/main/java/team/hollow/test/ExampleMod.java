@@ -13,6 +13,9 @@ import net.minecraft.world.gen.feature.StructureFeature;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.world.gen.RitualSiteGenerator;
 import team.hollow.neutronia.world.gen.features.*;
+import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeature;
+import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeatureConfig;
+import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionGenerator;
 
 public class ExampleMod implements ModInitializer {
 

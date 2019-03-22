@@ -31,26 +31,25 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import team.hollow.neutronia.init.NEntityTypes;
 
-import java.util.Iterator;
 import java.util.List;
 
-public class BrownBearEntity extends AnimalEntity {
+public class GrizzlyBearEntity extends AnimalEntity {
     private static final TrackedData<Boolean> field_6840;
 
     static {
-        field_6840 = DataTracker.registerData(BrownBearEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        field_6840 = DataTracker.registerData(GrizzlyBearEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
     private float field_6838;
     private float field_6837;
     private int field_6839;
 
-    public BrownBearEntity(World world_1) {
-        super(NEntityTypes.BROWN_BEAR, world_1);
+    public GrizzlyBearEntity(World world_1) {
+        super(NEntityTypes.GRIZZLY_BEAR, world_1);
     }
 
     public PassiveEntity createChild(PassiveEntity passiveEntity_1) {
-        return new BrownBearEntity(this.world);
+        return new GrizzlyBearEntity(this.world);
     }
 
     public boolean isBreedingItem(ItemStack itemStack_1) {
@@ -60,14 +59,14 @@ public class BrownBearEntity extends AnimalEntity {
     protected void initGoals() {
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new BrownBearEntity.class_1460());
-        this.goalSelector.add(1, new BrownBearEntity.class_1461());
+        this.goalSelector.add(1, new GrizzlyBearEntity.class_1460());
+        this.goalSelector.add(1, new GrizzlyBearEntity.class_1461());
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.add(5, new WanderAroundGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(7, new LookAroundGoal(this));
-        this.targetSelector.add(1, new BrownBearEntity.class_1459());
-        this.targetSelector.add(2, new BrownBearEntity.class_1457());
+        this.targetSelector.add(1, new GrizzlyBearEntity.class_1459());
+        this.targetSelector.add(2, new GrizzlyBearEntity.class_1457());
         this.targetSelector.add(3, new FollowTargetGoal<>(this, FoxEntity.class, 10, true, true, null));
     }
 
@@ -105,7 +104,7 @@ public class BrownBearEntity extends AnimalEntity {
         this.playSound(SoundEvents.ENTITY_POLAR_BEAR_STEP, 0.15F, 1.0F);
     }
 
-    protected void method_6602() {
+    private void method_6602() {
         if (this.field_6839 <= 0) {
             this.playSound(SoundEvents.ENTITY_POLAR_BEAR_WARNING, 1.0F, 1.0F);
             this.field_6839 = 40;
@@ -144,11 +143,11 @@ public class BrownBearEntity extends AnimalEntity {
         return boolean_1;
     }
 
-    public boolean method_6600() {
+    private boolean method_6600() {
         return this.dataTracker.get(field_6840);
     }
 
-    public void method_6603(boolean boolean_1) {
+    private void method_6603(boolean boolean_1) {
         this.dataTracker.set(field_6840, boolean_1);
     }
 
@@ -162,38 +161,33 @@ public class BrownBearEntity extends AnimalEntity {
     }
 
     public EntityData prepareEntityData(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
-        if (entityData_1 instanceof BrownBearEntity.class_1458) {
+        if (entityData_1 instanceof GrizzlyBearEntity.class_1458) {
             this.setBreedingAge(-24000);
         } else {
-            entityData_1 = new BrownBearEntity.class_1458();
+            entityData_1 = new GrizzlyBearEntity.class_1458();
         }
 
         return entityData_1;
     }
 
-    static class class_1458 implements EntityData {
+    private static class class_1458 implements EntityData {
         private class_1458() {
-        }
-
-        // $FF: synthetic method
-        class_1458(Object polarBearEntity$1_1) {
-            this();
         }
     }
 
     class class_1461 extends EscapeDangerGoal {
-        public class_1461() {
-            super(BrownBearEntity.this, 2.0D);
+        class_1461() {
+            super(GrizzlyBearEntity.this, 2.0D);
         }
 
         public boolean canStart() {
-            return (BrownBearEntity.this.isChild() || BrownBearEntity.this.isOnFire()) && super.canStart();
+            return (GrizzlyBearEntity.this.isChild() || GrizzlyBearEntity.this.isOnFire()) && super.canStart();
         }
     }
 
     class class_1460 extends MeleeAttackGoal {
-        public class_1460() {
-            super(BrownBearEntity.this, 1.25D, true);
+        class_1460() {
+            super(GrizzlyBearEntity.this, 1.25D, true);
         }
 
         protected void method_6288(LivingEntity livingEntity_1, double double_1) {
@@ -201,26 +195,26 @@ public class BrownBearEntity extends AnimalEntity {
             if (double_1 <= double_2 && this.field_6505 <= 0) {
                 this.field_6505 = 20;
                 this.entity.attack(livingEntity_1);
-                BrownBearEntity.this.method_6603(false);
+                GrizzlyBearEntity.this.method_6603(false);
             } else if (double_1 <= double_2 * 2.0D) {
                 if (this.field_6505 <= 0) {
-                    BrownBearEntity.this.method_6603(false);
+                    GrizzlyBearEntity.this.method_6603(false);
                     this.field_6505 = 20;
                 }
 
                 if (this.field_6505 <= 10) {
-                    BrownBearEntity.this.method_6603(true);
-                    BrownBearEntity.this.method_6602();
+                    GrizzlyBearEntity.this.method_6603(true);
+                    GrizzlyBearEntity.this.method_6602();
                 }
             } else {
                 this.field_6505 = 20;
-                BrownBearEntity.this.method_6603(false);
+                GrizzlyBearEntity.this.method_6603(false);
             }
 
         }
 
         public void onRemove() {
-            BrownBearEntity.this.method_6603(false);
+            GrizzlyBearEntity.this.method_6603(false);
             super.onRemove();
         }
 
@@ -230,27 +224,25 @@ public class BrownBearEntity extends AnimalEntity {
     }
 
     class class_1457 extends FollowTargetGoal<PlayerEntity> {
-        public class_1457() {
-            super(BrownBearEntity.this, PlayerEntity.class, 20, true, true, null);
+        class_1457() {
+            super(GrizzlyBearEntity.this, PlayerEntity.class, 20, true, true, null);
         }
 
         public boolean canStart() {
-            if (BrownBearEntity.this.isChild()) {
+            if (GrizzlyBearEntity.this.isChild()) {
                 return false;
             } else {
                 if (super.canStart()) {
-                    List<BrownBearEntity> list_1 = BrownBearEntity.this.world.method_18467(BrownBearEntity.class, BrownBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
-                    Iterator var2 = list_1.iterator();
+                    List<GrizzlyBearEntity> list_1 = GrizzlyBearEntity.this.world.method_18467(GrizzlyBearEntity.class, GrizzlyBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
 
-                    while (var2.hasNext()) {
-                        BrownBearEntity brownBearEntity_1 = (BrownBearEntity) var2.next();
-                        if (brownBearEntity_1.isChild()) {
+                    for (GrizzlyBearEntity grizzlyBearEntity_1 : list_1) {
+                        if (grizzlyBearEntity_1.isChild()) {
                             return true;
                         }
                     }
                 }
 
-                BrownBearEntity.this.setTarget(null);
+                GrizzlyBearEntity.this.setTarget(null);
                 return false;
             }
         }
@@ -261,13 +253,13 @@ public class BrownBearEntity extends AnimalEntity {
     }
 
     class class_1459 extends AvoidGoal {
-        public class_1459() {
-            super(BrownBearEntity.this);
+        class_1459() {
+            super(GrizzlyBearEntity.this);
         }
 
         public void start() {
             super.start();
-            if (BrownBearEntity.this.isChild()) {
+            if (GrizzlyBearEntity.this.isChild()) {
                 this.method_6317();
                 this.onRemove();
             }
@@ -275,7 +267,7 @@ public class BrownBearEntity extends AnimalEntity {
         }
 
         protected void method_6319(MobEntity mobEntityWithAi_1, LivingEntity livingEntity_1) {
-            if (mobEntityWithAi_1 instanceof BrownBearEntity && !mobEntityWithAi_1.isChild()) {
+            if (mobEntityWithAi_1 instanceof GrizzlyBearEntity && !mobEntityWithAi_1.isChild()) {
                 super.method_6319(mobEntityWithAi_1, livingEntity_1);
             }
 

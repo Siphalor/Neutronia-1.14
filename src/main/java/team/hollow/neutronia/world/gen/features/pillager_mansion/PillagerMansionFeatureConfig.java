@@ -1,4 +1,4 @@
-package team.hollow.neutronia.world.gen.features;
+package team.hollow.neutronia.world.gen.features.pillager_mansion;
 
 import com.google.common.collect.ImmutableMap;
 import com.mojang.datafixers.Dynamic;

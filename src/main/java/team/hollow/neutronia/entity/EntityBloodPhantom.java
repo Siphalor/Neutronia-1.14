@@ -1,4 +1,3 @@
-/*
 package team.hollow.neutronia.entity;
 
 import net.minecraft.entity.mob.PhantomEntity;
@@ -18,4 +17,4 @@ public class EntityBloodPhantom extends PhantomEntity {
         return LootTableHandler.RED_PHANTOM;
     }
 
-}*/
+}

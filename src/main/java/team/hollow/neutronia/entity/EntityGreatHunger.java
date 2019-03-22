@@ -26,9 +26,9 @@ public class EntityGreatHunger extends MobEntityWithAi {
 
     protected void initAttributes() {
         super.initAttributes();
-        Objects.requireNonNull(this.getAttributeContainer().get(EntityAttributes.ATTACK_DAMAGE)).setBaseValue(6.0D);
-        Objects.requireNonNull(this.getAttributeContainer().get(EntityAttributes.MOVEMENT_SPEED)).setBaseValue(0.23000000417232513D);
-        Objects.requireNonNull(this.getAttributeContainer().get(EntityAttributes.FOLLOW_RANGE)).setBaseValue(48.0D);
+        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.ATTACK_DAMAGE)).setBaseValue(6.0D);
+        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED)).setBaseValue(0.23000000417232513D);
+        Objects.requireNonNull(this.getAttributeInstance(EntityAttributes.FOLLOW_RANGE)).setBaseValue(48.0D);
     }
 
     protected SoundEvent getAmbientSound() {

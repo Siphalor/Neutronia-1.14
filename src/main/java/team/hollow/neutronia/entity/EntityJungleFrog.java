@@ -4,10 +4,10 @@ import net.minecraft.entity.mob.MobEntityWithAi;
 import net.minecraft.world.World;
 import team.hollow.neutronia.init.NEntityTypes;
 
-public class EntityOlDiggy extends MobEntityWithAi {
+public class EntityJungleFrog extends MobEntityWithAi {
 
-    public EntityOlDiggy(World worldIn) {
-        super(NEntityTypes.OL_DIGGY, worldIn);
+    public EntityJungleFrog(World worldIn) {
+        super(NEntityTypes.JUNGLE_FROG, worldIn);
     }
 
 }

@@ -31,8 +31,7 @@ import net.minecraft.world.dimension.DimensionType;
 import team.hollow.neutronia.init.NEntityTypes;
 
 public class EntityPenguin extends AnimalEntity {
-    private static final TrackedData<Boolean> IS_SLIDING = DataTracker.registerData(EntityPenguin.class,
-            TrackedDataHandlerRegistry.BOOLEAN);
+    private static final TrackedData<Boolean> IS_SLIDING = DataTracker.registerData(EntityPenguin.class, TrackedDataHandlerRegistry.BOOLEAN);
     private static final Ingredient TEMPTATION_ITEMS = Ingredient.ofItems(Items.PUFFERFISH, Items.SALMON, Items.TROPICAL_FISH, Items.COD);
     public float wingRotation;
     public float destPos;

@@ -2,13 +2,13 @@ package team.hollow.neutronia.client.entity.render.model.model;
 
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.EntityModel;
-import net.minecraft.entity.Entity;
+import team.hollow.neutronia.entity.EntityJungleFrog;
 
 /**
  * Frog - Undefined
  * Created using Tabula 7.0.0
  */
-public class ModelJungleFrog extends EntityModel {
+public class ModelJungleFrog<T extends EntityJungleFrog> extends EntityModel<T> {
     public Cuboid Head;
     public Cuboid Body;
     public Cuboid RightArm;
@@ -40,7 +40,7 @@ public class ModelJungleFrog extends EntityModel {
     }
 
     @Override
-    public void render(Entity entity, float f, float f1, float f2, float f3, float f4, float f5) {
+    public void render(T entity, float f, float f1, float f2, float f3, float f4, float f5) {
         this.Body.render(f5);
         this.LeftEye.render(f5);
         this.RightEye.render(f5);
