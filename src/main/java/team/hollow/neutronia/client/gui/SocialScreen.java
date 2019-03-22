@@ -6,6 +6,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.InputListener;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.TranslatableTextComponent;
 import team.hollow.neutronia.entity.SocialVillager;
 
 import java.util.ArrayList;
@@ -26,10 +27,9 @@ public class SocialScreen extends Screen implements InputListener {
     private SocialButton tradeButton;
 
     public SocialScreen(SocialVillager entity, PlayerEntity player) {
-        super();
+        super(new TranslatableTextComponent("narrator.screen.title"));
         this.target = entity;
         this.talker = player;
-
     }
 
     public void initialize(MinecraftClient client, int int1, int int2) {

@@ -55,7 +55,7 @@ public abstract class MixinSplashScreen {
     private LoadingProgress.TaskInfo[] tasks = new LoadingProgress.TaskInfo[5];
     private TextRenderer fr;
 
-    @Inject(method = "draw(IIF)V", at = @At("RETURN"))
+    @Inject(method = "render(IIF)V", at = @At("RETURN"))
     private void draw(int int_1, int int_2, float float_1, CallbackInfo ci) {
         drawProgress();
     }

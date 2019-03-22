@@ -118,8 +118,8 @@ public class BrownBearEntity extends AnimalEntity {
         this.dataTracker.startTracking(field_6840, false);
     }
 
-    public void update() {
-        super.update();
+    public void tick() {
+        super.tick();
         if (this.world.isClient) {
             this.field_6838 = this.field_6837;
             if (this.method_6600()) {

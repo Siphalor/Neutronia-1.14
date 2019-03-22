@@ -2,7 +2,6 @@ package team.hollow.neutronia.entity.passive;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.class_1394;
 import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.SpawnType;
@@ -57,7 +56,7 @@ public class EntityPenguin extends AnimalEntity {
         this.goalSelector.add(3, new EntityPenguin.AISlideAway(this, ArrowEntity.class, 16.0F));
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
-        this.goalSelector.add(6, new class_1394(this, 1.0D));
+        this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(7, new LookAroundGoal(this));
     }
 
@@ -82,8 +81,8 @@ public class EntityPenguin extends AnimalEntity {
      * required. For example, zombies and skeletons use this to react to
      * sunlight and start to burn.
      */
-    public void update() {
-        super.update();
+    public void tick() {
+        super.tick();
         this.oFlap = this.wingRotation;
         this.oFlapSpeed = this.destPos;
         this.destPos = (float) ((double) this.destPos + (double) (this.onGround ? -1 : 2) * 0.3D);

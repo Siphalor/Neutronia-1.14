@@ -9,6 +9,7 @@ import net.minecraft.client.gui.Screen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.TranslatableTextComponent;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.api.INotebookElement;
@@ -35,6 +36,7 @@ public class NotebookScreen extends Screen {
     private List<INotebookElement> rightElements = new ArrayList<>();
 
     public NotebookScreen(ItemStack stack) {
+        super(new TranslatableTextComponent("narrator.screen.title"));
         CompoundTag tag = stack.getTag();
         if (tag != null && tag.containsKey(NConstants.NOTEBOOK_SECTION_KEY)) {
             INotebookSection section = NotebookSectionRegistry.get(Identifier.create(tag.getString(NConstants.NOTEBOOK_SECTION_KEY)));
@@ -176,9 +178,9 @@ public class NotebookScreen extends Screen {
     }
 
     @Override
-    public void draw(int mouseX, int mouseY, float partialTicks) {
+    public void render(int mouseX, int mouseY, float partialTicks) {
         this.drawBackground();
-        super.draw(mouseX, mouseY, partialTicks);
+        super.render(mouseX, mouseY, partialTicks);
 
         this.scaledMouseX = mouseX;
         this.scaledMouseY = mouseY;

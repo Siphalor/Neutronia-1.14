@@ -3,7 +3,6 @@ package team.hollow.neutronia.entity;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Block;
-import net.minecraft.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntitySize;
@@ -67,7 +66,7 @@ public class ArcticWolfEntity extends TameableEntity {
         this.goalSelector.add(5, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.add(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
         this.goalSelector.add(7, new AnimalMateGoal(this, 1.0D));
-        this.goalSelector.add(8, new class_1394(this, 1.0D));
+        this.goalSelector.add(8, new WanderAroundFarGoal(this, 1.0D));
         this.goalSelector.add(9, new WolfBegGoal(this, 8.0F));
         this.goalSelector.add(10, new LookAtEntityGoal(this, PlayerEntity.class, 8.0F));
         this.goalSelector.add(10, new LookAroundGoal(this));
@@ -179,8 +178,8 @@ public class ArcticWolfEntity extends TameableEntity {
     /**
      * Called to update the entity's position/logic.
      */
-    public void update() {
-        super.update();
+    public void tick() {
+        super.tick();
         this.headRotationCourseOld = this.headRotationCourse;
 
         if (this.isBegging()) {

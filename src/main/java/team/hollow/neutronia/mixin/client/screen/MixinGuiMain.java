@@ -3,6 +3,7 @@ package team.hollow.neutronia.mixin.client.screen;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.MainMenuScreen;
 import net.minecraft.client.gui.Screen;
+import net.minecraft.text.TranslatableTextComponent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -11,7 +12,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(value = MainMenuScreen.class)
 public abstract class MixinGuiMain extends Screen {
 
-    @Inject(method = "draw(IIF)V", at = @At("RETURN"))
+    protected MixinGuiMain() {
+        super(new TranslatableTextComponent("narrator.screen.title"));
+    }
+
+    @Inject(method = "render(IIF)V", at = @At("RETURN"))
     public void fabricInfo(int mouseX, int mouseY, float delta, CallbackInfo info) {
         /*ShaderEffectManager.getInstance()
                 .manage(new Identifier("minecraft", "shaders/post/creeper.json")).render(delta);

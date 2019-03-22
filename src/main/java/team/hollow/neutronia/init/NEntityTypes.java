@@ -50,6 +50,8 @@ public class NEntityTypes {
                 .egg(0x0f0f0f, 0x1c1c1c)
                 .size(EntitySize.constant(1.3F, 1.4F))
                 .build();
+//        VILLAGER_PLUS = register("villager_plus", FabricEntityTypeBuilder.<VillagerPlusEntity>create(EntityCategory.CREATURE, (var1, var2) -> new VillagerPlusEntity(var2)).size(EntitySize.constant(1.3F, 1.4F)), 5651507, 12422002);
+//        BLACK_BEAR = register("black_bear", FabricEntityTypeBuilder.<BlackBearEntity>create(EntityCategory.CREATURE, (var1, var2) -> new BlackBearEntity(var2)).size(EntitySize.constant(1.3F, 1.4F)), 0x0f0f0f, 0x1c1c1c);
         BROWN_BEAR = register("brown_bear", FabricEntityTypeBuilder.<BrownBearEntity>create(EntityCategory.CREATURE, (var1, var2) -> new BrownBearEntity(var2)).size(EntitySize.constant(1.3F, 1.4F)), 0x281b15, 0x412e25);
         SOCIAL_VILLAGER = register("social_villager", FabricEntityTypeBuilder.<SocialVillager>create(EntityCategory.CREATURE, (var1, var2) -> new SocialVillager(var2)).size(EntitySize.constant(0.5F, 1.95F)).trackable(64, 3), 5651507, 12422002);
         OL_DIGGY = register("ol_diggy", FabricEntityTypeBuilder.<EntityOlDiggy>create(EntityCategory.CREATURE, (var1, var2) -> new EntityOlDiggy(var2)).size(EntitySize.constant(0.5F, 1.95F)), 0x172528, 0x5d7258);

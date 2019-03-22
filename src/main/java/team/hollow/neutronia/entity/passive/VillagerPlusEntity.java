@@ -1,11 +1,6 @@
 package team.hollow.neutronia.entity.passive;
 
-import net.minecraft.class_1358;
-import net.minecraft.class_1370;
-import net.minecraft.class_1394;
-import net.minecraft.entity.ai.goal.FleeEntityGoal;
-import net.minecraft.entity.ai.goal.LookAtEntityGoal;
-import net.minecraft.entity.ai.goal.SwimGoal;
+import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.*;
@@ -39,9 +34,9 @@ public class VillagerPlusEntity extends PassiveEntity {
         this.goalSelector.add(1, new FleeEntityGoal<>(this, PillagerEntity.class, 15.0F, 0.6D, 0.6D));
         this.goalSelector.add(1, new FleeEntityGoal<>(this, IllusionerEntity.class, 12.0F, 0.6D, 0.6D));
         this.goalSelector.add(3, new FindDiamondBlockGoal(this, 1.0));
-        this.goalSelector.add(5, new class_1370(this, 0.6D));
-        this.goalSelector.add(9, new class_1358(this, PlayerEntity.class, 3.0F, 1.0F));
-        this.goalSelector.add(9, new class_1394(this, 0.6D));
+        this.goalSelector.add(5, new GoToWalkTargetGoal(this, 0.6D));
+        this.goalSelector.add(9, new GoToEntityGoal(this, PlayerEntity.class, 3.0F, 1.0F));
+        this.goalSelector.add(9, new WanderAroundFarGoal(this, 0.6D));
         this.goalSelector.add(10, new LookAtEntityGoal(this, MobEntity.class, 8.0F));
     }
 

@@ -1,7 +1,7 @@
 package team.hollow.neutronia.utils.registry;
 
 import net.fabricmc.fabric.api.entity.EntityTrackingRegistry;
-import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
@@ -59,8 +59,8 @@ public class EntityRegistryBuilder {
     }
 
     public EntityType build() {
-        FabricEntityTypeBuilder entityBuilder = FabricEntityTypeBuilder.create(EntityCategory.CREATURE, builder).size(size).disableSaving();
-        EntityType entityType = Registry.register(Registry.ENTITY_TYPE, new Identifier(Neutronia.MOD_ID, name), entityBuilder.build());
+        EntityType<Entity> entityBuilder = EntityType.Builder.create(EntityCategory.CREATURE).setSize(size.width, size.height).disableSaving().build(name);
+        EntityType entityType = Registry.register(Registry.ENTITY_TYPE, new Identifier(Neutronia.MOD_ID, name), entityBuilder);
         if((this.alwaysUpdateVelocity)) {
             if (this.updateIntervalTicks != 0 & this.trackingDistance != 0)
             EntityTrackingRegistry.INSTANCE.register(entityType, trackingDistance, updateIntervalTicks, alwaysUpdateVelocity);
