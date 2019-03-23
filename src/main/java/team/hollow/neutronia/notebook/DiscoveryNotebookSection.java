@@ -19,16 +19,16 @@ public class DiscoveryNotebookSection implements INotebookSection {
     public List<INotebookElement> getElements(ClientPlayerEntity player, int page) {
         List<INotebookElement> elements = new ArrayList<>();
         if (page == 0) {
-            elements.add(new NotebookElement.SmallHeading("notebook.arcanemagic.discovery.title").withPadding(3));
+            elements.add(new NotebookElement.SmallHeading("notebook.neutronia.discovery.title").withPadding(3));
         } else {
             elements.add(new NotebookElement.Padding(3));
         }
-        elements.addAll(NotebookElement.wrapText("notebook.arcanemagic.discovery.0", 2, 0, page));
+        elements.addAll(NotebookElement.wrapText("notebook.neutronia.discovery.0", 2, 0, page));
         return elements;
     }
 
     @Override
     public int getPageCount(ClientPlayerEntity player) {
-        return NotebookElement.textPages("notebook.arcanemagic.discovery.0", 2);
+        return NotebookElement.textPages("notebook.neutronia.discovery.0", 2);
     }
 }

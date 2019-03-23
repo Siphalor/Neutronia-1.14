@@ -30,22 +30,22 @@ public class ConfigFile {
     private String modID;
     private String configName;
     private Class<?> configClass;
-    private boolean clentSide;
+    private boolean clientSide;
     private File configFile;
     private Map<String, ConfigField> configValues;
 
-    public ConfigFile(String modID, String configName, Class<?> configClass, boolean clentSide) {
+    public ConfigFile(String modID, String configName, Class<?> configClass, boolean clientSide) {
         this.modID = modID;
         this.configName = configName;
-        this.configFile = new File(CONFIG_DIR, String.format("%s.%s", clentSide ? modID + "_client" : modID, CONFIG_EXT));
+        this.configFile = new File(CONFIG_DIR, String.format("%s.%s", clientSide ? modID + "_client" : modID, CONFIG_EXT));
         this.configClass = configClass;
-        this.clentSide = clentSide;
+        this.clientSide = clientSide;
         this.configValues = Maps.newHashMap();
         ConfigManager.getInstance().registerModConfig(this);
     }
 
-    public ConfigFile(String modID, Class<?> configClass, boolean clentSide) {
-        this(modID, null, configClass, clentSide);
+    public ConfigFile(String modID, Class<?> configClass, boolean clientSide) {
+        this(modID, null, configClass, clientSide);
     }
 
     public ConfigFile(String modID, String configName, Class<?> configClass) {
@@ -80,7 +80,7 @@ public class ConfigFile {
 
     public void readFromArrays(List<ConfigField> fieldList) {
         Field[] fields = configClass.getDeclaredFields();
-        if (fields == null || fields.length < 1)
+        if (fields.length < 1)
             return;
         for (Field field : fields) {
             if (!field.isAnnotationPresent(Config.class) || !Modifier.isStatic(field.getModifiers()))
@@ -102,7 +102,7 @@ public class ConfigFile {
                     } catch (IllegalAccessException ex) {
                         CONFIG_LOG.exception("Could not set config value!", ex);
                     }
-                    break fieldMatch;
+                    break;
                 }
             }
 
@@ -114,7 +114,7 @@ public class ConfigFile {
     private void readJson(JsonObject json) {
         configValues.clear();
         Field[] fields = configClass.getDeclaredFields();
-        if (fields == null || fields.length < 1)
+        if (fields.length < 1)
             return;
         for (Field field : fields) {
             if (!field.isAnnotationPresent(Config.class) || !Modifier.isStatic(field.getModifiers()))
@@ -156,7 +156,7 @@ public class ConfigFile {
 
         JsonObject parent = new JsonObject();
         Field[] fields = configClass.getDeclaredFields();
-        if (fields == null || fields.length < 1)
+        if (fields.length < 1)
             return;
         for (Field field : fields) {
             saveField(parent, field);
@@ -242,8 +242,8 @@ public class ConfigFile {
         return modID;
     }
 
-    public boolean isClentSide() {
-        return clentSide;
+    public boolean isClientSide() {
+        return clientSide;
     }
 
     public String getConfigFileName() {

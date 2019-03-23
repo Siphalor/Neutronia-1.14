@@ -8,12 +8,12 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
-import net.minecraft.world.gen.decorator.NopeDecoratorConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.StructureFeature;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.world.gen.RitualSiteGenerator;
-import team.hollow.neutronia.world.gen.features.*;
+import team.hollow.neutronia.world.gen.features.RitualSiteFeature;
+import team.hollow.neutronia.world.gen.features.RitualSiteFeatureConfig;
 import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeature;
 import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeatureConfig;
 import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionGenerator;
@@ -54,14 +54,14 @@ public class ExampleMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        Feature.STRUCTURES.put("neutronia:pillager_mansion", PILLAGER_MANSION_FEATURE);
+        /*Feature.STRUCTURES.put("neutronia:pillager_mansion", PILLAGER_MANSION_FEATURE);
         for (Biome b : Registry.BIOME) {
             if (b.getCategory() != Biome.Category.OCEAN && b.getCategory() != Biome.Category.RIVER) {
 				b.addStructureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1));
 				b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1),
                         Decorator.NOPE, new NopeDecoratorConfig()));
             }
-        }
+        }*/
         Feature.STRUCTURES.put("neutronia:ritual_site", RITUAL_SITE_FEATURE);
         for(Biome b: Registry.BIOME) {
             if(b.getCategory() == Biome.Category.TAIGA) {

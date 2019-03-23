@@ -21,28 +21,28 @@ public class InfusionNotebookSection implements INotebookSection {
         List<INotebookElement> elements = new ArrayList<>();
 
         if (page == 0) {
-            elements.add(new NotebookElement.SmallHeading("notebook.arcanemagic.infusion.title").withPadding(3));
+            elements.add(new NotebookElement.SmallHeading("notebook.neutronia.infusion.title").withPadding(3));
         } else {
             elements.add(new NotebookElement.Padding(3));
         }
 
-        int firstText = NotebookElement.textPages("notebook.arcanemagic.infusion.0", 2);
-        elements.addAll(NotebookElement.wrapText("notebook.arcanemagic.infusion.0", 2, 0, page));
+        int firstText = NotebookElement.textPages("notebook.neutronia.infusion.0", 2);
+        elements.addAll(NotebookElement.wrapText("notebook.neutronia.infusion.0", 2, 0, page));
 
         if (page == firstText + 1) {
             elements.add(new NotebookElement.Padding(4));
-            elements.add(new NotebookElement.Paragraph(true, 1, "block.arcanemagic.crystal_infuser").withPadding(10));
+            elements.add(new NotebookElement.Paragraph(true, 1, "block.neutronia.crystal_infuser").withPadding(10));
             elements.add(new NotebookElement.Recipe(MinecraftClient.getInstance().world.getRecipeManager().get(new Identifier(Neutronia.MOD_ID, "crystal_infuser")).orElse(null)));
         }
 
         if (page >= firstText + 2) {
-            elements.addAll(NotebookElement.wrapText("notebook.arcanemagic.infusion.1", 0, firstText + 2, page));
+            elements.addAll(NotebookElement.wrapText("notebook.neutronia.infusion.1", 0, firstText + 2, page));
         }
         return elements;
     }
 
     @Override
     public int getPageCount(ClientPlayerEntity player) {
-        return NotebookElement.textPages("notebook.arcanemagic.infusion.0", 2) + NotebookElement.textPages("notebook.arcanemagic.infusion.1", 0) + 2;
+        return NotebookElement.textPages("notebook.neutronia.infusion.0", 2) + NotebookElement.textPages("notebook.neutronia.infusion.1", 0) + 2;
     }
 }

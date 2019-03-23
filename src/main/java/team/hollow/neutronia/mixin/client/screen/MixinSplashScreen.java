@@ -7,7 +7,6 @@ import net.minecraft.client.font.FontType;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.SplashScreen;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -16,7 +15,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.hollow.neutronia.LoadingProgressImpl;
 import team.hollow.neutronia.api.LoadingProgress;
-import team.hollow.neutronia.client.gui.ProgressBarUtils;
 
 import java.util.Collections;
 
@@ -87,8 +85,6 @@ public abstract class MixinSplashScreen {
 
             fr.draw(task.getText(), 2, this.client.window.getScaledHeight() - (fr.fontHeight + 1) * (count - i + 1) - 1, 0x000000);
         }
-
-        ProgressBarUtils.renderMemoryBar(fr, this.client.window.getScaledWidth() / 2 - 150, 100, this.client.window.getScaledHeight() / 2 + 150, 115, 1.0F - MathHelper.clamp(-1L, 0.0F, 1.0F));
     }
 
     public void setColor(int color) {

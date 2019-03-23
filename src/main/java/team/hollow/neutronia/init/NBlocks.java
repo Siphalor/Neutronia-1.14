@@ -357,7 +357,7 @@ public class NBlocks {
         GAPLESS_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "gapless_sandy_bricks");
         SCALY_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "scaly_sandy_bricks");
         SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "sandy_bricks");
-        CHISELED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "chiseled_sandy_brick");
+        CHISELED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "chiseled_sandy_bricks");
         CRACKED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "cracked_sandy_bricks");
         MOSSY_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "mossy_sandy_bricks");
         SANDY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "sandy_brick_path");
@@ -370,7 +370,7 @@ public class NBlocks {
         GAPLESS_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "gapless_dirty_bricks");
         SCALY_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "scaly_dirty_bricks");
         DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "dirty_bricks");
-        CHISELED_DIRTY_BRICK = new NeutroniaBaseBlock(Material.STONE, "chiseled_dirty_brick");
+        CHISELED_DIRTY_BRICK = new NeutroniaBaseBlock(Material.STONE, "chiseled_dirty_bricks");
         CRACKED_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "cracked_dirty_bricks");
         MOSSY_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "mossy_dirty_bricks");
         DIRTY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "dirty_brick_path");
