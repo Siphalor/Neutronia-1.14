@@ -3,6 +3,7 @@ package team.hollow.neutronia.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
+import team.hollow.neutronia.addon.ClientAddonLoader;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 import team.hollow.neutronia.blocks.entity.StoneChestBlockEntity;
 import team.hollow.neutronia.client.entity.render.*;
@@ -31,5 +32,7 @@ public class ClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(ArcticWolfEntity.class, (manager, context) -> new ArcticWolfEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(EntityJungleFrog.class, (manager, context) -> new JungleFrogEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(AxolotlEntity.class, (manager, context) -> new AxolotlEntityRenderer(manager));
+
+        ClientAddonLoader.loadAddons();
     }
 }
