@@ -7,6 +7,7 @@ import net.minecraft.item.Items;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.hollow.neutronia.commands.Locate2Command;
+import team.hollow.neutronia.config.ConfigFile;
 import team.hollow.neutronia.init.*;
 
 public class Neutronia implements ModInitializer {
@@ -14,6 +15,8 @@ public class Neutronia implements ModInitializer {
     public static final String MOD_ID = "neutronia";
     public static final String MOD_NAME = "Neutronia";
     private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
+
+    public static ConfigFile configFile;
 
     public static Logger getLogger() {
         return LOGGER;
@@ -31,6 +34,9 @@ public class Neutronia implements ModInitializer {
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
+
+        configFile = new ConfigFile(MOD_ID, ModConfig.class);
+        configFile.loadConfig();
 
         System.out.println("+----------+ Mod Initialized");
     }

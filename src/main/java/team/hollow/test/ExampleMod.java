@@ -6,6 +6,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.ChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.NopeDecoratorConfig;
 import net.minecraft.world.gen.feature.Feature;
@@ -64,9 +65,9 @@ public class ExampleMod implements ModInitializer {
         Feature.STRUCTURES.put("neutronia:ritual_site", RITUAL_SITE_FEATURE);
         for(Biome b: Registry.BIOME) {
             if(b.getCategory() == Biome.Category.TAIGA) {
-                b.addStructureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(100));
-                b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(100),
-                        Decorator.NOPE, new NopeDecoratorConfig()));
+                b.addStructureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1));
+                b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1),
+                        Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(100)));
             }
         }
     }

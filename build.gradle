@@ -20,7 +20,6 @@ repositories {
     maven { url "https://maven.fabricmc.net" }
     maven { url "https://minecraft.curseforge.com/api/maven" }
     maven { url "https://maven.jamieswhiteshirt.com/libs-release/" }
-	maven { url "https://maven.abusedmaster.xyz" }
 }
 
 dependencies {
@@ -32,8 +31,6 @@ dependencies {
     modCompile "io.github.prospector.modmenu:ModMenu:1.1.6-31"
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
     modCompile "com.jamieswhiteshirt:developer-mode:1.0.8"
-    modCompile "com.github.Ladysnake:Satin:f75e6ac7cd"
-	modCompile "com.github.GlassPane:Mesh:1.0.0-20190322.042814-7"
 	modCompile "blue.endless:jankson:1.1.0"
     
     modCompile "net.fabricmc:fabric:${project.fabric_version}"
