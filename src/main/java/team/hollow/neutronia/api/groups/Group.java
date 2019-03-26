@@ -1,11 +1,11 @@
 package team.hollow.neutronia.api.groups;
 
-import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.api.ModInitializer;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
+import team.hollow.neutronia.Neutronia;
+import team.hollow.neutronia.config.ConfigFile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,6 +20,7 @@ public class Group implements Comparable<Group> {
     public String name, desc;
     public boolean enabled, enabledByDefault;
     private ItemStack iconStack;
+    protected ConfigFile configFile;
 
     public Group(Builder builder) {
         this.name = builder.name;
@@ -63,13 +64,13 @@ public class Group implements Comparable<Group> {
         component.group = this;
     }
 
-    public void init(ModInitializer event) {
-        forEachEnabledComponent(component -> component.init(event));
+    public void init() {
+        forEachEnabledComponent(Component::init);
     }
 
     @Environment(EnvType.CLIENT)
-    void initClient(ClientModInitializer event) {
-        forEachEnabledComponent(component -> component.initClient(event));
+    void initClient() {
+        forEachEnabledComponent(Component::initClient);
     }
 
     boolean canBeDisabled() {
@@ -124,6 +125,7 @@ public class Group implements Comparable<Group> {
         private Group group;
         private boolean enabled, enabledByDefault;
         private List<Component> components = new ArrayList<>();
+        private ConfigFile configFile;
 
         public Builder name(String name) {
             this.name = name;
@@ -137,6 +139,11 @@ public class Group implements Comparable<Group> {
 
         public Builder addComponent(Component component) {
             components.add(component);
+            return this;
+        }
+
+        public Builder configFile(Class<?> config) {
+            this.configFile = new ConfigFile(Neutronia.MOD_ID, "config.neutronia." + name, config);
             return this;
         }
 
@@ -170,6 +177,7 @@ public class Group implements Comparable<Group> {
             group.iconStack = icon;
             group.enabled = enabled;
             group.enabledByDefault = enabledByDefault;
+            group.configFile = configFile;
             GroupLoader.registerGroup(group);
             return group;
         }

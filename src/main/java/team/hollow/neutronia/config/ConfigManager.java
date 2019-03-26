@@ -45,7 +45,7 @@ public class ConfigManager {
             if (MOD_CONFIGS.containsKey(metadata))
                 return Collections.unmodifiableList(MOD_CONFIGS.get(metadata));
         }
-        return Collections.EMPTY_LIST;
+        return new ArrayList<>();
     }
 
     public Map<ModMetadata, List<ConfigFile>> getModConfigs() {

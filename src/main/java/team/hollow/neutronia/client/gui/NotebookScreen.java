@@ -56,7 +56,7 @@ public class NotebookScreen extends Screen {
 
     private void setSection(INotebookSection section) {
         this.leftPage = 0;
-        if (!section.isVisibleTo(client.player))
+        if (!section.isVisibleTo(minecraft.player))
         {
             this.section = NotebookSectionRegistry.CONTENTS;
         } else
@@ -79,17 +79,17 @@ public class NotebookScreen extends Screen {
         this.leftElements.clear();
         this.rightElements.clear();
 
-        this.leftElements = this.section.getElements(client.player, this.leftPage);
-        this.rightElements = this.section.getElements(client.player, this.leftPage + 1);
+        this.leftElements = this.section.getElements(minecraft.player, this.leftPage);
+        this.rightElements = this.section.getElements(minecraft.player, this.leftPage + 1);
     }
 
     @Override
-    protected void onInitialized() {
-        super.onInitialized();
+    protected void init() {
+        super.init();
         if (section != null) {
             int page = leftPage;
             setSection(section);
-            if (page <= section.getPageCount(client.player)) {
+            if (page <= section.getPageCount(minecraft.player)) {
                 this.leftPage = page;
                 pageChanged();
             }
@@ -97,14 +97,14 @@ public class NotebookScreen extends Screen {
             Neutronia.getLogger().warn("Tried to open a notebook with invalid NBT !");
             setSection(NotebookSectionRegistry.CONTENTS);
         }
-        this.listeners.add(new InputListener() {
+        this.children.add(new InputListener() {
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int button) {
                 if (button == 0) {
-                    if (leftPage + 1 < section.getPageCount(client.player) && overRightArrow()) {
+                    if (leftPage + 1 < section.getPageCount(minecraft.player) && overRightArrow()) {
                         leftPage += 2;
                         pageChanged();
-                        client.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
+                        minecraft.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
                         return true;
                     } else if (leftPage > 0 && overLeftArrow()) {
                         leftPage -= 2;
@@ -112,20 +112,20 @@ public class NotebookScreen extends Screen {
                             leftPage = 0;
                         }
                         pageChanged();
-                        client.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
+                        minecraft.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
                         return true;
                     } else if (!(section instanceof ContentsNotebookSection) && overBackArrow()) {
                         setSection(NotebookSectionRegistry.CONTENTS);
-                        client.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
+                        minecraft.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
                         return true;
                     } else if (handleClickOn(leftElements) || handleClickOn(rightElements)) {
-                        client.player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.5f, 1);
+                        minecraft.player.playSound(SoundEvents.UI_BUTTON_CLICK, 0.5f, 1);
                         return true;
                     }
                 } else if (button == 1) {
                     if (section != NotebookSectionRegistry.CONTENTS) {
                         setSection(NotebookSectionRegistry.CONTENTS);
-                        client.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
+                        minecraft.player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
                         return true;
                     }
                 }
@@ -155,8 +155,8 @@ public class NotebookScreen extends Screen {
     }
 
     private boolean overRightArrow() {
-        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (minecraft.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (minecraft.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int right = xTop + 142;
 
@@ -164,8 +164,8 @@ public class NotebookScreen extends Screen {
     }
 
     private boolean overLeftArrow() {
-        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (minecraft.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (minecraft.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int left = xTop + 17;
 
@@ -174,8 +174,8 @@ public class NotebookScreen extends Screen {
 
     private boolean overBackArrow() {
         //right + 85, yTop + NConstants.NOTEBOOK_HEIGHT - 21
-        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (minecraft.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (minecraft.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int right = xTop + 142;
         return scaledMouseX >= right - 15 && scaledMouseY >= yTop + NConstants.NOTEBOOK_HEIGHT - 21 && scaledMouseX <= right && scaledMouseY <= yTop + NConstants.NOTEBOOK_HEIGHT - 10;
@@ -183,7 +183,7 @@ public class NotebookScreen extends Screen {
 
     @Override
     public void render(int mouseX, int mouseY, float partialTicks) {
-        this.drawBackground();
+        this.renderBackground();
         super.render(mouseX, mouseY, partialTicks);
 
         this.scaledMouseX = mouseX;
@@ -191,18 +191,18 @@ public class NotebookScreen extends Screen {
 
         GlStateManager.pushMatrix();
 
-        int xTop = (client.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
-        int yTop = (client.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
+        int xTop = (minecraft.window.getScaledWidth() / 2) - (NConstants.NOTEBOOK_WIDTH / 2);
+        int yTop = (minecraft.window.getScaledHeight() / 2) - (NConstants.NOTEBOOK_HEIGHT / 2);
 
         int left = xTop + 17;
         int right = xTop + 142;
 
-        client.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
-        DrawableHelper.drawTexturedRect(xTop, yTop, 0, 0, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
+        minecraft.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
+        DrawableHelper.blit(xTop, yTop, 0, 0, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
 
         if (section instanceof ContentsNotebookSection)
         {
-            DrawableHelper.drawTexturedRect(xTop + 133, yTop + 156, 136, 180, 5, 11, 5, 11, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
+            DrawableHelper.blit(xTop + 133, yTop + 156, 136, 180, 5, 11, 5, 11, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
         // Intro page
@@ -222,9 +222,9 @@ public class NotebookScreen extends Screen {
             GlStateManager.popMatrix();
         }
 
-        client.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
+        minecraft.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
 
-        if (leftPage + 1 < section.getPageCount(client.player))
+        if (leftPage + 1 < section.getPageCount(minecraft.player))
         {
             RenderUtils.drawTexturedRect(right + 85, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overRightArrow() ? 23 : 0, 180, 18, 10, 18, 10, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
@@ -257,7 +257,7 @@ public class NotebookScreen extends Screen {
     }
 
     @Override
-    public void onClosed() {
+    public void onClose() {
         if (this.section != null) {
             ArcaneMagicPacketHandler.sendToServer(new NotebookUpdatePacket(this.section.getID().toString(), this.leftPage, this.contentsPage));
         }

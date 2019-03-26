@@ -26,10 +26,7 @@ public class PillagerMansionGenerator {
     }
 
     public static void addPieces(ChunkGenerator<?> chunkGenerator_1, StructureManager structureManager_1, BlockPos blockPos_1, List<StructurePiece> list_1, ChunkRandom chunkRandom_1) {
-        StructurePoolBasedGenerator.addPieces(new Identifier(Neutronia.MOD_ID, "pillager_mansion"), 3, Piece::new, chunkGenerator_1, structureManager_1, blockPos_1, list_1, chunkRandom_1);
-        for(StructurePiece structurePiece : list_1) {
-            Neutronia.getLogger().info("Structure Piece for Pillager Mansion: " + structurePiece.toString());
-        }
+        StructurePoolBasedGenerator.addPieces(new Identifier(Neutronia.MOD_ID, "pillager_mansion/base_plates"), 7, Piece::new, chunkGenerator_1, structureManager_1, blockPos_1, list_1, chunkRandom_1);
     }
 
     public static class Piece extends PoolStructurePiece {

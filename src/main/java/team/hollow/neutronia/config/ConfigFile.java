@@ -25,7 +25,7 @@ public class ConfigFile {
     private static final Logger CONFIG_LOG = new Logger(Neutronia.MOD_NAME + "/Config");
     private static final Jankson JANKSON = Jankson.builder().build();
     private static final File CONFIG_DIR = FabricLoader.getInstance().getConfigDirectory();
-    private static final String CONFIG_EXT = "conf";
+    private static final String CONFIG_EXT = "json5";
 
     private String modID;
     private String configName;
@@ -58,7 +58,7 @@ public class ConfigFile {
 
     public void setConfigFileName(String name) {
         this.configFile = new File(CONFIG_DIR,
-                FilenameUtils.getBaseName(name).equalsIgnoreCase(CONFIG_EXT) ? name : name + ".conf");
+                FilenameUtils.getBaseName(name).equalsIgnoreCase(CONFIG_EXT) ? name : name + ".json5");
     }
 
     public void loadConfig() {

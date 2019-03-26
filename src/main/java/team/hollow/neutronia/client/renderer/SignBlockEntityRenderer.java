@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.GlStateManager;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.StandingSignBlock;
+import net.minecraft.block.SignBlock;
 import net.minecraft.block.WallSignBlock;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
@@ -32,7 +32,7 @@ public class SignBlockEntityRenderer extends BlockEntityRenderer<SignBlockEntity
         GlStateManager.pushMatrix();
         if (blockState_1.getBlock().matches(BlockTags.STANDING_SIGNS)) {
             GlStateManager.translatef((float) double_1 + 0.5F, (float) double_2 + 0.5F, (float) double_3 + 0.5F);
-            GlStateManager.rotatef(-((float) (blockState_1.get(StandingSignBlock.ROTATION) * 360) / 16.0F), 0.0F, 1.0F, 0.0F);
+            GlStateManager.rotatef(-((float) (blockState_1.get(SignBlock.ROTATION) * 360) / 16.0F), 0.0F, 1.0F, 0.0F);
             this.model.getSignpostModel().visible = true;
         } else {
             GlStateManager.translatef((float) double_1 + 0.5F, (float) double_2 + 0.5F, (float) double_3 + 0.5F);
@@ -81,7 +81,7 @@ public class SignBlockEntityRenderer extends BlockEntityRenderer<SignBlockEntity
                             if (signBlockEntity_1.getSelectionStart() < string_1.length()) {
                                 var10001 = i - 1;
                                 int var10002 = int_6 + 1;
-                                DrawableHelper.drawRect(int_6, var10001, var10002, i + 9, -16777216 | int_2);
+                                DrawableHelper.fill(int_6, var10001, var10002, i + 9, -16777216 | int_2);
                             } else {
                                 fontRenderer_1.draw("_", (float) int_6, (float) i, int_2);
                             }

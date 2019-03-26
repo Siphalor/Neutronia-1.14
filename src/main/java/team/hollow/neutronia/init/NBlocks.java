@@ -186,7 +186,7 @@ public class NBlocks {
 
         PALM_LOG = new NeutroniaPillarBlock(Material.WOOD, "palm_log");
         PALM_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "palm_wood"));
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "palm_wood"), ItemGroup.BUILDING_BLOCKS);
         PALM_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "palm_planks");
         BlockRegistryBuilder.getInstance("palm", PALM_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -197,7 +197,7 @@ public class NBlocks {
 
         WILLOW_LOG = new NeutroniaPillarBlock(Material.WOOD, "willow_log");
         WILLOW_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "willow_wood"));
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "willow_wood"), ItemGroup.BUILDING_BLOCKS);
         WILLOW_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "willow_planks");
         BlockRegistryBuilder.getInstance("willow", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -207,7 +207,7 @@ public class NBlocks {
 
         MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "mangrove_log");
         MANGROVE_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "mangrove_wood"));
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "mangrove_wood"), ItemGroup.BUILDING_BLOCKS);
         MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "mangrove_planks");
         BlockRegistryBuilder.getInstance("mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -216,7 +216,7 @@ public class NBlocks {
 
         RED_MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "red_mangrove_log");
         RED_MANGROVE_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "red_mangrove_wood"));
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "red_mangrove_wood"), ItemGroup.BUILDING_BLOCKS);
         RED_MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_planks");
         BlockRegistryBuilder.getInstance("red_mangrove", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -225,7 +225,7 @@ public class NBlocks {
 
         BAOBAB_LOG = new NeutroniaPillarBlock(Material.WOOD, "baobab_log");
         BAOBAB_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "baobab_wood"));
+                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "baobab_wood"), ItemGroup.BUILDING_BLOCKS);
         BAOBAB_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "baobab_planks");
         BlockRegistryBuilder.getInstance("baobab", WILLOW_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
@@ -530,7 +530,7 @@ public class NBlocks {
         BAMBOO_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bamboo_planks");
         BlockRegistryBuilder.getInstance("bamboo", BAMBOO_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        BAMBOO_SIGN = RegistryUtils.register(new StandingSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).build()), "bamboo_sign");
+        BAMBOO_SIGN = RegistryUtils.register(new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).build()), "bamboo_sign");
         BAMBOO_WALL_SIGN = RegistryUtils.register(new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).build()), "bamboo_wall_sign");
         BAMBOO_TORCH = RegistryUtils.register(new NeutroniaTorchBlock(), "bamboo_torch");
         THATCH = new NeutroniaBaseBlock(Material.ORGANIC, "thatch");

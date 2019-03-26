@@ -31,28 +31,28 @@ public class ModListScreen extends Screen {
     }
 
     @Override
-    protected void onInitialized() {
-        super.onInitialized();
-        this.modListWidget = new ModListWidget(this, this.client);
-        this.listeners.add(this.modListWidget);
+    protected void init() {
+        super.init();
+        this.modListWidget = new ModListWidget(this, this.minecraft);
+        this.children.add(this.modListWidget);
         this.focusOn(this.modListWidget);
-        this.addButton(new ButtonWidget(this.screenWidth / 2 - 100, this.screenHeight - 25, 200, 20,
-                I18n.translate("gui.done"), (buttonWidget) -> this.client.openScreen(this.parent)));
+        this.addButton(new ButtonWidget(this.width / 2 - 100, this.height - 25, 200, 20,
+                I18n.translate("gui.done"), (buttonWidget) -> this.minecraft.openScreen(this.parent)));
     }
 
     @Override
     public void render(int int_1, int int_2, float float_1) {
-        this.drawBackground();
+        this.renderBackground();
         this.modListWidget.render(int_1, int_2, float_1);
-        this.drawStringCentered(this.fontRenderer, this.title.getFormattedText(), this.screenWidth / 2, 15, 0xffffff);
+        this.drawCenteredString(this.minecraft.textRenderer, this.title.getFormattedText(), this.width / 2, 15, 0xffffff);
         super.render(int_1, int_2, float_1);
 
     }
 
     private static class ModListWidget extends EntryListWidget<ModEntry> {
         private ModListWidget(ModListScreen modListscreen, MinecraftClient client) {
-            super(client, modListscreen.screenWidth , modListscreen.screenHeight, 30,
-                    modListscreen.screenHeight - 40, 25);
+            super(client, modListscreen.width , modListscreen.height, 30,
+                    modListscreen.height - 40, 25);
             for (ModMetadata metadata : modListscreen.mods) {
                 this.addEntry(new ModEntry(modListscreen, metadata));
             }

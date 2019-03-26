@@ -5,7 +5,8 @@
   "mixins": [
     "item.MixinBookOnLectern",
     "world.VillageGeneratorMixin",
-    "commands.LocateCommandMixin"
+    "commands.LocateCommandMixin",
+    "entity.MixinLivingEntity"
   ],
   "injectors": {
     "defaultRequire": 1
