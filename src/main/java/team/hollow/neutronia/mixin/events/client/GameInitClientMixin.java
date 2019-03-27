@@ -10,22 +10,22 @@ import team.hollow.neutronia.event_system.EventCore;
 
 @Mixin(MinecraftClient.class)
 public class GameInitClientMixin {
-	
-	//this.window.setPhase("Post startup");
-	//@Inject(at = @At("HEAD"), method = "init()V")
-	@Inject(method = "init",
-    		at = @At(value = "INVOKE_STRING",
-    		target = "Lnet/minecraft/client/util/Window;setPhase(Ljava/lang/String;)V",
-    		args = {"ldc=Post startup"})
+
+    //this.window.setPhase("Post startup");
+    //@Inject(at = @At("HEAD"), method = "init()V")
+    @Inject(method = "init",
+            at = @At(value = "INVOKE_STRING",
+                    target = "Lnet/minecraft/client/util/Window;setPhase(Ljava/lang/String;)V",
+                    args = {"ldc=Post startup"})
     )
-	private void init(CallbackInfo info) {
-		System.out.println("AutoSteve mixin on Post startup MinecraftClient init.");
-		EventCore.instance.onMinecraftClientPostStartupResourceHook();
-		
-		//.info.World c;
-		//Entity p;
-		//World w;
-		//w.blockEntities
-		
-	}
+    private void init(CallbackInfo info) {
+        System.out.println("AutoSteve mixin on Post startup MinecraftClient init.");
+        EventCore.instance.onMinecraftClientPostStartupResourceHook();
+
+        //.info.World c;
+        //Entity p;
+        //World w;
+        //w.blockEntities
+
+    }
 }

@@ -14,16 +14,14 @@ import team.hollow.neutronia.event_system.EventCore;
 
 @Mixin(value = {ServerWorld.class})
 @Environment(EnvType.SERVER)
-public class BlockUpdateServerMixin
-{
+public class BlockUpdateServerMixin {
 
-	//public void updateListeners(BlockPos blockPos_1, BlockState blockState_1, BlockState blockState_2, int int_1)
-	@Inject(at = @At("RETURN"), method = "updateListeners")
-	private void on_updateListeners(BlockPos blockPos_1, BlockState blockState_1, BlockState blockState_2, int int_1, CallbackInfo info)
-	{
-		World _this = (World) (Object)this;
-		boolean client = false;
-		EventCore.instance.onBlockUpdate(_this, blockPos_1, blockState_1, blockState_2, int_1, client);
-	}
-	
+    //public void updateListeners(BlockPos blockPos_1, BlockState blockState_1, BlockState blockState_2, int int_1)
+    @Inject(at = @At("RETURN"), method = "updateListeners")
+    private void on_updateListeners(BlockPos blockPos_1, BlockState blockState_1, BlockState blockState_2, int int_1, CallbackInfo info) {
+        World _this = (World) (Object) this;
+        boolean client = false;
+        EventCore.instance.onBlockUpdate(_this, blockPos_1, blockState_1, blockState_2, int_1, client);
+    }
+
 }

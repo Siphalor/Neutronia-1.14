@@ -12,11 +12,12 @@ import java.nio.file.Files;
 import java.util.stream.Collectors;
 
 /**
-* The vertex and fragment shaders are setup when the box object is
-* constructed. They are applied to the GL state prior to the box
-* being drawn, and released from that state after drawing.
-* @author Stephen Jones with edits by NurMarvin (Marvin Witt)
-*/
+ * The vertex and fragment shaders are setup when the box object is
+ * constructed. They are applied to the GL state prior to the box
+ * being drawn, and released from that state after drawing.
+ *
+ * @author Stephen Jones with edits by NurMarvin (Marvin Witt)
+ */
 public class ShaderUtil {
 
     private int program;
@@ -28,8 +29,9 @@ public class ShaderUtil {
 
     /**
      * Creates a new ShaderUtil with the given fragmentShaderString and vertexShaderString
+     *
      * @param fragmentShaderString The fragment shader code
-     * @param vertexShaderString The vertex shader code
+     * @param vertexShaderString   The vertex shader code
      */
     public ShaderUtil(String fragmentShaderString, String vertexShaderString) {
         int vertexShader, fragmentShader;
@@ -42,7 +44,7 @@ public class ShaderUtil {
             return;
         }
 
-        if(vertexShader == 0 || fragmentShader == 0) return;
+        if (vertexShader == 0 || fragmentShader == 0) return;
 
         program = ARBShaderObjects.glCreateProgramObjectARB();
 
@@ -63,8 +65,17 @@ public class ShaderUtil {
         }
     }
 
+    public static ShaderUtil fromFile(File shaderFile) throws IOException {
+
+        if (!shaderFile.exists()) {
+            throw new FileNotFoundException("Fragment shader not found");
+        }
+
+        return new ShaderUtil(Files.lines(shaderFile.toPath()).collect(Collectors.joining("\n")));
+    }
+
     public void draw() {
-        time+=0.01;
+        time += 0.01;
         Window window = MinecraftClient.getInstance().window;
 
         GL11.glPushMatrix();
@@ -95,12 +106,13 @@ public class ShaderUtil {
         try {
             shader = ARBShaderObjects.glCreateShaderObjectARB(shaderType);
 
-            if(shader == 0)return 0;
+            if (shader == 0) return 0;
 
             ARBShaderObjects.glShaderSourceARB(shader, shaderSource);
             ARBShaderObjects.glCompileShaderARB(shader);
 
-            if(ARBShaderObjects.glGetObjectParameteriARB(shader, ARBShaderObjects.GL_OBJECT_COMPILE_STATUS_ARB) == GL11.GL_FALSE)throw new RuntimeException("Error creating shader: " + getLogInfo(shader));
+            if (ARBShaderObjects.glGetObjectParameteriARB(shader, ARBShaderObjects.GL_OBJECT_COMPILE_STATUS_ARB) == GL11.GL_FALSE)
+                throw new RuntimeException("Error creating shader: " + getLogInfo(shader));
 
             return shader;
         } catch (Exception exc) {
@@ -108,15 +120,6 @@ public class ShaderUtil {
             throw exc;
 
         }
-    }
-
-    public static ShaderUtil fromFile(File shaderFile) throws IOException {
-
-        if(!shaderFile.exists()) {
-            throw new FileNotFoundException("Fragment shader not found");
-        }
-
-        return new ShaderUtil(Files.lines(shaderFile.toPath()).collect(Collectors.joining("\n")));
     }
 
     private String fromFile(ResourceManager resourceManager, Identifier fileLocation) throws IOException {

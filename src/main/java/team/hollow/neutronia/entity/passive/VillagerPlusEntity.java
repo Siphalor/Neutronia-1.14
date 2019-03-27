@@ -15,7 +15,7 @@ public class VillagerPlusEntity extends PassiveEntity {
     public VillagerPlusEntity(World world_1) {
         super(NEntityTypes.VILLAGER_PLUS, world_1);
         this.setCanPickUpLoot(true);
-        ((MobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
+        ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
     }
 

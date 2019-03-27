@@ -1,6 +1,5 @@
 package team.hollow.neutronia.mixin.events.common;
 
-public class ChunkUnloadServerMixin
-{
+public class ChunkUnloadServerMixin {
 //todo
 }

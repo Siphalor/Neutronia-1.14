@@ -58,14 +58,14 @@ public class ExampleMod implements ModInitializer {
         Feature.STRUCTURES.put("neutronia:pillager_mansion", PILLAGER_MANSION_FEATURE);
         for (Biome b : Registry.BIOME) {
             if (b.getCategory() != Biome.Category.OCEAN && b.getCategory() != Biome.Category.RIVER) {
-				b.addStructureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1));
-				b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1),
+                b.addStructureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1));
+                b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1),
                         Decorator.NOPE, new NopeDecoratorConfig()));
             }
         }
         Feature.STRUCTURES.put("neutronia:ritual_site", RITUAL_SITE_FEATURE);
-        for(Biome b: Registry.BIOME) {
-            if(b.getCategory() == Biome.Category.TAIGA) {
+        for (Biome b : Registry.BIOME) {
+            if (b.getCategory() == Biome.Category.TAIGA) {
                 b.addStructureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1));
                 b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1),
                         Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(100)));

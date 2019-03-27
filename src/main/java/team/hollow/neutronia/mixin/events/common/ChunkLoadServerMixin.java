@@ -12,15 +12,13 @@ import team.hollow.neutronia.event_system.EventCore;
 @Mixin(WorldChunk.class)
 @Environment(EnvType.SERVER)
 public abstract class ChunkLoadServerMixin {
-	@Inject(at = @At("RETURN"), method = "setLoadedToWorld")
-	private void onSetLoadedToWorld(boolean boolean_1, CallbackInfo info)
-	{
-		if(boolean_1 == true)
-		{
-			WorldChunk _this = (WorldChunk)(Object)this;
-			//ChunkPos p = _this.getPos();
-			//System.out.println("ChunkLoadServerMixin: "+p.x+","+p.z);
-			EventCore.instance.onChunkLoad(false, _this);
-		}
-	}
+    @Inject(at = @At("RETURN"), method = "setLoadedToWorld")
+    private void onSetLoadedToWorld(boolean boolean_1, CallbackInfo info) {
+        if (boolean_1 == true) {
+            WorldChunk _this = (WorldChunk) (Object) this;
+            //ChunkPos p = _this.getPos();
+            //System.out.println("ChunkLoadServerMixin: "+p.x+","+p.z);
+            EventCore.instance.onChunkLoad(false, _this);
+        }
+    }
 }

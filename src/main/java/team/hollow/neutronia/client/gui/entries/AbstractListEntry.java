@@ -11,9 +11,9 @@ import java.awt.*;
 
 @Environment(EnvType.CLIENT)
 public abstract class AbstractListEntry<T extends ConfigField> extends EntryListWidget.Entry<AbstractListEntry<?>> {
+    protected Object originalValue;
     private ConfigListWidget parentList;
     private T configEntry;
-    protected Object originalValue;
     private ModConfigScreen parent;
 
     public AbstractListEntry(ModConfigScreen parent, ConfigListWidget parentList, T configEntry) {

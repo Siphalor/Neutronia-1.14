@@ -29,7 +29,7 @@ public class EntityRegistryBuilder<E extends Entity> {
 
     private EntitySize size;
 
-    public static <E extends Entity>EntityRegistryBuilder<E> createBuilder(String nameIn) {
+    public static <E extends Entity> EntityRegistryBuilder<E> createBuilder(String nameIn) {
         name = nameIn;
         return new EntityRegistryBuilder<E>();
     }
@@ -65,9 +65,9 @@ public class EntityRegistryBuilder<E extends Entity> {
     public EntityType<E> build() {
         EntityType<E> entityBuilder = EntityType.Builder.create(class_4049, category).setSize(size.width, size.height).disableSaving().build(name);
         EntityType<E> entityType = Registry.register(Registry.ENTITY_TYPE, new Identifier(Neutronia.MOD_ID, name), entityBuilder);
-        if((this.alwaysUpdateVelocity)) {
+        if ((this.alwaysUpdateVelocity)) {
             if (this.updateIntervalTicks != 0 & this.trackingDistance != 0)
-            EntityTrackingRegistry.INSTANCE.register(entityType, trackingDistance, updateIntervalTicks, alwaysUpdateVelocity);
+                EntityTrackingRegistry.INSTANCE.register(entityType, trackingDistance, updateIntervalTicks, alwaysUpdateVelocity);
         }
         RegistryUtils.registerItem(new SpawnEggItem(entityType, primaryColor, secondaryColor, new Item.Settings().itemGroup(ItemGroup.MISC)), String.format("%s_spawn_egg", name));
         return entityType;

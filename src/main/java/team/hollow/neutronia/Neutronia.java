@@ -23,13 +23,10 @@ public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
     public static final String MOD_NAME = "Neutronia";
-    private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
-
     public static final JsonConfig<WailaConfig> CONFIG = new JsonConfig<>("neutronia/neutronia", WailaConfig.class).withGson((new GsonBuilder()).setPrettyPrinting().registerTypeAdapter(Identifier.class, new Identifier.DeSerializer()).create());
-
-    public static ConfigFile generalConfigFile;
-
     public static final File CONFIG_DIRECTORY = new File(FabricLoader.getInstance().getConfigDirectory(), MOD_NAME);
+    private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
+    public static ConfigFile generalConfigFile;
 
     static {
         EventCore.instance = new EventCore();

@@ -22,11 +22,11 @@ public class WailaConfig {
         return this.formatting;
     }
 
-    public static enum DisplayMode {
+    public enum DisplayMode {
         HOLD_KEY,
         TOGGLE;
 
-        private DisplayMode() {
+        DisplayMode() {
         }
     }
 
@@ -40,44 +40,44 @@ public class WailaConfig {
         public ConfigFormatting() {
         }
 
-        public void setModName(String modName) {
-            this.modName = modName;
-        }
-
-        public void setBlockName(String blockName) {
-            this.blockName = blockName;
-        }
-
-        public void setFluidName(String fluidName) {
-            this.fluidName = fluidName;
-        }
-
-        public void setEntityName(String entityName) {
-            this.entityName = entityName;
-        }
-
-        public void setRegistryName(String registryName) {
-            this.registryName = registryName;
-        }
-
         public String getModName() {
             return StringEscapeUtils.unescapeJava(this.modName);
+        }
+
+        public void setModName(String modName) {
+            this.modName = modName;
         }
 
         public String getBlockName() {
             return StringEscapeUtils.unescapeJava(this.blockName);
         }
 
+        public void setBlockName(String blockName) {
+            this.blockName = blockName;
+        }
+
         public String getFluidName() {
             return StringEscapeUtils.unescapeJava(this.fluidName);
+        }
+
+        public void setFluidName(String fluidName) {
+            this.fluidName = fluidName;
         }
 
         public String getEntityName() {
             return StringEscapeUtils.unescapeJava(this.entityName);
         }
 
+        public void setEntityName(String entityName) {
+            this.entityName = entityName;
+        }
+
         public String getRegistryName() {
             return StringEscapeUtils.unescapeJava(this.registryName);
+        }
+
+        public void setRegistryName(String registryName) {
+            this.registryName = registryName;
         }
     }
 
@@ -111,10 +111,6 @@ public class WailaConfig {
             this.shiftForDetails = shiftForDetails;
         }
 
-        public void setDisplayMode(WailaConfig.DisplayMode displayMode) {
-            this.displayMode = displayMode;
-        }
-
         public void setHideFromPlayerList(boolean hideFromPlayerList) {
             this.hideFromPlayerList = hideFromPlayerList;
         }
@@ -131,14 +127,6 @@ public class WailaConfig {
             this.enableTextToSpeech = enableTextToSpeech;
         }
 
-        public void setMaxHealthForRender(int maxHealthForRender) {
-            this.maxHealthForRender = maxHealthForRender;
-        }
-
-        public void setMaxHeartsPerLine(int maxHeartsPerLine) {
-            this.maxHeartsPerLine = maxHeartsPerLine;
-        }
-
         public void setDisplayFluids(boolean displayFluids) {
             this.displayFluids = displayFluids;
         }
@@ -153,6 +141,10 @@ public class WailaConfig {
 
         public WailaConfig.DisplayMode getDisplayMode() {
             return this.displayMode;
+        }
+
+        public void setDisplayMode(WailaConfig.DisplayMode displayMode) {
+            this.displayMode = displayMode;
         }
 
         public boolean shouldHideFromPlayerList() {
@@ -175,8 +167,16 @@ public class WailaConfig {
             return this.maxHealthForRender;
         }
 
+        public void setMaxHealthForRender(int maxHealthForRender) {
+            this.maxHealthForRender = maxHealthForRender;
+        }
+
         public int getMaxHeartsPerLine() {
             return this.maxHeartsPerLine;
+        }
+
+        public void setMaxHeartsPerLine(int maxHeartsPerLine) {
+            this.maxHeartsPerLine = maxHeartsPerLine;
         }
 
         public boolean shouldDisplayFluids() {

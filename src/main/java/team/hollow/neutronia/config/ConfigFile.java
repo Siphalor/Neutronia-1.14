@@ -55,11 +55,6 @@ public class ConfigFile {
         this(modID, configClass, false);
     }
 
-    public void setConfigFileName(String name) {
-        this.configFile = new File(CONFIG_DIR,
-                FilenameUtils.getBaseName(name).equalsIgnoreCase(CONFIG_EXT) ? name : name + ".json5");
-    }
-
     public void loadConfig() {
         CONFIG_LOG.info("Loading config for {}.", modID);
         if (!CONFIG_DIR.exists() || !configFile.exists() || !configFile.isFile()) {
@@ -247,6 +242,11 @@ public class ConfigFile {
 
     public String getConfigFileName() {
         return FilenameUtils.getBaseName(this.configFile.getName());
+    }
+
+    public void setConfigFileName(String name) {
+        this.configFile = new File(CONFIG_DIR,
+                FilenameUtils.getBaseName(name).equalsIgnoreCase(CONFIG_EXT) ? name : name + ".json5");
     }
 
     public String getConfigName() {

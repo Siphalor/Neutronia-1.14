@@ -57,6 +57,8 @@ import java.util.stream.Stream;
 
 public class ServerWorldRedirect extends ServerWorld {
 
+    public World that = null;
+
     public ServerWorldRedirect(MinecraftServer minecraftServer_1, Executor executor_1,
                                WorldSaveHandler worldSaveHandler_1, LevelProperties levelProperties_1, DimensionType dimensionType_1,
                                Profiler profiler_1, WorldGenerationProgressListener worldGenerationProgressListener_1) {
@@ -64,8 +66,6 @@ public class ServerWorldRedirect extends ServerWorld {
                 worldGenerationProgressListener_1);
         // TODO Auto-generated constructor stub
     }
-
-    public World that = null;
 
     public void syncFields() {
 
@@ -100,12 +100,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void setTime(long A) {
-        if (that != null) {
-            that.setTime(A);
-        } else {
-            super.setTime(A);
-        }
+    public void handleInteraction(EntityInteraction A, Entity B, InteractionObserver C) {
     }
 
 	/*
@@ -134,7 +129,12 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void handleInteraction(EntityInteraction A, Entity B, InteractionObserver C) {
+    public boolean spawnEntity(Entity A) {
+        if (that != null) {
+            return that.spawnEntity(A);
+        } else {
+            return super.spawnEntity(A);
+        }
     }
 
 	/*
@@ -171,11 +171,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean spawnEntity(Entity A) {
+    public void summonParticle(Entity A, byte B) {
         if (that != null) {
-            return that.spawnEntity(A);
+            that.summonParticle(A, B);
         } else {
-            return super.spawnEntity(A);
+            super.summonParticle(A, B);
         }
     }
 
@@ -197,21 +197,21 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void summonParticle(Entity A, byte B) {
-        if (that != null) {
-            that.summonParticle(A, B);
-        } else {
-            super.summonParticle(A, B);
-        }
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public TagManager getTagManager() {
         if (that != null) {
             return that.getTagManager();
         } else {
             return super.getTagManager();
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public List getPlayers() {
+        if (that != null) {
+            return that.getPlayers();
+        } else {
+            return super.getPlayers();
         }
     }
 
@@ -227,16 +227,6 @@ public class ServerWorldRedirect extends ServerWorld {
 	return super.getScoreboard();
 	}
 	}*/
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public List getPlayers() {
-        if (that != null) {
-            return that.getPlayers();
-        } else {
-            return super.getPlayers();
-        }
-    }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
@@ -258,14 +248,6 @@ public class ServerWorldRedirect extends ServerWorld {
         }
     }
 
-	/*
-	@SuppressWarnings({ "rawtypes", "unchecked" })
-	@Override
-	public PersistentStateManager getPersistentStateManager(){
-	//non void return in non-World method}
-
-	*/
-
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public void setBlockBreakingProgress(int A, BlockPos B, int C) {
@@ -275,6 +257,14 @@ public class ServerWorldRedirect extends ServerWorld {
             super.setBlockBreakingProgress(A, B, C);
         }
     }
+
+	/*
+	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
+	public PersistentStateManager getPersistentStateManager(){
+	//non void return in non-World method}
+
+	*/
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
@@ -309,6 +299,11 @@ public class ServerWorldRedirect extends ServerWorld {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public void updatePlayersSleeping() {
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void method_18769(Entity A) {
     }
 
 	/*
@@ -347,7 +342,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18769(Entity A) {
+    public void method_18767(Entity A) {
     }
 
 	/*
@@ -360,22 +355,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18767(Entity A) {
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public void resetIdleTimeout() {
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public void setSpawnPos(BlockPos A) {
-        if (that != null) {
-            that.setSpawnPos(A);
-        } else {
-            super.setSpawnPos(A);
-        }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -513,6 +493,16 @@ public class ServerWorldRedirect extends ServerWorld {
     public void method_18765(BooleanSupplier A) {
     }
 
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void tickChunk(WorldChunk A, int B) {
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void method_18762(Entity A) {
+    }
+
 	/*
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
@@ -523,7 +513,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void tickChunk(WorldChunk A, int B) {
+    public void method_18763(Entity A, Entity B) {
     }
 
 	/*
@@ -533,16 +523,6 @@ public class ServerWorldRedirect extends ServerWorld {
 	//non void return in non-World method}
 
 	*/
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public void method_18762(Entity A) {
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public void method_18763(Entity A, Entity B) {
-    }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
@@ -557,6 +537,19 @@ public class ServerWorldRedirect extends ServerWorld {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public void addLightning(LightningEntity A) {
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void method_18214(Entity A) {
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void checkSessionLock() {
+        try {
+        } catch (Exception e) {
+        }
     }
 
 	/*
@@ -577,15 +570,15 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18214(Entity A) {
+    public void saveLevel() {
+        try {
+        } catch (Exception e) {
+        }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void checkSessionLock() {
-        try {
-        } catch (Exception e) {
-        }
+    public void method_18774(Entity A) {
     }
 
 	/*
@@ -606,20 +599,17 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void saveLevel() {
-        try {
-        } catch (Exception e) {
-        }
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public void method_18774(Entity A) {
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public void method_18215(ServerPlayerEntity A) {
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void method_18213(ServerPlayerEntity A) {
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void method_18211(ServerPlayerEntity A) {
     }
 
 	/*
@@ -640,7 +630,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18213(ServerPlayerEntity A) {
+    public void method_18770(ServerPlayerEntity A) {
     }
 
 	/*
@@ -669,12 +659,12 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18211(ServerPlayerEntity A) {
+    public void method_18764(WorldChunk A) {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18770(ServerPlayerEntity A) {
+    public void method_18207(ServerPlayerEntity A) {
     }
 
 	/*
@@ -695,12 +685,22 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18764(WorldChunk A) {
+    public long getTime() {
+        if (that != null) {
+            return that.getTime();
+        } else {
+            return super.getTime();
+        }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18207(ServerPlayerEntity A) {
+    public void setTime(long A) {
+        if (that != null) {
+            that.setTime(A);
+        } else {
+            super.setTime(A);
+        }
     }
 
 	/*
@@ -761,11 +761,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public long getTime() {
+    public List getEntities(Class A, BoundingBox B, Predicate C) {
         if (that != null) {
-            return that.getTime();
+            return that.getEntities(A, B, C);
         } else {
-            return super.getTime();
+            return super.getEntities(A, B, C);
         }
     }
 
@@ -785,16 +785,6 @@ public class ServerWorldRedirect extends ServerWorld {
 	}
 
 	*/
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public List getEntities(Class A, BoundingBox B, Predicate C) {
-        if (that != null) {
-            return that.getEntities(A, B, C);
-        } else {
-            return super.getEntities(A, B, C);
-        }
-    }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
@@ -818,21 +808,21 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void setTimeOfDay(long A) {
-        if (that != null) {
-            that.setTimeOfDay(A);
-        } else {
-            super.setTimeOfDay(A);
-        }
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public long getTimeOfDay() {
         if (that != null) {
             return that.getTimeOfDay();
         } else {
             return super.getTimeOfDay();
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void setTimeOfDay(long A) {
+        if (that != null) {
+            that.setTimeOfDay(A);
+        } else {
+            super.setTimeOfDay(A);
         }
     }
 
@@ -1108,6 +1098,16 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
+    public void setSpawnPos(BlockPos A) {
+        if (that != null) {
+            that.setSpawnPos(A);
+        } else {
+            super.setSpawnPos(A);
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
     public boolean isDaylight() {
         if (that != null) {
             return that.isDaylight();
@@ -1128,21 +1128,21 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void setTicksSinceLightning(int A) {
-        if (that != null) {
-            that.setTicksSinceLightning(A);
-        } else {
-            super.setTicksSinceLightning(A);
-        }
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public int getTicksSinceLightning() {
         if (that != null) {
             return that.getTicksSinceLightning();
         } else {
             return super.getTicksSinceLightning();
+        }
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    @Override
+    public void setTicksSinceLightning(int A) {
+        if (that != null) {
+            that.setTicksSinceLightning(A);
+        } else {
+            super.setTicksSinceLightning(A);
         }
     }
 

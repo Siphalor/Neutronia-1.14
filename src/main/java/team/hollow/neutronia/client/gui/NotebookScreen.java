@@ -38,16 +38,14 @@ public class NotebookScreen extends Screen {
     public NotebookScreen(ItemStack stack) {
         super(new TranslatableTextComponent("item.neutronia.notebook"));
         CompoundTag tag = stack.getTag();
-        if (tag != null && tag.containsKey(NConstants.NOTEBOOK_SECTION_KEY))
-        {
+        if (tag != null && tag.containsKey(NConstants.NOTEBOOK_SECTION_KEY)) {
             INotebookSection section = NotebookSectionRegistry.get(Identifier.create(tag.getString(NConstants.NOTEBOOK_SECTION_KEY)));
             int page = tag.getInt(NConstants.NOTEBOOK_PAGE_KEY);
             int contentsPage = tag.getInt(NConstants.NOTEBOOK_CONTENTS_PAGE_KEY);
 
             this.section = section;
 
-            if (section != null)
-            {
+            if (section != null) {
                 this.leftPage = page;
                 this.contentsPage = contentsPage;
             }
@@ -56,16 +54,13 @@ public class NotebookScreen extends Screen {
 
     private void setSection(INotebookSection section) {
         this.leftPage = 0;
-        if (!section.isVisibleTo(minecraft.player))
-        {
+        if (!section.isVisibleTo(minecraft.player)) {
             this.section = NotebookSectionRegistry.CONTENTS;
-        } else
-        {
+        } else {
             this.section = section;
         }
 
-        if (this.section == NotebookSectionRegistry.CONTENTS)
-        {
+        if (this.section == NotebookSectionRegistry.CONTENTS) {
             this.leftPage = contentsPage;
         }
 
@@ -200,23 +195,20 @@ public class NotebookScreen extends Screen {
         minecraft.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
         DrawableHelper.blit(xTop, yTop, 0, 0, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_HEIGHT, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
 
-        if (section instanceof ContentsNotebookSection)
-        {
+        if (section instanceof ContentsNotebookSection) {
             DrawableHelper.blit(xTop + 133, yTop + 156, 136, 180, 5, 11, 5, 11, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
         // Intro page
         int pointer = yTop + 15;
-        for (INotebookElement element : this.leftElements)
-        {
+        for (INotebookElement element : this.leftElements) {
             GlStateManager.pushMatrix();
             pointer += element.draw(this, left, pointer, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();
         }
 
         pointer = yTop + 15;
-        for (INotebookElement element : this.rightElements)
-        {
+        for (INotebookElement element : this.rightElements) {
             GlStateManager.pushMatrix();
             pointer += element.draw(this, right, pointer, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();
@@ -224,30 +216,25 @@ public class NotebookScreen extends Screen {
 
         minecraft.getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
 
-        if (leftPage + 1 < section.getPageCount(minecraft.player))
-        {
+        if (leftPage + 1 < section.getPageCount(minecraft.player)) {
             RenderUtils.drawTexturedRect(right + 85, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overRightArrow() ? 23 : 0, 180, 18, 10, 18, 10, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
-        if (leftPage > 0)
-        {
+        if (leftPage > 0) {
             RenderUtils.drawTexturedRect(left + 10, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overLeftArrow() ? 23 : 0, 193, 18, 10, 18, 10, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
-        if (!(section instanceof ContentsNotebookSection))
-        {
+        if (!(section instanceof ContentsNotebookSection)) {
             RenderUtils.drawTexturedRect(right - 15, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overBackArrow() ? 66 : 46, 193, 15, 11, 15, 11, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
-        for (INotebookElement element : this.leftElements)
-        {
+        for (INotebookElement element : this.leftElements) {
             GlStateManager.pushMatrix();
             element.drawOverlay(this, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();
         }
 
-        for (INotebookElement element : this.rightElements)
-        {
+        for (INotebookElement element : this.rightElements) {
             GlStateManager.pushMatrix();
             element.drawOverlay(this, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();

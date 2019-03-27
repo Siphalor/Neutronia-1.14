@@ -17,8 +17,8 @@ public class Group implements Comparable<Group> {
     private final List<Component> enabledComponents = new ArrayList<>();
     public String name, desc;
     public boolean enabled, enabledByDefault;
-    private ItemStack iconStack;
     protected Class<?> configFile;
+    private ItemStack iconStack;
 
     public Group(Builder builder) {
         this.name = builder.name;

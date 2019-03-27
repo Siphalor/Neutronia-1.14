@@ -55,11 +55,9 @@ public class ContentsNotebookSection implements INotebookSection {
         } else if (page == 1) {
             int number = 0;
 
-            if (page == textPages + 1)
-            {
+            if (page == textPages + 1) {
                 elements.add(new NotebookElement.SmallHeading("notebook.neutronia.categories").withPadding(3));
-            } else
-            {
+            } else {
                 elements.add(new NotebookElement.Padding(10));
             }
 
@@ -68,12 +66,10 @@ public class ContentsNotebookSection implements INotebookSection {
             for (NotebookElement.ItemInfoButton button : buttons) {
                 if (button.link.isVisibleTo(player)) {
                     number++;
-                    int properPage = (int)Math.ceil(number / 4f);
-                    if (properPage == thisPage)
-                    {
+                    int properPage = (int) Math.ceil(number / 4f);
+                    if (properPage == thisPage) {
                         elements.add(button);
-                    } else if (properPage > thisPage)
-                    {
+                    } else if (properPage > thisPage) {
                         break;
                     }
                 }
@@ -86,7 +82,7 @@ public class ContentsNotebookSection implements INotebookSection {
     public int getPageCount(ClientPlayerEntity player) {
         int amount = 0;
         for (NotebookElement.ItemInfoButton button : buttons) {
-            if(button.link.isVisibleTo(player)) {
+            if (button.link.isVisibleTo(player)) {
                 amount++;
             }
         }

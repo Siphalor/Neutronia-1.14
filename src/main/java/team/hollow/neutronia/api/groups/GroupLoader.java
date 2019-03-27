@@ -23,7 +23,7 @@ public final class GroupLoader {
     }
 
     public static void init() {
-        forEachGroup(group -> setupConfig(group.name,"config.neutronia." + group.name, group.configFile));
+        forEachGroup(group -> setupConfig(group.name, "config.neutronia." + group.name, group.configFile));
         forEachGroup(module -> Neutronia.getLogger().info(WordUtils.capitalizeFully(module.name) + " is " + (module.enabled ? "enabled" : "disabled")));
         forEachGroup(Group::init);
     }

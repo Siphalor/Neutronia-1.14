@@ -13,9 +13,8 @@ import team.hollow.neutronia.event_system.EventCore;
 @Mixin(MinecraftClient.class)
 @Environment(EnvType.CLIENT)
 public abstract class InputEventMixin {
-	@Inject(at = @At("HEAD"), method = "handleInputEvents")
-	private void onInputEvent(CallbackInfo info)
-	{
-		EventCore.instance.onInputEvent();
-	}
+    @Inject(at = @At("HEAD"), method = "handleInputEvents")
+    private void onInputEvent(CallbackInfo info) {
+        EventCore.instance.onInputEvent();
+    }
 }

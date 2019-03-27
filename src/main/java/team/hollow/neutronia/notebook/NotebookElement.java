@@ -24,7 +24,6 @@ class NotebookElement {
 
     private static int linesPerPage() {
         int guiScale = (int) MinecraftClient.getInstance().window.getScaleFactor();
-        ;
         switch (guiScale) {
             case 3:
                 return 18;
@@ -37,7 +36,6 @@ class NotebookElement {
 
     private static double textScale() {
         int guiScale = (int) MinecraftClient.getInstance().window.getScaleFactor();
-        ;
         switch (guiScale) {
             case 4:
                 return 0.7f;

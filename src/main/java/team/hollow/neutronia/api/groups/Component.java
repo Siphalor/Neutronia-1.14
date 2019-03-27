@@ -8,9 +8,9 @@ public class Component {
     public Group group;
     public ComponentStateManager stateManager = new ComponentStateManager(this);
     boolean loadtimeDone;
-    private boolean enabledAtLoadtime;
     boolean prevEnabled;
     boolean forceLoad;
+    private boolean enabledAtLoadtime;
 
     public Component(boolean enabled) {
         stateManager.enabled = enabled;

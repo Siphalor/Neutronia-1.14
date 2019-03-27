@@ -18,10 +18,9 @@ import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class ModMultiConfigScreen extends Screen {
-    private List<ConfigFile> configs;
     private final Screen parent;
     private final ModMetadata modMetadata;
-
+    private List<ConfigFile> configs;
     private ConfigFileListWidget configListWidget;
 
     ModMultiConfigScreen(Screen parent, ModMetadata modMetadata, List<ConfigFile> configs) {
@@ -52,7 +51,7 @@ public class ModMultiConfigScreen extends Screen {
 
     private static class ConfigFileListWidget extends EntryListWidget<ConfigFileEntry> {
         private ConfigFileListWidget(ModMultiConfigScreen modMultiConfigScreen, MinecraftClient client) {
-            super(client, modMultiConfigScreen.width, modMultiConfigScreen.height , 30,
+            super(client, modMultiConfigScreen.width, modMultiConfigScreen.height, 30,
                     modMultiConfigScreen.height - 40, 25);
             for (ConfigFile config : modMultiConfigScreen.configs)
                 this.addEntry(new ConfigFileEntry(modMultiConfigScreen, modMultiConfigScreen.modMetadata, config));
@@ -60,10 +59,10 @@ public class ModMultiConfigScreen extends Screen {
     }
 
     private static class ConfigFileEntry extends EntryListWidget.Entry<ConfigFileEntry> implements ButtonWidget.class_4241 {
-        private ButtonWidget openConfigBtn;
         private final ModMetadata modMetadata;
         private final ConfigFile configFile;
         private final ModMultiConfigScreen parentScreen;
+        private ButtonWidget openConfigBtn;
 
         private ConfigFileEntry(ModMultiConfigScreen parentScreen, ModMetadata modMetadata, ConfigFile configFile) {
             this.modMetadata = modMetadata;

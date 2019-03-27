@@ -15,7 +15,7 @@ public class ConfigListWidget extends EntryListWidget<AbstractListEntry<?>> {
     private AbstractListEntry<?> lastHoveredEntry;
 
     public ConfigListWidget(ModConfigScreen modConfigScreen, MinecraftClient client) {
-        super(client, modConfigScreen.width, modConfigScreen.height , 30,
+        super(client, modConfigScreen.width, modConfigScreen.height, 30,
                 modConfigScreen.height - 40, 25);
         for (Map.Entry<String, ConfigField> entry : modConfigScreen.getConfig().getConfigValues().entrySet()) {
             ConfigField field = entry.getValue();

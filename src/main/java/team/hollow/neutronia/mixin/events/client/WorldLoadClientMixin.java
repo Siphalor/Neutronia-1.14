@@ -12,12 +12,10 @@ import team.hollow.neutronia.event_system.EventCore;
 
 @Mixin(ClientWorld.class)
 @Environment(EnvType.CLIENT)
-public class WorldLoadClientMixin
-{
-	@Inject(method = "<init>*", at = @At("RETURN"))
-	private void onConstructor(CallbackInfo ci)
-	{
-		ClientWorld _this = (ClientWorld)(Object)this;
-		EventCore.instance.onClientWorldLoad(_this);
-	}
+public class WorldLoadClientMixin {
+    @Inject(method = "<init>*", at = @At("RETURN"))
+    private void onConstructor(CallbackInfo ci) {
+        ClientWorld _this = (ClientWorld) (Object) this;
+        EventCore.instance.onClientWorldLoad(_this);
+    }
 }

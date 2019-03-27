@@ -14,10 +14,9 @@ import team.hollow.neutronia.event_system.EventCore;
 @Mixin(WorldChunk.class)
 @Environment(EnvType.CLIENT)
 public abstract class ChunkLoadClientMixin {
-	@Inject(at = @At("RETURN"), method = "loadFromPacket")
-	private void onLoadFromPacket(PacketByteBuf packetByteBuf_1, CompoundTag compoundTag_1, int int_1, boolean boolean_1, CallbackInfo info)
-	{
-		WorldChunk _this = (WorldChunk)(Object)this;
-		EventCore.instance.onChunkLoad(true, _this);
-	}
+    @Inject(at = @At("RETURN"), method = "loadFromPacket")
+    private void onLoadFromPacket(PacketByteBuf packetByteBuf_1, CompoundTag compoundTag_1, int int_1, boolean boolean_1, CallbackInfo info) {
+        WorldChunk _this = (WorldChunk) (Object) this;
+        EventCore.instance.onChunkLoad(true, _this);
+    }
 }

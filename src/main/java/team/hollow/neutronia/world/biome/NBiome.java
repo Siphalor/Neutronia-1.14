@@ -8,9 +8,6 @@ import net.minecraft.world.gen.feature.*;
 
 public class NBiome extends Biome {
 
-    protected boolean genDoubleGrass = false;
-    protected int doubleGrassPerChunk;
-
     protected static final BlockState SAND = Blocks.SAND.getDefaultState();
     protected static final BlockState RED_SAND = Blocks.RED_SAND.getDefaultState();
     protected static final BlockState HARDENED_CLAY = Blocks.TERRACOTTA.getDefaultState();
@@ -26,13 +23,14 @@ public class NBiome extends Biome {
     protected static final BlockState WATER_LILY = Blocks.LILY_PAD.getDefaultState();
     protected static final BlockState JUNGLE_LOG = Blocks.JUNGLE_LOG.getDefaultState();
     protected static final BlockState OAK_LOG = Blocks.OAK_LOG.getDefaultState();
-
     protected static final PineTreeFeature PINE_TREE = new PineTreeFeature(DefaultFeatureConfig::deserialize);
     protected static final SpruceTreeFeature SPRUCE_TREE = new SpruceTreeFeature(DefaultFeatureConfig::deserialize, false);
     protected static final BirchTreeFeature SUPER_BIRCH_TREE = new BirchTreeFeature(DefaultFeatureConfig::deserialize, false, true);
     protected static final BirchTreeFeature BIRCH_TREE = new BirchTreeFeature(DefaultFeatureConfig::deserialize, false, false);
     protected static final DarkOakTreeFeature ROOF_TREE = new DarkOakTreeFeature(DefaultFeatureConfig::deserialize, false);
     protected static final SavannaTreeFeature SAVANNA_TREE = new SavannaTreeFeature(DefaultFeatureConfig::deserialize, false);
+    protected boolean genDoubleGrass = false;
+    protected int doubleGrassPerChunk;
 
     public NBiome(Settings properties) {
         super(properties);

@@ -11,15 +11,13 @@ import team.hollow.neutronia.event_system.EventCore;
 
 @Mixin(GameRenderer.class)
 @Environment(EnvType.CLIENT)
-public abstract class RenderWorldLastClientMixin
-{
+public abstract class RenderWorldLastClientMixin {
     @Inject(method = "renderCenter",
-    		at = @At(value = "INVOKE_STRING",
-    		target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V",
-    		args = {"ldc=hand"})
+            at = @At(value = "INVOKE_STRING",
+                    target = "Lnet/minecraft/util/profiler/Profiler;swap(Ljava/lang/String;)V",
+                    args = {"ldc=hand"})
     )
-    private void onrenderCenter_getProfiler_swap_hand(float float_1, long long_1, final CallbackInfo ci)
-    {
-    	EventCore.instance.onRenderWorldLast(float_1);
+    private void onrenderCenter_getProfiler_swap_hand(float float_1, long long_1, final CallbackInfo ci) {
+        EventCore.instance.onRenderWorldLast(float_1);
     }
 }

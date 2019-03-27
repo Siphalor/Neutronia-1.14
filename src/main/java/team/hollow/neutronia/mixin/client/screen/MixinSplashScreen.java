@@ -14,8 +14,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.hollow.neutronia.LoadingProgressImpl;
-import team.hollow.neutronia.api.LoadingProgress;
 import team.hollow.neutronia.NeutroniaConfig;
+import team.hollow.neutronia.api.LoadingProgress;
 
 import java.util.Collections;
 
@@ -56,7 +56,7 @@ public abstract class MixinSplashScreen {
 
     @Inject(method = "render(IIF)V", at = @At("RETURN"))
     private void draw(int int_1, int int_2, float float_1, CallbackInfo ci) {
-        if(NeutroniaConfig.ClientFeatures.splashScreenExtra.get()) {
+        if (NeutroniaConfig.ClientFeatures.splashScreenExtra.get()) {
             drawProgress();
         }
     }

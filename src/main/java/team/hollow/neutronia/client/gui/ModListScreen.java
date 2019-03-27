@@ -19,9 +19,8 @@ import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class ModListScreen extends Screen {
-    private List<ModMetadata> mods;
     private final Screen parent;
-
+    private List<ModMetadata> mods;
     private ModListWidget modListWidget;
 
     public ModListScreen(Screen parent) {
@@ -51,7 +50,7 @@ public class ModListScreen extends Screen {
 
     private static class ModListWidget extends EntryListWidget<ModEntry> {
         private ModListWidget(ModListScreen modListscreen, MinecraftClient client) {
-            super(client, modListscreen.width , modListscreen.height, 30,
+            super(client, modListscreen.width, modListscreen.height, 30,
                     modListscreen.height - 40, 25);
             for (ModMetadata metadata : modListscreen.mods) {
                 this.addEntry(new ModEntry(modListscreen, metadata));
@@ -60,9 +59,9 @@ public class ModListScreen extends Screen {
     }
 
     private static class ModEntry extends EntryListWidget.Entry<ModEntry> implements ButtonWidget.class_4241 {
-        private ButtonWidget openConfigBtn;
         private final ModMetadata modMetadata;
         private final ModListScreen parentScreen;
+        private ButtonWidget openConfigBtn;
 
         private ModEntry(ModListScreen parentScreen, ModMetadata modMetadata) {
             this.modMetadata = modMetadata;

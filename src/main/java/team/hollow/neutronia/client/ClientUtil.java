@@ -20,15 +20,15 @@ public class ClientUtil {
         }
         return false;
     }
-    
+
     public static Point getMousePoint() {
         return new Point((int) getMouseX(), (int) getMouseY());
     }
-    
+
     public static double getMouseX() {
         return CLIENT.mouse.getX() * (double) CLIENT.window.getScaledWidth() / (double) CLIENT.window.getWidth();
     }
-    
+
     public static double getMouseY() {
         return CLIENT.mouse.getY() * (double) CLIENT.window.getScaledWidth() / (double) CLIENT.window.getWidth();
     }

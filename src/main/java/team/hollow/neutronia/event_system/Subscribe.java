@@ -7,7 +7,6 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Subscribe
-{
-	String event() default "";
+public @interface Subscribe {
+    String event() default "";
 }
