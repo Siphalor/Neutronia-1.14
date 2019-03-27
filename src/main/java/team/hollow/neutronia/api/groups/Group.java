@@ -4,8 +4,6 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.ItemStack;
-import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.config.ConfigFile;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -20,7 +18,7 @@ public class Group implements Comparable<Group> {
     public String name, desc;
     public boolean enabled, enabledByDefault;
     private ItemStack iconStack;
-    protected ConfigFile configFile;
+    protected Class<?> configFile;
 
     public Group(Builder builder) {
         this.name = builder.name;
@@ -125,7 +123,7 @@ public class Group implements Comparable<Group> {
         private Group group;
         private boolean enabled, enabledByDefault;
         private List<Component> components = new ArrayList<>();
-        private ConfigFile configFile;
+        private Class<?> configFile;
 
         public Builder name(String name) {
             this.name = name;
@@ -143,7 +141,7 @@ public class Group implements Comparable<Group> {
         }
 
         public Builder configFile(Class<?> config) {
-            this.configFile = new ConfigFile(Neutronia.MOD_ID, "config.neutronia." + name, config);
+            this.configFile = config;
             return this;
         }
 

@@ -55,7 +55,6 @@ public class SocialVillager extends PassiveEntity {
         super(type, world);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
-        Random r = new Random();
         if (hairColor == null || hairColor.equals("")) {
 
             unifiedSetup();
@@ -76,14 +75,13 @@ public class SocialVillager extends PassiveEntity {
         sexs.add(2, "Genderless");
 
         try {
-            this.firstName = generateFirstName(sexs.get(r.nextInt(3)));
+            this.firstName = generateFirstName(sexs.get(getRand().nextInt(3)));
             this.lastName = generateLastName();
             this.setCustomName(new StringTextComponent(firstName + " " + lastName));
 
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.setCanPickUpLoot(true);
     }
 
     @Override
@@ -143,9 +141,8 @@ public class SocialVillager extends PassiveEntity {
     }
 
     public void formOpinion(Entity person) {
-        Random rand = new Random();
         if (!opinions.containsKey(person.getUuid())) {
-            opinions.put(person.getUuid(), rand.nextInt(50) - 25);
+            opinions.put(person.getUuid(), getRand().nextInt(50) - 25);
         }
     }
 
@@ -176,36 +173,31 @@ public class SocialVillager extends PassiveEntity {
     }
 
     public void setupHair() {
-        Random rand = new Random();
         String[] hairList = {"Red", "Brown", "Black", "Blonde"};
         int[] styleList = {1, 2, 3, 4};
-        this.hairStyle = styleList[rand.nextInt(styleList.length)];
-        this.hairColor = hairList[rand.nextInt(hairList.length)];
+        this.hairStyle = styleList[getRand().nextInt(styleList.length)];
+        this.hairColor = hairList[getRand().nextInt(hairList.length)];
     }
 
     public void setupEyes() {
-        Random rand = new Random();
         String[] eyeList = {"Black", "Blue", "Brown", "Green", "Lime", "Pink", "Yellow"};
-        this.eyeColor = eyeList[rand.nextInt(eyeList.length)];
+        this.eyeColor = eyeList[getRand().nextInt(eyeList.length)];
     }
 
     public void setupSkin() {
-        Random rand = new Random();
         String[] skinList = {"Light", "Medium", "Dark"};
-        this.skinColor = skinList[rand.nextInt(skinList.length)];
+        this.skinColor = skinList[getRand().nextInt(skinList.length)];
     }
 
     public void setupGender() {
-        Random random = new Random();
         String[] genderList = {"Male", "Female", "Genderless"};
-        this.sex = genderList[random.nextInt(genderList.length)];
+        this.sex = genderList[getRand().nextInt(genderList.length)];
     }
 
     public void setupOrientation() {
-        Random rand = new Random();
-        int orientationInt = rand.nextInt(10);
+        int orientationInt = getRand().nextInt(10);
         if (orientationInt == 9) {
-            boolean orientationBool = rand.nextBoolean();
+            boolean orientationBool = getRand().nextBoolean();
             if (orientationBool) {
                 this.sexuality = "Bisexual";
             } else {

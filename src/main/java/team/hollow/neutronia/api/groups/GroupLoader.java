@@ -16,7 +16,6 @@ public final class GroupLoader {
 
     public static ConfigFile config;
     public static List<Group> groups;
-    public static List<Group> enabledGroups;
     public static Map<Class<? extends Component>, Component> componentInstances = new HashMap<>();
 
     static {
@@ -24,27 +23,23 @@ public final class GroupLoader {
     }
 
     public static void init() {
-        forEachGroup(group -> setupConfig("config.neutronia." + group.name, group.configFile.getClass()));
+        forEachGroup(group -> setupConfig(group.name,"config.neutronia." + group.name, group.configFile));
         forEachGroup(module -> Neutronia.getLogger().info(WordUtils.capitalizeFully(module.name) + " is " + (module.enabled ? "enabled" : "disabled")));
         forEachGroup(Group::init);
     }
 
     @Environment(EnvType.CLIENT)
     public static void clientInit() {
-        forEachEnabledGroup(Group::initClient);
+        forEachGroup(Group::initClient);
     }
 
-    public static void setupConfig(String configName, Class<?> configClass) {
-        config = new ConfigFile(Neutronia.MOD_ID, configName, configClass);
+    public static void setupConfig(String fileName, String configName, Class<?> configClass) {
+        config = new ConfigFile(fileName.toLowerCase(), configName.toLowerCase(), configClass);
         config.loadConfig();
     }
 
     private static void forEachGroup(Consumer<Group> consumer) {
         groups.forEach(consumer);
-    }
-
-    private static void forEachEnabledGroup(Consumer<Group> consumer) {
-        enabledGroups.forEach(consumer);
     }
 
     public static void registerGroup(Group group) {

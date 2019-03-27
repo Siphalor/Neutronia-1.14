@@ -29,8 +29,11 @@ public class Neutronia implements ModInitializer {
 
     public static ConfigFile generalConfigFile;
 
+    public static final File CONFIG_DIRECTORY = new File(FabricLoader.getInstance().getConfigDirectory(), MOD_NAME);
+
     static {
         EventCore.instance = new EventCore();
+        CONFIG_DIRECTORY.mkdirs();
     }
 
     public static Logger getLogger() {
@@ -39,10 +42,6 @@ public class Neutronia implements ModInitializer {
 
     @Override
     public void onInitialize() {
-
-        final File CONFIG_DIRECTORY = new File(FabricLoader.getInstance().getConfigDirectory(), MOD_NAME);
-        CONFIG_DIRECTORY.mkdirs();
-
         Config.loadConfig(Config.CLIENT_CONFIG, CONFIG_DIRECTORY.toPath().resolve("client.toml"));
         Config.loadConfig(Config.SERVER_CONFIG, CONFIG_DIRECTORY.toPath().resolve("common.toml"));
 
@@ -54,6 +53,7 @@ public class Neutronia implements ModInitializer {
         new NEntityTypes();
         new NPaintingMotives();
         new NGroups();
+        new NBiomes();
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);

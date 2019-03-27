@@ -3,7 +3,6 @@ package team.hollow.neutronia;
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
 import team.hollow.neutronia.config.ForgeConfigSpec;
-import team.hollow.neutronia.config.OregenConfig;
 
 import java.nio.file.Path;
 
@@ -16,7 +15,7 @@ public class Config {
     public static final ForgeConfigSpec CLIENT_CONFIG;
 
     static {
-        OregenConfig.init(SERVER_BUILDER, CLIENT_BUILDER);
+        NeutroniaConfig.init(SERVER_BUILDER, CLIENT_BUILDER);
 
         SERVER_CONFIG = SERVER_BUILDER.build();
         CLIENT_CONFIG = CLIENT_BUILDER.build();

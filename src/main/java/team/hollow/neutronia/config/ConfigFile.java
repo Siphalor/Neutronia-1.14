@@ -5,7 +5,6 @@ import blue.endless.jankson.JsonObject;
 import blue.endless.jankson.impl.SyntaxError;
 import com.google.common.base.Strings;
 import com.google.common.collect.Maps;
-import net.fabricmc.loader.api.FabricLoader;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import team.hollow.neutronia.Neutronia;
@@ -24,7 +23,7 @@ import java.util.Map;
 public class ConfigFile {
     private static final Logger CONFIG_LOG = new Logger(Neutronia.MOD_NAME + "/Config");
     private static final Jankson JANKSON = Jankson.builder().build();
-    private static final File CONFIG_DIR = FabricLoader.getInstance().getConfigDirectory();
+    private static final File CONFIG_DIR = Neutronia.CONFIG_DIRECTORY;
     private static final String CONFIG_EXT = "json5";
 
     private String modID;
