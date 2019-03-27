@@ -7,7 +7,7 @@
       "model": "neutronia:block/palm_slab_top"
     },
     "type=double": {
-      "model": "neutronia:block/palm"
+      "model": "neutronia:block/palm_planks"
     }
   }
 }
