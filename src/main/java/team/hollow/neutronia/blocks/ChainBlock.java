@@ -20,10 +20,6 @@ public class ChainBlock extends BaseModBlock {
         super(Material.METAL, name + "_chain");
     }
 
-    public ChainBlock(Material material, String name) {
-        super(material, name);
-    }
-
     @Override
     public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
         return VoxelShapes.empty();
@@ -31,9 +27,8 @@ public class ChainBlock extends BaseModBlock {
 
     @Override
     public Vec3d getOffsetPos(BlockState state, BlockView worldIn, BlockPos pos) {
-        if (worldIn.getBlockState(pos.down()).getBlock() instanceof LanternBlock || worldIn.getBlockState(pos.down()).getBlock() instanceof RedstoneLanternBlock) {
+        if (worldIn.getBlockState(pos.down()).getBlock() instanceof LanternBlock || worldIn.getBlockState(pos.down()).getBlock() instanceof RedstoneLanternBlock)
             return worldIn.getBlockState(pos.down()).getBlock().getOffsetPos(state, worldIn, pos);
-        }
         return new Vec3d(0D, 0D, 0D);
     }
 

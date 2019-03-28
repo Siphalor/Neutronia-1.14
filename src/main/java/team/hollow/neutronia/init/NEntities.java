@@ -4,7 +4,7 @@ package team.hollow.neutronia.init;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Biomes;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.Identifier;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.common.BiomeDictionary;
 import net.minecraftforge.event.RegistryEvent;
@@ -99,7 +99,7 @@ public class NEntities {
 
     private static <E extends Entity> EntityEntryBuilder<E> createBuilder(final String name) {
         final EntityEntryBuilder<E> builder = EntityEntryBuilder.create();
-        final ResourceLocation registryName = new ResourceLocation(MOD_ID, name);
+        final Identifier registryName = new Identifier(MOD_ID, name);
         return builder.id(registryName, entityID++).name(registryName.toString());
     }
 

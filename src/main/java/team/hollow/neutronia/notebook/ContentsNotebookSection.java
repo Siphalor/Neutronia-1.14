@@ -90,6 +90,6 @@ public class ContentsNotebookSection implements INotebookSection {
                 amount++;
             }
         }
-        return (int) Math.ceil(amount / 4f) + NotebookElement.textPages("notebook.neutronia.intro", 2);
+        return (int) Math.ceil(amount / 4f) + NotebookElement.textPages("notebook.neutronia.intro", 2) + amount;
     }
 }

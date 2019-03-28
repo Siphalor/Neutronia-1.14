@@ -1,0 +1,8 @@
+{
+  "name": "Neutronia Guidebook",
+  "version": 1,
+  "creative_tab": "misc",
+  "book_texture": "neutronia:textures/gui/red_book.png",
+  "model": "neutronia:red_book",
+  "show_progress": false
+}
