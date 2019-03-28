@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.addon.client;
 
 import io.github.prospector.modmenu.api.ModMenuApi;
@@ -16,3 +17,4 @@ public class ModMenuAddon {
         });
     }
 }
+*/

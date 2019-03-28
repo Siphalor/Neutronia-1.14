@@ -24,7 +24,7 @@ public abstract class AbstractListEntry<T extends ConfigField> extends EntryList
     }
 
     @Override
-    public void draw(int var1, int var2, int var3, int var4, boolean var5, float var6) {
+    public void draw(int var1, int var2, int var3, int var4, int var5, int var6, int var7, boolean var8, float var9) {
         Point point = ClientUtil.getMousePoint();
         if (this.isMouseOver(point.x, point.y))
             parentList.setLastHoveredEntry(this);

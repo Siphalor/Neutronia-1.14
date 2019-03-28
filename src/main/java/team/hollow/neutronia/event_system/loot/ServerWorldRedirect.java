@@ -531,7 +531,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18772(Entity A) {
+    public void unloadEntity(Entity A) {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -578,7 +578,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18774(Entity A) {
+    public void removeEntity(Entity A) {
     }
 
 	/*
@@ -630,7 +630,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18770(ServerPlayerEntity A) {
+    public void removePlayer(ServerPlayerEntity A) {
     }
 
 	/*
@@ -659,7 +659,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18764(WorldChunk A) {
+    public void unloadEntities(WorldChunk A) {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -2073,11 +2073,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public Stream getCollidingEntityBoundingBoxesForEntity(Entity A, VoxelShape B, Set C) {
+    public Stream getCollisionShapes(Entity A, VoxelShape B, Set C) {
         if (that != null) {
-            return that.getCollidingEntityBoundingBoxesForEntity(A, B, C);
+            return that.getCollisionShapes(A, B, C);
         } else {
-            return super.getCollidingEntityBoundingBoxesForEntity(A, B, C);
+            return super.getCollisionShapes(A, B, C);
         }
     }
 
@@ -2093,11 +2093,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean method_8611(Entity A, VoxelShape B) {
+    public boolean intersectsEntities(Entity A, VoxelShape B) {
         if (that != null) {
-            return that.method_8611(A, B);
+            return that.intersectsEntities(A, B);
         } else {
-            return super.method_8611(A, B);
+            return super.intersectsEntities(A, B);
         }
     }
 
@@ -2143,11 +2143,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public List getVisibleEntities(Entity A, BoundingBox B) {
+    public List<Entity> getEntities(Entity entity_1, BoundingBox boundingBox_1) {
         if (that != null) {
-            return that.getVisibleEntities(A, B);
+            return that.getEntities(entity_1, boundingBox_1);
         } else {
-            return super.getVisibleEntities(A, B);
+            return super.getEntities(entity_1, boundingBox_1);
         }
     }
 
@@ -2293,31 +2293,32 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean isEntityColliding(Entity A, BoundingBox B) {
+    public boolean doesNotCollide(Entity A, BoundingBox B) {
         if (that != null) {
-            return that.isEntityColliding(A, B);
+            return that.doesNotCollide(A, B);
         } else {
-            return super.isEntityColliding(A, B);
+            return super.doesNotCollide(A, B);
         }
     }
 
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public boolean isEntityColliding(Entity A, BoundingBox B, Set C) {
-        if (that != null) {
-            return that.isEntityColliding(A, B, C);
-        } else {
-            return super.isEntityColliding(A, B, C);
-        }
-    }
+
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public Stream getCollidingBoundingBoxesForEntity(Entity A, BoundingBox B, Set C) {
+    public boolean doesNotCollide(Entity A, BoundingBox B, Set C) {
         if (that != null) {
-            return that.getCollidingBoundingBoxesForEntity(A, B, C);
+            return that.doesNotCollide(A, B, C);
         } else {
-            return super.getCollidingBoundingBoxesForEntity(A, B, C);
+            return super.doesNotCollide(A, B, C);
+        }
+    }
+
+    @Override
+    public Stream<VoxelShape> getCollisionShapes(Entity entity_1, BoundingBox boundingBox_1, Set<Entity> set_1) {
+        if(that != null) {
+            return that.getCollisionShapes(entity_1, boundingBox_1, set_1);
+        } else {
+            return super.getCollisionShapes(entity_1, boundingBox_1, set_1);
         }
     }
 
@@ -2393,11 +2394,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean method_8606(Entity A) {
+    public boolean intersectsEntities(Entity A) {
         if (that != null) {
-            return that.method_8606(A);
+            return that.intersectsEntities(A);
         } else {
-            return super.method_8606(A);
+            return super.intersectsEntities(A);
         }
     }
 
@@ -2413,41 +2414,41 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean method_8628(BlockState A, BlockPos B, VerticalEntityPosition C) {
+    public boolean canPlace(BlockState A, BlockPos B, VerticalEntityPosition C) {
         if (that != null) {
-            return that.method_8628(A, B, C);
+            return that.canPlace(A, B, C);
         } else {
-            return super.method_8628(A, B, C);
+            return super.canPlace(A, B, C);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean method_18026(BoundingBox A) {
+    public boolean doesNotCollide(BoundingBox A) {
         if (that != null) {
-            return that.method_18026(A);
+            return that.doesNotCollide(A);
         } else {
-            return super.method_18026(A);
+            return super.doesNotCollide(A);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean isInFluid(BoundingBox A) {
+    public boolean intersectsFluid(BoundingBox A) {
         if (that != null) {
-            return that.isInFluid(A);
+            return that.intersectsFluid(A);
         } else {
-            return super.isInFluid(A);
+            return super.intersectsFluid(A);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean method_17892(Entity A) {
+    public boolean doesNotCollide(Entity A) {
         if (that != null) {
-            return that.method_17892(A);
+            return that.doesNotCollide(A);
         } else {
-            return super.method_17892(A);
+            return super.doesNotCollide(A);
         }
     }
 

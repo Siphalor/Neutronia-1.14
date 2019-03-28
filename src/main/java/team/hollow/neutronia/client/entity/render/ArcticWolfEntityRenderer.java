@@ -29,7 +29,7 @@ public class ArcticWolfEntityRenderer extends MobEntityRenderer<ArcticWolfEntity
     @Override
     public void render(ArcticWolfEntity entity, double x, double y, double z, float entityYaw, float partialTicks) {
         if (entity.isWet()) {
-            float f = entity.method_5718() * entity.method_6707(partialTicks);
+            float f = entity.getBrightnessAtEyes() * entity.method_6707(partialTicks);
             GlStateManager.color3f(f, f, f);
         }
         super.render(entity, x, y, z, entityYaw, partialTicks);

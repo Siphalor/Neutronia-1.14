@@ -32,8 +32,8 @@ public class ConfigListWidget extends EntryListWidget<AbstractListEntry<?>> {
     }
 
     @Override
-    protected int getMaxPosition() {
-        return width - 50;
+    protected int method_20078() {
+        return super.method_20078() + 50;
     }
 
     @Override
@@ -42,8 +42,8 @@ public class ConfigListWidget extends EntryListWidget<AbstractListEntry<?>> {
     }
 
     @Override
-    protected int getScrollbarPosition() {
-        return width - 10;
+    public int method_20053() {
+        return 300;
     }
 
     public AbstractListEntry<?> getLastHoveredEntry() {
