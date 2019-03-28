@@ -9,23 +9,21 @@ import team.hollow.neutronia.api.INotebookSection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewWoodVariantsNotebookSection implements INotebookSection {
+public class ForestRevampNotebookSection implements INotebookSection {
 
     @Override
     public Identifier getID() {
-        return new Identifier(Neutronia.MOD_ID, "new_wood_variants");
+        return new Identifier(Neutronia.MOD_ID, "forest_revamp");
     }
 
     @Override
     public List<INotebookElement> getElements(ClientPlayerEntity player, int page) {
         List<INotebookElement> elements = new ArrayList<>();
         if (page == 0) {
-            elements.add(new NotebookElement.SmallHeading("notebook.neutronia.new_wood_variants.title").withPadding(3));
+            elements.add(new NotebookElement.SmallHeading("notebook.neutronia.forest_revamp.title").withPadding(3));
         } else {
             elements.add(new NotebookElement.Padding(3));
         }
-
-        elements.addAll(NotebookElement.wrapText("notebook.neutronia.transfiguration.0", 2, 0, page));
 
         return elements;
     }

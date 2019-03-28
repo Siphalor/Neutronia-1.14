@@ -213,9 +213,9 @@ public class GrizzlyBearEntity extends AnimalEntity {
 
         }
 
-        public void onRemove() {
+        public void stop() {
             GrizzlyBearEntity.this.method_6603(false);
-            super.onRemove();
+            super.stop();
         }
 
         protected double method_6289(LivingEntity livingEntity_1) {
@@ -261,7 +261,7 @@ public class GrizzlyBearEntity extends AnimalEntity {
             super.start();
             if (GrizzlyBearEntity.this.isChild()) {
                 this.method_6317();
-                this.onRemove();
+                this.stop();
             }
 
         }

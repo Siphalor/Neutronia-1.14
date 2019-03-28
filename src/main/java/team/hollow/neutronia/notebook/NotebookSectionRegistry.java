@@ -9,12 +9,11 @@ import java.util.Map;
 public class NotebookSectionRegistry {
     private static final Map<Identifier, INotebookSection> REGISTRY = new HashMap<>();
 
-    public static final INotebookSection DISCOVERY = register(new DiscoveryNotebookSection());
-    public static final INotebookSection TRANSFIGURATION = register(new TransfigurationNotebookSection());
-    public static final INotebookSection CRYSTALLIZATION = register(new CrystallizationNotebookSection());
-    public static final INotebookSection ARMOURY = register(new ArmouryNotebookSection());
-    public static final INotebookSection SMELTING = register(new SmeltingNotebookSection());
-    public static final INotebookSection INFUSION = register(new InfusionNotebookSection());
+    public static final INotebookSection NEW_WOOD_TYPES = register(new NewWoodVariantsNotebookSection());
+    public static final INotebookSection SAVANNA_REVAMP = register(new SavannaRevampNotebookSection());
+    public static final INotebookSection FOREST_REVAMP = register(new ForestRevampNotebookSection());
+    public static final INotebookSection AQUATIC_REVAMP_V2 = register(new AquaticRevampV2NotebookSection());
+    public static final INotebookSection ENCHANTMEN_ADDITIONS = register(new EnchantmentAdditionsNotebookSection());
 
     public static final INotebookSection CONTENTS = register(new ContentsNotebookSection());
 

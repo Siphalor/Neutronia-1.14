@@ -35,7 +35,7 @@ public class ModConfigScreen extends Screen {
         super.init();
         this.configListWidget = new ConfigListWidget(this, minecraft);
         this.children.add(this.configListWidget);
-        this.focusOn(this.configListWidget);
+        this.setFocused(this.configListWidget);
         this.addButton(new ButtonWidget(this.width / 2 - 100, this.height - 25, 200, 20,
                 I18n.translate("gui.done"), (buttonWidget) -> {
             if (this.hasChanges) {
@@ -53,7 +53,7 @@ public class ModConfigScreen extends Screen {
     @Override
     public void render(int int_1, int int_2, float float_1) {
         this.renderBackground();
-        this.focusOn(this.configListWidget);
+        this.setFocused(this.configListWidget);
         this.configListWidget.render(int_1, int_2, float_1);
         this.drawCenteredString(this.minecraft.textRenderer, this.title.getFormattedText(), this.width / 2, 15, 0xffffff);
         super.render(int_1, int_2, float_1);

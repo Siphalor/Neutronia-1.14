@@ -39,7 +39,7 @@ public class WallStandingBlockItem extends BlockItem {
             }
         }
 
-        return blockState_2 != null && viewableWorld_1.method_8628(blockState_2, blockPos_1, VerticalEntityPosition.minValue()) ? blockState_2 : null;
+        return blockState_2 != null && viewableWorld_1.canPlace(blockState_2, blockPos_1, VerticalEntityPosition.minValue()) ? blockState_2 : null;
     }
 
     public void registerBlockItemMap(Map<Block, Item> map_1, Item item_1) {

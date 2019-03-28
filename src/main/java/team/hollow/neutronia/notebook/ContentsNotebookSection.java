@@ -1,12 +1,12 @@
 package team.hollow.neutronia.notebook;
 
-import net.minecraft.client.MinecraftClient;
+import net.minecraft.block.Blocks;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.api.INotebookElement;
 import team.hollow.neutronia.api.INotebookSection;
-import team.hollow.neutronia.init.NBlocks;
 import team.hollow.neutronia.init.NItems;
 
 import java.util.ArrayList;
@@ -17,21 +17,11 @@ public class ContentsNotebookSection implements INotebookSection {
     private static List<NotebookElement.ItemInfoButton> buttons = new ArrayList<>();
 
     static {
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.DISCOVERY, NItems.BLUEBERRY, "notebook.neutronia.discovery.title", "notebook.neutronia.discovery.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.TRANSFIGURATION, NItems.GOOSEBERRIES, "notebook.neutronia.transfiguration.title", "notebook.neutronia.transfiguration.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.CRYSTALLIZATION, NItems.GREEN_GRAPES, "notebook.neutronia.crystallization.title", "notebook.neutronia.crystallization.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.SMELTING, NItems.WITHER_BERRIES, "notebook.neutronia.smelting.title", "notebook.neutronia.smelting.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.ARMOURY, NBlocks.BOOKSHELVES[1], "notebook.neutronia.armoury.title", "notebook.neutronia.armoury.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
-        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.INFUSION, NBlocks.BOOKSHELVES[2], "notebook.neutronia.infusion.title", "notebook.neutronia.infusion.desc").withPadding(5));
+        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.NEW_WOOD_TYPES, NItems.BLUEBERRY, "notebook.neutronia.new_wood_types.title", "notebook.neutronia.new_wood_types.desc").withPadding(5));
+        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.SAVANNA_REVAMP, Blocks.ACACIA_LOG, "notebook.neutronia.savanna_revamp.title", "notebook.neutronia.savanna_revamp.desc").withPadding(5));
+        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.FOREST_REVAMP, Blocks.OAK_LEAVES, "notebook.neutronia.forest_revamp.title", "notebook.neutronia.forest_revamp.desc").withPadding(5));
+        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.AQUATIC_REVAMP_V2, Blocks.PRISMARINE, "notebook.neutronia.aquatic_revamp_v2.title", "notebook.neutronia.aquatic_revamp_v2.desc").withPadding(5));
+        buttons.add((NotebookElement.ItemInfoButton) new NotebookElement.ItemInfoButton(NotebookSectionRegistry.ENCHANTMEN_ADDITIONS, Items.ENCHANTED_BOOK, "notebook.neutronia.enchantment_additions.title", "notebook.neutronia.enchantment_additions.desc").withPadding(5));
     }
 
     @Override
@@ -46,15 +36,13 @@ public class ContentsNotebookSection implements INotebookSection {
         int textPages = NotebookElement.textPages("notebook.neutronia.intro", 2);
 
         if (page == 0) {
-            String name = MinecraftClient.getInstance().player.getEntityName();
-            elements.add(new NotebookElement.BigHeading("notebook.neutronia.title", name.substring(0, 1).toUpperCase() + name.substring(1)).withPadding(-3));
+            elements.add(new NotebookElement.BigHeading("notebook.neutronia.title").withPadding(-3));
         }
 
         if (page <= textPages) {
             elements.addAll(NotebookElement.wrapText("notebook.neutronia.intro", 2, 0, page));
         } else if (page == 1) {
             int number = 0;
-
             if (page == textPages + 1) {
                 elements.add(new NotebookElement.SmallHeading("notebook.neutronia.categories").withPadding(3));
             } else {
@@ -62,7 +50,6 @@ public class ContentsNotebookSection implements INotebookSection {
             }
 
             int thisPage = page - textPages;
-
             for (NotebookElement.ItemInfoButton button : buttons) {
                 if (button.link.isVisibleTo(player)) {
                     number++;

@@ -2,6 +2,7 @@ package team.hollow.neutronia;
 
 import com.google.gson.GsonBuilder;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.fabricmc.fabric.api.registry.CommandRegistry;
 import net.fabricmc.fabric.impl.registry.CompostingChanceRegistryImpl;
 import net.fabricmc.loader.api.FabricLoader;
@@ -14,6 +15,7 @@ import team.hollow.neutronia.commands.Locate2Command;
 import team.hollow.neutronia.config.ConfigFile;
 import team.hollow.neutronia.event_system.EventCore;
 import team.hollow.neutronia.init.*;
+import team.hollow.neutronia.network.NotebookUpdatePacket;
 import team.hollow.neutronia.utils.JsonConfig;
 import team.hollow.neutronia.utils.WailaConfig;
 
@@ -23,6 +25,7 @@ public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
     public static final String MOD_NAME = "Neutronia";
+    public static final String PREFIX = MOD_ID + ":";
     public static final JsonConfig<WailaConfig> CONFIG = new JsonConfig<>("neutronia/neutronia", WailaConfig.class).withGson((new GsonBuilder()).setPrettyPrinting().registerTypeAdapter(Identifier.class, new Identifier.DeSerializer()).create());
     public static final File CONFIG_DIRECTORY = new File(FabricLoader.getInstance().getConfigDirectory(), MOD_NAME);
     private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
@@ -59,6 +62,8 @@ public class Neutronia implements ModInitializer {
         generalConfigFile.loadConfig();
 
         GroupLoader.init();
+
+        ServerSidePacketRegistry.INSTANCE.register(NotebookUpdatePacket.ID, new NotebookUpdatePacket.Handler());
 
         System.out.println("+----------+ Mod Initialized");
     }

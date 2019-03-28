@@ -24,7 +24,7 @@ public class WolfBegGoal extends Goal {
         this.world = wolfEntity_1.world;
         this.chance = float_1;
         this.field_18085 = (new TargetPredicate()).setBaseMaxDistance((double) float_1).includeInvulnerable().includeTeammates().ignoreEntityTargetRules();
-        this.setControlBits(EnumSet.of(Goal.class_4134.LOOK));
+        this.setControls(EnumSet.of(Goal.class_4134.LOOK));
     }
 
     public boolean canStart() {
@@ -33,7 +33,7 @@ public class WolfBegGoal extends Goal {
     }
 
     public boolean shouldContinue() {
-        if (!this.begFrom.isValid()) {
+        if (!this.begFrom.isAlive()) {
             return false;
         } else if (this.owner.squaredDistanceTo(this.begFrom) > (double) (this.chance * this.chance)) {
             return false;
@@ -47,7 +47,7 @@ public class WolfBegGoal extends Goal {
         this.timer = 40 + this.owner.getRand().nextInt(40);
     }
 
-    public void onRemove() {
+    public void stop() {
         this.owner.setTamed(false);
         this.begFrom = null;
     }

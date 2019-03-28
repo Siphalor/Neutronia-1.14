@@ -9,21 +9,22 @@ import team.hollow.neutronia.api.INotebookSection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiscoveryNotebookSection implements INotebookSection {
+public class EnchantmentAdditionsNotebookSection implements INotebookSection {
+
     @Override
     public Identifier getID() {
-        return new Identifier(Neutronia.MOD_ID, "discovery");
+        return new Identifier(Neutronia.MOD_ID, "enchantment_additions");
     }
 
     @Override
     public List<INotebookElement> getElements(ClientPlayerEntity player, int page) {
         List<INotebookElement> elements = new ArrayList<>();
         if (page == 0) {
-            elements.add(new NotebookElement.SmallHeading("notebook.neutronia.discovery.title").withPadding(3));
+            elements.add(new NotebookElement.SmallHeading("notebook.neutronia.enchantment_additions.title").withPadding(3));
         } else {
             elements.add(new NotebookElement.Padding(3));
         }
-        elements.addAll(NotebookElement.wrapText("notebook.neutronia.discovery.0", 2, 0, page));
+
         return elements;
     }
 
