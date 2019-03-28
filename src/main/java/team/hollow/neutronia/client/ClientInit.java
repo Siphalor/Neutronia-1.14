@@ -38,8 +38,7 @@ public class ClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(AxolotlEntity.class, (manager, context) -> new AxolotlEntityRenderer(manager));
 
         ClientAddonLoader.loadAddons();
-        GroupLoader.clientInit(this);
-
         ResourceManagerHelper.get(ResourceType.DATA).registerReloadListener(BookRegistry.INSTANCE);
+        GroupLoader.clientInit();
     }
 }

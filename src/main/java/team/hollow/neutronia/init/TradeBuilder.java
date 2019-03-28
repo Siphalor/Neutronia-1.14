@@ -123,7 +123,7 @@ class TradeBuilder {
         private final int field_18550;
         private final int field_18551;
         private final float field_18552;
-        
+
         public BuyItemFactory(ItemProvider itemProvider_1, int int_1, int int_2, int int_3) {
             this.field_18548 = itemProvider_1.getItem();
             this.field_18549 = int_1;

@@ -13,13 +13,13 @@ public class ConfigManager {
 
     private final Map<ModMetadata, List<ConfigFile>> MOD_CONFIGS;
 
+    private ConfigManager() {
+        MOD_CONFIGS = Maps.newHashMap();
+    }
+
     public static ConfigManager getInstance() {
         if (INSTANCE == null) INSTANCE = new ConfigManager();
         return INSTANCE;
-    }
-
-    private ConfigManager() {
-        MOD_CONFIGS = Maps.newHashMap();
     }
 
     void registerModConfig(ConfigFile config) {
@@ -45,7 +45,7 @@ public class ConfigManager {
             if (MOD_CONFIGS.containsKey(metadata))
                 return Collections.unmodifiableList(MOD_CONFIGS.get(metadata));
         }
-        return Collections.EMPTY_LIST;
+        return new ArrayList<>();
     }
 
     public Map<ModMetadata, List<ConfigFile>> getModConfigs() {

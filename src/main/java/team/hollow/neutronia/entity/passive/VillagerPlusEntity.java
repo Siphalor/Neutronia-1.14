@@ -6,7 +6,6 @@ import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.World;
 import team.hollow.neutronia.entity.ai.goal.FindDiamondBlockGoal;
 import team.hollow.neutronia.init.NEntityTypes;
@@ -14,13 +13,9 @@ import team.hollow.neutronia.init.NEntityTypes;
 public class VillagerPlusEntity extends PassiveEntity {
 
     public VillagerPlusEntity(World world_1) {
-        this("nitwit", world_1);
-    }
-
-    public VillagerPlusEntity(String villagerName, World world_1) {
         super(NEntityTypes.VILLAGER_PLUS, world_1);
         this.setCanPickUpLoot(true);
-        ((MobNavigation)this.getNavigation()).setCanPathThroughDoors(true);
+        ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
     }
 
@@ -49,18 +44,6 @@ public class VillagerPlusEntity extends PassiveEntity {
     @Override
     public PassiveEntity createChild(PassiveEntity passiveEntity) {
         return new VillagerPlusEntity(world);
-    }
-
-    @Override
-    public void writeCustomDataToTag(CompoundTag compoundTag_1) {
-        super.writeCustomDataToTag(compoundTag_1);
-        compoundTag_1.putString("Gender", "Male");
-        compoundTag_1.putString("Profession", "Nitwit");
-    }
-
-    @Override
-    public void readCustomDataFromTag(CompoundTag compoundTag_1) {
-        super.readCustomDataFromTag(compoundTag_1);
     }
 
 }

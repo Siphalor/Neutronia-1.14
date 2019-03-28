@@ -25,11 +25,13 @@ public class NewWoodVariantsNotebookSection implements INotebookSection {
             elements.add(new NotebookElement.Padding(3));
         }
 
+        elements.addAll(NotebookElement.wrapText("notebook.neutronia.transfiguration.0", 2, 0, page));
+
         return elements;
     }
 
     @Override
     public int getPageCount(ClientPlayerEntity player) {
-        return 0;
+        return NotebookElement.textPages("notebook.neutronia.discovery.0", 2);
     }
 }

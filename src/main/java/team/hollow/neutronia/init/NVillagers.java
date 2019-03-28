@@ -25,25 +25,25 @@ public class NVillagers implements VillagerType {
     public static final VillagerType OCEAN;
 
     static {
-        /*ARTIST = team.hollow.neutronia.villagers.VillagerProfession.register("artist");
-        RECEPTIONIST = team.hollow.neutronia.villagers.VillagerProfession.register("receptionist");
-        CARPENTER = team.hollow.neutronia.villagers.VillagerProfession.register("carpenter");
-        DOCTOR = team.hollow.neutronia.villagers.VillagerProfession.register("doctor");
-        GUARD = team.hollow.neutronia.villagers.VillagerProfession.register("guard");
-        VIKING = team.hollow.neutronia.villagers.VillagerProfession.register("viking");
-        BARD = team.hollow.neutronia.villagers.VillagerProfession.register("bard");
-        DRUID = team.hollow.neutronia.villagers.VillagerProfession.register("druid");
-        ARCHER = team.hollow.neutronia.villagers.VillagerProfession.register("archer");
-        ENCHANTER = team.hollow.neutronia.villagers.VillagerProfession.register("enchanter");
-        WIZARD = team.hollow.neutronia.villagers.VillagerProfession.register("wizard");*/
+        /*ARTIST = team.hollow.neutronia.village.VillagerProfession.register("artist");
+        RECEPTIONIST = team.hollow.neutronia.village.VillagerProfession.register("receptionist");
+        CARPENTER = team.hollow.neutronia.village.VillagerProfession.register("carpenter");
+        DOCTOR = team.hollow.neutronia.village.VillagerProfession.register("doctor");
+        GUARD = team.hollow.neutronia.village.VillagerProfession.register("guard");
+        VIKING = team.hollow.neutronia.village.VillagerProfession.register("viking");
+        BARD = team.hollow.neutronia.village.VillagerProfession.register("bard");
+        DRUID = team.hollow.neutronia.village.VillagerProfession.register("druid");
+        ARCHER = team.hollow.neutronia.village.VillagerProfession.register("archer");
+        ENCHANTER = team.hollow.neutronia.village.VillagerProfession.register("enchanter");
+        WIZARD = team.hollow.neutronia.village.VillagerProfession.register("wizard");*/
         TradeBuilder.createRecipes();
 
-        MUSHROOM = team.hollow.neutronia.villagers.VillagerType.register("mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
-        MOUNTAINS = team.hollow.neutronia.villagers.VillagerType.register("mountains", Biomes.MOUNTAINS, Biomes.MOUNTAIN_EDGE, Biomes.WOODED_MOUNTAINS);
-        COLD_MOUNTAINS = team.hollow.neutronia.villagers.VillagerType.register("cold_mountains", Biomes.SNOWY_MOUNTAINS, Biomes.SNOWY_TAIGA_MOUNTAINS);
-        BADLANDS = team.hollow.neutronia.villagers.VillagerType.register("badlands", Biomes.BADLANDS, Biomes.BADLANDS_PLATEAU, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS_PLATEAU);
-        ICE_SPIKES = team.hollow.neutronia.villagers.VillagerType.register("ice_spikes", Biomes.ICE_SPIKES);
-        OCEAN = team.hollow.neutronia.villagers.VillagerType.register("ocean", Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN);
+        MUSHROOM = team.hollow.neutronia.village.VillagerType.register("mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
+        MOUNTAINS = team.hollow.neutronia.village.VillagerType.register("mountains", Biomes.MOUNTAINS, Biomes.MOUNTAIN_EDGE, Biomes.WOODED_MOUNTAINS);
+        COLD_MOUNTAINS = team.hollow.neutronia.village.VillagerType.register("cold_mountains", Biomes.SNOWY_MOUNTAINS, Biomes.SNOWY_TAIGA_MOUNTAINS);
+        BADLANDS = team.hollow.neutronia.village.VillagerType.register("badlands", Biomes.BADLANDS, Biomes.BADLANDS_PLATEAU, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS_PLATEAU);
+        ICE_SPIKES = team.hollow.neutronia.village.VillagerType.register("ice_spikes", Biomes.ICE_SPIKES);
+        OCEAN = team.hollow.neutronia.village.VillagerType.register("ocean", Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN);
     }
 
 }

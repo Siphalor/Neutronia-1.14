@@ -24,7 +24,6 @@ class NotebookElement {
 
     private static int linesPerPage() {
         int guiScale = (int) MinecraftClient.getInstance().window.getScaleFactor();
-        ;
         switch (guiScale) {
             case 3:
                 return 18;
@@ -37,7 +36,6 @@ class NotebookElement {
 
     private static double textScale() {
         int guiScale = (int) MinecraftClient.getInstance().window.getScaleFactor();
-        ;
         switch (guiScale) {
             case 4:
                 return 0.7f;
@@ -97,7 +95,7 @@ class NotebookElement {
         @Override
         public int draw(Screen screen, int x, int y, int mouseX, int mouseY, int xTop, int yTop) {
             MinecraftClient.getInstance().getTextureManager().bindTexture(NConstants.NOTEBOOK_TEXTURE);
-            DrawableHelper.drawTexturedRect(xTop - 8, yTop + 11, 0, 206, 140, 31, 140, 30, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
+            DrawableHelper.blit(xTop - 8, yTop + 11, 0, 206, 140, 31, 140, 30, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
             RenderUtils.drawCustomSizedSplitString(xTop + 17 - 8, yTop + 18, 1, 119, 0x218e15, false, false, unlocalized, keys);
             return 27 + padding;
         }

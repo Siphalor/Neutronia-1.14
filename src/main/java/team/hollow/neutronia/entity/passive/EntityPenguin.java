@@ -218,9 +218,9 @@ public class EntityPenguin extends AnimalEntity {
             super.start();
         }
 
-        public void onRemove() {
+        public void stop() {
             EntityPenguin.this.setSliding(false);
-            super.onRemove();
+            super.stop();
         }
     }
 }

@@ -12,6 +12,7 @@ import team.hollow.neutronia.init.NTags;
 
 @Mixin(LivingEntity.class)
 final class MixinLivingEntity {
+
     @Inject(
             method = "canClimb",
             at = @At(value = "RETURN", ordinal = 2),

@@ -72,7 +72,7 @@ public class ArcticWolfEntity extends TameableEntity {
         this.goalSelector.add(10, new LookAroundGoal(this));
         this.targetSelector.add(1, new TrackAttackerGoal(this));
         this.targetSelector.add(2, new AttackWithOwnerGoal(this));
-        this.targetSelector.add(3, (new AvoidGoal(this)).method_6318());
+        this.targetSelector.add(3, (new AvoidGoal(this)).setAvoidedEntities());
         this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, AnimalEntity.class, false, field_18004));
         this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, TurtleEntity.class, false, TurtleEntity.BABY_TURTLE_ON_LAND_FILTER));
         this.targetSelector.add(5, new FollowTargetGoal<>(this, AbstractSkeletonEntity.class, false));
@@ -361,13 +361,13 @@ public class ArcticWolfEntity extends TameableEntity {
     }
 
     @Environment(EnvType.CLIENT)
-    public void method_5711(byte byte_1) {
+    public void setStatus(byte byte_1) {
         if (byte_1 == 8) {
             this.isShaking = true;
             this.timeWolfIsShaking = 0.0F;
             this.prevTimeWolfIsShaking = 0.0F;
         } else {
-            super.method_5711(byte_1);
+            super.setStatus(byte_1);
         }
 
     }

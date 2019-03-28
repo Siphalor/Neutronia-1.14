@@ -19,9 +19,9 @@ public class StructureUtils {
     })
     private static List<StructureProcessorRule> getSameState(Block block, float probability, Block replace) {
         List<StructureProcessorRule> out = new ArrayList<>();
-        for(BlockState bs: block.getStateFactory().getStates()) {
+        for (BlockState bs : block.getStateFactory().getStates()) {
             BlockState rbs = replace.getDefaultState();
-            for(Property prop: bs.getProperties()) {
+            for (Property prop : bs.getProperties()) {
                 rbs = rbs.with(prop, bs.get(prop));
             }
 

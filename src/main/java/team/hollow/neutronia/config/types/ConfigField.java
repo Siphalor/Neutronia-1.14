@@ -18,6 +18,23 @@ public abstract class ConfigField<T> {
         this(configName, "", configValue);
     }
 
+    public static ConfigField fromByte(ByteBuf byteBuf) {
+        byte id = byteBuf.readByte();
+        String name = ByteBuffUtil.readUTF8String(byteBuf);
+        switch (id) {
+            case 0:
+                return new IntConfig(name, byteBuf.readInt());
+            case 1:
+                return new NumberConfig(name, byteBuf.readDouble());
+            case 2:
+                return new BooleanConfig(name, byteBuf.readBoolean());
+            case 3:
+                return new StringConfig(name, ByteBuffUtil.readUTF8String(byteBuf));
+            default:
+                return null;
+        }
+    }
+
     public String getConfigName() {
         return configName;
     }
@@ -40,22 +57,5 @@ public abstract class ConfigField<T> {
     public void toByte(ByteBuf byteBuf) {
         byteBuf.writeByte(getTypeID());
         ByteBuffUtil.writeUTF8String(byteBuf, getConfigName());
-    }
-
-    public static ConfigField fromByte(ByteBuf byteBuf) {
-        byte id = byteBuf.readByte();
-        String name = ByteBuffUtil.readUTF8String(byteBuf);
-        switch (id) {
-            case 0:
-                return new IntConfig(name, byteBuf.readInt());
-            case 1:
-                return new NumberConfig(name, byteBuf.readDouble());
-            case 2:
-                return new BooleanConfig(name, byteBuf.readBoolean());
-            case 3:
-                return new StringConfig(name, ByteBuffUtil.readUTF8String(byteBuf));
-            default:
-                return null;
-        }
     }
 }

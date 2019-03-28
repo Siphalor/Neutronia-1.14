@@ -4,7 +4,7 @@ import net.minecraft.client.font.TextRenderer;
 import net.minecraft.util.math.MathHelper;
 import org.apache.commons.lang3.StringUtils;
 
-import static net.minecraft.client.gui.DrawableHelper.drawRect;
+import static net.minecraft.client.gui.DrawableHelper.fill;
 import static org.lwjgl.opengl.GL11.glColor3ub;
 
 public class ProgressBarUtils {
@@ -41,11 +41,11 @@ public class ProgressBarUtils {
         //Title
         fontRenderer.draw("Memory Used / Total", xMin + 20, yMax - 13, 0x000000);
         //Draws the outer border
-        drawRect(xMin - 1, yMin - 1, xMax + 1, yMax + 1, 0xFF000000);
+        fill(xMin - 1, yMin - 1, xMax + 1, yMax + 1, 0xFF000000);
         //Draws the inner white
-        drawRect(xMin, yMin, xMax, yMax, 0xFFFFFFFF);
+        fill(xMin, yMin, xMax, yMax, 0xFFFFFFFF);
         //Draws the inner bar
-        drawRect(xMin + 1, yMin + 1, xMin + activeBarWidth, yMax - 1, memoryBarColor);
+        fill(xMin + 1, yMin + 1, xMin + activeBarWidth, yMax - 1, memoryBarColor);
         //Progress text
         String progress = getMemoryString(usedMemory) + " / " + getMemoryString(maxMemory);
         fontRenderer.draw(progress, xMin + 20, yMax - 11, 0x000000);
