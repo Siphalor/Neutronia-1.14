@@ -6,7 +6,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.PacketByteBuf;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.init.NConstants;
-import team.hollow.neutronia.init.NItems;
+import team.hollow.neutronia.items.NotebookItem;
 
 public class NotebookUpdatePacket implements IPacket {
     public static final Identifier ID = new Identifier(Neutronia.MOD_ID, "notebook_update");
@@ -52,12 +52,8 @@ public class NotebookUpdatePacket implements IPacket {
 
         @Override
         public void handle(PacketContext ctx, NotebookUpdatePacket message) {
-            ItemStack stack = ctx.getPlayer().getMainHandStack();
-            if (stack.getItem() != NItems.NOTEBOOK) {
-                stack = ctx.getPlayer().getOffHandStack();
-            }
-
-            if (stack.getItem() == NItems.NOTEBOOK) {
+            ItemStack stack = ctx.getPlayer().getActiveItem();
+            if (stack.getItem() instanceof NotebookItem) {
                 stack.getOrCreateTag().putString(NConstants.NOTEBOOK_SECTION_KEY, message.section);
                 stack.getOrCreateTag().putInt(NConstants.NOTEBOOK_PAGE_KEY, message.page);
                 stack.getOrCreateTag().putInt(NConstants.NOTEBOOK_CONTENTS_PAGE_KEY, message.contentsPage);

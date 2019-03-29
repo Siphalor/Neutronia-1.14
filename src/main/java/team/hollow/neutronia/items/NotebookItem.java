@@ -6,30 +6,23 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import team.hollow.neutronia.client.gui.NotebookScreen;
 import team.hollow.neutronia.init.NConstants;
-import team.hollow.neutronia.init.NItems;
-import team.hollow.neutronia.notebook.BookRegistry;
-import team.hollow.neutronia.notebook.Notebook;
 import team.hollow.neutronia.notebook.NotebookSectionRegistry;
-
-import java.util.Objects;
 
 public class NotebookItem extends Item {
 
     private static final String TAG_BOOK = "neutronia:notebook";
 
-    public NotebookItem() {
-        super(new Item.Settings().stackSize(1).itemGroup(ItemGroup.MISC));
+    public NotebookItem(Item.Settings settings) {
+        super(settings);
     }
 
     @Override
@@ -41,29 +34,6 @@ public class NotebookItem extends Item {
                 tag.putInt(NConstants.NOTEBOOK_PAGE_KEY, 0);
             }
         }
-    }
-
-    public static ItemStack forBook(Notebook book) {
-        return forBook(book.resourceLoc.toString());
-    }
-
-    public static ItemStack forBook(String book) {
-        ItemStack stack = new ItemStack(NItems.NOTEBOOK);
-
-        CompoundTag cmp = new CompoundTag();
-        cmp.putString(TAG_BOOK, book);
-        stack.setTag(cmp);
-
-        return stack;
-    }
-
-    public static Notebook getBook(ItemStack stack) {
-        if(!stack.hasTag() || !Objects.requireNonNull(stack.getTag()).hasUuid(TAG_BOOK))
-            return null;
-
-        String bookStr = stack.getOrCreateTag().getString(TAG_BOOK);
-        Identifier res = new Identifier(bookStr);
-        return BookRegistry.INSTANCE.books.get(res);
     }
 
     @Override

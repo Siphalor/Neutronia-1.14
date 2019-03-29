@@ -8,10 +8,11 @@ import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.items.NotebookItem;
-import team.hollow.neutronia.utils.ItemStackUtil;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Notebook {
 
@@ -37,14 +38,12 @@ public class Notebook {
     public transient Identifier bookResource, fillerResource, craftingResource;
     public transient int textColor, headerColor, nameplateColor, linkColor, linkHoverColor, progressBarColor, progressBarBackground;
 
-    public transient boolean isExtension = false;
-    public transient List<Notebook> extensions = new LinkedList<>();
-    public transient Notebook extensionTarget;
-
     public transient boolean isExternal;
 
     // JSON Loaded properties
     public String name = "";
+    @SerializedName("registry_name")
+    public String registryName = "";
     @SerializedName("landing_text")
     public String landingText = "neutronia.gui.lexicon.landing_info";
 
@@ -113,38 +112,30 @@ public class Notebook {
         this.resourceLoc = resource;
         this.isExternal = external;
 
-        isExtension = !extend.isEmpty();
+        modelResourceLoc = new ModelIdentifier(model, "inventory");
 
-        if(!isExtension) {
-            modelResourceLoc = new ModelIdentifier(model, "inventory");
+        bookResource = new Identifier(bookTexture);
+        fillerResource = new Identifier(fillerTexture);
+        craftingResource = new Identifier(craftingTexture);
 
-            bookResource = new Identifier(bookTexture);
-            fillerResource = new Identifier(fillerTexture);
-            craftingResource = new Identifier(craftingTexture);
+        textColor = 0xFF000000 | Integer.parseInt(textColorRaw, 16);
+        headerColor = 0xFF000000 | Integer.parseInt(headerColorRaw, 16);
+        nameplateColor = 0xFF000000 | Integer.parseInt(nameplateColorRaw, 16);
+        linkColor = 0xFF000000 | Integer.parseInt(linkColorRaw, 16);
+        linkHoverColor = 0xFF000000 | Integer.parseInt(linkHoverColorRaw, 16);
+        progressBarColor = 0xFF000000 | Integer.parseInt(progressBarColorRaw, 16);
+        progressBarBackground = 0xFF000000 | Integer.parseInt(progressBarBackgroundRaw, 16);
 
-            textColor = 0xFF000000 | Integer.parseInt(textColorRaw, 16);
-            headerColor = 0xFF000000 | Integer.parseInt(headerColorRaw, 16);
-            nameplateColor = 0xFF000000 | Integer.parseInt(nameplateColorRaw, 16);
-            linkColor = 0xFF000000 | Integer.parseInt(linkColorRaw, 16);
-            linkHoverColor = 0xFF000000 | Integer.parseInt(linkHoverColorRaw, 16);
-            progressBarColor = 0xFF000000 | Integer.parseInt(progressBarColorRaw, 16);
-            progressBarBackground = 0xFF000000 | Integer.parseInt(progressBarBackgroundRaw, 16);
-
-            for(String m : DEFAULT_MACROS.keySet())
-                if(!macros.containsKey(m))
-                    macros.put(m, DEFAULT_MACROS.get(m));
-        }
-    }
-
-    public boolean usesAdvancements() {
-        return !advancementNamespaces.isEmpty();
+        for(String m : DEFAULT_MACROS.keySet())
+            if(!macros.containsKey(m))
+                macros.put(m, DEFAULT_MACROS.get(m));
     }
 
     public String getModNamespace() {
         return resourceLoc.getNamespace();
     }
 
-    public ItemStack getBookItem() {
+    /*public ItemStack getBookItem() {
         if(bookItem == null) {
             if(noBook)
                 bookItem = ItemStackUtil.loadStackFromString(customBookItem);
@@ -152,7 +143,7 @@ public class Notebook {
         }
 
         return bookItem;
-    }
+    }*/
 
     @Environment(EnvType.CLIENT)
     public void markUpdated() {

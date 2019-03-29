@@ -22,7 +22,6 @@ public class LootTableHandler {
     public static final Identifier GREAT_HUNGER = new Identifier(Neutronia.MOD_ID, "entities/great_hunger");
     public static final Identifier BLACK_BEAR = new Identifier(Neutronia.MOD_ID, "entities/black_bear");
     public static final Identifier GRIZZLY_BEAR = new Identifier(Neutronia.MOD_ID, "entities/grizzly_bear");
-    public static final Identifier PANDA = new Identifier(Neutronia.MOD_ID, "entities/panda");
     public static final Identifier SNAKE = new Identifier(Neutronia.MOD_ID, "entities/snake");
     public static final Identifier OWL = new Identifier(Neutronia.MOD_ID, "entities/owl");
 
