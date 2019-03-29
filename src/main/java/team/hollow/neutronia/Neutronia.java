@@ -11,23 +11,21 @@ import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.hollow.neutronia.api.groups.GroupLoader;
-import team.hollow.neutronia.book.BookFolderLoader;
 import team.hollow.neutronia.commands.Locate2Command;
 import team.hollow.neutronia.config.ConfigFile;
 import team.hollow.neutronia.event_system.EventCore;
 import team.hollow.neutronia.init.*;
 import team.hollow.neutronia.network.NotebookUpdatePacket;
+import team.hollow.neutronia.notebook.BookFolderLoader;
+import team.hollow.neutronia.notebook.BookRegistry;
 import team.hollow.neutronia.utils.JsonConfig;
 import team.hollow.neutronia.utils.WailaConfig;
-
-import java.io.File;
 
 import java.io.File;
 
 public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
-    public static final String PREFIX = "neutronia" + ":";
     public static final String MOD_NAME = "Neutronia";
     public static final String PREFIX = MOD_ID + ":";
     public static final JsonConfig<WailaConfig> CONFIG = new JsonConfig<>("neutronia/neutronia", WailaConfig.class).withGson((new GsonBuilder()).setPrettyPrinting().registerTypeAdapter(Identifier.class, new Identifier.DeSerializer()).create());
@@ -65,6 +63,7 @@ public class Neutronia implements ModInitializer {
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
 
         BookFolderLoader.setup(FabricLoader.getInstance().getConfigDirectory().getParentFile().getParentFile());
+        BookRegistry.INSTANCE.init();
 
         generalConfigFile = new ConfigFile(MOD_ID, "config.neutronia.general", ModConfig.class);
         generalConfigFile.loadConfig();

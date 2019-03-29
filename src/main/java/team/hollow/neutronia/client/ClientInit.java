@@ -9,7 +9,6 @@ import team.hollow.neutronia.addon.ClientAddonLoader;
 import team.hollow.neutronia.api.groups.GroupLoader;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 import team.hollow.neutronia.blocks.entity.StoneChestBlockEntity;
-import team.hollow.neutronia.book.BookRegistry;
 import team.hollow.neutronia.client.entity.render.*;
 import team.hollow.neutronia.client.renderer.SignBlockEntityRenderer;
 import team.hollow.neutronia.client.renderer.StoneChestBlockEntityRenderer;
@@ -17,6 +16,7 @@ import team.hollow.neutronia.entity.*;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
 import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
+import team.hollow.neutronia.notebook.BookRegistry;
 
 public class ClientInit implements ClientModInitializer {
 

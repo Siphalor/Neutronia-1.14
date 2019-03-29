@@ -8,6 +8,7 @@ import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
+import team.hollow.neutronia.items.NotebookItem;
 import team.hollow.neutronia.utils.ItemStackUtil;
 
 import java.util.*;
@@ -25,8 +26,6 @@ public class Notebook {
         put("$(item)", "$(#b0b)");
         put("$(thing)", "$(#490)");
     }};
-
-    public transient BookContents contents;
 
     private transient boolean wasUpdated = false;
 
@@ -149,7 +148,7 @@ public class Notebook {
         if(bookItem == null) {
             if(noBook)
                 bookItem = ItemStackUtil.loadStackFromString(customBookItem);
-            else bookItem = ItemModBook.forBook(this);
+            else bookItem = NotebookItem.forBook(this);
         }
 
         return bookItem;
@@ -164,55 +163,6 @@ public class Notebook {
         boolean updated = wasUpdated;
         wasUpdated = false;
         return updated;
-    }
-
-    @Environment(EnvType.CLIENT)
-    public void reloadContentsAndExtensions() {
-        reloadContents();
-
-        for(Notebook b : extensions)
-            b.reloadExtensionContents();
-    }
-
-    @Environment(EnvType.CLIENT)
-    public void reloadContents() {
-        if(contents == null)
-            contents = isExternal ? new ExternalBookContents(this) : new BookContents(this);
-
-        if(!isExtension)
-            contents.reload(false);
-    }
-
-    @Environment(EnvType.CLIENT)
-    public void reloadExtensionContents() {
-        if(isExtension) {
-            if(extensionTarget == null) {
-                extensionTarget = BookRegistry.INSTANCE.books.get(new Identifier(extend));
-
-                if(extensionTarget == null)
-                    throw new IllegalArgumentException("Extension Book " + resourceLoc + " has no valid target");
-                else if(!extensionTarget.allowExtensions)
-                    throw new IllegalArgumentException("Book " + extensionTarget.resourceLoc + " doesn't allow extensions, so " + resourceLoc + " can't resolve");
-
-                extensionTarget.extensions.add(this);
-
-                contents.categories = extensionTarget.contents.categories;
-                contents.entries = extensionTarget.contents.entries;
-                contents.templates = extensionTarget.contents.templates;
-                contents.recipeMappings = extensionTarget.contents.recipeMappings;
-            }
-
-            contents.reload(true);
-        }
-    }
-
-    @Environment(EnvType.CLIENT)
-    public void reloadLocks(boolean reset) {
-        contents.entries.values().forEach(BookEntry::updateLockStatus);
-        contents.categories.values().forEach((c) -> c.updateLockStatus(true));
-
-        if(reset)
-            popUpdated();
     }
 
     public String getOwnerName() {

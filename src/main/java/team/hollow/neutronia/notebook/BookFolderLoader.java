@@ -20,14 +20,12 @@ public class BookFolderLoader {
 			loadDir.mkdir();
 		else if(!loadDir.isDirectory())
 			throw new RuntimeException(loadDir.getAbsolutePath() + " is a file, not a folder, aborting. Please delete this file or move it elsewhere if it has important contents.");
-		
-		
 	}
 	
-	public static void findBooks() {
+	static void findBooks() {
 		for(ModContainer mod : FabricLoader.getInstance().getAllMods()) {
 			for(File dir : Objects.requireNonNull(loadDir.listFiles(File::isDirectory))) {
-				File bookJson = new File(dir, "book.json");
+				File bookJson = new File(dir, "book_info.json");
 				if(bookJson.exists()) {
 					try {
 						Identifier res = new Identifier(Neutronia.MOD_ID, dir.getName());

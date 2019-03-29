@@ -7,7 +7,7 @@ package team.hollow.neutronia.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import net.fabricmc.loader.FabricLoader;
+import net.fabricmc.loader.api.FabricLoader;
 
 import java.io.File;
 import java.io.FileReader;
@@ -23,7 +23,7 @@ public class JsonConfig<T> {
 
     public JsonConfig(String fileName, Class<T> configClass, Supplier<T> defaultFactory) {
         this.gson = DEFAULT_GSON;
-        this.configFile = new File(FabricLoader.INSTANCE.getConfigDirectory(), fileName + (fileName.endsWith(".json") ? "" : ".json"));
+        this.configFile = new File(FabricLoader.getInstance().getConfigDirectory(), fileName + (fileName.endsWith(".json") ? "" : ".json"));
         this.configGetter = new JsonConfig.CachedSupplier(() -> {
             if (!this.configFile.exists()) {
                 T def = defaultFactory.get();

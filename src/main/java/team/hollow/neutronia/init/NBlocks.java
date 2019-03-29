@@ -1,11 +1,13 @@
 package team.hollow.neutronia.init;
 
+import com.google.common.collect.UnmodifiableIterator;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.LanternBlock;
 import net.minecraft.block.*;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.blocks.melons.MelOLanternBlock;
@@ -20,6 +22,8 @@ import team.hollow.neutronia.enums.*;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
+
+import java.util.Iterator;
 
 public class NBlocks {
 
@@ -585,6 +589,14 @@ public class NBlocks {
         POTTED_SUNFLOWER = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.SUNFLOWER), "potted_sunflower");
         POTTED_TALL_GRASS = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.TALL_GRASS), "potted_tall_grass");
         POTTED_WHEAT = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.WHEAT), "potted_wheat");
+
+        for (Block block_1 : Registry.BLOCK) {
+            for (BlockState blockState_1 : block_1.getStateFactory().getStates()) {
+                blockState_1.initShapeCache();
+                Block.STATE_IDS.add(blockState_1);
+            }
+            block_1.getDropTableId();
+        }
     }
 
 
