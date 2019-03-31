@@ -8,7 +8,6 @@
     "screen.MixinGuiMain",
     "screen.MixinSplashScreen",
     "SettingScreenMixin",
-    "TextFieldWidgetMixin",
     "progress.MixinMinecraftClient",
     "progress.MixinModelLoader",
     "progress.MixinSpriteAtlasTexture"

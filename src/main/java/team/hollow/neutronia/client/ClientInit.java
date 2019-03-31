@@ -7,22 +7,24 @@ import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resource.ResourceType;
 import team.hollow.neutronia.addon.ClientAddonLoader;
 import team.hollow.neutronia.api.groups.GroupLoader;
+import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
-import team.hollow.neutronia.blocks.entity.StoneChestBlockEntity;
 import team.hollow.neutronia.client.entity.render.*;
+import team.hollow.neutronia.client.guidebook.ClientBookRegistry;
 import team.hollow.neutronia.client.renderer.SignBlockEntityRenderer;
 import team.hollow.neutronia.client.renderer.StoneChestBlockEntityRenderer;
 import team.hollow.neutronia.entity.*;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
 import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
-import team.hollow.neutronia.notebook.BookRegistry;
+import team.hollow.neutronia.notebook.NotebookRegistry;
 
 public class ClientInit implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        BlockEntityRendererRegistry.INSTANCE.register(StoneChestBlockEntity.class, new StoneChestBlockEntityRenderer());
+
+        BlockEntityRendererRegistry.INSTANCE.register(CustomChestBlockEntity.class, new StoneChestBlockEntityRenderer());
         BlockEntityRendererRegistry.INSTANCE.register(SignBlockEntity.class, new SignBlockEntityRenderer());
 
         EntityRendererRegistry.INSTANCE.register(VillagerPlusEntity.class, (manager, context) -> new VillagerEntityRenderer(manager, context.getResourceManager()));
@@ -38,7 +40,8 @@ public class ClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(AxolotlEntity.class, (manager, context) -> new AxolotlEntityRenderer(manager));
 
         ClientAddonLoader.loadAddons();
-        ResourceManagerHelper.get(ResourceType.DATA).registerReloadListener(BookRegistry.INSTANCE);
+        ResourceManagerHelper.get(ResourceType.DATA).registerReloadListener(NotebookRegistry.INSTANCE);
+        ClientBookRegistry.INSTANCE.init();
         GroupLoader.clientInit();
     }
 }

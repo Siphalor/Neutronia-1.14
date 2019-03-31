@@ -6,7 +6,12 @@
     "item.MixinBookOnLectern",
     "world.VillageGeneratorMixin",
     "commands.LocateCommandMixin",
-    "entity.MixinLivingEntity"
+    "entity.MixinLivingEntity",
+    "world.AddHillsLayerMixin",
+    "world.DesertVillageDataMixin",
+    "world.SavannaVillageDataMixin",
+    "world.SnowyVillageDataMixin",
+    "world.TaigaVillageDataMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -5,16 +5,16 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.client.gui.InputListener;
+import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.text.StringTextComponent;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.api.INotebookElement;
-import team.hollow.neutronia.api.INotebookSection;
+import team.hollow.neutronia.api.NotebookElement;
+import team.hollow.neutronia.api.NotebookSection;
 import team.hollow.neutronia.init.NConstants;
 import team.hollow.neutronia.network.ArcaneMagicPacketHandler;
 import team.hollow.neutronia.network.NotebookUpdatePacket;
@@ -27,20 +27,20 @@ import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class NotebookScreen extends Screen {
-    private INotebookSection section;
+    private NotebookSection section;
     private int leftPage = 0;
     private int contentsPage = 0;
     private int scaledMouseX = 0;
     private int scaledMouseY = 0;
 
-    private List<INotebookElement> leftElements = new ArrayList<>();
-    private List<INotebookElement> rightElements = new ArrayList<>();
+    private List<NotebookElement> leftElements = new ArrayList<>();
+    private List<NotebookElement> rightElements = new ArrayList<>();
 
-    public NotebookScreen(ItemStack stack) {
-        super(new TranslatableTextComponent("item.neutronia.notebook"));
+    public NotebookScreen(ItemStack stack, String bookName) {
+        super(new StringTextComponent(bookName));
         CompoundTag tag = stack.getTag();
         if (tag != null && tag.containsKey(NConstants.NOTEBOOK_SECTION_KEY)) {
-            INotebookSection section = NotebookSectionRegistry.get(Identifier.create(tag.getString(NConstants.NOTEBOOK_SECTION_KEY)));
+            NotebookSection section = NotebookSectionRegistry.get(Identifier.create(tag.getString(NConstants.NOTEBOOK_SECTION_KEY)));
             int page = tag.getInt(NConstants.NOTEBOOK_PAGE_KEY);
             int contentsPage = tag.getInt(NConstants.NOTEBOOK_CONTENTS_PAGE_KEY);
 
@@ -53,7 +53,7 @@ public class NotebookScreen extends Screen {
         }
     }
 
-    private void setSection(INotebookSection section) {
+    private void setSection(NotebookSection section) {
         MinecraftClient client = MinecraftClient.getInstance();
         this.leftPage = 0;
         if (!section.isVisibleTo(client.player)) {
@@ -100,7 +100,7 @@ public class NotebookScreen extends Screen {
             Neutronia.getLogger().warn("Tried to open a notebook with invalid NBT !");
             setSection(NotebookSectionRegistry.CONTENTS);
         }
-        this.children.add(new InputListener() {
+        this.children.add(new Element() {
             @Override
             public boolean mouseClicked(double mouseX, double mouseY, int button) {
                 if (button == 0) {
@@ -137,8 +137,8 @@ public class NotebookScreen extends Screen {
         });
     }
 
-    private boolean isMouseOverAny(List<INotebookElement> elements) {
-        for (INotebookElement element : elements) {
+    private boolean isMouseOverAny(List<NotebookElement> elements) {
+        for (NotebookElement element : elements) {
             if (element.mouseOver(scaledMouseX, scaledMouseY)) {
                 return true;
             }
@@ -146,9 +146,9 @@ public class NotebookScreen extends Screen {
         return false;
     }
 
-    private boolean handleClickOn(List<INotebookElement> elements) {
-        for (INotebookElement element : elements) {
-            INotebookSection s = element.handleClick(scaledMouseX, scaledMouseY);
+    private boolean handleClickOn(List<NotebookElement> elements) {
+        for (NotebookElement element : elements) {
+            NotebookSection s = element.handleClick(scaledMouseX, scaledMouseY);
             if (s != null) {
                 setSection(s);
                 return true;
@@ -213,14 +213,14 @@ public class NotebookScreen extends Screen {
 
         // Intro page
         int pointer = yTop + 15;
-        for (INotebookElement element : this.leftElements) {
+        for (NotebookElement element : this.leftElements) {
             GlStateManager.pushMatrix();
             pointer += element.draw(this, left, pointer, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();
         }
 
         pointer = yTop + 15;
-        for (INotebookElement element : this.rightElements) {
+        for (NotebookElement element : this.rightElements) {
             GlStateManager.pushMatrix();
             pointer += element.draw(this, right, pointer, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();
@@ -240,13 +240,13 @@ public class NotebookScreen extends Screen {
             RenderUtils.drawTexturedRect(right - 15, yTop + NConstants.NOTEBOOK_HEIGHT - 21, overBackArrow() ? 66 : 46, 193, 15, 11, 15, 11, NConstants.NOTEBOOK_WIDTH, NConstants.NOTEBOOK_TEX_HEIGHT);
         }
 
-        for (INotebookElement element : this.leftElements) {
+        for (NotebookElement element : this.leftElements) {
             GlStateManager.pushMatrix();
             element.drawOverlay(this, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();
         }
 
-        for (INotebookElement element : this.rightElements) {
+        for (NotebookElement element : this.rightElements) {
             GlStateManager.pushMatrix();
             element.drawOverlay(this, mouseX, mouseY, xTop, yTop);
             GlStateManager.popMatrix();

@@ -5,9 +5,6 @@ import net.minecraft.item.block.SignItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.items.NotebookItem;
-import team.hollow.neutronia.notebook.BookRegistry;
-import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 import static team.hollow.neutronia.init.NEntityTypes.SOCIAL_VILLAGER;
 
@@ -29,10 +26,6 @@ public class NItems {
         WITHER_BERRIES = Registry.register(Registry.ITEM, "neutronia:wither_berries", new StringItem(NBlocks.WITHER_BERRY_BUSH, (new Item.Settings()).itemGroup(ItemGroup.FOOD).food(FoodItemSettings.SWEET_BERRIES)));
         GREEN_GRAPES = Registry.register(Registry.ITEM, "neutronia:green_grapes", new StringItem(NBlocks.GREEN_GRAPE_BUSH, (new Item.Settings()).itemGroup(ItemGroup.FOOD).food(FoodItemSettings.SWEET_BERRIES)));
         PURPLE_GRAPES = Registry.register(Registry.ITEM, "neutronia:purple_grapes", new StringItem(NBlocks.PURPLE_GRAPE_BUSH, (new Item.Settings()).itemGroup(ItemGroup.FOOD).food(FoodItemSettings.SWEET_BERRIES)));
-        BookRegistry.INSTANCE.books.values().forEach(b -> {
-            RegistryUtils.registerItem(new NotebookItem(), b.registryName);
-            Neutronia.getLogger().info(b);
-        });
     }
 
 }

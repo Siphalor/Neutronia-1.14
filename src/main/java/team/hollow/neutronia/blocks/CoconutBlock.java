@@ -38,14 +38,14 @@ public class CoconutBlock extends NeutroniaBaseBlock {
     }
 
     @Override
-    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2) {
+    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2, boolean boolean_1) {
         if (!this.canBlockStay(world_1, blockPos_1)) {
             this.dropBlock(world_1, blockPos_1, blockState_1);
         }
     }
 
     private void dropBlock(World worldIn, BlockPos pos, BlockState state) {
-        worldIn.clearBlockState(pos);
+        worldIn.clearBlockState(pos, true);
         dropStacks(state, worldIn, pos);
     }
 }

@@ -3,7 +3,7 @@ package team.hollow.neutronia.client.gui;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.InputListener;
+import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.TranslatableTextComponent;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
-public class SocialScreen extends Screen implements InputListener {
+public class SocialScreen extends Screen implements Element {
 
     public List<SocialButton> positiveButtons = new ArrayList<>();
     public List<SocialButton> neutralButtons = new ArrayList<>();

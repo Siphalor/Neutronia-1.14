@@ -49,7 +49,6 @@ import net.minecraft.world.level.LevelProperties;
 
 import java.util.*;
 import java.util.concurrent.Executor;
-import java.util.function.BooleanSupplier;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -171,11 +170,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void summonParticle(Entity A, byte B) {
+    public void setEntityStatus(Entity A, byte B) {
         if (that != null) {
-            that.summonParticle(A, B);
+            that.setEntityStatus(A, B);
         } else {
-            super.summonParticle(A, B);
+            super.setEntityStatus(A, B);
         }
     }
 
@@ -490,17 +489,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18765(BooleanSupplier A) {
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public void tickChunk(WorldChunk A, int B) {
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public void method_18762(Entity A) {
     }
 
 	/*
@@ -537,11 +526,6 @@ public class ServerWorldRedirect extends ServerWorld {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public void addLightning(LightningEntity A) {
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
-    public void method_18214(Entity A) {
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -968,11 +952,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean clearBlockState(BlockPos A) {
+    public boolean clearBlockState(BlockPos A, boolean B) {
         if (that != null) {
-            return that.clearBlockState(A);
+            return that.clearBlockState(A, B);
         } else {
-            return super.clearBlockState(A);
+            return super.clearBlockState(A, B);
         }
     }
 

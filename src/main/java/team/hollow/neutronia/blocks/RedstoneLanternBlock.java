@@ -46,8 +46,8 @@ public class RedstoneLanternBlock extends LanternBlock {
         return blockState_1.get(LIT) ? super.getLuminance(blockState_1) : 0;
     }
 
-    public void onBlockAdded(BlockState blockState_1, World world_1, BlockPos blockPos_1, BlockState blockState_2) {
-        super.onBlockAdded(blockState_1, world_1, blockPos_1, blockState_2);
+    public void onBlockAdded(BlockState blockState_1, World world_1, BlockPos blockPos_1, BlockState blockState_2, boolean boolean_1) {
+        super.onBlockAdded(blockState_1, world_1, blockPos_1, blockState_2, boolean_1);
     }
 
     public boolean canPlaceAt(BlockState blockState_1, ViewableWorld viewableWorld_1, BlockPos blockPos_1) {

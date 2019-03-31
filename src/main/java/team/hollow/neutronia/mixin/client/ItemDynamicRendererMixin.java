@@ -10,31 +10,33 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import team.hollow.neutronia.blocks.entity.StoneChestBlockEntity;
+import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.enums.CustomChestTypes;
 import team.hollow.neutronia.init.NBlocks;
 
 @Mixin(ItemDynamicRenderer.class)
 public class ItemDynamicRendererMixin {
 
-    private final StoneChestBlockEntity renderAcaciaChest = new StoneChestBlockEntity(CustomChestTypes.ACACIA);
-    private final StoneChestBlockEntity renderBirchChest = new StoneChestBlockEntity(CustomChestTypes.BIRCH);
-    private final StoneChestBlockEntity renderDarkOakChest = new StoneChestBlockEntity(CustomChestTypes.DARK_OAK);
-    private final StoneChestBlockEntity renderJungleChest = new StoneChestBlockEntity(CustomChestTypes.JUNGLE);
-    private final StoneChestBlockEntity renderSpruceChest = new StoneChestBlockEntity(CustomChestTypes.SPRUCE);
-    private final StoneChestBlockEntity renderBambooChest = new StoneChestBlockEntity(CustomChestTypes.BAMBOO);
-    private final StoneChestBlockEntity renderWoodenDungeonChest = new StoneChestBlockEntity(CustomChestTypes.WOODEN_DUNGEON);
-    private final StoneChestBlockEntity renderDungeonChest = new StoneChestBlockEntity(CustomChestTypes.DUNGEON);
-    private final StoneChestBlockEntity renderStoneChest = new StoneChestBlockEntity(CustomChestTypes.STONE);
-    private final StoneChestBlockEntity renderStoneBrickChest = new StoneChestBlockEntity(CustomChestTypes.STONE_BRICK);
-    private final StoneChestBlockEntity renderCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.COBBLESTONE);
-    private final StoneChestBlockEntity renderMossyCobblestoneChest = new StoneChestBlockEntity(CustomChestTypes.MOSSY_COBBLESTONE);
-    private final StoneChestBlockEntity renderMangroveChest = new StoneChestBlockEntity(CustomChestTypes.MANGROVE);
-    private final StoneChestBlockEntity renderRedMangroveChest = new StoneChestBlockEntity(CustomChestTypes.RED_MANGROVE);
-    private final StoneChestBlockEntity renderBaobabChest = new StoneChestBlockEntity(CustomChestTypes.BAOBAB);
+    private final CustomChestBlockEntity renderAcaciaChest = new CustomChestBlockEntity(CustomChestTypes.ACACIA);
+    private final CustomChestBlockEntity renderBirchChest = new CustomChestBlockEntity(CustomChestTypes.BIRCH);
+    private final CustomChestBlockEntity renderDarkOakChest = new CustomChestBlockEntity(CustomChestTypes.DARK_OAK);
+    private final CustomChestBlockEntity renderJungleChest = new CustomChestBlockEntity(CustomChestTypes.JUNGLE);
+    private final CustomChestBlockEntity renderSpruceChest = new CustomChestBlockEntity(CustomChestTypes.SPRUCE);
+    private final CustomChestBlockEntity renderBambooChest = new CustomChestBlockEntity(CustomChestTypes.BAMBOO);
+    private final CustomChestBlockEntity renderWoodenDungeonChest = new CustomChestBlockEntity(CustomChestTypes.WOODEN_DUNGEON);
+    private final CustomChestBlockEntity renderDungeonChest = new CustomChestBlockEntity(CustomChestTypes.DUNGEON);
+    private final CustomChestBlockEntity renderStoneChest = new CustomChestBlockEntity(CustomChestTypes.STONE);
+    private final CustomChestBlockEntity renderStoneBrickChest = new CustomChestBlockEntity(CustomChestTypes.STONE_BRICK);
+    private final CustomChestBlockEntity renderCobblestoneChest = new CustomChestBlockEntity(CustomChestTypes.COBBLESTONE);
+    private final CustomChestBlockEntity renderMossyCobblestoneChest = new CustomChestBlockEntity(CustomChestTypes.MOSSY_COBBLESTONE);
+    private final CustomChestBlockEntity renderMangroveChest = new CustomChestBlockEntity(CustomChestTypes.MANGROVE);
+    private final CustomChestBlockEntity renderRedMangroveChest = new CustomChestBlockEntity(CustomChestTypes.RED_MANGROVE);
+    private final CustomChestBlockEntity renderBaobabChest = new CustomChestBlockEntity(CustomChestTypes.BAOBAB);
+    private final CustomChestBlockEntity renderWengeChest = new CustomChestBlockEntity(CustomChestTypes.WENGE);
+    private final CustomChestBlockEntity renderPurpleHeartChest = new CustomChestBlockEntity(CustomChestTypes.PURPLEHEART);
 
     @Inject(at = @At("TAIL"), method = "render")
-    private void method_3166(ItemStack stack, CallbackInfo info) {
+    private void render(ItemStack stack, CallbackInfo info) {
         Item item = stack.getItem();
         if (item instanceof BlockItem) {
             Block block = ((BlockItem) item).getBlock();
@@ -68,6 +70,10 @@ public class ItemDynamicRendererMixin {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderRedMangroveChest);
             } else if (block == NBlocks.WOODEN_CHESTS[14]) {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBaobabChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[15]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderWengeChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[16]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderPurpleHeartChest);
             }
         }
     }

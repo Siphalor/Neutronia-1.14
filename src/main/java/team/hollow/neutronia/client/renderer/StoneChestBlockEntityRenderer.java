@@ -11,15 +11,15 @@ import net.minecraft.client.render.entity.model.ChestDoubleEntityModel;
 import net.minecraft.client.render.entity.model.ChestEntityModel;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import team.hollow.neutronia.blocks.entity.StoneChestBlockEntity;
+import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 
-public class StoneChestBlockEntityRenderer extends BlockEntityRenderer<StoneChestBlockEntity> {
+public class StoneChestBlockEntityRenderer extends BlockEntityRenderer<CustomChestBlockEntity> {
 
     private final ChestEntityModel modelSingleChest = new ChestEntityModel();
     private final ChestEntityModel modelDoubleChest = new ChestDoubleEntityModel();
 
     @Override
-    public void render(StoneChestBlockEntity var1, double var2, double var4, double var6, float var8, int var9) {
+    public void render(CustomChestBlockEntity var1, double var2, double var4, double var6, float var8, int var9) {
         GlStateManager.enableDepthTest();
         GlStateManager.depthFunc(515);
         GlStateManager.depthMask(true);
@@ -63,7 +63,7 @@ public class StoneChestBlockEntityRenderer extends BlockEntityRenderer<StoneChes
         }
     }
 
-    private ChestEntityModel method_3562(StoneChestBlockEntity var1, int var2, boolean var3) {
+    private ChestEntityModel method_3562(CustomChestBlockEntity var1, int var2, boolean var3) {
         Identifier var4;
         if (var2 >= 0) {
             var4 = DESTROY_STAGE_TEXTURES[var2];
@@ -74,7 +74,7 @@ public class StoneChestBlockEntityRenderer extends BlockEntityRenderer<StoneChes
         return var3 ? this.modelDoubleChest : this.modelSingleChest;
     }
 
-    private void method_3561(StoneChestBlockEntity var1, float var2, ChestEntityModel var3) {
+    private void method_3561(CustomChestBlockEntity var1, float var2, ChestEntityModel var3) {
         float var4 = ((ChestAnimationProgress) var1).getAnimationProgress(var2);
         var4 = 1.0F - var4;
         var4 = 1.0F - var4 * var4 * var4;

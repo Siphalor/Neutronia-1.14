@@ -446,5 +446,7 @@
   "screen.knit.mod.config.tooltip": "Hold <Left Shift> over config for descriptions.",
   "config.knit.common": "Common Config (Server + Client)",
   "config.knit.client": "Client-Only Configs",
-  "config.knit.server": "Server-Only Configs"
+  "config.knit.server": "Server-Only Configs",
+
+  "text.neutronia.config.title": "Neutronia Config"
 }

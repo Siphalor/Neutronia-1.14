@@ -1,8 +1,5 @@
 package team.hollow.neutronia.items;
 
-import net.fabricmc.api.EnvType;
-import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -13,16 +10,21 @@ import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import team.hollow.neutronia.client.gui.NotebookScreen;
+import team.hollow.neutronia.client.guidebook.ClientBookRegistry;
 import team.hollow.neutronia.init.NConstants;
+import team.hollow.neutronia.notebook.Notebook;
 import team.hollow.neutronia.notebook.NotebookSectionRegistry;
 
 public class NotebookItem extends Item {
 
     private static final String TAG_BOOK = "neutronia:notebook";
+    private String bookName;
+    private Notebook notebook;
 
-    public NotebookItem(Item.Settings settings) {
+    public NotebookItem(Item.Settings settings, String bookName, Notebook notebook) {
         super(settings);
+        this.bookName = bookName;
+        this.notebook = notebook;
     }
 
     @Override
@@ -42,15 +44,11 @@ public class NotebookItem extends Item {
         if (!player.isSneaking()) {
             if (world.isClient) {
                 player.playSound(SoundEvents.ITEM_BOOK_PAGE_TURN, 1, 1);
-                openGUI(stack);
+                ClientBookRegistry.INSTANCE.displayBookGui(notebook.resourceLoc.toString());
             }
             return new TypedActionResult<>(ActionResult.SUCCESS, stack);
         }
         return new TypedActionResult<>(ActionResult.PASS, stack);
     }
 
-    @Environment(EnvType.CLIENT)
-    private void openGUI(ItemStack stack) {
-        MinecraftClient.getInstance().openScreen(new NotebookScreen(stack));
-    }
 }

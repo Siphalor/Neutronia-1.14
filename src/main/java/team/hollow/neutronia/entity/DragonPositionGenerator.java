@@ -23,7 +23,7 @@ public class DragonPositionGenerator {
         boolean flag;
 
         if (mob.getSleepingPosition().isPresent()) {
-            double d0 = mob.getSleepingPosition().get().squaredDistanceTo(new Vec3i(MathHelper.floor(mob.x), MathHelper.floor(mob.y), MathHelper.floor(mob.z))) + 4.0D;
+            double d0 = mob.getSleepingPosition().get().getSquaredDistance(new Vec3i(MathHelper.floor(mob.x), MathHelper.floor(mob.y), MathHelper.floor(mob.z))) + 4.0D;
             double d1 = (double) (mob.getSleepingPosition().get().getY() + (float) xz);
             flag = d0 < d1 * d1;
         } else {

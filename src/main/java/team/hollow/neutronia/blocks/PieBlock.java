@@ -57,7 +57,7 @@ public class PieBlock extends Block {
             if (int_1 < 4) {
                 iWorld_1.setBlockState(blockPos_1, blockState_1.with(BITES, int_1 + 1), 3);
             } else {
-                iWorld_1.clearBlockState(blockPos_1);
+                iWorld_1.clearBlockState(blockPos_1, false);
             }
 
             return true;

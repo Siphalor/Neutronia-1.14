@@ -8,6 +8,8 @@ import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
+import team.hollow.neutronia.client.guidebook.BookContents;
+import team.hollow.neutronia.client.guidebook.ExternalBookContents;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +29,8 @@ public class Notebook {
         put("$(item)", "$(#b0b)");
         put("$(thing)", "$(#490)");
     }};
+
+    public transient BookContents contents;
 
     private transient boolean wasUpdated = false;
 
@@ -154,6 +158,13 @@ public class Notebook {
         boolean updated = wasUpdated;
         wasUpdated = false;
         return updated;
+    }
+
+    @Environment(EnvType.CLIENT)
+    public void reloadContents() {
+        if(contents == null)
+            contents = isExternal ? new ExternalBookContents(this) : new BookContents(this);
+        contents.reload(false);
     }
 
     public String getOwnerName() {

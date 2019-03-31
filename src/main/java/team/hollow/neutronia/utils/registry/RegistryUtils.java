@@ -53,4 +53,9 @@ public class RegistryUtils {
         return item;
     }
 
+    public static Item registerItem(Item item, Identifier name) {
+        Registry.register(Registry.ITEM, name, item);
+        return item;
+    }
+
 }

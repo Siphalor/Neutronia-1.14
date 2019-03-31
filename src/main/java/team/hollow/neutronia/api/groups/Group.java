@@ -13,20 +13,17 @@ import java.util.function.Consumer;
 
 public class Group implements Comparable<Group> {
 
-    public final Map<String, Component> components = new HashMap<>();
-    private final List<Component> enabledComponents = new ArrayList<>();
+    public final Map<String, IComponent> components = new HashMap<>();
+    private final List<IComponent> enabledComponents = new ArrayList<>();
     public String name, desc;
-    public boolean enabled, enabledByDefault;
     protected Class<?> configFile;
     private ItemStack iconStack;
 
     public Group(Builder builder) {
         this.name = builder.name;
         this.desc = builder.desc;
-        this.enabled = builder.enabled;
-        this.enabledByDefault = builder.enabledByDefault;
-        for (Component component : builder.components) {
-            registerComponent(component, component.stateManager.enabledByDefault);
+        for (IComponent component : builder.components) {
+            registerComponent(component);
         }
     }
 
@@ -34,13 +31,8 @@ public class Group implements Comparable<Group> {
         return new Builder();
     }
 
-    public static Group createGroup(Builder builder) {
-        GroupLoader.registerGroup(new Group(builder));
-        return new Group(builder);
-    }
-
-    public void registerComponent(Component component, boolean enabledByDefault) {
-        registerComponent(component, convertName(component.getClass().getSimpleName()), enabledByDefault);
+    private void registerComponent(IComponent component) {
+        registerComponent(component, convertName(component.getClass().getSimpleName()));
     }
 
     private String convertName(String origName) {
@@ -48,64 +40,31 @@ public class Group implements Comparable<Group> {
         return Character.toUpperCase(withSpaces.charAt(0)) + withSpaces.substring(1);
     }
 
-    private void registerComponent(Component component, String name, boolean enabledByDefault) {
-        Class<? extends Component> clazz = component.getClass();
+    private void registerComponent(IComponent component, String name) {
+        Class<? extends IComponent> clazz = component.getClass();
         if (GroupLoader.componentInstances.containsKey(clazz))
             throw new IllegalArgumentException("Component " + clazz + " is already registered!");
 
         GroupLoader.componentInstances.put(clazz, component);
         components.put(name, component);
-
-        component.stateManager.enabledByDefault = enabledByDefault;
-        component.prevEnabled = false;
-
-        component.group = this;
     }
 
     public void init() {
-        forEachEnabledComponent(Component::init);
+        forEachEnabledComponent(IComponent::onInit);
     }
 
     @Environment(EnvType.CLIENT)
     void initClient() {
-        forEachEnabledComponent(Component::initClient);
+        forEachEnabledComponent(IComponent::onInitClient);
     }
 
-    boolean canBeDisabled() {
-        return true;
-    }
-
-    boolean isEnabledByDefault() {
-        return enabledByDefault;
-    }
-
-    String getModuleDescription() {
-        return desc;
-    }
-
-    public ItemStack getIconStack() {
-        if (iconStack != null) {
-            return iconStack;
-        } else {
-            return new ItemStack(Blocks.BARRIER);
-        }
-    }
-
-    public void forEachComponent(Consumer<Component> consumer) {
-        components.values().forEach(consumer);
-    }
-
-    private void forEachEnabledComponent(Consumer<Component> consumer) {
+    private void forEachEnabledComponent(Consumer<IComponent> consumer) {
         enabledComponents.forEach(consumer);
     }
 
     @Override
     public int compareTo(Group group) {
         return name.compareTo(group.name);
-    }
-
-    public boolean isEnabled() {
-        return enabled;
     }
 
     public String getName() {
@@ -120,9 +79,7 @@ public class Group implements Comparable<Group> {
 
         private String name, desc;
         private ItemStack icon;
-        private Group group;
-        private boolean enabled, enabledByDefault;
-        private List<Component> components = new ArrayList<>();
+        private List<IComponent> components = new ArrayList<>();
         private Class<?> configFile;
 
         public Builder name(String name) {
@@ -135,29 +92,13 @@ public class Group implements Comparable<Group> {
             return this;
         }
 
-        public Builder addComponent(Component component) {
+        public Builder addComponent(IComponent component) {
             components.add(component);
             return this;
         }
 
         public Builder configFile(Class<?> config) {
             this.configFile = config;
-            return this;
-        }
-
-        public Builder addComponent(Component component, boolean enabled) {
-            component.stateManager.enabled = enabled;
-            components.add(component);
-            return this;
-        }
-
-        public Builder enabled(boolean enabled) {
-            this.enabled = enabled;
-            return this;
-        }
-
-        public Builder enabledByDefault(boolean enabledByDefault) {
-            this.enabledByDefault = enabledByDefault;
             return this;
         }
 
@@ -171,10 +112,8 @@ public class Group implements Comparable<Group> {
         }
 
         public Group register() {
-            group = new Group(this);
+            Group group = new Group(this);
             group.iconStack = icon;
-            group.enabled = enabled;
-            group.enabledByDefault = enabledByDefault;
             group.configFile = configFile;
             GroupLoader.registerGroup(group);
             return group;

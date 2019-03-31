@@ -167,7 +167,7 @@ public class ArcticWolfEntity extends TameableEntity {
             this.isShaking = true;
             this.timeWolfIsShaking = 0.0F;
             this.prevTimeWolfIsShaking = 0.0F;
-            this.world.summonParticle(this, (byte) 8);
+            this.world.setEntityStatus(this, (byte) 8);
         }
 
         if (!this.world.isClient && this.getTarget() == null && this.isAngry()) {
@@ -347,10 +347,10 @@ public class ArcticWolfEntity extends TameableEntity {
                     this.sitGoal.setEnabledWithOwner(true);
                     this.setHealth(20.0F);
                     this.method_6180(true);
-                    this.world.summonParticle(this, (byte) 7);
+                    this.world.setEntityStatus(this, (byte) 7);
                 } else {
                     this.method_6180(false);
-                    this.world.summonParticle(this, (byte) 6);
+                    this.world.setEntityStatus(this, (byte) 6);
                 }
             }
 

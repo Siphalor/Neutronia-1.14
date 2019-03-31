@@ -6,7 +6,7 @@ import net.minecraft.block.Material;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.tag.ItemTags;
 import net.minecraft.world.BlockView;
-import team.hollow.neutronia.blocks.entity.StoneChestBlockEntity;
+import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.enums.CustomChestTypes;
 
 public class CustomChestBlock extends ChestBlock {
@@ -25,6 +25,6 @@ public class CustomChestBlock extends ChestBlock {
 
     @Override
     public BlockEntity createBlockEntity(BlockView var1) {
-        return new StoneChestBlockEntity(CustomChestTypes.getFromName(type));
+        return new CustomChestBlockEntity(CustomChestTypes.getFromName(type));
     }
 }

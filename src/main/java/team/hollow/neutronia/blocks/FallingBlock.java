@@ -59,7 +59,7 @@ public class FallingBlock extends BaseModBlock {
         if (canFallThrough(world_1.getBlockState(blockPos_1.down())) && blockPos_1.getY() >= 0) {
             if (!world_1.isAreaLoaded(blockPos_1.add(-32, -32, -32), blockPos_1.add(32, 32, 32))) {
                 if (world_1.getBlockState(blockPos_1).getBlock() == this) {
-                    world_1.clearBlockState(blockPos_1);
+                    world_1.clearBlockState(blockPos_1, false);
                 }
 
                 BlockPos blockPos_2;

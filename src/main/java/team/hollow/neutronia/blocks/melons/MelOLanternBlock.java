@@ -23,7 +23,6 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
 import team.hollow.neutronia.blocks.BaseModBlock;
 import team.hollow.neutronia.enums.CarvedFaceTypes;
-import team.hollow.neutronia.init.NBlocks;
 import team.hollow.neutronia.utils.helpers.CarvedBlockHelper;
 import team.hollow.neutronia.utils.helpers.ICarvable;
 
@@ -91,6 +90,7 @@ public class MelOLanternBlock extends BaseModBlock implements ICarvable {
 
     @Override
     public Block getUncarvedBlock() {
-        return NBlocks.MEL_O_LANTERN;
+//        return NBlocks.MEL_O_LANTERN;
+        return null;
     }
 }

@@ -22,7 +22,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
-import team.hollow.neutronia.items.SeedsItemAccessor;
 
 import java.util.Map;
 import java.util.Objects;
@@ -68,4 +67,9 @@ public class FlowerPotBlockMixin {
         }
         return block;
     }
+
+    public interface SeedsItemAccessor {
+        Block getBlock();
+    }
+
 }
