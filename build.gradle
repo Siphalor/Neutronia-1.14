@@ -6,9 +6,9 @@ plugins {
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
 
-archivesBaseName = project.archives_base_name
-version = project.mod_version
-group = project.maven_group
+archivesBaseName = archives_base_name
+version = "v${mod_version}+${minecraft_version_ver}"
+group = maven_group
 
 minecraft {
 }
@@ -31,7 +31,7 @@ dependencies {
     modCompile "io.github.prospector.modmenu:ModMenu:1.1.9-35"
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
 	modCompile 'roughly-enough-items:RoughlyEnoughItems:2.6.0.77'
-	modCompile "cloth:Cloth:0.1.5.16"
+	modCompile "cloth:Cloth:0.1.5.17"
 	
 	modCompile "blue.endless:jankson:1.1.0"
 	modCompile 'com.electronwill.night-config:core:3.5.0'

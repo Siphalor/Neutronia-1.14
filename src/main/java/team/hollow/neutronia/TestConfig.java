@@ -12,7 +12,7 @@ public class TestConfig {
     public static class Client {
 
         @Comment("Display the config button in the Options menu.")
-        public boolean displayConfigButton = true;
+        public boolean displayConfigButton = false;
 
         @Comment("Adds more informative text on the main menu")
         public boolean mainMenuExtra = false;

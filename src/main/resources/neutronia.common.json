@@ -7,11 +7,7 @@
     "world.VillageGeneratorMixin",
     "commands.LocateCommandMixin",
     "entity.MixinLivingEntity",
-    "world.AddHillsLayerMixin",
-    "world.DesertVillageDataMixin",
-    "world.SavannaVillageDataMixin",
-    "world.SnowyVillageDataMixin",
-    "world.TaigaVillageDataMixin"
+    "world.AddHillsLayerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
