@@ -34,6 +34,7 @@ public class ItemDynamicRendererMixin {
     private final CustomChestBlockEntity renderBaobabChest = new CustomChestBlockEntity(CustomChestTypes.BAOBAB);
     private final CustomChestBlockEntity renderWengeChest = new CustomChestBlockEntity(CustomChestTypes.WENGE);
     private final CustomChestBlockEntity renderPurpleHeartChest = new CustomChestBlockEntity(CustomChestTypes.PURPLEHEART);
+    private final CustomChestBlockEntity renderLacewoodChest = new CustomChestBlockEntity(CustomChestTypes.LACEWOOD);
 
     @Inject(at = @At("TAIL"), method = "render")
     private void render(ItemStack stack, CallbackInfo info) {
@@ -74,6 +75,8 @@ public class ItemDynamicRendererMixin {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderWengeChest);
             } else if (block == NBlocks.WOODEN_CHESTS[16]) {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderPurpleHeartChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[17]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderLacewoodChest);
             }
         }
     }

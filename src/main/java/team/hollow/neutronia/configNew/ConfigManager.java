@@ -57,9 +57,8 @@ public class ConfigManager {
                 JsonElement jsonElementNew = jankson.toJson(clazz.newInstance());
                 if(jsonElementNew instanceof JsonObject){
                     JsonObject jsonNew = (JsonObject) jsonElementNew;
-                    if(json.getDelta(jsonNew).size()>= 0){
-                        saveConfig(result);
-                    }
+                    json.getDelta(jsonNew).size();
+                    saveConfig(result);
                 }
 
                 return result;

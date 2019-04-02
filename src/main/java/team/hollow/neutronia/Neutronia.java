@@ -81,7 +81,7 @@ public class Neutronia implements ModInitializer {
                 () -> false, (bool) -> getConfigManager().getConfig().client.displayConfigButton = bool));
         client.addOption(new BooleanListEntry("Displays more information on the main menu",
                 getConfigManager().getConfig().client.mainMenuExtra, "text.cloth.reset_value",
-                () -> false, (bool) -> getConfigManager().getConfig().client.mainMenuExtra = bool));
+                () -> true, (bool) -> getConfigManager().getConfig().client.mainMenuExtra = bool));
         client.addOption(new BooleanListEntry("Display more information on the splash screen",
                 getConfigManager().getConfig().client.splashScreenExtra, "text.cloth.reset_value",
                 () -> true, (bool) -> getConfigManager().getConfig().client.splashScreenExtra = bool));

@@ -1,6 +1,7 @@
 plugins {
 	id 'fabric-loom' version '0.2.0-SNAPSHOT'
 	id 'maven-publish'
+	id 'com.github.johnrengelman.shadow' version '2.0.0'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -28,14 +29,13 @@ dependencies {
     modCompile "net.fabricmc:fabric-loader:${project.loader_version}"
 
     modCompile "mcp.mobius.waila:Hwyla:${project.full_mc_version}-${project.newest_version}"
-    modCompile "io.github.prospector.modmenu:ModMenu:1.1.9-35"
+    modCompile "io.github.prospector.modmenu:ModMenu:${project.mod_menu_version}"
     modCompile "info.tehnut.pluginloader:plugin-loader:${project.full_mc_version}-${project.newest_version}"
-	modCompile 'roughly-enough-items:RoughlyEnoughItems:2.6.0.77'
-	modCompile "cloth:Cloth:0.1.5.17"
+	modCompile "roughly-enough-items:RoughlyEnoughItems:${project.rei_version}"
+	modCompile "cloth:Cloth:${project.cloth_version}"
 	
-	modCompile "blue.endless:jankson:1.1.0"
-	modCompile 'com.electronwill.night-config:core:3.5.0'
-	modCompile 'com.electronwill.night-config:toml:3.5.0'
+	shadow "blue.endless:jankson:${project.jankson_version}"
+	implementation "blue.endless:jankson:${project.jankson_version}"
     
     modCompile "net.fabricmc:fabric:${project.fabric_version}"
 }
@@ -62,6 +62,16 @@ task sourcesJar(type: Jar, dependsOn: classes) {
 
 jar {
 	from "LICENSE"
+}
+
+shadowJar {
+	classifier = "shadow"
+	configurations = [project.configurations.shadow]
+}
+
+remapJar {
+	jar = shadowJar.archivePath
+	dependsOn shadowJar
 }
 
 publishing {

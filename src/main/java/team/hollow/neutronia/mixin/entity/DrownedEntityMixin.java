@@ -18,8 +18,8 @@ public abstract class DrownedEntityMixin extends ZombieEntity implements RangedA
         super(world_1);
     }
 
-    @Inject(method = "method_7208", at = @At("HEAD"))
-    private void method_7208(CallbackInfo info) {
+    @Inject(method = "initCustomGoals", at = @At("HEAD"))
+    private void initCustomGoals(CallbackInfo info) {
         this.goalSelector.add(1, new FleeEntityGoal<>(this, TurtleEntity.class, 8.0F, 0.6D, 0.6D));
     }
 

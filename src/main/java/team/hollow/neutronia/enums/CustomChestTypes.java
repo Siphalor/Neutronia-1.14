@@ -22,7 +22,8 @@ public enum CustomChestTypes implements StringRepresentable {
     RED_MANGROVE("red_mangrove", "red_mangrove.png", 13),
     BAOBAB("baobab", "baobab.png", 14),
     WENGE("wenge", "wenge.png", 15),
-    PURPLEHEART("purple_heart", "purple_heart.png", 16);
+    PURPLEHEART("purpleheart", "purpleheart.png", 16),
+    LACEWOOD("lacewood", "lacewood.png", 17);
 
     private final String name;
     private final Identifier modelTexture;
@@ -72,6 +73,8 @@ public enum CustomChestTypes implements StringRepresentable {
                 return WENGE;
             case "purpleheart_chest":
                 return PURPLEHEART;
+            case "lacewood_chest":
+                return LACEWOOD;
         }
         return ACACIA;
     }
@@ -112,6 +115,8 @@ public enum CustomChestTypes implements StringRepresentable {
                 return WENGE;
             case 16:
                 return PURPLEHEART;
+            case 17:
+                return LACEWOOD;
         }
         return ACACIA;
     }

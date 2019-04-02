@@ -12,7 +12,8 @@ public enum NewWoodTypes implements StringRepresentable {
     RED_MANGROVE(4, "red_mangrove", MaterialColor.PINK),
     BAOBAB(5, "baobab", MaterialColor.PURPLE),
     WENGE(6, "wenge", MaterialColor.BROWN),
-    PURPLEHEART(7, "purpleheart", MaterialColor.PINK);
+    PURPLEHEART(7, "purpleheart", MaterialColor.PINK),
+    LACEWOOD(8, "lacewood", MaterialColor.PURPLE);
 
     private static final NewWoodTypes[] META_LOOKUP = new NewWoodTypes[values().length];
 

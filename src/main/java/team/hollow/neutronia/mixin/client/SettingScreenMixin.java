@@ -1,5 +1,6 @@
 package team.hollow.neutronia.mixin.client;
 
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.client.gui.menu.SettingsScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -20,7 +21,7 @@ public abstract class SettingScreenMixin extends Screen {
 
     @Inject(method = "init", at = @At("RETURN"))
     private void onInit(CallbackInfo callback) {
-        if (Neutronia.testConfig.client.displayConfigButton) {
+        if (Neutronia.testConfig.client.displayConfigButton && FabricLoader.getInstance().isModLoaded("cloth")) {
             this.addButton(new ButtonWidget(this.width / 2 - 155, this.height / 6 + 144 - 6, 150, 20,
                     I18n.translate("screen.knit.mod.config.edit"), buttonWidget ->
                     Neutronia.openConfigScreen(this)));
