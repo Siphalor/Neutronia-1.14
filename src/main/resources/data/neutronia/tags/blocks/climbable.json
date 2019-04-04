@@ -11,6 +11,9 @@
 		"neutronia:mangrove_ladder",
 		"neutronia:baobab_ladder",
 		"neutronia:red_mangrove_ladder",
-		"#minecraft:logs"
+		"neutronia:wenge_ladder",
+		"neutronia:purpleheart_ladder",
+		"neutronia:lacewood_ladder",
+		"neutronia:cherry_ladder"
 	]
 }

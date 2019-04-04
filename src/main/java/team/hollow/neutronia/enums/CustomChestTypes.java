@@ -23,7 +23,9 @@ public enum CustomChestTypes implements StringRepresentable {
     BAOBAB("baobab", "baobab.png", 14),
     WENGE("wenge", "wenge.png", 15),
     PURPLEHEART("purpleheart", "purpleheart.png", 16),
-    LACEWOOD("lacewood", "lacewood.png", 17);
+    LACEWOOD("lacewood", "lacewood.png", 17),
+    BOLIVIAN_ROSEWOOD("bolivian_rosewood", "bolivian_rosewood.png", 18),
+    GABON_EBONY("gabon_ebony", "gabon_ebony.png", 19);
 
     private final String name;
     private final Identifier modelTexture;

@@ -76,7 +76,7 @@ public class ExampleMod implements ModInitializer {
                 b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1),
                         Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(100)));
             }
-            if (b.getCategory() == Biome.Category.TAIGA && b.getCategory() == Biome.Category.ICY) {
+            if (b.getCategory() == Biome.Category.TAIGA || b.getCategory() == Biome.Category.ICY) {
                 b.addStructureFeature(TOTEM_POLE_FEATURE, new DefaultFeatureConfig());
                 b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(TOTEM_POLE_FEATURE, new DefaultFeatureConfig(), Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(40)));
             }

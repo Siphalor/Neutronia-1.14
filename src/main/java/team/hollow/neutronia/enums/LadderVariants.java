@@ -9,7 +9,12 @@ public enum LadderVariants implements StringRepresentable {
     JUNGLE(2, "jungle", MaterialColor.DIRT),
     ACACIA(3, "acacia", MaterialColor.ORANGE),
     DARK_OAK(4, "dark_oak", MaterialColor.BROWN),
-    BAMBOO(5, "bamboo", MaterialColor.DIRT);
+    BAMBOO(5, "bamboo", MaterialColor.DIRT),
+    MANGROVE(3, "mangrove", MaterialColor.GRAY),
+    RED_MANGROVE(4, "red_mangrove", MaterialColor.PINK),
+    BAOBAB(5, "baobab", MaterialColor.PURPLE),
+    WENGE(6, "wenge", MaterialColor.BROWN),
+    GABON_EBONY(10, "gabon_ebony", MaterialColor.BLACK);
 
     private static final LadderVariants[] META_LOOKUP = new LadderVariants[values().length];
 

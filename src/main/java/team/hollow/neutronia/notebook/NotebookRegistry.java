@@ -64,7 +64,7 @@ public class NotebookRegistry implements SimpleSynchronousResourceReloadListener
         String registryName = JsonHelper.getString(jsonObject, "registry_name");
         String bookName = JsonHelper.getString(jsonObject, "name");
         Identifier name = new Identifier(registryName.split(":")[0], registryName.split(":")[1]);
-        /*Reader reader = new BufferedReader(new InputStreamReader(FabricLoader.getInstance().getModContainer(name.getNamespace()).get().getMetadata().getClass().getResourceAsStream(jsonObject.getAsString()), StandardCharsets.UTF_8));
+        /*Reader reader = new BufferedReader(new InputStreamReader(FabricLoader.getInstance().getModContainer(name.getNamespace()).get().getIndex().getClass().getResourceAsStream(jsonObject.getAsString()), StandardCharsets.UTF_8));
         Notebook book = gson.fromJson(reader, Notebook.class);
         books.put(name, book);
         book.build(FabricLoader.getInstance().getModContainer(registryName.split(":")[0]).get(), new Identifier(registryName), false);*/
