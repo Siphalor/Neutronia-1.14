@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/smooth_brick_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/smooth_brick"
+    },
+    "type=top": {
+      "model": "neutronia:block/smooth_brick_slab_top"
+    }
+  }
+}

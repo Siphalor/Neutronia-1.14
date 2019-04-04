@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/willow_planks" }
+    "": {
+      "model": "neutronia:block/willow_planks"
+    }
   }
 }

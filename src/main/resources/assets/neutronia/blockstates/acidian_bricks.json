@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/acidian_bricks" }
+    "": {
+      "model": "neutronia:block/acidian_bricks"
+    }
   }
 }

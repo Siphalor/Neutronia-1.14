@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/red_mangrove_lantern",
+    "end": "neutronia:block/red_mangrove_lantern_top"
+  }
+}

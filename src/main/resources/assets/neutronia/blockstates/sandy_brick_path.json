@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/sandy_brick_path" }
+    "": {
+      "model": "neutronia:block/sandy_brick_path"
+    }
   }
 }

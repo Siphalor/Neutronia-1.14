@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "neutronia:block/stripped_lacewood_log_top",
+    "side": "neutronia:block/stripped_lacewood_log"
+  }
+}

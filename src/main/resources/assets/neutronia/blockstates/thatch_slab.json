@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/thatch_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/thatch"
+    },
+    "type=top": {
+      "model": "neutronia:block/thatch_slab_top"
+    }
+  }
+}

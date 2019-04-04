@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/smooth_prismarine" }
+    "": {
+      "model": "neutronia:block/smooth_prismarine"
+    }
   }
 }

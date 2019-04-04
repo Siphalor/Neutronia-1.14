@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/cherry_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/cherry"
+    },
+    "type=top": {
+      "model": "neutronia:block/cherry_slab_top"
+    }
+  }
+}

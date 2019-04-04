@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/polished_dark_andesite_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/polished_dark_andesite"
+    },
+    "type=top": {
+      "model": "neutronia:block/polished_dark_andesite_slab_top"
+    }
+  }
+}

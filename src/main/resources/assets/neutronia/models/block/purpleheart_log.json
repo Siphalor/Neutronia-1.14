@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube_column",
+  "textures": {
+    "end": "neutronia:block/purpleheart_log_top",
+    "side": "neutronia:block/purpleheart_log"
+  }
+}

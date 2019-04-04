@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/cut_dark_prismarine_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/cut_dark_prismarine"
+    },
+    "type=top": {
+      "model": "neutronia:block/cut_dark_prismarine_slab_top"
+    }
+  }
+}

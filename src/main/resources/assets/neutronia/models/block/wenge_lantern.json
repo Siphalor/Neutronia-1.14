@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/wenge_lantern",
+    "end": "neutronia:block/wenge_lantern_top"
+  }
+}

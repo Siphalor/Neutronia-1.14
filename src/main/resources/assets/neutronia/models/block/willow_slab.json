@@ -2,7 +2,7 @@
   "parent": "minecraft:block/slab",
   "textures": {
     "bottom": "neutronia:block/willow_planks",
-    "side": "neutronia:block/willow_planks",
-    "top": "neutronia:block/willow_planks"
+    "top": "neutronia:block/willow_planks",
+    "side": "neutronia:block/willow_planks"
   }
 }

@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/sandy_bricks" }
+    "": {
+      "model": "neutronia:block/sandy_bricks"
+    }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "neutronia:block/dirty_bricks",
+    "top": "neutronia:block/dirty_bricks",
+    "side": "neutronia:block/dirty_bricks"
+  }
+}

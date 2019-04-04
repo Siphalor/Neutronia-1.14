@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/stairs",
+  "textures": {
+    "bottom": "neutronia:block/dried_mud",
+    "top": "neutronia:block/dried_mud",
+    "side": "neutronia:block/dried_mud"
+  }
+}

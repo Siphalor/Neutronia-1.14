@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "neutronia:block/small_dirty_brick_tile"
+  }
+}

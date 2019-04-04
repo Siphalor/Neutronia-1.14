@@ -1,6 +1,3 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "neutronia:block/acidian_bricks"
-  }
+  "parent": "neutronia:block/acidian_bricks"
 }

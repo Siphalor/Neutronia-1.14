@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/cherry_wood" }
+    "": {
+      "model": "neutronia:block/cherry_wood"
+    }
   }
 }

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/inner_stairs",
+  "textures": {
+    "bottom": "neutronia:block/natural_acidian",
+    "top": "neutronia:block/natural_acidian",
+    "side": "neutronia:block/natural_acidian"
+  }
+}

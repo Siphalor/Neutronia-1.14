@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "neutronia:block/baobab_planks",
+    "top": "neutronia:block/baobab_planks",
+    "side": "neutronia:block/baobab_planks"
+  }
+}

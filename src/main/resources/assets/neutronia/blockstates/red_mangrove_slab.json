@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/red_mangrove_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/red_mangrove"
+    },
+    "type=top": {
+      "model": "neutronia:block/red_mangrove_slab_top"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "variants": {
+    "facing=north": { "model": "neutronia:block/lacewood_ladder" },
+    "facing=east":  { "model": "neutronia:block/lacewood_ladder", "y": 90 },
+    "facing=south": { "model": "neutronia:block/lacewood_ladder", "y": 180 },
+    "facing=west":  { "model": "neutronia:block/lacewood_ladder", "y": 270 }
+  }
+}

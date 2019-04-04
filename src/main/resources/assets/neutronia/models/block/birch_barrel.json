@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/birch_barrel",
+    "end": "neutronia:block/birch_barrel_top"
+  }
+}

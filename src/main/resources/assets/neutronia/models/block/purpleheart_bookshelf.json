@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/purpleheart_bookshelf",
+    "end": "neutronia:block/purpleheart_planks"
+  }
+}

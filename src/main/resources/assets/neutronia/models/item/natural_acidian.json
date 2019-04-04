@@ -1,6 +1,3 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "neutronia:block/natural_acidian"
-  }
+  "parent": "neutronia:block/natural_acidian"
 }

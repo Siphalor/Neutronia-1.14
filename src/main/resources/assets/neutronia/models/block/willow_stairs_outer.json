@@ -1,5 +1,5 @@
 {
-  "parent": "block/outer_stairs",
+  "parent": "minecraft:block/outer_stairs",
   "textures": {
     "bottom": "neutronia:block/willow_planks",
     "top": "neutronia:block/willow_planks",

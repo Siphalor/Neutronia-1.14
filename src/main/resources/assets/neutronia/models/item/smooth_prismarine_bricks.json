@@ -1,6 +1,3 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "neutronia:block/smooth_prismarine_bricks"
-  }
+  "parent": "neutronia:block/smooth_prismarine_bricks"
 }

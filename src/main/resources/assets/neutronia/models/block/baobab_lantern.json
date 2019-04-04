@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/baobab_lantern",
+    "end": "neutronia:block/baobab_lantern_top"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/dirty_brick_pillar",
+    "end": "neutronia:block/dirty_brick_pillar_top"
+  }
+}

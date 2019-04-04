@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/lacewood_lantern",
+    "end": "neutronia:block/lacewood_lantern_top"
+  }
+}

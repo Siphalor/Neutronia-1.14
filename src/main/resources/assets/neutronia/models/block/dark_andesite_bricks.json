@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "neutronia:block/dark_andesite_bricks"
+  }
+}

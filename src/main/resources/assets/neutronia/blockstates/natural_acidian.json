@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/natural_acidian" }
+    "": {
+      "model": "neutronia:block/natural_acidian"
+    }
   }
 }

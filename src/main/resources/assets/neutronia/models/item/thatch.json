@@ -1,6 +1,3 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "neutronia:block/thatch"
-  }
+  "parent": "neutronia:block/thatch"
 }

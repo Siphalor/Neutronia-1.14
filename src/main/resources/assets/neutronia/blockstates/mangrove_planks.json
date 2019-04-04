@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/mangrove_planks" }
+    "": {
+      "model": "neutronia:block/mangrove_planks"
+    }
   }
 }

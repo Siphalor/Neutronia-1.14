@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "neutronia:block/engraved_prismarine",
+    "top": "neutronia:block/engraved_prismarine",
+    "side": "neutronia:block/engraved_prismarine"
+  }
+}

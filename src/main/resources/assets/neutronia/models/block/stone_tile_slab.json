@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab",
+  "textures": {
+    "bottom": "neutronia:block/stone_tile",
+    "top": "neutronia:block/stone_tile",
+    "side": "neutronia:block/stone_tile"
+  }
+}
