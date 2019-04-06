@@ -6,7 +6,6 @@
     "item.MixinBookOnLectern",
     "world.VillageGeneratorMixin",
     "commands.LocateCommandMixin",
-    "entity.MixinLivingEntity",
     "world.AddHillsLayerMixin"
   ],
   "injectors": {

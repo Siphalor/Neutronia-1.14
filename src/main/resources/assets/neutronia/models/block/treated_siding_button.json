@@ -1,6 +1,6 @@
 {
-    "parent": "block/button",
-    "textures": {
-        "texture": "neutronia:block/treated_siding"
-    }
+  "parent": "minecraft:block/button",
+  "textures": {
+    "texture": "neutronia:block/treated_siding"
+  }
 }

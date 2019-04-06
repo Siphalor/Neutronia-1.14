@@ -51,7 +51,7 @@ public class PieBlock extends Block {
         if (!playerEntity_1.canConsume(false)) {
             return false;
         } else {
-            playerEntity_1.increaseStat(Stats.EAT_CAKE_SLICE);
+            playerEntity_1.incrementStat(Stats.EAT_CAKE_SLICE);
             playerEntity_1.getHungerManager().add(2, 0.1F);
             int int_1 = blockState_1.get(BITES);
             if (int_1 < 4) {

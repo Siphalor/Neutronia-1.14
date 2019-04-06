@@ -16,7 +16,7 @@ public class EntityRegistryBuilder<E extends Entity> {
 
     private static String name;
 
-    private EntityType.class_4049<E> class_4049;
+    private EntityType.EntityFactory<E> class_4049;
 
     private EntityCategory category;
 
@@ -34,7 +34,7 @@ public class EntityRegistryBuilder<E extends Entity> {
         return new EntityRegistryBuilder<E>();
     }
 
-    public EntityRegistryBuilder<E> entity(EntityType.class_4049<E> class_4049) {
+    public EntityRegistryBuilder<E> entity(EntityType.EntityFactory<E> class_4049) {
         this.class_4049 = class_4049;
         return this;
     }

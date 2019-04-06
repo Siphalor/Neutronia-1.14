@@ -21,9 +21,9 @@ public class BrownBearEntityRenderer extends MobEntityRenderer<GrizzlyBearEntity
         return SKIN;
     }
 
-    protected void method_4099(GrizzlyBearEntity grizzlyBearEntity_1, float float_1) {
+    protected void scale(GrizzlyBearEntity grizzlyBearEntity_1, float float_1) {
         GlStateManager.scalef(1.2F, 1.2F, 1.2F);
-        super.method_4042(grizzlyBearEntity_1, float_1);
+        super.scale(grizzlyBearEntity_1, float_1);
     }
 
 }

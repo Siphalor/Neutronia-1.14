@@ -2,7 +2,7 @@ package team.hollow.neutronia.entity;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityPose;
 import net.minecraft.entity.EntitySize;
@@ -39,7 +39,7 @@ import team.hollow.neutronia.init.NEntityTypes;
 import java.util.Objects;
 import java.util.UUID;
 
-import static net.minecraft.entity.passive.WolfEntity.field_18004;
+import static net.minecraft.entity.passive.WolfEntity.FOLLOW_TAMED_PREDICATE;
 
 public class ArcticWolfEntity extends TameableEntity {
     private static final TrackedData<Float> HEALTH = DataTracker.registerData(ArcticWolfEntity.class, TrackedDataHandlerRegistry.FLOAT);
@@ -73,7 +73,7 @@ public class ArcticWolfEntity extends TameableEntity {
         this.targetSelector.add(1, new TrackAttackerGoal(this));
         this.targetSelector.add(2, new AttackWithOwnerGoal(this));
         this.targetSelector.add(3, (new AvoidGoal(this)).setAvoidedEntities());
-        this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, AnimalEntity.class, false, field_18004));
+        this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, AnimalEntity.class, false, FOLLOW_TAMED_PREDICATE));
         this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, TurtleEntity.class, false, TurtleEntity.BABY_TURTLE_ON_LAND_FILTER));
         this.targetSelector.add(5, new FollowTargetGoal<>(this, AbstractSkeletonEntity.class, false));
     }
@@ -112,7 +112,8 @@ public class ArcticWolfEntity extends TameableEntity {
         this.dataTracker.startTracking(COLLAR_COLOR, DyeColor.RED.getId());
     }
 
-    protected void playStepSound(BlockPos pos, Block blockIn) {
+    @Override
+    protected void playStepSound(BlockPos blockPos_1, BlockState blockState_1) {
         this.playSound(SoundEvents.ENTITY_WOLF_STEP, 0.15F, 1.0F);
     }
 
@@ -167,7 +168,7 @@ public class ArcticWolfEntity extends TameableEntity {
             this.isShaking = true;
             this.timeWolfIsShaking = 0.0F;
             this.prevTimeWolfIsShaking = 0.0F;
-            this.world.setEntityStatus(this, (byte) 8);
+            this.world.sendEntityStatus(this, (byte) 8);
         }
 
         if (!this.world.isClient && this.getTarget() == null && this.isAngry()) {
@@ -253,8 +254,8 @@ public class ArcticWolfEntity extends TameableEntity {
         return entitySize_1.height * 0.8F;
     }
 
-    public int method_5978() {
-        return this.isSitting() ? 20 : super.method_5978();
+    public int getLookPitchSpeed() {
+        return this.isSitting() ? 20 : super.getLookPitchSpeed();
     }
 
     /**
@@ -330,7 +331,7 @@ public class ArcticWolfEntity extends TameableEntity {
 
             if (this.isOwner(player) && !this.world.isClient && !this.isBreedingItem(itemstack)) {
                 this.sitGoal.setEnabledWithOwner(!this.isSitting());
-                this.field_6282 = false;
+                this.jumping = false;
                 this.navigation.stop();
                 this.setTarget(null);
             }
@@ -341,16 +342,16 @@ public class ArcticWolfEntity extends TameableEntity {
 
             if (!this.world.isClient) {
                 if (this.random.nextInt(3) == 0) {
-                    this.method_6170(player);
+                    this.setOwner(player);
                     this.navigation.stop();
                     this.setTarget(null);
                     this.sitGoal.setEnabledWithOwner(true);
                     this.setHealth(20.0F);
-                    this.method_6180(true);
-                    this.world.setEntityStatus(this, (byte) 7);
+                    this.showEmoteParticle(true);
+                    this.world.sendEntityStatus(this, (byte) 7);
                 } else {
-                    this.method_6180(false);
-                    this.world.setEntityStatus(this, (byte) 6);
+                    this.showEmoteParticle(false);
+                    this.world.sendEntityStatus(this, (byte) 6);
                 }
             }
 
@@ -361,13 +362,13 @@ public class ArcticWolfEntity extends TameableEntity {
     }
 
     @Environment(EnvType.CLIENT)
-    public void setStatus(byte byte_1) {
+    public void handleStatus(byte byte_1) {
         if (byte_1 == 8) {
             this.isShaking = true;
             this.timeWolfIsShaking = 0.0F;
             this.prevTimeWolfIsShaking = 0.0F;
         } else {
-            super.setStatus(byte_1);
+            super.handleStatus(byte_1);
         }
 
     }
@@ -427,7 +428,7 @@ public class ArcticWolfEntity extends TameableEntity {
 
     public ArcticWolfEntity createChild(PassiveEntity ageable) {
         ArcticWolfEntity wolfEntity_1 = NEntityTypes.ARCTIC_WOLF.create(this.world);
-        UUID uUID_1 = this.method_6139();
+        UUID uUID_1 = this.getOwnerUuid();
         if (uUID_1 != null) {
             Objects.requireNonNull(wolfEntity_1).setOwnerUuid(uUID_1);
             wolfEntity_1.setTamed(true);
@@ -500,8 +501,8 @@ public class ArcticWolfEntity extends TameableEntity {
         }
 
         public boolean canStart() {
-            if (super.canStart() && this.field_6390 instanceof LlamaEntity) {
-                return !this.wolf.isTamed() && this.method_6720((LlamaEntity) this.field_6390);
+            if (super.canStart() && this.targetEntity instanceof LlamaEntity) {
+                return !this.wolf.isTamed() && this.method_6720((LlamaEntity) this.targetEntity);
             } else {
                 return false;
             }

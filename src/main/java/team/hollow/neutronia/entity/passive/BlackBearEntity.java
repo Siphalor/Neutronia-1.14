@@ -233,7 +233,7 @@ public class BlackBearEntity extends AnimalEntity {
                 return false;
             } else {
                 if (super.canStart()) {
-                    List<BlackBearEntity> list_1 = BlackBearEntity.this.world.method_18467(BlackBearEntity.class, BlackBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
+                    List<BlackBearEntity> list_1 = BlackBearEntity.this.world.getEntities(BlackBearEntity.class, BlackBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
 
                     for (BlackBearEntity brownBearEntity_1 : list_1) {
                         if (brownBearEntity_1.isChild()) {
@@ -266,11 +266,10 @@ public class BlackBearEntity extends AnimalEntity {
 
         }
 
-        protected void method_6319(MobEntity mobEntityWithAi_1, LivingEntity livingEntity_1) {
+        protected void setMobEntityTarget(MobEntity mobEntityWithAi_1, LivingEntity livingEntity_1) {
             if (mobEntityWithAi_1 instanceof BlackBearEntity && !mobEntityWithAi_1.isChild()) {
-                super.method_6319(mobEntityWithAi_1, livingEntity_1);
+                super.setMobEntityTarget(mobEntityWithAi_1, livingEntity_1);
             }
-
         }
     }
 }

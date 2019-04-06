@@ -33,7 +33,7 @@ public abstract class MinecraftClientMixin {
             } else {
                 return blockColorMap.getRenderColor(var0x, null, null, var3);
             }
-        }, NBlocks.POTTED_GRASS, NBlocks.POTTED_TALL_GRASS);
+        }, NBlocks.POTTED_GRASS, NBlocks.POTTED_TALL_GRASS, NBlocks.LACEWOOD_LEAVES, NBlocks.BOLIVIAN_ROSEWOOD_LEAVES/*, NBlocks.MANGROVE_LEAVES, NBlocks.RED_MANGROVE_LEAVES*/);
         itemColorMap.register((stack, tintIndex) -> {
                     if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().world != null) {
                         return blockColorMap.getRenderColor(((BlockItem) stack.getItem()).getBlock().getDefaultState(), MinecraftClient.getInstance().player.world, new BlockPos(MinecraftClient.getInstance().player), tintIndex);
@@ -43,7 +43,8 @@ public abstract class MinecraftClientMixin {
                     }
                 }, Blocks.GRASS_BLOCK, Blocks.GRASS, Blocks.FERN, Blocks.VINE, Blocks.OAK_LEAVES, Blocks.SPRUCE_LEAVES,
                 Blocks.BIRCH_LEAVES, Blocks.JUNGLE_LEAVES, Blocks.ACACIA_LEAVES, Blocks.DARK_OAK_LEAVES, Blocks.LILY_PAD,
-                Blocks.TALL_GRASS, Blocks.LARGE_FERN, NBlocks.POTTED_GRASS, NBlocks.POTTED_TALL_GRASS);
+                Blocks.TALL_GRASS, Blocks.LARGE_FERN, NBlocks.POTTED_GRASS, NBlocks.POTTED_TALL_GRASS, NBlocks.LACEWOOD_LEAVES,
+                NBlocks.BOLIVIAN_ROSEWOOD_LEAVES/*, NBlocks.MANGROVE_LEAVES, NBlocks.RED_MANGROVE_LEAVES*/);
 
     }
 }

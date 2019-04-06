@@ -1,5 +1,6 @@
 package team.hollow.neutronia.client.entity.render;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -18,6 +19,11 @@ public class BlackBearEntityRenderer extends MobEntityRenderer<BlackBearEntity, 
 
     protected Identifier getTexture(BlackBearEntity polarBearEntity_1) {
         return SKIN;
+    }
+
+    protected void scale(BlackBearEntity grizzlyBearEntity_1, float float_1) {
+        GlStateManager.scalef(1.2F, 1.2F, 1.2F);
+        super.scale(grizzlyBearEntity_1, float_1);
     }
 
 }

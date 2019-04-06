@@ -1,6 +1,6 @@
 {
-    "parent": "block/button_inventory",
-    "textures": {
-        "texture": "neutronia:block/treated_siding"
-    }
+  "parent": "minecraft:block/button_inventory",
+  "textures": {
+    "texture": "neutronia:block/treated_siding"
+  }
 }

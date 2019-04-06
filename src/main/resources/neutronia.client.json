@@ -4,7 +4,6 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ItemDynamicRendererMixin",
-    "MinecraftClientMixin",
     "screen.MixinGuiMain",
     "screen.MixinSplashScreen",
     "SettingScreenMixin",

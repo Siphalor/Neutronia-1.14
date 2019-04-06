@@ -41,7 +41,6 @@ import net.minecraft.world.chunk.WorldChunk;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.explosion.Explosion;
-import net.minecraft.world.explosion.Explosion.class_4179;
 import net.minecraft.world.gen.Heightmap.Type;
 import net.minecraft.world.level.LevelGeneratorType;
 import net.minecraft.world.level.LevelInfo;
@@ -170,11 +169,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void setEntityStatus(Entity A, byte B) {
+    public void sendEntityStatus(Entity A, byte B) {
         if (that != null) {
-            that.setEntityStatus(A, B);
+            that.sendEntityStatus(A, B);
         } else {
-            super.setEntityStatus(A, B);
+            super.sendEntityStatus(A, B);
         }
     }
 
@@ -369,11 +368,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void playEvent(PlayerEntity A, int B, BlockPos C, int D) {
+    public void method_8444(PlayerEntity A, int B, BlockPos C, int D) {
         if (that != null) {
-            that.playEvent(A, B, C, D);
+            that.method_8444(A, B, C, D);
         } else {
-            super.playEvent(A, B, C, D);
+            super.method_8444(A, B, C, D);
         }
     }
 
@@ -399,7 +398,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public Explosion createExplosion(Entity A, DamageSource B, double C, double D, double E, float F, boolean G, class_4179 H) {
+    public Explosion createExplosion(Entity A, DamageSource B, double C, double D, double E, float F, boolean G, Explosion.DestructionType H) {
         if (that != null) {
             return that.createExplosion(A, B, C, D, E, F, G, H);
         } else {
@@ -1626,16 +1625,6 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void playEvent(int A, BlockPos B, int C) {
-        if (that != null) {
-            that.playEvent(A, B, C);
-        } else {
-            super.playEvent(A, B, C);
-        }
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public float method_8442(float A) {
         if (that != null) {
             return that.method_8442(A);
@@ -1706,7 +1695,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public Explosion createExplosion(Entity A, double B, double C, double D, float E, class_4179 F) {
+    public Explosion createExplosion(Entity A, double B, double C, double D, float E, Explosion.DestructionType F) {
         if (that != null) {
             return that.createExplosion(A, B, C, D, E, F);
         } else {
@@ -1716,7 +1705,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public Explosion createExplosion(Entity A, double B, double C, double D, float E, boolean F, class_4179 G) {
+    public Explosion createExplosion(Entity A, double B, double C, double D, float E, boolean F, Explosion.DestructionType G) {
         if (that != null) {
             return that.createExplosion(A, B, C, D, E, F, G);
         } else {
@@ -1987,16 +1976,6 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public int method_8312(LightType A, BlockPos B) {
-        if (that != null) {
-            return that.method_8312(A, B);
-        } else {
-            return super.method_8312(A, B);
-        }
-    }
-
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    @Override
     public int getLightmapIndex(BlockPos A, int B) {
         if (that != null) {
             return that.getLightmapIndex(A, B);
@@ -2067,11 +2046,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public float method_8391() {
+    public float getMoonSize() {
         if (that != null) {
-            return that.method_8391();
+            return that.getMoonSize();
         } else {
-            return super.method_8391();
+            return super.getMoonSize();
         }
     }
 
@@ -2137,141 +2116,141 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public List method_18467(Class A, BoundingBox B) {
+    public List getEntities(Class A, BoundingBox B) {
         if (that != null) {
-            return that.method_18467(A, B);
+            return that.getEntities(A, B);
         } else {
-            return super.method_18467(A, B);
+            return super.getEntities(A, B);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_18459(double A, double B, double C, double D, boolean E) {
+    public PlayerEntity getClosestPlayer(double A, double B, double C, double D, boolean E) {
         if (that != null) {
-            return that.method_18459(A, B, C, D, E);
+            return that.getClosestPlayer(A, B, C, D, E);
         } else {
-            return super.method_18459(A, B, C, D, E);
+            return super.getClosestPlayer(A, B, C, D, E);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public LivingEntity method_18465(Class A, TargetPredicate B, LivingEntity C, double D, double E, double F, BoundingBox G) {
+    public LivingEntity getClosestEntity(Class A, TargetPredicate B, LivingEntity C, double D, double E, double F, BoundingBox G) {
         if (that != null) {
-            return that.method_18465(A, B, C, D, E, F, G);
+            return that.getClosestEntity(A, B, C, D, E, F, G);
         } else {
-            return super.method_18465(A, B, C, D, E, F, G);
+            return super.getClosestEntity(A, B, C, D, E, F, G);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public List method_18466(Class A, TargetPredicate B, LivingEntity C, BoundingBox D) {
+    public List getTargets(Class A, TargetPredicate B, LivingEntity C, BoundingBox D) {
         if (that != null) {
-            return that.method_18466(A, B, C, D);
+            return that.getTargets(A, B, C, D);
         } else {
-            return super.method_18466(A, B, C, D);
+            return super.getTargets(A, B, C, D);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_18460(Entity A, double B) {
+    public PlayerEntity getClosestPlayer(Entity A, double B) {
         if (that != null) {
-            return that.method_18460(A, B);
+            return that.getClosestPlayer(A, B);
         } else {
-            return super.method_18460(A, B);
+            return super.getClosestPlayer(A, B);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_18462(TargetPredicate A, LivingEntity B) {
+    public PlayerEntity getClosestPlayer(TargetPredicate A, LivingEntity B) {
         if (that != null) {
-            return that.method_18462(A, B);
+            return that.getClosestPlayer(A, B);
         } else {
-            return super.method_18462(A, B);
+            return super.getClosestPlayer(A, B);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_18463(TargetPredicate A, LivingEntity B, double C, double D, double E) {
+    public PlayerEntity getClosestPlayer(TargetPredicate A, LivingEntity B, double C, double D, double E) {
         if (that != null) {
-            return that.method_18463(A, B, C, D, E);
+            return that.getClosestPlayer(A, B, C, D, E);
         } else {
-            return super.method_18463(A, B, C, D, E);
+            return super.getClosestPlayer(A, B, C, D, E);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public boolean method_18458(double A, double B, double C, double D) {
+    public boolean isPlayerInRange(double A, double B, double C, double D) {
         if (that != null) {
-            return that.method_18458(A, B, C, D);
+            return that.isPlayerInRange(A, B, C, D);
         } else {
-            return super.method_18458(A, B, C, D);
+            return super.isPlayerInRange(A, B, C, D);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public LivingEntity method_18468(List A, TargetPredicate B, LivingEntity C, double D, double E, double F) {
+    public LivingEntity getClosestEntity(List A, TargetPredicate B, LivingEntity C, double D, double E, double F) {
         if (that != null) {
-            return that.method_18468(A, B, C, D, E, F);
+            return that.getClosestEntity(A, B, C, D, E, F);
         } else {
-            return super.method_18468(A, B, C, D, E, F);
+            return super.getClosestEntity(A, B, C, D, E, F);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_18461(TargetPredicate A, double B, double C, double D) {
+    public PlayerEntity getClosestPlayer(TargetPredicate A, double B, double C, double D) {
         if (that != null) {
-            return that.method_18461(A, B, C, D);
+            return that.getClosestPlayer(A, B, C, D);
         } else {
-            return super.method_18461(A, B, C, D);
+            return super.getClosestPlayer(A, B, C, D);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_8604(double A, double B, double C, double D, Predicate E) {
+    public PlayerEntity getClosestPlayer(double A, double B, double C, double D, Predicate E) {
         if (that != null) {
-            return that.method_8604(A, B, C, D, E);
+            return that.getClosestPlayer(A, B, C, D, E);
         } else {
-            return super.method_8604(A, B, C, D, E);
+            return super.getClosestPlayer(A, B, C, D, E);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_18457(double A, double B, double C) {
+    public PlayerEntity getClosestPlayer(double A, double B, double C) {
         if (that != null) {
-            return that.method_18457(A, B, C);
+            return that.getClosestPlayer(A, B, C);
         } else {
-            return super.method_18457(A, B, C);
+            return super.getClosestPlayer(A, B, C);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public List method_18464(TargetPredicate A, LivingEntity B, BoundingBox C) {
+    public List getPlayersInBox(TargetPredicate A, LivingEntity B, BoundingBox C) {
         if (that != null) {
-            return that.method_18464(A, B, C);
+            return that.getPlayersInBox(A, B, C);
         } else {
-            return super.method_18464(A, B, C);
+            return super.getPlayersInBox(A, B, C);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public PlayerEntity method_18470(UUID A) {
+    public PlayerEntity getPlayerByUuid(UUID A) {
         if (that != null) {
-            return that.method_18470(A);
+            return that.getPlayerByUuid(A);
         } else {
-            return super.method_18470(A);
+            return super.getPlayerByUuid(A);
         }
     }
 

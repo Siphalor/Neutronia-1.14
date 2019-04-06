@@ -28,7 +28,7 @@ public class WolfBegGoal extends Goal {
     }
 
     public boolean canStart() {
-        this.begFrom = this.world.method_18462(this.field_18085, this.owner);
+        this.begFrom = this.world.getClosestPlayer(this.field_18085, this.owner);
         return this.begFrom != null && this.method_6244(this.begFrom);
     }
 
@@ -53,7 +53,7 @@ public class WolfBegGoal extends Goal {
     }
 
     public void tick() {
-        this.owner.getLookControl().lookAt(this.begFrom.x, this.begFrom.y + (double) this.begFrom.getStandingEyeHeight(), this.begFrom.z, 10.0F, (float) this.owner.method_5978());
+        this.owner.getLookControl().lookAt(this.begFrom.x, this.begFrom.y + (double) this.begFrom.getStandingEyeHeight(), this.begFrom.z, 10.0F, (float) this.owner.getLookPitchSpeed());
         --this.timer;
     }
 

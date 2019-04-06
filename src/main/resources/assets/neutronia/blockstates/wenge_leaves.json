@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/wenge_leaves" }
+    "": {
+      "model": "neutronia:block/wenge_leaves"
+    }
   }
 }

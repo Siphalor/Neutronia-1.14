@@ -2,7 +2,7 @@ package team.hollow.neutronia.mixin.entity;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.Entity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 import team.hollow.neutronia.init.NTags;
 
-@Mixin(LivingEntity.class)
+@Mixin(Entity.class)
 final class MixinLivingEntity {
 
     @Inject(
