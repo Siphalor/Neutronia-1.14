@@ -1,15 +1,9 @@
 package team.hollow.neutronia;
 
-import me.shedaniel.cloth.api.ConfigScreenBuilder;
-import me.shedaniel.cloth.gui.ClothConfigScreen;
-import me.shedaniel.cloth.gui.entries.BooleanListEntry;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.fabricmc.fabric.impl.registry.CompostingChanceRegistryImpl;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.Screen;
-import net.minecraft.client.resource.language.I18n;
 import net.minecraft.item.Items;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -69,7 +63,7 @@ public class Neutronia implements ModInitializer {
         return configManager;
     }
 
-    public static void openConfigScreen(Screen parent) {
+    /*public static void openConfigScreen(Screen parent) {
         ConfigScreenBuilder builder = new ClothConfigScreen.Builder(parent, I18n.translate("text.neutronia.config.title"), null);
         ConfigScreenBuilder.CategoryBuilder common = builder.addCategory("Common");
         common.addOption(new BooleanListEntry("Do Mini Biomes",
@@ -87,6 +81,6 @@ public class Neutronia implements ModInitializer {
                 () -> true, (bool) -> getConfigManager().getConfig().client.splashScreenExtra = bool));
         builder.setOnSave((savedConfig) -> ConfigManager.saveConfig(testConfig));
         MinecraftClient.getInstance().openScreen(builder.build());
-    }
+    }*/
 
 }

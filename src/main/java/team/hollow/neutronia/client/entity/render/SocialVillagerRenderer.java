@@ -1,5 +1,6 @@
 package team.hollow.neutronia.client.entity.render;
 
+import com.mojang.blaze3d.platform.GlStateManager;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.render.entity.EntityRenderDispatcher;
@@ -30,13 +31,15 @@ public class SocialVillagerRenderer extends MobEntityRenderer<SocialVillager, Pl
         if (this.getRenderManager().textureManager.getTexture(new Identifier("minecraft:dynamic/" + entity.getDataTracker().get(SocialVillager.serverUUID) + "_1")) != null) {
             return new Identifier("minecraft:dynamic/" + entity.getDataTracker().get(SocialVillager.serverUUID) + "_1");
         }
-        boolean female = entity.getSex().equals("Female");
+        boolean female = entity.getDataTracker().get(SocialVillager.sexUnified).equals("Female");
         this.model = new PlayerEntityModel<>(0.0F, female);
         String hairColor = entity.getDataTracker().get(SocialVillager.hairColorUnified);
         String eyeColor = entity.getDataTracker().get(SocialVillager.eyeColorUnified);
         String skinColor = entity.getDataTracker().get(SocialVillager.skinColorUnified);
+        String gender = entity.getDataTracker().get(SocialVillager.sexUnified);
+        String profession = entity.getDataTracker().get(SocialVillager.professionUnified);
         int hairStyle = entity.getDataTracker().get(SocialVillager.hairStyleUnified);
-        BufferedImage imageBase = new TextureAssembler(eyeColor, hairColor, skinColor, hairStyle, entity.getSex()).createTexture();
+        BufferedImage imageBase = new TextureAssembler(eyeColor, hairColor, skinColor, hairStyle, gender, profession).createTexture();
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         try {
             ImageIO.write(imageBase, "png", stream);
@@ -52,6 +55,19 @@ public class SocialVillagerRenderer extends MobEntityRenderer<SocialVillager, Pl
         }
         NativeImageBackedTexture texture = new NativeImageBackedTexture(base);
         return this.getRenderManager().textureManager.registerDynamicTexture(entity.getDataTracker().get(SocialVillager.serverUUID), texture);
+    }
+
+    @Override
+    protected void scale(SocialVillager livingEntity_1, float float_1) {
+        float float_2 = 0.9375F;
+        if (livingEntity_1.isChild()) {
+            float_2 = (float)((double)float_2 * 0.5D);
+            this.field_4673 = 0.25F;
+        } else {
+            this.field_4673 = 0.5F;
+        }
+
+        GlStateManager.scalef(float_2, float_2, float_2);
     }
 
 }

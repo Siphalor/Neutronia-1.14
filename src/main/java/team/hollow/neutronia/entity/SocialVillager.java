@@ -32,6 +32,7 @@ public class SocialVillager extends PassiveEntity {
     public static TrackedData<String> orientationUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> serverUUID = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> sexUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
+    public static TrackedData<String> professionUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public String firstName;
     public String lastName;
     private HashMap<UUID, Integer> opinions = new HashMap<>();
@@ -39,13 +40,14 @@ public class SocialVillager extends PassiveEntity {
     private String eyeColor;
     private String skinColor;
     private String sexuality;
+    private String sex;
+    private String profession;
     private int hairStyle = 0;
     private int friendliness = 0;
     private int bravery = 0;
     private int generosity = 0;
     private boolean apologized = false;
     private boolean charmed = false;
-    private String sex;
 
     public SocialVillager(World world) {
         this(NEntityTypes.SOCIAL_VILLAGER, world);
@@ -56,7 +58,6 @@ public class SocialVillager extends PassiveEntity {
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
         if (hairColor == null || hairColor.equals("")) {
-
             unifiedSetup();
             this.dataTracker.set(hairColorUnified, hairColor);
             this.dataTracker.set(eyeColorUnified, eyeColor);
@@ -64,15 +65,14 @@ public class SocialVillager extends PassiveEntity {
             this.dataTracker.set(hairStyleUnified, hairStyle);
             this.dataTracker.set(orientationUnified, sexuality);
             this.dataTracker.set(serverUUID, this.getUuidAsString());
-            this.setBreedingAge(0);
-
             this.dataTracker.set(sexUnified, sex);
+            this.dataTracker.set(professionUnified, profession);
+            this.setBreedingAge(0);
         }
 
         List<String> sexs = new ArrayList<>();
         sexs.add(0, "Male");
         sexs.add(1, "Female");
-        sexs.add(2, "Genderless");
 
         try {
             this.firstName = generateFirstName(sexs.get(getRand().nextInt(3)));
@@ -100,11 +100,13 @@ public class SocialVillager extends PassiveEntity {
         this.goalSelector.add(10, new LookAtEntityGoal(this, MobEntity.class, 8.0F));
     }
 
+    @Override
     protected void initAttributes() {
         super.initAttributes();
         this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
     }
 
+    @Override
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(hairColorUnified, hairColor);
@@ -114,6 +116,7 @@ public class SocialVillager extends PassiveEntity {
         this.dataTracker.startTracking(orientationUnified, sexuality);
         this.dataTracker.startTracking(serverUUID, this.getUuidAsString());
         this.dataTracker.startTracking(sexUnified, sex);
+        this.dataTracker.startTracking(professionUnified, profession);
     }
 
     public String getHairColor() {
@@ -152,6 +155,14 @@ public class SocialVillager extends PassiveEntity {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     @Override
@@ -194,6 +205,12 @@ public class SocialVillager extends PassiveEntity {
         this.sex = genderList[getRand().nextInt(genderList.length)];
     }
 
+    public void setupProfession() {
+        String[] professionList = {"Lumberjack", "Farmer", "Architect", "Tradesman", "Merchant", "Blacksmith", "Enchanter", "Druid", "Butcher",
+                "Librarian", "Weaponsmith", "Nomad", "Baker", "Priest", "Miner", "Guard"};
+        this.profession = professionList[getRand().nextInt(professionList.length)];
+    }
+
     public void setupOrientation() {
         int orientationInt = getRand().nextInt(10);
         if (orientationInt == 9) {
@@ -225,6 +242,7 @@ public class SocialVillager extends PassiveEntity {
         tag.putString("Last Name", lastName);
         tag.putInt("Age", this.getBreedingAge());
         tag.putString("Gender", sex);
+        tag.putString("Profession", profession);
         if (opinions.keySet().size() > 13) {
             for (UUID key : opinions.keySet()) {
                 CompoundTag opinionTag = new CompoundTag();
@@ -242,6 +260,7 @@ public class SocialVillager extends PassiveEntity {
         this.setupSkin();
         this.setupGender();
         this.setupOrientation();
+        this.setupProfession();
     }
 
     @Override
@@ -260,6 +279,7 @@ public class SocialVillager extends PassiveEntity {
         this.firstName = tag.getString("First Name");
         this.lastName = tag.getString("Last Name");
         this.sex = tag.getString("Gender");
+        this.profession = tag.getString("Profession");
         for (String key : tag.getKeys()) {
             if (tag.hasUuid(key)) {
                 this.opinions.put(tag.getCompound(key).getUuid("Holder"), tag.getInt("Opinion"));
@@ -276,6 +296,7 @@ public class SocialVillager extends PassiveEntity {
         this.dataTracker.set(orientationUnified, sexuality);
         this.dataTracker.set(serverUUID, this.getUuidAsString());
         this.dataTracker.set(sexUnified, sex);
+        this.dataTracker.set(professionUnified, profession);
     }
 
     public int getFriendliness() {
@@ -292,18 +313,15 @@ public class SocialVillager extends PassiveEntity {
 
     @Override
     public PassiveEntity createChild(PassiveEntity var1) {
-        // TODO Auto-generated method stub
-        return null;
+        return new SocialVillager(NEntityTypes.SOCIAL_VILLAGER, this.world);
     }
 
     private String generateFirstName(String gender) throws IOException {
         String firstNameOut;
         Random rand = new Random();
         Identifier malenames = new Identifier("neutronia:names/male.txt");
-        Identifier neutralnames = new Identifier("neutronia:names/genderless.txt");
         Identifier femalenames = new Identifier("neutronia:names/female.txt");
         InputStream stream = MinecraftClient.getInstance().getResourceManager().getResource(malenames).getInputStream();
-        InputStream stream2 = MinecraftClient.getInstance().getResourceManager().getResource(neutralnames).getInputStream();
         InputStream stream3 = MinecraftClient.getInstance().getResourceManager().getResource(femalenames).getInputStream();
         if (gender.equals("Male")) {
             Scanner scanner = new Scanner(stream);
@@ -315,7 +333,7 @@ public class SocialVillager extends PassiveEntity {
             String[] strings = builder.toString().split(",");
             firstNameOut = strings[rand.nextInt(strings.length)];
             scanner.close();
-        } else if (gender.equals("Female")) {
+        } else {
             Scanner scanner2 = new Scanner(stream3);
             StringBuilder builder2 = new StringBuilder();
             while (scanner2.hasNextLine()) {
@@ -325,19 +343,8 @@ public class SocialVillager extends PassiveEntity {
             String[] strings2 = builder2.toString().split(",");
             firstNameOut = strings2[rand.nextInt(strings2.length)];
             scanner2.close();
-        } else {
-            Scanner scanner3 = new Scanner(stream2);
-            StringBuilder builder3 = new StringBuilder();
-            while (scanner3.hasNextLine()) {
-                builder3.append(scanner3.nextLine());
-                builder3.append(",");
-            }
-            String[] strings3 = builder3.toString().split(",");
-            firstNameOut = strings3[rand.nextInt(strings3.length)];
-            scanner3.close();
         }
         stream.close();
-        stream2.close();
         stream3.close();
         return firstNameOut;
     }
@@ -359,4 +366,5 @@ public class SocialVillager extends PassiveEntity {
         scanner.close();
         return lastNameOut;
     }
+
 }

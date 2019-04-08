@@ -1,20 +1,34 @@
 {
+  "schemaVersion": 1,
   "id": "neutronia",
+  "version": "0.7.2",
+
   "name": "Neutronia 1.14",
   "description": "Neutronia is a mod that aims to expand upon the vanilla style, including much more variety to all dimensions. The surface, underground, nether and end have upgraded worldgen, more biomes and structures.",
-  "version": "0.7.2",
-  "side": "universal",
-  "initializers": [
-    "team.hollow.neutronia.Neutronia",
-    "team.hollow.neutronia.client.ClientInit",
-    "team.hollow.test.ExampleMod",
-    "team.hollow.neutronia.client.NeutroniaLeavesColors"
+  "authors": [
+    "OliviaTheVampire"
   ],
-  "requires": {
-    "fabric": "*"
+
+  "license": "CC0-1.0",
+  "icon": "assets/neutronia/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "team.hollow.neutronia.Neutronia",
+      "team.hollow.test.ExampleMod"
+    ],
+    "client": [
+      "team.hollow.neutronia.client.ClientInit",
+      "team.hollow.neutronia.client.NeutroniaLeavesColors"
+    ]
   },
-  "mixins": {
-    "client": "neutronia.client.json",
-    "common": "neutronia.common.json"
+  "mixins": [
+    "neutronia.mixins.json"
+  ],
+
+  "requires": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
   }
 }

@@ -8,6 +8,15 @@
     "commands.LocateCommandMixin",
     "world.AddHillsLayerMixin"
   ],
+  "client": [
+    "client.ItemDynamicRendererMixin",
+    "client.screen.MixinGuiMain",
+    "client.screen.MixinSplashScreen",
+    "client.SettingScreenMixin",
+    "client.progress.MixinMinecraftClient",
+    "client.progress.MixinModelLoader",
+    "client.progress.MixinSpriteAtlasTexture"
+  ],
   "injectors": {
     "defaultRequire": 1
   }
