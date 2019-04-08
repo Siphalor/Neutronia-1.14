@@ -31,12 +31,12 @@ public class SocialVillagerRenderer extends MobEntityRenderer<SocialVillager, Pl
         if (this.getRenderManager().textureManager.getTexture(new Identifier("minecraft:dynamic/" + entity.getDataTracker().get(SocialVillager.serverUUID) + "_1")) != null) {
             return new Identifier("minecraft:dynamic/" + entity.getDataTracker().get(SocialVillager.serverUUID) + "_1");
         }
-        boolean female = entity.getDataTracker().get(SocialVillager.sexUnified).equals("Female");
+        boolean female = entity.getDataTracker().get(SocialVillager.genderUnified).equals("Female");
         this.model = new PlayerEntityModel<>(0.0F, female);
         String hairColor = entity.getDataTracker().get(SocialVillager.hairColorUnified);
         String eyeColor = entity.getDataTracker().get(SocialVillager.eyeColorUnified);
         String skinColor = entity.getDataTracker().get(SocialVillager.skinColorUnified);
-        String gender = entity.getDataTracker().get(SocialVillager.sexUnified);
+        String gender = entity.getDataTracker().get(SocialVillager.genderUnified);
         String profession = entity.getDataTracker().get(SocialVillager.professionUnified);
         int hairStyle = entity.getDataTracker().get(SocialVillager.hairStyleUnified);
         BufferedImage imageBase = new TextureAssembler(eyeColor, hairColor, skinColor, hairStyle, gender, profession).createTexture();

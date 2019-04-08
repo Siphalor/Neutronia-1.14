@@ -1,8 +1,12 @@
 package team.hollow.neutronia.entity;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -13,9 +17,14 @@ import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.particle.ParticleParameters;
+import net.minecraft.particle.ParticleTypes;
 import net.minecraft.text.StringTextComponent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
+import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
 import team.hollow.neutronia.client.gui.SocialScreen;
 import team.hollow.neutronia.init.NEntityTypes;
@@ -29,9 +38,9 @@ public class SocialVillager extends PassiveEntity {
     public static TrackedData<String> eyeColorUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> skinColorUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<Integer> hairStyleUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.INTEGER);
-    public static TrackedData<String> orientationUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
+    private static TrackedData<String> orientationUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> serverUUID = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
-    public static TrackedData<String> sexUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
+    public static TrackedData<String> genderUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> professionUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public String firstName;
     public String lastName;
@@ -40,7 +49,7 @@ public class SocialVillager extends PassiveEntity {
     private String eyeColor;
     private String skinColor;
     private String sexuality;
-    private String sex;
+    private String gender;
     private String profession;
     private int hairStyle = 0;
     private int friendliness = 0;
@@ -53,35 +62,10 @@ public class SocialVillager extends PassiveEntity {
         this(NEntityTypes.SOCIAL_VILLAGER, world);
     }
 
-    public SocialVillager(EntityType<? extends net.minecraft.entity.passive.PassiveEntity> type, World world) {
+    private SocialVillager(EntityType<? extends net.minecraft.entity.passive.PassiveEntity> type, World world) {
         super(type, world);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
-        if (hairColor == null || hairColor.equals("")) {
-            unifiedSetup();
-            this.dataTracker.set(hairColorUnified, hairColor);
-            this.dataTracker.set(eyeColorUnified, eyeColor);
-            this.dataTracker.set(skinColorUnified, skinColor);
-            this.dataTracker.set(hairStyleUnified, hairStyle);
-            this.dataTracker.set(orientationUnified, sexuality);
-            this.dataTracker.set(serverUUID, this.getUuidAsString());
-            this.dataTracker.set(sexUnified, sex);
-            this.dataTracker.set(professionUnified, profession);
-            this.setBreedingAge(0);
-        }
-
-        List<String> sexs = new ArrayList<>();
-        sexs.add(0, "Male");
-        sexs.add(1, "Female");
-
-        try {
-            this.firstName = generateFirstName(sexs.get(getRand().nextInt(3)));
-            this.lastName = generateLastName();
-            this.setCustomName(new StringTextComponent(firstName + " " + lastName));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
@@ -115,12 +99,8 @@ public class SocialVillager extends PassiveEntity {
         this.dataTracker.startTracking(hairStyleUnified, hairStyle);
         this.dataTracker.startTracking(orientationUnified, sexuality);
         this.dataTracker.startTracking(serverUUID, this.getUuidAsString());
-        this.dataTracker.startTracking(sexUnified, sex);
+        this.dataTracker.startTracking(genderUnified, gender);
         this.dataTracker.startTracking(professionUnified, profession);
-    }
-
-    public String getHairColor() {
-        return hairColor;
     }
 
     public void setOpinion(UUID uuid, int newValue) {
@@ -131,10 +111,6 @@ public class SocialVillager extends PassiveEntity {
         return opinions.get(uuid);
     }
 
-    public String getEyeColor() {
-        return eyeColor;
-    }
-
     public boolean getApologized() {
         return apologized;
     }
@@ -143,26 +119,10 @@ public class SocialVillager extends PassiveEntity {
         this.apologized = true;
     }
 
-    public void formOpinion(Entity person) {
+    private void formOpinion(Entity person) {
         if (!opinions.containsKey(person.getUuid())) {
             opinions.put(person.getUuid(), getRand().nextInt(50) - 25);
         }
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
     }
 
     @Override
@@ -175,43 +135,35 @@ public class SocialVillager extends PassiveEntity {
 
     }
 
-    public String getSkinColor() {
-        return skinColor;
-    }
-
-    public int getHairStyle() {
-        return hairStyle;
-    }
-
-    public void setupHair() {
+    private void setupHair() {
         String[] hairList = {"Red", "Brown", "Black", "Blonde"};
         int[] styleList = {1, 2, 3, 4};
         this.hairStyle = styleList[getRand().nextInt(styleList.length)];
         this.hairColor = hairList[getRand().nextInt(hairList.length)];
     }
 
-    public void setupEyes() {
+    private void setupEyes() {
         String[] eyeList = {"Black", "Blue", "Brown", "Green", "Lime", "Pink", "Yellow"};
         this.eyeColor = eyeList[getRand().nextInt(eyeList.length)];
     }
 
-    public void setupSkin() {
+    private void setupSkin() {
         String[] skinList = {"Light", "Medium", "Dark"};
         this.skinColor = skinList[getRand().nextInt(skinList.length)];
     }
 
-    public void setupGender() {
-        String[] genderList = {"Male", "Female", "Genderless"};
-        this.sex = genderList[getRand().nextInt(genderList.length)];
+    private void setupGender() {
+        String[] genderList = {"Male", "Female"};
+        this.gender = genderList[getRand().nextInt(genderList.length)];
     }
 
-    public void setupProfession() {
+    private void setupProfession() {
         String[] professionList = {"Lumberjack", "Farmer", "Architect", "Tradesman", "Merchant", "Blacksmith", "Enchanter", "Druid", "Butcher",
                 "Librarian", "Weaponsmith", "Nomad", "Baker", "Priest", "Miner", "Guard"};
         this.profession = professionList[getRand().nextInt(professionList.length)];
     }
 
-    public void setupOrientation() {
+    private void setupOrientation() {
         int orientationInt = getRand().nextInt(10);
         if (orientationInt == 9) {
             boolean orientationBool = getRand().nextBoolean();
@@ -222,6 +174,68 @@ public class SocialVillager extends PassiveEntity {
             }
         } else {
             this.sexuality = "Straight";
+        }
+    }
+
+    @Override
+    public EntityData prepareEntityData(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
+        if (hairColor == null || hairColor.equals("")) {
+            unifiedSetup();
+            this.dataTracker.set(hairColorUnified, hairColor);
+            this.dataTracker.set(eyeColorUnified, eyeColor);
+            this.dataTracker.set(skinColorUnified, skinColor);
+            this.dataTracker.set(hairStyleUnified, hairStyle);
+            this.dataTracker.set(orientationUnified, sexuality);
+            this.dataTracker.set(serverUUID, this.getUuidAsString());
+            this.dataTracker.set(genderUnified, gender);
+            this.dataTracker.set(professionUnified, profession);
+        }
+
+        /*if(spawnType_1 == SpawnType.BREEDING) this.setBreedingAge(-24000);
+        if(spawnType_1 == SpawnType.SPAWN_EGG) this.setBreedingAge(-24000);*/
+
+        try {
+            this.firstName = generateFirstName(this.gender);
+            this.lastName = generateLastName();
+            this.setCustomName(new StringTextComponent(firstName + " " + lastName));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return super.prepareEntityData(iWorld_1, localDifficulty_1, spawnType_1, entityData_1, compoundTag_1);
+    }
+
+    public boolean canImmediatelyDespawn(double double_1) {
+        return false;
+    }
+
+    @Override
+    public void sleep(BlockPos blockPos_1) {
+        super.sleep(blockPos_1);
+    }
+
+    @Environment(EnvType.CLIENT)
+    public void handleStatus(byte byte_1) {
+        if (byte_1 == 12) {
+            this.produceParticles(ParticleTypes.HEART);
+        } else if (byte_1 == 13) {
+            this.produceParticles(ParticleTypes.ANGRY_VILLAGER);
+        } else if (byte_1 == 14) {
+            this.produceParticles(ParticleTypes.HAPPY_VILLAGER);
+        } else if (byte_1 == 42) {
+            this.produceParticles(ParticleTypes.SPLASH);
+        } else {
+            super.handleStatus(byte_1);
+        }
+    }
+
+    @Environment(EnvType.CLIENT)
+    private void produceParticles(ParticleParameters particleParameters_1) {
+        for(int int_1 = 0; int_1 < 5; ++int_1) {
+            double double_1 = this.random.nextGaussian() * 0.02D;
+            double double_2 = this.random.nextGaussian() * 0.02D;
+            double double_3 = this.random.nextGaussian() * 0.02D;
+            this.world.addParticle(particleParameters_1, this.x + (double)(this.random.nextFloat() * this.getWidth() * 2.0F) - (double)this.getWidth(), this.y + 1.0D + (double)(this.random.nextFloat() * this.getHeight()), this.z + (double)(this.random.nextFloat() * this.getWidth() * 2.0F) - (double)this.getWidth(), double_1, double_2, double_3);
         }
     }
 
@@ -241,7 +255,7 @@ public class SocialVillager extends PassiveEntity {
         tag.putString("First Name", firstName);
         tag.putString("Last Name", lastName);
         tag.putInt("Age", this.getBreedingAge());
-        tag.putString("Gender", sex);
+        tag.putString("Gender", gender);
         tag.putString("Profession", profession);
         if (opinions.keySet().size() > 13) {
             for (UUID key : opinions.keySet()) {
@@ -254,7 +268,7 @@ public class SocialVillager extends PassiveEntity {
 
     }
 
-    public void unifiedSetup() {
+    private void unifiedSetup() {
         this.setupEyes();
         this.setupHair();
         this.setupSkin();
@@ -278,14 +292,14 @@ public class SocialVillager extends PassiveEntity {
         this.charmed = tag.getBoolean("Charmed");
         this.firstName = tag.getString("First Name");
         this.lastName = tag.getString("Last Name");
-        this.sex = tag.getString("Gender");
+        this.gender = tag.getString("Gender");
         this.profession = tag.getString("Profession");
         for (String key : tag.getKeys()) {
             if (tag.hasUuid(key)) {
                 this.opinions.put(tag.getCompound(key).getUuid("Holder"), tag.getInt("Opinion"));
             }
         }
-        if (hairColor == null || hairColor == "") {
+        if (hairColor == null || hairColor.equals("")) {
             unifiedSetup();
         }
         this.setBreedingAge(tag.getInt("Age"));
@@ -295,7 +309,7 @@ public class SocialVillager extends PassiveEntity {
         this.dataTracker.set(hairStyleUnified, hairStyle);
         this.dataTracker.set(orientationUnified, sexuality);
         this.dataTracker.set(serverUUID, this.getUuidAsString());
-        this.dataTracker.set(sexUnified, sex);
+        this.dataTracker.set(genderUnified, gender);
         this.dataTracker.set(professionUnified, profession);
     }
 
@@ -333,6 +347,7 @@ public class SocialVillager extends PassiveEntity {
             String[] strings = builder.toString().split(",");
             firstNameOut = strings[rand.nextInt(strings.length)];
             scanner.close();
+            stream.close();
         } else {
             Scanner scanner2 = new Scanner(stream3);
             StringBuilder builder2 = new StringBuilder();
@@ -343,9 +358,8 @@ public class SocialVillager extends PassiveEntity {
             String[] strings2 = builder2.toString().split(",");
             firstNameOut = strings2[rand.nextInt(strings2.length)];
             scanner2.close();
+            stream3.close();
         }
-        stream.close();
-        stream3.close();
         return firstNameOut;
     }
 
