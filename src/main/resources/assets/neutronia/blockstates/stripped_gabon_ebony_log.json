@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "neutronia:block/stripped_gabon_ebony_log"
+    },
+    "axis=z": {
+      "model": "neutronia:block/stripped_gabon_ebony_log",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "neutronia:block/stripped_gabon_ebony_log",
+      "x": 90,
+      "y": 90
+    }
+  }
+}

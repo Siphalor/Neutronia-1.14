@@ -90,6 +90,7 @@ public class TextureAssembler {
     private Identifier femalePriest1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/priest1.png");
     private Identifier femaleLibrarian1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/librarian1.png");
     private Identifier femaleButcher1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/butcher1.png");
+    private Identifier femaleFarmer1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/farmer1.png");
 
     public TextureAssembler(String eyeColor, String hairColor, String skinColor, Integer hairstyle, String gender, String profession) {
         this.eyeColor = eyeColor;
@@ -237,6 +238,9 @@ public class TextureAssembler {
                         break;
                     case "Priest":
                         inputstream = MinecraftClient.getInstance().getResourceManager().getResource(femalePriest1).getInputStream();
+                        break;
+                    case "Farmer":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(femaleFarmer1).getInputStream();
                         break;
                 }
                 professionImage = ImageIO.read(inputstream);

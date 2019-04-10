@@ -4,9 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityData;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.SpawnType;
 import net.minecraft.entity.ai.goal.*;
 import net.minecraft.entity.ai.pathing.MobNavigation;
 import net.minecraft.entity.attribute.EntityAttributes;
@@ -23,25 +21,26 @@ import net.minecraft.text.StringTextComponent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
-import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
 import team.hollow.neutronia.client.gui.SocialScreen;
 import team.hollow.neutronia.init.NEntityTypes;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.*;
+import java.util.HashMap;
+import java.util.Random;
+import java.util.Scanner;
+import java.util.UUID;
 
 public class SocialVillager extends PassiveEntity {
     public static TrackedData<String> hairColorUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> eyeColorUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> skinColorUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<Integer> hairStyleUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.INTEGER);
-    private static TrackedData<String> orientationUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> serverUUID = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> genderUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public static TrackedData<String> professionUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
+    private static TrackedData<String> orientationUnified = DataTracker.registerData(SocialVillager.class, TrackedDataHandlerRegistry.STRING);
     public String firstName;
     public String lastName;
     private HashMap<UUID, Integer> opinions = new HashMap<>();
@@ -66,6 +65,26 @@ public class SocialVillager extends PassiveEntity {
         super(type, world);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);
+        if (hairColor == null || hairColor.equals("")) {
+            unifiedSetup();
+            this.dataTracker.set(hairColorUnified, hairColor);
+            this.dataTracker.set(eyeColorUnified, eyeColor);
+            this.dataTracker.set(skinColorUnified, skinColor);
+            this.dataTracker.set(hairStyleUnified, hairStyle);
+            this.dataTracker.set(orientationUnified, sexuality);
+            this.dataTracker.set(serverUUID, this.getUuidAsString());
+            this.dataTracker.set(genderUnified, gender);
+            this.dataTracker.set(professionUnified, profession);
+        }
+
+        try {
+            this.firstName = generateFirstName(this.gender);
+            this.lastName = generateLastName();
+            this.setCustomName(new StringTextComponent(firstName + " " + lastName));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -177,34 +196,6 @@ public class SocialVillager extends PassiveEntity {
         }
     }
 
-    @Override
-    public EntityData prepareEntityData(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
-        if (hairColor == null || hairColor.equals("")) {
-            unifiedSetup();
-            this.dataTracker.set(hairColorUnified, hairColor);
-            this.dataTracker.set(eyeColorUnified, eyeColor);
-            this.dataTracker.set(skinColorUnified, skinColor);
-            this.dataTracker.set(hairStyleUnified, hairStyle);
-            this.dataTracker.set(orientationUnified, sexuality);
-            this.dataTracker.set(serverUUID, this.getUuidAsString());
-            this.dataTracker.set(genderUnified, gender);
-            this.dataTracker.set(professionUnified, profession);
-        }
-
-        /*if(spawnType_1 == SpawnType.BREEDING) this.setBreedingAge(-24000);
-        if(spawnType_1 == SpawnType.SPAWN_EGG) this.setBreedingAge(-24000);*/
-
-        try {
-            this.firstName = generateFirstName(this.gender);
-            this.lastName = generateLastName();
-            this.setCustomName(new StringTextComponent(firstName + " " + lastName));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return super.prepareEntityData(iWorld_1, localDifficulty_1, spawnType_1, entityData_1, compoundTag_1);
-    }
-
     public boolean canImmediatelyDespawn(double double_1) {
         return false;
     }
@@ -231,11 +222,11 @@ public class SocialVillager extends PassiveEntity {
 
     @Environment(EnvType.CLIENT)
     private void produceParticles(ParticleParameters particleParameters_1) {
-        for(int int_1 = 0; int_1 < 5; ++int_1) {
+        for (int int_1 = 0; int_1 < 5; ++int_1) {
             double double_1 = this.random.nextGaussian() * 0.02D;
             double double_2 = this.random.nextGaussian() * 0.02D;
             double double_3 = this.random.nextGaussian() * 0.02D;
-            this.world.addParticle(particleParameters_1, this.x + (double)(this.random.nextFloat() * this.getWidth() * 2.0F) - (double)this.getWidth(), this.y + 1.0D + (double)(this.random.nextFloat() * this.getHeight()), this.z + (double)(this.random.nextFloat() * this.getWidth() * 2.0F) - (double)this.getWidth(), double_1, double_2, double_3);
+            this.world.addParticle(particleParameters_1, this.x + (double) (this.random.nextFloat() * this.getWidth() * 2.0F) - (double) this.getWidth(), this.y + 1.0D + (double) (this.random.nextFloat() * this.getHeight()), this.z + (double) (this.random.nextFloat() * this.getWidth() * 2.0F) - (double) this.getWidth(), double_1, double_2, double_3);
         }
     }
 

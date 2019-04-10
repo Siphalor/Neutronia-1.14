@@ -18,68 +18,65 @@ import java.util.Map;
 
 public class ClientBookRegistry implements SimpleSynchronousResourceReloadListener {
 
-	public final Map<String, Class<? extends BookPage>> pageTypes = new HashMap<>();
+    public static final ClientBookRegistry INSTANCE = new ClientBookRegistry();
+    public final Map<String, Class<? extends BookPage>> pageTypes = new HashMap<>();
+    public Gson gson;
+    public String currentLang;
+    private boolean firstLoad = true;
 
-	private boolean firstLoad = true;
-
-	public Gson gson;
-	public String currentLang;
-
-	public static final ClientBookRegistry INSTANCE = new ClientBookRegistry();
-	
-	private ClientBookRegistry() { 
-		gson = new GsonBuilder()
+    private ClientBookRegistry() {
+        gson = new GsonBuilder()
 //				.registerTypeHierarchyAdapter(BookPage.class, new LexiconPageAdapter())
 //				.registerTypeHierarchyAdapter(TemplateComponent.class, new TemplateComponentAdapter())
-				.create();
-	}
-	
-	public void init() {
-		addPageTypes();
-		ResourceManagerHelper.get(ResourceType.DATA).registerReloadListener(this);
-	}
+                .create();
+    }
 
-	private void addPageTypes() {
+    public void init() {
+        addPageTypes();
+        ResourceManagerHelper.get(ResourceType.DATA).registerReloadListener(this);
+    }
+
+    private void addPageTypes() {
 		/*pageTypes.put("text", PageText.class);
 		pageTypes.put("crafting", PageCrafting.class);
 		pageTypes.put("smelting", PageSmelting.class);
 		pageTypes.put("image", PageImage.class);
 		pageTypes.put("spotlight", PageSpotlight.class);*/
-		pageTypes.put("empty", PageEmpty.class);
+        pageTypes.put("empty", PageEmpty.class);
 		/*pageTypes.put("multiblock", PageMultiblock.class);
 		pageTypes.put("link", PageLink.class);
 		pageTypes.put("relations", PageRelations.class);
 		pageTypes.put("entity", PageEntity.class);
 		pageTypes.put("quest", PageQuest.class);*/
-	}
+    }
 
-	@Override
-	public void apply(ResourceManager resourceManager) {
-		currentLang = MinecraftClient.getInstance().getLanguageManager().getLanguage().getCode();
-		
-		if(!firstLoad)
-			NotebookRegistry.INSTANCE.reload();
-		firstLoad = false;
-	}
-	
-	public void displayBookGui(String bookStr) {
-		Identifier res = new Identifier(bookStr);
-		Notebook book = NotebookRegistry.INSTANCE.books.get(res);
-		
-		if(book != null) {
-			if (!book.contents.getCurrentGui().canBeOpened()) {
-				book.contents.currentGui = null;
-				book.contents.guiStack.clear();
-			}
+    @Override
+    public void apply(ResourceManager resourceManager) {
+        currentLang = MinecraftClient.getInstance().getLanguageManager().getLanguage().getCode();
 
-			book.contents.openLexiconGui(book.contents.getCurrentGui(), false);
-		}
-	}
+        if (!firstLoad)
+            NotebookRegistry.INSTANCE.reload();
+        firstLoad = false;
+    }
 
-	@Override
-	public Identifier getFabricId() {
-		return new Identifier(Neutronia.MOD_ID, "client_book_registry");
-	}
+    public void displayBookGui(String bookStr) {
+        Identifier res = new Identifier(bookStr);
+        Notebook book = NotebookRegistry.INSTANCE.books.get(res);
+
+        if (book != null) {
+            if (!book.contents.getCurrentGui().canBeOpened()) {
+                book.contents.currentGui = null;
+                book.contents.guiStack.clear();
+            }
+
+            book.contents.openLexiconGui(book.contents.getCurrentGui(), false);
+        }
+    }
+
+    @Override
+    public Identifier getFabricId() {
+        return new Identifier(Neutronia.MOD_ID, "client_book_registry");
+    }
 
 	/*public static class LexiconPageAdapter implements JsonDeserializer<BookPage> {
 		

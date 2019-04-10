@@ -2265,7 +2265,6 @@ public class ServerWorldRedirect extends ServerWorld {
     }
 
 
-
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
     public boolean doesNotCollide(Entity A, BoundingBox B, Set C) {
@@ -2278,7 +2277,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @Override
     public Stream<VoxelShape> getCollisionShapes(Entity entity_1, BoundingBox boundingBox_1, Set<Entity> set_1) {
-        if(that != null) {
+        if (that != null) {
             return that.getCollisionShapes(entity_1, boundingBox_1, set_1);
         } else {
             return super.getCollisionShapes(entity_1, boundingBox_1, set_1);

@@ -9,15 +9,15 @@ import team.hollow.neutronia.init.NBlocks;
 
 public class NeutroniaLeavesColors implements ClientModInitializer {
 
-	@Override
-	public void onInitializeClient() {
-		ColorProviderRegistry.BLOCK.register((block, world, pos, layer) -> {
-			BlockColorMapper provider = ColorProviderRegistry.BLOCK.get(Blocks.OAK_LEAVES);
-			return provider == null ? -1 : provider.getColor(block, world, pos, layer);
-		}, NBlocks.BOLIVIAN_ROSEWOOD_LEAVES, NBlocks.LACEWOOD_LEAVES);
-		ColorProviderRegistry.ITEM.register((item, layer) -> {
-			ItemColorMapper provider = ColorProviderRegistry.ITEM.get(Blocks.OAK_LEAVES);
-			return provider == null ? -1 : provider.getColor(item, layer);
-	    }, NBlocks.BOLIVIAN_ROSEWOOD_LEAVES, NBlocks.LACEWOOD_LEAVES);
+    @Override
+    public void onInitializeClient() {
+        ColorProviderRegistry.BLOCK.register((block, world, pos, layer) -> {
+            BlockColorMapper provider = ColorProviderRegistry.BLOCK.get(Blocks.OAK_LEAVES);
+            return provider == null ? -1 : provider.getColor(block, world, pos, layer);
+        }, NBlocks.BOLIVIAN_ROSEWOOD_LEAVES, NBlocks.LACEWOOD_LEAVES);
+        ColorProviderRegistry.ITEM.register((item, layer) -> {
+            ItemColorMapper provider = ColorProviderRegistry.ITEM.get(Blocks.OAK_LEAVES);
+            return provider == null ? -1 : provider.getColor(item, layer);
+        }, NBlocks.BOLIVIAN_ROSEWOOD_LEAVES, NBlocks.LACEWOOD_LEAVES);
     }
 }

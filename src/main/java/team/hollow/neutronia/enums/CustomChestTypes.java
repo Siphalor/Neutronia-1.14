@@ -77,48 +77,10 @@ public enum CustomChestTypes implements StringRepresentable {
                 return PURPLEHEART;
             case "lacewood_chest":
                 return LACEWOOD;
-        }
-        return ACACIA;
-    }
-
-    public static CustomChestTypes getFromID(int id) {
-        switch (id) {
-            case 0:
-                return ACACIA;
-            case 1:
-                return BIRCH;
-            case 2:
-                return DARK_OAK;
-            case 3:
-                return JUNGLE;
-            case 4:
-                return SPRUCE;
-            case 5:
-                return BAMBOO;
-            case 6:
-                return WOODEN_DUNGEON;
-            case 7:
-                return DUNGEON;
-            case 8:
-                return STONE;
-            case 9:
-                return STONE_BRICK;
-            case 10:
-                return COBBLESTONE;
-            case 11:
-                return MOSSY_COBBLESTONE;
-            case 12:
-                return MANGROVE;
-            case 13:
-                return RED_MANGROVE;
-            case 14:
-                return BAOBAB;
-            case 15:
-                return WENGE;
-            case 16:
-                return PURPLEHEART;
-            case 17:
-                return LACEWOOD;
+            case "bolivian_rosewood_chest":
+                return BOLIVIAN_ROSEWOOD;
+            case "gabon_ebony_chest":
+                return GABON_EBONY;
         }
         return ACACIA;
     }

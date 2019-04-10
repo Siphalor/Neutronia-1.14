@@ -35,6 +35,8 @@ public class ItemDynamicRendererMixin {
     private final CustomChestBlockEntity renderWengeChest = new CustomChestBlockEntity(CustomChestTypes.WENGE);
     private final CustomChestBlockEntity renderPurpleHeartChest = new CustomChestBlockEntity(CustomChestTypes.PURPLEHEART);
     private final CustomChestBlockEntity renderLacewoodChest = new CustomChestBlockEntity(CustomChestTypes.LACEWOOD);
+    private final CustomChestBlockEntity renderBolivianRosewoodChest = new CustomChestBlockEntity(CustomChestTypes.BOLIVIAN_ROSEWOOD);
+    private final CustomChestBlockEntity renderGabonEbonyChest = new CustomChestBlockEntity(CustomChestTypes.GABON_EBONY);
 
     @Inject(at = @At("TAIL"), method = "render")
     private void render(ItemStack stack, CallbackInfo info) {
@@ -77,6 +79,10 @@ public class ItemDynamicRendererMixin {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderPurpleHeartChest);
             } else if (block == NBlocks.WOODEN_CHESTS[17]) {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderLacewoodChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[18]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBolivianRosewoodChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[19]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderGabonEbonyChest);
             }
         }
     }

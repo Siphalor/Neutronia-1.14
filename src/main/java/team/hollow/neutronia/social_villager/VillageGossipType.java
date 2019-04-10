@@ -14,12 +14,12 @@ public enum VillageGossipType {
     TRADING("trading", 1, 25, 2, 20),
     GOLEM("golem", 1, 100, 1, 1);
 
+    private static final Map<String, VillageGossipType> BY_KEY = Stream.of(values()).collect(ImmutableMap.toImmutableMap((villageGossipType_1) -> villageGossipType_1.key, Function.identity()));
     public final String key;
     public final int multiplier;
     public final int maxReputation;
     public final int field_18433;
     public final int value;
-    private static final Map<String, VillageGossipType> BY_KEY = Stream.of(values()).collect(ImmutableMap.toImmutableMap((villageGossipType_1) -> villageGossipType_1.key, Function.identity()));
 
     VillageGossipType(String string_1, int int_1, int int_2, int int_3, int int_4) {
         this.key = string_1;

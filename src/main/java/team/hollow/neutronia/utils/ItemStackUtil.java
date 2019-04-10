@@ -24,7 +24,7 @@ public class ItemStackUtil {
             builder.append(count);
         }
 
-        if(stack.hasTag())
+        if (stack.hasTag())
             builder.append(stack.getTag().toString());
 
         return builder.toString();
@@ -33,20 +33,20 @@ public class ItemStackUtil {
     public static ItemStack loadStackFromString(String res) {
         String nbt = "";
         int nbtStart = res.indexOf("{");
-        if(nbtStart > 0) {
+        if (nbtStart > 0) {
             nbt = res.substring(nbtStart).replaceAll("([^\\\\])'", "$1\"").replaceAll("\\\\'", "'");
             res = res.substring(0, nbtStart);
         }
 
         String[] upper = res.split("#");
         String count = "1";
-        if(upper.length > 1) {
+        if (upper.length > 1) {
             res = upper[0];
             count = upper[1];
         }
 
         String[] tokens = res.split(":");
-        if(tokens.length < 2)
+        if (tokens.length < 2)
             return ItemStack.EMPTY;
 
         int countn = Integer.parseInt(count);
@@ -86,34 +86,7 @@ public class ItemStackUtil {
         return stack.isEmpty() ? StackWrapper.EMPTY_WRAPPER : new StackWrapper(stack);
     }
 
-    public static class StackWrapper {
-
-        public static final StackWrapper EMPTY_WRAPPER = new StackWrapper(ItemStack.EMPTY);
-
-        public final ItemStack stack;
-
-        public StackWrapper(ItemStack stack) {
-            this.stack = stack;
-        }
-
-        @Override
-        public boolean equals(Object obj) {
-            return obj == this || (obj instanceof StackWrapper && ItemStack.areEqual(stack, ((StackWrapper) obj).stack));
-        }
-
-        @Override
-        public int hashCode() {
-            return stack.getItem().hashCode() ^ stack.getDamage() * 31;
-        }
-
-        @Override
-        public String toString() {
-            return "Wrapper[" + stack.toString() + "]";
-        }
-
-    }
-
-    private static String[] splitStacksFromSerializedIngredient (String ingredientSerialized) {
+    private static String[] splitStacksFromSerializedIngredient(String ingredientSerialized) {
         final List<String> result = new ArrayList<>();
 
         int lastIndex = 0;
@@ -146,6 +119,33 @@ public class ItemStackUtil {
         result.add(ingredientSerialized.substring(lastIndex));
 
         return result.toArray(new String[result.size()]);
+    }
+
+    public static class StackWrapper {
+
+        public static final StackWrapper EMPTY_WRAPPER = new StackWrapper(ItemStack.EMPTY);
+
+        public final ItemStack stack;
+
+        public StackWrapper(ItemStack stack) {
+            this.stack = stack;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            return obj == this || (obj instanceof StackWrapper && ItemStack.areEqual(stack, ((StackWrapper) obj).stack));
+        }
+
+        @Override
+        public int hashCode() {
+            return stack.getItem().hashCode() ^ stack.getDamage() * 31;
+        }
+
+        @Override
+        public String toString() {
+            return "Wrapper[" + stack.toString() + "]";
+        }
+
     }
 
 }

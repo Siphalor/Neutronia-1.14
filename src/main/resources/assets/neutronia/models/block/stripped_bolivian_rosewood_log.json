@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/stripped_bolivian_rosewood_log",
+    "end": "neutronia:block/stripped_bolivian_rosewood_log_top"
+  }
+}

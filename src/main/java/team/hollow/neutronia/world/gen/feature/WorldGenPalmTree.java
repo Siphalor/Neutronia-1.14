@@ -19,7 +19,7 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> 
     private static final BlockState LEAF = NBlocks.PALM_LEAVES.getDefaultState()
             .with(NeutroniaLeavesBlock.PERSISTENT, Boolean.FALSE);
 
-    private static final BlockState COCONUT = NBlocks.COCONUT.getDefaultState();
+//    private static final BlockState COCONUT = NBlocks.COCONUT.getDefaultState();
 
     public WorldGenPalmTree() {
         super(DefaultFeatureConfig::deserialize, true);

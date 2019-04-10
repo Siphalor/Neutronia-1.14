@@ -1,8 +1,7 @@
 {
   "variants": {
-    "axis=y":  { "model": "neutronia:block/gunpowder_sack" },
-    "axis=z":   { "model": "neutronia:block/gunpowder_sack", "x": 90 },
-    "axis=x":   { "model": "neutronia:block/gunpowder_sack", "x": 90, "y": 90 },
-    "inventory": { "model": "neutronia:item/gunpowder_sack" }
+    "": {
+      "model": "neutronia:block/gunpowder_sack"
+    }
   }
 }

@@ -10,18 +10,6 @@ public class VillagerData {
         this.level = Math.max(1, int_1);
     }
 
-    public VillagerProfession getProfession() {
-        return this.profession;
-    }
-
-    public int getLevel() {
-        return this.level;
-    }
-
-    public VillagerData withLevel(int int_1) {
-        return new VillagerData(this.profession, int_1);
-    }
-
     public static int getLowerLevelExperience(int int_1) {
         return canLevelUp(int_1) ? LEVEL_BASE_EXPERIENCE[int_1 - 1] : 0;
     }
@@ -32,5 +20,17 @@ public class VillagerData {
 
     public static boolean canLevelUp(int int_1) {
         return int_1 >= 1 && int_1 < 5;
+    }
+
+    public VillagerProfession getProfession() {
+        return this.profession;
+    }
+
+    public int getLevel() {
+        return this.level;
+    }
+
+    public VillagerData withLevel(int int_1) {
+        return new VillagerData(this.profession, int_1);
     }
 }

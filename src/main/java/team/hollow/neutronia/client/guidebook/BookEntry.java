@@ -18,180 +18,175 @@ import java.util.List;
 
 public class BookEntry extends AbstractReadStateHolder implements Comparable<BookEntry> {
 
-	String name, category, flag;
+    private static final List<BookPage> NO_PAGE = ImmutableList.of(new PageEmpty());
+    String name, category, flag;
+    @SerializedName("icon")
+    String iconRaw;
+    boolean priority = false;
+    boolean secret = false;
+    @SerializedName("read_by_default")
+    boolean readByDefault = false;
+    BookPage[] pages;
+    String advancement, turnin;
+    int sortnum;
+    transient Identifier resource;
+    transient Notebook book, trueProvider;
+    transient BookCategory lcategory = null;
+    transient BookIcon icon = null;
+    transient List<BookPage> realPages = new ArrayList<>();
+    transient List<ItemStackUtil.StackWrapper> relevantStacks = new LinkedList<>();
+    transient boolean locked;
+    transient boolean built;
 
-	@SerializedName("icon")
-	String iconRaw;
+    public String getName() {
+        return name;
+    }
 
-	boolean priority = false;
-	boolean secret = false;
-	@SerializedName("read_by_default")
-	boolean readByDefault = false;
-	BookPage[] pages;
-	String advancement, turnin;
-	int sortnum;
+    public List<BookPage> getPages() {
+        List<BookPage> pages = realPages;
 
-	transient Identifier resource;
-	transient Notebook book, trueProvider;
-	transient BookCategory lcategory = null;
-	transient BookIcon icon = null;
-	transient List<BookPage> realPages = new ArrayList<>();
-	transient List<ItemStackUtil.StackWrapper> relevantStacks = new LinkedList<>();
-	transient boolean locked;
+        return pages.isEmpty() ? NO_PAGE : pages;
+    }
 
-	transient boolean built;
+    public int getPageFromAnchor(String anchor) {
+        List<BookPage> pages = getPages();
+        for (int i = 0; i < pages.size(); i++) {
+            BookPage page = pages.get(i);
+            if (page.anchor != null && anchor.equals(page.anchor))
+                return i;
+        }
 
-	public String getName() {
-		return name;
-	}
+        return -1;
+    }
 
-	public List<BookPage> getPages() {
-		List<BookPage> pages = realPages;
+    public boolean isPriority() {
+        return priority;
+    }
 
-		return pages.isEmpty() ? NO_PAGE : pages;
-	}
+    public BookIcon getIcon() {
+        if (icon == null)
+            icon = new BookIcon(iconRaw);
 
-	public int getPageFromAnchor(String anchor) {
-		List<BookPage> pages = getPages();
-		for (int i = 0; i < pages.size(); i++) {
-			BookPage page = pages.get(i);
-			if (page.anchor != null && anchor.equals(page.anchor))
-				return i;
-		}
+        return icon;
+    }
 
-		return -1;
-	}
+    public BookCategory getCategory() {
+        if (lcategory == null) {
+            if (category.contains(":"))
+                lcategory = book.contents.categories.get(new Identifier(category));
+            else lcategory = book.contents.categories.get(new Identifier(book.getModNamespace(), category));
+        }
 
-	private static final List<BookPage> NO_PAGE = ImmutableList.of(new PageEmpty());
+        return lcategory;
+    }
 
-	public boolean isPriority() {
-		return priority;
-	}
+    public boolean isSecret() {
+        return secret;
+    }
 
-	public BookIcon getIcon() {
-		if(icon == null)
-			icon = new BookIcon(iconRaw); 
+    public boolean shouldHide() {
+        return isSecret();
+    }
 
-		return icon;
-	}
+    public Identifier getResource() {
+        return resource;
+    }
 
-	public BookCategory getCategory() {
-		if(lcategory == null) {
-			if(category.contains(":"))
-				lcategory = book.contents.categories.get(new Identifier(category));
-			else lcategory = book.contents.categories.get(new Identifier(book.getModNamespace(), category));
-		}
+    public boolean isFoundByQuery(String query) {
+        if (getName().toLowerCase().contains(query))
+            return true;
 
-		return lcategory;
-	}
+        for (ItemStackUtil.StackWrapper wrapper : relevantStacks)
+            if (StringUtils.stripControlCodes(wrapper.stack.getDisplayName().getFormattedText()).toLowerCase().contains(query))
+                return true;
 
-	public boolean isSecret() {
-		return secret;
-	}
+        return false;
+    }
 
-	public boolean shouldHide() {
-		return isSecret();
-	}
+    @Override
+    public int compareTo(BookEntry o) {
+        if (o.locked != this.locked)
+            return this.locked ? 1 : -1;
 
-	public Identifier getResource() {
-		return resource;
-	}
+        EntryDisplayState ourState = getReadState();
+        EntryDisplayState otherState = o.getReadState();
 
-	public boolean isFoundByQuery(String query) {
-		if(getName().toLowerCase().contains(query))
-			return true;
-		
-		for(ItemStackUtil.StackWrapper wrapper : relevantStacks)
-			if(StringUtils.stripControlCodes(wrapper.stack.getDisplayName().getFormattedText()).toLowerCase().contains(query))
-				return true;
-		
-		return false;
-	}
+        if (ourState != otherState)
+            return ourState.compareTo(otherState);
 
-	@Override
-	public int compareTo(BookEntry o) {
-		if(o.locked != this.locked)
-			return this.locked ? 1 : -1;
-		
-		EntryDisplayState ourState = getReadState();
-		EntryDisplayState otherState = o.getReadState();
-		
-		if(ourState != otherState)
-			return ourState.compareTo(otherState);
+        if (o.priority != this.priority)
+            return this.priority ? -1 : 1;
 
-		if(o.priority != this.priority)
-			return this.priority ? -1 : 1;
+        int sort = this.sortnum - o.sortnum;
 
-		int sort = this.sortnum - o.sortnum;
+        return sort == 0 ? this.name.compareTo(o.name) : sort;
+    }
 
-		return sort == 0 ? this.name.compareTo(o.name) : sort;
-	}
+    public void build(Identifier resource) {
+        if (built)
+            return;
 
-	public void setBook(Notebook book) {
-		this.book = book;
-	}
+        this.resource = resource;
+        for (int i = 0; i < pages.length; i++) {
+            realPages.add(pages[i]);
+            try {
+                pages[i].build(this, i);
+            } catch (Exception e) {
+                throw new RuntimeException("Error while loading entry " + resource + " page " + i, e);
+            }
+        }
 
-	public void build(Identifier resource) {
-		if(built)
-			return;
+        built = true;
+    }
 
-		this.resource = resource;
-		for(int i = 0; i < pages.length; i++) {
-			realPages.add(pages[i]);
-			try {
-				pages[i].build(this, i);
-			} catch(Exception e) {
-				throw new RuntimeException("Error while loading entry " + resource + " page " + i, e);
-			}
-		}
+    public void addRelevantStack(ItemStack stack, int page) {
+        ItemStackUtil.StackWrapper wrapper = ItemStackUtil.wrapStack(stack);
+        relevantStacks.add(wrapper);
 
-		built = true;
-	}
+        if (!book.contents.recipeMappings.containsKey(wrapper))
+            book.contents.recipeMappings.put(wrapper, Pair.of(this, page / 2));
+    }
 
-	public void addRelevantStack(ItemStack stack, int page) {
-		ItemStackUtil.StackWrapper wrapper = ItemStackUtil.wrapStack(stack);
-		relevantStacks.add(wrapper);
+    public boolean isStackRelevant(ItemStack stack) {
+        return relevantStacks.contains(ItemStackUtil.wrapStack(stack));
+    }
 
-		if(!book.contents.recipeMappings.containsKey(wrapper))
-			book.contents.recipeMappings.put(wrapper, Pair.of(this, page / 2));
-	}
+    public Notebook getBook() {
+        return book;
+    }
 
-	public boolean isStackRelevant(ItemStack stack) {
-		return relevantStacks.contains(ItemStackUtil.wrapStack(stack));
-	}
+    public void setBook(Notebook book) {
+        this.book = book;
+    }
 
-	public Notebook getBook() {
-		return book;
-	}
+    public Notebook getTrueProvider() {
+        return trueProvider;
+    }
 
-	public Notebook getTrueProvider() {
-		return trueProvider;
-	}
+    public boolean isExtension() {
+        return getTrueProvider() != null && getTrueProvider() != getBook();
+    }
 
-	public boolean isExtension() {
-		return getTrueProvider() != null && getTrueProvider() != getBook();
-	}
+    @Override
+    protected EntryDisplayState computeReadState() {
+        BookData data = PersistentData.data.getBookData(book);
+        if (data != null && getResource() != null && !readByDefault && !data.viewedEntries.contains(getResource().toString()))
+            return EntryDisplayState.UNREAD;
 
-	@Override
-	protected EntryDisplayState computeReadState() {
-		BookData data = PersistentData.data.getBookData(book);
-		if(data != null && getResource() != null && !readByDefault && !data.viewedEntries.contains(getResource().toString()))
-			return EntryDisplayState.UNREAD;
-
-		if(turnin != null && !turnin.isEmpty())
-			return EntryDisplayState.PENDING;
+        if (turnin != null && !turnin.isEmpty())
+            return EntryDisplayState.PENDING;
 
 		/*for(BookPage page : pages)
 			if(page instanceof PageQuest && ((PageQuest) page).isCompleted(book))
 				return EntryDisplayState.COMPLETED;*/
-		
-		return EntryDisplayState.NEUTRAL;
-	}
 
-	@Override
-	public void markReadStateDirty() {
-		super.markReadStateDirty();
-		getCategory().markReadStateDirty();
-	}
+        return EntryDisplayState.NEUTRAL;
+    }
+
+    @Override
+    public void markReadStateDirty() {
+        super.markReadStateDirty();
+        getCategory().markReadStateDirty();
+    }
 
 }

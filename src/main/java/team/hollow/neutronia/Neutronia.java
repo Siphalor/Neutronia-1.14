@@ -34,6 +34,10 @@ public class Neutronia implements ModInitializer {
         return LOGGER;
     }
 
+    public static team.hollow.neutronia.client.ConfigManager getConfigManager() {
+        return configManager;
+    }
+
     @Override
     public void onInitialize() {
         testConfig = ConfigManager.loadConfig(TestConfig.class);
@@ -57,10 +61,6 @@ public class Neutronia implements ModInitializer {
         GroupLoader.init();
 
         ServerSidePacketRegistry.INSTANCE.register(NotebookUpdatePacket.ID, new NotebookUpdatePacket.Handler());
-    }
-
-    public static team.hollow.neutronia.client.ConfigManager getConfigManager() {
-        return configManager;
     }
 
     /*public static void openConfigScreen(Screen parent) {

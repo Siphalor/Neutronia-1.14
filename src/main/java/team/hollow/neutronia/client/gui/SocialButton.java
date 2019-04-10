@@ -17,7 +17,7 @@ import java.util.Random;
 
 public class SocialButton extends ButtonWidget {
 
-    public Identifier texture = new Identifier (Neutronia.MOD_ID,"textures/gui/speech_buttons.png");
+    public Identifier texture = new Identifier(Neutronia.MOD_ID, "textures/gui/speech_buttons.png");
 
     SocialButton(int int_2, int int_3, int int_4, int int_5, String string_1) {
         super(int_2, int_3, int_4, int_5, string_1, var1 -> {
@@ -149,90 +149,62 @@ public class SocialButton extends ButtonWidget {
 
     @Override
     public void render(int mouseX, int mouseY, float float_1) {
-        if(this.visible) {
+        if (this.visible) {
             SocialScreen screen = (SocialScreen) MinecraftClient.getInstance().currentScreen;
             MinecraftClient minecraftClient_1 = MinecraftClient.getInstance();
             minecraftClient_1.getTextureManager().bindTexture(texture);
             GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
-            if(this.isHovered())
-            {
-                if(!this.getMessage().equals("Socialize") && !this.getMessage().equals("Influence"))
-                {
-                    if (!this.getMessage().equals("Examine") && !this.getMessage().equals("Barter"))
-                    {
-                        blit(x,y,122,31,width,height);
-                    }
-                    else
-                    {
-                        blit(x,y,59,31,width,height);
+            if (this.isHovered()) {
+                if (!this.getMessage().equals("Socialize") && !this.getMessage().equals("Influence")) {
+                    if (!this.getMessage().equals("Examine") && !this.getMessage().equals("Barter")) {
+                        blit(x, y, 122, 31, width, height);
+                    } else {
+                        blit(x, y, 59, 31, width, height);
                     }
 
-                }
-                else if(this.getMessage().equals("Socialize"))
-                {
-                    if (!Objects.requireNonNull(screen).positiveButtons.get(0).visible)
-                    {
+                } else if (this.getMessage().equals("Socialize")) {
+                    if (!Objects.requireNonNull(screen).positiveButtons.get(0).visible) {
                         blit(x, y, 0, 31, width, height);
 
-                    }
-                    else
-                    {
+                    } else {
                         blit(x, y, 0, 62, width, height);
                     }
-                }
-                else if(this.getMessage().equals("Influence"))
-                {
-                    if (!Objects.requireNonNull(screen).neutralButtons.get(0).visible)
-                    {
+                } else if (this.getMessage().equals("Influence")) {
+                    if (!Objects.requireNonNull(screen).neutralButtons.get(0).visible) {
                         blit(x, y, 0, 31, width, height);
-                    }
-                    else
-                    {
+                    } else {
                         blit(x, y, 0, 62, width, height);
                     }
 
                 }
 
-            }
-            else if(this.getMessage().equals("Socialize"))
-            {
-                if (Objects.requireNonNull(screen).positiveButtons.get(0).visible)
-                {
+            } else if (this.getMessage().equals("Socialize")) {
+                if (Objects.requireNonNull(screen).positiveButtons.get(0).visible) {
                     blit(x, y, 0, 62, width, height);
-                }
-                else
-                {
+                } else {
                     blit(x, y, 0, 0, width, height);
                 }
 
-            }
-            else if(this.getMessage().equals("Influence"))
-            {
-                if (Objects.requireNonNull(screen).neutralButtons.get(0).visible)
-                {
+            } else if (this.getMessage().equals("Influence")) {
+                if (Objects.requireNonNull(screen).neutralButtons.get(0).visible) {
                     blit(x, y, 0, 62, width, height);
-                }
-                else
-                {
+                } else {
                     blit(x, y, 0, 0, width, height);
                 }
-            }
-            else if (!this.getMessage().equals("Examine") && !this.getMessage().equals("Barter"))
-            {
+            } else if (!this.getMessage().equals("Examine") && !this.getMessage().equals("Barter")) {
                 blit(x, y, 122, 0, width, height);
-            }
-            else
-            {
+            } else {
                 blit(x, y, 59, 0, width, height);
             }
             MinecraftClient client = MinecraftClient.getInstance();
             TextRenderer fr = client.textRenderer;
-            drawCenteredString(fr, "§0" + this.getMessage(), x + width/2, y + (this.height - 16)/2, 0);
+            drawCenteredString(fr, "§0" + this.getMessage(), x + width / 2, y + (this.height - 16) / 2, 0);
         }
     }
+
     @Override
     public void drawCenteredString(TextRenderer textRenderer_1, String string_1, int int_1, int int_2, int int_3) {
-        textRenderer_1.draw(string_1, (float)(int_1 - textRenderer_1.getStringWidth(string_1) / 2), (float)int_2, int_3);
+        textRenderer_1.draw(string_1, (float) (int_1 - textRenderer_1.getStringWidth(string_1) / 2), (float) int_2, int_3);
     }
 
 }

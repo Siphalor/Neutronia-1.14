@@ -27,35 +27,6 @@ public class VillagerProfession {
     public static final VillagerProfession SHEPHERD;
     public static final VillagerProfession TOOLSMITH;
     public static final VillagerProfession WEAPONSMITH;
-    private final String id;
-    private final ImmutableSet<Item> gatherableItems;
-    private final ImmutableSet<Block> field_18880;
-
-    private VillagerProfession(String string_1, ImmutableSet<Item> immutableSet_1, ImmutableSet<Block> immutableSet_2) {
-        this.id = string_1;
-        this.gatherableItems = immutableSet_1;
-        this.field_18880 = immutableSet_2;
-    }
-
-    public ImmutableSet<Item> getGatherableItems() {
-        return this.gatherableItems;
-    }
-
-    public ImmutableSet<Block> method_19630() {
-        return this.field_18880;
-    }
-
-    public String toString() {
-        return this.id;
-    }
-
-    static VillagerProfession register(String string_1) {
-        return register(string_1, ImmutableSet.of(), ImmutableSet.of());
-    }
-
-    static VillagerProfession register(String string_1, ImmutableSet<Item> immutableSet_1, ImmutableSet<Block> immutableSet_2) {
-        return null;
-    }
 
     static {
         NONE = register("none");
@@ -73,5 +44,35 @@ public class VillagerProfession {
         SHEPHERD = register("shepherd");
         TOOLSMITH = register("toolsmith");
         WEAPONSMITH = register("weaponsmith");
+    }
+
+    private final String id;
+    private final ImmutableSet<Item> gatherableItems;
+    private final ImmutableSet<Block> field_18880;
+
+    private VillagerProfession(String string_1, ImmutableSet<Item> immutableSet_1, ImmutableSet<Block> immutableSet_2) {
+        this.id = string_1;
+        this.gatherableItems = immutableSet_1;
+        this.field_18880 = immutableSet_2;
+    }
+
+    static VillagerProfession register(String string_1) {
+        return register(string_1, ImmutableSet.of(), ImmutableSet.of());
+    }
+
+    static VillagerProfession register(String string_1, ImmutableSet<Item> immutableSet_1, ImmutableSet<Block> immutableSet_2) {
+        return null;
+    }
+
+    public ImmutableSet<Item> getGatherableItems() {
+        return this.gatherableItems;
+    }
+
+    public ImmutableSet<Block> method_19630() {
+        return this.field_18880;
+    }
+
+    public String toString() {
+        return this.id;
     }
 }

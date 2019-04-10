@@ -14,14 +14,14 @@ import java.util.List;
 @Environment(EnvType.CLIENT)
 public class SocialScreen extends Screen {
 
+    List<SocialButton> positiveButtons = new ArrayList<>();
+    List<SocialButton> neutralButtons = new ArrayList<>();
     private SocialButton charmButton;
     private SocialButton apologyButton;
     private SocialButton examineButton;
     private SocialButton recruitButton;
     private SocialButton favorButton;
     private SocialButton tradeButton;
-    List<SocialButton> positiveButtons = new ArrayList<>();
-    List<SocialButton> neutralButtons = new ArrayList<>();
     private SocialVillager target;
     private PlayerEntity talker;
 

@@ -16,14 +16,15 @@ public class ConfigManager {
 
     private static final String CONFIG_FILE_EXTENSION = ".json5";
 
-    /**Loads a .config file from the config folder and parses it to a POJO.
+    /**
+     * Loads a .config file from the config folder and parses it to a POJO.
      *
      * @param clazz The class of the POJO that will store all our properties
      * @return A new config Object containing all our options from the config file
      */
     public static <T> T loadConfig(Class<T> clazz) {
         String configName;
-        if(clazz.isAnnotationPresent(ConfigFile.class)){
+        if (clazz.isAnnotationPresent(ConfigFile.class)) {
             configName = clazz.getAnnotation(ConfigFile.class).name();
         } else {
             configName = clazz.getSimpleName();
@@ -31,98 +32,100 @@ public class ConfigManager {
         return loadConfig(clazz, configName);
     }
 
-    /**Loads a .config file from the config folder and parses it to a POJO.
+    /**
+     * Loads a .config file from the config folder and parses it to a POJO.
      *
-     * @param clazz The class of the POJO that will store all our properties
+     * @param clazz      The class of the POJO that will store all our properties
      * @param configName The name of the config file
      * @return A new config Object containing all our options from the config file
      */
-    public static <T> T loadConfig(Class<T> clazz, String configName){
+    public static <T> T loadConfig(Class<T> clazz, String configName) {
         try {
-            File file = new File((FabricLoader.getInstance()).getConfigDirectory().toString()+"/"+configName+CONFIG_FILE_EXTENSION);
+            File file = new File((FabricLoader.getInstance()).getConfigDirectory().toString() + "/" + configName + CONFIG_FILE_EXTENSION);
             Jankson jankson = Jankson.builder().build();
 
             //Generate config file if it doesn't exist
-            if(!file.exists()) {
+            if (!file.exists()) {
                 saveConfig(clazz.newInstance(), configName);
             }
 
             try {
                 JsonObject json = jankson.load(file);
-                String cleaned = json.toJson(false,true); //remove comments
+                String cleaned = json.toJson(false, true); //remove comments
 
                 T result = jankson.fromJson(json, clazz);
 
                 //check if the config file is outdate. If so overwrite it
                 JsonElement jsonElementNew = jankson.toJson(clazz.newInstance());
-                if(jsonElementNew instanceof JsonObject){
+                if (jsonElementNew instanceof JsonObject) {
                     JsonObject jsonNew = (JsonObject) jsonElementNew;
                     json.getDelta(jsonNew).size();
                     saveConfig(result);
                 }
 
                 return result;
+            } catch (IOException e) {
+                Neutronia.getLogger().warn("Failed to load config File " + configName + CONFIG_FILE_EXTENSION + ": ", e);
             }
-            catch (IOException e) {
-                Neutronia.getLogger().warn("Failed to load config File "+configName+CONFIG_FILE_EXTENSION+": ", e);
-            }
-        }
-        catch (SyntaxError syntaxError) {
-            Neutronia.getLogger().warn("Failed to load config File "+configName+CONFIG_FILE_EXTENSION+": ", syntaxError);
+        } catch (SyntaxError syntaxError) {
+            Neutronia.getLogger().warn("Failed to load config File " + configName + CONFIG_FILE_EXTENSION + ": ", syntaxError);
         } catch (IllegalAccessException | InstantiationException e) {
-            Neutronia.getLogger().warn("Failed to create new config file for "+configName+CONFIG_FILE_EXTENSION+": ", e);
+            Neutronia.getLogger().warn("Failed to create new config file for " + configName + CONFIG_FILE_EXTENSION + ": ", e);
         }
 
         //Something obviously went wrong, create placeholder config
-        Neutronia.getLogger().warn("Creating placeholder config for "+configName+CONFIG_FILE_EXTENSION+"...");
+        Neutronia.getLogger().warn("Creating placeholder config for " + configName + CONFIG_FILE_EXTENSION + "...");
         try {
             return clazz.newInstance();
         } catch (InstantiationException | IllegalAccessException e) {
-            Neutronia.getLogger().warn("Failed to create placeholder config for "+configName+CONFIG_FILE_EXTENSION+": ",e);
+            Neutronia.getLogger().warn("Failed to create placeholder config for " + configName + CONFIG_FILE_EXTENSION + ": ", e);
         }
 
         //this is ... unfortunate
         return null;
     }
 
-    /**Saves a POJO Config object to the disk and uses either the name specified in the Annotation (if available) or
+    /**
+     * Saves a POJO Config object to the disk and uses either the name specified in the Annotation (if available) or
      * the simple Class name as filename.
      * This function is used to create new configs if they don't already exist.
+     *
      * @param object The Config we want to save
      */
-    public static void saveConfig(Object object){
+    public static void saveConfig(Object object) {
         String configName;
-        if(object.getClass().isAnnotationPresent(ConfigFile.class)){
+        if (object.getClass().isAnnotationPresent(ConfigFile.class)) {
             configName = object.getClass().getAnnotation(ConfigFile.class).name();
         } else {
             configName = object.getClass().getSimpleName();
         }
-        saveConfig(object,configName);
+        saveConfig(object, configName);
     }
 
-    /**Saves a POJO Config object to the disk. This is mostly used to create new configs if they don't already exist
+    /**
+     * Saves a POJO Config object to the disk. This is mostly used to create new configs if they don't already exist
      *
-     * @param object The Config we want to save
+     * @param object     The Config we want to save
      * @param configName The filename of our config.
      */
-    public static void saveConfig(Object object, String configName){
+    public static void saveConfig(Object object, String configName) {
         Jankson jankson = Jankson.builder().build();
         JsonElement json = jankson.toJson(object);
-        String result = json.toJson(true,true);
+        String result = json.toJson(true, true);
 
 
         try {
-            File file = new File((FabricLoader.getInstance()).getConfigDirectory().toString()+"/"+configName+CONFIG_FILE_EXTENSION);
-            if(!file.exists())
+            File file = new File((FabricLoader.getInstance()).getConfigDirectory().toString() + "/" + configName + CONFIG_FILE_EXTENSION);
+            if (!file.exists())
                 file.createNewFile();
 
-            FileOutputStream out = new FileOutputStream(file,false);
+            FileOutputStream out = new FileOutputStream(file, false);
 
             out.write(result.getBytes());
             out.flush();
             out.close();
         } catch (IOException e) {
-           Neutronia.getLogger().warn("Failed to write to config file"+configName+CONFIG_FILE_EXTENSION+": " + e);
+            Neutronia.getLogger().warn("Failed to write to config file" + configName + CONFIG_FILE_EXTENSION + ": " + e);
         }
     }
 

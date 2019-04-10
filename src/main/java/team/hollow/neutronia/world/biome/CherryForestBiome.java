@@ -12,7 +12,7 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public final class CherryForestBiome extends Biome {
     public CherryForestBiome() {
-        super((new Settings()).configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG).precipitation(Precipitation.RAIN).category(Category.FOREST).depth(0.1F).scale(0.2F).temperature(0.6F).downfall(0.6F).waterColor(4159204).waterFogColor(329011).parent((String)null));
+        super((new Settings()).configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG).precipitation(Precipitation.RAIN).category(Category.FOREST).depth(0.1F).scale(0.2F).temperature(0.6F).downfall(0.6F).waterColor(4159204).waterFogColor(329011).parent(null));
         this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
         this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
         DefaultBiomeFeatures.addLandCarvers(this);

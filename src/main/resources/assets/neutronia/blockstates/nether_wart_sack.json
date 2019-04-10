@@ -1,8 +1,7 @@
 {
   "variants": {
-    "axis=y":  { "model": "neutronia:block/nether_wart_sack" },
-    "axis=z":   { "model": "neutronia:block/nether_wart_sack", "x": 90 },
-    "axis=x":   { "model": "neutronia:block/nether_wart_sack", "x": 90, "y": 90 },
-    "inventory": { "model": "neutronia:item/nether_wart_sack" }
+    "": {
+      "model": "neutronia:block/nether_wart_sack"
+    }
   }
 }

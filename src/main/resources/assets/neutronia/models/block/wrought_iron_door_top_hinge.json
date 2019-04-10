@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "neutronia:block/wrought_iron_door_bottom",
+    "top": "neutronia:block/wrought_iron_door_top"
+  }
+}

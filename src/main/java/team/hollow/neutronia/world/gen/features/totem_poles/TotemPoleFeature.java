@@ -7,7 +7,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import net.minecraft.world.gen.feature.AbstractTempleFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
 import team.hollow.test.ExampleMod;
@@ -15,7 +14,7 @@ import team.hollow.test.ExampleMod;
 import java.util.Random;
 
 //To summarize this class declares what a totempole is and what rules apply to it
-public class TotemPoleFeature extends AbstractTempleFeature<DefaultFeatureConfig> {
+public class TotemPoleFeature extends StructureFeature<DefaultFeatureConfig> {
 
     public TotemPoleFeature() {
         super(DefaultFeatureConfig::deserialize);
@@ -33,20 +32,16 @@ public class TotemPoleFeature extends AbstractTempleFeature<DefaultFeatureConfig
         return Start::new;
     }
 
-    protected int getSeedModifier() {
-        //This is set to 0 for testing purposes
-        return 0;
-    }
-
     @Override
-    public boolean shouldStartAt(ChunkGenerator<?> chunkGenerator, Random random, int int_1, int int_2){
+    public boolean shouldStartAt(ChunkGenerator<?> chunkGenerator, Random random, int int_1, int int_2) {
         return true;
     }
 
     public static class Start extends StructureStart {
-        public Start (StructureFeature<?> structureFeature_1, int int_1, int int_2, Biome biome_1, MutableIntBoundingBox mutableIntBoundingBox_1, int int_3, long long_1) {
+        public Start(StructureFeature<?> structureFeature_1, int int_1, int int_2, Biome biome_1, MutableIntBoundingBox mutableIntBoundingBox_1, int int_3, long long_1) {
             super(structureFeature_1, int_1, int_2, biome_1, mutableIntBoundingBox_1, int_3, long_1);
         }
+
         //This plans out the totem pole and tells the genorator to build it
         @Override
         public void initialize(ChunkGenerator<?> chunkGenerator, StructureManager structureManager, int chunkX, int chunkZ, Biome biome) {

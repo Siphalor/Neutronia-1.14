@@ -1,8 +1,7 @@
 {
   "variants": {
-    "axis=y":  { "model": "neutronia:block/beetroot_crate" },
-    "axis=z":   { "model": "neutronia:block/beetroot_crate", "x": 90 },
-    "axis=x":   { "model": "neutronia:block/beetroot_crate", "x": 90, "y": 90 },
-    "inventory": { "model": "neutronia:item/beetroot_crate" }
+    "": {
+      "model": "neutronia:block/beetroot_crate"
+    }
   }
 }

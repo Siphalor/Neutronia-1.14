@@ -9,6 +9,7 @@ public class DebugTextEventHandler {
     static public ArrayList<String> rightLines = new ArrayList<String>();
     public EventCore.EventSubscriptionObject DebugTextLeft = EventCore.EventSubscriptionObject.getEvent("DebugTextLeft");
     public EventCore.EventSubscriptionObject DebugTextRight = EventCore.EventSubscriptionObject.getEvent("DebugTextRight");
+
     DebugTextEventHandler() {
         EventCore.instance.loadEventSubscribers(this);
     }

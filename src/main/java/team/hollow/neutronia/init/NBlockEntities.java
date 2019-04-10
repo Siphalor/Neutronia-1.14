@@ -5,8 +5,8 @@ import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
+import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 
 public class NBlockEntities {
 

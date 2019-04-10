@@ -16,9 +16,9 @@ import team.hollow.test.ExampleMod;
 
 import java.util.List;
 import java.util.Random;
+
 public class TotemPoleGenerator {
 
-    //This tells the game what structure to use. The structure currently in use is src/main/resources/data/modid/structures/totempoles.nbt
     public static final Identifier id = new Identifier("neutronia:totempoles");
 
     //This tells the game to create the structure defined above as a piece
@@ -30,6 +30,8 @@ public class TotemPoleGenerator {
     public static class Piece extends SimpleStructurePiece {
         private Rotation rotation;
         private Identifier template;
+
+
 
         public Piece(StructureManager structureManager, Identifier identifier, BlockPos blockPos, Rotation rotation) {
             super(ExampleMod.TOTEM_POLE_PIECE_TYPE, 0);
@@ -65,13 +67,13 @@ public class TotemPoleGenerator {
         protected void handleMetadata(String string, BlockPos blockPos, IWorld iWorld, Random random, MutableIntBoundingBox mutableIntBoundingBox) {
 
         }
+
         //And finally this builds the totem pole
         @Override
-        public boolean generate(IWorld iWorld, Random random, MutableIntBoundingBox mutableIntBoundingBox, ChunkPos chunkPos)
-        {
+        public boolean generate(IWorld iWorld, Random random, MutableIntBoundingBox mutableIntBoundingBox, ChunkPos chunkPos) {
             int yHeight = iWorld.getTop(Heightmap.Type.WORLD_SURFACE_WG, this.pos.getX() + 8, this.pos.getZ() + 8);
             this.pos = this.pos.add(0, yHeight - 1, 0);
-            return  super.generate(iWorld, random, mutableIntBoundingBox, chunkPos);
+            return super.generate(iWorld, random, mutableIntBoundingBox, chunkPos);
         }
     }
 }

@@ -54,6 +54,7 @@ public class ServerWorldRedirectManager {
     Path tempDir = null;
     IntegratedServer reServer = null;
     ServerWorldRedirect reWorld = null;
+
     public ServerWorldRedirectManager() {
         tempDir = null;
         try {

@@ -10,128 +10,128 @@ import java.util.stream.Stream;
 
 public class BookCategory extends AbstractReadStateHolder implements Comparable<BookCategory> {
 
-	String name, description, parent, flag;
-	@SerializedName("icon")
-	String iconRaw;
-	int sortnum;
-	boolean secret = false;
+    String name, description, parent, flag;
+    @SerializedName("icon")
+    String iconRaw;
+    int sortnum;
+    boolean secret = false;
 
-	transient Notebook book, trueProvider;
-	transient boolean checkedParent = false;
-	transient BookCategory parentCategory;
-	transient List<BookCategory> children = new ArrayList<>();
-	transient List<BookEntry> entries = new ArrayList<>();
-	transient boolean locked;
-	transient BookIcon icon = null;
-	transient Identifier resource;
-	
-	transient boolean built;
+    transient Notebook book, trueProvider;
+    transient boolean checkedParent = false;
+    transient BookCategory parentCategory;
+    transient List<BookCategory> children = new ArrayList<>();
+    transient List<BookEntry> entries = new ArrayList<>();
+    transient boolean locked;
+    transient BookIcon icon = null;
+    transient Identifier resource;
 
-	public String getName() {
-		return name;
-	}
+    transient boolean built;
 
-	public String getDescription() {
-		return description;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public BookIcon getIcon() {
-		if(icon == null)
-			icon = new BookIcon(iconRaw);
+    public String getDescription() {
+        return description;
+    }
 
-		return icon;
-	}
+    public BookIcon getIcon() {
+        if (icon == null)
+            icon = new BookIcon(iconRaw);
 
-	public void addEntry(BookEntry entry) {
-		this.entries.add(entry);
-	}
+        return icon;
+    }
 
-	public void addChildCategory(BookCategory category) {
-		children.add(category);
-	}
+    public void addEntry(BookEntry entry) {
+        this.entries.add(entry);
+    }
 
-	public List<BookEntry> getEntries() {
-		return entries;
-	}
+    public void addChildCategory(BookCategory category) {
+        children.add(category);
+    }
 
-	public BookCategory getParentCategory() {
-		if(!checkedParent && !isRootCategory()) {
-			if(parent.contains(":"))
-				parentCategory = book.contents.categories.get(new Identifier(parent));
-			else parentCategory = book.contents.categories.get(new Identifier(book.getModNamespace(), parent));
+    public List<BookEntry> getEntries() {
+        return entries;
+    }
 
-			checkedParent = true;
-		}
+    public BookCategory getParentCategory() {
+        if (!checkedParent && !isRootCategory()) {
+            if (parent.contains(":"))
+                parentCategory = book.contents.categories.get(new Identifier(parent));
+            else parentCategory = book.contents.categories.get(new Identifier(book.getModNamespace(), parent));
 
-		return parentCategory;
-	}
+            checkedParent = true;
+        }
 
-	public boolean isSecret() {
-		return secret;
-	}
+        return parentCategory;
+    }
 
-	public boolean shouldHide() {
-		return isSecret();
-	}
+    public boolean isSecret() {
+        return secret;
+    }
 
-	public boolean isRootCategory() {
-		return parent == null || parent.isEmpty();
-	}
+    public boolean shouldHide() {
+        return isSecret();
+    }
 
-	public Identifier getResource() {
-		return resource;
-	}
+    public boolean isRootCategory() {
+        return parent == null || parent.isEmpty();
+    }
 
-	@Override
-	public int compareTo(BookCategory o) {
-		if(o.locked != this.locked)
-			return this.locked ? 1 : -1;
+    public Identifier getResource() {
+        return resource;
+    }
 
-		return this.sortnum - o.sortnum;
-	}
+    @Override
+    public int compareTo(BookCategory o) {
+        if (o.locked != this.locked)
+            return this.locked ? 1 : -1;
 
-	public void setBook(Notebook book) {
-		this.book = book;
-	}
+        return this.sortnum - o.sortnum;
+    }
 
-	public void build(Identifier resource) {
-		if(built)
-			return;
-		
-		this.resource = resource;
-		BookCategory parent = getParentCategory();
-		if(parent != null)
-			parent.addChildCategory(this);
-		
-		built = true;
-	}
+    public void build(Identifier resource) {
+        if (built)
+            return;
 
-	public Notebook getBook() {
-		return book;
-	}
-	
-	public Notebook getTrueProvider() {
-		return trueProvider;
-	}
+        this.resource = resource;
+        BookCategory parent = getParentCategory();
+        if (parent != null)
+            parent.addChildCategory(this);
 
-	public boolean isExtension() {
-		return getTrueProvider() != getBook();
-	}
-	
-	@Override
-	protected EntryDisplayState computeReadState() {
-		Stream<EntryDisplayState> entryStream = entries.stream().map(BookEntry::getReadState);
-		Stream<EntryDisplayState> childrenStream = children.stream().map(BookCategory::getReadState);
-		return mostImportantState(entryStream, childrenStream);
-	}
-	
-	@Override
-	public void markReadStateDirty() {
-		super.markReadStateDirty();
-		
-		if(parentCategory != null)
-			parentCategory.markReadStateDirty();
-		else book.contents.markReadStateDirty();
-	}
+        built = true;
+    }
+
+    public Notebook getBook() {
+        return book;
+    }
+
+    public void setBook(Notebook book) {
+        this.book = book;
+    }
+
+    public Notebook getTrueProvider() {
+        return trueProvider;
+    }
+
+    public boolean isExtension() {
+        return getTrueProvider() != getBook();
+    }
+
+    @Override
+    protected EntryDisplayState computeReadState() {
+        Stream<EntryDisplayState> entryStream = entries.stream().map(BookEntry::getReadState);
+        Stream<EntryDisplayState> childrenStream = children.stream().map(BookCategory::getReadState);
+        return mostImportantState(entryStream, childrenStream);
+    }
+
+    @Override
+    public void markReadStateDirty() {
+        super.markReadStateDirty();
+
+        if (parentCategory != null)
+            parentCategory.markReadStateDirty();
+        else book.contents.markReadStateDirty();
+    }
 
 }

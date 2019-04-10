@@ -14,26 +14,26 @@ import java.util.List;
  */
 public interface ComponentRenderContext {
 
-	public Screen getGui();
+    Screen getGui();
 
-	public TextRenderer getFont();
+    TextRenderer getFont();
 
-	public void renderItemStack(int x, int y, int mouseX, int mouseY, ItemStack stack);
+    void renderItemStack(int x, int y, int mouseX, int mouseY, ItemStack stack);
 
-	public void renderIngredient(int x, int y, int mouseX, int mouseY, Ingredient ingredient);
+    void renderIngredient(int x, int y, int mouseX, int mouseY, Ingredient ingredient);
 
-	public boolean isAreaHovered(int mouseX, int mouseY, int x, int y, int w, int h);
-	
-	public void setHoverTooltip(List<String> tooltip);
-	
-	public void registerButton(ButtonWidget button, int pageNum, Runnable onClick);
+    boolean isAreaHovered(int mouseX, int mouseY, int x, int y, int w, int h);
 
-	public Identifier getBookTexture();
-	
-	public Identifier getCraftingTexture();
-	
-	public int getTextColor();
-	
-	public int getHeaderColor();
-	
+    void setHoverTooltip(List<String> tooltip);
+
+    void registerButton(ButtonWidget button, int pageNum, Runnable onClick);
+
+    Identifier getBookTexture();
+
+    Identifier getCraftingTexture();
+
+    int getTextColor();
+
+    int getHeaderColor();
+
 }
