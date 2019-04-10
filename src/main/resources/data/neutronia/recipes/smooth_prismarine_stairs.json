@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:smooth_prismarine"
+    }
+  },
+  "result": {
+    "item": "neutronia:smooth_prismarine_stairs",
+    "count": 4
+  }
+}

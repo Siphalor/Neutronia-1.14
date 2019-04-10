@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:red_mangrove"
+    }
+  },
+  "result": {
+    "item": "neutronia:red_mangrove_trapdoor",
+    "count": 2
+  }
+}

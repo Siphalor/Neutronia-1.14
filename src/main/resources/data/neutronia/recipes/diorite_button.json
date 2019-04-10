@@ -1,11 +1,12 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "minecraft:diorite"
-		}
-	],
-	"result": {
-		"item": "neutronia:diorite_button"
-	}
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "minecraft:diorite"
+    }
+  ],
+  "result": {
+    "item": "neutronia:diorite_button"
+  }
 }

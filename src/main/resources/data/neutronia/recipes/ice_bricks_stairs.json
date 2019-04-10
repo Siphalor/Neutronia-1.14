@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:ice_bricks"
+    }
+  },
+  "result": {
+    "item": "neutronia:ice_bricks_stairs",
+    "count": 4
+  }
+}

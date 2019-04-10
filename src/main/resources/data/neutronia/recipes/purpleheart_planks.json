@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "neutronia:purpleheart_log"
+    }
+  ],
+  "result": {
+    "item": "neutronia:purpleheart_planks",
+    "count": 4
+  }
+}

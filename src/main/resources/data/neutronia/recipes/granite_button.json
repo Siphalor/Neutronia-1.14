@@ -1,11 +1,12 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "minecraft:granite"
-		}
-	],
-	"result": {
-		"item": "neutronia:granite_button"
-	}
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "minecraft:granite"
+    }
+  ],
+  "result": {
+    "item": "neutronia:granite_button"
+  }
 }

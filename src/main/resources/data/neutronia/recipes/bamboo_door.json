@@ -1,6 +1,6 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "neutronia:doors",
+  "group": "door",
   "pattern": [
     "##",
     "##",
@@ -8,7 +8,7 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:bamboo_planks"
+      "item": "neutronia:bamboo"
     }
   },
   "result": {

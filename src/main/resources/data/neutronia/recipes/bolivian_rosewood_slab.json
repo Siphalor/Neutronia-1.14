@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:bolivian_rosewood"
+    }
+  },
+  "result": {
+    "item": "neutronia:bolivian_rosewood_slab",
+    "count": 6
+  }
+}

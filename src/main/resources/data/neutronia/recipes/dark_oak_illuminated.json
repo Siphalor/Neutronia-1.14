@@ -1,0 +1,21 @@
+{
+    "type": "crafting_shaped",
+	"group": "illuminated"
+    "pattern": [
+        "###",
+        "#L#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:dark_oak"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        }
+    },
+    "result": {
+		"item": "neutronia:illuminated_dark_oak"
+	}
+    
+}

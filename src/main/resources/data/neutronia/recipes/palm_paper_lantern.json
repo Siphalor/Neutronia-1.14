@@ -1,0 +1,27 @@
+{
+    "type": "crafting_shaped",
+	"group": "paper_lantern",
+    "pattern": [
+        "/B/",
+        "PTP",
+        "/B/"
+    ],
+    "key": {
+        "/": {
+            "item": "minecraft:stick"
+        },
+        "B": {
+            "item": "neutronia:palm_planks"
+        },
+        "P": {
+            "item": "minecraft:paper"
+        },
+        "T": {
+            "item": "minecraft:torch"
+        }
+    },
+    "result": {
+		"item": "neutronia:palm_paper_lantern"
+	}
+    
+}

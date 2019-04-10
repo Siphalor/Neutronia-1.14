@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "neutronia:gabon_ebony"
+    }
+  ],
+  "result": {
+    "item": "neutronia:gabon_ebony_button"
+  }
+}

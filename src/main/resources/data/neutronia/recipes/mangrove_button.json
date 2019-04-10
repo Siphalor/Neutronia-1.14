@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "neutronia:mangrove"
+    }
+  ],
+  "result": {
+    "item": "neutronia:mangrove_button"
+  }
+}

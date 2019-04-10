@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "minecraft:polished_diorite"
+    }
+  ],
+  "result": {
+    "item": "neutronia:polished_diorite_button"
+  }
+}

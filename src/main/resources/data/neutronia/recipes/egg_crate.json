@@ -1,6 +1,5 @@
 {
   "type": "minecraft:crafting_shaped",
-  "group": "storage_crates",
   "pattern": [
     "###",
     "###",
@@ -8,7 +7,7 @@
   ],
   "key": {
     "#": {
-      "item": "minecraft:chorus_fruit"
+      "item": "minecraft:egg"
     }
   },
   "result": {

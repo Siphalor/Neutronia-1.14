@@ -1,11 +1,12 @@
 {
-	"type": "minecraft:crafting_shapeless",
-	"ingredients": [
-		{
-			"item": "minecraft:andesite"
-		}
-	],
-	"result": {
-		"item": "neutronia:andesite_button"
-	}
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "minecraft:andesite"
+    }
+  ],
+  "result": {
+    "item": "neutronia:andesite_button"
+  }
 }

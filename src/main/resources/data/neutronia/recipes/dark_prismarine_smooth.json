@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "minecraft:dark_prismarine"
+  },
+  "result": "neutronia:smooth_dark_prismarine",
+  "experience": 0.1,
+  "cookingtime": 200
+}

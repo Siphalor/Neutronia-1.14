@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:smooth_sandy_brick"
+    }
+  },
+  "result": {
+    "item": "neutronia:smooth_sandy_brick_wall",
+    "count": 6
+  }
+}

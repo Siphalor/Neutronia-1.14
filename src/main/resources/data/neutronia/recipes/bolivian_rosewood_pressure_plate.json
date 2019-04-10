@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pressure_plate",
+  "pattern": [
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:bolivian_rosewood"
+    }
+  },
+  "result": {
+    "item": "neutronia:bolivian_rosewood_pressure_plate"
+  }
+}

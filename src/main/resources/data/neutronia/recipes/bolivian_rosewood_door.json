@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "door",
+  "pattern": [
+    "##",
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:bolivian_rosewood"
+    }
+  },
+  "result": {
+    "item": "neutronia:bolivian_rosewood_door",
+    "count": 3
+  }
+}

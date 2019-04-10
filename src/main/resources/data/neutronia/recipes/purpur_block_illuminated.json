@@ -1,0 +1,21 @@
+{
+    "type": "crafting_shaped",
+	"group": "illuminated"
+    "pattern": [
+        "###",
+        "#L#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:purpur_block"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        }
+    },
+    "result": {
+		"item": "neutronia:illuminated_purpur_block"
+	}
+    
+}

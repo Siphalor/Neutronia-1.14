@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:purpleheart"
+    }
+  },
+  "result": {
+    "item": "neutronia:purpleheart_slab",
+    "count": 6
+  }
+}

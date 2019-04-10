@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:palm"
+    }
+  },
+  "result": {
+    "item": "neutronia:palm_trapdoor",
+    "count": 2
+  }
+}

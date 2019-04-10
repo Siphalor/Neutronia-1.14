@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:dirty_bricks_bricks"
+    }
+  },
+  "result": {
+    "item": "neutronia:dirty_bricks_pillar",
+    "count": 2
+  }
+}

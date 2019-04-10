@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:willow"
+    }
+  },
+  "result": {
+    "item": "neutronia:willow_slab",
+    "count": 6
+  }
+}

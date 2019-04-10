@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:ice_bricks"
+    }
+  },
+  "result": {
+    "item": "neutronia:ice_bricks_wall",
+    "count": 6
+  }
+}

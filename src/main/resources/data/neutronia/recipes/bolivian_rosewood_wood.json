@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:bolivian_rosewood"
+    }
+  },
+  "result": {
+    "item": "neutronia:bolivian_rosewood",
+    "count": 3
+  }
+}

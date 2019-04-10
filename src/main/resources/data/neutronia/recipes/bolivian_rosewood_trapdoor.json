@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:bolivian_rosewood"
+    }
+  },
+  "result": {
+    "item": "neutronia:bolivian_rosewood_trapdoor",
+    "count": 2
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "neutronia:wenge_log"
+    }
+  ],
+  "result": {
+    "item": "neutronia:wenge_planks",
+    "count": 4
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#X#",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    }
+	"X": {
+	  "item": "neutronia:purpleheart_planks"
+	}
+  },
+  "result": {
+    "item": "neutronia:purpleheart_ladder",
+    "count": 4
+  }
+}

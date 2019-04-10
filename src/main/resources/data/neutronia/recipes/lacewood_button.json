@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "neutronia:lacewood"
+    }
+  ],
+  "result": {
+    "item": "neutronia:lacewood_button"
+  }
+}

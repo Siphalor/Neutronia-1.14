@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:dirty_bricks_slab"
+    }
+  },
+  "result": {
+    "item": "neutronia:chiseled_dirty_bricks"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "# #",
+    "#X#",
+    "# #"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:stick"
+    }
+	"X": {
+	  "item": "neutronia:gabon_ebony_planks"
+	}
+  },
+  "result": {
+    "item": "neutronia:gabon_ebony_ladder",
+    "count": 4
+  }
+}
