@@ -24,7 +24,8 @@ public enum WoodType implements StringRepresentable {
     LACEWOOD(13, "lacewood"),
     CHERRY(14, "cherry"),
     BOLIVIAN_ROSEWOOD(15, "bolivian_rosewood"),
-    GABON_EBONY(16, "gabon_ebony");
+    GABON_EBONY(16, "gabon_ebony"),
+    WILLOW(17, "willow");
 
     public static final Set<WoodType> VANILLA_WOODS = new HashSet<>(Arrays.asList(OAK, SPRUCE, BIRCH, JUNGLE, ACACIA, DARK_OAK));
     public static final Set<WoodType> MODDED_WOODS = new HashSet<>(Arrays.asList(PALM, BAMBOO, MANGROVE, RED_MANGROVE, BAOBAB, WENGE, PURPLEHEART, LACEWOOD, CHERRY, BOLIVIAN_ROSEWOOD, GABON_EBONY));

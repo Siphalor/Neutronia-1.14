@@ -99,18 +99,18 @@ public class ExampleMod implements ModInitializer {
         Feature.STRUCTURES.put("neutronia:pillager_mansion", PILLAGER_MANSION_FEATURE);
         Feature.STRUCTURES.put("neutronia:ritual_site", RITUAL_SITE_FEATURE);
         Feature.STRUCTURES.put("neutronia:totem_pole", TOTEM_POLE_FEATURE);
-        if(calendar_1.get(Calendar.MONTH) + 1 == 4 && calendar_1.get(Calendar.DATE) >= 9) Feature.STRUCTURES.put("neutronia:celebrating_vinny", CELEBRATING_VINNY_FEATURE);
+//        if(calendar_1.get(Calendar.MONTH) + 1 == 4 && calendar_1.get(Calendar.DATE) >= 9) Feature.STRUCTURES.put("neutronia:celebrating_vinny", CELEBRATING_VINNY_FEATURE);
 
         for (Biome b : Registry.BIOME) {
             if (b.getCategory() != Biome.Category.OCEAN && b.getCategory() != Biome.Category.RIVER) {
                 b.addStructureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1));
                 b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(PILLAGER_MANSION_FEATURE, new PillagerMansionFeatureConfig(1),
                         Decorator.NOPE, new NopeDecoratorConfig()));
-                if (calendar_1.get(Calendar.MONTH) + 1 == 4 && calendar_1.get(Calendar.DATE) >= 9) {
+                /*if (calendar_1.get(Calendar.MONTH) + 1 == 4 && calendar_1.get(Calendar.DATE) >= 9) {
                     b.addStructureFeature(CELEBRATING_VINNY_FEATURE, new DefaultFeatureConfig());
                     b.addFeature(GenerationStep.Feature.SURFACE_STRUCTURES, Biome.configureFeature(CELEBRATING_VINNY_FEATURE, new DefaultFeatureConfig(),
                             Decorator.CHANCE_PASSTHROUGH, new ChanceDecoratorConfig(1000)));
-                }
+                }*/
             }
             /*if (b.getCategory() == Biome.Category.TAIGA) {
                 b.addStructureFeature(RITUAL_SITE_FEATURE, new RitualSiteFeatureConfig(1));
