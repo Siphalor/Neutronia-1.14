@@ -72,7 +72,7 @@ public class ArcticWolfEntity extends TameableEntity {
         this.goalSelector.add(10, new LookAroundGoal(this));
         this.targetSelector.add(1, new TrackAttackerGoal(this));
         this.targetSelector.add(2, new AttackWithOwnerGoal(this));
-        this.targetSelector.add(3, (new AvoidGoal(this)).setAvoidedEntities());
+        this.targetSelector.add(3, (new RevengeGoal(this)).setGroupRevenge());
         this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, AnimalEntity.class, false, FOLLOW_TAMED_PREDICATE));
         this.targetSelector.add(4, new FollowTargetIfTamedGoal<>(this, TurtleEntity.class, false, TurtleEntity.BABY_TURTLE_ON_LAND_FILTER));
         this.targetSelector.add(5, new FollowTargetGoal<>(this, AbstractSkeletonEntity.class, false));

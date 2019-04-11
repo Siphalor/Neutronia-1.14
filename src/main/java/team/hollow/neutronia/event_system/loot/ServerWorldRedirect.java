@@ -1725,11 +1725,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public List method_18023(EntityType A, BoundingBox B, Predicate C) {
+    public List getEntities(EntityType A, BoundingBox B, Predicate C) {
         if (that != null) {
-            return that.method_18023(A, B, C);
+            return that.getEntities(A, B, C);
         } else {
-            return super.method_18023(A, B, C);
+            return super.getEntities(A, B, C);
         }
     }
 

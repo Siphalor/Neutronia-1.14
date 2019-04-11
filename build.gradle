@@ -33,8 +33,8 @@ dependencies {
 	modCompile "cloth-config:ClothConfig:${project.cloth_config_version}"
 	include "cloth-config:ClothConfig:${project.cloth_config_version}"
 
-	modCompile "cloth:Cloth:${project.cloth_version}"
-	include "cloth:Cloth:${project.cloth_version}"
+	modCompile "cloth:ClothEvents:${project.cloth_version}"
+	include "cloth:ClothEvents:${project.cloth_version}"
 	
 	include "blue.endless:jankson:${project.jankson_version}"
 	implementation "blue.endless:jankson:${project.jankson_version}"

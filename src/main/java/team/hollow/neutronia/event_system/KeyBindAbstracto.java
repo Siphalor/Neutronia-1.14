@@ -21,7 +21,7 @@ public class KeyBindAbstracto {
     //is this some kind of boilerplate fetish in action? ABSTRACTIFIOSA
     public static KeyBinding makeKeyboardBinding(String id, int code, String cat) {
         FabricKeyBinding binding = FabricKeyBinding.Builder.create(
-                new Identifier(id), Type.KEY_KEYBOARD, code, cat).build();
+                new Identifier(id), Type.KEYSYM, code, cat).build();
         return binding;
     }
 

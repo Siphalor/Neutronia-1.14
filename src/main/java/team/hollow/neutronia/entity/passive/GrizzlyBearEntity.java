@@ -34,15 +34,15 @@ import team.hollow.neutronia.init.NEntityTypes;
 import java.util.List;
 
 public class GrizzlyBearEntity extends AnimalEntity {
-    private static final TrackedData<Boolean> field_6840;
+    private static final TrackedData<Boolean> warning;
 
     static {
-        field_6840 = DataTracker.registerData(GrizzlyBearEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
+        warning = DataTracker.registerData(GrizzlyBearEntity.class, TrackedDataHandlerRegistry.BOOLEAN);
     }
 
-    private float field_6838;
-    private float field_6837;
-    private int field_6839;
+    private float lastWarningAnimationProgress;
+    private float warningAnimationProgress;
+    private int warningSoundCooldown;
 
     public GrizzlyBearEntity(World world_1) {
         super(NEntityTypes.GRIZZLY_BEAR, world_1);
@@ -59,14 +59,14 @@ public class GrizzlyBearEntity extends AnimalEntity {
     protected void initGoals() {
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new GrizzlyBearEntity.class_1460());
-        this.goalSelector.add(1, new GrizzlyBearEntity.class_1461());
+        this.goalSelector.add(1, new AttackGoal());
+        this.goalSelector.add(1, new GrizzlyBearEscapeDangerGoal());
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.add(5, new WanderAroundGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(7, new LookAroundGoal(this));
-        this.targetSelector.add(1, new GrizzlyBearEntity.class_1459());
-        this.targetSelector.add(2, new GrizzlyBearEntity.class_1457());
+        this.targetSelector.add(1, new GrizzlyBearRevengeGoal());
+        this.targetSelector.add(2, new FollowPlayersGoal());
         this.targetSelector.add(3, new FollowTargetGoal<>(this, FoxEntity.class, 10, true, true, null));
     }
 
@@ -104,32 +104,32 @@ public class GrizzlyBearEntity extends AnimalEntity {
         this.playSound(SoundEvents.ENTITY_POLAR_BEAR_STEP, 0.15F, 1.0F);
     }
 
-    private void method_6602() {
-        if (this.field_6839 <= 0) {
+    private void playWarningSound() {
+        if (this.warningSoundCooldown <= 0) {
             this.playSound(SoundEvents.ENTITY_POLAR_BEAR_WARNING, 1.0F, 1.0F);
-            this.field_6839 = 40;
+            this.warningSoundCooldown = 40;
         }
 
     }
 
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(field_6840, false);
+        this.dataTracker.startTracking(warning, false);
     }
 
     public void tick() {
         super.tick();
         if (this.world.isClient) {
-            this.field_6838 = this.field_6837;
+            this.lastWarningAnimationProgress = this.warningAnimationProgress;
             if (this.method_6600()) {
-                this.field_6837 = MathHelper.clamp(this.field_6837 + 1.0F, 0.0F, 6.0F);
+                this.warningAnimationProgress = MathHelper.clamp(this.warningAnimationProgress + 1.0F, 0.0F, 6.0F);
             } else {
-                this.field_6837 = MathHelper.clamp(this.field_6837 - 1.0F, 0.0F, 6.0F);
+                this.warningAnimationProgress = MathHelper.clamp(this.warningAnimationProgress - 1.0F, 0.0F, 6.0F);
             }
         }
 
-        if (this.field_6839 > 0) {
-            --this.field_6839;
+        if (this.warningSoundCooldown > 0) {
+            --this.warningSoundCooldown;
         }
 
     }
@@ -144,16 +144,16 @@ public class GrizzlyBearEntity extends AnimalEntity {
     }
 
     private boolean method_6600() {
-        return this.dataTracker.get(field_6840);
+        return this.dataTracker.get(warning);
     }
 
-    private void method_6603(boolean boolean_1) {
-        this.dataTracker.set(field_6840, boolean_1);
+    private void setWarning(boolean boolean_1) {
+        this.dataTracker.set(warning, boolean_1);
     }
 
     @Environment(EnvType.CLIENT)
     public float method_6601(float float_1) {
-        return MathHelper.lerp(float_1, this.field_6838, this.field_6837) / 6.0F;
+        return MathHelper.lerp(float_1, this.lastWarningAnimationProgress, this.warningAnimationProgress) / 6.0F;
     }
 
     protected float method_6120() {
@@ -175,8 +175,8 @@ public class GrizzlyBearEntity extends AnimalEntity {
         }
     }
 
-    class class_1461 extends EscapeDangerGoal {
-        class_1461() {
+    class GrizzlyBearEscapeDangerGoal extends EscapeDangerGoal {
+        GrizzlyBearEscapeDangerGoal() {
             super(GrizzlyBearEntity.this, 2.0D);
         }
 
@@ -185,46 +185,46 @@ public class GrizzlyBearEntity extends AnimalEntity {
         }
     }
 
-    class class_1460 extends MeleeAttackGoal {
-        class_1460() {
+    class AttackGoal extends MeleeAttackGoal {
+        public AttackGoal() {
             super(GrizzlyBearEntity.this, 1.25D, true);
         }
 
-        protected void method_6288(LivingEntity livingEntity_1, double double_1) {
-            double double_2 = this.method_6289(livingEntity_1);
-            if (double_1 <= double_2 && this.field_6505 <= 0) {
-                this.field_6505 = 20;
+        protected void attack(LivingEntity livingEntity_1, double double_1) {
+            double double_2 = this.getSquaredMaxAttackDistance(livingEntity_1);
+            if (double_1 <= double_2 && this.ticksUntilAttack <= 0) {
+                this.ticksUntilAttack = 20;
                 this.entity.attack(livingEntity_1);
-                GrizzlyBearEntity.this.method_6603(false);
+                GrizzlyBearEntity.this.setWarning(false);
             } else if (double_1 <= double_2 * 2.0D) {
-                if (this.field_6505 <= 0) {
-                    GrizzlyBearEntity.this.method_6603(false);
-                    this.field_6505 = 20;
+                if (this.ticksUntilAttack <= 0) {
+                    GrizzlyBearEntity.this.setWarning(false);
+                    this.ticksUntilAttack = 20;
                 }
 
-                if (this.field_6505 <= 10) {
-                    GrizzlyBearEntity.this.method_6603(true);
-                    GrizzlyBearEntity.this.method_6602();
+                if (this.ticksUntilAttack <= 10) {
+                    GrizzlyBearEntity.this.setWarning(true);
+                    GrizzlyBearEntity.this.playWarningSound();
                 }
             } else {
-                this.field_6505 = 20;
-                GrizzlyBearEntity.this.method_6603(false);
+                this.ticksUntilAttack = 20;
+                GrizzlyBearEntity.this.setWarning(false);
             }
 
         }
 
         public void stop() {
-            GrizzlyBearEntity.this.method_6603(false);
+            GrizzlyBearEntity.this.setWarning(false);
             super.stop();
         }
 
-        protected double method_6289(LivingEntity livingEntity_1) {
-            return (double) (4.0F + livingEntity_1.getWidth());
+        protected double getSquaredMaxAttackDistance(LivingEntity livingEntity_1) {
+            return (double)(4.0F + livingEntity_1.getWidth());
         }
     }
 
-    class class_1457 extends FollowTargetGoal<PlayerEntity> {
-        class_1457() {
+    class FollowPlayersGoal extends FollowTargetGoal<PlayerEntity> {
+        FollowPlayersGoal() {
             super(GrizzlyBearEntity.this, PlayerEntity.class, 20, true, true, null);
         }
 
@@ -252,15 +252,15 @@ public class GrizzlyBearEntity extends AnimalEntity {
         }
     }
 
-    class class_1459 extends AvoidGoal {
-        class_1459() {
+    class GrizzlyBearRevengeGoal extends RevengeGoal {
+        GrizzlyBearRevengeGoal() {
             super(GrizzlyBearEntity.this);
         }
 
         public void start() {
             super.start();
             if (GrizzlyBearEntity.this.isChild()) {
-                this.method_6317();
+                this.callSameTypeForRevenge();
                 this.stop();
             }
 

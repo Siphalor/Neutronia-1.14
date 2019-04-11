@@ -1,29 +1,19 @@
 package team.hollow.neutronia.village;
 
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.enums.BedPart;
-import net.minecraft.resource.ResourceManager;
-import net.minecraft.resource.ResourceReloadListener;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.tag.BlockTags;
-import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.profiler.Profiler;
-import net.minecraft.util.registry.Registry;
-import team.hollow.neutronia.init.NTags;
 import team.hollow.neutronia.utils.registry.NRegistries;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.Executor;
+import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,100 +41,41 @@ public class PointOfInterestType {
     public static final PointOfInterestType HOME;
     public static final PointOfInterestType MEETING;
     private static final Map<BlockState, PointOfInterestType> field_18849;
-
-    static {
-        UNEMPLOYED = register("unemployed", BlockTags.UNEMPLOYED_POI, 1, null, IS_USED_BY_PROFESSION);
-        ARMORER = register("armorer", BlockTags.ARMORER_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_ARMORER);
-        BUTCHER = register("butcher", BlockTags.BUTCHER_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_BUTCHER);
-        BARD = register("bard", NTags.BARD_POI, 1, null);
-        CARTOGRAPHER = register("cartographer", BlockTags.CARTOGRAPHER_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_CARTOGRAPHER);
-        CLERIC = register("cleric", BlockTags.CLERIC_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_CLERIC);
-        FARMER = register("farmer", BlockTags.FARMER_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_FARMER);
-        FISHERMAN = register("fisherman", BlockTags.FISHERMAN_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_FISHERMAN);
-        FLETCHER = register("fletcher", BlockTags.FLETCHER_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_FLETCHER);
-        LEATHERWORKER = register("leatherworker", BlockTags.LEATHERWORKER_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_LEATHERWORKER);
-        LIBRARIAN = register("librarian", BlockTags.LIBRARIAN_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_LIBRARIAN);
-        MASON = register("mason", BlockTags.MASON_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_MASON);
-        NITWIT = register("nitwit", BlockTags.NITWIT_POI, 1, null);
-        SHEPHERD = register("shepherd", BlockTags.SHEPHERD_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_SHEPHERD);
-        TOOLSMITH = register("toolsmith", BlockTags.TOOLSMITH_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_TOOLSMITH);
-        WEAPONSMITH = register("weaponsmith", BlockTags.WEAPONSMITH_POI, 1, SoundEvents.ENTITY_VILLAGER_WORK_WEAPONSMITH);
-        HOME = register("home", BlockTags.BEDS, 1, null);
-        MEETING = register("meeting", BlockTags.MEETING_SITE_POI, 32, null);
-        field_18849 = Maps.newHashMap();
-    }
+    private static final Set<BlockState> BEDS;
+    private static final Set<BlockState> MUSIC_BLOCKS;
 
     private final String id;
-    private final Tag<Block> blockTag;
-    private final Set<BlockState> field_18850 = Sets.newHashSet();
+    private final Set<BlockState> field_18850;
     private final int ticketCount;
     private final SoundEvent sound;
-    private final Predicate<PointOfInterestType> completedCondition;
+    private final Predicate<PointOfInterestType> completionCondition;
 
-    private PointOfInterestType(String string_1, Tag<Block> tag_1, int int_1, SoundEvent soundEvent_1, Predicate<PointOfInterestType> predicate_1) {
+    private static Set<BlockState> method_20356(Block block_1) {
+        return ImmutableSet.copyOf(block_1.getStateFactory().getStates());
+    }
+
+    private PointOfInterestType(String string_1, Set<BlockState> tag_1, int int_1, SoundEvent soundEvent_1, Predicate<PointOfInterestType> predicate_1) {
         this.id = string_1;
-        this.blockTag = tag_1;
+        this.field_18850 = ImmutableSet.copyOf(tag_1);
         this.ticketCount = int_1;
         this.sound = soundEvent_1;
-        this.completedCondition = predicate_1;
+        this.completionCondition = predicate_1;
     }
 
-    private PointOfInterestType(String string_1, Tag<Block> tag_1, int int_1, SoundEvent soundEvent_1) {
+    private PointOfInterestType(String string_1, Set<BlockState> tag_1, int int_1, SoundEvent soundEvent_1) {
         this.id = string_1;
-        this.blockTag = tag_1;
+        this.field_18850 = ImmutableSet.copyOf(tag_1);
         this.ticketCount = int_1;
         this.sound = soundEvent_1;
-        this.completedCondition = (pointOfInterestType_1) -> pointOfInterestType_1 == this;
-    }
-
-    private static PointOfInterestType register(String string_1, Tag<Block> tag_1, int int_1, SoundEvent soundEvent_1) {
-        return NRegistries.POINT_OF_INTEREST_TYPE.add(new Identifier(string_1), new PointOfInterestType(string_1, tag_1, int_1, soundEvent_1));
-    }
-
-    private static PointOfInterestType register(String string_1, Tag<Block> tag_1, int int_1, SoundEvent soundEvent_1, Predicate<PointOfInterestType> predicate_1) {
-        return NRegistries.POINT_OF_INTEREST_TYPE.add(new Identifier(string_1), new PointOfInterestType(string_1, tag_1, int_1, soundEvent_1, predicate_1));
-    }
-
-    public static Optional<PointOfInterestType> method_19516(BlockState blockState_1) {
-        return Optional.ofNullable(field_18849.get(blockState_1));
-    }
-
-    private static boolean method_19517(BlockState blockState_1) {
-        return !blockState_1.matches(BlockTags.BEDS) || blockState_1.get(BedBlock.PART) != BedPart.FOOT;
-    }
-
-    public static Stream<BlockState> method_19518() {
-        return field_18849.keySet().stream();
-    }
-
-    public static CompletableFuture<Void> method_19515(ResourceReloadListener.Helper resourceReloadListener$Helper_1, ResourceManager resourceManager_1, Profiler profiler_1, Profiler profiler_2, Executor executor_1, Executor executor_2) {
-        return resourceReloadListener$Helper_1.waitForAll(net.minecraft.util.Void.INSTANCE).thenRunAsync(() -> {
-            field_18849.clear();
-            NRegistries.POINT_OF_INTEREST_TYPE.forEach((pointOfInterestType_1) -> {
-                pointOfInterestType_1.field_18850.clear();
-            });
-            Registry.BLOCK.stream().filter((block_1) -> block_1.matches(BlockTags.POINTS_OF_INTEREST)).forEach((block_1) -> {
-                List<PointOfInterestType> list_1 = NRegistries.POINT_OF_INTEREST_TYPE.stream().filter((pointOfInterestType_1x) ->
-                        pointOfInterestType_1x.blockTag.contains(block_1)).collect(Collectors.toList());
-                if (list_1.size() > 1) {
-                    throw new IllegalStateException(String.format("%s is defined in too many tags", block_1));
-                } else {
-                    PointOfInterestType pointOfInterestType_1 = list_1.get(0);
-                    block_1.getStateFactory().getStates().stream().filter(PointOfInterestType::method_19517).forEach((blockState_1) -> {
-                        pointOfInterestType_1.field_18850.add(blockState_1);
-                        field_18849.put(blockState_1, pointOfInterestType_1);
-                    });
-                }
-            });
-        }, executor_2);
+        this.completionCondition = (pointOfInterestType_1) -> pointOfInterestType_1 == this;
     }
 
     public int getTicketCount() {
         return this.ticketCount;
     }
 
-    public Predicate<PointOfInterestType> getCompletedCondition() {
-        return this.completedCondition;
+    public Predicate<PointOfInterestType> getCompletionCondition() {
+        return this.completionCondition;
     }
 
     public String toString() {
@@ -154,4 +85,60 @@ public class PointOfInterestType {
     public SoundEvent getSound() {
         return this.sound;
     }
+
+    private static PointOfInterestType register(String string_1, Set<BlockState> set_1, int int_1, SoundEvent soundEvent_1) {
+        return method_20354(NRegistries.POINT_OF_INTEREST_TYPE.add(new Identifier(string_1), new PointOfInterestType(string_1, set_1, int_1, soundEvent_1)));
+    }
+
+    private static PointOfInterestType register(String string_1, Set<BlockState> set_1, int int_1, SoundEvent soundEvent_1, Predicate<PointOfInterestType> predicate_1) {
+        return method_20354(NRegistries.POINT_OF_INTEREST_TYPE.add(new Identifier(string_1), new PointOfInterestType(string_1, set_1, int_1, soundEvent_1, predicate_1)));
+    }
+
+    private static PointOfInterestType method_20354(PointOfInterestType pointOfInterestType_1) {
+        pointOfInterestType_1.field_18850.forEach((blockState_1) -> {
+            PointOfInterestType pointOfInterestType_2 = field_18849.put(blockState_1, pointOfInterestType_1);
+            if (pointOfInterestType_2 != null) {
+                throw new IllegalStateException(String.format("%s is defined in too many tags", blockState_1));
+            }
+        });
+        return pointOfInterestType_1;
+    }
+
+    public static Optional<PointOfInterestType> method_19516(BlockState blockState_1) {
+        return Optional.ofNullable(field_18849.get(blockState_1));
+    }
+
+    public static Stream<BlockState> method_19518() {
+        return field_18849.keySet().stream();
+    }
+
+    static {
+        BEDS = ImmutableList.of(Blocks.RED_BED, Blocks.BLACK_BED, Blocks.BLUE_BED, Blocks.BROWN_BED, Blocks.CYAN_BED, Blocks.GRAY_BED, Blocks.GREEN_BED,
+                Blocks.LIGHT_BLUE_BED, Blocks.LIGHT_GRAY_BED, Blocks.LIME_BED, Blocks.MAGENTA_BED, Blocks.ORANGE_BED, new Block[]{Blocks.PINK_BED, Blocks.PURPLE_BED,
+                        Blocks.WHITE_BED, Blocks.YELLOW_BED}).stream().flatMap((block_1) -> block_1.getStateFactory().getStates().stream()).filter((blockState_1) ->
+                blockState_1.get(BedBlock.PART) == BedPart.HEAD).collect(ImmutableSet.toImmutableSet());
+        MUSIC_BLOCKS = ImmutableList.of(Blocks.NOTE_BLOCK, Blocks.JUKEBOX).stream().flatMap(block -> block.getStateFactory().getStates().stream()).filter(blockState ->
+                blockState.get(BedBlock.PART) == BedPart.HEAD).collect(ImmutableSet.toImmutableSet());
+
+        UNEMPLOYED = register("unemployed", ImmutableSet.of(), 1, null, IS_USED_BY_PROFESSION);
+        ARMORER = register("armorer", method_20356(Blocks.BLAST_FURNACE), 1, SoundEvents.ENTITY_VILLAGER_WORK_ARMORER);
+        BUTCHER = register("butcher", method_20356(Blocks.SMOKER), 1, SoundEvents.ENTITY_VILLAGER_WORK_BUTCHER);
+        CARTOGRAPHER = register("cartographer", method_20356(Blocks.CARTOGRAPHY_TABLE), 1, SoundEvents.ENTITY_VILLAGER_WORK_CARTOGRAPHER);
+        CLERIC = register("cleric", method_20356(Blocks.BREWING_STAND), 1, SoundEvents.ENTITY_VILLAGER_WORK_CLERIC);
+        FARMER = register("farmer", method_20356(Blocks.COMPOSTER), 1, SoundEvents.ENTITY_VILLAGER_WORK_FARMER);
+        FISHERMAN = register("fisherman", method_20356(Blocks.BARREL), 1, SoundEvents.ENTITY_VILLAGER_WORK_FISHERMAN);
+        FLETCHER = register("fletcher", method_20356(Blocks.FLETCHING_TABLE), 1, SoundEvents.ENTITY_VILLAGER_WORK_FLETCHER);
+        LEATHERWORKER = register("leatherworker", method_20356(Blocks.CAULDRON), 1, SoundEvents.ENTITY_VILLAGER_WORK_LEATHERWORKER);
+        LIBRARIAN = register("librarian", method_20356(Blocks.LECTERN), 1, SoundEvents.ENTITY_VILLAGER_WORK_LIBRARIAN);
+        MASON = register("mason", method_20356(Blocks.STONECUTTER), 1, SoundEvents.ENTITY_VILLAGER_WORK_MASON);
+        NITWIT = register("nitwit", ImmutableSet.of(), 1, null);
+        SHEPHERD = register("shepherd", method_20356(Blocks.LOOM), 1, SoundEvents.ENTITY_VILLAGER_WORK_SHEPHERD);
+        TOOLSMITH = register("toolsmith", method_20356(Blocks.SMITHING_TABLE), 1, SoundEvents.ENTITY_VILLAGER_WORK_TOOLSMITH);
+        WEAPONSMITH = register("weaponsmith", method_20356(Blocks.GRINDSTONE), 1, SoundEvents.ENTITY_VILLAGER_WORK_WEAPONSMITH);
+        BARD = register("bard", MUSIC_BLOCKS, 1, SoundEvents.ENTITY_VILLAGER_WORK_LIBRARIAN);
+        HOME = register("home", BEDS, 1, null);
+        MEETING = register("meeting", method_20356(Blocks.BELL), 32, null);
+        field_18849 = Maps.newHashMap();
+    }
+
 }

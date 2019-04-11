@@ -90,7 +90,7 @@ public class NeutroniaBlueberryBushBlock extends PlantBlock implements Fertiliza
         } else if (int_1 > 1) {
             int int_2 = 1 + world_1.random.nextInt(2);
             dropStack(world_1, blockPos_1, new ItemStack(NItems.BLUEBERRY, int_2 + (boolean_1 ? 1 : 0)));
-            world_1.playSound(null, blockPos_1, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCK, 1.0F, 0.8F + world_1.random.nextFloat() * 0.4F);
+            world_1.playSound(null, blockPos_1, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + world_1.random.nextFloat() * 0.4F);
             world_1.setBlockState(blockPos_1, blockState_1.with(AGE, 1), 2);
             return true;
         } else {

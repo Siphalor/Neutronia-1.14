@@ -59,14 +59,14 @@ public class BlackBearEntity extends AnimalEntity {
     protected void initGoals() {
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new BlackBearEntity.class_1460());
-        this.goalSelector.add(1, new BlackBearEntity.class_1461());
+        this.goalSelector.add(1, new BlackBearEntity.AttackGoal());
+        this.goalSelector.add(1, new BlackBearEntity.BlackBearRevengeGoal());
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.add(5, new WanderAroundGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(7, new LookAroundGoal(this));
-        this.targetSelector.add(1, new BlackBearEntity.class_1459());
-        this.targetSelector.add(2, new BlackBearEntity.class_1457());
+        this.targetSelector.add(1, new BlackBearEntity.BlackBearRevengeGoal());
+        this.targetSelector.add(2, new BlackBearEntity.FollowPlayersGoal());
         this.targetSelector.add(3, new FollowTargetGoal<>(this, FoxEntity.class, 10, true, true, null));
     }
 
@@ -104,7 +104,7 @@ public class BlackBearEntity extends AnimalEntity {
         this.playSound(SoundEvents.ENTITY_POLAR_BEAR_STEP, 0.15F, 1.0F);
     }
 
-    private void method_6602() {
+    private void playWarningSound() {
         if (this.field_6839 <= 0) {
             this.playSound(SoundEvents.ENTITY_POLAR_BEAR_WARNING, 1.0F, 1.0F);
             this.field_6839 = 40;
@@ -147,7 +147,7 @@ public class BlackBearEntity extends AnimalEntity {
         return this.dataTracker.get(field_6840);
     }
 
-    private void method_6603(boolean boolean_1) {
+    private void setWarning(boolean boolean_1) {
         this.dataTracker.set(field_6840, boolean_1);
     }
 
@@ -175,56 +175,46 @@ public class BlackBearEntity extends AnimalEntity {
         }
     }
 
-    class class_1461 extends EscapeDangerGoal {
-        class_1461() {
-            super(BlackBearEntity.this, 2.0D);
-        }
-
-        public boolean canStart() {
-            return (BlackBearEntity.this.isChild() || BlackBearEntity.this.isOnFire()) && super.canStart();
-        }
-    }
-
-    class class_1460 extends MeleeAttackGoal {
-        class_1460() {
+    class AttackGoal extends MeleeAttackGoal {
+        public AttackGoal() {
             super(BlackBearEntity.this, 1.25D, true);
         }
 
-        protected void method_6288(LivingEntity livingEntity_1, double double_1) {
-            double double_2 = this.method_6289(livingEntity_1);
-            if (double_1 <= double_2 && this.field_6505 <= 0) {
-                this.field_6505 = 20;
+        protected void attack(LivingEntity livingEntity_1, double double_1) {
+            double double_2 = this.getSquaredMaxAttackDistance(livingEntity_1);
+            if (double_1 <= double_2 && this.ticksUntilAttack <= 0) {
+                this.ticksUntilAttack = 20;
                 this.entity.attack(livingEntity_1);
-                BlackBearEntity.this.method_6603(false);
+                BlackBearEntity.this.setWarning(false);
             } else if (double_1 <= double_2 * 2.0D) {
-                if (this.field_6505 <= 0) {
-                    BlackBearEntity.this.method_6603(false);
-                    this.field_6505 = 20;
+                if (this.ticksUntilAttack <= 0) {
+                    BlackBearEntity.this.setWarning(false);
+                    this.ticksUntilAttack = 20;
                 }
 
-                if (this.field_6505 <= 10) {
-                    BlackBearEntity.this.method_6603(true);
-                    BlackBearEntity.this.method_6602();
+                if (this.ticksUntilAttack <= 10) {
+                    BlackBearEntity.this.setWarning(true);
+                    BlackBearEntity.this.playWarningSound();
                 }
             } else {
-                this.field_6505 = 20;
-                BlackBearEntity.this.method_6603(false);
+                this.ticksUntilAttack = 20;
+                BlackBearEntity.this.setWarning(false);
             }
 
         }
 
         public void stop() {
-            BlackBearEntity.this.method_6603(false);
+            BlackBearEntity.this.setWarning(false);
             super.stop();
         }
 
-        protected double method_6289(LivingEntity livingEntity_1) {
-            return (double) (4.0F + livingEntity_1.getWidth());
+        protected double getSquaredMaxAttackDistance(LivingEntity livingEntity_1) {
+            return (double)(4.0F + livingEntity_1.getWidth());
         }
     }
 
-    class class_1457 extends FollowTargetGoal<PlayerEntity> {
-        class_1457() {
+    class FollowPlayersGoal extends FollowTargetGoal<PlayerEntity> {
+        FollowPlayersGoal() {
             super(BlackBearEntity.this, PlayerEntity.class, 20, true, true, null);
         }
 
@@ -235,8 +225,8 @@ public class BlackBearEntity extends AnimalEntity {
                 if (super.canStart()) {
                     List<BlackBearEntity> list_1 = BlackBearEntity.this.world.getEntities(BlackBearEntity.class, BlackBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
 
-                    for (BlackBearEntity brownBearEntity_1 : list_1) {
-                        if (brownBearEntity_1.isChild()) {
+                    for (BlackBearEntity grizzlyBearEntity_1 : list_1) {
+                        if (grizzlyBearEntity_1.isChild()) {
                             return true;
                         }
                     }
@@ -252,15 +242,15 @@ public class BlackBearEntity extends AnimalEntity {
         }
     }
 
-    class class_1459 extends AvoidGoal {
-        class_1459() {
+    class BlackBearRevengeGoal extends RevengeGoal {
+        BlackBearRevengeGoal() {
             super(BlackBearEntity.this);
         }
 
         public void start() {
             super.start();
             if (BlackBearEntity.this.isChild()) {
-                this.method_6317();
+                this.callSameTypeForRevenge();
                 this.stop();
             }
 
