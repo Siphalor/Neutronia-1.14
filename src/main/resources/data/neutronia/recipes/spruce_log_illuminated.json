@@ -1,6 +1,6 @@
 {
-    "type": "crafting_shaped",
-	"group": "illuminated"
+    "type": "minecraft:crafting_shaped",
+	"group": "illuminated",
     "pattern": [
         "###",
         "#L#",
@@ -8,14 +8,15 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:spruce"
+            "item": "minecraft:spruce_log"
         },
         "L": {
             "item": "minecraft:lava_bucket"
         }
     },
     "result": {
-		"item": "neutronia:illuminated_spruce"
+		"item": "neutronia:illuminated_spruce_log",
+		"count": 8
 	}
     
 }

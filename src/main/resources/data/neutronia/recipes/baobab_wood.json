@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:baobab"
+      "item": "neutronia:baobab_log"
     }
   },
   "result": {
-    "item": "neutronia:baobab",
+    "item": "neutronia:baobab_wood",
     "count": 3
   }
 }

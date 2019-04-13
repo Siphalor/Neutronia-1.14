@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:wenge"
+      "item": "neutronia:wenge_log"
     }
   },
   "result": {
-    "item": "neutronia:wenge",
+    "item": "neutronia:wenge_wood",
     "count": 3
   }
 }

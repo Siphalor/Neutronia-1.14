@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:purpleheart"
+      "item": "neutronia:purpleheart_log"
     }
   },
   "result": {
-    "item": "neutronia:purpleheart",
+    "item": "neutronia:purpleheart_wood",
     "count": 3
   }
 }

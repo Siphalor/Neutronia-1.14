@@ -1,6 +1,6 @@
 {
-    "type": "crafting_shaped",
-	"group": "illuminated"
+    "type": "minecraft:crafting_shaped",
+	"group": "illuminated",
     "pattern": [
         "###",
         "#L#",
@@ -15,7 +15,8 @@
         }
     },
     "result": {
-		"item": "neutronia:illuminated_prismarine_bricks"
+		"item": "neutronia:illuminated_prismarine_bricks",
+		"count": 8
 	}
     
 }

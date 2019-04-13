@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:lacewood"
+      "item": "neutronia:lacewood_log"
     }
   },
   "result": {
-    "item": "neutronia:lacewood",
+    "item": "neutronia:lacewood_wood",
     "count": 3
   }
 }

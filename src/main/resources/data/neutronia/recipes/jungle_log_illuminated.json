@@ -1,6 +1,6 @@
 {
-    "type": "crafting_shaped",
-	"group": "illuminated"
+    "type": "minecraft:crafting_shaped",
+	"group": "illuminated",
     "pattern": [
         "###",
         "#L#",
@@ -8,14 +8,15 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:jungle"
+            "item": "minecraft:jungle_log"
         },
         "L": {
             "item": "minecraft:lava_bucket"
         }
     },
     "result": {
-		"item": "neutronia:illuminated_jungle"
+		"item": "neutronia:illuminated_jungle_log",
+		"count": 8
 	}
     
 }

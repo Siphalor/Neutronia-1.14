@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:mangrove"
+      "item": "neutronia:mangrove_log"
     }
   },
   "result": {
-    "item": "neutronia:mangrove",
+    "item": "neutronia:mangrove_wood",
     "count": 3
   }
 }

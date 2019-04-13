@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:palm"
+      "item": "neutronia:palm_log"
     }
   },
   "result": {
-    "item": "neutronia:palm",
+    "item": "neutronia:palm_wood",
     "count": 3
   }
 }

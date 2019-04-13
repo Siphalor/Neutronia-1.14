@@ -1,6 +1,6 @@
 {
-    "type": "crafting_shaped",
-	"group": "illuminated"
+    "type": "minecraft:crafting_shaped",
+	"group": "illuminated",
     "pattern": [
         "###",
         "#L#",
@@ -8,14 +8,15 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:birch"
+            "item": "minecraft:dark_oak_log"
         },
         "L": {
             "item": "minecraft:lava_bucket"
         }
     },
     "result": {
-		"item": "neutronia:illuminated_birch"
+		"item": "neutronia:illuminated_dark_oak_log",
+		"count": 8
 	}
     
 }

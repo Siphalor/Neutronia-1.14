@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:willow"
+      "item": "neutronia:willow_log"
     }
   },
   "result": {
-    "item": "neutronia:willow",
+    "item": "neutronia:willow_wood",
     "count": 3
   }
 }

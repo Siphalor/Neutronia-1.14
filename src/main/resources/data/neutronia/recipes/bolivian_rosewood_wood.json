@@ -7,11 +7,11 @@
   ],
   "key": {
     "#": {
-      "item": "neutronia:bolivian_rosewood"
+      "item": "neutronia:bolivian_rosewood_log"
     }
   },
   "result": {
-    "item": "neutronia:bolivian_rosewood",
+    "item": "neutronia:bolivian_rosewood_wood",
     "count": 3
   }
 }
