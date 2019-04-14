@@ -435,7 +435,7 @@ public class NBlocks {
         CHISELED_OBSIDIAN = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "chiseled_obsidian");
         GLOWING_OBSIDIAN = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "glowing_obsidian");
 
-        SMOOTH_END_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_end_brick", 0.8F, 10.0F);
+        SMOOTH_END_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_endstone_bricks", 0.8F, 10.0F);
         SMOOTH_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "smooth_prismarine_bricks", 1.5F, 10.0F);
         SMOOTH_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "smooth_prismarine");
         SMOOTH_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "smooth_dark_prismarine");
@@ -443,7 +443,7 @@ public class NBlocks {
         SMOOTH_PURPUR_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_purpur", 1.5F, 10.0F);
         SMOOTH_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_nether_brick", 2.0F, 10.0F);
         SMOOTH_RED_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_red_nether_brick", 1.5F, 10.0F);
-        SMOOTH_STONE = new NeutroniaBaseBlock(Material.STONE, "smooth_stone", 1.5F, 10.0F);
+        SMOOTH_STONE = new NeutroniaBaseBlock(Material.STONE, "polished_stone", 1.5F, 10.0F);
         SMOOTH_STONE_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_stone_brick", 1.5F, 10.0F);
 
         DIAMOND_BRICKS = new NeutroniaBaseBlock(Material.METAL, "diamond_bricks", 3.0F, 10.0F);
@@ -464,9 +464,9 @@ public class NBlocks {
         BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "brick_path");
         BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "brick_tile");
         SMALL_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_brick_tile");
-        CHISELED_BRICK = new NeutroniaBaseBlock(Material.STONE, "chiseled_brick");
-        BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "brick_pillar", 2.0F, 10.0F);
-        SMOOTH_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_brick", 2.0F, 10.0F);
+        CHISELED_BRICK = new NeutroniaBaseBlock(Material.STONE, "chiseled_bricks");
+        BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "bricks_pillar", 2.0F, 10.0F);
+        SMOOTH_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_bricks", 2.0F, 10.0F);
 
         SQUARED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "squared_sandy_bricks");
         GAPLESS_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "gapless_sandy_bricks");
@@ -478,8 +478,8 @@ public class NBlocks {
         SANDY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "sandy_brick_path");
         SANDY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "sandy_brick_tile");
         SMALL_SANDY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_sandy_brick_tile");
-        SANDY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandy_brick_pillar", 2.0F, 10.0F);
-        SMOOTH_SANDY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_sandy_brick", 2.0F, 10.0F);
+        SANDY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandy_bricks_pillar", 2.0F, 10.0F);
+        SMOOTH_SANDY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_sandy_bricks", 2.0F, 10.0F);
 
         SQUARED_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "squared_dirty_bricks");
         GAPLESS_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "gapless_dirty_bricks");
@@ -491,8 +491,8 @@ public class NBlocks {
         DIRTY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "dirty_brick_path");
         DIRTY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "dirty_brick_tile");
         SMALL_DIRTY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_dirty_brick_tile");
-        DIRTY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "dirty_brick_pillar", 2.0F, 10.0F);
-        SMOOTH_DIRTY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_dirty_brick", 2.0F, 10.0F);
+        DIRTY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "dirty_bricks_pillar", 2.0F, 10.0F);
+        SMOOTH_DIRTY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_dirty_bricks", 2.0F, 10.0F);
 
         CHECKERED_TILE = new NeutroniaBaseBlock(Material.STONE, "checkered_tiles");
         SMALL_CHECKERED_TILE = new NeutroniaBaseBlock(Material.STONE, "small_checkered_tiles");
@@ -608,14 +608,14 @@ public class NBlocks {
         BlockRegisteringUtils.addWalls("polished_dark_andesite", POLISHED_DARK_ANDESITE);
         BlockRegisteringUtils.addWalls("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
-        BlockRegisteringUtils.addWalls("smooth_end_brick", SMOOTH_END_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_endstone_bricks", SMOOTH_END_BRICK);
         BlockRegisteringUtils.addWalls("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS);
         BlockRegisteringUtils.addWalls("smooth_prismarine", SMOOTH_PRISMARINE);
         BlockRegisteringUtils.addWalls("smooth_brick", SMOOTH_BRICK);
         BlockRegisteringUtils.addWalls("smooth_purpur", SMOOTH_PURPUR_BRICK);
         BlockRegisteringUtils.addWalls("smooth_nether_brick", SMOOTH_NETHER_BRICK);
         BlockRegisteringUtils.addWalls("smooth_red_nether_brick", SMOOTH_RED_NETHER_BRICK);
-        BlockRegisteringUtils.addWalls("smooth_stone", SMOOTH_STONE);
+        BlockRegisteringUtils.addWalls("polished_stone", SMOOTH_STONE);
         BlockRegisteringUtils.addWalls("smooth_stone_brick", SMOOTH_STONE_BRICK);
         BlockRegisteringUtils.addWalls("dirty_brick", DIRTY_BRICKS);
         BlockRegisteringUtils.addWalls("sandy_brick", SANDY_BRICKS);
@@ -626,14 +626,14 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("polished_dark_andesite", POLISHED_DARK_ANDESITE);
         BlockRegisteringUtils.addSlabAndStair("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
-        BlockRegisteringUtils.addSlabAndStair("smooth_end_stone_brick", SMOOTH_END_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_endstone_bricks", SMOOTH_END_BRICK);
         BlockRegisteringUtils.addSlabAndStair("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS);
         BlockRegisteringUtils.addSlabAndStair("smooth_prismarine", SMOOTH_PRISMARINE);
         BlockRegisteringUtils.addSlabAndStair("smooth_brick", SMOOTH_BRICK);
         BlockRegisteringUtils.addSlabAndStair("smooth_purpur", SMOOTH_PURPUR_BRICK);
         BlockRegisteringUtils.addSlabAndStair("smooth_nether_brick", SMOOTH_NETHER_BRICK);
         BlockRegisteringUtils.addSlabAndStair("smooth_red_nether_brick", SMOOTH_RED_NETHER_BRICK);
-        BlockRegisteringUtils.addSlabAndStair("smooth_stone", SMOOTH_STONE);
+        BlockRegisteringUtils.addSlabAndStair("polished_stone", SMOOTH_STONE);
         BlockRegisteringUtils.addSlabAndStair("smooth_stone_brick", SMOOTH_STONE_BRICK);
         BlockRegisteringUtils.addSlabAndStair("dirty_brick", DIRTY_BRICKS);
         BlockRegisteringUtils.addSlabAndStair("sandy_brick", SANDY_BRICKS);

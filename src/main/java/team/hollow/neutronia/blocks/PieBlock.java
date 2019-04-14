@@ -58,7 +58,6 @@ public class PieBlock extends Block {
         } else {
             playerEntity_1.incrementStat(Stats.EAT_CAKE_SLICE);
             playerEntity_1.getHungerManager().add(2, 0.1F);
-            CakeBlock
             int int_1 = blockState_1.get(BITES);
             if (int_1 < 4) {
                 iWorld_1.setBlockState(blockPos_1, blockState_1.with(BITES, int_1 + 1), 3);
