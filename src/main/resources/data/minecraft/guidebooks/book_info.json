@@ -1,8 +1,0 @@
-{
-  "name": "Neutronia's Wiki Book",
-  "registry_name": "test_book",
-  "book_version": 1,
-  "item_group": "minecraft:misc",
-  "item_texture": "neutronia:brown_notebook",
-  "gui_texture": "neutronia:textures/gui/brown_notebook"
-}

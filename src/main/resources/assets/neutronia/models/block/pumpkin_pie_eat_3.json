@@ -1,8 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"bottom": "neutronia:block/pumpkin_pie_top",
-		"top": "neutronia:block/pumpkin_pie_top",
+		"bottom": "neutronia:block/pumpkin_pie_bottom",
 		"side": "neutronia:block/pumpkin_pie_side",
 		"particle": "neutronia:block/pumpkin_pie_side",
 		"inside": "neutronia:block/pumpkin_pie_inner"
@@ -11,14 +10,13 @@
 		{
 			"from": [8, 0, 1],
 			"to": [15, 8, 8],
-			"rotation": {"angle": -180, "axis": "y", "origin": [11.5, 4, 8]},
 			"faces": {
 				"north": {"uv": [1, 8, 8, 16], "texture": "#side"},
-				"east": {"uv": [1, 8, 15, 16], "texture": "#inside"},
-				"south": {"uv": [1, 8, 8, 16], "texture": "#side"},
-				"west": {"uv": [1, 8, 15, 16], "texture": "#side"},
-				"up": {"uv": [1, 1, 8, 15], "texture": "#top"},
-				"down": {"uv": [8, 1, 15, 15], "texture": "#bottom", "cullface": "down"}
+				"east": {"uv": [1, 8, 8, 16], "texture": "#side"},
+				"south": {"uv": [8, 8, 15, 16], "texture": "#inside"},
+				"west": {"uv": [1, 8, 8, 16], "texture": "#inside"},
+				"up": {"uv": [1, 8, 8, 15], "rotation": 180, "texture": "#bottom"},
+				"down": {"uv": [1, 8, 8, 15], "rotation": 270, "texture": "#bottom", "cullface": "down"}
 			}
 		}
 	]

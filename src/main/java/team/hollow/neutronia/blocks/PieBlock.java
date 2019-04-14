@@ -25,8 +25,13 @@ public class PieBlock extends Block {
     protected static final VoxelShape[] field_10738;
 
     static {
-        BITES = IntegerProperty.create("bites", 0, 4);
-        field_10738 = new VoxelShape[]{Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.createCuboidShape(3.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.createCuboidShape(5.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.createCuboidShape(7.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.createCuboidShape(9.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.createCuboidShape(11.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D), Block.createCuboidShape(13.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D)};
+        BITES = IntegerProperty.create("bites", 0, 3);
+        field_10738 = new VoxelShape[]{
+                Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
+                Block.createCuboidShape(3.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
+                Block.createCuboidShape(5.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
+                Block.createCuboidShape(7.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D)
+        };
     }
 
     public PieBlock() {
@@ -53,6 +58,7 @@ public class PieBlock extends Block {
         } else {
             playerEntity_1.incrementStat(Stats.EAT_CAKE_SLICE);
             playerEntity_1.getHungerManager().add(2, 0.1F);
+            CakeBlock
             int int_1 = blockState_1.get(BITES);
             if (int_1 < 4) {
                 iWorld_1.setBlockState(blockPos_1, blockState_1.with(BITES, int_1 + 1), 3);
