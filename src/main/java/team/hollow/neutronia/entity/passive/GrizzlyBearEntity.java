@@ -161,10 +161,10 @@ public class GrizzlyBearEntity extends AnimalEntity {
     }
 
     public EntityData prepareEntityData(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
-        if (entityData_1 instanceof GrizzlyBearEntity.class_1458) {
+        if (entityData_1 instanceof class_1458) {
             this.setBreedingAge(-24000);
         } else {
-            entityData_1 = new GrizzlyBearEntity.class_1458();
+            entityData_1 = new class_1458();
         }
 
         return entityData_1;

@@ -149,7 +149,7 @@ public class SignBlockEntity extends BlockEntity {
     private ServerCommandSource getCommandSource(ServerPlayerEntity serverPlayerEntity_1) {
         String string_1 = serverPlayerEntity_1 == null ? "Sign" : serverPlayerEntity_1.getName().getString();
         TextComponent textComponent_1 = serverPlayerEntity_1 == null ? new StringTextComponent("Sign") : serverPlayerEntity_1.getDisplayName();
-        return new ServerCommandSource(CommandOutput.field_17395, new Vec3d((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D), Vec2f.ZERO, (ServerWorld) this.world, 2, string_1, textComponent_1, this.world.getServer(), serverPlayerEntity_1);
+        return new ServerCommandSource(CommandOutput.DUMMY, new Vec3d((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D), Vec2f.ZERO, (ServerWorld) this.world, 2, string_1, textComponent_1, this.world.getServer(), serverPlayerEntity_1);
     }
 
     public DyeColor getTextColor() {

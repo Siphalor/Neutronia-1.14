@@ -24,7 +24,7 @@ public final class RicePlainsBiome extends Biome {
         this.addStructureFeature(Feature.PILLAGER_OUTPOST, new PillagerOutpostFeatureConfig(0.004D));
         this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, Type.NORMAL));
         this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(net.minecraft.world.gen.feature.Feature.DOUBLE_PLANT, new DoublePlantFeatureConfig(Blocks.TALL_GRASS.getDefaultState()), Decorator.NOISE_HEIGHTMAP_32, new NoiseHeightmapDecoratorConfig(-0.8D, 0, 7)));
+        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Biome.configureFeature(Feature.DOUBLE_PLANT, new DoublePlantFeatureConfig(Blocks.TALL_GRASS.getDefaultState()), Decorator.NOISE_HEIGHTMAP_32, new NoiseHeightmapDecoratorConfig(-0.8D, 0, 7)));
         DefaultBiomeFeatures.addLandCarvers(this);
         DefaultBiomeFeatures.addDefaultStructures(this);
         DefaultBiomeFeatures.addDefaultLakes(this);

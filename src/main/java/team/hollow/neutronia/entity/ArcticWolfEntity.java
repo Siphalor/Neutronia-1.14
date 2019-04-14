@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity;
 
 import net.fabricmc.api.EnvType;
@@ -61,7 +62,7 @@ public class ArcticWolfEntity extends TameableEntity {
         this.sitGoal = new SitGoal(this);
         this.goalSelector.add(1, new SwimGoal(this));
         this.goalSelector.add(2, this.sitGoal);
-        this.goalSelector.add(3, new ArcticWolfEntity.AIAvoidEntity<>(this, LlamaEntity.class, 24.0F, 1.5D, 1.5D));
+        this.goalSelector.add(3, new AIAvoidEntity<>(this, LlamaEntity.class, 24.0F, 1.5D, 1.5D));
         this.goalSelector.add(4, new PounceAtTargetGoal(this, 0.4F));
         this.goalSelector.add(5, new MeleeAttackGoal(this, 1.0D, true));
         this.goalSelector.add(6, new FollowOwnerGoal(this, 1.0D, 10.0F, 2.0F));
@@ -150,17 +151,21 @@ public class ArcticWolfEntity extends TameableEntity {
         return SoundEvents.ENTITY_WOLF_DEATH;
     }
 
-    /**
+    */
+/**
      * Returns the volume for the sounds this mob makes.
-     */
+     *//*
+
     protected float getSoundVolume() {
         return 0.4F;
     }
 
-    /**
+    */
+/**
      * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
      * use this to react to sunlight and start to burn.
-     */
+     *//*
+
     public void updateMovement() {
         super.updateMovement();
 
@@ -176,9 +181,11 @@ public class ArcticWolfEntity extends TameableEntity {
         }
     }
 
-    /**
+    */
+/**
      * Called to update the entity's position/logic.
-     */
+     *//*
+
     public void tick() {
         super.tick();
         this.headRotationCourseOld = this.headRotationCourse;
@@ -258,9 +265,11 @@ public class ArcticWolfEntity extends TameableEntity {
         return this.isSitting() ? 20 : super.getLookPitchSpeed();
     }
 
-    /**
+    */
+/**
      * Called when the entity is attacked.
-     */
+     *//*
+
     public boolean damage(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
             return false;
@@ -382,32 +391,40 @@ public class ArcticWolfEntity extends TameableEntity {
         }
     }
 
-    /**
+    */
+/**
      * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
      * the animal type)
-     */
+     *//*
+
     public boolean isBreedingItem(ItemStack stack) {
         Item item_1 = stack.getItem();
         return item_1.isFood() && Objects.requireNonNull(item_1.getFoodSetting()).isWolfFood();
     }
 
-    /**
+    */
+/**
      * Will return how many at most can spawn in a chunk at once.
-     */
+     *//*
+
     public int getMaxSpawnedInChunk() {
         return 8;
     }
 
-    /**
+    */
+/**
      * Determines whether this wolf is angry or not.
-     */
+     *//*
+
     public boolean isAngry() {
         return (this.dataTracker.get(TAMEABLE_FLAGS) & 2) != 0;
     }
 
-    /**
+    */
+/**
      * Sets whether this wolf is angry or not.
-     */
+     *//*
+
     public void setAngry(boolean angry) {
         byte b0 = this.dataTracker.get(TAMEABLE_FLAGS);
 
@@ -437,9 +454,11 @@ public class ArcticWolfEntity extends TameableEntity {
         return wolfEntity_1;
     }
 
-    /**
+    */
+/**
      * Returns true if the mob is currently able to mate with the specified mob.
-     */
+     *//*
+
     public boolean canBreedWith(AnimalEntity otherAnimal) {
         if (otherAnimal == this) {
             return false;
@@ -522,4 +541,4 @@ public class ArcticWolfEntity extends TameableEntity {
             super.tick();
         }
     }
-}
+}*/

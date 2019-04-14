@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.client.entity.render;
 
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -16,16 +17,20 @@ public class ArcticWolfEntityRenderer extends MobEntityRenderer<ArcticWolfEntity
         super(p_i47187_1_, new WolfEntityModel<>(), 0.5F);
     }
 
-    /**
+    */
+/**
      * Defines what float the third param in setRotationAngles of ModelBase is
-     */
+     *//*
+
     protected float method_4045(ArcticWolfEntity livingBase, float partialTicks) {
         return livingBase.method_6714();
     }
 
-    /**
+    */
+/**
      * Renders the desired {@code T} type Entity.
-     */
+     *//*
+
     @Override
     public void render(ArcticWolfEntity entity, double x, double y, double z, float entityYaw, float partialTicks) {
         if (entity.isWet()) {
@@ -35,11 +40,13 @@ public class ArcticWolfEntityRenderer extends MobEntityRenderer<ArcticWolfEntity
         super.render(entity, x, y, z, entityYaw, partialTicks);
     }
 
-    /**
+    */
+/**
      * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     */
+     *//*
+
     protected Identifier getTexture(ArcticWolfEntity entity) {
         return FOX_TEXTURES;
     }
 
-}
+}*/

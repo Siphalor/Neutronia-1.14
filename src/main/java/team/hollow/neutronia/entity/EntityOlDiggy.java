@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity;
 
 import net.minecraft.entity.mob.MobEntityWithAi;
@@ -10,4 +11,4 @@ public class EntityOlDiggy extends MobEntityWithAi {
         super(NEntityTypes.OL_DIGGY, worldIn);
     }
 
-}
+}*/

@@ -3,9 +3,8 @@ package team.hollow.neutronia.init;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntitySize;
 import net.minecraft.entity.EntityType;
-import team.hollow.neutronia.entity.*;
+import team.hollow.neutronia.entity.SocialVillager;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
-import team.hollow.neutronia.entity.passive.EntityPenguin;
 import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
 import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
 import team.hollow.neutronia.utils.registry.EntityRegistryBuilder;
@@ -16,7 +15,7 @@ public class NEntityTypes {
     public static final EntityType<BlackBearEntity> BLACK_BEAR;
     public static final EntityType<GrizzlyBearEntity> GRIZZLY_BEAR;
     public static final EntityType<SocialVillager> SOCIAL_VILLAGER;
-    public static final EntityType<EntityOlDiggy> OL_DIGGY;
+    /*public static final EntityType<EntityOlDiggy> OL_DIGGY;
     public static final EntityType<ArcticWolfEntity> ARCTIC_WOLF;
     public static final EntityType<EntityJungleFrog> JUNGLE_FROG;
     public static final EntityType<AxolotlEntity> AXOLOTL;
@@ -25,7 +24,7 @@ public class NEntityTypes {
     public static final EntityType<EntityShadowPhantom> SHADOW_PHANTOM;
     public static final EntityType<EntityEnderPhantom> ENDER_PHANTOM;
     public static final EntityType<EntityBloodPhantom> BLOOD_PHANTOM;
-    public static final EntityType<AlbadonEntity> ALBADON;
+    public static final EntityType<AlbadonEntity> ALBADON;*/
 
     static {
         VILLAGER_PLUS = EntityRegistryBuilder
@@ -56,7 +55,7 @@ public class NEntityTypes {
                 .egg(5651507, 12422002)
                 .size(EntitySize.constant(0.5F, 1.95F))
                 .build();
-        OL_DIGGY = EntityRegistryBuilder
+        /*OL_DIGGY = EntityRegistryBuilder
                 .<EntityOlDiggy>createBuilder("ol_diggy")
                 .entity((var1, var2) -> new EntityOlDiggy(var2))
                 .category(EntityCategory.CREATURE)
@@ -125,7 +124,7 @@ public class NEntityTypes {
                 .category(EntityCategory.CREATURE)
                 .egg(0x89afae, 0xba1d39)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();
+                .build();*/
     }
 
 }

@@ -21,7 +21,7 @@ public class NotebookItem extends Item {
     private String bookName;
     private Notebook notebook;
 
-    public NotebookItem(Item.Settings settings, String bookName, Notebook notebook) {
+    public NotebookItem(Settings settings, String bookName, Notebook notebook) {
         super(settings);
         this.bookName = bookName;
         this.notebook = notebook;

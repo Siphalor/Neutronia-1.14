@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.world.gen.feature;
+package team.hollow.neutronia.world.gen.feature;/*
+package team.team.hollow.neutronia.world.gen.feature;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import team.hollow.neutronia.blocks.NeutroniaLeavesBlock;
+import team.team.hollow.neutronia.blocks.NeutroniaLeavesBlock;
 import vibrantjourneys.blocks.BlockPVJLeaves;
 import vibrantjourneys.init.PVJBlocks;
 import vibrantjourneys.util.EnumLeafType;

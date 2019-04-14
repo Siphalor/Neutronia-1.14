@@ -55,14 +55,14 @@ public class RedstoneLanternBlock extends LanternBlock {
         BlockPos blockPos_2 = blockPos_1.offset(direction_1);
         BlockState blockState_2 = viewableWorld_1.getBlockState(blockPos_2);
         Block block_1 = blockState_2.getBlock();
-        if (method_9581(block_1)) {
+        if (canConnect(block_1)) {
             return false;
         } else {
             boolean boolean_1 = Block.isFaceFullSquare(blockState_2.getCollisionShape(viewableWorld_1, blockPos_2), direction_1.getOpposite()) || block_1.matches(BlockTags.FENCES) || block_1.matches(BlockTags.WALLS);
             if (direction_1 == Direction.UP) {
                 return block_1 == Blocks.HOPPER || boolean_1;
             } else {
-                return !method_9581(block_1) && boolean_1;
+                return !canConnect(block_1) && boolean_1;
             }
         }
     }

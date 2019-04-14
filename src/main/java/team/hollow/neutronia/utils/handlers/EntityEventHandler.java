@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.utils.handlers;
+package team.hollow.neutronia.utils.handlers;/*
+package team.team.hollow.neutronia.utils.handlers;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntityZombie;

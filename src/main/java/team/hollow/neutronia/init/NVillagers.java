@@ -25,17 +25,17 @@ public class NVillagers implements VillagerType {
     public static final VillagerType OCEAN;
 
     static {
-        /*ARTIST = team.hollow.neutronia.village.VillagerProfession.register("artist");
-        RECEPTIONIST = team.hollow.neutronia.village.VillagerProfession.register("receptionist");
-        CARPENTER = team.hollow.neutronia.village.VillagerProfession.register("carpenter");
-        DOCTOR = team.hollow.neutronia.village.VillagerProfession.register("doctor");
-        GUARD = team.hollow.neutronia.village.VillagerProfession.register("guard");
-        VIKING = team.hollow.neutronia.village.VillagerProfession.register("viking");
-        BARD = team.hollow.neutronia.village.VillagerProfession.register("bard");
-        DRUID = team.hollow.neutronia.village.VillagerProfession.register("druid");
-        ARCHER = team.hollow.neutronia.village.VillagerProfession.register("archer");
-        ENCHANTER = team.hollow.neutronia.village.VillagerProfession.register("enchanter");
-        WIZARD = team.hollow.neutronia.village.VillagerProfession.register("wizard");*/
+        /*ARTIST = team.team.hollow.neutronia.village.VillagerProfession.register("artist");
+        RECEPTIONIST = team.team.hollow.neutronia.village.VillagerProfession.register("receptionist");
+        CARPENTER = team.team.hollow.neutronia.village.VillagerProfession.register("carpenter");
+        DOCTOR = team.team.hollow.neutronia.village.VillagerProfession.register("doctor");
+        GUARD = team.team.hollow.neutronia.village.VillagerProfession.register("guard");
+        VIKING = team.team.hollow.neutronia.village.VillagerProfession.register("viking");
+        BARD = team.team.hollow.neutronia.village.VillagerProfession.register("bard");
+        DRUID = team.team.hollow.neutronia.village.VillagerProfession.register("druid");
+        ARCHER = team.team.hollow.neutronia.village.VillagerProfession.register("archer");
+        ENCHANTER = team.team.hollow.neutronia.village.VillagerProfession.register("enchanter");
+        WIZARD = team.team.hollow.neutronia.village.VillagerProfession.register("wizard");*/
         TradeBuilder.createRecipes();
 
         MUSHROOM = team.hollow.neutronia.village.VillagerType.register("mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);

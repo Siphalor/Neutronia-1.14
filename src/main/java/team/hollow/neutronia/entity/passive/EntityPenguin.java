@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity.passive;
 
 import net.minecraft.block.BlockState;
@@ -51,8 +52,8 @@ public class EntityPenguin extends AnimalEntity {
         this.goalSelector.add(0, new SwimGoal(this));
         this.goalSelector.add(1, new AnimalMateGoal(this, 1.0D));
         this.goalSelector.add(2, new TemptGoal(this, 1.25D, false, TEMPTATION_ITEMS));
-        this.goalSelector.add(3, new EntityPenguin.AISlideAway(this, PlayerEntity.class, 8.0F));
-        this.goalSelector.add(3, new EntityPenguin.AISlideAway(this, ArrowEntity.class, 16.0F));
+        this.goalSelector.add(3, new AISlideAway(this, PlayerEntity.class, 8.0F));
+        this.goalSelector.add(3, new AISlideAway(this, ArrowEntity.class, 16.0F));
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.add(5, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(6, new WanderAroundFarGoal(this, 1.0D));
@@ -75,11 +76,13 @@ public class EntityPenguin extends AnimalEntity {
         this.getAttributeContainer().register(EntityAttributes.MOVEMENT_SPEED).setBaseValue(0.25D);
     }
 
-    /**
+    */
+/**
      * Called frequently so the entity can update its state every tick as
      * required. For example, zombies and skeletons use this to react to
      * sunlight and start to burn.
-     */
+     *//*
+
     public void tick() {
         super.tick();
         this.oFlap = this.wingRotation;
@@ -135,10 +138,12 @@ public class EntityPenguin extends AnimalEntity {
         this.dataTracker.set(IS_SLIDING, standing);
     }
 
-    /**
+    */
+/**
      * Checks if the parameter is an item which this animal can be fed to breed
      * it (wheat, carrots or seeds depending on the animal type)
-     */
+     *//*
+
     @Override
     public boolean isBreedingItem(ItemStack stack) {
         return TEMPTATION_ITEMS.method_8093(stack);
@@ -149,9 +154,11 @@ public class EntityPenguin extends AnimalEntity {
         return super.getCurrentExperience(playerEntity_1);
     }
 
-    /**
+    */
+/**
      * (abstract) Protected helper method to read subclass entity data from NBT.
-     */
+     *//*
+
     public void readCustomDataFromTag(CompoundTag compound) {
         super.readCustomDataFromTag(compound);
         if (compound.hasUuid("EggLayTime")) {
@@ -159,23 +166,27 @@ public class EntityPenguin extends AnimalEntity {
         }
     }
 
-    /**
+    */
+/**
      * (abstract) Protected helper method to write subclass entity data to NBT.
-     */
+     *//*
+
     public void writeCustomDataToTag(CompoundTag compound) {
         super.writeCustomDataToTag(compound);
         compound.putInt("EggLayTime", this.timeUntilNextEgg);
     }
 
+
+
     @Override
-    public EntityData prepareEntityData(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
+    public EntityData initialize(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
         if (random.nextInt(8) == 0) {
-            if (entityData_1 instanceof EntityPenguin.GroupData) {
-                if (((EntityPenguin.GroupData) entityData_1).madeParent) {
+            if (entityData_1 instanceof GroupData) {
+                if (((GroupData) entityData_1).madeParent) {
                     this.setBreedingAge(-24000);
                 }
             } else {
-                EntityPenguin.GroupData entitypenguin$groupdata = new EntityPenguin.GroupData();
+                GroupData entitypenguin$groupdata = new GroupData();
                 entitypenguin$groupdata.madeParent = true;
                 entityData_1 = entitypenguin$groupdata;
             }
@@ -223,4 +234,4 @@ public class EntityPenguin extends AnimalEntity {
             super.stop();
         }
     }
-}
+}*/

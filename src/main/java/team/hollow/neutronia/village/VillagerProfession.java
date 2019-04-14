@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.village;
+package team.hollow.neutronia.village;/*
+package team.team.hollow.neutronia.village;
 
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;

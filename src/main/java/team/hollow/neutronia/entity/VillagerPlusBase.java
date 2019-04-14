@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.entity;
+package team.hollow.neutronia.entity;/*
+package team.team.hollow.neutronia.entity;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
@@ -57,13 +57,13 @@ import net.minecraft.village.*;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
-import team.hollow.neutronia.entity.ai.brain.NMemoryModuleType;
-import team.hollow.neutronia.entity.ai.brain.task.VillagerTaskListProvider;
-import team.hollow.neutronia.init.NTrackedDataHandlerRegistry;
-import team.hollow.neutronia.utils.registry.NRegistries;
-import team.hollow.neutronia.village.PointOfInterestType;
-import team.hollow.neutronia.village.VillagerPlusData;
-import team.hollow.neutronia.village.VillagerPlusProfession;
+import team.team.hollow.neutronia.entity.ai.brain.NMemoryModuleType;
+import team.team.hollow.neutronia.entity.ai.brain.task.VillagerTaskListProvider;
+import team.team.hollow.neutronia.init.NTrackedDataHandlerRegistry;
+import team.team.hollow.neutronia.utils.registry.NRegistries;
+import team.team.hollow.neutronia.village.PointOfInterestType;
+import team.team.hollow.neutronia.village.VillagerPlusData;
+import team.team.hollow.neutronia.village.VillagerPlusProfession;
 
 import java.io.IOException;
 import java.io.InputStream;

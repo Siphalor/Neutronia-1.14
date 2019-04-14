@@ -59,14 +59,14 @@ public class BlackBearEntity extends AnimalEntity {
     protected void initGoals() {
         super.initGoals();
         this.goalSelector.add(0, new SwimGoal(this));
-        this.goalSelector.add(1, new BlackBearEntity.AttackGoal());
-        this.goalSelector.add(1, new BlackBearEntity.BlackBearRevengeGoal());
+        this.goalSelector.add(1, new AttackGoal());
+        this.goalSelector.add(1, new BlackBearRevengeGoal());
         this.goalSelector.add(4, new FollowParentGoal(this, 1.25D));
         this.goalSelector.add(5, new WanderAroundGoal(this, 1.0D));
         this.goalSelector.add(6, new LookAtEntityGoal(this, PlayerEntity.class, 6.0F));
         this.goalSelector.add(7, new LookAroundGoal(this));
-        this.targetSelector.add(1, new BlackBearEntity.BlackBearRevengeGoal());
-        this.targetSelector.add(2, new BlackBearEntity.FollowPlayersGoal());
+        this.targetSelector.add(1, new BlackBearRevengeGoal());
+        this.targetSelector.add(2, new FollowPlayersGoal());
         this.targetSelector.add(3, new FollowTargetGoal<>(this, FoxEntity.class, 10, true, true, null));
     }
 
@@ -161,10 +161,10 @@ public class BlackBearEntity extends AnimalEntity {
     }
 
     public EntityData prepareEntityData(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
-        if (entityData_1 instanceof BlackBearEntity.class_1458) {
+        if (entityData_1 instanceof class_1458) {
             this.setBreedingAge(-24000);
         } else {
-            entityData_1 = new BlackBearEntity.class_1458();
+            entityData_1 = new class_1458();
         }
 
         return entityData_1;

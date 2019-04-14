@@ -66,7 +66,7 @@ class BasicNotebookElements {
                     if (line.isEmpty()) {
                         String paragraph = builder.toString();
                         if (!paragraph.isEmpty() || size > 0) {
-                            elements.add(new BasicNotebookElements.Paragraph(false, scale, 116, paragraph).withPadding(MinecraftClient.getInstance().textRenderer.fontHeight));
+                            elements.add(new Paragraph(false, scale, 116, paragraph).withPadding(MinecraftClient.getInstance().textRenderer.fontHeight));
                             builder = new StringBuilder();
                             size++;
                         }
@@ -81,7 +81,7 @@ class BasicNotebookElements {
 
             String last = builder.toString();
             if (!last.isEmpty()) {
-                elements.add(new BasicNotebookElements.Paragraph(false, scale, 116, last));
+                elements.add(new Paragraph(false, scale, 116, last));
             }
         }
         return elements;

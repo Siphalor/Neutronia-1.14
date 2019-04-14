@@ -10,8 +10,8 @@ import net.minecraft.item.ItemProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.village.TraderRecipe;
-import net.minecraft.village.Trades;
+import net.minecraft.village.TradeOffer;
+import net.minecraft.village.TradeOffers;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -94,7 +94,7 @@ class TradeBuilder {
         })));*/
     }
 
-    private static Int2ObjectMap<Trades.Factory[]> copyToFastUtilMap(ImmutableMap<Integer, Trades.Factory[]> immutableMap_1) {
+    private static Int2ObjectMap<TradeOffers.Factory[]> copyToFastUtilMap(ImmutableMap<Integer, TradeOffers.Factory[]> immutableMap_1) {
         return new Int2ObjectOpenHashMap<>(immutableMap_1);
     }
 
@@ -116,7 +116,7 @@ class TradeBuilder {
         }
     }
 
-    static class BuyItemFactory implements Trades.Factory {
+    static class BuyItemFactory implements TradeOffers.Factory {
 
         private final Item field_18548;
         private final int field_18549;
@@ -133,9 +133,9 @@ class TradeBuilder {
         }
 
         @Override
-        public TraderRecipe create(Entity var1, Random var2) {
+        public TradeOffer create(Entity var1, Random var2) {
             ItemStack itemStack_1 = new ItemStack(this.field_18548, this.field_18549);
-            return new TraderRecipe(itemStack_1, new ItemStack(Items.EMERALD), this.field_18550, this.field_18551, this.field_18552);
+            return new TradeOffer(itemStack_1, new ItemStack(Items.EMERALD), this.field_18550, this.field_18551, this.field_18552);
         }
 
 

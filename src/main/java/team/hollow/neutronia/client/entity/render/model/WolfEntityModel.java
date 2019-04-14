@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.client.entity.render.model;
 
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -136,3 +137,4 @@ public class WolfEntityModel<T extends ArcticWolfEntity> extends EntityModel<T> 
     }
 
 }
+*/

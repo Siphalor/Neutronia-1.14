@@ -368,21 +368,21 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_8444(PlayerEntity A, int B, BlockPos C, int D) {
+    public void playLevelEvent(PlayerEntity A, int B, BlockPos C, int D) {
         if (that != null) {
-            that.method_8444(A, B, C, D);
+            that.playLevelEvent(A, B, C, D);
         } else {
-            super.method_8444(A, B, C, D);
+            super.playLevelEvent(A, B, C, D);
         }
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_19282(BlockPos A, BlockState B, BlockState C) {
+    public void onBlockChanged(BlockPos A, BlockState B, BlockState C) {
         if (that != null) {
-            that.method_19282(A, B, C);
+            that.onBlockChanged(A, B, C);
         } else {
-            super.method_19282(A, B, C);
+            super.onBlockChanged(A, B, C);
         }
     }
 
@@ -1675,11 +1675,11 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18471() {
+    public void tickBlockEntities() {
         if (that != null) {
-            that.method_18471();
+            that.tickBlockEntities();
         } else {
-            super.method_18471();
+            super.tickBlockEntities();
         }
     }
 

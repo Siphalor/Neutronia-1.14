@@ -1,8 +1,8 @@
 package generators;
 
-public class JsonTemplates {
+class JsonTemplates {
 
-    public static final String STAIRS = "{\n" +
+    static final String STAIRS = "{\n" +
             "    \"variants\": {\n" +
             "        \"facing=east,half=bottom,shape=straight\":  { \"model\": \"modid:block/block_model\" },\n" +
             "        \"facing=west,half=bottom,shape=straight\":  { \"model\": \"modid:block/block_model\", \"y\": 180, \"uvlock\": true },\n" +

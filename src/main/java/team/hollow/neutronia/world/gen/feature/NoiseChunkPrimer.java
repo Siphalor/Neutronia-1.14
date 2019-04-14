@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.world.gen.feature;
+package team.hollow.neutronia.world.gen.feature;/*
+package team.team.hollow.neutronia.world.gen.feature;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;

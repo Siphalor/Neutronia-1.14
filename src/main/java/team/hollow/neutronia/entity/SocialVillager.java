@@ -61,7 +61,7 @@ public class SocialVillager extends PassiveEntity {
         this(NEntityTypes.SOCIAL_VILLAGER, world);
     }
 
-    private SocialVillager(EntityType<? extends net.minecraft.entity.passive.PassiveEntity> type, World world) {
+    private SocialVillager(EntityType<? extends PassiveEntity> type, World world) {
         super(type, world);
         ((MobNavigation) this.getNavigation()).setCanPathThroughDoors(true);
         this.setCanPickUpLoot(true);

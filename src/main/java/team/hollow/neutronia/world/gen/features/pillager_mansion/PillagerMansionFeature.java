@@ -62,7 +62,7 @@ public class PillagerMansionFeature extends AbstractTempleFeature<PillagerMansio
     }
 
     @Override
-    public StructureFeature.StructureStartFactory getStructureStartFactory() {
+    public StructureStartFactory getStructureStartFactory() {
         return Start::new;
     }
 

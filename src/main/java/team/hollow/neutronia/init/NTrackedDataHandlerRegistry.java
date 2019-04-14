@@ -1,11 +1,11 @@
-/*
-package team.hollow.neutronia.init;
+package team.hollow.neutronia.init;/*
+package team.team.hollow.neutronia.init;
 
 import net.minecraft.entity.data.TrackedDataHandler;
 import net.minecraft.util.PacketByteBuf;
 import net.minecraft.util.registry.Registry;
-import team.hollow.neutronia.utils.registry.NRegistries;
-import team.hollow.neutronia.village.VillagerPlusData;
+import team.team.hollow.neutronia.utils.registry.NRegistries;
+import team.team.hollow.neutronia.village.VillagerPlusData;
 
 public class NTrackedDataHandlerRegistry {
 

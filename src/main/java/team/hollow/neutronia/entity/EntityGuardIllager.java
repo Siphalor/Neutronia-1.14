@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.entity;
+package team.hollow.neutronia.entity;/*
+package team.team.hollow.neutronia.entity;
 
 import illager.guardillagers.GuardIllagers;
 import illager.guardillagers.init.IllagerEntityRegistry;

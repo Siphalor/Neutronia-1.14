@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity;
 
 import net.minecraft.entity.ai.goal.LookAroundGoal;
@@ -43,4 +44,4 @@ public class EntityGreatHunger extends MobEntityWithAi {
         return SoundEvents.ENTITY_SILVERFISH_DEATH;
     }
 
-}
+}*/

@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
 import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.resource.ResourceType;
-import team.hollow.neutronia.addon.ClientAddonLoader;
 import team.hollow.neutronia.api.groups.GroupLoader;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
@@ -31,15 +30,14 @@ public class ClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(GrizzlyBearEntity.class, (manager, context) -> new BrownBearEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(BlackBearEntity.class, (manager, context) -> new BlackBearEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(SocialVillager.class, (manager, context) -> new SocialVillagerRenderer(manager));
-        EntityRendererRegistry.INSTANCE.register(EntityOlDiggy.class, (manager, context) -> new RenderOlDiggy(manager));
+        /*EntityRendererRegistry.INSTANCE.register(EntityOlDiggy.class, (manager, context) -> new RenderOlDiggy(manager));
         EntityRendererRegistry.INSTANCE.register(EntityShadowPhantom.class, (manager, context) -> new RenderShadowPhantom(manager));
         EntityRendererRegistry.INSTANCE.register(EntityEnderPhantom.class, (manager, context) -> new RenderEnderPhantom(manager));
         EntityRendererRegistry.INSTANCE.register(EntityBloodPhantom.class, (manager, context) -> new RenderBloodPhantom(manager));
         EntityRendererRegistry.INSTANCE.register(ArcticWolfEntity.class, (manager, context) -> new ArcticWolfEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(EntityJungleFrog.class, (manager, context) -> new JungleFrogEntityRenderer(manager));
-        EntityRendererRegistry.INSTANCE.register(AxolotlEntity.class, (manager, context) -> new AxolotlEntityRenderer(manager));
+        EntityRendererRegistry.INSTANCE.register(AxolotlEntity.class, (manager, context) -> new AxolotlEntityRenderer(manager));*/
 
-        ClientAddonLoader.loadAddons();
         ResourceManagerHelper.get(ResourceType.DATA).registerReloadListener(NotebookRegistry.INSTANCE);
         ClientBookRegistry.INSTANCE.init();
         GroupLoader.clientInit();

@@ -33,7 +33,7 @@ public class NeutroniaSignBlock extends SignBlock {
     }
 
     public NeutroniaSignBlock() {
-        super(Block.Settings.of(Material.WOOD));
+        super(Settings.of(Material.WOOD));
         this.setDefaultState(this.stateFactory.getDefaultState().with(ROTATION, 0).with(WATERLOGGED, false));
     }
 

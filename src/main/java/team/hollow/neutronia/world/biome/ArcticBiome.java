@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.world.biome;
+package team.hollow.neutronia.world.biome;/*
+package team.team.hollow.neutronia.world.biome;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.state.IBlockState;

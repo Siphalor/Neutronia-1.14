@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.entity;
+package team.hollow.neutronia.entity;/*
+package team.team.hollow.neutronia.entity;
 
 import com.github.alexthe666.iceandfire.IceAndFire;
 import com.github.alexthe666.iceandfire.api.FoodUtils;

@@ -11,8 +11,8 @@ import net.minecraft.world.gen.feature.MineshaftFeatureConfig;
 
 public class AlpinesBiome extends Biome {
 
-    public AlpinesBiome(Biome.Settings settings) {
-        super(settings.precipitation(Biome.Precipitation.SNOW).waterColor(4159204).waterFogColor(329011).parent(null));
+    public AlpinesBiome(Settings settings) {
+        super(settings.precipitation(Precipitation.SNOW).waterColor(4159204).waterFogColor(329011).parent(null));
         this.addStructureFeature(Feature.MINESHAFT, new MineshaftFeatureConfig(0.004D, MineshaftFeature.Type.NORMAL));
         this.addStructureFeature(Feature.STRONGHOLD, FeatureConfig.DEFAULT);
         DefaultBiomeFeatures.addLandCarvers(this);

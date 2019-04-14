@@ -1,13 +1,10 @@
+/*
 package team.hollow.neutronia.client.entity.render.model.model;
 
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.EntityModel;
 import team.hollow.neutronia.entity.AxolotlEntity;
 
-/**
- * Axolotl - Undefined
- * Created using Tabula 7.0.0
- */
 public class ModelAxolotl<T extends AxolotlEntity> extends EntityModel<T> {
     public Cuboid Head;
     public Cuboid Fins;
@@ -80,12 +77,14 @@ public class ModelAxolotl<T extends AxolotlEntity> extends EntityModel<T> {
         this.TopHat1.render(f5);
     }
 
-    /**
+*
      * This is a helper function from Tabula to set the rotation of model parts
-     */
+
+
     public void setRotateAngle(Cuboid Cuboid, float x, float y, float z) {
         Cuboid.rotationPointX = x;
         Cuboid.rotationPointY = y;
         Cuboid.rotationPointZ = z;
     }
 }
+*/

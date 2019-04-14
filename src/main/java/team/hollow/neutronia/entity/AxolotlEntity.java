@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity;
 
 import net.minecraft.entity.mob.MobEntityWithAi;
@@ -11,3 +12,4 @@ public class AxolotlEntity extends MobEntityWithAi {
     }
 
 }
+*/

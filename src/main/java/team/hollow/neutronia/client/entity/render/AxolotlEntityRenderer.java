@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.client.entity.render;
 
 import net.fabricmc.api.EnvType;
@@ -21,4 +22,4 @@ public class AxolotlEntityRenderer extends MobEntityRenderer<AxolotlEntity, Mode
         return TEXTURE;
     }
 
-}
+}*/

@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity;
 
 import net.minecraft.entity.mob.MobEntity;
@@ -11,3 +12,4 @@ public class AlbadonEntity extends MobEntity {
     }
 
 }
+*/

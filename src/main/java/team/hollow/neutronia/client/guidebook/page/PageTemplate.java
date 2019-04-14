@@ -1,7 +1,7 @@
-/*
-package team.hollow.neutronia.client.guidebook.page;
+package team.hollow.neutronia.client.guidebook.page;/*
+package team.team.hollow.neutronia.client.guidebook.page;
 
-import team.hollow.neutronia.client.guidebook.BookPage;
+import team.team.hollow.neutronia.client.guidebook.BookPage;
 import vazkii.patchouli.api.ComponentProcessor;
 import vazkii.patchouli.client.book.BookEntry;
 import vazkii.patchouli.client.book.gui.GuiBookEntry;

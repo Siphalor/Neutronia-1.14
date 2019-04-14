@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.entity.ai.goal;
+package team.hollow.neutronia.entity.ai.goal;/*
+package team.team.hollow.neutronia.entity.ai.goal;
 
 import com.github.alexthe666.iceandfire.entity.DragonUtils;
 import com.github.alexthe666.iceandfire.entity.EntityDragonBase;

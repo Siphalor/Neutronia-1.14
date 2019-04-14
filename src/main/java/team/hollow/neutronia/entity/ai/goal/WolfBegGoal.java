@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.entity.ai.goal;
 
 import net.minecraft.entity.ai.TargetPredicate;
@@ -24,7 +25,7 @@ public class WolfBegGoal extends Goal {
         this.world = wolfEntity_1.world;
         this.chance = float_1;
         this.field_18085 = (new TargetPredicate()).setBaseMaxDistance((double) float_1).includeInvulnerable().includeTeammates().ignoreEntityTargetRules();
-        this.setControls(EnumSet.of(Goal.Control.LOOK));
+        this.setControls(EnumSet.of(Control.LOOK));
     }
 
     public boolean canStart() {
@@ -74,3 +75,4 @@ public class WolfBegGoal extends Goal {
         return false;
     }
 }
+*/

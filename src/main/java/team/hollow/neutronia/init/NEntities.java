@@ -1,5 +1,5 @@
-/*
-package team.hollow.neutronia.init;
+package team.hollow.neutronia.init;/*
+package team.team.hollow.neutronia.init;
 
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
