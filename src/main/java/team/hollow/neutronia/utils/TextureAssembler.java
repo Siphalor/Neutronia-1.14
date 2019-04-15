@@ -21,14 +21,14 @@ public class TextureAssembler {
     private String gender;
     private String profession;
 
-    private String PROFESSION_LOCATION = "textures/entity/npcs/profession";
-    private String FEMALE_LOCATION = "textures/entity/npcs/female";
-    private String MALE_LOCATION = "textures/entity/npcs/male";
+    private String SOCIAL_VILLAGER_LOCATION = "textures/entity/social_villagers";
+    private String PROFESSION_LOCATION = SOCIAL_VILLAGER_LOCATION + "/profession";
+    private String FEMALE_LOCATION = SOCIAL_VILLAGER_LOCATION + "/female";
+    private String MALE_LOCATION = SOCIAL_VILLAGER_LOCATION + "/male";
 
     //Outfits
     private Identifier outfit1Female = new Identifier(Neutronia.MOD_ID, FEMALE_LOCATION + "/clothes/outfit1.png");
     private Identifier outfit1Male = new Identifier(Neutronia.MOD_ID, MALE_LOCATION + "/clothes/outfit1.png");
-    private Identifier outfit1Genderless = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/genderless/clothes/outfit1.png");
 
     //Skin
     private Identifier lightSkinMale = new Identifier(Neutronia.MOD_ID, MALE_LOCATION + "/skin/light.png");
@@ -39,13 +39,13 @@ public class TextureAssembler {
     private Identifier darkSkinFemale = new Identifier(Neutronia.MOD_ID, FEMALE_LOCATION + "/skin/dark.png");
 
     //Eyes
-    private Identifier blackEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/black.png");
-    private Identifier blueEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/blue.png");
-    private Identifier brownEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/brown.png");
-    private Identifier greenEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/green.png");
-    private Identifier limeEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/lime.png");
-    private Identifier pinkEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/pink.png");
-    private Identifier yellowEyes = new Identifier(Neutronia.MOD_ID, "textures/entity/npcs/eyes/yellow.png");
+    private Identifier blackEyes = new Identifier(Neutronia.MOD_ID, SOCIAL_VILLAGER_LOCATION + "/eyes/black.png");
+    private Identifier blueEyes = new Identifier(Neutronia.MOD_ID, SOCIAL_VILLAGER_LOCATION + "/eyes/blue.png");
+    private Identifier brownEyes = new Identifier(Neutronia.MOD_ID, SOCIAL_VILLAGER_LOCATION + "/eyes/brown.png");
+    private Identifier greenEyes = new Identifier(Neutronia.MOD_ID, SOCIAL_VILLAGER_LOCATION + "/eyes/green.png");
+    private Identifier limeEyes = new Identifier(Neutronia.MOD_ID, SOCIAL_VILLAGER_LOCATION + "/eyes/lime.png");
+    private Identifier pinkEyes = new Identifier(Neutronia.MOD_ID, SOCIAL_VILLAGER_LOCATION + "/eyes/pink.png");
+    private Identifier yellowEyes = new Identifier(Neutronia.MOD_ID, SOCIAL_VILLAGER_LOCATION + "/eyes/yellow.png");
 
     //Hair male
     private Identifier blackHairMale = new Identifier(Neutronia.MOD_ID, MALE_LOCATION + "/hair/black1.png");
@@ -91,6 +91,19 @@ public class TextureAssembler {
     private Identifier femaleLibrarian1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/librarian1.png");
     private Identifier femaleButcher1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/butcher1.png");
     private Identifier femaleFarmer1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/farmer1.png");
+    private Identifier femaleBlackmith1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/blacksmith1.png");
+    private Identifier femaleWarrior1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/female/warrior1.png");
+
+    private Identifier maleBaker1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/baker1.png");
+    private Identifier maleMiner1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/miner1.png");
+    private Identifier maleMiner2 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/miner2.png");
+    private Identifier maleGuard1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/guard1.png");
+    private Identifier malePriest1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/priest1.png");
+    private Identifier maleLibrarian1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/librarian1.png");
+    private Identifier maleButcher1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/butcher1.png");
+    private Identifier maleFarmer1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/farmer1.png");
+    private Identifier maleBlackmith1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/blacksmith1.png");
+    private Identifier maleWarrior1 = new Identifier(Neutronia.MOD_ID, PROFESSION_LOCATION + "/male/warrior1.png");
 
     public TextureAssembler(String eyeColor, String hairColor, String skinColor, Integer hairstyle, String gender, String profession) {
         this.eyeColor = eyeColor;
@@ -112,9 +125,6 @@ public class TextureAssembler {
         try {
             InputStream inputstream;
             if (gender.equals("Male")) {
-                inputstream = MinecraftClient.getInstance().getResourceManager().getResource(femaleBaker1).getInputStream();
-                professionImage = ImageIO.read(inputstream);
-                inputstream.close();
                 inputstream = MinecraftClient.getInstance().getResourceManager().getResource(outfit1Male).getInputStream();
                 outfitImage = ImageIO.read(inputstream);
                 inputstream.close();
@@ -130,6 +140,37 @@ public class TextureAssembler {
                         break;
                 }
                 skinImage = ImageIO.read(inputstream);
+                inputstream.close();
+                switch (this.profession) {
+                    case "Baker":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleBaker1).getInputStream();
+                        break;
+                    case "Miner":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleMiner1).getInputStream();
+                        break;
+                    case "Guard":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleGuard1).getInputStream();
+                        break;
+                    case "Butcher":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleButcher1).getInputStream();
+                        break;
+                    case "Librarian":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleLibrarian1).getInputStream();
+                        break;
+                    case "Priest":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(malePriest1).getInputStream();
+                        break;
+                    case "Farmer":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleFarmer1).getInputStream();
+                        break;
+                    case "Blacksmith":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleBlackmith1).getInputStream();
+                        break;
+                    case "Warrior":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(maleWarrior1).getInputStream();
+                        break;
+                }
+                professionImage = ImageIO.read(inputstream);
                 inputstream.close();
                 switch (hairColor) {
                     case "Black":
@@ -241,6 +282,12 @@ public class TextureAssembler {
                         break;
                     case "Farmer":
                         inputstream = MinecraftClient.getInstance().getResourceManager().getResource(femaleFarmer1).getInputStream();
+                        break;
+                    case "Blacksmith":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(femaleBlackmith1).getInputStream();
+                        break;
+                    case "Warrior":
+                        inputstream = MinecraftClient.getInstance().getResourceManager().getResource(femaleWarrior1).getInputStream();
                         break;
                 }
                 professionImage = ImageIO.read(inputstream);

@@ -178,7 +178,7 @@ public class SocialVillager extends PassiveEntity {
 
     private void setupProfession() {
         String[] professionList = {"Lumberjack", "Farmer", "Architect", "Tradesman", "Merchant", "Blacksmith", "Enchanter", "Druid", "Butcher",
-                "Librarian", "Weaponsmith", "Nomad", "Baker", "Priest", "Miner", "Guard"};
+                "Librarian", "Nomad", "Baker", "Priest", "Miner", "Guard"};
         this.profession = professionList[getRand().nextInt(professionList.length)];
     }
 

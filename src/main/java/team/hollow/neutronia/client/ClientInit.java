@@ -3,20 +3,18 @@ package team.hollow.neutronia.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
-import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
-import net.minecraft.resource.ResourceType;
-import team.hollow.neutronia.api.groups.GroupLoader;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
-import team.hollow.neutronia.client.entity.render.*;
-import team.hollow.neutronia.client.guidebook.ClientBookRegistry;
+import team.hollow.neutronia.client.entity.render.BlackBearEntityRenderer;
+import team.hollow.neutronia.client.entity.render.BrownBearEntityRenderer;
+import team.hollow.neutronia.client.entity.render.SocialVillagerRenderer;
+import team.hollow.neutronia.client.entity.render.VillagerEntityRenderer;
 import team.hollow.neutronia.client.renderer.SignBlockEntityRenderer;
 import team.hollow.neutronia.client.renderer.StoneChestBlockEntityRenderer;
-import team.hollow.neutronia.entity.*;
+import team.hollow.neutronia.entity.SocialVillager;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
 import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
-import team.hollow.neutronia.notebook.NotebookRegistry;
 
 public class ClientInit implements ClientModInitializer {
 
@@ -37,9 +35,5 @@ public class ClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(ArcticWolfEntity.class, (manager, context) -> new ArcticWolfEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(EntityJungleFrog.class, (manager, context) -> new JungleFrogEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(AxolotlEntity.class, (manager, context) -> new AxolotlEntityRenderer(manager));*/
-
-        ResourceManagerHelper.get(ResourceType.DATA).registerReloadListener(NotebookRegistry.INSTANCE);
-        ClientBookRegistry.INSTANCE.init();
-        GroupLoader.clientInit();
     }
 }

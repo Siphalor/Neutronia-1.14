@@ -32,7 +32,7 @@ public class RegistryUtils {
     }
 
     public static Block registerScaffolding(Block block, String name) {
-        Registry.register(Registry.BLOCK, name, block);
+        Registry.register(Registry.BLOCK, new Identifier(Neutronia.MOD_ID, name), block);
         Registry.register(Registry.ITEM, name, new ScaffoldingItem(block, new Item.Settings().itemGroup(ItemGroup.DECORATIONS)));
         return block;
     }

@@ -51,7 +51,6 @@ public class ConfigManager {
 
             try {
                 JsonObject json = jankson.load(file);
-                String cleaned = json.toJson(false, true); //remove comments
 
                 T result = jankson.fromJson(json, clazz);
 

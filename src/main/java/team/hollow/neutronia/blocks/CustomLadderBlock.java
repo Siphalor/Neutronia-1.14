@@ -21,4 +21,5 @@ public class CustomLadderBlock extends LadderBlock implements Climbable {
     public boolean canClimb(LivingEntity entity, BlockState state, BlockPos pos) {
         return true;
     }
+
 }
