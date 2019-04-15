@@ -25,7 +25,7 @@ public class NBlocks {
 
     public static final Block[] BOOKSHELVES = new Block[9], BOOKSHELF_BLOCKS = new Block[WoodType.values().length], PATTERNED_PLANKS = new Block[WoodType.VANILLA_WOODS.size()],
             WOOD = new Block[WoodType.VANILLA_WOODS.size()], CARVED_PLANKS = new Block[WoodType.values().length], BARRELS = new Block[WoodType.VANILLA_WOODS.size()], WOOD_LANTERNS = new Block[WoodType.values().length],
-            LADDERS = new Block[LadderVariants.values().length], LOG_CAMPFIRE = new Block[WoodType.VANILLA_WOODS.size()], STRIPPED_LOG_CAMPFIRE = new Block[WoodType.values().length],
+            LADDERS = new Block[LadderVariants.values().length], LOG_CAMPFIRE = new Block[WoodType.values().length], STRIPPED_LOG_CAMPFIRE = new Block[WoodType.values().length],
             STRIPPED_LOGS = new Block[WoodType.values().length], STRIPPED_WOOD = new Block[WoodType.values().length], LECTERNS = new Block[WoodType.VANILLA_WOODS.size()]/*,
             WOODEN_SCAFFOLDING = new Block[WoodType.VANILLA_WOODS.size()]*/;
 //    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
@@ -179,6 +179,8 @@ public class NBlocks {
         for (WoodType woodType : WoodType.MODDED_WOODS) {
             if (woodType == WoodType.PALM) continue;
             if (woodType == WoodType.BAMBOO) continue;
+            LOG_CAMPFIRE[woodType.getIndex()] = RegistryUtils.register(new CampfireBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F)
+                    .sounds(BlockSoundGroup.WOOD).lightLevel(15).ticksRandomly().build()), new Identifier(Neutronia.MOD_ID, String.format("%s_campfire", woodType.asString())));
             BOOKSHELF_BLOCKS[woodType.getIndex()] = RegistryUtils.register(new Block(Block.Settings.of(Material.WOOD)), String.format("%s_bookshelf", woodType.asString()), ItemGroup.BUILDING_BLOCKS);
         }
         /*MANGROVE_BOOKSHELF = new NeutroniaBaseBlock(Material.WOOD, "mangrove_bookshelf");

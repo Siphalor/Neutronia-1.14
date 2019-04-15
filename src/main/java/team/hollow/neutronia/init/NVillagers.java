@@ -17,7 +17,8 @@ public class NVillagers implements VillagerType {
     public static final VillagerProfession ENCHANTER;
     public static final VillagerProfession WIZARD;*/
 
-    public static final VillagerType MUSHROOM;
+    public static final VillagerType RED_MUSHROOM;
+    public static final VillagerType BROWN_MUSHROOM;
     public static final VillagerType MOUNTAINS;
     public static final VillagerType COLD_MOUNTAINS;
     public static final VillagerType BADLANDS;
@@ -38,7 +39,8 @@ public class NVillagers implements VillagerType {
         WIZARD = team.team.hollow.neutronia.village.VillagerProfession.register("wizard");*/
         TradeBuilder.createRecipes();
 
-        MUSHROOM = team.hollow.neutronia.village.VillagerType.register("mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
+        RED_MUSHROOM = team.hollow.neutronia.village.VillagerType.register("red_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
+        BROWN_MUSHROOM = team.hollow.neutronia.village.VillagerType.register("brown_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
         MOUNTAINS = team.hollow.neutronia.village.VillagerType.register("mountains", Biomes.MOUNTAINS, Biomes.MOUNTAIN_EDGE, Biomes.WOODED_MOUNTAINS);
         COLD_MOUNTAINS = team.hollow.neutronia.village.VillagerType.register("cold_mountains", Biomes.SNOWY_MOUNTAINS, Biomes.SNOWY_TAIGA_MOUNTAINS);
         BADLANDS = team.hollow.neutronia.village.VillagerType.register("badlands", Biomes.BADLANDS, Biomes.BADLANDS_PLATEAU, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS_PLATEAU);

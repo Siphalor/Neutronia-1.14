@@ -1,7 +1,7 @@
 {
   "type": "minecraft:smelting",
   "ingredient": {
-    "item": "minecraft:stone_brick"
+    "item": "minecraft:stone_bricks"
   },
   "result": "neutronia:smooth_stone_brick",
   "experience": 0.1,

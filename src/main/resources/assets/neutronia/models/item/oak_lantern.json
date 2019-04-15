@@ -1,7 +1,7 @@
 {
   "parent": "block/cube_column",
   "textures": {
-    "end": "neutronia:block/oak_lantern_top",
-    "side": "neutronia:block/oak_lantern"
+    "end": "neutronia:block/oak_paper_lantern_top",
+    "side": "neutronia:block/oak_paper_lantern"
   }
 }

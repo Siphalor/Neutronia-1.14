@@ -2,8 +2,6 @@
   "replace": false,
   "values": [
     "minecraft:jukebox",
-    "minecraft:noteblock",
-    "neutronia:music_box",
-    "neutronia:music_creator"
+    "minecraft:note_block"
   ]
 }

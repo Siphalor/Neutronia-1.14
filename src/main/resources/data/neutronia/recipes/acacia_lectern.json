@@ -8,13 +8,13 @@
 	],
 	"key": {
 		"S": {
-			"item": "minecraft:birch_slab"
+			"item": "minecraft:acacia_slab"
 		},
 		"B": {
 			"item": "neutronia:acacia_bookshelf"
 		},
 		"W": {
-			"item": "minecraft:purple_wool"
+			"item": "minecraft:yellow_wool"
 		}
 	},
 	"result": {

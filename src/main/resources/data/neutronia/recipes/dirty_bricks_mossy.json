@@ -3,13 +3,13 @@
   "group": "mossy",
   "ingredients": [
     {
-      "item": "neutronia:dirty_bricks_bricks"
+      "item": "neutronia:dirty_bricks"
     },
     {
       "item": "minecraft:vine"
     }
   ],
   "result": {
-    "item": "neutronia:mossy_dirty_bricks_bricks"
+    "item": "neutronia:mossy_dirty_bricks"
   }
 }

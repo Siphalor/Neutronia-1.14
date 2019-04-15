@@ -8,7 +8,7 @@
     ],
     "key": {
         "#": {
-            "item": "minecraft:chiseled_quartz"
+            "item": "minecraft:chiseled_quartz_block"
         },
         "L": {
             "item": "minecraft:lava_bucket"
