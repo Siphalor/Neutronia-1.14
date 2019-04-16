@@ -14,7 +14,6 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 //Q: BUT KLASS FORGE/FABRIC/RIFT/WHATEVER HAS THESE EVENTS WHY ARE YOU WRAPPING THEM FOR NO REASON
@@ -139,34 +138,32 @@ public class EventCore {
     {
         static HashMap<String, EventSubscriptionObject> eventMap = new HashMap<String, EventSubscriptionObject>();
         ArrayList<EventSubscriber> eventSubscribers = new ArrayList<EventSubscriber>();
-        String eventName = "";
+        String eventName;
 
         EventSubscriptionObject(String event) {
             eventName = event;
             eventMap.put(eventName, this);
         }
 
-        static public EventSubscriptionObject getEvent(String eventn) {
+        static EventSubscriptionObject getEvent(String eventn) {
             EventSubscriptionObject revent = eventMap.get(eventn);
             if (revent == null) revent = new EventSubscriptionObject(eventn);
             return revent;
         }
 
         @SuppressWarnings({"rawtypes", "unchecked"})
-        static public void removeSubscriberFromEvents(Object obj) {
-            Iterator it = eventMap.entrySet().iterator();
-            while (it.hasNext()) {
-                Map.Entry<String, EventSubscriptionObject> pair = (Map.Entry) it.next();
-                pair.getValue().removeSubscriber(obj);
+        static void removeSubscriberFromEvents(Object obj) {
+            for (Map.Entry<String, EventSubscriptionObject> stringEventSubscriptionObjectEntry : eventMap.entrySet()) {
+                stringEventSubscriptionObjectEntry.getValue().removeSubscriber(obj);
             }
         }
 
-        public void addSubscriber(EventSubscriber s) {
+        void addSubscriber(EventSubscriber s) {
             eventSubscribers.add(s);
         }
 
         @SuppressWarnings("unchecked")
-        public void removeSubscriber(Object obj) {
+        void removeSubscriber(Object obj) {
             ArrayList<EventSubscriber> tmp;
             tmp = (ArrayList<EventSubscriber>) eventSubscribers.clone();
             for (EventSubscriber s : tmp) {
@@ -179,17 +176,10 @@ public class EventCore {
         //because fuck it, support all the arguments, you can do it, when you java, you can do anything, just do it, you can do anything
         //screams loudly if arguments are wrong because that lets the poor bastard subscribing know he fucked up k
         public void invoke(Object... arg) {
-            for (int i = 0; i < eventSubscribers.size(); i++) {
-                EventSubscriber s = eventSubscribers.get(i);
+            for (EventSubscriber s : eventSubscribers) {
                 try {
                     s.method.invoke(s.object, arg);
-                } catch (IllegalAccessException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (IllegalArgumentException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
+                } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
                 }

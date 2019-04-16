@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "neutronia",
-  "version": "0.0.4",
+  "id": "neutronia_building",
+  "version": "0.0.1",
 
-  "name": "Neutronia",
+  "name": "Neutronia Building",
   "description": "Neutronia is a mod that aims to expand upon the vanilla style, including much more variety to all dimensions. The surface, underground, nether and end have upgraded worldgen, more biomes and structures.",
   "authors": [
     "OliviaTheVampire",
@@ -21,18 +21,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "team.hollow.neutronia.Neutronia",
-      "team.hollow.test.ExampleMod"
-    ],
-    "client": [
-      "team.hollow.neutronia.client.ClientInit",
-      "team.hollow.neutronia.client.NeutroniaLeavesColors",
-      "team.hollow.neutronia.client.NCInitializer"
+      "team.hollow.neutronia_building.NeutroniaBuilding"
     ]
   },
-  "mixins": [
-    "neutronia.mixins.json"
-  ],
+  "mixins": [],
 
   "requires": {
     "fabricloader": ">=0.4.0",

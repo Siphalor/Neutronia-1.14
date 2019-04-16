@@ -2,7 +2,6 @@
   "variants": {
     "axis=y":  { "model": "neutronia:block/chorus_bundle" },
     "axis=z":   { "model": "neutronia:block/chorus_bundle", "x": 90 },
-    "axis=x":   { "model": "neutronia:block/chorus_bundle", "x": 90, "y": 90 },
-    "inventory": { "model": "neutronia:item/chorus_bundle" }
+    "axis=x":   { "model": "neutronia:block/chorus_bundle", "x": 90, "y": 90 }
   }
 }

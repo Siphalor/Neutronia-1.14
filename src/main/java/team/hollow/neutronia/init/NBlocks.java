@@ -443,10 +443,10 @@ public class NBlocks {
         SMOOTH_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "smooth_dark_prismarine");
         SMOOTH_OBSIDIAN = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "smooth_obsidian");
         SMOOTH_PURPUR_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_purpur", 1.5F, 10.0F);
-        SMOOTH_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_nether_brick", 2.0F, 10.0F);
-        SMOOTH_RED_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_red_nether_brick", 1.5F, 10.0F);
+        SMOOTH_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_nether_bricks", 2.0F, 10.0F);
+        SMOOTH_RED_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_red_nether_bricks", 1.5F, 10.0F);
         SMOOTH_STONE = new NeutroniaBaseBlock(Material.STONE, "polished_stone", 1.5F, 10.0F);
-        SMOOTH_STONE_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_stone_brick", 1.5F, 10.0F);
+        SMOOTH_STONE_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_stone_bricks", 1.5F, 10.0F);
 
         DIAMOND_BRICKS = new NeutroniaBaseBlock(Material.METAL, "diamond_bricks", 3.0F, 10.0F);
         EMERALD_BRICKS = new NeutroniaBaseBlock(Material.METAL, "emerald_bricks", 3.0F, 10.0F);
@@ -467,7 +467,7 @@ public class NBlocks {
         BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "brick_tile");
         SMALL_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_brick_tile");
         CHISELED_BRICK = new NeutroniaBaseBlock(Material.STONE, "chiseled_bricks");
-        BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "bricks_pillar", 2.0F, 10.0F);
+        BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "brick_pillar", 2.0F, 10.0F);
         SMOOTH_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_bricks", 2.0F, 10.0F);
 
         SQUARED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "squared_sandy_bricks");
@@ -480,7 +480,7 @@ public class NBlocks {
         SANDY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "sandy_brick_path");
         SANDY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "sandy_brick_tile");
         SMALL_SANDY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_sandy_brick_tile");
-        SANDY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandy_bricks_pillar", 2.0F, 10.0F);
+        SANDY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandy_brick_pillar", 2.0F, 10.0F);
         SMOOTH_SANDY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_sandy_bricks", 2.0F, 10.0F);
 
         SQUARED_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "squared_dirty_bricks");
@@ -493,7 +493,7 @@ public class NBlocks {
         DIRTY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "dirty_brick_path");
         DIRTY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "dirty_brick_tile");
         SMALL_DIRTY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_dirty_brick_tile");
-        DIRTY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "dirty_bricks_pillar", 2.0F, 10.0F);
+        DIRTY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "dirty_brick_pillar", 2.0F, 10.0F);
         SMOOTH_DIRTY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_dirty_bricks", 2.0F, 10.0F);
 
         CHECKERED_TILE = new NeutroniaBaseBlock(Material.STONE, "checkered_tiles");
@@ -523,11 +523,11 @@ public class NBlocks {
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
         BlockRegistryBuilder.getInstance("diorite", Blocks.DIORITE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("stone_bricks", Blocks.STONE_BRICKS)
+        BlockRegistryBuilder.getInstance("stone_brick", Blocks.STONE_BRICKS)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("cracked_stone_bricks", Blocks.CRACKED_STONE_BRICKS)
+        BlockRegistryBuilder.getInstance("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("mossy_stone_bricks", Blocks.MOSSY_STONE_BRICKS)
+        BlockRegistryBuilder.getInstance("mossy_stone_brick", Blocks.MOSSY_STONE_BRICKS)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
         BlockRegistryBuilder.getInstance("cobblestone", Blocks.COBBLESTONE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
@@ -547,14 +547,14 @@ public class NBlocks {
         POLISHED_DARK_ANDESITE = new NeutroniaBaseBlock(Material.STONE, "polished_dark_andesite");
 
         ANDESITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "andesite_bricks");
-        BlockRegisteringUtils.addSlabAndStair("andesite_bricks", ANDESITE_BRICKS);
-        BlockRegisteringUtils.addWalls("andesite_bricks", ANDESITE_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("andesite_brick", ANDESITE_BRICKS);
+        BlockRegisteringUtils.addWalls("andesite_brick", ANDESITE_BRICKS);
         DIORITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "diorite_bricks");
-        BlockRegisteringUtils.addSlabAndStair("diorite_bricks", DIORITE_BRICKS);
-        BlockRegisteringUtils.addWalls("diorite_bricks", DIORITE_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("diorite_brick", DIORITE_BRICKS);
+        BlockRegisteringUtils.addWalls("diorite_brick", DIORITE_BRICKS);
         GRANITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "granite_bricks");
-        BlockRegisteringUtils.addSlabAndStair("granite_bricks", GRANITE_BRICKS);
-        BlockRegisteringUtils.addWalls("granite_bricks", GRANITE_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("granite_brick", GRANITE_BRICKS);
+        BlockRegisteringUtils.addWalls("granite_brick", GRANITE_BRICKS);
 
         MUD = new MudBlock();
         MUD_BRICKS = new MudBlock("mud_bricks");
@@ -562,8 +562,8 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("dried_mud", DRIED_MUD);
         BlockRegisteringUtils.addWalls("dried_mud", DRIED_MUD);
         DRIED_MUD_BRICKS = new NeutroniaBaseBlock(Material.ORGANIC, "dried_mud_bricks");
-        BlockRegisteringUtils.addSlabAndStair("dried_mud_bricks", DRIED_MUD_BRICKS);
-        BlockRegisteringUtils.addWalls("dried_mud_bricks", DRIED_MUD_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("dried_mud_brick", DRIED_MUD_BRICKS);
+        BlockRegisteringUtils.addWalls("dried_mud_brick", DRIED_MUD_BRICKS);
 
         PACKED_ICE_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_bricks");
 //        BlockRegisteringUtils.addSlabAndStair("ice_bricks", PACKED_ICE_BRICKS);
@@ -610,8 +610,8 @@ public class NBlocks {
         BlockRegisteringUtils.addWalls("polished_dark_andesite", POLISHED_DARK_ANDESITE);
         BlockRegisteringUtils.addWalls("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
-        BlockRegisteringUtils.addWalls("smooth_endstone_bricks", SMOOTH_END_BRICK);
-        BlockRegisteringUtils.addWalls("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS);
+        BlockRegisteringUtils.addWalls("smooth_endstone_brick", SMOOTH_END_BRICK);
+        BlockRegisteringUtils.addWalls("smooth_prismarine_brick", SMOOTH_PRISMARINE_BRICKS);
         BlockRegisteringUtils.addWalls("smooth_prismarine", SMOOTH_PRISMARINE);
         BlockRegisteringUtils.addWalls("smooth_brick", SMOOTH_BRICK);
         BlockRegisteringUtils.addWalls("smooth_purpur", SMOOTH_PURPUR_BRICK);
@@ -628,8 +628,8 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("polished_dark_andesite", POLISHED_DARK_ANDESITE);
         BlockRegisteringUtils.addSlabAndStair("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
-        BlockRegisteringUtils.addSlabAndStair("smooth_endstone_bricks", SMOOTH_END_BRICK);
-        BlockRegisteringUtils.addSlabAndStair("smooth_prismarine_bricks", SMOOTH_PRISMARINE_BRICKS);
+        BlockRegisteringUtils.addSlabAndStair("smooth_endstone_brick", SMOOTH_END_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_prismarine_brick", SMOOTH_PRISMARINE_BRICKS);
         BlockRegisteringUtils.addSlabAndStair("smooth_prismarine", SMOOTH_PRISMARINE);
         BlockRegisteringUtils.addSlabAndStair("smooth_brick", SMOOTH_BRICK);
         BlockRegisteringUtils.addSlabAndStair("smooth_purpur", SMOOTH_PURPUR_BRICK);
@@ -657,20 +657,20 @@ public class NBlocks {
         BlockRegistryBuilder.getInstance("natural_acidian", ACIDIAN)
                 .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_BRICKS = new NeutroniaBaseBlock(Material.STONE, "acidian_bricks");
-        BlockRegistryBuilder.getInstance("acidian_bricks", ACIDIAN_BRICKS)
+        BlockRegistryBuilder.getInstance("acidian_brick", ACIDIAN_BRICKS)
                 .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_PILLAR = new NeutroniaPillarBlock(Material.STONE, "acidian_pillar");
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
 //        ACIDIAN_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.GLASS, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(Neutronia.MOD_ID, "acidian_bars"));
 
         STICK_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "stick_bundle");
-        CHORUS_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP), "chorus_bundle");
+        CHORUS_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP), "chorus_fruit_bundle");
         SUGAR_CANE_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP), "sugar_cane_bundle");
         BAMBOO_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.BAMBOO).sounds(BlockSoundGroup.BAMBOO), "bamboo_bundle");
         CACTUS_BUNDLE = new CactusBundleBlock();
 
         NETHER_WART_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "nether_wart_sack");
-        COCOA_BEAN_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "cocoa_bean_sack");
+        COCOA_BEAN_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "cocoa_beans_sack");
         GUNPOWDER_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "gunpowder_sack");
 
         EGG_CRATE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "egg_crate");

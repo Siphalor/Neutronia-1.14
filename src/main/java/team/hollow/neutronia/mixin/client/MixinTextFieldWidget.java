@@ -16,18 +16,15 @@ public class MixinTextFieldWidget implements TextFieldWidgetHooks {
     @Final
     private int width;
 
-    public MixinTextFieldWidget() {
-    }
-
-    public void clothconfig_setY(int y) {
+    public void neutronia_setY(int y) {
         this.y = y;
     }
 
-    public int clothconfig_getWidth() {
+    public int neutronia_getWidth() {
         return this.width;
     }
 
-    public void clothconfig_setWidth(int width) {
+    public void neutronia_setWidth(int width) {
         this.width = width;
     }
 }
