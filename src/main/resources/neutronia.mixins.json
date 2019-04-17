@@ -4,8 +4,10 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "item.MixinBookOnLectern",
-    "world.VillageGeneratorMixin",
     "commands.LocateCommandMixin",
+    "entity.VillagerEntityMixin",
+    "entity.ZombieVillagerEntityMixin",
+    "world.VillageGeneratorMixin",
     "world.AddHillsLayerMixin"
   ],
   "client": [

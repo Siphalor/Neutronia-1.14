@@ -2,6 +2,7 @@ package team.hollow.neutronia.init;
 
 import net.minecraft.village.VillagerType;
 import net.minecraft.world.biome.Biomes;
+import team.hollow.neutronia.village.VillagerTypeRegistry;
 
 public class NVillagers implements VillagerType {
 
@@ -39,13 +40,13 @@ public class NVillagers implements VillagerType {
         WIZARD = team.team.hollow.neutronia.village.VillagerProfession.register("wizard");*/
         TradeBuilder.createRecipes();
 
-        RED_MUSHROOM = team.hollow.neutronia.village.VillagerType.register("red_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
-        BROWN_MUSHROOM = team.hollow.neutronia.village.VillagerType.register("brown_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
-        MOUNTAINS = team.hollow.neutronia.village.VillagerType.register("mountains", Biomes.MOUNTAINS, Biomes.MOUNTAIN_EDGE, Biomes.WOODED_MOUNTAINS);
-        COLD_MOUNTAINS = team.hollow.neutronia.village.VillagerType.register("cold_mountains", Biomes.SNOWY_MOUNTAINS, Biomes.SNOWY_TAIGA_MOUNTAINS);
-        BADLANDS = team.hollow.neutronia.village.VillagerType.register("badlands", Biomes.BADLANDS, Biomes.BADLANDS_PLATEAU, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS_PLATEAU);
-        ICE_SPIKES = team.hollow.neutronia.village.VillagerType.register("ice_spikes", Biomes.ICE_SPIKES);
-        OCEAN = team.hollow.neutronia.village.VillagerType.register("ocean", Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN);
+        RED_MUSHROOM = VillagerTypeRegistry.register("red_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
+        BROWN_MUSHROOM = VillagerTypeRegistry.register("brown_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
+        MOUNTAINS = VillagerTypeRegistry.register("mountains", Biomes.MOUNTAINS, Biomes.MOUNTAIN_EDGE, Biomes.WOODED_MOUNTAINS);
+        COLD_MOUNTAINS = VillagerTypeRegistry.register("cold_mountains", Biomes.SNOWY_MOUNTAINS, Biomes.SNOWY_TAIGA_MOUNTAINS);
+        BADLANDS = VillagerTypeRegistry.register("badlands", Biomes.BADLANDS, Biomes.BADLANDS_PLATEAU, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS_PLATEAU);
+        ICE_SPIKES = VillagerTypeRegistry.register("ice_spikes", Biomes.ICE_SPIKES);
+        OCEAN = VillagerTypeRegistry.register("ocean", Biomes.COLD_OCEAN, Biomes.DEEP_COLD_OCEAN, Biomes.LUKEWARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN, Biomes.WARM_OCEAN, Biomes.DEEP_LUKEWARM_OCEAN);
     }
 
 }
