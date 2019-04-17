@@ -60,7 +60,6 @@ public class ServerWorldRedirectManager {
         try {
             tempDir = Files.createTempDirectory("autosteve_fakeserver");
         } catch (IOException e1) {
-            // TODO Auto-generated catch block
             e1.printStackTrace();
         }
 
@@ -201,7 +200,6 @@ public class ServerWorldRedirectManager {
                     }
                 });
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
             tempDir = null;

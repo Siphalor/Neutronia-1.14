@@ -1,9 +1,7 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
 	wrapper
 	idea
-	id("fabric-loom") version Constants.fabricLoomVersion
+	id("fabric-loom") version Fabric.Loom.version
 	id("maven-publish")
 	kotlin("jvm") version "1.3.21"
 }
@@ -49,23 +47,13 @@ allprojects {
 		modCompile(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
 		compileOnly(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
 
-		modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = "+")
+		modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
 		
-		modCompile(group = "cloth_config", name = "ClothConfig", version = "+")
-		include(group = "cloth_config", name = "ClothConfig", version = "+")
-
-		modCompile(project(":neutronia_building"))
-		include(project(":neutronia_building"))
-
-		modCompile(group = "cloth", name = "ClothEvents", version = "+")
-
-		include("blue.endless:jankson:${Constants.jaksonVersion}")
-		implementation("blue.endless:jankson:${Constants.jaksonVersion}")
+		include(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
+		implementation(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
 
 		modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
-		compileOnly(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
 		include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
-		implementation(kotlin("stdlib-jdk8"))
     }
 }
 
@@ -77,13 +65,4 @@ tasks.getByName<ProcessResources>("processResources") {
 				)
 		)
 	}
-}
-
-val compileKotlin: KotlinCompile by tasks
-compileKotlin.kotlinOptions {
-	jvmTarget = "1.8"
-}
-val compileTestKotlin: KotlinCompile by tasks
-compileTestKotlin.kotlinOptions {
-	jvmTarget = "1.8"
 }

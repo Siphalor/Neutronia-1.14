@@ -30,7 +30,7 @@ public abstract class TextFieldListEntry<T> extends ClothConfigScreen.ListEntry 
         super(fieldName);
         this.defaultValue = defaultValue;
         this.original = original;
-        this.textFieldWidget = new TextFieldWidget(MinecraftClient.getInstance().textRenderer, 0, 0, 148, 18);
+        this.textFieldWidget = new TextFieldWidget(MinecraftClient.getInstance().textRenderer, 0, 0, 148, 18, String.valueOf(defaultValue.get()));
         this.textFieldWidget.setMaxLength(999999);
         this.textFieldWidget.setText(String.valueOf(original));
         this.textFieldWidget.setChangedListener((s) -> {
@@ -38,10 +38,6 @@ public abstract class TextFieldListEntry<T> extends ClothConfigScreen.ListEntry 
                 this.getScreen().setEdited(true);
             }
 
-        });
-        this.resetButton = new ButtonWidget(0, 0, MinecraftClient.getInstance().textRenderer.getStringWidth(I18n.translate(resetButtonKey)) + 6, 20, I18n.translate(resetButtonKey), (widget) -> {
-            this.textFieldWidget.setText(String.valueOf(defaultValue.get()));
-            this.getScreen().setEdited(true);
         });
         this.widgets = Lists.newArrayList(new Element[]{this.textFieldWidget, this.resetButton});
     }

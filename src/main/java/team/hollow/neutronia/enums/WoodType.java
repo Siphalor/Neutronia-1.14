@@ -28,7 +28,7 @@ public enum WoodType implements StringRepresentable {
     WILLOW(17, "willow");
 
     public static final Set<WoodType> VANILLA_WOODS = new HashSet<>(Arrays.asList(OAK, SPRUCE, BIRCH, JUNGLE, ACACIA, DARK_OAK));
-    public static final Set<WoodType> MODDED_WOODS = new HashSet<>(Arrays.asList(PALM, BAMBOO, MANGROVE, RED_MANGROVE, BAOBAB, WENGE, PURPLEHEART, LACEWOOD, CHERRY, BOLIVIAN_ROSEWOOD, GABON_EBONY));
+    public static final Set<WoodType> MODDED_WOODS = new HashSet<>(Arrays.asList(PALM, BAMBOO, MANGROVE, RED_MANGROVE, BAOBAB, WENGE, PURPLEHEART, LACEWOOD, CHERRY, BOLIVIAN_ROSEWOOD, GABON_EBONY, WILLOW));
 
     private final int index;
     private final String name;

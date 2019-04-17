@@ -146,9 +146,9 @@ public class ServerWorldRedirectBoilerplateGenerator {
         }
 
 
-        String impstr = "";
-        for (int i = 0; i < imports.size(); i++) {
-            impstr += "\nimport " + imports.get(i) + ";";
+        StringBuilder impstr = new StringBuilder();
+        for (String anImport : imports) {
+            impstr.append("\nimport ").append(anImport).append(";");
         }
         ServerWorldRedirect = impstr + "\n\n\n" + ServerWorldRedirect;
         BufferedWriter writer;
@@ -158,7 +158,6 @@ public class ServerWorldRedirectBoilerplateGenerator {
             writer.write(ServerWorldRedirect);
             writer.close();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         System.out.println("generatred");

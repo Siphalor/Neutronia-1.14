@@ -41,7 +41,6 @@ import net.minecraft.world.chunk.WorldChunk;
 import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.dimension.DimensionType;
 import net.minecraft.world.explosion.Explosion;
-import net.minecraft.world.gen.Heightmap.Type;
 import net.minecraft.world.level.LevelGeneratorType;
 import net.minecraft.world.level.LevelInfo;
 import net.minecraft.world.level.LevelProperties;
@@ -62,7 +61,6 @@ public class ServerWorldRedirect extends ServerWorld {
                                Profiler profiler_1, WorldGenerationProgressListener worldGenerationProgressListener_1) {
         super(minecraftServer_1, executor_1, worldSaveHandler_1, levelProperties_1, dimensionType_1, profiler_1,
                 worldGenerationProgressListener_1);
-        // TODO Auto-generated constructor stub
     }
 
     public void syncFields() {
@@ -340,7 +338,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public void method_18767(Entity A) {
+    public void checkChunk(Entity A) {
     }
 
 	/*
@@ -555,7 +553,7 @@ public class ServerWorldRedirect extends ServerWorld {
     @Override
     public void saveLevel() {
         try {
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
     }
 
@@ -881,7 +879,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public int getTop(Type A, int B, int C) {
+    public int getTop(Heightmap.Type A, int B, int C) {
         if (that != null) {
             return that.getTop(A, B, C);
         } else {
@@ -1501,7 +1499,7 @@ public class ServerWorldRedirect extends ServerWorld {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    public BlockPos getTopPosition(Type A, BlockPos B) {
+    public BlockPos getTopPosition(Heightmap.Type A, BlockPos B) {
         if (that != null) {
             return that.getTopPosition(A, B);
         } else {

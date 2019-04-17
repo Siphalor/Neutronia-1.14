@@ -1,11 +1,7 @@
 package team.hollow.neutronia.utils.registry;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.block.BlockItem;
-import net.minecraft.item.block.ScaffoldingItem;
-import net.minecraft.item.block.WallStandingBlockItem;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.Neutronia;

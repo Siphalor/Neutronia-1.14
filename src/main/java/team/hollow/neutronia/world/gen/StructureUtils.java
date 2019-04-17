@@ -3,11 +3,11 @@ package team.hollow.neutronia.world.gen;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
-import net.minecraft.sortme.rule.AlwaysTrueRuleTest;
-import net.minecraft.sortme.rule.RandomBlockMatchRuleTest;
-import net.minecraft.sortme.rule.RandomBlockStateMatchRuleTest;
 import net.minecraft.state.property.Property;
 import net.minecraft.structure.processor.StructureProcessorRule;
+import net.minecraft.structure.rule.AlwaysTrueRuleTest;
+import net.minecraft.structure.rule.RandomBlockMatchRuleTest;
+import net.minecraft.structure.rule.RandomBlockStateMatchRuleTest;
 
 import java.util.ArrayList;
 import java.util.List;

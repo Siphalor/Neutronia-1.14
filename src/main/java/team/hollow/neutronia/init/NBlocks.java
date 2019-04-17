@@ -388,6 +388,7 @@ public class NBlocks {
         for (WoodType woodType : WoodType.values()) {
             if (woodType == WoodType.BAMBOO) continue;
             if (woodType == WoodType.CHERRY) continue;
+            if (woodType == WoodType.WILLOW) continue;
             WOOD_LANTERNS[woodType.getIndex()] = new WoodenLanternBlock(woodType);
         }
 
@@ -402,34 +403,25 @@ public class NBlocks {
         }*/
 
         CHISELED_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "chiseled_prismarine");
-        BlockRegisteringUtils.addSlabAndStair("chiseled_prismarine", CHISELED_PRISMARINE);
-        BlockRegisteringUtils.addWalls("chiseled_prismarine", CHISELED_PRISMARINE);
+        BlockRegistryBuilder.getInstance("chiseled_prismarine", CHISELED_PRISMARINE).slab().stair().wall();
         CHISELED_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "chiseled_prismarine_bricks");
-        BlockRegisteringUtils.addSlabAndStair("chiseled_prismarine_bricks", CHISELED_PRISMARINE_BRICKS);
-        BlockRegisteringUtils.addWalls("chiseled_prismarine_bricks", CHISELED_PRISMARINE_BRICKS);
+        BlockRegistryBuilder.getInstance("chiseled_prismarine_bricks", CHISELED_PRISMARINE_BRICKS).slab().stair().wall();
         CHISELED_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "chiseled_dark_prismarine");
-        BlockRegisteringUtils.addSlabAndStair("chiseled_dark_prismarine", CHISELED_DARK_PRISMARINE);
-        BlockRegisteringUtils.addWalls("chiseled_dark_prismarine", CHISELED_DARK_PRISMARINE);
+        BlockRegistryBuilder.getInstance("chiseled_dark_prismarine", CHISELED_DARK_PRISMARINE).slab().stair().wall();
 
         CUT_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "cut_prismarine");
-        BlockRegisteringUtils.addSlabAndStair("cut_prismarine", CUT_PRISMARINE);
-        BlockRegisteringUtils.addWalls("cut_prismarine", CUT_PRISMARINE);
+        BlockRegistryBuilder.getInstance("cut_prismarine", CUT_PRISMARINE).slab().stair().wall();
         CUT_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "cut_prismarine_bricks");
-        BlockRegisteringUtils.addSlabAndStair("cut_prismarine_bricks", CUT_PRISMARINE_BRICKS);
-        BlockRegisteringUtils.addWalls("cut_prismarine_bricks", CUT_PRISMARINE_BRICKS);
+        BlockRegistryBuilder.getInstance("cut_prismarine_bricks", CUT_PRISMARINE_BRICKS).slab().stair().wall();
         CUT_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "cut_dark_prismarine");
-        BlockRegisteringUtils.addSlabAndStair("cut_dark_prismarine", CUT_DARK_PRISMARINE);
-        BlockRegisteringUtils.addWalls("cut_dark_prismarine", CUT_DARK_PRISMARINE);
+        BlockRegistryBuilder.getInstance("cut_dark_prismarine", CUT_DARK_PRISMARINE).slab().stair().wall();
 
         ENGRAVED_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "engraved_prismarine");
-        BlockRegisteringUtils.addSlabAndStair("engraved_prismarine", ENGRAVED_PRISMARINE);
-        BlockRegisteringUtils.addWalls("engraved_prismarine", ENGRAVED_PRISMARINE);
+        BlockRegistryBuilder.getInstance("engraved_prismarine", ENGRAVED_PRISMARINE).slab().stair().wall();
         ENGRAVED_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "engraved_prismarine_bricks");
-        BlockRegisteringUtils.addSlabAndStair("engraved_prismarine_bricks", ENGRAVED_PRISMARINE_BRICKS);
-        BlockRegisteringUtils.addWalls("engraved_prismarine_bricks", ENGRAVED_PRISMARINE_BRICKS);
+        BlockRegistryBuilder.getInstance("engraved_prismarine_bricks", ENGRAVED_PRISMARINE_BRICKS).slab().stair().wall();
         ENGRAVED_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "engraved_dark_prismarine");
-        BlockRegisteringUtils.addSlabAndStair("engraved_dark_prismarine", ENGRAVED_DARK_PRISMARINE);
-        BlockRegisteringUtils.addWalls("engraved_dark_prismarine", ENGRAVED_DARK_PRISMARINE);
+        BlockRegistryBuilder.getInstance("engraved_dark_prismarine", ENGRAVED_DARK_PRISMARINE).slab().stair().wall();
 
         OBSIDIAN_BRICKS = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "obsidian_bricks");
         OBSIDIAN_COBBLE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "obsidian_cobble");
@@ -511,11 +503,11 @@ public class NBlocks {
         SMALL_OBSIDIAN_TILES = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "small_obsidian_tiles");
         OBSIDIAN_TILES = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "obsidian_tiles");
 
-        BlockRegisteringUtils.addSlabAndStair("stone_tile", STONE_TILE);
-        BlockRegisteringUtils.addSlabAndStair("andesite_tile", ANDESITE_TILE);
-        BlockRegisteringUtils.addSlabAndStair("diorite_tile", DIORITE_TILE);
-        BlockRegisteringUtils.addSlabAndStair("granite_tile", GRANITE_TILE);
-        BlockRegisteringUtils.addSlabAndStair("stone_brick_tile", STONE_BRICK_TILE);
+        BlockRegistryBuilder.getInstance("stone_tile", STONE_TILE).slab().stair();
+        BlockRegistryBuilder.getInstance("andesite_tile", ANDESITE_TILE).slab().stair();
+        BlockRegistryBuilder.getInstance("diorite_tile", DIORITE_TILE).slab().stair();
+        BlockRegistryBuilder.getInstance("granite_tile", GRANITE_TILE).slab().stair();
+        BlockRegistryBuilder.getInstance("stone_brick_tile", STONE_BRICK_TILE).slab().stair();
 
         BlockRegistryBuilder.getInstance("andesite", Blocks.ANDESITE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
@@ -547,23 +539,18 @@ public class NBlocks {
         POLISHED_DARK_ANDESITE = new NeutroniaBaseBlock(Material.STONE, "polished_dark_andesite");
 
         ANDESITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "andesite_bricks");
-        BlockRegisteringUtils.addSlabAndStair("andesite_brick", ANDESITE_BRICKS);
-        BlockRegisteringUtils.addWalls("andesite_brick", ANDESITE_BRICKS);
+        BlockRegistryBuilder.getInstance("andesite_brick", ANDESITE_BRICKS).slab().stair().wall();
         DIORITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "diorite_bricks");
-        BlockRegisteringUtils.addSlabAndStair("diorite_brick", DIORITE_BRICKS);
-        BlockRegisteringUtils.addWalls("diorite_brick", DIORITE_BRICKS);
+        BlockRegistryBuilder.getInstance("diorite_brick", DIORITE_BRICKS).slab().stair().wall();
         GRANITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "granite_bricks");
-        BlockRegisteringUtils.addSlabAndStair("granite_brick", GRANITE_BRICKS);
-        BlockRegisteringUtils.addWalls("granite_brick", GRANITE_BRICKS);
+        BlockRegistryBuilder.getInstance("granite_brick", GRANITE_BRICKS).slab().stair().wall();
 
         MUD = new MudBlock();
         MUD_BRICKS = new MudBlock("mud_bricks");
         DRIED_MUD = new NeutroniaBaseBlock(Material.ORGANIC, "dried_mud");
-        BlockRegisteringUtils.addSlabAndStair("dried_mud", DRIED_MUD);
-        BlockRegisteringUtils.addWalls("dried_mud", DRIED_MUD);
+        BlockRegistryBuilder.getInstance("dried_mud", DRIED_MUD).slab().stair().wall();
         DRIED_MUD_BRICKS = new NeutroniaBaseBlock(Material.ORGANIC, "dried_mud_bricks");
-        BlockRegisteringUtils.addSlabAndStair("dried_mud_brick", DRIED_MUD_BRICKS);
-        BlockRegisteringUtils.addWalls("dried_mud_brick", DRIED_MUD_BRICKS);
+        BlockRegistryBuilder.getInstance("dried_mud_brick", DRIED_MUD_BRICKS).slab().stair().wall();
 
         PACKED_ICE_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_bricks");
 //        BlockRegisteringUtils.addSlabAndStair("ice_bricks", PACKED_ICE_BRICKS);
@@ -602,8 +589,7 @@ public class NBlocks {
 
         for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
             SOUL_STONE[soulStoneTypes.getIndex()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
-            BlockRegisteringUtils.addSlabAndStair(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]);
-            BlockRegisteringUtils.addWalls(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]);
+            BlockRegistryBuilder.getInstance(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]).slab().stair().wall();
         }
 
         BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE);

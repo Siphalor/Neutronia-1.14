@@ -71,14 +71,15 @@ public class RedstoneLanternBlock extends LanternBlock {
         return this.getDefaultState().with(FACING, itemPlacementContext_1.getFacing()).with(LIT, itemPlacementContext_1.getWorld().isReceivingRedstonePower(itemPlacementContext_1.getBlockPos())).with(HANGING, itemPlacementContext_1.getFacing() == Direction.UP);
     }
 
-    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2) {
+    @Override
+    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2, boolean boolean_1) {
         if (!world_1.isClient) {
-            boolean boolean_1 = blockState_1.get(LIT);
-            if (boolean_1 != world_1.isReceivingRedstonePower(blockPos_1)) {
-                if (boolean_1) {
+            boolean lit = blockState_1.get(LIT);
+            if (lit != world_1.isReceivingRedstonePower(blockPos_1)) {
+                if (lit) {
                     world_1.getBlockTickScheduler().schedule(blockPos_1, this, 4);
                 } else {
-                    world_1.setBlockState(blockPos_1, blockState_1.method_11572(LIT), 2);
+                    world_1.setBlockState(blockPos_1, blockState_1.cycle(LIT), 2);
                 }
             }
 
@@ -88,7 +89,7 @@ public class RedstoneLanternBlock extends LanternBlock {
     public void onScheduledTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {
         if (!world_1.isClient) {
             if (blockState_1.get(LIT) && !world_1.isReceivingRedstonePower(blockPos_1)) {
-                world_1.setBlockState(blockPos_1, blockState_1.method_11572(LIT), 2);
+                world_1.setBlockState(blockPos_1, blockState_1.cycle(LIT), 2);
             }
 
         }

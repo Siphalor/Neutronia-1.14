@@ -8,5 +8,8 @@ pluginManagement {
     }
 }
 
-
-include("neutronia_building")
+include("questing_villagers")
+include("Villages_&_Villagers")
+include("Endecorations")
+include("Decorations")
+include("Questing_Villagers")

@@ -13,15 +13,18 @@ object Jetbrains {
         const val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
         const val coroutinesJdk8 = "org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:$coroutinesVersion"
     }
+    object Jakson {
+        const val version = "1.1.0"
+    }
 }
 
 object Fabric {
     object Loader {
-        const val version = "0.4.1+build.122" // https://maven.fabricmc.net/net/fabricmc/fabric-loader/
+        const val version = "0.4.1+build.126" // https://maven.fabricmc.net/net/fabricmc/fabric-loader/
     }
 
     object API {
-        const val version = "0.2.7+build.122"
+        const val version = "0.2.7+build"
     }
 
     object Loom {
@@ -36,6 +39,21 @@ object Fabric {
     }
 }
 
+object Dependencies {
+    object ClothEvents {
+        const val version = "0.3.1.23"
+    }
+
+    object ClothConfig {
+        const val version = "0.1.2.6"
+    }
+
+    object ModMenu {
+        const val version = "1.3.5-67"
+    }
+
+}
+
 object Minecraft {
-    const val version = "1.14 Pre-Release 2"
+    const val version = "1.14 Pre-Release 4"
 }

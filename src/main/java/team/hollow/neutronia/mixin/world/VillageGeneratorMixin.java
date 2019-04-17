@@ -2,7 +2,7 @@ package team.hollow.neutronia.mixin.world;
 
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructurePiece;
-import net.minecraft.structure.generator.village.VillageGenerator;
+import net.minecraft.structure.VillageGenerator;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;

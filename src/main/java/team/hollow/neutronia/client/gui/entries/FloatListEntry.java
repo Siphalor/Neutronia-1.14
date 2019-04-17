@@ -6,14 +6,15 @@
 package team.hollow.neutronia.client.gui.entries;
 
 import com.google.common.collect.Lists;
-import java.util.Optional;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Supplier;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.resource.language.I18n;
+
+import java.util.Optional;
+import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class FloatListEntry extends TextFieldListEntry<Float> {
     private static Function<String, String> stripCharacters = (s) -> {
@@ -41,9 +42,9 @@ public class FloatListEntry extends TextFieldListEntry<Float> {
         super(fieldName, value, resetButtonKey, defaultValue);
         this.minimum = -3.4028235E38F;
         this.maximum = 3.4028235E38F;
-        this.textFieldWidget = new TextFieldWidget(MinecraftClient.getInstance().textRenderer, 0, 0, 148, 18) {
+        this.textFieldWidget = new TextFieldWidget(MinecraftClient.getInstance().textRenderer, 0, 0, 148, 18, String.valueOf(defaultValue.get())) {
             public void addText(String string_1) {
-                super.addText((String)FloatListEntry.stripCharacters.apply(string_1));
+                super.addText(FloatListEntry.stripCharacters.apply(string_1));
             }
 
             public void render(int int_1, int int_2, float float_1) {
@@ -64,7 +65,7 @@ public class FloatListEntry extends TextFieldListEntry<Float> {
         this.textFieldWidget.setText(String.valueOf(value));
         this.textFieldWidget.setMaxLength(999999);
         this.textFieldWidget.setChangedListener((s) -> {
-            if (!((Float)this.original).equals(s)) {
+            if (!this.original.equals(s)) {
                 this.getScreen().setEdited(true);
             }
 
@@ -74,7 +75,7 @@ public class FloatListEntry extends TextFieldListEntry<Float> {
     }
 
     protected boolean isMatchDefault(String text) {
-        return this.getDefaultValue().isPresent() ? text.equals((this.defaultValue.get()).toString()) : false;
+        return this.getDefaultValue().isPresent() && text.equals((this.defaultValue.get()).toString());
     }
 
     public FloatListEntry setMinimum(float minimum) {
@@ -106,14 +107,14 @@ public class FloatListEntry extends TextFieldListEntry<Float> {
         try {
             float i = Float.valueOf(this.textFieldWidget.getText());
             if (i > this.maximum) {
-                return Optional.of(I18n.translate("text.cloth-config.error.too_large", new Object[]{this.maximum}));
+                return Optional.of(I18n.translate("text.cloth-config.error.too_large", this.maximum));
             }
 
             if (i < this.minimum) {
-                return Optional.of(I18n.translate("text.cloth-config.error.too_small", new Object[]{this.minimum}));
+                return Optional.of(I18n.translate("text.cloth-config.error.too_small", this.minimum));
             }
         } catch (NumberFormatException var2) {
-            return Optional.of(I18n.translate("text.cloth-config.error.not_valid_number_float", new Object[0]));
+            return Optional.of(I18n.translate("text.cloth-config.error.not_valid_number_float"));
         }
 
         return super.getError();

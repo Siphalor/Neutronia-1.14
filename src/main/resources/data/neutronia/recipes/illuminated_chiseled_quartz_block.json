@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+	"group": "illuminated",
+    "pattern": [
+        "###",
+        "#L#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:chiseled_quartz_block"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        }
+    },
+    "result": {
+		"item": "neutronia:illuminated_chiseled_quartz_block",
+		"count": 8
+	}
+    
+}

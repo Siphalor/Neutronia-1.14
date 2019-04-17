@@ -26,8 +26,7 @@
     ],
     "client": [
       "team.hollow.neutronia.client.ClientInit",
-      "team.hollow.neutronia.client.NeutroniaLeavesColors",
-      "team.hollow.neutronia.client.NCInitializer"
+      "team.hollow.neutronia.client.NeutroniaLeavesColors"
     ]
   },
   "mixins": [

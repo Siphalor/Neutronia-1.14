@@ -180,7 +180,6 @@ public class EventCore {
                 try {
                     s.method.invoke(s.object, arg);
                 } catch (IllegalAccessException | IllegalArgumentException | InvocationTargetException e) {
-                    // TODO Auto-generated catch block
                     e.printStackTrace();
                 }
             }

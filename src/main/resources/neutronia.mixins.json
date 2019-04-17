@@ -16,7 +16,6 @@
     "client.progress.MixinMinecraftClient",
     "client.progress.MixinModelLoader",
     "client.progress.MixinSpriteAtlasTexture",
-    "client.MixinTextFieldWidget",
     "client.VillagerResemblingModelMixin"
   ],
   "injectors": {

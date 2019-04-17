@@ -1,7 +1,7 @@
 package team.hollow.neutronia.init;
 
+import net.minecraft.structure.PillagerOutpostGenerator;
 import net.minecraft.structure.StructurePieceType;
-import net.minecraft.structure.generator.PillagerOutpostGenerator;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 

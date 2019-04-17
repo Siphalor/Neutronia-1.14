@@ -1,8 +1,8 @@
 package team.hollow.neutronia.mixin.client.progress;
 
 import net.minecraft.client.render.model.BakedModel;
+import net.minecraft.client.render.model.ModelBakeSettings;
 import net.minecraft.client.render.model.ModelLoader;
-import net.minecraft.client.render.model.ModelRotationContainer;
 import net.minecraft.client.util.ModelIdentifier;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Mixin;
@@ -25,13 +25,13 @@ public abstract class MixinModelLoader {
         LoadingProgressImpl.INSTANCE.popTask();
     }
 
-    @Inject(method = "bake(Lnet/minecraft/util/Identifier;Lnet/minecraft/client/render/model/ModelRotationContainer;)Lnet/minecraft/client/render/model/BakedModel;", at = @At("HEAD"))
-    private void onModelBakeStart(Identifier identifier_1, ModelRotationContainer modelRotationContainer_1, CallbackInfoReturnable<BakedModel> cir) {
+    @Inject(method = "bake(Lnet/minecraft/util/Identifier;Lnet/minecraft/client/render/model/ModelBakeSettings;)Lnet/minecraft/client/render/model/BakedModel;", at = @At("HEAD"))
+    private void onModelBakeStart(Identifier identifier_1, ModelBakeSettings modelRotationContainer_1, CallbackInfoReturnable<BakedModel> cir) {
         LoadingProgressImpl.INSTANCE.pushTask().withTaskName(String.format("Baking model '%s'", identifier_1.toString()));
     }
 
-    @Inject(method = "bake(Lnet/minecraft/util/Identifier;Lnet/minecraft/client/render/model/ModelRotationContainer;)Lnet/minecraft/client/render/model/BakedModel;", at = @At("RETURN"))
-    private void onModelBakeEnd(Identifier identifier_1, ModelRotationContainer modelRotationContainer_1, CallbackInfoReturnable<BakedModel> cir) {
+    @Inject(method = "bake(Lnet/minecraft/util/Identifier;Lnet/minecraft/client/render/model/ModelBakeSettings;)Lnet/minecraft/client/render/model/BakedModel;", at = @At("RETURN"))
+    private void onModelBakeEnd(Identifier identifier_1, ModelBakeSettings modelRotationContainer_1, CallbackInfoReturnable<BakedModel> cir) {
         LoadingProgressImpl.INSTANCE.popTask();
     }
 
