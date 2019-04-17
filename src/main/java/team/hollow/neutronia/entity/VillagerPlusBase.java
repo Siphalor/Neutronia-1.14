@@ -96,10 +96,10 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
     private long lastRestock;
 
     public VillagerPlusBase(EntityType<? extends AbstractTraderEntity> entityType_1, World world_1) {
-        this(entityType_1, world_1, VillagerType.PLAINS);
+        this(entityType_1, world_1, VillagerTypeRegistry.PLAINS);
     }
 
-    public VillagerPlusBase(EntityType<? extends AbstractTraderEntity> type, World world, VillagerType villagerType) {
+    public VillagerPlusBase(EntityType<? extends AbstractTraderEntity> type, World world, VillagerTypeRegistry villagerType) {
         super(type, world);
         this.field_18532 = Long.MIN_VALUE;
         this.gossip = new VillagerGossips();
@@ -286,7 +286,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
     protected void initDataTracker() {
         super.initDataTracker();
         this.dataTracker.startTracking(genderUnified, gender);
-        this.dataTracker.startTracking(VILLAGER_PLUS_DATA, new VillagerPlusData(VillagerType.PLAINS, VillagerPlusProfession.NONE, 1, "Male"));
+        this.dataTracker.startTracking(VILLAGER_PLUS_DATA, new VillagerPlusData(VillagerTypeRegistry.PLAINS, VillagerPlusProfession.NONE, 1, "Male"));
     }
 
     @Override
@@ -520,11 +520,11 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
         }
 
         if (spawnType_1 == SpawnType.COMMAND || spawnType_1 == SpawnType.SPAWN_EGG || spawnType_1 == SpawnType.SPAWNER) {
-            this.setVillagerData(this.getVillagerData().withType(VillagerType.forBiome(iWorld_1.getBiome(new BlockPos(this)))));
+            this.setVillagerData(this.getVillagerData().withType(VillagerTypeRegistry.forBiome(iWorld_1.getBiome(new BlockPos(this)))));
         }
 
         if(spawnType_1 == SpawnType.NATURAL) {
-            this.setVillagerData(this.getVillagerData().withType(VillagerType.forBiome(iWorld_1.getBiome(new BlockPos(this)))));
+            this.setVillagerData(this.getVillagerData().withType(VillagerTypeRegistry.forBiome(iWorld_1.getBiome(new BlockPos(this)))));
         }
 
         return super.prepareEntityData(iWorld_1, localDifficulty_1, spawnType_1, entityData_1, compoundTag_1);
@@ -532,9 +532,9 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
 
     public VillagerPlusBase createChild(PassiveEntity passiveEntity_1) {
         double double_1 = this.random.nextDouble();
-        VillagerType villagerType_3;
+        VillagerTypeRegistry villagerType_3;
         if (double_1 < 0.5D) {
-            villagerType_3 = VillagerType.forBiome(this.world.getBiome(new BlockPos(this)));
+            villagerType_3 = VillagerTypeRegistry.forBiome(this.world.getBiome(new BlockPos(this)));
         } else if (double_1 < 0.75D) {
             villagerType_3 = this.getVillagerData().getType();
         } else {
