@@ -7,7 +7,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.village.PointOfInterestType;
 import team.hollow.neutronia.event_system.Reflect;
 
-import javax.annotation.Nullable;
 import java.util.Set;
 
 public class PointOfInterestTypeCustom {
@@ -15,10 +14,9 @@ public class PointOfInterestTypeCustom {
     String id;
     Set<BlockState> workStationStates;
     int ticketCount;
-    @Nullable
     SoundEvent sound;
 
-    public PointOfInterestTypeCustom(String id, Set<BlockState> workStationStates, int ticketCount, @Nullable SoundEvent sound) {
+    public PointOfInterestTypeCustom(String id, Set<BlockState> workStationStates, int ticketCount, SoundEvent sound) {
         this.id = id;
         this.workStationStates = workStationStates;
         this.ticketCount = ticketCount;

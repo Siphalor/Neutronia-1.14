@@ -28,7 +28,9 @@ public class Neutronia implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        testConfig = ConfigManager.loadConfig(TestConfig.class);
+        // TODO: Fix this
+        //testConfig = ConfigManager.loadConfig(TestConfig.class);
+        testConfig = new TestConfig();
         new NBlocks();
         new NLightBlocks();
         new NItems();

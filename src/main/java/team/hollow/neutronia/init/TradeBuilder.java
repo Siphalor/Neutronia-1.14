@@ -1,10 +1,14 @@
 package team.hollow.neutronia.init;
 
 import com.google.common.collect.ImmutableMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectArrayMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectMaps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.passive.AbstractTraderEntity;
+import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemProvider;
 import net.minecraft.item.ItemStack;
@@ -12,9 +16,16 @@ import net.minecraft.item.Items;
 import net.minecraft.tag.BlockTags;
 import net.minecraft.village.TradeOffer;
 import net.minecraft.village.TradeOffers;
+import net.minecraft.village.VillagerProfession;
+import net.minecraft.village.VillagerType;
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import team.hollow.neutronia.village.ConditionalTradeFactory;
+import team.hollow.neutronia.village.VillagerTypeRegistry;
 
+import java.util.Arrays;
+import java.util.Map;
 import java.util.Random;
 
 class TradeBuilder {
@@ -39,7 +50,7 @@ class TradeBuilder {
             CARPETS = new BuyItemFactory(item, 18, 22, 2);
         }
 
-        /*Trades.PROFESSION_TO_LEVELED_TRADE.put(ARTIST, copyToFastUtilMap(ImmutableMap.of(1, new Trades.Factory[]{
+        TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(NVillagers.ARTIST, copyToFastUtilMap(ImmutableMap.of(1, new TradeOffers.Factory[]{
                 new BuyItemFactory(new ItemStack(Items.RED_DYE).getItem(), 18, 22, 2),
                 new BuyItemFactory(new ItemStack(Items.GREEN_DYE).getItem(), 18, 22, 2),
                 new BuyItemFactory(new ItemStack(Items.PURPLE_DYE).getItem(), 18, 22, 2),
@@ -59,11 +70,15 @@ class TradeBuilder {
                 WOOL, BANNERS, BEDS, CARPETS
         })));
 
-        Trades.PROFESSION_TO_LEVELED_TRADE.put(RECEPTIONIST, copyToFastUtilMap(ImmutableMap.of(1, new Trades.Factory[]{
-                new BuyItemFactory(Items.BOOK, 18, 22, 2)
-        })));
+        TradeOffers.PROFESSION_TO_LEVELED_TRADE.get(VillagerProfession.FISHERMAN).merge(1, new TradeOffers.Factory[]{
+            new TypeAwareBuyItemFactory(ImmutableMap.of(VillagerType.SNOW, Items.SNOW, VillagerType.DESERT, Items.BONE), 10, 22, 2)
+        }, ArrayUtils::addAll);
 
-        Trades.PROFESSION_TO_LEVELED_TRADE.put(CARPENTER, copyToFastUtilMap(ImmutableMap.of(1, new Trades.Factory[]{
+        /*TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(NVillagers.RECEPTIONIST, copyToFastUtilMap(ImmutableMap.of(1, new TradeOffers.Factory[]{
+                new BuyItemFactory(Items.BOOK, 18, 22, 2)
+        })));*/
+
+        /*TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(CARPENTER, copyToFastUtilMap(ImmutableMap.of(1, new TradeOffers.Factory[]{
                 new BuyItemFactory(Blocks.ACACIA_PLANKS, 18, 22, 2),
                 new BuyItemFactory(Blocks.BIRCH_PLANKS, 18, 22, 2),
                 new BuyItemFactory(Blocks.DARK_OAK_PLANKS, 18, 22, 2),
@@ -117,27 +132,50 @@ class TradeBuilder {
     }
 
     static class BuyItemFactory implements TradeOffers.Factory {
+        private final Item item;
+        private final int price;
+        private final int maxUses;
+        private final int experience;
+        private final float multiplier;
 
-        private final Item field_18548;
-        private final int field_18549;
-        private final int field_18550;
-        private final int field_18551;
-        private final float field_18552;
-
-        public BuyItemFactory(ItemProvider itemProvider_1, int int_1, int int_2, int int_3) {
-            this.field_18548 = itemProvider_1.getItem();
-            this.field_18549 = int_1;
-            this.field_18550 = int_2;
-            this.field_18551 = int_3;
-            this.field_18552 = 0.05F;
+        public BuyItemFactory(ItemProvider itemProvider, int price, int maxUses, int experience) {
+            this.item = itemProvider.getItem();
+            this.price = price;
+            this.maxUses = maxUses;
+            this.experience = experience;
+            this.multiplier = 0.05F;
         }
 
         @Override
         public TradeOffer create(Entity var1, Random var2) {
-            ItemStack itemStack_1 = new ItemStack(this.field_18548, this.field_18549);
-            return new TradeOffer(itemStack_1, new ItemStack(Items.EMERALD), this.field_18550, this.field_18551, this.field_18552);
+            ItemStack itemStack_1 = new ItemStack(this.item, this.price);
+            return new TradeOffer(itemStack_1, new ItemStack(Items.EMERALD), this.maxUses, this.experience, this.multiplier);
+        }
+    }
+
+    static class TypeAwareBuyItemFactory implements TradeOffers.Factory, ConditionalTradeFactory {
+    	private final Map<VillagerType, Item> itemMap;
+        private final int price;
+        private final int maxUses;
+        private final int experience;
+        private final float multiplier;
+
+        public TypeAwareBuyItemFactory(Map<VillagerType, Item> itemMap, int price, int maxUses, int experience) {
+            this.itemMap = itemMap;
+            this.price = price;
+            this.maxUses = maxUses;
+            this.experience = experience;
+            this.multiplier = 0.05F;
         }
 
+        @Override
+        public TradeOffer create(Entity entity, Random random) {
+            return new TradeOffer(new ItemStack(itemMap.get(((VillagerEntity) entity).getVillagerData().getType())), new ItemStack(Items.EMERALD), this.maxUses, this.experience, this.multiplier);
+        }
 
+        @Override
+        public boolean neutronia$isApplicable(AbstractTraderEntity entity, Random random) {
+            return itemMap.containsKey(VillagerTypeRegistry.getVillagerTypeForBiome(entity.world.getBiome(entity.getBlockPos())));
+        }
     }
 }

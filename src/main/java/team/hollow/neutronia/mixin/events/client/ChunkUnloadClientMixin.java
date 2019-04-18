@@ -15,7 +15,7 @@ import team.hollow.neutronia.event_system.EventCore;
 public abstract class ChunkUnloadClientMixin {
     //method_18110 is called by unload in ClientChunkManager.
     //it adds entities in chunk to List<BlockEntity> field_18139 in world, qwhich is shit to be deleted
-    @Inject(at = @At("HEAD"), method = "method_18110")
+    @Inject(at = @At("HEAD"), method = "unloadBlockEntities")
     private void onUnloadingChunkEntities(WorldChunk worldChunk_1, CallbackInfo info) {
         if (worldChunk_1 != null) {
             //ChunkPos p = worldChunk_1.getPos();

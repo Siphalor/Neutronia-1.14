@@ -51,7 +51,7 @@ public class NeutroniaWallSignBlock extends SignBlock {
     }
 
     public boolean canPlaceAt(BlockState blockState_1, ViewableWorld viewableWorld_1, BlockPos blockPos_1) {
-        return viewableWorld_1.getBlockState(blockPos_1.offset(blockState_1.get(FACING).getOpposite())).getMaterial().isSolid();
+        return viewableWorld_1.getBlockState(blockPos_1.offset(blockState_1.get(FACING).getOpposite())).getMaterial().isReplaceable();
     }
 
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {

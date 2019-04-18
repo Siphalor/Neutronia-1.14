@@ -7,7 +7,9 @@ import net.minecraft.village.VillagerType;
 import net.minecraft.world.biome.Biome;
 import team.hollow.neutronia.Neutronia;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 
 public interface VillagerTypeRegistry {
 	HashMap<Biome, ArrayList<VillagerType>> customVillagerTypes = new HashMap<>();
