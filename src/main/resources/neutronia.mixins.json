@@ -5,8 +5,10 @@
   "mixins": [
     "item.MixinBookOnLectern",
     "commands.LocateCommandMixin",
+    "entity.AbstractTraderEntityMixin",
     "entity.VillagerEntityMixin",
     "entity.ZombieVillagerEntityMixin",
+    "village.TradeFactoryMixin",
     "world.VillageGeneratorMixin",
     "world.AddHillsLayerMixin"
   ],

@@ -4,6 +4,16 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 
 public class Reflect {
+    public static Class getInnerClass(Class clazz, String name) {
+        Class[] declaredClasses = clazz.getDeclaredClasses();
+        for (Class c : declaredClasses) {
+            if (c.getName().equalsIgnoreCase(name)) {
+                return c;
+            }
+        }
+        return null;
+    }
+
     public static Object constructClass(Class clazz, Object... args) {
         Constructor<?>[] cap = clazz.getDeclaredConstructors();
         for (Constructor<?> c : cap) {
@@ -11,7 +21,17 @@ public class Reflect {
             boolean match = true;
             for (int t = 0; t < types.length; t++) {
                 Class<?> c_type = types[t];
-                if (c_type != args[t].getClass()) {
+                if (args[t] == null)
+                    continue;
+                if (c_type.isPrimitive()) {
+                    try {
+                        if (args[t].getClass().getField("TYPE").get(null).equals(c_type))
+                            continue;
+                    } catch (Exception ignored) {}
+                    match = false;
+                    break;
+                }
+                if (!(c_type.isAssignableFrom(args[t].getClass()))) {
                     match = false;
                     break;
                 }
