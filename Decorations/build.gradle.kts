@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     java
     kotlin("jvm")
+    id("fabric-loom")
 }
 
 group = "team.hollow"

@@ -5,6 +5,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.village.VillagerType;
 import net.minecraft.world.biome.Biome;
+import team.hollow.neutronia.Neutronia;
 
 import java.util.*;
 
@@ -12,7 +13,7 @@ public interface VillagerTypeRegistry {
 	HashMap<Biome, ArrayList<VillagerType>> customVillagerTypes = new HashMap<>();
 
     static VillagerType register(String string_1, Biome... biomes) {
-        VillagerType villagerType = Registry.register(Registry.VILLAGER_TYPE, new Identifier("neutronia", string_1), new net.minecraft.village.VillagerType() {
+        VillagerType villagerType = Registry.register(Registry.VILLAGER_TYPE, new Identifier(Neutronia.MOD_ID, string_1), new net.minecraft.village.VillagerType() {
             public String toString() {
                 return string_1;
             }

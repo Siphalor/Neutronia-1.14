@@ -125,7 +125,7 @@ public class NeutroniaSidingBlock extends Block implements Waterloggable {
 	}
 
 	public FluidState getFluidState(BlockState blockState_1) {
-		return blockState_1.get(WATERLOGGED) ? Fluids.WATER.getState(false) : super.getFluidState(blockState_1);
+		return blockState_1.get(WATERLOGGED) ? Fluids.WATER.getStill(false) : super.getFluidState(blockState_1);
 	}
 
 	public boolean tryFillWithFluid(IWorld iWorld_1, BlockPos blockPos_1, BlockState blockState_1, FluidState fluidState_1) {

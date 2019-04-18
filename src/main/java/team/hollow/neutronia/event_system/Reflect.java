@@ -6,8 +6,7 @@ import java.lang.reflect.Field;
 public class Reflect {
     public static Object constructClass(Class clazz, Object... args) {
         Constructor<?>[] cap = clazz.getDeclaredConstructors();
-        for (int i = 0; i < cap.length; i++) {
-            Constructor<?> c = cap[i];
+        for (Constructor<?> c : cap) {
             Class<?>[] types = c.getParameterTypes();
             boolean match = true;
             for (int t = 0; t < types.length; t++) {
@@ -35,8 +34,7 @@ public class Reflect {
 
     public static Field getFieldByType(Class field_class, Class object_class) {
         Field[] fields = object_class.getDeclaredFields();
-        for (int i = 0; i < fields.length; i++) {
-            Field f = fields[i];
+        for (Field f : fields) {
             f.setAccessible(true);
             if (f.getType().equals(field_class)) {
                 return f;
@@ -52,7 +50,7 @@ public class Reflect {
             if (f != null) {
                 return f.get(object);
             }
-        } catch (Exception e) {
+        } catch (Exception ignored) {
         }
         return null;
 		
@@ -83,16 +81,14 @@ public class Reflect {
 
     public static Object[] getMemberArrayByType(Class type, Object object) {
         Field[] fields = object.getClass().getDeclaredFields();
-        for (int i = 0; i < fields.length; i++) {
-            Field f = fields[i];
+        for (Field f : fields) {
             f.setAccessible(true);
             if (f.getType().isArray()) {
                 Class ofArray = f.getType().getComponentType();
                 if (ofArray.equals(type)) {
                     try {
-                        Object[] pools = (Object[]) f.get(object);
-                        return pools;
-                    } catch (Exception e) {
+                        return (Object[]) f.get(object);
+                    } catch (Exception ignored) {
 
                     }
                 }

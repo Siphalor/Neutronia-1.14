@@ -36,6 +36,7 @@ public class Neutronia implements ModInitializer {
         new NEntityTypes();
         new NPaintingMotives();
         new NBiomes();
+        new NVillagers();
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);

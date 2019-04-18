@@ -74,7 +74,7 @@ public class PieBlock extends Block {
     }
 
     public boolean canPlaceAt(BlockState blockState_1, ViewableWorld viewableWorld_1, BlockPos blockPos_1) {
-        return viewableWorld_1.getBlockState(blockPos_1.down()).getMaterial().method_15799();
+        return viewableWorld_1.getBlockState(blockPos_1.down()).getMaterial().isSolid();
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {

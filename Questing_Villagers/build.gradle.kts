@@ -6,9 +6,7 @@ plugins {
 }
 
 group = "team.hollow"
-version = "v0.0.4+1.14_Pre-Release_2"
-group = "team.hollow"
-version = "v0.0.4+1.14_Pre-Release_2"
+version = "v0.0.4+1.14_Pre-Release_4"
 
 repositories {
     mavenCentral()

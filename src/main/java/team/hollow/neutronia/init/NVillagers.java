@@ -1,13 +1,19 @@
 package team.hollow.neutronia.init;
 
+import com.google.common.collect.ImmutableSet;
+import net.minecraft.village.PointOfInterestType;
+import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
 import net.minecraft.world.biome.Biomes;
+import team.hollow.neutronia.village.PointOfInterestRegistry;
+import team.hollow.neutronia.village.PointOfInterestTypeCustom;
+import team.hollow.neutronia.village.VillagerProfessionRegistry;
 import team.hollow.neutronia.village.VillagerTypeRegistry;
 
-public class NVillagers implements VillagerType {
+public class NVillagers {
 
-    /*public static final VillagerProfession ARTIST;
-    public static final VillagerProfession RECEPTIONIST;
+    public static final VillagerProfession ARTIST;
+    /*public static final VillagerProfession RECEPTIONIST;
     public static final VillagerProfession CARPENTER;
     public static final VillagerProfession DOCTOR;
     public static final VillagerProfession GUARD;
@@ -26,18 +32,23 @@ public class NVillagers implements VillagerType {
     public static final VillagerType ICE_SPIKES;
     public static final VillagerType OCEAN;
 
+    public static final PointOfInterestType ARTIST_POI;
+
     static {
-        /*ARTIST = team.team.hollow.neutronia.village.VillagerProfession.register("artist");
-        RECEPTIONIST = team.team.hollow.neutronia.village.VillagerProfession.register("receptionist");
-        CARPENTER = team.team.hollow.neutronia.village.VillagerProfession.register("carpenter");
-        DOCTOR = team.team.hollow.neutronia.village.VillagerProfession.register("doctor");
-        GUARD = team.team.hollow.neutronia.village.VillagerProfession.register("guard");
-        VIKING = team.team.hollow.neutronia.village.VillagerProfession.register("viking");
-        BARD = team.team.hollow.neutronia.village.VillagerProfession.register("bard");
-        DRUID = team.team.hollow.neutronia.village.VillagerProfession.register("druid");
-        ARCHER = team.team.hollow.neutronia.village.VillagerProfession.register("archer");
-        ENCHANTER = team.team.hollow.neutronia.village.VillagerProfession.register("enchanter");
-        WIZARD = team.team.hollow.neutronia.village.VillagerProfession.register("wizard");*/
+
+        ARTIST_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(NBlocks.ANDESITE_BRICKS), 1, null));
+
+        ARTIST = VillagerProfessionRegistry.register("artist", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        /*RECEPTIONIST = VillagerProfessionRegistry.register("receptionist");
+        CARPENTER = VillagerProfessionRegistry.register("carpenter");
+        DOCTOR = VillagerProfessionRegistry.register("doctor");
+        GUARD = VillagerProfessionRegistry.register("guard");
+        VIKING = VillagerProfessionRegistry.register("viking");
+        BARD = VillagerProfessionRegistry.register("bard");
+        DRUID = VillagerProfessionRegistry.register("druid");
+        ARCHER = VillagerProfessionRegistry.register("archer");
+        ENCHANTER = VillagerProfessionRegistry.register("enchanter");
+        WIZARD = VillagerProfessionRegistry.register("wizard");*/
         TradeBuilder.createRecipes();
 
         RED_MUSHROOM = VillagerTypeRegistry.register("red_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
