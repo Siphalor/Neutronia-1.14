@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/campfire_off",
+  "textures": {
+    "log": "neutronia:block/bolivian_rosewood_campfire_logbolivian_rosewood"
+  }
+}

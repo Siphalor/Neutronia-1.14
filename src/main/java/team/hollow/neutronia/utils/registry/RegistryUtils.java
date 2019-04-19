@@ -16,6 +16,10 @@ public class RegistryUtils {
         return register(block, new Identifier(Neutronia.MOD_ID, name), ItemGroup.DECORATIONS);
     }
 
+    public static Block register(String modId, Block block, String name) {
+        return register(block, new Identifier(modId, name), ItemGroup.DECORATIONS);
+    }
+
     public static Block register(Block block, Identifier name, ItemGroup itemGroup) {
         Registry.register(Registry.BLOCK, name, block);
         Registry.register(Registry.ITEM, name, new BlockItem(block, new Item.Settings().itemGroup(itemGroup)));
@@ -24,6 +28,11 @@ public class RegistryUtils {
 
     public static Block register(Block block, String name, ItemGroup itemGroup) {
         register(block, new Identifier(Neutronia.MOD_ID, name), itemGroup);
+        return block;
+    }
+
+    public static Block register(String modId, Block block, String name, ItemGroup itemGroup) {
+        register(block, new Identifier(modId, name), itemGroup);
         return block;
     }
 

@@ -55,5 +55,5 @@ object Dependencies {
 }
 
 object Minecraft {
-    const val version = "1.14 Pre-Release 4"
+    const val version = "1.14 Pre-Release 5"
 }

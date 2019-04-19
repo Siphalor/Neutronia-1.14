@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/campfire_off",
+  "textures": {
+    "log": "neutronia:block/gabon_ebony_campfire_loggabon_ebony"
+  }
+}

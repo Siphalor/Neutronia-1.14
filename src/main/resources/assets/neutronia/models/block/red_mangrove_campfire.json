@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/campfire",
+  "textures": {
+    "log": "neutronia:block/red_mangrove_campfire_logred_mangrove",
+    "litlog": "neutronia:block/red_mangrove_campfire_log_lit"
+  }
+}

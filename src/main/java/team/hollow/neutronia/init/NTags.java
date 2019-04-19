@@ -10,7 +10,10 @@ public class NTags {
 
     public static final Tag<Block> LECTERNS = registerBlockTag("lecterns");
     public static final Tag<Block> CLIMBABLE = registerBlockTag("climbable");
-    public static final Tag<Block> BARD_POI = registerBlockTag("bard_poi");
+//    public static final Tag<Block> BARD_POI = registerBlockTag("bard_poi");
+    public static final Tag<Block> POSTS = registerBlockTag("posts");
+    public static final Tag<Block> SIDINGS = registerBlockTag("sidings");
+    public static final Tag<Block> CORNERS = registerBlockTag("corners");
 
     public static Tag<Block> registerBlockTag(String id) {
         return TagRegistry.block(new Identifier(Neutronia.MOD_ID, id));

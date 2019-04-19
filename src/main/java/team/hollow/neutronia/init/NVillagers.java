@@ -1,6 +1,7 @@
 package team.hollow.neutronia.init;
 
 import com.google.common.collect.ImmutableSet;
+import net.minecraft.block.Blocks;
 import net.minecraft.village.PointOfInterestType;
 import net.minecraft.village.VillagerProfession;
 import net.minecraft.village.VillagerType;
@@ -36,7 +37,7 @@ public class NVillagers {
 
     static {
 
-        ARTIST_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(NBlocks.ANDESITE_BRICKS), 1, null));
+        ARTIST_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
 
         ARTIST = VillagerProfessionRegistry.register("artist", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
         /*RECEPTIONIST = VillagerProfessionRegistry.register("receptionist");
