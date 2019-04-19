@@ -28,7 +28,7 @@ import team.hollow.neutronia.utils.helpers.ICarvable;
 
 public class PumpkinBlock extends BaseModBlock implements ICarvable {
 
-    public static final DirectionProperty FACING = HorizontalFacingBlock.field_11177;
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public PumpkinBlock(Identifier identifier) {
         super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).sounds(BlockSoundGroup.WOOD), new Identifier("minecraft", identifier.getPath()));

@@ -23,15 +23,12 @@ public abstract class AbstractTraderEntityMixin extends PassiveEntity {
 		super(entityType_1, world_1);
 	}
 
-	/*@Inject(method = "fillRecipesFromPool", at = @At("HEAD"))
-	public void onFillRecipesFromPool(TraderOfferList tradeOffers, TradeOffers.Factory[] factories, int amount, CallbackInfo callbackInfo) {
-		factories = Arrays.stream(factories).filter(factory -> ((ConditionalTradeFactory) factory).neutronia$isApplicable((AbstractTraderEntity) (Object) this, random)).toArray(TradeOffers.Factory[]::new);
-	}*/
-
 	@Inject(method = "fillRecipesFromPool", at = @At(value = "INVOKE", target = "Ljava/util/Set;iterator()Ljava/util/Iterator;"), locals = LocalCapture.CAPTURE_FAILEXCEPTION)
 	public void onTradesReady(TraderOfferList tradeOffers, TradeOffers.Factory[] factories, int amount, CallbackInfo callbackInfo, Set<Integer> tradeIds) {
 		ArrayList<Integer> applicableTrades = new ArrayList<>();
 		for (int i = 0; i < factories.length; i++) {
+			if(factories[i] == null)
+				continue;
 			if (((ConditionalTradeFactory) factories[i]).neutronia$isApplicable((AbstractTraderEntity) (Object) this, random)) {
 				applicableTrades.add(i);
 			}

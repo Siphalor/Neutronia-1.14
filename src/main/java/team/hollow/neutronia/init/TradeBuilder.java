@@ -32,6 +32,8 @@ class TradeBuilder {
     private static final Logger LOGGER = LogManager.getLogger();
 
     static void createRecipes() {
+        // TODO: Fix this
+        // This method gets called so early that the BlockTags are not loaded yet (Additionally block tags aren't a good idea since this should be changeable by datapacks)
         BuyItemFactory WOOL = null;
         BuyItemFactory BANNERS = null;
         BuyItemFactory BEDS = null;

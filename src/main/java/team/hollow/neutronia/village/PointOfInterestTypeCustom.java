@@ -5,10 +5,11 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.village.PointOfInterestType;
+import team.hollow.neutronia.event_system.Reflect;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Objects;
+import java.util.Map;
 import java.util.Set;
 
 public class PointOfInterestTypeCustom {
@@ -35,10 +36,14 @@ public class PointOfInterestTypeCustom {
             Constructor<PointOfInterestType> pointOfInterestType = PointOfInterestType.class.getDeclaredConstructor(String.class, Set.class, int.class, SoundEvent.class);
             pointOfInterestType.setAccessible(true);
             interestType = pointOfInterestType.newInstance(id, workStationStates, ticketCount, sound);
+            Map<BlockState, PointOfInterestType> map = (Map<BlockState, PointOfInterestType>) Reflect.getMemberByType(PointOfInterestType.class, Map.class, null);
+            for(BlockState blockState : workStationStates) {
+                map.put(blockState, interestType);
+            }
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-        System.out.println(Objects.requireNonNull(interestType).toString());
+        //System.out.println(Objects.requireNonNull(interestType).toString());
         return interestType;
     }
 

@@ -197,7 +197,7 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
     }
 
     private void makeCocoa(ModifiableWorld modifiableWorld_1, int int_1, BlockPos blockPos_1, Direction direction_1) {
-        this.setBlockState(modifiableWorld_1, blockPos_1, Blocks.COCOA.getDefaultState().with(CocoaBlock.AGE, int_1).with(CocoaBlock.field_11177, direction_1));
+        this.setBlockState(modifiableWorld_1, blockPos_1, Blocks.COCOA.getDefaultState().with(CocoaBlock.AGE, int_1).with(CocoaBlock.FACING, direction_1));
     }
 
     private void makeVine(ModifiableWorld modifiableWorld_1, BlockPos blockPos_1, BooleanProperty booleanProperty_1) {
