@@ -24,37 +24,28 @@ base {
 version = "v${Constants.version}+${Constants.minecraftVersionVer}"
 group = "team.hollow"
 
-allprojects {
+repositories {
+	mavenCentral()
+	maven("https://jitpack.io")
+	maven("https://tehnut.info/maven")
+	maven("https://maven.fabricmc.net")
+	maven("https://minecraft.curseforge.com/api/maven")
+	maven("https://maven.jamieswhiteshirt.com/libs-release/")
+}
 
-	apply(plugin = "wrapper")
-	apply(plugin = "idea")
-	apply(plugin = "fabric-loom")
-	apply(plugin = "maven-publish")
-	apply(plugin = "kotlin")
+dependencies {
+	minecraft(group = "com.mojang", name = "minecraft", version = Minecraft.version)
+	mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+build.${Fabric.Yarn.version}")
+	modCompile(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
+	compileOnly(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
 
-	repositories {
-		mavenCentral()
-		maven("https://jitpack.io")
-		maven("https://tehnut.info/maven")
-		maven("https://maven.fabricmc.net")
-		maven("https://minecraft.curseforge.com/api/maven")
-		maven("https://maven.jamieswhiteshirt.com/libs-release/")
-	}
+	modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
 
-	dependencies {
-        minecraft(group = "com.mojang", name = "minecraft", version = Minecraft.version)
-		mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+build.${Fabric.Yarn.version}")
-		modCompile(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
-		compileOnly(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
+	include(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
+	implementation(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
 
-		modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
-		
-		include(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
-		implementation(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
-
-		modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
-		include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
-    }
+	modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
+	include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
 }
 
 tasks.getByName<ProcessResources>("processResources") {
