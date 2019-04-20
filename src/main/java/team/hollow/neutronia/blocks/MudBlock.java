@@ -38,10 +38,10 @@ public class MudBlock extends FallingBlock {
     }
 
     public void onScheduledTick(BlockState blockState_1, World world_1, BlockPos blockPos_1, Random random_1) {
-        BubbleColumnBlock.method_9657(world_1, blockPos_1.up(), false);
+        BubbleColumnBlock.update(world_1, blockPos_1.up(), false);
     }
 
-    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2) {
+    public void neighborUpdate(BlockState blockState_1, World world_1, BlockPos blockPos_1, Block block_1, BlockPos blockPos_2, boolean boolean_2) {
         world_1.getBlockTickScheduler().schedule(blockPos_1, this, this.getTickRate(world_1));
     }
 

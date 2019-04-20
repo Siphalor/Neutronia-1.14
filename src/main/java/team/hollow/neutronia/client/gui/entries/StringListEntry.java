@@ -12,7 +12,7 @@ public class StringListEntry extends TextFieldListEntry<String> {
     private Consumer<String> saveConsumer;
 
     public StringListEntry(String fieldName, String value, Consumer<String> saveConsumer) {
-        this(fieldName, value, "text.cloth-config.reset_value", (Supplier)null, saveConsumer);
+        this(fieldName, value, "text.cloth-config.reset_value", null, saveConsumer);
     }
 
     public StringListEntry(String fieldName, String value, String resetButtonKey, Supplier<String> defaultValue, Consumer<String> saveConsumer) {
@@ -32,6 +32,6 @@ public class StringListEntry extends TextFieldListEntry<String> {
     }
 
     protected boolean isMatchDefault(String text) {
-        return this.getDefaultValue().isPresent() ? text.equals(this.getDefaultValue().get()) : false;
+        return this.getDefaultValue().isPresent() && text.equals(this.getDefaultValue().get());
     }
 }

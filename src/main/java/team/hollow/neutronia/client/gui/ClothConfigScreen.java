@@ -595,7 +595,7 @@ public abstract class ClothConfigScreen extends Screen {
             return this.displayErrors;
         }
 
-        public ClothConfigScreen build() {
+        public ClothConfigScreen build(Consumer<ClothConfigScreen> afterInitConsumer) {
             return new ClothConfigScreen(this.parentScreen, this.title, this.dataMap, this.confirmSave, this.displayErrors) {
                 public void onSave(Map<String, List<Pair<String, Object>>> o) {
                     if (Builder.this.getOnSave() != null) {
@@ -603,7 +603,18 @@ public abstract class ClothConfigScreen extends Screen {
                     }
 
                 }
+                @Override
+                protected void init() {
+                    super.init();
+                    if (afterInitConsumer != null)
+                        afterInitConsumer.accept(this);
+                }
             };
+        }
+
+        @Override
+        public ClothConfigScreen build() {
+            return build(null);
         }
 
         public static class SavedOption implements ConfigScreenBuilder.SavedOption {

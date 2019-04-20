@@ -117,7 +117,7 @@ public class IntegerSliderEntry extends ClothConfigScreen.ListEntry {
     }
 
     private class Slider extends SliderWidget {
-        protected Slider(int int_1, int int_2, int int_3, int int_4, double double_1) {
+        Slider(int int_1, int int_2, int int_3, int int_4, double double_1) {
             super(int_1, int_2, int_3, int_4, double_1);
         }
 

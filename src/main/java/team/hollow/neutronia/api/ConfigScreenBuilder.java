@@ -5,13 +5,14 @@
 
 package team.hollow.neutronia.api;
 
+import net.minecraft.client.gui.Screen;
+import net.minecraft.util.Pair;
+import team.hollow.neutronia.client.gui.ClothConfigScreen;
+
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.function.Consumer;
-import net.minecraft.client.gui.Screen;
-import net.minecraft.util.Pair;
-import team.hollow.neutronia.client.gui.ClothConfigScreen;
 
 public interface ConfigScreenBuilder {
     static ConfigScreenBuilder create(Screen parentScreen, String title, Consumer<ConfigScreenBuilder.SavedConfig> onSave) {
@@ -35,6 +36,8 @@ public interface ConfigScreenBuilder {
     void setOnSave(Consumer<ConfigScreenBuilder.SavedConfig> var1);
 
     ClothConfigScreen build();
+
+    Screen build(Consumer<ClothConfigScreen> afterInitConsumer);
 
     List<String> getCategories();
 

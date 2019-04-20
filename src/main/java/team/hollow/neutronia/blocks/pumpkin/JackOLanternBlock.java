@@ -28,7 +28,7 @@ import team.hollow.neutronia.utils.helpers.ICarvable;
 
 public class JackOLanternBlock extends BaseModBlock implements ICarvable {
 
-    public static final DirectionProperty FACING = HorizontalFacingBlock.field_11177;
+    public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
 
     public JackOLanternBlock(Identifier identifier) {
         super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).lightLevel(15).sounds(BlockSoundGroup.WOOD), new Identifier("minecraft", identifier.getPath()));
