@@ -23,18 +23,10 @@ public class Reflect {
                 Class<?> c_type = types[t];
                 if (args[t] == null)
                     continue;
-                if (c_type.isPrimitive()) {
-                    try {
-                        if (args[t].getClass().getField("TYPE").get(null).equals(c_type))
-                            continue;
-                    } catch (Exception ignored) {}
-                    match = false;
-                    break;
-                }
-                if (!(c_type.isAssignableFrom(args[t].getClass()))) {
-                    match = false;
-                    break;
-                }
+			    if(isInstanceOf(c_type, args[t].getClass()))
+			        continue;
+			    match = false;
+			    break;
             }
             if (match) {
                 c.setAccessible(true);
@@ -52,20 +44,19 @@ public class Reflect {
 		return getMemberByType(field_class, object_class, null);
 	}*/
 
-    public static Field getFieldByType(Class field_class, Class object_class) {
+    public static Field getFieldByType(Class object_class, Class field_class) {
         Field[] fields = object_class.getDeclaredFields();
         for (Field f : fields) {
             f.setAccessible(true);
-            if (f.getType().equals(field_class)) {
+            if(isInstanceOf(f.getType(), field_class))
                 return f;
-            }
         }
         return null;
     }
 
 
-    public static Object getMemberByType(Class field_class, Class object_class, Object object) {
-        Field f = getFieldByType(field_class, object_class);
+    public static Object getMemberByType(Class object_class, Class field_class, Object object) {
+        Field f = getFieldByType(object_class, field_class);
         try {
             if (f != null) {
                 return f.get(object);
@@ -105,7 +96,7 @@ public class Reflect {
             f.setAccessible(true);
             if (f.getType().isArray()) {
                 Class ofArray = f.getType().getComponentType();
-                if (ofArray.equals(type)) {
+                if (isInstanceOf(ofArray, type)) {
                     try {
                         return (Object[]) f.get(object);
                     } catch (Exception ignored) {
@@ -115,5 +106,17 @@ public class Reflect {
             }
         }
         return null;
+    }
+
+    public static boolean isInstanceOf(Class clazz, Class possibleInstance) {
+        if (clazz.isAssignableFrom(possibleInstance))
+        	return true;
+        if (clazz.isPrimitive()) {
+            try {
+                if (clazz.getField("TYPE").get(null).equals(possibleInstance))
+                    return true;
+            } catch (Exception ignored) {}
+        }
+        return false;
     }
 }
