@@ -14,7 +14,7 @@ import team.hollow.neutronia.village.VillagerTypeRegistry;
 public class NVillagers {
 
     public static final VillagerProfession ARTIST;
-    /*public static final VillagerProfession RECEPTIONIST;
+    public static final VillagerProfession RECEPTIONIST;
     public static final VillagerProfession CARPENTER;
     public static final VillagerProfession DOCTOR;
     public static final VillagerProfession GUARD;
@@ -23,7 +23,7 @@ public class NVillagers {
     public static final VillagerProfession DRUID;
     public static final VillagerProfession ARCHER;
     public static final VillagerProfession ENCHANTER;
-    public static final VillagerProfession WIZARD;*/
+    public static final VillagerProfession WIZARD;
 
     public static final VillagerType RED_MUSHROOM;
     public static final VillagerType BROWN_MUSHROOM;
@@ -34,22 +34,41 @@ public class NVillagers {
     public static final VillagerType OCEAN;
 
     public static final PointOfInterestType ARTIST_POI;
+    public static final PointOfInterestType RECEPTIONIST_POI;
+    public static final PointOfInterestType CARPENTER_POI;
+    public static final PointOfInterestType DOCTOR_POI;
+    public static final PointOfInterestType GUARD_POI;
+    public static final PointOfInterestType VIKING_POI;
+    public static final PointOfInterestType BARD_POI;
+    public static final PointOfInterestType DRUID_POI;
+    public static final PointOfInterestType ARCHER_POI;
+    public static final PointOfInterestType ENCHANTER_POI;
+    public static final PointOfInterestType WIZARD_POI;
 
     static {
-
         ARTIST_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        RECEPTIONIST_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:receptionist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        CARPENTER_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:carpenter_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        DOCTOR_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:doctor_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        GUARD_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:guard_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        VIKING_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:viking", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        BARD_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        DRUID_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        ARCHER_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        ENCHANTER_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
+        WIZARD_POI = PointOfInterestRegistry.register(new PointOfInterestTypeCustom("neutronia:artist_poi", PointOfInterestTypeCustom.getAllStatesOf(Blocks.CRAFTING_TABLE), 1, null));
 
         ARTIST = VillagerProfessionRegistry.register("artist", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
-        /*RECEPTIONIST = VillagerProfessionRegistry.register("receptionist");
-        CARPENTER = VillagerProfessionRegistry.register("carpenter");
-        DOCTOR = VillagerProfessionRegistry.register("doctor");
-        GUARD = VillagerProfessionRegistry.register("guard");
-        VIKING = VillagerProfessionRegistry.register("viking");
-        BARD = VillagerProfessionRegistry.register("bard");
-        DRUID = VillagerProfessionRegistry.register("druid");
-        ARCHER = VillagerProfessionRegistry.register("archer");
-        ENCHANTER = VillagerProfessionRegistry.register("enchanter");
-        WIZARD = VillagerProfessionRegistry.register("wizard");*/
+        RECEPTIONIST = VillagerProfessionRegistry.register("receptionist", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        CARPENTER = VillagerProfessionRegistry.register("carpenter", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        DOCTOR = VillagerProfessionRegistry.register("doctor", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        GUARD = VillagerProfessionRegistry.register("guard", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        VIKING = VillagerProfessionRegistry.register("viking", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        BARD = VillagerProfessionRegistry.register("bard", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        DRUID = VillagerProfessionRegistry.register("druid", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        ARCHER = VillagerProfessionRegistry.register("archer", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        ENCHANTER = VillagerProfessionRegistry.register("enchanter", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
+        WIZARD = VillagerProfessionRegistry.register("wizard", ARTIST_POI, ImmutableSet.of(), ImmutableSet.of());
         TradeBuilder.createRecipes();
 
         RED_MUSHROOM = VillagerTypeRegistry.register("red_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);

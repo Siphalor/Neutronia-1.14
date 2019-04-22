@@ -9,7 +9,7 @@ import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.StructureFeature;
-import team.hollow.test.ExampleMod;
+import team.hollow.neutronia.ExampleMod;
 
 import java.util.Random;
 
@@ -42,7 +42,7 @@ public class TotemPoleFeature extends StructureFeature<DefaultFeatureConfig> {
             super(structureFeature_1, int_1, int_2, biome_1, mutableIntBoundingBox_1, int_3, long_1);
         }
 
-        //This plans out the totem pole and tells the genorator to build it
+        //This plans out the totem pole and tells the genorator to getModMenuBadge it
         @Override
         public void initialize(ChunkGenerator<?> chunkGenerator, StructureManager structureManager, int chunkX, int chunkZ, Biome biome) {
             DefaultFeatureConfig defaultFeatureConfig = chunkGenerator.getStructureConfig(biome, ExampleMod.TOTEM_POLE_FEATURE);

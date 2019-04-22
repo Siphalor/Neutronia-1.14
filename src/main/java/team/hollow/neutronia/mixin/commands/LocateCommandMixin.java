@@ -36,9 +36,9 @@ public class LocateCommandMixin {
                 execute(commandContext_1.getSource(), "neutronia:ritual_site"))
         ).then(CommandManager.literal("Totem_Poles").executes((commandContext_1) ->
                 execute(commandContext_1.getSource(), "neutronia:totem_pole"))
-        ).then(CommandManager.literal("Celebrating_Vinny").executes((commandContext_1) ->
+        )/*.then(CommandManager.literal("Celebrating_Vinny").executes((commandContext_1) ->
                 execute(commandContext_1.getSource(), "neutronia:celebrating_vinny"))
-        );
+        )*/;
         final LiteralCommandNode build = command.build();
         dispatcher.getRoot().addChild(build);
         return build;

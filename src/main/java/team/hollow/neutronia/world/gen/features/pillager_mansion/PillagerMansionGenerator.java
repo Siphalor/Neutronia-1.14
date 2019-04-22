@@ -14,7 +14,7 @@ import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.test.ExampleMod;
+import team.hollow.neutronia.ExampleMod;
 
 import java.util.List;
 

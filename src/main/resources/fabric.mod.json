@@ -22,15 +22,19 @@
   "entrypoints": {
     "main": [
       "team.hollow.neutronia.Neutronia",
-      "team.hollow.test.ExampleMod"
+      "team.hollow.neutronia.ExampleMod"
     ],
     "client": [
       "team.hollow.neutronia.client.ClientInit",
       "team.hollow.neutronia.client.NeutroniaLeavesColors"
+    ],
+    "modmenu":[
+      "team.hollow.neutronia.init.NModMenuCompat"
     ]
   },
   "mixins": [
-    "neutronia.mixins.json"
+    "neutronia.mixins.json",
+    "modmenu_api.mixins.json"
   ],
 
   "requires": {

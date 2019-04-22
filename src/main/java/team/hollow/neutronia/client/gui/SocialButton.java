@@ -23,7 +23,7 @@ public class SocialButton extends ButtonWidget {
         super(int_2, int_3, int_4, int_5, string_1, var1 -> {
             SocialScreen screen = (SocialScreen) MinecraftClient.getInstance().currentScreen;
             switch (var1.getMessage()) {
-                case "Socialize": {
+                case "Socialize" -> {
                     List<SocialButton> buttons = Objects.requireNonNull(screen).positiveButtons;
                     List<SocialButton> otherButtons = screen.neutralButtons;
                     if (buttons.get(0).visible) {
@@ -38,9 +38,8 @@ public class SocialButton extends ButtonWidget {
                     for (SocialButton button : otherButtons) {
                         button.visible = false;
                     }
-                    break;
                 }
-                case "Influence": {
+                case "Influence" -> {
                     List<SocialButton> buttons = Objects.requireNonNull(screen).neutralButtons;
                     List<SocialButton> otherButtons = screen.positiveButtons;
                     if (buttons.get(0).visible) {
@@ -55,9 +54,8 @@ public class SocialButton extends ButtonWidget {
                     for (SocialButton button : otherButtons) {
                         button.visible = false;
                     }
-                    break;
                 }
-                case "Charm": {
+                case "Charm" -> {
                     SocialVillager target = Objects.requireNonNull(screen).getTarget();
                     PlayerEntity talker = screen.getTalker();
                     if (target.getCharmed()) {
@@ -76,9 +74,8 @@ public class SocialButton extends ButtonWidget {
                     target.setCharmed();
                     int opinion = target.getOpinion(talker.getUuid());
                     target.setOpinion(talker.getUuid(), opinion + 5);
-                    break;
                 }
-                case "Apologize": {
+                case "Apologize" -> {
                     SocialVillager target = Objects.requireNonNull(screen).getTarget();
                     PlayerEntity talker = screen.getTalker();
                     int opinion = target.getOpinion(talker.getUuid());
@@ -118,9 +115,8 @@ public class SocialButton extends ButtonWidget {
                             target.setApologized();
                         }
                     }
-                    break;
                 }
-                case "Examine": {
+                case "Examine" -> {
                     SocialVillager target = Objects.requireNonNull(screen).getTarget();
                     PlayerEntity talker = screen.getTalker();
                     int opinion = target.getOpinion(talker.getUuid());
@@ -141,7 +137,6 @@ public class SocialButton extends ButtonWidget {
                     } else if (opinion <= -75 && opinion >= -100) {
                         talker.addChatMessage(new StringTextComponent(target.firstName + " " + target.lastName).append(new TranslatableTextComponent("text.social.examine8")), false);
                     }
-                    break;
                 }
             }
         });

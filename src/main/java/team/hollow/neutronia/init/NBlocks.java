@@ -9,14 +9,12 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
+import team.hollow.neutronia.blocks.pumpkin.PumpkinBlock;
 import team.hollow.neutronia.blocks.sapling.BaobabSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.MangroveSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.PalmSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.WillowSaplingGenerator;
-import team.hollow.neutronia.enums.CustomChestTypes;
-import team.hollow.neutronia.enums.LadderVariants;
-import team.hollow.neutronia.enums.SoulStoneVariants;
-import team.hollow.neutronia.enums.WoodType;
+import team.hollow.neutronia.enums.*;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
@@ -66,6 +64,7 @@ public class NBlocks {
     public static final Block PACKED_ICE_BRICKS, PACKED_ICE_PILLAR, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES;
     public static final Block FROSTED_GLASS, FROSTED_GLASS_PANE;
     public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, WROUGHT_IRON_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
+    public static final Block[] PUMPKIN = new Block[CarvedFaceTypes.values().length];
     /*public static final Block PUMPKIN = new PumpkinBlock();
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
     public static final Block MELON = new MelonBlock(), MEL_O_LANTERN = new MelOLanternBlock();*/
@@ -338,8 +337,8 @@ public class NBlocks {
         GOLD_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "gold_grate");
         WROUGHT_IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "wrought_iron_grate");
 
-//        IRON_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "iron_scaffolding");
-//        GOLD_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), "gold_scaffolding");
+//        IRON_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().getModMenuBadge()), "iron_scaffolding");
+//        GOLD_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().getModMenuBadge()), "gold_scaffolding");
 
         SANDSTONE_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.STONE), "sandstone_door", ItemGroup.REDSTONE);
         SANDSTONE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(), "sandstone_trapdoor", ItemGroup.REDSTONE);
@@ -373,7 +372,7 @@ public class NBlocks {
         GABON_EBONY_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "gabon_ebony_trapdoor", ItemGroup.REDSTONE);
         WROUGHT_IRON_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.METAL), "wrought_iron_door", ItemGroup.REDSTONE);
 
-//        WROUGHT_IRON_BLOCK = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).build()), new Identifier(Neutronia.MOD_ID, "wrought_iron_block"));
+//        WROUGHT_IRON_BLOCK = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).getModMenuBadge()), new Identifier(Neutronia.MOD_ID, "wrought_iron_block"));
         WROUGHT_IRON_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(Neutronia.MOD_ID, "wrought_iron_bars"));
 
         for (WoodType newWoodTypes : WoodType.MODDED_WOODS) {
@@ -395,7 +394,7 @@ public class NBlocks {
         for (WoodType woodType : WoodType.VANILLA_WOODS) {
             CARVED_PLANKS[woodType.getIndex()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", woodType.asString()));
             PATTERNED_PLANKS[woodType.getIndex()] = new NeutroniaBaseBlock(Material.WOOD, String.format("patterned_%s_planks", woodType.asString()));
-//            WOODEN_SCAFFOLDING[woodType.getIndex()] = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.PART, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().build()), String.format("%s_scaffolding", woodType.asString()));
+//            WOODEN_SCAFFOLDING[woodType.getIndex()] = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.PART, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().getModMenuBadge()), String.format("%s_scaffolding", woodType.asString()));
         }
 
         /*for (GlazedTerracottaPillarVariants color : GlazedTerracottaPillarVariants.values()) {
@@ -587,6 +586,10 @@ public class NBlocks {
         GOLD_CHAIN = new ChainBlock("gold");
         PRISMARINE_CHAIN = new ChainBlock("prismarine");
 
+        for(CarvedFaceTypes carvedFaceTypes : CarvedFaceTypes.values()) {
+            PUMPKIN[carvedFaceTypes.ordinal()] = new PumpkinBlock();
+        }
+
         for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
             SOUL_STONE[soulStoneTypes.getIndex()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
             BlockRegistryBuilder.getInstance(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]).slab().stair().wall();
@@ -633,8 +636,8 @@ public class NBlocks {
         BAMBOO_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bamboo_planks");
         BlockRegistryBuilder.getInstance("bamboo", BAMBOO_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
-        /*BAMBOO_SIGN = RegistryUtils.registerNoBI(new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).build()), "bamboo_sign");
-        BAMBOO_WALL_SIGN = RegistryUtils.registerNoBI(new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).build()), "bamboo_wall_sign");
+        /*BAMBOO_SIGN = RegistryUtils.registerNoBI(new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).getModMenuBadge()), "bamboo_sign");
+        BAMBOO_WALL_SIGN = RegistryUtils.registerNoBI(new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).getModMenuBadge()), "bamboo_wall_sign");
         BAMBOO_TORCH = RegistryUtils.register(new NeutroniaTorchBlock(), "bamboo_torch");*/
         THATCH = new NeutroniaBaseBlock(Material.ORGANIC, "thatch");
         BlockRegistryBuilder.getInstance("thatch", THATCH).slab().stair();

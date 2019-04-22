@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "team.hollow.modmenu_api.mixins",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [],
+  "client": [
+    "MixinBadgeRenderer",
+    "MixinModMenu"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

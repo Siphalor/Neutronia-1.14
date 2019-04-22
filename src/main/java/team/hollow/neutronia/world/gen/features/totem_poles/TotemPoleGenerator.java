@@ -12,7 +12,7 @@ import net.minecraft.world.Heightmap;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.chunk.ChunkPos;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import team.hollow.test.ExampleMod;
+import team.hollow.neutronia.ExampleMod;
 
 import java.util.List;
 import java.util.Random;

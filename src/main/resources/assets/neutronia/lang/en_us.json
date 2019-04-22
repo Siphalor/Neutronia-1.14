@@ -322,31 +322,19 @@
   "block.neutronia.staghorn_coral_block": "Staghorn Coral Block",
   "block.neutronia.staghorn_coral_fan": "Staghorn Coral Fan",
 
-  "item.neutronia.notebook": "Neutronia's Wiki Book",
-  "notebook.neutronia.title": "Neutronia's Wiki Book",
-  "notebook.neutronia.intro": "This is a book which will talk about and show different parts of the mod so that you can understand more of the mod and what it adds",
-  "notebook.neutronia.categories": "Chapters",
-  "notebook.neutronia.new_wood_types.title": "New Wood Types",
-  "notebook.neutronia.new_wood_types.desc": "Adds some few new wood types and also new wood blocks",
-  "notebook.neutronia.savanna_revamp.title": "Revamped Savanna",
-  "notebook.neutronia.savanna_revamp.desc": "Talks about the revamp for the savanna biome",
-  "notebook.neutronia.forest_revamp.title": "Revamped Forests",
-  "notebook.neutronia.forest_revamp.desc": "Talks about the revamp for the forests",
-  "notebook.neutronia.aquatic_revamp_v2.title": "Aquatic Revamped v2",
-  "notebook.neutronia.aquatic_revamp_v2.desc": "Talks about the revamp for the everything aquatic-relate",
-  "notebook.neutronia.enchantment_additions.title": "Enchantment Additions",
-  "notebook.neutronia.enchantment_additions.desc": "Talks about the additions to the enchantment system",
+  "text.autoconfig.neutronia.title": "Neutronia Config",
 
-  "screen.knit.mod.config.edit": "Knit Mod Configs",
-  "screen.knit.mod.config": "%s Config",
-  "screen.knit.mod.config.multi": "%s Config Files",
-  "screen.knit.mod.config.btn.click": "Click to edit config.",
-  "screen.knit.mod.config.tooltip": "Hold <Left Shift> over config for descriptions.",
-  "config.knit.common": "Common Config (Server + Client)",
-  "config.knit.client": "Client-Only Configs",
-  "config.knit.server": "Server-Only Configs",
+  "text.autoconfig.neutronia.category.general": "General",
+  "text.autoconfig.neutronia.category.whatever": "Whatever",
+  "text.autoconfig.neutronia.category.nested": "Nested",
 
-  "text.neutronia.config.title": "Neutronia Config",
+  "text.autoconfig.neutronia.option.general.exampleInt": "Example Int",
+  "text.autoconfig.neutronia.option.general.exampleSlider": "Example Slider",
+
+  "text.autoconfig.neutronia.option.whatever.exampleInCategory": "Example In Category",
+
+  "text.autoconfig.neutronia.option.nested.exampleNested.exampleNestedString": "Example Nested String",
+  "text.autoconfig.neutronia.option.nested.exampleNested.exampleNestedLong": "Example Nested Long",
 
   "text.social.charmrepeat":"Give it a rest, will you?",
   "text.social.charmfailure":"Am I supposed to be impressed?",
@@ -369,5 +357,17 @@
   "text.social.examine5":" is wary of you",
   "text.social.examine6":" finds you distasteful",
   "text.social.examine7":" strongly dislikes you",
-  "text.social.examine8":" hates your guts"
+  "text.social.examine8":" hates your guts",
+
+  "text.modmenu.badges.alpha": "Alpha",
+  "text.modmenu.badges.beta": "Beta",
+  "text.modmenu.badges.release": "Release",
+  "text.modmenu.badges.broken_af": "Broken AF",
+  "text.modmenu.badges.api": "API",
+  "text.modmenu.badges.client_side": "Client-Side",
+  "text.modmenu.badges.server_side": "Server-Side",
+  "text.modmenu.badges.universal": "Universal",
+  "text.modmenu.badges.grayons": "Grayons",
+
+  "text.modmenu.badges.neutronia": "Neutronia"
 }

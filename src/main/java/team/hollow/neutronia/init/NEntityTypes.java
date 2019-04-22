@@ -61,70 +61,70 @@ public class NEntityTypes {
                 .category(EntityCategory.CREATURE)
                 .egg(0x172528, 0x5d7258)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();
+                .getModMenuBadge();
         ARCTIC_WOLF = EntityRegistryBuilder
                 .<ArcticWolfEntity>createBuilder("arctic_wolf")
                 .entity((var1, var2) -> new ArcticWolfEntity(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x172528, 0x5d7258)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();
+                .getModMenuBadge();
         JUNGLE_FROG = EntityRegistryBuilder
                 .<EntityJungleFrog>createBuilder("jungle_frog")
                 .entity((var1, var2) -> new EntityJungleFrog(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x172528, 0x5d7258)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();
+                .getModMenuBadge();
         AXOLOTL = EntityRegistryBuilder
                 .<AxolotlEntity>createBuilder("axolotl")
                 .entity((var1, var2) -> new AxolotlEntity(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0xeab68e, 0xe08878)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();
+                .getModMenuBadge();
         PENGUIN = EntityRegistryBuilder
                 .<EntityPenguin>createBuilder("penguin")
                 .entity((var1, var2) -> new EntityPenguin(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x080505, 0xcee3ff)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();
+                .getModMenuBadge();
         GREAT_HUNGER = EntityRegistryBuilder
                 .<EntityGreatHunger>createBuilder("great_hunger")
                 .entity((var1, var2) -> new EntityGreatHunger(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x7c7c7c, 0x8e8e8e)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();
+                .getModMenuBadge();
         SHADOW_PHANTOM = EntityRegistryBuilder
                 .<EntityShadowPhantom>createBuilder("shadow_phantom")
                 .entity((var1, var2) -> new EntityShadowPhantom(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x172528, 0x5d7258)
                 .size(EntitySize.constant(0.6F, 1.1F))
-                .build();
+                .getModMenuBadge();
         ENDER_PHANTOM = EntityRegistryBuilder
                 .<EntityEnderPhantom>createBuilder("ender_phantom")
                 .entity((var1, var2) -> new EntityEnderPhantom(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x172528, 0x5d7258)
                 .size(EntitySize.constant(0.6F, 1.1F))
-                .build();
+                .getModMenuBadge();
         BLOOD_PHANTOM = EntityRegistryBuilder
                 .<EntityBloodPhantom>createBuilder("blood_phantom")
                 .entity((var1, var2) -> new EntityBloodPhantom(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x172528, 0x5d7258)
                 .size(EntitySize.constant(0.6F, 1.1F))
-                .build();
+                .getModMenuBadge();
         ALBADON = EntityRegistryBuilder
                 .<AlbadonEntity>createBuilder("albadon")
                 .entity((var1, var2) -> new AlbadonEntity(var2))
                 .category(EntityCategory.CREATURE)
                 .egg(0x89afae, 0xba1d39)
                 .size(EntitySize.constant(0.5F, 1.95F))
-                .build();*/
+                .getModMenuBadge();*/
     }
 
 }

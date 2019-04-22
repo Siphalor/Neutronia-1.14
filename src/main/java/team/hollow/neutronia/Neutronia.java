@@ -1,26 +1,24 @@
 package team.hollow.neutronia;
 
+import me.sargunvohra.mcmods.autoconfig.api.AutoConfig;
+import me.sargunvohra.mcmods.autoconfig.api.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.impl.registry.CompostingChanceRegistryImpl;
 import net.minecraft.item.Items;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import team.hollow.neutronia.configNew.ConfigManager;
-import team.hollow.neutronia.event_system.EventCore;
+import team.hollow.modmenu_api.ModMenuBadgeManager;
+import team.hollow.modmenu_api.api.ModMenuBadges;
 import team.hollow.neutronia.init.*;
+import team.hollow.update_checker_api.VersionChecker;
 
 public class Neutronia implements ModInitializer {
 
     public static final String MOD_ID = "neutronia";
     public static final String MOD_NAME = "Neutronia";
-    public static final String PREFIX = MOD_ID + ":";
     private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
 
-    public static TestConfig testConfig;
-
-    static {
-        EventCore.instance = new EventCore();
-    }
+    public static ModConfig config;
 
     public static Logger getLogger() {
         return LOGGER;
@@ -28,9 +26,8 @@ public class Neutronia implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        // TODO: Fix this
-        //testConfig = ConfigManager.loadConfig(TestConfig.class);
-        testConfig = new TestConfig();
+        AutoConfig.register(MOD_ID, ModConfig.class, JanksonConfigSerializer::new);
+        config = AutoConfig.<ModConfig>getConfigHolder(MOD_ID).getConfig();
         new NBlocks();
         new NLightBlocks();
         new NItems();
@@ -42,6 +39,9 @@ public class Neutronia implements ModInitializer {
         CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
         CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
+
+        ModMenuBadgeManager.registerBadges(MOD_ID, ModMenuBadges.ALPHA, ModMenuBadges.BETA, new NeutroniaBadge());
+        VersionChecker.startVersionCheck();
     }
 
 }

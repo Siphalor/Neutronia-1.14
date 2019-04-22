@@ -7,8 +7,8 @@ plugins {
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_1_8
-	targetCompatibility = JavaVersion.VERSION_1_8
+	sourceCompatibility = JavaVersion.VERSION_12
+	targetCompatibility = JavaVersion.VERSION_12
 }
 
 idea {
@@ -26,26 +26,34 @@ group = "team.hollow"
 
 repositories {
 	mavenCentral()
+	mavenLocal()
 	maven("https://jitpack.io")
 	maven("https://tehnut.info/maven")
 	maven("https://maven.fabricmc.net")
 	maven("https://minecraft.curseforge.com/api/maven")
 	maven("https://maven.jamieswhiteshirt.com/libs-release/")
+    maven("http://maven.sargunv.s3-website-us-west-2.amazonaws.com/")
+
 }
 
 dependencies {
 	minecraft(group = "com.mojang", name = "minecraft", version = Minecraft.version)
 	mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+build.${Fabric.Yarn.version}")
 	modCompile(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
-	compileOnly(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
-
-	modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
-
-	include(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
-	implementation(group = "blue.endless", name = "jankson", version= Jetbrains.Jakson.version)
 
 	modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
 	include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
+
+	modCompile(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
+	include(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
+    modCompile(group = "me.sargunvohra.mcmods", name = "auto-config", version = Dependencies.AutoConfig.version)
+    include(group = "me.sargunvohra.mcmods", name = "auto-config", version = Dependencies.AutoConfig.version)
+
+	modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
+
+	modCompile("org.apache.maven:maven-artifact:3.6.0")
+
+	modCompile(group = "team.hollow", name = "AbnormaLib", version = "+")
 }
 
 tasks.getByName<ProcessResources>("processResources") {

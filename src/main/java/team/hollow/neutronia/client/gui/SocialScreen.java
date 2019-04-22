@@ -6,6 +6,8 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.util.Identifier;
+import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.entity.SocialVillager;
 
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class SocialScreen extends Screen {
+    private static final Identifier TEXTURE = new Identifier(Neutronia.MOD_ID, "textures/gui/quest_villager.png");
 
     List<SocialButton> positiveButtons = new ArrayList<>();
     List<SocialButton> neutralButtons = new ArrayList<>();
@@ -54,6 +57,14 @@ public class SocialScreen extends Screen {
         this.addButton(tradeButton = new SocialButton((width - 240), (height - 60), 60, 30, "Barter"));
         tradeButton.visible = false;
         neutralButtons.add(tradeButton);
+    }
+
+    @Override
+    public void render(int int_1, int int_2, float float_1) {
+        this.renderBackground();
+        super.render(int_1, int_2, float_1);
+        this.minecraft.getTextureManager().bindTexture(TEXTURE);
+        blit(10, 10, 10, 10, 275, 166, 300, 200);
     }
 
     public SocialVillager getTarget() {

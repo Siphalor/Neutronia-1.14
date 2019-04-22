@@ -11,7 +11,7 @@ import net.minecraft.world.chunk.ChunkPos;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.feature.AbstractTempleFeature;
 import net.minecraft.world.gen.feature.StructureFeature;
-import team.hollow.test.ExampleMod;
+import team.hollow.neutronia.ExampleMod;
 
 import java.util.List;
 import java.util.Random;
