@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.client.gui;
 
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -202,4 +203,4 @@ public class SocialButton extends ButtonWidget {
         textRenderer_1.draw(string_1, (float) (int_1 - textRenderer_1.getStringWidth(string_1) / 2), (float) int_2, int_3);
     }
 
-}
+}*/

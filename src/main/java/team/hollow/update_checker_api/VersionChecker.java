@@ -152,7 +152,7 @@ public class VersionChecker
                 String display_url = null;
                 try
                 {
-                    URL url = new URL(mod.getMetadata().getCustomElement("updatechecker:update_link").toString());
+                    URL url = new URL(mod.getMetadata().getCustomElement("updatechecker:update_link").getAsString());
                     LOGGER.info("[{}] Starting version check at {}", mod.getMetadata().getId(), url.toString());
 
                     InputStream con = openUrlStream(url);
@@ -252,16 +252,19 @@ public class VersionChecker
     {
         List<ModContainer> ret = new LinkedList<>();
         for (ModContainer info : FabricLoader.getInstance().getAllMods()) {
-            URL url = null;
-            try {
-                url = new URL(info.getMetadata().getCustomElement("updatechecker:update_link").toString());
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
+            if(info.getMetadata().containsCustomElement("updatechecker:update_link")) {
+                URL url = null;
+                try {
+                    url = new URL(info.getMetadata().getCustomElement("updatechecker:update_link").getAsString());
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                if (url != null)
+                    ret.add(info);
+                return ret;
             }
-            if (url != null)
-                ret.add(info);
         }
-        return ret;
+        return new ArrayList<>();
     }
 
     private static Map<ModContainer, CheckResult> results = new ConcurrentHashMap<>();

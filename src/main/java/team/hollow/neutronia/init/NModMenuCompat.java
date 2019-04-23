@@ -33,7 +33,7 @@ public class NModMenuCompat implements ModMenuApi {
 
     private Screen openGui() {
         ConfigScreenBuilder builder = ConfigScreenBuilder.create(MinecraftClient.getInstance().currentScreen, "Cloth Mod Config Demo", null);
-        builder.addCategory("\nOverworld").addOption(new BooleanListEntry("Simple Boolean", false, null))
+        builder.addCategory("Overworld").addOption(new BooleanListEntry("Simple Boolean", false, null))
                 .setBackgroundTexture(new Identifier("minecraft", "textures/block/dirt.png"));
         ConfigScreenBuilder.CategoryBuilder numberZone = builder.addCategory("Nether");
         numberZone.setBackgroundTexture(new Identifier("minecraft", "textures/block/netherrack.png"));
@@ -59,10 +59,6 @@ public class NModMenuCompat implements ModMenuApi {
 
         ConfigScreenBuilder.CategoryBuilder end = builder.addCategory("End");
         end.setBackgroundTexture(new Identifier("minecraft", "textures/block/end_stone.png"));
-
-        builder.setOnSave(savedConfig -> {
-            builder.build()
-        });
 
         return builder.build();
     }

@@ -2,7 +2,6 @@ package team.hollow.neutronia.client.gui;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.TranslatableTextComponent;
@@ -10,21 +9,12 @@ import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.entity.SocialVillager;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Environment(EnvType.CLIENT)
 public class SocialScreen extends Screen {
     private static final Identifier TEXTURE = new Identifier(Neutronia.MOD_ID, "textures/gui/quest_villager.png");
 
-    List<SocialButton> positiveButtons = new ArrayList<>();
-    List<SocialButton> neutralButtons = new ArrayList<>();
-    private SocialButton charmButton;
-    private SocialButton apologyButton;
-    private SocialButton examineButton;
-    private SocialButton recruitButton;
-    private SocialButton favorButton;
-    private SocialButton tradeButton;
     private SocialVillager target;
     private PlayerEntity talker;
 
@@ -35,44 +25,41 @@ public class SocialScreen extends Screen {
     }
 
     @Override
-    public void init(MinecraftClient client, int int1, int int2) {
-        super.init(client, int1, int2);
-        this.addButton(new SocialButton((width - 60), (height - 90), 60, 30, "Socialize"));
-        this.addButton(new SocialButton((width - 60), (height - 60), 60, 30, "Influence"));
-        this.addButton(charmButton = new SocialButton((width - 120), (height - 90), 60, 30, "Charm"));
-        charmButton.visible = false;
-        positiveButtons.add(charmButton);
-        this.addButton(apologyButton = new SocialButton((width - 180), (height - 90), 60, 30, "Apologize"));
-        apologyButton.visible = false;
-        positiveButtons.add(apologyButton);
-        this.addButton(examineButton = new SocialButton((width - 240), (height - 90), 60, 30, "Examine"));
-        examineButton.visible = false;
-        positiveButtons.add(examineButton);
-        this.addButton(recruitButton = new SocialButton((width - 120), (height - 60), 60, 30, "Recruit"));
-        recruitButton.visible = false;
-        neutralButtons.add(recruitButton);
-        this.addButton(favorButton = new SocialButton((width - 180), (height - 60), 60, 30, "Favor"));
-        favorButton.visible = false;
-        neutralButtons.add(favorButton);
-        this.addButton(tradeButton = new SocialButton((width - 240), (height - 60), 60, 30, "Barter"));
-        tradeButton.visible = false;
-        neutralButtons.add(tradeButton);
-    }
-
-    @Override
     public void render(int int_1, int int_2, float float_1) {
         this.renderBackground();
         super.render(int_1, int_2, float_1);
         this.minecraft.getTextureManager().bindTexture(TEXTURE);
-        blit(10, 10, 10, 10, 275, 166, 300, 200);
+        int int_3 = (this.width - 276) / 2;
+        int int_4 = (this.height - 166) / 2;
+        //blit(x, y, z, u, v, width, height, texHeight, texWidth)
+        blit(int_3, int_4, this.blitOffset, 0.0F, 0.0F, 275, 166, 256, 512);
+
+        this.minecraft.getTextureManager().bindTexture(TEXTURE);
+        //blit(x, y, z, u, v, width, height, texHeight, texWidth)
+        blit(107, 63, this.blitOffset, 275.0F, 0.0F, 88, 80, 256, 512);
+
+        String quest = "Quests";
+        this.font.draw(quest, 100 + this.font.getStringWidth(quest), 51, 4210752);
+
+        String questName = "Quest: Carrot Collector";
+        this.font.draw(questName, 110 + this.font.getStringWidth(questName), 51, 4210752);
+
+        String newLine = "\n";
+
+        String desc = " help me!" + newLine + " My rabbits are hungry," + newLine + " But I don't have any carrots!" + newLine + " Can you help me?" + newLine + newLine + " Collect 25 carrots." + newLine + " Reward:";
+        drawWrappedString(desc, 210, 71, 153, 4210752);
+    }
+
+    public void drawWrappedString(String text, int x, int y, int entryWidth, int color) {
+        List<String> strings = font.wrapStringToWidthAsList(text, entryWidth);
+        for (String string : strings) {
+            font.draw(string, x, y, color);
+            y += font.fontHeight + 3;
+        }
     }
 
     public SocialVillager getTarget() {
         return this.target;
-    }
-
-    PlayerEntity getTalker() {
-        return this.talker;
     }
 
 }
