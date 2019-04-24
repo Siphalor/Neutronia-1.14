@@ -12,8 +12,8 @@ import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
@@ -81,11 +81,11 @@ public class NeutroniaWallSignBlock extends SignBlock {
         return direction_1.getOpposite() == blockState_1.get(FACING) && !blockState_1.canPlaceAt(iWorld_1, blockPos_1) ? Blocks.AIR.getDefaultState() : super.getStateForNeighborUpdate(blockState_1, direction_1, blockState_2, iWorld_1, blockPos_1, blockPos_2);
     }
 
-    public BlockState rotate(BlockState blockState_1, Rotation rotation_1) {
+    public BlockState rotate(BlockState blockState_1, BlockRotation rotation_1) {
         return blockState_1.with(FACING, rotation_1.rotate(blockState_1.get(FACING)));
     }
 
-    public BlockState mirror(BlockState blockState_1, Mirror mirror_1) {
+    public BlockState mirror(BlockState blockState_1, BlockMirror mirror_1) {
         return blockState_1.rotate(mirror_1.getRotation(blockState_1.get(FACING)));
     }
 

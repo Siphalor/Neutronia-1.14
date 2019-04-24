@@ -30,7 +30,7 @@ public class NBlocks {
     public static final Block[] /*GLAZED_TERRACOTTA_PILLAR = new Block[13], */SOUL_STONE = new Block[4];
     public static final Block PALM_LOG, PALM_WOOD, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING/*, COCONUT*/;
     public static final Block WILLOW_LOG, WILLOW_WOOD, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
-    public static final Block MANGROVE_LOG, MANGROVE_WOOD, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR/* MANGROVE_BOOKSHELF*/;
+    //public static final Block MANGROVE_LOG, MANGROVE_WOOD, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR/* MANGROVE_BOOKSHELF*/;
     public static final Block RED_MANGROVE_LOG, RED_MANGROVE_WOOD, RED_MANGROVE_PLANKS, RED_MANGROVE_LEAVES, RED_MANGROVE_SAPLING, RED_MANGROVE_DOOR, RED_MANGROVE_TRAPDOOR/*, RED_MANGROVE_BOOKSHELF*/;
     public static final Block BAOBAB_LOG, BAOBAB_WOOD, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR/*, BAOBAB_BOOKSHELF*/;
     public static final Block WENGE_LOG, WENGE_WOOD, WENGE_PLANKS, WENGE_LEAVES, WENGE_SAPLING, WENGE_DOOR, WENGE_TRAPDOOR/*, WENGE_BOOKSHELF*/;
@@ -251,15 +251,6 @@ public class NBlocks {
         WILLOW_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new WillowSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "willow_sapling"));
         WILLOW_UNDERWATER_SAPLING = RegistryUtils.register(new NeutroniaWaterloggedSaplingBlock(new WillowSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "underwater_willow_sapling"));
 
-        MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "mangrove_log");
-        MANGROVE_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "mangrove_wood"), ItemGroup.BUILDING_BLOCKS);
-        MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "mangrove_planks");
-        BlockRegistryBuilder.getInstance("mangrove", MANGROVE_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        MANGROVE_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "mangrove_leaves"));
-        MANGROVE_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new MangroveSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "mangrove_sapling"));
-
         RED_MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "red_mangrove_log");
         RED_MANGROVE_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
                 .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "red_mangrove_wood"), ItemGroup.BUILDING_BLOCKS);
@@ -352,8 +343,6 @@ public class NBlocks {
         PALM_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "palm_trapdoor", ItemGroup.REDSTONE);
         WILLOW_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "willow_door", ItemGroup.REDSTONE);
         WILLOW_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "willow_trapdoor", ItemGroup.REDSTONE);
-        MANGROVE_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "mangrove_door", ItemGroup.REDSTONE);
-        MANGROVE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "mangrove_trapdoor", ItemGroup.REDSTONE);
         RED_MANGROVE_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "red_mangrove_door", ItemGroup.REDSTONE);
         RED_MANGROVE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "red_mangrove_trapdoor", ItemGroup.REDSTONE);
         BAOBAB_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "baobab_door", ItemGroup.REDSTONE);

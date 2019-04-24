@@ -14,7 +14,7 @@ import team.hollow.modmenu_api.ModMenuBadgeManager;
 import team.hollow.modmenu_api.api.ModMenuBadges;
 import team.hollow.modmenu_api.api.ModMenuBadge;
 
-@Mixin(BadgeRenderer.class)
+@Mixin(value = BadgeRenderer.class, remap = false)
 public abstract class MixinBadgeRenderer {
 
     @Shadow public ModMetadata metadata;

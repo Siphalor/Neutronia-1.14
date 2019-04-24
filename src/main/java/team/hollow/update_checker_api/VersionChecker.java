@@ -8,8 +8,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.apache.maven.artifact.versioning.ComparableVersion;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -81,16 +79,12 @@ public class VersionChecker
 
     public static class CheckResult
     {
-        @Nonnull
         public final Status status;
-        @Nullable
         public final ComparableVersion target;
-        @Nullable
         public final Map<ComparableVersion, String> changes;
-        @Nullable
         public final String url;
 
-        private CheckResult(@Nonnull Status status, @Nullable ComparableVersion target, @Nullable Map<ComparableVersion, String> changes, @Nullable String url)
+        private CheckResult(Status status, ComparableVersion target, Map<ComparableVersion, String> changes, String url)
         {
             this.status = status;
             this.target = target;

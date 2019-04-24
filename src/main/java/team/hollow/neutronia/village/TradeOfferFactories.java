@@ -26,7 +26,6 @@ import net.minecraft.village.VillagerDataContainer;
 import net.minecraft.village.VillagerType;
 import net.minecraft.world.World;
 
-import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -60,7 +59,6 @@ public class TradeOfferFactories {
             this.multiplier = 0.05F;
         }
 
-        @Nullable
         public TradeOffer create(Entity entity_1, Random random_1) {
             return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(this.secondBuy.getItem(), this.secondCount), new ItemStack(this.sell.getItem(), this.sellCount), this.maxUses, this.experience, this.multiplier);
         }
@@ -81,13 +79,12 @@ public class TradeOfferFactories {
             this.experience = int_3;
         }
 
-        @Nullable
         public TradeOffer create(Entity entity_1, Random random_1) {
             World world_1 = entity_1.world;
             BlockPos blockPos_1 = world_1.locateStructure(this.structure, new BlockPos(entity_1), 100, true);
             if (blockPos_1 != null) {
                 ItemStack itemStack_1 = FilledMapItem.createMap(world_1, blockPos_1.getX(), blockPos_1.getZ(), (byte)2, true, true);
-                FilledMapItem.method_8002(world_1, itemStack_1);
+                FilledMapItem.fillExplorationMap(world_1, itemStack_1);
                 MapState.addDecorationsTag(itemStack_1, blockPos_1, "+", this.iconType);
                 itemStack_1.setDisplayName(new TranslatableTextComponent("filled_map." + this.structure.toLowerCase(Locale.ROOT)));
                 return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(Items.COMPASS), itemStack_1, this.maxUses, this.experience, 0.2F);
@@ -235,7 +232,6 @@ public class TradeOfferFactories {
             this.multiplier = 0.05F;
         }
 
-        @Nullable
         public TradeOffer create(Entity entity_1, Random random_1) {
             ItemStack itemStack_1 = new ItemStack(Items.SUSPICIOUS_STEW, 1);
             SuspiciousStewItem.addEffectToStew(itemStack_1, this.effect, this.duration);
@@ -318,7 +314,6 @@ public class TradeOfferFactories {
             this.experience = int_3;
         }
 
-        @Nullable
         public TradeOffer create(Entity entity_1, Random random_1) {
             if (entity_1 instanceof VillagerDataContainer) {
                 ItemStack itemStack_1 = new ItemStack(this.map.get(((VillagerDataContainer)entity_1).getVillagerData().getType()), this.count);

@@ -7,7 +7,7 @@ import net.minecraft.block.FlowerPotBlock;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.StringItem;
+import net.minecraft.item.AliasedBlockItem;
 import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
@@ -61,7 +61,7 @@ public class FlowerPotBlockMixin {
     private Block checkForCrops(final Block block) {
         if (Blocks.AIR == block) {
             final Item item = Objects.requireNonNull(NEUTRONIA$HELD_ITEM.get(), "held item").getItem();
-            if (item instanceof StringItem) {
+            if (item instanceof AliasedBlockItem) {
                 return CONTENT_TO_POTTED.getOrDefault(((SeedsItemAccessor) item).getBlock(), Blocks.AIR);
             }
         }

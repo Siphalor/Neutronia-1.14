@@ -7,8 +7,8 @@ plugins {
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_12
-	targetCompatibility = JavaVersion.VERSION_12
+	sourceCompatibility = JavaVersion.VERSION_1_8
+	targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 idea {
@@ -46,14 +46,14 @@ dependencies {
 
 	modCompile(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
 	include(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
-    modCompile(group = "me.sargunvohra.mcmods", name = "auto-config", version = Dependencies.AutoConfig.version)
-    include(group = "me.sargunvohra.mcmods", name = "auto-config", version = Dependencies.AutoConfig.version)
+    modCompile(group = "com.github.siphalor", name = "tweed-api", version = Dependencies.Tweed.version)
+	include(group = "com.github.siphalor", name = "tweed-api", version = Dependencies.Tweed.version)
 
 	modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
 
 	modCompile("org.apache.maven:maven-artifact:3.6.0")
 
-	modCompile(group = "team.hollow", name = "AbnormaLib", version = "+")
+	//modCompile(group = "team.hollow", name = "AbnormaLib", version = "+")
 }
 
 tasks.getByName<ProcessResources>("processResources") {

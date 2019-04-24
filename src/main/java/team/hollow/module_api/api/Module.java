@@ -1,17 +1,27 @@
 package team.hollow.module_api.api;
 
+import de.siphalor.tweed.config.ConfigCategory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.TextComponent;
+import team.hollow.neutronia.utils.registry.RegistryUtils;
 
-public class Module {
+import java.util.ArrayList;
 
+public abstract class Module {
+
+    public String name;
     public ItemStack iconStack;
     public TextComponent description;
     public boolean enabled, enabledByDefault;
+    private ArrayList<Feature> features;
 
-    public Module(ItemStack iconStack, TextComponent description) {
+    private ConfigCategory configCategory;
+
+    public Module(String name, ItemStack iconStack, TextComponent description) {
+        this.name = name;
         this.iconStack = iconStack;
         this.description = description;
+        this.features = new ArrayList<>();
     }
 
     public ItemStack getIconStack() {
@@ -46,4 +56,24 @@ public class Module {
         this.enabledByDefault = enabledByDefault;
     }
 
+    public <T extends Feature> T register(T feature) {
+        features.add(feature);
+        return feature;
+    }
+
+    public void apply() {
+        features.forEach(Feature::apply);
+    }
+
+    public ConfigCategory getConfigCategory() {
+        if(configCategory == null)
+            buildConfigCategory();
+        return configCategory;
+    }
+
+    private void buildConfigCategory() {
+        configCategory = new ConfigCategory();
+        configCategory.setComment(description.getFormattedText());
+        features.forEach(feature -> feature.getConfigEntries().forEach(pair -> configCategory.register(pair.getLeft(), pair.getRight())));
+    }
 }

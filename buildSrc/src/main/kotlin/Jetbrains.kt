@@ -24,13 +24,13 @@ object Fabric {
 
 object Dependencies {
     object ClothConfig {
-        const val version = "0.2.0.12"
+        const val version = "0.2.1.14"
     }
     object ModMenu {
         const val version = "+"
     }
-    object AutoConfig {
-        const val version = "+"
+    object Tweed {
+        const val version = "2.0.2"
     }
 }
 

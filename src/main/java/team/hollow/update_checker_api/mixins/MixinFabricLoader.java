@@ -9,7 +9,7 @@ import team.hollow.update_checker_api.VersionChecker;
 
 import java.io.File;
 
-@Mixin(FabricLoader.class)
+@Mixin(value = FabricLoader.class, remap = false)
 public abstract class MixinFabricLoader {
 
     @Inject(method = "instantiateMods", at = @At("RETURN"))

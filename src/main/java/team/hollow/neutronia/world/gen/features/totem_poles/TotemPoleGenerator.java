@@ -4,8 +4,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.structure.*;
 import net.minecraft.structure.processor.BlockIgnoreStructureProcessor;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.BlockMirror;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.Heightmap;
@@ -22,18 +22,18 @@ public class TotemPoleGenerator {
     public static final Identifier id = new Identifier("neutronia:totempoles");
 
     //This tells the game to create the structure defined above as a piece
-    public static void addParts(StructureManager structureManager, BlockPos blockPos, Rotation rotation, List<StructurePiece> list_1, Random random, DefaultFeatureConfig featureConfig) {
+    public static void addParts(StructureManager structureManager, BlockPos blockPos, BlockRotation rotation, List<StructurePiece> list_1, Random random, DefaultFeatureConfig featureConfig) {
         list_1.add(new Piece(structureManager, id, blockPos, rotation));
     }
 
     //To summarize this code creates and then builds the piece
     public static class Piece extends SimpleStructurePiece {
-        private Rotation rotation;
+        private BlockRotation rotation;
         private Identifier template;
 
 
 
-        public Piece(StructureManager structureManager, Identifier identifier, BlockPos blockPos, Rotation rotation) {
+        public Piece(StructureManager structureManager, Identifier identifier, BlockPos blockPos, BlockRotation rotation) {
             super(ExampleMod.TOTEM_POLE_PIECE_TYPE, 0);
 
             this.pos = blockPos;
@@ -46,7 +46,7 @@ public class TotemPoleGenerator {
         public Piece(StructureManager structureManager, CompoundTag compoundTag) {
             super(ExampleMod.TOTEM_POLE_PIECE_TYPE, compoundTag);
             this.template = new Identifier(compoundTag.getString("Template"));
-            this.rotation = Rotation.valueOf(compoundTag.getString("Rot"));
+            this.rotation = BlockRotation.valueOf(compoundTag.getString("Rot"));
             this.setStructureData(structureManager);
         }
 
@@ -59,7 +59,7 @@ public class TotemPoleGenerator {
 
         public void setStructureData(StructureManager structureManager) {
             Structure structure = structureManager.getStructureOrBlank(this.template);
-            StructurePlacementData structurePlacementData = (new StructurePlacementData()).setRotation(this.rotation).setMirrored(Mirror.NONE).setPosition(pos).addProcessor(BlockIgnoreStructureProcessor.IGNORE_STRUCTURE_BLOCKS);
+            StructurePlacementData structurePlacementData = (new StructurePlacementData()).setRotation(this.rotation).setMirrored(BlockMirror.NONE).setPosition(pos).addProcessor(BlockIgnoreStructureProcessor.IGNORE_STRUCTURE_BLOCKS);
             this.setStructureData(structure, this.pos, structurePlacementData);
         }
 

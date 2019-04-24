@@ -1,20 +1,17 @@
 package team.hollow.neutronia;
 
-import me.sargunvohra.mcmods.autoconfig.api.AutoConfig;
-import me.sargunvohra.mcmods.autoconfig.api.serializer.JanksonConfigSerializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.impl.registry.CompostingChanceRegistryImpl;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.text.TranslatableTextComponent;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.hollow.modmenu_api.ModMenuBadgeManager;
 import team.hollow.modmenu_api.api.ModMenuBadges;
 import team.hollow.module_api.ModuleManager;
-import team.hollow.module_api.api.Module;
 import team.hollow.neutronia.init.*;
+import team.hollow.neutronia.modules.TreeModule;
 import team.hollow.quest_api.QuestManager;
 import team.hollow.quest_api.api.Quest;
 import team.hollow.quest_api.api.QuestReward;
@@ -27,16 +24,15 @@ public class Neutronia implements ModInitializer {
     public static final String MOD_NAME = "Neutronia";
     private static final Logger LOGGER = LogManager.getFormatterLogger(MOD_NAME);
 
-    public static ModConfig config;
-
     public static Logger getLogger() {
         return LOGGER;
     }
 
     @Override
     public void onInitialize() {
-        AutoConfig.register(MOD_ID, ModConfig.class, JanksonConfigSerializer::new);
-        config = AutoConfig.<ModConfig>getConfigHolder(MOD_ID).getConfig();
+        ModuleManager.registerModule(new TreeModule());
+    	ModuleManager.setup();
+
         QuestManager.registerQuests(
                 new Quest(
                         new Identifier(MOD_ID, "test"),
@@ -65,22 +61,6 @@ public class Neutronia implements ModInitializer {
 
         ModMenuBadgeManager.registerBadges(MOD_ID, ModMenuBadges.ALPHA, ModMenuBadges.BETA, new NeutroniaBadge());
         VersionChecker.startVersionCheck();
-
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test1"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test1")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test2"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test2")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test3"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test3")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test4"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test4")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test5"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test5")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test6"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test6")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test7"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test7")));
-        ModuleManager.registerModule(new Identifier(MOD_ID, "test8"), new Module(new ItemStack(Items.ROTTEN_FLESH), new TranslatableTextComponent("module.neutronia.test8")));
-
-        ModuleManager.getModulesMap().forEach((identifier, modules) -> {
-            for(Module module : modules) {
-                System.out.println(String.format("Module '%s' is %s", identifier.toString(), module.enabled ? "enabled" : "disabled"));
-            }
-        });
     }
 
 }

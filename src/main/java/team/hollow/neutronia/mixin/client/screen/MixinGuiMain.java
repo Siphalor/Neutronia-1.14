@@ -21,11 +21,12 @@ public abstract class MixinGuiMain extends Screen {
 
     @Inject(method = "render(IIF)V", at = @At("RETURN"))
     public void fabricInfo(int mouseX, int mouseY, float delta, CallbackInfo info) {
-        if (Neutronia.config.client.mainMenuExtra) {
+        // TODO
+        /*if (Neutronia.config.client.mainMenuExtra) {
             Objects.requireNonNull(this.minecraft).textRenderer.draw("Fabric Loader Version: v0.3.7.109", 2, this.height - 40, 0xFFFFFF);
             this.minecraft.textRenderer.draw("Fabric API Version: v0.2.6.117", 2, this.height - 30, 0xFFFFFF);
             this.minecraft.textRenderer.draw("Loaded mods: " + FabricLoader.getInstance().getAllMods().size(), 2, this.height - 20, 0xFFFFFF);
-        }
+        }*/
     }
 
 }

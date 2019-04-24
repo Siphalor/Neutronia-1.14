@@ -15,7 +15,7 @@ public class MixinModMenu {
 
     @Shadow @Final public static String MOD_ID;
 
-    @Inject(method = "onInitializeClient", at = @At("RETURN"))
+    @Inject(method = "onInitializeClient", at = @At("RETURN"), remap = false)
     public void onInitializeClient(CallbackInfo info) {
         ModMenuBadgeManager.registerBadges(MOD_ID, ModMenuBadges.API);
     }
