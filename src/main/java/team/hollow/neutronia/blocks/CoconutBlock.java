@@ -10,6 +10,7 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
 import team.hollow.neutronia.init.NBlocks;
+import team.hollow.neutronia.modules.TreeModule;
 
 public class CoconutBlock extends NeutroniaBaseBlock {
 
@@ -24,7 +25,7 @@ public class CoconutBlock extends NeutroniaBaseBlock {
 
     public boolean canBlockStay(ViewableWorld worldIn, BlockPos pos) {
         BlockState iblockstate = worldIn.getBlockState(pos.up());
-        return iblockstate.getBlock() == NBlocks.PALM_LEAVES;
+        return iblockstate.getBlock() == TreeModule.palm.leaves;
     }
 
     @Override

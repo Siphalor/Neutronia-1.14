@@ -20,6 +20,7 @@ import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import team.hollow.neutronia.init.NBlocks;
+import team.hollow.neutronia.modules.TreeModule;
 
 import java.util.Iterator;
 import java.util.Random;
@@ -31,8 +32,8 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
     private static final BlockState LEAVES;
 
     static {
-        LOG = NBlocks.WILLOW_LOG.getDefaultState();
-        LEAVES = NBlocks.WILLOW_LEAVES.getDefaultState();
+        LOG = TreeModule.willow.log.getDefaultState();
+        LEAVES = TreeModule.willow.leaves.getDefaultState();
     }
 
     protected final int height;
