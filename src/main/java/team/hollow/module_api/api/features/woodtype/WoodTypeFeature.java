@@ -1,13 +1,12 @@
 package team.hollow.module_api.api.features.woodtype;
 
 import team.hollow.neutronia.unsure.WoodType;
-import team.hollow.neutronia.unsure.WoodTypeRegistry;
 
 import java.util.Collections;
 import java.util.Set;
 
 public abstract class WoodTypeFeature extends ModdedWoodTypeFeature {
-	public static final Set<WoodType> SKIP_OAK = Collections.singleton(WoodTypeRegistry.OAK);
+	public static final Set<WoodType> SKIP_OAK = Collections.singleton(WoodType.OAK);
 	protected Set<WoodType> skipWoodTypes;
 
 	public WoodTypeFeature(String name, String enablesDescription, Set<WoodType> skipWoodTypes) {
@@ -17,7 +16,7 @@ public abstract class WoodTypeFeature extends ModdedWoodTypeFeature {
 
 	@Override
 	protected void applyEnabled() {
-		for(WoodType woodType : WoodTypeRegistry.VANILLA) {
+		for(WoodType woodType : WoodType.VANILLA) {
 			if(skipWoodTypes.contains(woodType))
 				continue;
 			process(woodType);

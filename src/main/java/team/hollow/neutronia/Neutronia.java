@@ -55,7 +55,6 @@ public class Neutronia implements ModInitializer {
         );
         new NBlocks();
         new NLightBlocks();
-        new NItems();
         NBlockEntities.init();
         new NEntityTypes();
         new NPaintingMotives();

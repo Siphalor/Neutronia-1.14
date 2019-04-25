@@ -53,12 +53,6 @@ public class NBlocks {
     /*public static final Block PUMPKIN = new PumpkinBlock();
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
     public static final Block MELON = new MelonBlock(), MEL_O_LANTERN = new MelOLanternBlock();*/
-    public static final Block CHEESE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cheese_cake", ItemGroup.FOOD);
-    public static final Block CHOCOLATE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "chocolate_cake", ItemGroup.FOOD);
-    public static final Block PUMPKIN_PIE = RegistryUtils.register(new PieBlock(), "pumpkin_pie", ItemGroup.FOOD);
-    public static final Block BLUEBERRY_PIE = RegistryUtils.register(new PieBlock(), "blueberry_pie", ItemGroup.FOOD);
-    public static final Block SWEET_BERRY_PIE = RegistryUtils.register(new PieBlock(), "sweet_berry_pie", ItemGroup.FOOD);
-    public static final Block APPLE_PIE = RegistryUtils.register(new PieBlock(), "apple_pie", ItemGroup.FOOD);
     public static final Block BAMBOO_PLANKS/*, BAMBOO_SIGN, BAMBOO_WALL_SIGN, BAMBOO_TORCH*/, THATCH;
     public static final Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN/*, ACIDIAN_BARS*/;
     public static final Block TREATED_PLANKS, TREATED_SIDING;
@@ -72,7 +66,6 @@ public class NBlocks {
     public static final Block DEAD_PILLAR_CORAL_WALL_FAN, DEAD_LIME_BRAIN_CORAL_WALL_FAN, DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, DEAD_ACAN_CORAL_WALL_FAN, DEAD_ANTIPATHES_CORAL_WALL_FAN, DEAD_STAGHORN_CORAL_WALL_FAN;
     public static final Block PILLAR_CORAL, LIME_BRAIN_CORAL, GREEN_BUBBLE_CORAL, ACAN_CORAL, ANTIPATHES_CORAL, STAGHORN_CORAL;
     public static final Block DEAD_PILLAR_CORAL, DEAD_LIME_BRAIN_CORAL, DEAD_GREEN_BUBBLE_CORAL, DEAD_ACAN_CORAL, DEAD_ANTIPATHES_CORAL, DEAD_STAGHORN_CORAL;
-    public static final Block BLUE_BERRY_BUSH, GOOSEBERRY_BUSH, WITHER_BERRY_BUSH, GREEN_GRAPE_BUSH, PURPLE_GRAPE_BUSH;
     public static final Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN, ICE_LANTERN;
     public static Block SAWMILL;
     public static Block REDSTONE_GOLD_LANTERN, REDSTONE_IRON_LANTERN;
@@ -133,12 +126,6 @@ public class NBlocks {
         ACAN_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_ACAN_CORAL), new Identifier(Neutronia.MOD_ID, "acan_coral"));
         ANTIPATHES_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_ANTIPATHES_CORAL), new Identifier(Neutronia.MOD_ID, "antipathes_coral"));
         STAGHORN_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_STAGHORN_CORAL), new Identifier(Neutronia.MOD_ID, "staghorn_coral"));
-
-        BLUE_BERRY_BUSH = RegistryUtils.registerNoBI(new NeutroniaBlueberryBushBlock(), "blueberry_bush");
-        GOOSEBERRY_BUSH = RegistryUtils.registerNoBI(new NeutroniaGooseberryBushBlock(), "gooseberry_bush");
-        WITHER_BERRY_BUSH = RegistryUtils.registerNoBI(new NeutroniaWitherBerryBushBlock(), "wither_berry_bush");
-        GREEN_GRAPE_BUSH = RegistryUtils.registerNoBI(new NeutroniaGreenGrapeBushBlock(), "green_grape_bush");
-        PURPLE_GRAPE_BUSH = RegistryUtils.registerNoBI(new NeutroniaPurpleGrapeBushBlock(), "purple_grape_bush");
 
         IRON_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(Neutronia.MOD_ID, "iron_lantern"));
         GOLD_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(Neutronia.MOD_ID, "gold_lantern"));

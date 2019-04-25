@@ -13,7 +13,6 @@ import team.hollow.module_api.api.features.Feature;
 import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
-import team.hollow.neutronia.modules.VariationModule;
 import team.hollow.neutronia.unsure.WoodType;
 import team.hollow.neutronia.unsure.WoodTypeRegistry;
 import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
