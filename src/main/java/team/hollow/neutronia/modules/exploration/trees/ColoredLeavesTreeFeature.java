@@ -1,4 +1,4 @@
-package team.hollow.neutronia.modules.tree;
+package team.hollow.neutronia.modules.exploration.trees;
 
 import net.fabricmc.fabric.api.client.render.ColorProviderRegistry;
 import net.minecraft.block.Blocks;

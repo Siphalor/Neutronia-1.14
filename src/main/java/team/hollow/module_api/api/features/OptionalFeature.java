@@ -1,10 +1,10 @@
-package team.hollow.module_api.api;
+package team.hollow.module_api.api.features;
 
 import de.siphalor.tweed.config.ConfigEnvironment;
 import de.siphalor.tweed.config.ConfigScope;
 import de.siphalor.tweed.config.entry.BooleanEntry;
 
-public class OptionalFeature extends Feature {
+public abstract class OptionalFeature extends Feature {
 	protected BooleanEntry enabledEntry;
 	public String name;
 
@@ -29,7 +29,5 @@ public class OptionalFeature extends Feature {
 		}
 	}
 
-	protected void applyEnabled() {
-
-	}
+	protected abstract void applyEnabled();
 }

@@ -1,21 +1,17 @@
-package team.hollow.neutronia.modules;
+package team.hollow.neutronia.modules.exploration;
 
 import net.minecraft.block.sapling.OakSaplingGenerator;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.text.StringTextComponent;
-import team.hollow.module_api.api.Module;
+import team.hollow.module_api.api.SubModule;
 import team.hollow.neutronia.blocks.sapling.BaobabSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.MangroveSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.PalmSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.WillowSaplingGenerator;
-import team.hollow.neutronia.modules.tree.ColoredLeavesTreeFeature;
-import team.hollow.neutronia.modules.tree.PalmTreeFeature;
-import team.hollow.neutronia.modules.tree.TreeFeature;
-import team.hollow.neutronia.modules.tree.WaterloggableTreeFeature;
+import team.hollow.neutronia.modules.exploration.trees.ColoredLeavesTreeFeature;
+import team.hollow.neutronia.modules.exploration.trees.PalmTreeFeature;
+import team.hollow.neutronia.modules.exploration.trees.TreeFeature;
+import team.hollow.neutronia.modules.exploration.trees.WaterloggableTreeFeature;
 
-@SuppressWarnings("WeakerAccess")
-public class TreeModule extends Module {
+public class TreesSubModule extends SubModule {
 	public static TreeFeature mangrove;
 	public static TreeFeature red_mangrove;
 	public static TreeFeature baobab;
@@ -29,8 +25,8 @@ public class TreeModule extends Module {
 	public static WaterloggableTreeFeature willow;
 	public static PalmTreeFeature palm;
 
-	public TreeModule() {
-		super("tree", "This module enables you to disable certain trees and their wood types");
+	public TreesSubModule() {
+		super("trees", "This submodule defines new trees and wood types");
 
 		mangrove = register(new TreeFeature("mangrove", new MangroveSaplingGenerator()));
 		red_mangrove = register(new TreeFeature("red_mangrove", new MangroveSaplingGenerator()));

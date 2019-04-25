@@ -1,4 +1,4 @@
-package team.hollow.neutronia.modules.tree;
+package team.hollow.neutronia.modules.exploration.trees;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -9,11 +9,13 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import team.hollow.module_api.api.Feature;
-import team.hollow.module_api.api.OptionalFeature;
+import team.hollow.module_api.api.features.Feature;
+import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
-import team.hollow.neutronia.modules.DecorationModule;
+import team.hollow.neutronia.modules.VariationModule;
+import team.hollow.neutronia.unsure.WoodType;
+import team.hollow.neutronia.unsure.WoodTypeRegistry;
 import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
@@ -25,6 +27,7 @@ public class TreeFeature extends OptionalFeature {
 	public Block planks;
 	public Block leaves;
 	public Block sapling;
+	public WoodType woodType;
 
 	protected SaplingGenerator saplingGenerator;
 
@@ -59,16 +62,9 @@ public class TreeFeature extends OptionalFeature {
 		RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), name + "_door", ItemGroup.REDSTONE);
         RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), name + "_trapdoor", ItemGroup.REDSTONE);
 
-		if(DecorationModule.stairsAndSlabs.isEnabled()) {
-			BlockRegistryBuilder.getInstance(name, planks).slab().stair();
-		}
-		if(DecorationModule.fences.isEnabled()) {
-        	BlockRegistryBuilder.getInstance(name, planks).fence().fenceGate();
-		}
-		if(DecorationModule.redstoneyBlocks.isEnabled()) {
-			BlockRegistryBuilder.getInstance(name, planks).button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
-		}
-		DecorationModule.woodSubModule.addModdedWoodBlocks(name);
+        BlockRegistryBuilder.getInstance(name, planks).slab().stair().fence().fenceGate().button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
+
+		woodType = WoodTypeRegistry.registerModded(new WoodType(name, planks));
 	}
 
 }

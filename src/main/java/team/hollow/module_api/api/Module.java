@@ -1,6 +1,9 @@
 package team.hollow.module_api.api;
 
 import de.siphalor.tweed.config.ConfigCategory;
+import net.minecraft.util.Identifier;
+import team.hollow.module_api.api.features.Feature;
+import team.hollow.module_api.api.features.OptionalFeature;
 
 import java.util.ArrayDeque;
 
@@ -9,6 +12,7 @@ public abstract class Module extends OptionalFeature {
     public String name;
     public String description;
     private ArrayDeque<Feature> features;
+    private Identifier backgroundTexture;
 
     private ConfigCategory configCategory;
 
@@ -29,6 +33,11 @@ public abstract class Module extends OptionalFeature {
         features.forEach(Feature::apply);
     }
 
+    public Module setBackgroundTexture(Identifier identifier) {
+        backgroundTexture = identifier;
+        return this;
+    }
+
     public ConfigCategory getConfigCategory() {
         if(configCategory == null)
             buildConfigCategory();
@@ -37,6 +46,8 @@ public abstract class Module extends OptionalFeature {
 
     private void buildConfigCategory() {
         configCategory = new ConfigCategory();
+        if(backgroundTexture != null)
+            configCategory.setBackgroundTexture(backgroundTexture);
         configCategory.setComment(description);
         configEntries.forEach(pair -> configCategory.register(pair.getLeft(), pair.getRight()));
         features.forEach(feature -> feature.getConfigEntries().forEach(pair -> configCategory.register(pair.getLeft(), pair.getRight())));

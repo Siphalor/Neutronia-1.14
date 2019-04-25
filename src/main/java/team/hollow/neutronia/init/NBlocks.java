@@ -9,7 +9,9 @@ import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.blocks.pumpkin.PumpkinBlock;
-import team.hollow.neutronia.enums.*;
+import team.hollow.neutronia.enums.CarvedFaceTypes;
+import team.hollow.neutronia.enums.CustomChestType;
+import team.hollow.neutronia.enums.SoulStoneVariants;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
@@ -24,7 +26,6 @@ public class NBlocks {
 
     // NOTE: Wooden scaffolding?
     // TODO: Wooden chests (refactoring needed)
-    public static final Block[] WOOD_LANTERNS = new Block[WoodType.values().length];
     public static final Block[] WOODEN_CHESTS = new Block[CustomChestType.values().length];
     public static final Block SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
     public static final Block SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
@@ -172,13 +173,6 @@ public class NBlocks {
 
 //        WROUGHT_IRON_BLOCK = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).getModMenuBadge()), new Identifier(Neutronia.MOD_ID, "wrought_iron_block"));
         WROUGHT_IRON_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(Neutronia.MOD_ID, "wrought_iron_bars"));
-
-        for (WoodType woodType : WoodType.values()) {
-            if (woodType == WoodType.BAMBOO) continue;
-            if (woodType == WoodType.CHERRY) continue;
-            if (woodType == WoodType.WILLOW) continue;
-            WOOD_LANTERNS[woodType.getIndex()] = new WoodenLanternBlock(woodType);
-        }
 
 //            WOODEN_SCAFFOLDING[woodType.getIndex()] = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.PART, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().getModMenuBadge()), String.format("%s_scaffolding", woodType.asString()));
 

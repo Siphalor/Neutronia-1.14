@@ -1,4 +1,4 @@
-package team.hollow.module_api.api;
+package team.hollow.module_api.api.features;
 
 import net.minecraft.block.Block;
 import team.hollow.neutronia.utils.registry.RegistryUtils;

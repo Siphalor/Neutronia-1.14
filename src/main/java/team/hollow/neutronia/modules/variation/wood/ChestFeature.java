@@ -1,6 +1,6 @@
-package team.hollow.neutronia.modules.decoration;
+package team.hollow.neutronia.modules.variation.wood;
 
-import team.hollow.module_api.api.OptionalFeature;
+import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.blocks.CustomChestBlock;
 import team.hollow.neutronia.enums.CustomChestType;
 import team.hollow.neutronia.utils.registry.RegistryUtils;

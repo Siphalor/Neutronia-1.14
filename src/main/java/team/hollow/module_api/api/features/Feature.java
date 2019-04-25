@@ -1,4 +1,4 @@
-package team.hollow.module_api.api;
+package team.hollow.module_api.api.features;
 
 import de.siphalor.tweed.config.entry.ConfigEntry;
 import net.minecraft.util.Pair;
@@ -23,7 +23,7 @@ public abstract class Feature {
 		return configEntries;
 	}
 
-	abstract void apply();
+	public abstract void apply();
 
     public static String formatName(String name) {
         return WordUtils.capitalizeFully(name.replace("_", " "));

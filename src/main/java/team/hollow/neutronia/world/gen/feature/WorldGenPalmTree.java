@@ -8,16 +8,17 @@ import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import team.hollow.neutronia.blocks.NeutroniaLeavesBlock;
-import team.hollow.neutronia.init.NBlocks;
-import team.hollow.neutronia.modules.TreeModule;
+import team.hollow.neutronia.modules.ExplorationModule;
+import team.hollow.neutronia.modules.exploration.TreesSubModule;
 
 import java.util.Random;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> {
-    private static final BlockState LOG = TreeModule.palm.log.getDefaultState();
+    private static final BlockState LOG = TreesSubModule.palm.log.getDefaultState();
 
-    private static final BlockState LEAF = TreeModule.palm.leaves.getDefaultState()
+    private static final BlockState LEAF = TreesSubModule.palm.leaves.getDefaultState()
             .with(NeutroniaLeavesBlock.PERSISTENT, Boolean.FALSE);
 
 //    private static final BlockState COCONUT = NBlocks.COCONUT.getDefaultState();

@@ -11,9 +11,10 @@ import team.hollow.modmenu_api.ModMenuBadgeManager;
 import team.hollow.modmenu_api.api.ModMenuBadges;
 import team.hollow.module_api.ModuleManager;
 import team.hollow.neutronia.init.*;
-import team.hollow.neutronia.modules.StorageModule;
-import team.hollow.neutronia.modules.DecorationModule;
-import team.hollow.neutronia.modules.TreeModule;
+import team.hollow.neutronia.modules.OriginsModule;
+import team.hollow.neutronia.modules.origins.StorageSubModule;
+import team.hollow.neutronia.modules.VariationModule;
+import team.hollow.neutronia.modules.ExplorationModule;
 import team.hollow.quest_api.QuestManager;
 import team.hollow.quest_api.api.Quest;
 import team.hollow.quest_api.api.QuestReward;
@@ -32,9 +33,9 @@ public class Neutronia implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ModuleManager.registerModule(new TreeModule());
-        ModuleManager.registerModule(new StorageModule());
-        ModuleManager.registerModule(new DecorationModule());
+    	ModuleManager.registerModule(new OriginsModule());
+        ModuleManager.registerModule(new ExplorationModule());
+        ModuleManager.registerModule(new VariationModule());
     	ModuleManager.setup();
 
         QuestManager.registerQuests(

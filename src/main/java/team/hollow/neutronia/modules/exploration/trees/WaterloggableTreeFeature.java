@@ -1,4 +1,4 @@
-package team.hollow.neutronia.modules.tree;
+package team.hollow.neutronia.modules.exploration.trees;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
