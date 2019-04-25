@@ -4,10 +4,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.PillarBlock;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.text.StringTextComponent;
 import team.hollow.module_api.api.Module;
 import team.hollow.neutronia.blocks.CactusBundleBlock;
 
@@ -17,7 +14,7 @@ public class StorageModule extends Module {
             EGG_CRATE, BEETROOT_CRATE, POTATO_CRATE, CARROT_CRATE, APPLE_CRATE, GOLDEN_APPLE_CRATE, CACTUS_BUNDLE;
 
     public StorageModule() {
-        super("storage_module", new ItemStack(Items.BONE_BLOCK), new StringTextComponent("This module adds a lot of new storage blocks"));
+        super("storage_module", "This module enables you to disabled different kinds of storage blocks");
 
         STICK_BUNDLE = register(new SingleBlockFeature(new PillarBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).build()), "stick_bundle"));
         CHORUS_BUNDLE = register(new SingleBlockFeature(new PillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP).build()), "chorus_fruit_bundle"));

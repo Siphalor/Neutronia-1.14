@@ -2,10 +2,10 @@ package team.hollow.neutronia.modules;
 
 import net.minecraft.block.Block;
 import org.apache.commons.lang3.text.WordUtils;
-import team.hollow.module_api.api.SimpleFeature;
+import team.hollow.module_api.api.OptionalFeature;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
-public class SingleBlockFeature extends SimpleFeature {
+public class SingleBlockFeature extends OptionalFeature {
     public Block block;
     
     public SingleBlockFeature(Block block1, String name) {
@@ -17,4 +17,5 @@ public class SingleBlockFeature extends SimpleFeature {
     protected void applyEnabled() {
         RegistryUtils.register(block, name);
     }
+
 }
