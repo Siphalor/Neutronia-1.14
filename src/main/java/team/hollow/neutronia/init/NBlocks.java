@@ -28,17 +28,7 @@ public class NBlocks {
             WOODEN_SCAFFOLDING = new Block[WoodType.VANILLA_WOODS.size()]*/;
 //    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
     public static final Block[] /*GLAZED_TERRACOTTA_PILLAR = new Block[13], */SOUL_STONE = new Block[4];
-    public static final Block PALM_LOG, PALM_WOOD, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING/*, COCONUT*/;
-    public static final Block WILLOW_LOG, WILLOW_WOOD, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
     //public static final Block MANGROVE_LOG, MANGROVE_WOOD, MANGROVE_PLANKS, MANGROVE_LEAVES, MANGROVE_SAPLING, MANGROVE_DOOR, MANGROVE_TRAPDOOR/* MANGROVE_BOOKSHELF*/;
-    public static final Block RED_MANGROVE_LOG, RED_MANGROVE_WOOD, RED_MANGROVE_PLANKS, RED_MANGROVE_LEAVES, RED_MANGROVE_SAPLING, RED_MANGROVE_DOOR, RED_MANGROVE_TRAPDOOR/*, RED_MANGROVE_BOOKSHELF*/;
-    public static final Block BAOBAB_LOG, BAOBAB_WOOD, BAOBAB_PLANKS, BAOBAB_LEAVES, BAOBAB_SAPLING, BAOBAB_DOOR, BAOBAB_TRAPDOOR/*, BAOBAB_BOOKSHELF*/;
-    public static final Block WENGE_LOG, WENGE_WOOD, WENGE_PLANKS, WENGE_LEAVES, WENGE_SAPLING, WENGE_DOOR, WENGE_TRAPDOOR/*, WENGE_BOOKSHELF*/;
-    public static final Block PURPLEHEART_LOG, PURPLEHEART_WOOD, PURPLEHEART_PLANKS, PURPLEHEART_LEAVES, PURPLEHEART_SAPLING, PURPLEHEART_DOOR, PURPLEHEART_TRAPDOOR/*, /*PURPLEHEART_BOOKSHELF*/;
-    public static final Block LACEWOOD_LOG, LACEWOOD_WOOD, LACEWOOD_PLANKS, LACEWOOD_LEAVES, LACEWOOD_SAPLING, LACEWOOD_DOOR, LACEWOOD_TRAPDOOR/*, LACEWOOD_BOOKSHELF*/;
-    public static final Block CHERRY_LOG, CHERRY_WOOD, CHERRY_PLANKS, CHERRY_LEAVES, CHERRY_SAPLING, CHERRY_DOOR, CHERRY_TRAPDOOR/*, /*CHERRY_BOOKSHELF*/;
-    public static final Block BOLIVIAN_ROSEWOOD_LOG, BOLIVIAN_ROSEWOOD_WOOD, BOLIVIAN_ROSEWOOD_PLANKS, BOLIVIAN_ROSEWOOD_LEAVES, BOLIVIAN_ROSEWOOD_SAPLING, BOLIVIAN_ROSEWOOD_DOOR, BOLIVIAN_ROSEWOOD_TRAPDOOR/*,BOLIVIAN_ROSEWOOD_BOOKSHELF*/;
-    public static final Block GABON_EBONY_LOG, GABON_EBONY_WOOD, GABON_EBONY_PLANKS, GABON_EBONY_LEAVES, GABON_EBONY_SAPLING, GABON_EBONY_DOOR, GABON_EBONY_TRAPDOOR/*, /*GABON_EBONY_BOOKSHELF*/;
     public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
     public static final Block /*WROUGHT_IRON_BLOCK, */WROUGHT_IRON_BARS;
     public static final Block[] WOODEN_CHESTS = new Block[CustomChestTypes.values().length];
@@ -228,99 +218,6 @@ public class NBlocks {
             WOODEN_CHESTS[woodenChestTypes.getId()] = RegistryUtils.register(new CustomChestBlock(woodenChestTypes.asString()), new Identifier(Neutronia.MOD_ID, woodenChestTypes.asString()));
         }
 
-        PALM_LOG = new NeutroniaPillarBlock(Material.WOOD, "palm_log");
-        PALM_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "palm_wood"), ItemGroup.BUILDING_BLOCKS);
-        PALM_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "palm_planks");
-        BlockRegistryBuilder.getInstance("palm", PALM_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        PALM_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "palm_leaves"));
-        PALM_LOG_TOP = new NeutroniaBaseBlock(Material.WOOD, "palm_top_log");
-        PALM_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new PalmSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "palm_sapling"));
-//        COCONUT = new CoconutBlock();
-
-        WILLOW_LOG = new NeutroniaPillarBlock(Material.WOOD, "willow_log");
-        WILLOW_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "willow_wood"), ItemGroup.BUILDING_BLOCKS);
-        WILLOW_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "willow_planks");
-        BlockRegistryBuilder.getInstance("willow", WILLOW_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        WILLOW_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "willow_leaves"));
-        WILLOW_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new WillowSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "willow_sapling"));
-        WILLOW_UNDERWATER_SAPLING = RegistryUtils.register(new NeutroniaWaterloggedSaplingBlock(new WillowSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "underwater_willow_sapling"));
-
-        RED_MANGROVE_LOG = new NeutroniaPillarBlock(Material.WOOD, "red_mangrove_log");
-        RED_MANGROVE_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "red_mangrove_wood"), ItemGroup.BUILDING_BLOCKS);
-        RED_MANGROVE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "red_mangrove_planks");
-        BlockRegistryBuilder.getInstance("red_mangrove", WILLOW_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        RED_MANGROVE_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "red_mangrove_leaves"));
-        RED_MANGROVE_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new MangroveSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "red_mangrove_sapling"));
-
-        BAOBAB_LOG = new NeutroniaPillarBlock(Material.WOOD, "baobab_log");
-        BAOBAB_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "baobab_wood"), ItemGroup.BUILDING_BLOCKS);
-        BAOBAB_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "baobab_planks");
-        BlockRegistryBuilder.getInstance("baobab", BAOBAB_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        BAOBAB_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "baobab_leaves"));
-        BAOBAB_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new BaobabSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "baobab_sapling"));
-
-        WENGE_LOG = new NeutroniaPillarBlock(Material.WOOD, "wenge_log");
-        WENGE_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "wenge_wood"), ItemGroup.BUILDING_BLOCKS);
-        WENGE_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "wenge_planks");
-        BlockRegistryBuilder.getInstance("wenge", WENGE_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        WENGE_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "wenge_leaves"));
-        WENGE_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new OakSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "wenge_sapling"));
-
-        PURPLEHEART_LOG = new NeutroniaPillarBlock(Material.WOOD, "purpleheart_log");
-        PURPLEHEART_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "purpleheart_wood"), ItemGroup.BUILDING_BLOCKS);
-        PURPLEHEART_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "purpleheart_planks");
-        BlockRegistryBuilder.getInstance("purpleheart", PURPLEHEART_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        PURPLEHEART_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "purpleheart_leaves"));
-        PURPLEHEART_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new OakSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "purpleheart_sapling"));
-
-        LACEWOOD_LOG = new NeutroniaPillarBlock(Material.WOOD, "lacewood_log");
-        LACEWOOD_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "lacewood_wood"), ItemGroup.BUILDING_BLOCKS);
-        LACEWOOD_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "lacewood_planks");
-        BlockRegistryBuilder.getInstance("lacewood", LACEWOOD_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        LACEWOOD_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "lacewood_leaves"));
-        LACEWOOD_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new OakSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "lacewood_sapling"));
-
-        CHERRY_LOG = new NeutroniaPillarBlock(Material.WOOD, "cherry_log");
-        CHERRY_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "cherry_wood"), ItemGroup.BUILDING_BLOCKS);
-        CHERRY_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "cherry_planks");
-        BlockRegistryBuilder.getInstance("cherry", CHERRY_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        CHERRY_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "cherry_leaves"));
-        CHERRY_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new OakSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "cherry_sapling"));
-
-        BOLIVIAN_ROSEWOOD_LOG = new NeutroniaPillarBlock(Material.WOOD, "bolivian_rosewood_log");
-        BOLIVIAN_ROSEWOOD_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "bolivian_rosewood_wood"), ItemGroup.BUILDING_BLOCKS);
-        BOLIVIAN_ROSEWOOD_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bolivian_rosewood_planks");
-        BlockRegistryBuilder.getInstance("bolivian_rosewood", BOLIVIAN_ROSEWOOD_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        BOLIVIAN_ROSEWOOD_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "bolivian_rosewood_leaves"));
-        BOLIVIAN_ROSEWOOD_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new OakSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "bolivian_rosewood_sapling"));
-
-        GABON_EBONY_LOG = new NeutroniaPillarBlock(Material.WOOD, "gabon_ebony_log");
-        GABON_EBONY_WOOD = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(Neutronia.MOD_ID, "gabon_ebony_wood"), ItemGroup.BUILDING_BLOCKS);
-        GABON_EBONY_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "gabon_ebony_planks");
-        BlockRegistryBuilder.getInstance("gabon_ebony", GABON_EBONY_PLANKS)
-                .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
-        GABON_EBONY_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, "gabon_ebony_leaves"));
-        GABON_EBONY_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new OakSaplingGenerator()), new Identifier(Neutronia.MOD_ID, "gabon_ebony_sapling"));
-
         GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
         IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "iron_grate");
         GOLD_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "gold_grate");
@@ -337,26 +234,6 @@ public class NBlocks {
         ICE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.ICE), "ice_trapdoor", ItemGroup.REDSTONE);
         BAMBOO_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "bamboo_door", ItemGroup.REDSTONE);
         BAMBOO_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(), "bamboo_trapdoor", ItemGroup.REDSTONE);
-        PALM_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "palm_door", ItemGroup.REDSTONE);
-        PALM_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "palm_trapdoor", ItemGroup.REDSTONE);
-        WILLOW_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "willow_door", ItemGroup.REDSTONE);
-        WILLOW_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "willow_trapdoor", ItemGroup.REDSTONE);
-        RED_MANGROVE_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "red_mangrove_door", ItemGroup.REDSTONE);
-        RED_MANGROVE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "red_mangrove_trapdoor", ItemGroup.REDSTONE);
-        BAOBAB_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "baobab_door", ItemGroup.REDSTONE);
-        BAOBAB_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "baobab_trapdoor", ItemGroup.REDSTONE);
-        WENGE_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "wenge_door", ItemGroup.REDSTONE);
-        WENGE_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "wenge_trapdoor", ItemGroup.REDSTONE);
-        PURPLEHEART_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "purpleheart_door", ItemGroup.REDSTONE);
-        PURPLEHEART_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "purpleheart_trapdoor", ItemGroup.REDSTONE);
-        LACEWOOD_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "lacewood_door", ItemGroup.REDSTONE);
-        LACEWOOD_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "lacewood_trapdoor", ItemGroup.REDSTONE);
-        CHERRY_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "cherry_door", ItemGroup.REDSTONE);
-        CHERRY_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "cherry_trapdoor", ItemGroup.REDSTONE);
-        BOLIVIAN_ROSEWOOD_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "bolivian_rosewood_door", ItemGroup.REDSTONE);
-        BOLIVIAN_ROSEWOOD_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "bolivian_rosewood_trapdoor", ItemGroup.REDSTONE);
-        GABON_EBONY_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), "gabon_ebony_door", ItemGroup.REDSTONE);
-        GABON_EBONY_TRAPDOOR = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), "gabon_ebony_trapdoor", ItemGroup.REDSTONE);
         WROUGHT_IRON_DOOR = RegistryUtils.register(new NeutroniaDoorBlock(Material.METAL), "wrought_iron_door", ItemGroup.REDSTONE);
 
 //        WROUGHT_IRON_BLOCK = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).getModMenuBadge()), new Identifier(Neutronia.MOD_ID, "wrought_iron_block"));

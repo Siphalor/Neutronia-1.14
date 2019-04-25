@@ -9,6 +9,7 @@ import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import team.hollow.neutronia.init.NBlocks;
+import team.hollow.neutronia.modules.TreeModule;
 
 import java.util.Random;
 import java.util.Set;
@@ -21,9 +22,9 @@ public class PalmTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
     private static final BlockState LEAVES;
 
     static {
-        LOG = NBlocks.PALM_LOG.getDefaultState();
-        LOG_TOP = NBlocks.PALM_LOG_TOP.getDefaultState();
-        LEAVES = NBlocks.PALM_LEAVES.getDefaultState();
+        LOG = TreeModule.palm.log.getDefaultState();
+        LOG_TOP = TreeModule.palm.topLog.getDefaultState();
+        LEAVES = TreeModule.palm.leaves.getDefaultState();
     }
 
     public PalmTreeFeature(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1, boolean boolean_1) {
