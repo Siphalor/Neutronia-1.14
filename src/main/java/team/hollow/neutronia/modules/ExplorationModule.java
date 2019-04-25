@@ -1,5 +1,6 @@
 package team.hollow.neutronia.modules;
 
+import net.minecraft.util.Identifier;
 import team.hollow.module_api.api.Module;
 import team.hollow.neutronia.modules.exploration.FoodSubModule;
 import team.hollow.neutronia.modules.exploration.TreesSubModule;
@@ -15,5 +16,6 @@ public class ExplorationModule extends Module {
 
 		trees = register(new TreesSubModule());
 		food = register(new FoodSubModule());
+		setBackgroundTexture(new Identifier("minecraft", "textures/block/grass_top.png"));
 	}
 }

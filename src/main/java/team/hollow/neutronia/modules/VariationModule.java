@@ -18,6 +18,6 @@ public class VariationModule extends Module {
 		super("variation", "This module contains variations for existing vanilla features.");
 
 		woodSubModule = register(new WoodSubModule());
-		setBackgroundTexture(new Identifier("minecraft", "textures/block/birch_log.png"));
+		setBackgroundTexture(new Identifier("minecraft", "textures/block/oak_log.png"));
 	}
 }

@@ -3,14 +3,13 @@ package team.hollow.neutronia.modules.variation;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import team.hollow.module_api.api.SubModule;
 import team.hollow.module_api.api.features.woodtype.WoodTypeBlockFeature;
+import team.hollow.module_api.api.features.woodtype.WoodTypeBlocksFeature;
 import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
 import team.hollow.neutronia.blocks.CustomLadderBlock;
 import team.hollow.neutronia.blocks.NeutroniaBaseLectern;
-import team.hollow.module_api.api.features.woodtype.WoodTypeBlocksFeature;
 
 import java.util.Collections;
 import java.util.function.Supplier;
@@ -58,7 +57,5 @@ public class WoodSubModule extends SubModule {
 			new Pair<>("patterned", simpleWoodenBlockSupplier),
 			new Pair<>("carved", simpleWoodenBlockSupplier)
 		));
-
-		setBackgroundTexture(new Identifier("minecraft", "textures/block/oak_log.png"));
 	}
 }
