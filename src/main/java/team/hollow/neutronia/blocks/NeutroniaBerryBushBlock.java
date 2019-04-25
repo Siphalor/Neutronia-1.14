@@ -10,6 +10,7 @@ import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.VerticalEntityPosition;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
@@ -25,15 +26,15 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
-import team.hollow.neutronia.init.NItems;
+import team.hollow.neutronia.modules.exploration.food.BerriesFeature;
 
 import java.util.Random;
 
-public class NeutroniaBlueberryBushBlock extends PlantBlock implements Fertilizable {
-
+public class NeutroniaBerryBushBlock extends PlantBlock implements Fertilizable {
     public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
+    private final BerriesFeature.BerryType berryType;
 
     static {
         AGE = Properties.AGE_3;
@@ -41,14 +42,15 @@ public class NeutroniaBlueberryBushBlock extends PlantBlock implements Fertiliza
         LARGE_SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
     }
 
-    public NeutroniaBlueberryBushBlock() {
+    public NeutroniaBerryBushBlock(BerriesFeature.BerryType berryType) {
         super(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).build());
+        this.berryType = berryType;
         this.setDefaultState(this.stateFactory.getDefaultState().with(AGE, 0));
     }
 
     @Environment(EnvType.CLIENT)
     public ItemStack getPickStack(BlockView blockView_1, BlockPos blockPos_1, BlockState blockState_1) {
-        return new ItemStack(NItems.BLUEBERRY);
+        return new ItemStack(BerriesFeature.getBerries(berryType));
     }
 
     public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
@@ -89,7 +91,7 @@ public class NeutroniaBlueberryBushBlock extends PlantBlock implements Fertiliza
             return false;
         } else if (int_1 > 1) {
             int int_2 = 1 + world_1.random.nextInt(2);
-            dropStack(world_1, blockPos_1, new ItemStack(NItems.BLUEBERRY, int_2 + (boolean_1 ? 1 : 0)));
+            dropStack(world_1, blockPos_1, new ItemStack(BerriesFeature.getBerries(berryType), int_2 + (boolean_1 ? 1 : 0)));
             world_1.playSound(null, blockPos_1, SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, SoundCategory.BLOCKS, 1.0F, 0.8F + world_1.random.nextFloat() * 0.4F);
             world_1.setBlockState(blockPos_1, blockState_1.with(AGE, 1), 2);
             return true;
