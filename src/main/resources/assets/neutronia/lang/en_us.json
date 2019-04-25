@@ -325,10 +325,12 @@
   "tweed.cloth.neutronia": "Neutronia Config",
 
   "tweed.cloth.neutronia.tree_module": "Tree Module",
+  "tweed.cloth.neutronia.tree_module.enable-tree_module": "Enable all tree related content",
   "tweed.cloth.neutronia.tree_module.enable-mangrove": "Enable Mangrove blocks",
-  "tweed.cloth.neutronia.tree_module.enable-redwood": "Enable Redwood blocks",
 
-  "tweed.cloth.neutronia.storage_module": "Storage Module",
+  "tweed.cloth.neutronia.storage": "Storage Module",
+
+  "tweed.cloth.neutronia.decorations": "Decoration Module",
 
   "text.autoconfig.neutronia.option.general.exampleInt": "Example Int",
   "text.autoconfig.neutronia.option.general.exampleSlider": "Example Slider",

@@ -1,15 +1,13 @@
-package team.hollow.neutronia.modules;
+package team.hollow.module_api.api;
 
 import net.minecraft.block.Block;
-import org.apache.commons.lang3.text.WordUtils;
-import team.hollow.module_api.api.SimpleFeature;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
-public class SingleBlockFeature extends SimpleFeature {
+public class SingleBlockFeature extends OptionalFeature {
     public Block block;
     
     public SingleBlockFeature(Block block1, String name) {
-        super(name, String.format("Adds %s", WordUtils.capitalizeFully(name.replace("_", " "))));
+        super(name, "Adds " + formatName(name));
         block = block1;
     }
 

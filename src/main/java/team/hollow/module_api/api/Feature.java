@@ -2,6 +2,7 @@ package team.hollow.module_api.api;
 
 import de.siphalor.tweed.config.entry.ConfigEntry;
 import net.minecraft.util.Pair;
+import org.apache.commons.lang3.text.WordUtils;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
@@ -23,4 +24,8 @@ public abstract class Feature {
 	}
 
 	abstract void apply();
+
+    public static String formatName(String name) {
+        return WordUtils.capitalizeFully(name.replace("_", " "));
+	}
 }

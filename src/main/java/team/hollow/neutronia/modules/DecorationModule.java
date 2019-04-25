@@ -1,34 +1,25 @@
 package team.hollow.neutronia.modules;
 
-import de.siphalor.tweed.config.ConfigEnvironment;
-import de.siphalor.tweed.config.ConfigScope;
-import de.siphalor.tweed.config.entry.BooleanEntry;
 import team.hollow.module_api.api.Module;
+import team.hollow.module_api.api.OptionalFeature;
+import team.hollow.neutronia.modules.decoration.WoodSubModule;
 
 public class DecorationModule extends Module {
-	public static BooleanEntry enableStairsAndSlabs = new BooleanEntry(true)
-		.setEnvironment(ConfigEnvironment.SERVER)
-		.setScope(ConfigScope.GAME)
-		.setComment("Enable stairs and slabs");
-	public static BooleanEntry enableFences = new BooleanEntry(true)
-		.setEnvironment(ConfigEnvironment.SERVER)
-		.setScope(ConfigScope.GAME)
-		.setComment("Enable fences and fence gates");
-	public static BooleanEntry enableRedstoneyBlocks = new BooleanEntry(true)
-		.setEnvironment(ConfigEnvironment.SERVER)
-		.setScope(ConfigScope.GAME)
-		.setComment("Enable buttons and pressure plates");
-	public static BooleanEntry enableSidings = new BooleanEntry(true)
-		.setEnvironment(ConfigEnvironment.SERVER)
-		.setScope(ConfigScope.GAME)
-		.setComment("Enable sidings and corners");
+	public static OptionalFeature stairsAndSlabs;
+	public static OptionalFeature fences;
+	public static OptionalFeature redstoneyBlocks;
+	public static OptionalFeature sidings;
+
+	public static WoodSubModule woodSubModule;
 
 	public DecorationModule() {
-		super("building", "This module contains various building and decoration related configurations.");
+		super("decorations", "This module contains various building and decoration related configurations.");
 
-		register("enable-stairs-and-slabs", enableStairsAndSlabs);
-		register("enable-fences", enableFences);
-		register("enable-buttons-and-plates", enableFences);
-		register("enable-sidings", enableSidings);
+		stairsAndSlabs = register(new OptionalFeature("stairs-and-slabs", "Adds loads of stairs and slabs"));
+		fences = register(new OptionalFeature("fences", "Adds loads of fences and fence gates"));
+		redstoneyBlocks = register(new OptionalFeature("buttons-and-plates", "Adds loads of buttons and pressure plates"));
+		sidings = register(new OptionalFeature("sidings", "Adds loads of sideways blocks and corners"));
+
+		woodSubModule = register(new WoodSubModule());
 	}
 }
