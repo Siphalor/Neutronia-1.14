@@ -3,6 +3,7 @@ package team.hollow.neutronia.modules.variation;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import team.hollow.module_api.api.SubModule;
 import team.hollow.module_api.api.features.woodtype.WoodTypeBlockFeature;
@@ -57,5 +58,7 @@ public class WoodSubModule extends SubModule {
 			new Pair<>("patterned", simpleWoodenBlockSupplier),
 			new Pair<>("carved", simpleWoodenBlockSupplier)
 		));
+
+		setBackgroundTexture(new Identifier("minecraft", "textures/block/oak_log.png"));
 	}
 }

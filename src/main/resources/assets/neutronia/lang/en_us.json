@@ -322,23 +322,22 @@
   "block.neutronia.staghorn_coral_block": "Staghorn Coral Block",
   "block.neutronia.staghorn_coral_fan": "Staghorn Coral Fan",
 
-  "tweed.cloth.neutronia": "Neutronia Config",
+  "tweed.cloth.neutronia": "Neutronia Module Configuration",
 
-  "tweed.cloth.neutronia.tree_module": "Tree Module",
-  "tweed.cloth.neutronia.tree_module.enable-tree_module": "Enable all tree related content",
-  "tweed.cloth.neutronia.tree_module.enable-mangrove": "Enable Mangrove blocks",
+  "tweed.cloth.neutronia.exploration": "Exploration",
+  "tweed.cloth.neutronia.exploration.enable-exploration": "Enable/Disable the Exploration Module",
 
-  "tweed.cloth.neutronia.storage": "Storage Module",
+  "tweed.cloth.neutronia.exploration.trees": "§2Exploration Module: Trees",
 
-  "tweed.cloth.neutronia.decorations": "Decoration Module",
+  "tweed.cloth.neutronia.endecorations": "Endecorations",
+  "tweed.cloth.neutronia.endecorations.enable-endecorations": "Enable/Disable the Endecorations Module",
+  "tweed.cloth.neutronia.endecorations.enable-paper_lantern": "Enables/Disables the wooden paper lanterns",
 
-  "text.autoconfig.neutronia.option.general.exampleInt": "Example Int",
-  "text.autoconfig.neutronia.option.general.exampleSlider": "Example Slider",
+  "tweed.cloth.neutronia.origins": "Origins",
+  "tweed.cloth.neutronia.origins.enable-origins": "Enable/Disable the Origins Module",
 
-  "text.autoconfig.neutronia.option.whatever.exampleInCategory": "Example In Category",
-
-  "text.autoconfig.neutronia.option.nested.exampleNested.exampleNestedString": "Example Nested String",
-  "text.autoconfig.neutronia.option.nested.exampleNested.exampleNestedLong": "Example Nested Long",
+  "tweed.cloth.neutronia.variation": "Variations",
+  "tweed.cloth.neutronia.variation.enable-variation": "Enable/Disable the Variations Module",
 
   "text.social.charmrepeat":"Give it a rest, will you?",
   "text.social.charmfailure":"Am I supposed to be impressed?",

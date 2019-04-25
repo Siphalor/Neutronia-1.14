@@ -23,6 +23,10 @@ public class CustomChestBlock extends ChestBlock {
         return true;
     }
 
+    public CustomChestType getChestType() {
+        return CustomChestType.getFromName(type);
+    }
+
     @Override
     public BlockEntity createBlockEntity(BlockView var1) {
         return new CustomChestBlockEntity(CustomChestType.getFromName(type));

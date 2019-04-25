@@ -1,5 +1,6 @@
 package team.hollow.neutronia.modules.exploration;
 
+import net.minecraft.block.sapling.DarkOakSaplingGenerator;
 import net.minecraft.block.sapling.OakSaplingGenerator;
 import team.hollow.module_api.api.SubModule;
 import team.hollow.neutronia.blocks.sapling.BaobabSaplingGenerator;
@@ -21,6 +22,7 @@ public class TreesSubModule extends SubModule {
 	public static TreeFeature cherry;
 	public static TreeFeature bolivianRosewood;
 	public static TreeFeature gabonEbony;
+	public static TreeFeature redwood;
 
 	public static WaterloggableTreeFeature willow;
 	public static PalmTreeFeature palm;
@@ -36,6 +38,7 @@ public class TreesSubModule extends SubModule {
 		lacewood = register(new TreeFeature("lacewood", new OakSaplingGenerator()));
 		cherry = register(new TreeFeature("cherry", new OakSaplingGenerator()));
 
+		redwood = register(new ColoredLeavesTreeFeature("redwood", new DarkOakSaplingGenerator()));
 		bolivianRosewood = register(new ColoredLeavesTreeFeature("bolivian_rosewood", new OakSaplingGenerator()));
 		gabonEbony = register(new ColoredLeavesTreeFeature("gabon_ebony", new OakSaplingGenerator()));
 		willow = new WaterloggableTreeFeature("willow", new WillowSaplingGenerator());

@@ -44,7 +44,6 @@ public class PointOfInterestTypeCustom {
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-        //System.out.println(Objects.requireNonNull(interestType).toString());
         return interestType;
     }
 

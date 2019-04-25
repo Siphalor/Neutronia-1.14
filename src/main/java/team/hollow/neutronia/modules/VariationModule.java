@@ -1,5 +1,6 @@
 package team.hollow.neutronia.modules;
 
+import net.minecraft.util.Identifier;
 import team.hollow.module_api.api.Module;
 import team.hollow.neutronia.modules.variation.FencesFeature;
 import team.hollow.neutronia.modules.variation.SidingsFeature;
@@ -17,5 +18,6 @@ public class VariationModule extends Module {
 		super("variation", "This module contains variations for existing vanilla features.");
 
 		woodSubModule = register(new WoodSubModule());
+		setBackgroundTexture(new Identifier("minecraft", "textures/block/birch_log.png"));
 	}
 }

@@ -11,7 +11,6 @@ import team.hollow.neutronia.Neutronia;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
-import java.util.Objects;
 
 public interface VillagerProfessionRegistry {
 
@@ -24,7 +23,6 @@ public interface VillagerProfessionRegistry {
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
-        System.out.println(Objects.requireNonNull(profession1).toString());
         return Registry.register(Registry.VILLAGER_PROFESSION, new Identifier(Neutronia.MOD_ID, id), profession1);
     }
 

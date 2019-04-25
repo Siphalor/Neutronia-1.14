@@ -26,7 +26,7 @@ public class NBlocks {
 
     // NOTE: Wooden scaffolding?
     // TODO: Wooden chests (refactoring needed)
-    public static final Block[] WOODEN_CHESTS = new Block[CustomChestType.values().length];
+    public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestType.values().length];
     public static final Block SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
     public static final Block SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
     public static final Block CHISELED_PRISMARINE, CHISELED_PRISMARINE_BRICKS, CHISELED_DARK_PRISMARINE, CUT_PRISMARINE, CUT_PRISMARINE_BRICKS, CUT_DARK_PRISMARINE, ENGRAVED_PRISMARINE, ENGRAVED_PRISMARINE_BRICKS, ENGRAVED_DARK_PRISMARINE;
@@ -150,7 +150,7 @@ public class NBlocks {
         REDSTONE_GOLD_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
 
         for (CustomChestType woodenChestTypes : CustomChestType.values()) {
-            WOODEN_CHESTS[woodenChestTypes.getId()] = RegistryUtils.register(new CustomChestBlock(woodenChestTypes.asString()), new Identifier(Neutronia.MOD_ID, woodenChestTypes.asString()));
+            WOODEN_CHESTS[woodenChestTypes.getId()] = (CustomChestBlock) RegistryUtils.register(new CustomChestBlock(woodenChestTypes.asString()), new Identifier(Neutronia.MOD_ID, woodenChestTypes.asString()));
         }
 
         GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
