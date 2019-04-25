@@ -322,11 +322,13 @@
   "block.neutronia.staghorn_coral_block": "Staghorn Coral Block",
   "block.neutronia.staghorn_coral_fan": "Staghorn Coral Fan",
 
-  "text.autoconfig.neutronia.title": "Neutronia Config",
+  "tweed.cloth.neutronia": "Neutronia Config",
 
-  "text.autoconfig.neutronia.category.general": "General",
-  "text.autoconfig.neutronia.category.whatever": "Whatever",
-  "text.autoconfig.neutronia.category.nested": "Nested",
+  "tweed.cloth.neutronia.tree_module": "Tree Module",
+  "tweed.cloth.neutronia.tree_module.enable-mangrove": "Enable Mangrove blocks",
+  "tweed.cloth.neutronia.tree_module.enable-redwood": "Enable Redwood blocks",
+
+  "tweed.cloth.neutronia.storage_module": "Storage Module",
 
   "text.autoconfig.neutronia.option.general.exampleInt": "Example Int",
   "text.autoconfig.neutronia.option.general.exampleSlider": "Example Slider",
