@@ -15,4 +15,5 @@ public class SingleBlockFeature extends OptionalFeature {
     protected void applyEnabled() {
         RegistryUtils.register(block, name);
     }
+
 }
