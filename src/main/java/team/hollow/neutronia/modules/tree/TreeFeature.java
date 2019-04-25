@@ -9,6 +9,7 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import team.hollow.module_api.api.Feature;
 import team.hollow.module_api.api.OptionalFeature;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
@@ -18,17 +19,17 @@ import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 public class TreeFeature extends OptionalFeature {
 	public Block log;
+	public Block strippedLog;
 	public Block wood;
+	public Block strippedWood;
 	public Block planks;
 	public Block leaves;
 	public Block sapling;
-	public Block door;
-	public Block trapDoor;
 
 	protected SaplingGenerator saplingGenerator;
 
 	public TreeFeature(String name, SaplingGenerator saplingGenerator) {
-		super(name, "Enable " + name + " trees and wood.");
+		super(name, "Enable " + Feature.formatName(name) + " trees and wood.");
 
 		this.saplingGenerator = saplingGenerator;
 	}
@@ -36,6 +37,7 @@ public class TreeFeature extends OptionalFeature {
 	@Override
 	protected void applyEnabled() {
 		log = new NeutroniaPillarBlock(Material.WOOD, name + "_log");
+		strippedLog = new NeutroniaPillarBlock(Material.WOOD, "stripped_" + name + "_log");
 		wood = RegistryUtils.register(
 			new Block(
 				FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
@@ -44,24 +46,29 @@ public class TreeFeature extends OptionalFeature {
 			new Identifier(Neutronia.MOD_ID, name + "_wood"),
 			ItemGroup.BUILDING_BLOCKS
 		);
+		strippedWood = RegistryUtils.register(
+			new Block(
+				FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
+				.hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()
+			),
+			new Identifier(Neutronia.MOD_ID, "stripped_" + name + "_wood")
+		);
 		planks = new NeutroniaBaseBlock(Material.WOOD, name + "_planks");
 		leaves = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, name + "_leaves"));
 		sapling = RegistryUtils.register(new NeutroniaSaplingBlock(saplingGenerator), new Identifier(Neutronia.MOD_ID, name + "_sapling"));
-		door = RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), name + "_door", ItemGroup.REDSTONE);
-        trapDoor = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), name + "_trapdoor", ItemGroup.REDSTONE);
+		RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), name + "_door", ItemGroup.REDSTONE);
+        RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), name + "_trapdoor", ItemGroup.REDSTONE);
 
-		if(DecorationModule.enableStairsAndSlabs.value) {
+		if(DecorationModule.stairsAndSlabs.isEnabled()) {
 			BlockRegistryBuilder.getInstance(name, planks).slab().stair();
 		}
-		if(DecorationModule.enableFences.value) {
+		if(DecorationModule.fences.isEnabled()) {
         	BlockRegistryBuilder.getInstance(name, planks).fence().fenceGate();
 		}
-		if(DecorationModule.enableRedstoneyBlocks.value) {
+		if(DecorationModule.redstoneyBlocks.isEnabled()) {
 			BlockRegistryBuilder.getInstance(name, planks).button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
 		}
-		if(DecorationModule.enableSidings.value) {
-			BlockRegistryBuilder.getInstance(name, planks).siding().corner();
-		}
+		DecorationModule.woodSubModule.addModdedWoodBlocks(name);
 	}
 
 }

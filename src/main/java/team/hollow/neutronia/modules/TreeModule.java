@@ -30,7 +30,7 @@ public class TreeModule extends Module {
 	public static PalmTreeFeature palm;
 
 	public TreeModule() {
-		super("tree_module", "This module enables you to disable certain trees and their wood types");
+		super("tree", "This module enables you to disable certain trees and their wood types");
 
 		mangrove = register(new TreeFeature("mangrove", new MangroveSaplingGenerator()));
 		red_mangrove = register(new TreeFeature("red_mangrove", new MangroveSaplingGenerator()));

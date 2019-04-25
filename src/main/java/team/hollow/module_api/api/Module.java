@@ -13,7 +13,7 @@ public abstract class Module extends OptionalFeature {
     private ConfigCategory configCategory;
 
     public Module(String name, String description) {
-        super(name, "Enables this module.");
+        super(name, "Enable/disable this module.");
         this.description = description;
         this.name = name;
         this.features = new ArrayDeque<>();
@@ -38,7 +38,7 @@ public abstract class Module extends OptionalFeature {
     private void buildConfigCategory() {
         configCategory = new ConfigCategory();
         configCategory.setComment(description);
-        getConfigEntries().forEach(pair -> configCategory.register(pair.getLeft(), pair.getRight()));
+        configEntries.forEach(pair -> configCategory.register(pair.getLeft(), pair.getRight()));
         features.forEach(feature -> feature.getConfigEntries().forEach(pair -> configCategory.register(pair.getLeft(), pair.getRight())));
     }
 }

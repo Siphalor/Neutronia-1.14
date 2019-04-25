@@ -4,7 +4,9 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.StringRepresentable;
 import team.hollow.neutronia.Neutronia;
 
-public enum CustomChestTypes implements StringRepresentable {
+import java.util.Set;
+
+public enum CustomChestType implements StringRepresentable {
 
     ACACIA("acacia", "acacia.png", 0),
     BIRCH("birch", "birch.png", 1),
@@ -32,14 +34,14 @@ public enum CustomChestTypes implements StringRepresentable {
     private final Identifier doubleModelTexture;
     private final int id;
 
-    CustomChestTypes(String name, String modelName, int id) {
+    CustomChestType(String name, String modelName, int id) {
         this.name = name + "_chest";
         this.modelTexture = new Identifier(Neutronia.MOD_ID, "textures/entity/chest/" + modelName);
         this.doubleModelTexture = new Identifier(Neutronia.MOD_ID, "textures/entity/chest/" + name + "_double.png");
         this.id = id;
     }
 
-    public static CustomChestTypes getFromName(String name) {
+    public static CustomChestType getFromName(String name) {
         switch (name) {
             case "acacia_chest":
                 return ACACIA;
