@@ -820,7 +820,7 @@ public class ModelGenerator {
         variants.add("type=bottom", bottom);
 
         JsonObject top = new JsonObject();
-        top.addProperty("model", String.format("%s:block/%s", modIDAndName.getNamespace(), modIDAndName.getPath()));
+        top.addProperty("model", String.format("%s:block/%s_top", modIDAndName.getNamespace(), modIDAndName.getPath()));
         variants.add("type=top", top);
 
         JsonObject doubleSlab = new JsonObject();

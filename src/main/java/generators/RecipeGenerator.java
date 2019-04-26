@@ -102,12 +102,9 @@ public class RecipeGenerator {
         JsonObject root = new JsonObject();
         root.addProperty("type", "minecraft:stonecutting");
         if (!group.equalsIgnoreCase("")) root.addProperty("group", group);
-        JsonObject key = new JsonObject();
-        JsonArray ingredients = new JsonArray();
-        JsonObject item = new JsonObject();
-        item.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredients.getStack().getItem()).toString());
-        ingredients.add(item);
-        root.add("key", key);
+        JsonObject ingredients = new JsonObject();
+        ingredients.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredients.getStack().getItem()).toString());
+        root.add("ingredient", ingredients);
         JsonObject resultName = new JsonObject();
         resultName.addProperty("item", Registry.ITEM.getId(result.getItem()).toString());
         if (result.getAmount() > 1) resultName.addProperty("count", result.getAmount());
