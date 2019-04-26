@@ -16,6 +16,6 @@ public class ExplorationModule extends Module {
 
 		trees = register(new TreesSubModule());
 		food = register(new FoodSubModule());
-		setBackgroundTexture(new Identifier("minecraft", "textures/block/grass_top.png"));
+		setBackgroundTexture(new Identifier("minecraft", "textures/block/grass_block_top.png"));
 	}
 }

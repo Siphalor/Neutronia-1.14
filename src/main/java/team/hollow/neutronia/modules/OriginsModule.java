@@ -11,6 +11,6 @@ public class OriginsModule extends Module {
 		super("origins", "This module bundles early-game features");
 
 		storage = register(new StorageSubModule());
-		setBackgroundTexture(new Identifier("minecraft", "textures/block/iron_ore.png"));
+		setBackgroundTexture(new Identifier("minecraft", "textures/block/sand.png"));
 	}
 }

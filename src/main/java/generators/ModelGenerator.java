@@ -22,7 +22,7 @@ public class ModelGenerator {
 
     public static void genStair(Identifier modIdAndName, Identifier bottomTexture, Identifier topTexture, Identifier sideTexture) {
 
-        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "blockstates");
+        Path base = Paths.get("resourcepacks", "Neutronia", "assets", modIdAndName.getNamespace(), "blockstates");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
         }
@@ -107,7 +107,7 @@ public class ModelGenerator {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "blockstates");
+        Path base = Paths.get("resourcepacks", "Neutronia", "assets", modIdAndName.getNamespace(), "blockstates");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
         }
@@ -806,7 +806,7 @@ public class ModelGenerator {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Path base = Paths.get("src", "main", "resources", "assets", modIDAndName.getNamespace(), "blockstates");
+        Path base = Paths.get("resourcepacks", "Neutronia", "assets", modIDAndName.getNamespace(), "blockstates");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
         }
@@ -1139,7 +1139,7 @@ public class ModelGenerator {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-        Path base = Paths.get("src", "main", "resources", "assets", modIdAndName.getNamespace(), "blockstates");
+        Path base = Paths.get("resourcepacks", "Neutronia", "assets", modIdAndName.getNamespace(), "blockstates");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
         }
@@ -1459,6 +1459,33 @@ public class ModelGenerator {
             FileUtils.writeStringToFile(base.resolve("root.json").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
         } catch (IOException e) {
             System.out.printf("Error creating file %s.json" + "\n", advancement_name);
+        }
+
+    }
+
+    public static void genPackMcMeta(String description) {
+
+        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+        Path base = Paths.get("resourcepacks", "Neutronia");
+        if (!base.toFile().exists()) {
+            base.toFile().mkdirs();
+        }
+
+        JsonObject root = new JsonObject();
+
+        JsonObject pack = new JsonObject();
+        pack.addProperty("pack_format", 4);
+        pack.addProperty("description", description);
+
+        root.add("pack", pack);
+
+        String json = gson.toJson(root);
+
+        try {
+            FileUtils.writeStringToFile(base.resolve("pack.mcmeta").toFile(), StringEscapeUtils.unescapeJson(json), CharEncoding.UTF_8);
+        } catch (IOException e) {
+            System.out.println("Error creating file pack.mcmeta");
         }
 
     }

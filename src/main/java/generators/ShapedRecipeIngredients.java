@@ -7,7 +7,7 @@ public class ShapedRecipeIngredients {
     private String pattern;
     private ItemStack stack;
 
-    private ShapedRecipeIngredients(String pattern, ItemStack stack) {
+    public ShapedRecipeIngredients(String pattern, ItemStack stack) {
         this.pattern = pattern;
         this.stack = stack;
     }

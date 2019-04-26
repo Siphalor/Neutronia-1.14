@@ -33,6 +33,7 @@ repositories {
 	maven("https://minecraft.curseforge.com/api/maven")
 	maven("https://maven.jamieswhiteshirt.com/libs-release/")
     maven("http://maven.sargunv.s3-website-us-west-2.amazonaws.com/")
+	maven("http://server.bbkr.space:8081/artifactory/libs-snapshot")
 
 }
 
@@ -52,6 +53,8 @@ dependencies {
 	modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
 
 	modCompile("org.apache.maven:maven-artifact:3.6.0")
+
+	modCompile(group = "io.github.cottonmc", name = "cotton", version = "0.6.1+1.14-SNAPSHOT")
 
 	//modCompile(group = "team.hollow", name = "AbnormaLib", version = "+")
 }

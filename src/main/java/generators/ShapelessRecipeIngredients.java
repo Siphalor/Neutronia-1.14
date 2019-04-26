@@ -6,7 +6,7 @@ public class ShapelessRecipeIngredients {
 
     private ItemStack stack;
 
-    private ShapelessRecipeIngredients(ItemStack stack) {
+    public ShapelessRecipeIngredients(ItemStack stack) {
         this.stack = stack;
     }
 

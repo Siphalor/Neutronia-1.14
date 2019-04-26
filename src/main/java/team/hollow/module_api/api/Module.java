@@ -33,9 +33,8 @@ public abstract class Module extends OptionalFeature {
         features.forEach(Feature::apply);
     }
 
-    public Module setBackgroundTexture(Identifier identifier) {
+    protected void setBackgroundTexture(Identifier identifier) {
         backgroundTexture = identifier;
-        return this;
     }
 
     public ConfigCategory getConfigCategory() {
