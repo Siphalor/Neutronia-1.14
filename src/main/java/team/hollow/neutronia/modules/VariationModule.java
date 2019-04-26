@@ -2,14 +2,14 @@ package team.hollow.neutronia.modules;
 
 import net.minecraft.util.Identifier;
 import team.hollow.module_api.api.Module;
-import team.hollow.neutronia.modules.variation.FencesFeature;
+import team.hollow.neutronia.modules.variation.FencesAndWallsFeature;
 import team.hollow.neutronia.modules.variation.SidingsFeature;
 import team.hollow.neutronia.modules.variation.StairsAndSlabsFeature;
 import team.hollow.neutronia.modules.variation.WoodSubModule;
 
 public class VariationModule extends Module {
 	public static StairsAndSlabsFeature stairsAndSlabs;
-	public static FencesFeature fences;
+	public static FencesAndWallsFeature fencesAndWalls;
 	public static SidingsFeature sidings;
 
 	public static WoodSubModule woodSubModule;
@@ -17,7 +17,12 @@ public class VariationModule extends Module {
 	public VariationModule() {
 		super("variation", "This module contains variations for existing vanilla features.");
 
+		stairsAndSlabs = register(new StairsAndSlabsFeature());
+		fencesAndWalls = register(new FencesAndWallsFeature());
+		sidings = register(new SidingsFeature());
+
 		woodSubModule = register(new WoodSubModule());
+
 		setBackgroundTexture(new Identifier("minecraft", "textures/block/oak_log.png"));
 	}
 }
