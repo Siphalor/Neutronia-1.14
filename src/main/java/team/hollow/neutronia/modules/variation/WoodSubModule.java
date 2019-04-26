@@ -2,6 +2,7 @@ package team.hollow.neutronia.modules.variation;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Pair;
 import team.hollow.module_api.api.SubModule;
@@ -36,7 +37,7 @@ public class WoodSubModule extends SubModule {
 			.ticksRandomly()
 			.build();
 
-		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK, simpleWoodenBlockSupplier));
+		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", ItemGroup.BUILDING_BLOCKS, WoodTypeFeature.SKIP_OAK, simpleWoodenBlockSupplier));
 		barrels = register(new WoodTypeBlockFeature("barrel", "Adds more barrels", WoodTypeFeature.SKIP_OAK,
 			() -> new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build())
 		));
@@ -46,16 +47,18 @@ public class WoodSubModule extends SubModule {
 		strippedCampfires = register(new WoodTypeBlockFeature("stripped_campfire", "Adds stripped log campfires", Collections.emptySet(),
 			() -> new CampfireBlock(campFireSettings)
 		));
-		lecterns = register(new WoodTypeBlockFeature("lectern", "Adds more lecterns", WoodTypeFeature.SKIP_OAK,
+		lecterns = register(new WoodTypeBlockFeature("lectern", "Adds more lecterns", ItemGroup.REDSTONE, WoodTypeFeature.SKIP_OAK,
 			NeutroniaBaseLectern::new
 		));
 		ladders = register(new WoodTypeBlockFeature("ladder", "Adds more ladders", WoodTypeFeature.SKIP_OAK,
 			CustomLadderBlock::new
 		));
 		//chests = register(new ChestFeature());
-		patternedPlanks = register(new WoodTypeBlocksFeature("patterned-planks", "Adds patterned and carved planks variations", Collections.emptySet(), "planks",
-			new Pair<>("patterned", simpleWoodenBlockSupplier),
-			new Pair<>("carved", simpleWoodenBlockSupplier)
+		patternedPlanks = register(new WoodTypeBlocksFeature("patterned-planks", "Adds patterned and carved planks variations",
+				Collections.emptySet(),
+				"planks",
+				new Pair<>("patterned", simpleWoodenBlockSupplier),
+				new Pair<>("carved", simpleWoodenBlockSupplier)
 		));
 	}
 }

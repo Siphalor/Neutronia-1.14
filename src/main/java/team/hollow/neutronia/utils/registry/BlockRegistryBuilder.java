@@ -71,19 +71,19 @@ public class BlockRegistryBuilder {
 
     public BlockRegistryBuilder corner() {
         Block corner = new NeutroniaCornerBlock(baseBlock.getDefaultState(),Block.Settings.copy(baseBlock));
-        RegistryUtils.register(modId, corner, name + "_corner");
+        RegistryUtils.register(modId, corner, name + "_corner", ItemGroup.DECORATIONS);
         return this;
     }
 
     public BlockRegistryBuilder post() {
         Block post = new NeutroniaPostBlock(Block.Settings.copy(baseBlock));
-        RegistryUtils.register(modId, post, name + "_post");
+        RegistryUtils.register(modId, post, name + "_post", ItemGroup.DECORATIONS);
         return this;
     }
 
     public BlockRegistryBuilder siding() {
         Block siding = new NeutroniaSidingBlock(Block.Settings.copy(baseBlock));
-        RegistryUtils.register(modId, siding, name + "_siding");
+        RegistryUtils.register(modId, siding, name + "_siding", ItemGroup.BUILDING_BLOCKS);
         return this;
     }
 

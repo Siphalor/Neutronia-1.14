@@ -62,7 +62,8 @@ public class TreeFeature extends OptionalFeature {
 						FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
 								.hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()
 				),
-				new Identifier(Neutronia.MOD_ID, "stripped_" + name + "_wood")
+				new Identifier(Neutronia.MOD_ID, "stripped_" + name + "_wood"),
+				ItemGroup.BUILDING_BLOCKS
 		);
 		planks = new NeutroniaBaseBlock(Material.WOOD, name + "_planks");
 		leaves = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(Neutronia.MOD_ID, name + "_leaves"));
@@ -70,7 +71,7 @@ public class TreeFeature extends OptionalFeature {
 		RegistryUtils.register(new NeutroniaDoorBlock(Material.WOOD), name + "_door", ItemGroup.REDSTONE);
 		RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.WOOD), name + "_trapdoor", ItemGroup.REDSTONE);
 
-		BlockRegistryBuilder.getInstance(name, planks).slab().stair().fence().fenceGate().button(true).pressurePlate(PressurePlateBlock.Type.WOOD);
+		BlockRegistryBuilder.getInstance(name, planks).slab().stair().fence().fenceGate().button(true).pressurePlate(PressurePlateBlock.Type.WOOD).siding().corner().post();
 
 		if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
 			clientApply();
@@ -113,6 +114,7 @@ public class TreeFeature extends OptionalFeature {
 		Block wall = Registry.BLOCK.get(new Identifier(Neutronia.MOD_ID, String.format("%s_wall", name)));
 		Block fence = Registry.BLOCK.get(new Identifier(Neutronia.MOD_ID, String.format("%s_fence", name)));
 		Block fenceGate = Registry.BLOCK.get(new Identifier(Neutronia.MOD_ID, String.format("%s_fence_gate", name)));
+
 		RecipeGenerator.getInstance(Neutronia.MOD_ID)
 				.addShaped(new ItemStack(siding, 6), new Identifier(Neutronia.MOD_ID, name + "_siding"), "sidings", new String[]{
 						"X",
@@ -143,19 +145,19 @@ public class TreeFeature extends OptionalFeature {
 				);
 
 		RecipeGenerator.getInstance(Neutronia.MOD_ID)
-				.addShaped(new ItemStack(slab), new Identifier(Neutronia.MOD_ID, name + "_slab"), "slabs", new String[]{
+				.addShaped(new ItemStack(slab, 6), new Identifier(Neutronia.MOD_ID, name + "_slab"), "slabs", new String[]{
 						"XXX"
 				}, new ShapedRecipeIngredients("X", new ItemStack(planks)));
 
 		RecipeGenerator.getInstance(Neutronia.MOD_ID)
-				.addShaped(new ItemStack(stairs), new Identifier(Neutronia.MOD_ID, name + "_stairs"), "stairs", new String[]{
+				.addShaped(new ItemStack(stairs, 4), new Identifier(Neutronia.MOD_ID, name + "_stairs"), "stairs", new String[]{
 						"X  ",
 						"XX ",
 						"XXX"
 				}, new ShapedRecipeIngredients("X", new ItemStack(planks)));
 
 		RecipeGenerator.getInstance(Neutronia.MOD_ID)
-				.addShaped(new ItemStack(pressurePlate, 6), new Identifier(Neutronia.MOD_ID, name + "_pressure_plate"), "pressure_plates", new String[]{
+				.addShaped(new ItemStack(pressurePlate, 1), new Identifier(Neutronia.MOD_ID, name + "_pressure_plate"), "pressure_plates", new String[]{
 						"XX"
 				}, new ShapedRecipeIngredients("X", new ItemStack(planks)));
 
@@ -169,7 +171,7 @@ public class TreeFeature extends OptionalFeature {
 
 		RecipeGenerator.getInstance(Neutronia.MOD_ID)
 				.addShaped(
-						new ItemStack(wall),
+						new ItemStack(wall, 6),
 						new Identifier(Neutronia.MOD_ID, name + "_wall"),
 						"walls",
 						new String[]{
@@ -194,7 +196,7 @@ public class TreeFeature extends OptionalFeature {
 
 		RecipeGenerator.getInstance(Neutronia.MOD_ID)
 				.addShaped(
-						new ItemStack(fence),
+						new ItemStack(fence, 3),
 						new Identifier(Neutronia.MOD_ID, name + "_fence"),
 						"fences",
 						new String[]{
