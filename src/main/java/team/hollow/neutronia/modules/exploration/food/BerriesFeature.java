@@ -10,10 +10,11 @@ import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.blocks.NeutroniaBerryBushBlock;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class BerriesFeature extends OptionalFeature {
-	private static Map<BerryType, Pair<Item, Block>> berryMap;
+	private static Map<BerryType, Pair<Item, Block>> berryMap = new HashMap<>();
 
 	public BerriesFeature() {
 		super("berries", "Adds more berries");
