@@ -11,6 +11,7 @@ import team.hollow.module_api.api.features.woodtype.WoodTypeBlocksFeature;
 import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
 import team.hollow.neutronia.blocks.CustomLadderBlock;
 import team.hollow.neutronia.blocks.NeutroniaBaseLectern;
+import team.hollow.neutronia.blocks.NeutroniaBookshelfBlock;
 
 import java.util.Collections;
 import java.util.function.Supplier;
@@ -37,7 +38,7 @@ public class WoodSubModule extends SubModule {
 			.ticksRandomly()
 			.build();
 
-		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK, simpleWoodenBlockSupplier));
+		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK, () -> new NeutroniaBookshelfBlock(FabricBlockSettings.of(Material.WOOD))));
 		barrels = register(new WoodTypeBlockFeature("barrel", "Adds more barrels", WoodTypeFeature.SKIP_OAK,
 			() -> new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build())
 		));
@@ -54,9 +55,11 @@ public class WoodSubModule extends SubModule {
 			CustomLadderBlock::new
 		));
 		//chests = register(new ChestFeature());
-		patternedPlanks = register(new WoodTypeBlocksFeature("patterned-planks", "Adds patterned and carved planks variations", Collections.emptySet(), "planks",
-			new Pair<>("patterned", simpleWoodenBlockSupplier),
-			new Pair<>("carved", simpleWoodenBlockSupplier)
+		patternedPlanks = register(new WoodTypeBlocksFeature("patterned-planks", "Adds patterned and carved planks variations",
+				Collections.emptySet(),
+				"planks",
+				new Pair<>("patterned", simpleWoodenBlockSupplier),
+				new Pair<>("carved", simpleWoodenBlockSupplier)
 		));
 	}
 }

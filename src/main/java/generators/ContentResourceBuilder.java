@@ -31,6 +31,10 @@ public class ContentResourceBuilder extends ContentBuilder {
 
 		if(block instanceof PillarBlock) {
 			ResourceGenerator.genPillarBlock(identifier, extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
+		} else if(block instanceof NeutroniaBookshelfBlock) {
+			ResourceGenerator.genSimpleBlockstates(identifier);
+			ResourceGenerator.genPillarBlockModel(identifier, baseIdentifier, textureIdentifier);
+			ResourceGenerator.genSimpleBlockItemModel(identifier);
 		} else if(block instanceof NeutroniaSaplingBlock) {
             ResourceGenerator.genPlant(identifier, textureIdentifier);
 		} else if(block instanceof NeutroniaDoorBlock) {

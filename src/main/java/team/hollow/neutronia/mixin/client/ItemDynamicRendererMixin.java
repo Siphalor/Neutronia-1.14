@@ -1,5 +1,6 @@
 package team.hollow.neutronia.mixin.client;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.item.ItemDynamicRenderer;
 import net.minecraft.item.BlockItem;
@@ -9,7 +10,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import team.hollow.neutronia.blocks.CustomChestBlock;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.enums.CustomChestType;
 import team.hollow.neutronia.init.NBlocks;
@@ -36,52 +36,35 @@ public class ItemDynamicRendererMixin {
     private void render(ItemStack stack, CallbackInfo info) {
         Item item = stack.getItem();
         if (item instanceof BlockItem) {
-            for(CustomChestBlock block1 : NBlocks.WOODEN_CHESTS) {
-                switch(block1.getChestType()) {
-                    case ACACIA:
-                    case BIRCH:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBirchChest);
-                        break;
-                    case DARK_OAK:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderDarkOakChest);
-                        break;
-                    case JUNGLE:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderJungleChest);
-                        break;
-                    case SPRUCE:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderSpruceChest);
-                        break;
-                    case BAMBOO:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBambooChest);
-                        break;
-                    case MANGROVE:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderMangroveChest);
-                        break;
-                    case RED_MANGROVE:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderRedMangroveChest);
-                        break;
-                    case BAOBAB:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBaobabChest);
-                        break;
-                    case WENGE:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderWengeChest);
-                        break;
-                    case PURPLEHEART:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderPurpleHeartChest);
-                        break;
-                    case LACEWOOD:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderLacewoodChest);
-                        break;
-                    case BOLIVIAN_ROSEWOOD:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBolivianRosewoodChest);
-                        break;
-                    case GABON_EBONY:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderGabonEbonyChest);
-                        break;
-                    default:
-                        BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderAcaciaChest);
-                        break;
-                }
+            Block block = ((BlockItem) item).getBlock();
+            if (block == NBlocks.WOODEN_CHESTS[0]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderAcaciaChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[1]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBirchChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[2]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderDarkOakChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[3]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderJungleChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[4]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderSpruceChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[5]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBambooChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[6]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderMangroveChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[7]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderRedMangroveChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[8]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBaobabChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[9]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderWengeChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[10]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderPurpleHeartChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[11]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderLacewoodChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[12]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderBolivianRosewoodChest);
+            } else if (block == NBlocks.WOODEN_CHESTS[13]) {
+                BlockEntityRenderDispatcher.INSTANCE.renderEntity(renderGabonEbonyChest);
             }
         }
     }

@@ -62,7 +62,7 @@ public class RecipeGenerator {
         return this;
     }
 
-    public RecipeGenerator addShapeless(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredients... shapelessRecipeIngredients) {
+    public void addShapeless(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredients... shapelessRecipeIngredients) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Path base = RecipeUtil.getRecipeLocation(recipeName).toPath();
         if (!base.toFile().exists()) {
@@ -71,14 +71,13 @@ public class RecipeGenerator {
         JsonObject root = new JsonObject();
         root.addProperty("type", "minecraft:crafting_shapeless");
         if (!group.equalsIgnoreCase("")) root.addProperty("group", group);
-        JsonObject key = new JsonObject();
         JsonArray ingredients = new JsonArray();
         JsonObject item = new JsonObject();
         for(ShapelessRecipeIngredients shapelessRecipeIngredients1 : shapelessRecipeIngredients) {
             item.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredients1.getStack().getItem()).toString());
         }
         ingredients.add(item);
-        root.add("key", key);
+        root.add("ingredients", ingredients);
         JsonObject resultName = new JsonObject();
         resultName.addProperty("item", Registry.ITEM.getId(result.getItem()).toString());
         if (result.getAmount() > 1) resultName.addProperty("count", result.getAmount());
@@ -90,7 +89,6 @@ public class RecipeGenerator {
         } catch (IOException e) {
             System.out.printf("Error creating recipe file %s.json" + "\n", recipeName.getPath());
         }
-        return this;
     }
 
     public RecipeGenerator addStonecutting(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredients shapelessRecipeIngredients) {
