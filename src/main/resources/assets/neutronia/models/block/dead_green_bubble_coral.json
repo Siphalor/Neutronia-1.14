@@ -1,6 +1,0 @@
-{
-    "parent": "block/cross",
-    "textures": {
-        "cross": "neutronia:block/dead_green_bubble_coral"
-    }
-}

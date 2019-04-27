@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "neutronia:block/ebony_planks",
-    "side": "neutronia:block/ebony_bookshelf"
-  }
-}

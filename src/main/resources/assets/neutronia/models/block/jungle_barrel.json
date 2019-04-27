@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "neutronia:block/jungle_barrel",
-    "end": "neutronia:block/jungle_barrel_top"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "neutronia:block/mangrove_planks",
-    "top": "neutronia:block/mangrove_planks",
-    "side": "neutronia:block/mangrove_planks"
-  }
-}

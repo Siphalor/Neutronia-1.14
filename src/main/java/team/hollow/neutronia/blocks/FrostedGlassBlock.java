@@ -1,16 +1,17 @@
 package team.hollow.neutronia.blocks;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 
-public class FrostedGlassBlock extends BaseModBlock {
+public class FrostedGlassBlock extends NeutroniaBlock {
 
     public FrostedGlassBlock() {
-        super(FabricBlockSettings.of(Material.GLASS).strength(3.0F, 10.0F), "frosted_glass");
+        super(FabricBlockSettings.of(Material.GLASS).strength(3.0F, 10.0F));
     }
 
     @Override

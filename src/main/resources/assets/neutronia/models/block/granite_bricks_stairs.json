@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "neutronia:block/granite_bricks",
-    "top": "neutronia:block/granite_bricks",
-    "side": "neutronia:block/granite_bricks"
-  }
-}

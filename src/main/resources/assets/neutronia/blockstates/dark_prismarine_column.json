@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "axis=y":  { "model": "neutronia:block/dark_prismarine_column" },
-    "axis=z":   { "model": "neutronia:block/dark_prismarine_column", "x": 90 },
-    "axis=x":   { "model": "neutronia:block/dark_prismarine_column", "x": 90, "y": 90 }
-  }
-}

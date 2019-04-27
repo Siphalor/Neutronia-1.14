@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "neutronia:block/smooth_prismarine_bricks",
-    "top": "neutronia:block/smooth_prismarine_bricks",
-    "side": "neutronia:block/smooth_prismarine_bricks"
-  }
-}

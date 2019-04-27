@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "neutronia:block/engraved_dark_prismarine",
-    "top": "neutronia:block/engraved_dark_prismarine",
-    "side": "neutronia:block/engraved_dark_prismarine"
-  }
-}

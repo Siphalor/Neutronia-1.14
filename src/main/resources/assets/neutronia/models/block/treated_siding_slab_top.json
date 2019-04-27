@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "neutronia:block/treated_siding",
-    "side": "neutronia:block/treated_siding",
-    "top": "neutronia:block/treated_siding"
-  }
-}

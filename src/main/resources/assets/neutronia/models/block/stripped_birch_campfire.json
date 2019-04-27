@@ -1,7 +1,0 @@
-{
-  "parent": "neutronia:block/campfire",
-  "textures": {
-    "log": "neutronia:block/stripped_birch_campfire_log",
-    "litlog": "neutronia:block/stripped_birch_campfire_log_lit"
-  }
-}

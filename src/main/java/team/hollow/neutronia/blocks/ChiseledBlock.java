@@ -15,13 +15,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
-public class ChiseledBlock extends BaseModBlock {
+public class ChiseledBlock extends NeutroniaBlock {
 
     public static final BooleanProperty FILLED = BooleanProperty.create("filled");
     protected Item chiselItem;
 
     public ChiseledBlock(Material material, String name, float hardness, float resistance, Item chiselItem) {
-        super(FabricBlockSettings.of(material).strength(hardness, resistance), name);
+        super(FabricBlockSettings.of(material).strength(hardness, resistance));
         setDefaultState(this.getDefaultState().with(FILLED, false));
         this.chiselItem = chiselItem;
     }

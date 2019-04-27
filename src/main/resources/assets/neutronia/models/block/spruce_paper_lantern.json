@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "neutronia:block/spruce_paper_lantern",
-    "end": "neutronia:block/spruce_paper_lantern_top"
-  }
-}

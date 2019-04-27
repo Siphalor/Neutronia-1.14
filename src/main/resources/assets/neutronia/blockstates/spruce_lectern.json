@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=north": { "model": "neutronia:block/spruce_lectern" },
-        "facing=south": { "model": "neutronia:block/spruce_lectern", "y": 180 },
-        "facing=west":  { "model": "neutronia:block/spruce_lectern", "y": 270 },
-        "facing=east":  { "model": "neutronia:block/spruce_lectern", "y": 90 }
-    }
-}

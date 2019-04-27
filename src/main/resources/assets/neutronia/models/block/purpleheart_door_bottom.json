@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/door_bottom",
-  "textures": {
-    "bottom": "neutronia:block/purpleheart_door_bottom",
-    "top": "neutronia:block/purpleheart_door_top"
-  }
-}

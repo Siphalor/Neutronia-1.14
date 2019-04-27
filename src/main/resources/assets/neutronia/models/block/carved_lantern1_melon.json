@@ -1,8 +1,0 @@
-{
-  "parent": "block/orientable",
-  "textures": {
-    "top": "minecraft:block/melon_top",
-    "front": "neutronia:block/melons/carved_pumpkin_lantern1",
-    "side": "minecraft:block/melon_side"
-  }
-}

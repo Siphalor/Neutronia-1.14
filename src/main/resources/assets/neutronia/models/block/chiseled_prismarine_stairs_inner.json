@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "neutronia:block/chiseled_prismarine",
-    "top": "neutronia:block/chiseled_prismarine",
-    "side": "neutronia:block/chiseled_prismarine"
-  }
-}

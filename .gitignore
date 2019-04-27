@@ -22,3 +22,7 @@ bin/
 
 # fabric
 run/
+
+# generated assets
+src/main/resources/assets/neutronia/blockstates/
+src/main/resources/assets/neutronia/models/

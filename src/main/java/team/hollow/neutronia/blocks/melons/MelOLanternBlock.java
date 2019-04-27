@@ -21,22 +21,22 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.World;
-import team.hollow.neutronia.blocks.BaseModBlock;
+import team.hollow.neutronia.blocks.NeutroniaBlock;
 import team.hollow.neutronia.enums.CarvedFaceTypes;
 import team.hollow.neutronia.utils.helpers.CarvedBlockHelper;
 import team.hollow.neutronia.utils.helpers.ICarvable;
 
-public class MelOLanternBlock extends BaseModBlock implements ICarvable {
+public class MelOLanternBlock extends NeutroniaBlock implements ICarvable {
 
     public static final DirectionProperty FACING = Properties.FACING_HORIZONTAL;
 
     public MelOLanternBlock(Identifier identifier) {
-        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).lightLevel(15).sounds(BlockSoundGroup.WOOD), identifier.getPath());
+        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).lightLevel(15).sounds(BlockSoundGroup.WOOD));
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
     }
 
     public MelOLanternBlock() {
-        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).lightLevel(15).sounds(BlockSoundGroup.WOOD), "mel_o_lantern");
+        super(FabricBlockSettings.of(Material.PUMPKIN).hardness(1.0F).resistance(1.0F).lightLevel(15).sounds(BlockSoundGroup.WOOD));
         this.setDefaultState(this.stateFactory.getDefaultState().with(FACING, Direction.NORTH));
         CarvedBlockHelper.init(this);
     }

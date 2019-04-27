@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab",
-  "textures": {
-    "bottom": "neutronia:block/polished_dark_andesite",
-    "top": "neutronia:block/polished_dark_andesite",
-    "side": "neutronia:block/polished_dark_andesite"
-  }
-}

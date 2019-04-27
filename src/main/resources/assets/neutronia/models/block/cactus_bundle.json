@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "neutronia:block/cactus_bundle_top",
-    "side": "neutronia:block/cactus_bundle"
-  }
-}

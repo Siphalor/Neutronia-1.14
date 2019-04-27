@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "": { "model": "neutronia:block/carved_birch_planks" },
-    "inventory": { "model": "neutronia:item/carved_birch_planks" }
-  }
-}

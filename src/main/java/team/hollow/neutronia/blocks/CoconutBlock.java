@@ -9,13 +9,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.ViewableWorld;
 import net.minecraft.world.World;
-import team.hollow.neutronia.modules.ExplorationModule;
 import team.hollow.neutronia.modules.exploration.TreesSubModule;
 
-public class CoconutBlock extends NeutroniaBaseBlock {
+public class CoconutBlock extends NeutroniaBlock {
 
     public CoconutBlock() {
-        super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.4F).resistance(7.0F).sounds(BlockSoundGroup.WOOD), "coconut");
+        super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.4F).resistance(7.0F).sounds(BlockSoundGroup.WOOD));
     }
 
     @Override

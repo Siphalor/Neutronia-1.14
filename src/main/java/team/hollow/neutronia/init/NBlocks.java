@@ -11,9 +11,7 @@ import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.blocks.pumpkin.PumpkinBlock;
 import team.hollow.neutronia.enums.CarvedFaceTypes;
 import team.hollow.neutronia.enums.CustomChestType;
-import team.hollow.neutronia.enums.SoulStoneVariants;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
-import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 public class NBlocks {
@@ -29,7 +27,7 @@ public class NBlocks {
     public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestType.values().length];
     public static final Block SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
     public static final Block SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
-    public static final Block CHISELED_PRISMARINE, CHISELED_PRISMARINE_BRICKS, CHISELED_DARK_PRISMARINE, CUT_PRISMARINE, CUT_PRISMARINE_BRICKS, CUT_DARK_PRISMARINE, ENGRAVED_PRISMARINE, ENGRAVED_PRISMARINE_BRICKS, ENGRAVED_DARK_PRISMARINE;
+    //public static final Block CHISELED_PRISMARINE, CHISELED_PRISMARINE_BRICKS, CHISELED_DARK_PRISMARINE, CUT_PRISMARINE, CUT_PRISMARINE_BRICKS, CUT_DARK_PRISMARINE, ENGRAVED_PRISMARINE, ENGRAVED_PRISMARINE_BRICKS, ENGRAVED_DARK_PRISMARINE;
     public static final Block OBSIDIAN_BRICKS, OBSIDIAN_COBBLE, OBSIDIAN_PILLAR, CHISELED_OBSIDIAN, GLOWING_OBSIDIAN;
     public static final Block SMOOTH_END_BRICK, SMOOTH_PRISMARINE_BRICKS, SMOOTH_PRISMARINE, SMOOTH_DARK_PRISMARINE, SMOOTH_OBSIDIAN, SMOOTH_PURPUR_BRICK, SMOOTH_NETHER_BRICK, SMOOTH_RED_NETHER_BRICK, SMOOTH_STONE, SMOOTH_STONE_BRICK;
     public static final NeutroniaPillarBlock DIAMOND_PILLAR, EMERALD_PILLAR, IRON_PILLAR, GOLD_PILLAR;
@@ -44,8 +42,8 @@ public class NBlocks {
             STONE_BRICK_TILE, SMALL_STONE_BRICK_TILE, OBSIDIAN_TILES, SMALL_OBSIDIAN_TILES, CHECKERED_TILE, SMALL_CHECKERED_TILE;
     public static final Block ROPE_COIL;
     public static final Block DARK_ANDESITE, DARK_ANDESITE_BRICKS, POLISHED_DARK_ANDESITE;
-    public static final Block ANDESITE_BRICKS, GRANITE_BRICKS, DIORITE_BRICKS;
-    public static final Block MUD, MUD_BRICKS, DRIED_MUD, DRIED_MUD_BRICKS;
+    //public static final Block ANDESITE_BRICKS, GRANITE_BRICKS, DIORITE_BRICKS;
+    //public static final Block MUD, MUD_BRICKS, DRIED_MUD, DRIED_MUD_BRICKS;
     public static final Block PACKED_ICE_BRICKS, PACKED_ICE_PILLAR, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES;
     public static final Block FROSTED_GLASS, FROSTED_GLASS_PANE;
     public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, WROUGHT_IRON_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
@@ -54,8 +52,8 @@ public class NBlocks {
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
     public static final Block MELON = new MelonBlock(), MEL_O_LANTERN = new MelOLanternBlock();*/
     public static final Block BAMBOO_PLANKS/*, BAMBOO_SIGN, BAMBOO_WALL_SIGN, BAMBOO_TORCH*/, THATCH;
-    public static final Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN/*, ACIDIAN_BARS*/;
-    public static final Block TREATED_PLANKS, TREATED_SIDING;
+    //public static final Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN/*, ACIDIAN_BARS*/;
+    //public static final Block TREATED_PLANKS, TREATED_SIDING;
     /*public static final Block POTTED_BEETROOT, POTTED_CARROTS, POTTED_CHORUS, POTTED_GRASS, POTTED_LILAC, POTTED_MELON, POTTED_NETHER_WART, POTTED_PEONY,
             POTTED_POTATOES, POTTED_PUMPKIN, POTTED_ROSE_BUSH, POTTED_SUGAR_CANE, POTTED_SUNFLOWER, POTTED_TALL_GRASS, POTTED_WHEAT;*/
     public static final Block PILLAR_CORAL_BLOCK, LIME_BRAIN_CORAL_BLOCK, GREEN_BUBBLE_CORAL_BLOCK, ACAN_CORAL_BLOCK, ANTIPATHES_CORAL_BLOCK, STAGHORN_CORAL_BLOCK;
@@ -166,181 +164,187 @@ public class NBlocks {
         /*for (GlazedTerracottaPillarVariants color : GlazedTerracottaPillarVariants.values()) {
             GLAZED_TERRACOTTA_PILLAR[color.getId()] = new NeutroniaPillarBlock(Material.STONE, String.format("%s_glazed_terracotta_pillar", color.asString()));
         }*/
-
+/*
         CHISELED_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "chiseled_prismarine");
-        BlockRegistryBuilder.getInstance("chiseled_prismarine", CHISELED_PRISMARINE).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("chiseled_prismarine", CHISELED_PRISMARINE).slab().stair().wall();
         CHISELED_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "chiseled_prismarine_bricks");
-        BlockRegistryBuilder.getInstance("chiseled_prismarine_bricks", CHISELED_PRISMARINE_BRICKS).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("chiseled_prismarine_bricks", CHISELED_PRISMARINE_BRICKS).slab().stair().wall();
         CHISELED_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "chiseled_dark_prismarine");
-        BlockRegistryBuilder.getInstance("chiseled_dark_prismarine", CHISELED_DARK_PRISMARINE).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("chiseled_dark_prismarine", CHISELED_DARK_PRISMARINE).slab().stair().wall();
 
         CUT_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "cut_prismarine");
-        BlockRegistryBuilder.getInstance("cut_prismarine", CUT_PRISMARINE).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("cut_prismarine", CUT_PRISMARINE).slab().stair().wall();
         CUT_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "cut_prismarine_bricks");
-        BlockRegistryBuilder.getInstance("cut_prismarine_bricks", CUT_PRISMARINE_BRICKS).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("cut_prismarine_bricks", CUT_PRISMARINE_BRICKS).slab().stair().wall();
         CUT_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "cut_dark_prismarine");
-        BlockRegistryBuilder.getInstance("cut_dark_prismarine", CUT_DARK_PRISMARINE).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("cut_dark_prismarine", CUT_DARK_PRISMARINE).slab().stair().wall();
 
         ENGRAVED_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "engraved_prismarine");
-        BlockRegistryBuilder.getInstance("engraved_prismarine", ENGRAVED_PRISMARINE).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("engraved_prismarine", ENGRAVED_PRISMARINE).slab().stair().wall();
         ENGRAVED_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "engraved_prismarine_bricks");
-        BlockRegistryBuilder.getInstance("engraved_prismarine_bricks", ENGRAVED_PRISMARINE_BRICKS).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("engraved_prismarine_bricks", ENGRAVED_PRISMARINE_BRICKS).slab().stair().wall();
         ENGRAVED_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "engraved_dark_prismarine");
-        BlockRegistryBuilder.getInstance("engraved_dark_prismarine", ENGRAVED_DARK_PRISMARINE).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("engraved_dark_prismarine", ENGRAVED_DARK_PRISMARINE).slab().stair().wall();
+        */
 
-        OBSIDIAN_BRICKS = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "obsidian_bricks");
-        OBSIDIAN_COBBLE = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "obsidian_cobble");
-        OBSIDIAN_PILLAR = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "obsidian_pillar");
-        CHISELED_OBSIDIAN = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "chiseled_obsidian");
-        GLOWING_OBSIDIAN = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "glowing_obsidian");
+        OBSIDIAN_BRICKS = new NeutroniaBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
+        OBSIDIAN_COBBLE = new NeutroniaBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
+        OBSIDIAN_PILLAR = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
+        CHISELED_OBSIDIAN = new NeutroniaBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
+        GLOWING_OBSIDIAN = new NeutroniaBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
 
-        SMOOTH_END_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_endstone_bricks", 0.8F, 10.0F);
-        SMOOTH_PRISMARINE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "smooth_prismarine_bricks", 1.5F, 10.0F);
-        SMOOTH_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "smooth_prismarine");
-        SMOOTH_DARK_PRISMARINE = new NeutroniaBaseBlock(Material.STONE, "smooth_dark_prismarine");
-        SMOOTH_OBSIDIAN = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "smooth_obsidian");
-        SMOOTH_PURPUR_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_purpur", 1.5F, 10.0F);
-        SMOOTH_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_nether_bricks", 2.0F, 10.0F);
-        SMOOTH_RED_NETHER_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_red_nether_bricks", 1.5F, 10.0F);
-        SMOOTH_STONE = new NeutroniaBaseBlock(Material.STONE, "polished_stone", 1.5F, 10.0F);
-        SMOOTH_STONE_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_stone_bricks", 1.5F, 10.0F);
+        SMOOTH_END_BRICK = new NeutroniaBlock(Material.STONE, 0.8F, 10.0F);
+        SMOOTH_PRISMARINE_BRICKS = new NeutroniaBlock(Material.STONE, 1.5F, 10.0F);
+        SMOOTH_PRISMARINE = new NeutroniaBlock(Material.STONE);
+        SMOOTH_DARK_PRISMARINE = new NeutroniaBlock(Material.STONE);
+        SMOOTH_OBSIDIAN = new NeutroniaBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
+        SMOOTH_PURPUR_BRICK = new NeutroniaBlock(Material.STONE, 1.5F, 10.0F);
+        SMOOTH_NETHER_BRICK = new NeutroniaBlock(Material.STONE, 2.0F, 10.0F);
+        SMOOTH_RED_NETHER_BRICK = new NeutroniaBlock(Material.STONE, 1.5F, 10.0F);
+        SMOOTH_STONE = new NeutroniaBlock(Material.STONE, 1.5F, 10.0F);
+        SMOOTH_STONE_BRICK = new NeutroniaBlock(Material.STONE, 1.5F, 10.0F);
 
-        DIAMOND_BRICKS = new NeutroniaBaseBlock(Material.METAL, "diamond_bricks", 3.0F, 10.0F);
-        EMERALD_BRICKS = new NeutroniaBaseBlock(Material.METAL, "emerald_bricks", 3.0F, 10.0F);
-        IRON_BRICKS = new NeutroniaBaseBlock(Material.METAL, "iron_bricks", 3.0F, 10.0F);
-        GOLD_BRICKS = new NeutroniaBaseBlock(Material.METAL, "gold_bricks", 3.0F, 10.0F);
+        DIAMOND_BRICKS = new NeutroniaBlock(Material.METAL, 3.0F, 10.0F);
+        EMERALD_BRICKS = new NeutroniaBlock(Material.METAL, 3.0F, 10.0F);
+        IRON_BRICKS = new NeutroniaBlock(Material.METAL, 3.0F, 10.0F);
+        GOLD_BRICKS = new NeutroniaBlock(Material.METAL, 3.0F, 10.0F);
 
-        DIAMOND_PILLAR = new NeutroniaPillarBlock(Material.METAL, "diamond_pillar", 5.0F, 10.0F);
-        EMERALD_PILLAR = new NeutroniaPillarBlock(Material.METAL, "emerald_pillar", 5.0F, 10.0F);
-        IRON_PILLAR = new NeutroniaPillarBlock(Material.METAL, "iron_pillar", 5.0F, 10.0F);
-        GOLD_PILLAR = new NeutroniaPillarBlock(Material.METAL, "gold_pillar", 3.0F, 10.0F);
+        DIAMOND_PILLAR = new NeutroniaPillarBlock(Material.METAL, 5.0F, 10.0F);
+        EMERALD_PILLAR = new NeutroniaPillarBlock(Material.METAL, 5.0F, 10.0F);
+        IRON_PILLAR = new NeutroniaPillarBlock(Material.METAL, 5.0F, 10.0F);
+        GOLD_PILLAR = new NeutroniaPillarBlock(Material.METAL, 3.0F, 10.0F);
 
-        SQUARED_BRICKS = new NeutroniaBaseBlock(Material.STONE, "squared_bricks");
-        GAPLESS_BRICKS = new NeutroniaBaseBlock(Material.STONE, "gapless_bricks");
-        SCALY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "scaly_bricks");
-        CRACKED_BRICKS = new NeutroniaBaseBlock(Material.STONE, "cracked_bricks");
-        MOSSY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "mossy_bricks");
-        BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "brick_path");
-        BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "brick_tile");
-        SMALL_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_brick_tile");
-        CHISELED_BRICK = new NeutroniaBaseBlock(Material.STONE, "chiseled_bricks");
-        BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "brick_pillar", 2.0F, 10.0F);
-        SMOOTH_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_bricks", 2.0F, 10.0F);
+        SQUARED_BRICKS = new NeutroniaBlock(Material.STONE);
+        GAPLESS_BRICKS = new NeutroniaBlock(Material.STONE);
+        SCALY_BRICKS = new NeutroniaBlock(Material.STONE);
+        CRACKED_BRICKS = new NeutroniaBlock(Material.STONE);
+        MOSSY_BRICKS = new NeutroniaBlock(Material.STONE);
+        BRICK_PATH = new NeutroniaBlock(Material.STONE);
+        BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        CHISELED_BRICK = new NeutroniaBlock(Material.STONE);
+        BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, 2.0F, 10.0F);
+        SMOOTH_BRICK = new NeutroniaBlock(Material.STONE, 2.0F, 10.0F);
 
-        SQUARED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "squared_sandy_bricks");
-        GAPLESS_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "gapless_sandy_bricks");
-        SCALY_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "scaly_sandy_bricks");
-        SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "sandy_bricks");
-        CHISELED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "chiseled_sandy_bricks");
-        CRACKED_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "cracked_sandy_bricks");
-        MOSSY_SANDY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "mossy_sandy_bricks");
-        SANDY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "sandy_brick_path");
-        SANDY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "sandy_brick_tile");
-        SMALL_SANDY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_sandy_brick_tile");
-        SANDY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandy_brick_pillar", 2.0F, 10.0F);
-        SMOOTH_SANDY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_sandy_bricks", 2.0F, 10.0F);
+        SQUARED_SANDY_BRICKS = new NeutroniaBlock(Material.STONE);
+        GAPLESS_SANDY_BRICKS = new NeutroniaBlock(Material.STONE);
+        SCALY_SANDY_BRICKS = new NeutroniaBlock(Material.STONE);
+        SANDY_BRICKS = new NeutroniaBlock(Material.STONE);
+        CHISELED_SANDY_BRICKS = new NeutroniaBlock(Material.STONE);
+        CRACKED_SANDY_BRICKS = new NeutroniaBlock(Material.STONE);
+        MOSSY_SANDY_BRICKS = new NeutroniaBlock(Material.STONE);
+        SANDY_BRICK_PATH = new NeutroniaBlock(Material.STONE);
+        SANDY_BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_SANDY_BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        SANDY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, 2.0F, 10.0F);
+        SMOOTH_SANDY_BRICK = new NeutroniaBlock(Material.STONE, 2.0F, 10.0F);
 
-        SQUARED_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "squared_dirty_bricks");
-        GAPLESS_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "gapless_dirty_bricks");
-        SCALY_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "scaly_dirty_bricks");
-        DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "dirty_bricks");
-        CHISELED_DIRTY_BRICK = new NeutroniaBaseBlock(Material.STONE, "chiseled_dirty_bricks");
-        CRACKED_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "cracked_dirty_bricks");
-        MOSSY_DIRTY_BRICKS = new NeutroniaBaseBlock(Material.STONE, "mossy_dirty_bricks");
-        DIRTY_BRICK_PATH = new NeutroniaBaseBlock(Material.STONE, "dirty_brick_path");
-        DIRTY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "dirty_brick_tile");
-        SMALL_DIRTY_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_dirty_brick_tile");
-        DIRTY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "dirty_brick_pillar", 2.0F, 10.0F);
-        SMOOTH_DIRTY_BRICK = new NeutroniaBaseBlock(Material.STONE, "smooth_dirty_bricks", 2.0F, 10.0F);
+        SQUARED_DIRTY_BRICKS = new NeutroniaBlock(Material.STONE);
+        GAPLESS_DIRTY_BRICKS = new NeutroniaBlock(Material.STONE);
+        SCALY_DIRTY_BRICKS = new NeutroniaBlock(Material.STONE);
+        DIRTY_BRICKS = new NeutroniaBlock(Material.STONE);
+        CHISELED_DIRTY_BRICK = new NeutroniaBlock(Material.STONE);
+        CRACKED_DIRTY_BRICKS = new NeutroniaBlock(Material.STONE);
+        MOSSY_DIRTY_BRICKS = new NeutroniaBlock(Material.STONE);
+        DIRTY_BRICK_PATH = new NeutroniaBlock(Material.STONE);
+        DIRTY_BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_DIRTY_BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        DIRTY_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE,  2.0F, 10.0F);
+        SMOOTH_DIRTY_BRICK = new NeutroniaBlock(Material.STONE, 2.0F, 10.0F);
 
-        CHECKERED_TILE = new NeutroniaBaseBlock(Material.STONE, "checkered_tiles");
-        SMALL_CHECKERED_TILE = new NeutroniaBaseBlock(Material.STONE, "small_checkered_tiles");
-        STONE_TILE = new NeutroniaBaseBlock(Material.STONE, "stone_tile");
-        SMALL_STONE_TILE = new NeutroniaBaseBlock(Material.STONE, "small_stone_tile");
-        ANDESITE_TILE = new NeutroniaBaseBlock(Material.STONE, "andesite_tile");
-        SMALL_ANDESITE_TILE = new NeutroniaBaseBlock(Material.STONE, "small_andesite_tile");
-        DIORITE_TILE = new NeutroniaBaseBlock(Material.STONE, "diorite_tile");
-        SMALL_DIORITE_TILE = new NeutroniaBaseBlock(Material.STONE, "small_diorite_tile");
-        GRANITE_TILE = new NeutroniaBaseBlock(Material.STONE, "granite_tile");
-        SMALL_GRANITE_TILE = new NeutroniaBaseBlock(Material.STONE, "small_granite_tile");
-        STONE_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "stone_brick_tile");
-        SMALL_STONE_BRICK_TILE = new NeutroniaBaseBlock(Material.STONE, "small_stone_brick_tile");
-        SMALL_OBSIDIAN_TILES = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "small_obsidian_tiles");
-        OBSIDIAN_TILES = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F), "obsidian_tiles");
+        CHECKERED_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_CHECKERED_TILE = new NeutroniaBlock(Material.STONE);
+        STONE_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_STONE_TILE = new NeutroniaBlock(Material.STONE);
+        ANDESITE_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_ANDESITE_TILE = new NeutroniaBlock(Material.STONE);
+        DIORITE_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_DIORITE_TILE = new NeutroniaBlock(Material.STONE);
+        GRANITE_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_GRANITE_TILE = new NeutroniaBlock(Material.STONE);
+        STONE_BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_STONE_BRICK_TILE = new NeutroniaBlock(Material.STONE);
+        SMALL_OBSIDIAN_TILES = new NeutroniaBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
+        OBSIDIAN_TILES = new NeutroniaBlock(FabricBlockSettings.of(Material.STONE).hardness(50.0F).resistance(2000.0F));
 
-        BlockRegistryBuilder.getInstance("stone_tile", STONE_TILE).slab().stair();
-        BlockRegistryBuilder.getInstance("andesite_tile", ANDESITE_TILE).slab().stair();
-        BlockRegistryBuilder.getInstance("diorite_tile", DIORITE_TILE).slab().stair();
-        BlockRegistryBuilder.getInstance("granite_tile", GRANITE_TILE).slab().stair();
-        BlockRegistryBuilder.getInstance("stone_brick_tile", STONE_BRICK_TILE).slab().stair();
+        /*
+        BlockDerivativeBuilder.getInstance("stone_tile", STONE_TILE).slab().stair();
+        BlockDerivativeBuilder.getInstance("andesite_tile", ANDESITE_TILE).slab().stair();
+        BlockDerivativeBuilder.getInstance("diorite_tile", DIORITE_TILE).slab().stair();
+        BlockDerivativeBuilder.getInstance("granite_tile", GRANITE_TILE).slab().stair();
+        BlockDerivativeBuilder.getInstance("stone_brick_tile", STONE_BRICK_TILE).slab().stair();
 
-        BlockRegistryBuilder.getInstance("andesite", Blocks.ANDESITE)
+        BlockDerivativeBuilder.getInstance("andesite", Blocks.ANDESITE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("granite", Blocks.GRANITE)
+        BlockDerivativeBuilder.getInstance("granite", Blocks.GRANITE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("diorite", Blocks.DIORITE)
+        BlockDerivativeBuilder.getInstance("diorite", Blocks.DIORITE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("stone_brick", Blocks.STONE_BRICKS)
+        BlockDerivativeBuilder.getInstance("stone_brick", Blocks.STONE_BRICKS)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS)
+        BlockDerivativeBuilder.getInstance("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("mossy_stone_brick", Blocks.MOSSY_STONE_BRICKS)
+        BlockDerivativeBuilder.getInstance("mossy_stone_brick", Blocks.MOSSY_STONE_BRICKS)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("cobblestone", Blocks.COBBLESTONE)
+        BlockDerivativeBuilder.getInstance("cobblestone", Blocks.COBBLESTONE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE)
+        BlockDerivativeBuilder.getInstance("mossy_cobblestone", Blocks.MOSSY_COBBLESTONE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("polished_andesite", Blocks.STONE)
+        BlockDerivativeBuilder.getInstance("polished_andesite", Blocks.STONE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("polished_granite", Blocks.STONE)
+        BlockDerivativeBuilder.getInstance("polished_granite", Blocks.STONE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
-        BlockRegistryBuilder.getInstance("polished_diorite", Blocks.STONE)
+        BlockDerivativeBuilder.getInstance("polished_diorite", Blocks.STONE)
                 .button(false).pressurePlate(PressurePlateBlock.Type.STONE);
+         */
 
-        ROPE_COIL = new NeutroniaPillarBlock(Material.WOOL, "rope_coil");
+        ROPE_COIL = new NeutroniaPillarBlock(Material.WOOL);
 
-        DARK_ANDESITE = new NeutroniaBaseBlock(Material.STONE, "dark_andesite");
-        DARK_ANDESITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "dark_andesite_bricks");
-        POLISHED_DARK_ANDESITE = new NeutroniaBaseBlock(Material.STONE, "polished_dark_andesite");
+        DARK_ANDESITE = new NeutroniaBlock(Material.STONE);
+        DARK_ANDESITE_BRICKS = new NeutroniaBlock(Material.STONE);
+        POLISHED_DARK_ANDESITE = new NeutroniaBlock(Material.STONE);
 
+        /*
         ANDESITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "andesite_bricks");
-        BlockRegistryBuilder.getInstance("andesite_brick", ANDESITE_BRICKS).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("andesite_brick", ANDESITE_BRICKS).slab().stair().wall();
         DIORITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "diorite_bricks");
-        BlockRegistryBuilder.getInstance("diorite_brick", DIORITE_BRICKS).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("diorite_brick", DIORITE_BRICKS).slab().stair().wall();
         GRANITE_BRICKS = new NeutroniaBaseBlock(Material.STONE, "granite_bricks");
-        BlockRegistryBuilder.getInstance("granite_brick", GRANITE_BRICKS).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("granite_brick", GRANITE_BRICKS).slab().stair().wall();
 
         MUD = new MudBlock();
         MUD_BRICKS = new MudBlock("mud_bricks");
         DRIED_MUD = new NeutroniaBaseBlock(Material.ORGANIC, "dried_mud");
-        BlockRegistryBuilder.getInstance("dried_mud", DRIED_MUD).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("dried_mud", DRIED_MUD).slab().stair().wall();
         DRIED_MUD_BRICKS = new NeutroniaBaseBlock(Material.ORGANIC, "dried_mud_bricks");
-        BlockRegistryBuilder.getInstance("dried_mud_brick", DRIED_MUD_BRICKS).slab().stair().wall();
+        BlockDerivativeBuilder.getInstance("dried_mud_brick", DRIED_MUD_BRICKS).slab().stair().wall();
 
-        PACKED_ICE_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_bricks");
+         */
+
+        PACKED_ICE_BRICKS = new NeutroniaBlock(Material.PACKED_ICE);
 //        BlockRegisteringUtils.addSlabAndStair("ice_bricks", PACKED_ICE_BRICKS);
-        PACKED_ICE_PILLAR = new NeutroniaPillarBlock(Material.PACKED_ICE, "ice_pillar");
-        ICE_TILES = new NeutroniaBaseBlock(Material.PACKED_ICE, "ice_tiles");
+        PACKED_ICE_PILLAR = new NeutroniaPillarBlock(Material.PACKED_ICE);
+        ICE_TILES = new NeutroniaBlock(Material.PACKED_ICE);
 //        BlockRegisteringUtils.addSlabAndStair("ice_tiles", ICE_TILES);
 //        RegistryUtils.register(new RodBaseBlock(true), "ice_rod");
-        SMALL_SNOW_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "small_snow_bricks");
-        SNOW_BRICKS = new NeutroniaBaseBlock(Material.PACKED_ICE, "snow_bricks");
+        SMALL_SNOW_BRICKS = new NeutroniaBlock(Material.PACKED_ICE);
+        SNOW_BRICKS = new NeutroniaBlock(Material.PACKED_ICE);
 //        BlockRegisteringUtils.addSlabAndStair("snow_bricks", SNOW_BRICKS);
 
-        SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "sandstone_pillar");
-        RED_SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "red_sandstone_pillar");
-        STONE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "stone_pillar");
-        POLISHED_ANDESITE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "polished_andesite_pillar");
-        POLISHED_DIORITE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "polished_diorite_pillar");
-        POLISHED_GRANITE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "polished_granite_pillar");
-        STONE_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "stone_brick_pillar");
-        PRISMARINE_COLUMN = new NeutroniaPillarBlock(Material.STONE, "prismarine_column");
-        PRISMARINE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "prismarine_pillar");
-        PRISMARINE_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "prismarine_brick_pillar");
-        DARK_PRISMARINE_PILLAR = new NeutroniaPillarBlock(Material.STONE, "dark_prismarine_pillar");
-        RED_NETHER_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "red_nether_brick_pillar", 2.0F, 10.0F);
-        END_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, "end_brick_pillar", 3.0F, 15.0F);
-        DARK_PRISMARINE_COLUMN = new NeutroniaPillarBlock(Material.STONE, "dark_prismarine_column", 1.5F, 10.0F);
+        SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        RED_SANDSTONE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        STONE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        POLISHED_ANDESITE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        POLISHED_DIORITE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        POLISHED_GRANITE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        STONE_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        PRISMARINE_COLUMN = new NeutroniaPillarBlock(Material.STONE);
+        PRISMARINE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        PRISMARINE_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        DARK_PRISMARINE_PILLAR = new NeutroniaPillarBlock(Material.STONE);
+        RED_NETHER_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, 2.0F, 10.0F);
+        END_BRICK_PILLAR = new NeutroniaPillarBlock(Material.STONE, 3.0F, 15.0F);
+        DARK_PRISMARINE_COLUMN = new NeutroniaPillarBlock(Material.STONE, 1.5F, 10.0F);
 
         FROSTED_GLASS = new FrostedGlassBlock();
         FROSTED_GLASS_PANE = RegistryUtils.register(new FrostedGlassPaneBlock(), new Identifier(Neutronia.MOD_ID, "frosted_glass_pane"));
@@ -356,10 +360,12 @@ public class NBlocks {
             PUMPKIN[carvedFaceTypes.ordinal()] = new PumpkinBlock();
         }
 
+        /*
         for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
             SOUL_STONE[soulStoneTypes.getIndex()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
-            BlockRegistryBuilder.getInstance(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]).slab().stair().wall();
+            BlockDerivativeBuilder.getInstance(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]).slab().stair().wall();
         }
+        */
 
         BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE);
         BlockRegisteringUtils.addWalls("polished_dark_andesite", POLISHED_DARK_ANDESITE);
@@ -399,31 +405,34 @@ public class NBlocks {
 
 //        SAWMILL = new SawmillBlock("sawmill");
 
-        BAMBOO_PLANKS = new NeutroniaBaseBlock(Material.WOOD, "bamboo_planks");
-        BlockRegistryBuilder.getInstance("bamboo", BAMBOO_PLANKS)
+        BAMBOO_PLANKS = new NeutroniaBlock(Material.WOOD);
+        /*
+        BlockDerivativeBuilder.getInstance("bamboo", BAMBOO_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         /*BAMBOO_SIGN = RegistryUtils.registerNoBI(new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).getModMenuBadge()), "bamboo_sign");
         BAMBOO_WALL_SIGN = RegistryUtils.registerNoBI(new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).getModMenuBadge()), "bamboo_wall_sign");
         BAMBOO_TORCH = RegistryUtils.register(new NeutroniaTorchBlock(), "bamboo_torch");*/
-        THATCH = new NeutroniaBaseBlock(Material.ORGANIC, "thatch");
-        BlockRegistryBuilder.getInstance("thatch", THATCH).slab().stair();
+        THATCH = new NeutroniaBlock(Material.ORGANIC);
+        /*
+        BlockDerivativeBuilder.getInstance("thatch", THATCH).slab().stair();
 
         ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "natural_acidian");
-        BlockRegistryBuilder.getInstance("natural_acidian", ACIDIAN)
+        BlockDerivativeBuilder.getInstance("natural_acidian", ACIDIAN)
                 .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_BRICKS = new NeutroniaBaseBlock(Material.STONE, "acidian_bricks");
-        BlockRegistryBuilder.getInstance("acidian_brick", ACIDIAN_BRICKS)
+        BlockDerivativeBuilder.getInstance("acidian_brick", ACIDIAN_BRICKS)
                 .slab().stair().button(true).wall().pressurePlate(PressurePlateBlock.Type.WOOD);
         ACIDIAN_PILLAR = new NeutroniaPillarBlock(Material.STONE, "acidian_pillar");
         CHISELED_ACIDIAN = new NeutroniaBaseBlock(Material.STONE, "chiseled_acidian");
 //        ACIDIAN_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.GLASS, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(Neutronia.MOD_ID, "acidian_bars"));
 
         TREATED_PLANKS = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "treated_planks");
-        BlockRegistryBuilder.getInstance("treated_planks", TREATED_PLANKS)
+        BlockDerivativeBuilder.getInstance("treated_planks", TREATED_PLANKS)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
         TREATED_SIDING = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD), "treated_siding");
-        BlockRegistryBuilder.getInstance("treated_siding", TREATED_SIDING)
+        BlockDerivativeBuilder.getInstance("treated_siding", TREATED_SIDING)
                 .slab().stair().button(true).fence().fenceGate().pressurePlate(PressurePlateBlock.Type.WOOD);
+         */
 
         /*POTTED_BEETROOT = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.BEETROOTS), "potted_beetroot");
         POTTED_CARROTS = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.CARROTS), "potted_carrots");

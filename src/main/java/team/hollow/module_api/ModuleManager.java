@@ -31,11 +31,16 @@ public class ModuleManager {
         tweedClothBridge = new TweedClothBridge(configFile);
 
         configFile.setReloadListener(ModuleManager::apply);
+
+        configFile.triggerInitialLoad();
     }
 
     public static void apply(ConfigEnvironment environment, ConfigScope scope) {
         if(scope.triggers(ConfigScope.GAME)) {
             modules.forEach(Module::apply);
+
+            if(Neutronia.GEN_RESOURCES)
+                System.exit(0);
         }
     }
 }

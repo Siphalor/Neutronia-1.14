@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "neutronia:block/jungle_paper_lantern_top",
-    "side": "neutronia:block/jungle_paper_lantern"
-  }
-}

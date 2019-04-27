@@ -1,7 +1,0 @@
-{
-  "parent": "block/cube_column",
-  "textures": {
-    "end": "neutronia:block/baobab_log_top",
-    "side": "neutronia:block/baobab_log"
-  }
-}

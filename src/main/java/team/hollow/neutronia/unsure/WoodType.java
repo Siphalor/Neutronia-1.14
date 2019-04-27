@@ -24,6 +24,10 @@ public class WoodType {
 		return name;
 	}
 
+	public String getBaseBlockName() {
+		return name + "_planks";
+	}
+
 	public Block getBaseBlock() {
 		return baseBlock;
 	}

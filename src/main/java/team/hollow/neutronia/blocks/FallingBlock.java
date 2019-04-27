@@ -18,19 +18,19 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
-public class FallingBlock extends BaseModBlock {
+public class FallingBlock extends NeutroniaBlock {
     public static boolean fallInstantly;
 
     public FallingBlock(String name) {
-        super(Material.SAND, name);
+        super(Material.SAND);
     }
 
     public FallingBlock(Material materialIn, String name) {
-        super(materialIn, name);
+        super(materialIn);
     }
 
     public FallingBlock(FabricBlockSettings builder, String name) {
-        super(builder, name);
+        super(builder);
     }
 
     public static boolean canFallThrough(BlockState blockState_1) {

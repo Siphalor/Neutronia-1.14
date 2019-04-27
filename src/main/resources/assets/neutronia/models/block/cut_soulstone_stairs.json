@@ -1,8 +1,0 @@
-{
-  "parent": "block/stairs",
-  "textures": {
-    "bottom": "neutronia:block/soulstone_bottom",
-    "top": "neutronia:block/soulstone_top",
-    "side": "neutronia:block/cut_soulstone"
-  }
-}

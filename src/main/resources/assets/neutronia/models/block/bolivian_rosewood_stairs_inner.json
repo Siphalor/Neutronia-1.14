@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "neutronia:block/bolivian_rosewood_planks",
-    "top": "neutronia:block/bolivian_rosewood_planks",
-    "side": "neutronia:block/bolivian_rosewood_planks"
-  }
-}

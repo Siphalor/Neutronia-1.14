@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "neutronia:block/wenge_planks",
-    "top": "neutronia:block/wenge_planks",
-    "side": "neutronia:block/wenge_planks"
-  }
-}

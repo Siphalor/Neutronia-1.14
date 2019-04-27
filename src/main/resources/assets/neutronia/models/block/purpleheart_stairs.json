@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/stairs",
-  "textures": {
-    "bottom": "neutronia:block/purpleheart_planks",
-    "top": "neutronia:block/purpleheart_planks",
-    "side": "neutronia:block/purpleheart_planks"
-  }
-}

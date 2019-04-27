@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/template_wall_side",
-  "textures": {
-    "wall": "neutronia:block/smooth_sandy_brick"
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_bottom_top",
-  "textures": {
-    "top": "neutronia:block/illuminated_red_sandstone_top",
-    "side": "neutronia:block/illuminated_chiseled_red_sandstone",
-    "bottom": "neutronia:block/illuminated_red_sandstone_bottom"
-  }
-}

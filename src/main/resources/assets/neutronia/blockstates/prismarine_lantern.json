@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "hanging=true": { "model": "neutronia:block/hanging_prismarine_lantern"},
-        "hanging=false": { "model": "neutronia:block/prismarine_lantern"}
-  }
-}

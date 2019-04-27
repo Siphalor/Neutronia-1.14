@@ -1,6 +1,0 @@
-{
-    "variants": {
-        "powered=false": { "model": "neutronia:block/diorite_pressure_plate" },
-        "powered=true": { "model": "neutronia:block/diorite_pressure_plate_down" }
-    }
-}

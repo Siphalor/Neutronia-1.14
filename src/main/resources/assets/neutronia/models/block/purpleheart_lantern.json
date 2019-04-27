@@ -1,7 +1,0 @@
-{
-  "parent": "minecraft:block/cube_column",
-  "textures": {
-    "side": "neutronia:block/purpleheart_lantern",
-    "end": "neutronia:block/purpleheart_lantern_top"
-  }
-}

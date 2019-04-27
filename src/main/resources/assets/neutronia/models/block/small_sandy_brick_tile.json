@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/cube_all",
-  "textures": {
-    "all": "neutronia:block/small_sandy_brick_tile"
-  }
-}

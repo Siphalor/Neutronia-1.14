@@ -27,14 +27,13 @@ group = "team.hollow"
 repositories {
 	mavenCentral()
 	mavenLocal()
-	maven("https://jitpack.io")
 	maven("https://tehnut.info/maven")
 	maven("https://maven.fabricmc.net")
 	maven("https://minecraft.curseforge.com/api/maven")
 	maven("https://maven.jamieswhiteshirt.com/libs-release/")
     maven("http://maven.sargunv.s3-website-us-west-2.amazonaws.com/")
 	maven("http://server.bbkr.space:8081/artifactory/libs-snapshot")
-
+	maven("https://jitpack.io")
 }
 
 dependencies {
@@ -66,5 +65,11 @@ tasks.getByName<ProcessResources>("processResources") {
 						"version" to version
 				)
 		)
+	}
+}
+
+tasks.getByName<JavaExec>("runClient") {
+	if(System.getProperty("genResources") != null) {
+		this.systemProperty("genResources", true)
 	}
 }

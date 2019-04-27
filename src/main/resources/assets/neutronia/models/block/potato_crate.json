@@ -1,8 +1,8 @@
 {
   "parent": "block/cube_bottom_top",
   "textures": {
-    "top": "neutronia:block/potato_crate_top",
     "bottom": "neutronia:block/potato_crate_bottom",
+    "top": "neutronia:block/potato_crate_top",
     "side": "neutronia:block/potato_crate"
   }
 }

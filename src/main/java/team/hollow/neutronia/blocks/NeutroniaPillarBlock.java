@@ -10,21 +10,21 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.Direction;
 
-public class NeutroniaPillarBlock extends BaseModBlock {
+public class NeutroniaPillarBlock extends NeutroniaBlock {
 
     private static final EnumProperty<Direction.Axis> AXIS = EnumProperty.create("axis", Direction.Axis.class);
 
-    public NeutroniaPillarBlock(Material materialIn, String name) {
-        super(materialIn, name);
+    public NeutroniaPillarBlock(Material materialIn) {
+        super(materialIn);
         setDefaultState(this.stateFactory.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
 
-    public NeutroniaPillarBlock(FabricBlockSettings builder, String name) {
-        super(builder, name);
+    public NeutroniaPillarBlock(FabricBlockSettings builder) {
+        super(builder);
     }
 
-    public NeutroniaPillarBlock(Material material, String name, float hardnesss, float resistance) {
-        super(FabricBlockSettings.of(material).strength(hardnesss, resistance), name);
+    public NeutroniaPillarBlock(Material material, float hardnesss, float resistance) {
+        super(FabricBlockSettings.of(material).strength(hardnesss, resistance));
         setDefaultState(this.stateFactory.getDefaultState().with(AXIS, Direction.Axis.Y));
     }
 

@@ -1,8 +1,8 @@
 package team.hollow.module_api.api.features.woodtype;
 
 import net.minecraft.block.Block;
+import team.hollow.neutronia.unsure.ContentBuilder;
 import team.hollow.neutronia.unsure.WoodType;
-import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 import java.util.Set;
 import java.util.function.Supplier;
@@ -16,6 +16,6 @@ public class WoodTypeBlockFeature extends WoodTypeFeature {
 	}
 
 	protected void process(WoodType woodType) {
-		RegistryUtils.register(block.get(),  woodType.getName() + "_" + name);
+		ContentBuilder.getInstance().newBlock(woodType.getName() + "_" + name, block.get());
 	}
 }

@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_bottom_top",
-  "textures": {
-    "top": "neutronia:block/egg_crate_top",
-    "bottom": "neutronia:block/egg_crate_bottom",
-    "side": "neutronia:block/egg_crate"
-  }
-}

@@ -1,7 +1,7 @@
 package team.hollow.module_api.api.features;
 
 import net.minecraft.block.Block;
-import team.hollow.neutronia.utils.registry.RegistryUtils;
+import team.hollow.neutronia.unsure.ContentBuilder;
 
 import java.util.function.Supplier;
 
@@ -18,7 +18,7 @@ public class BlockBundleFeature extends OptionalFeature {
 	@Override
 	protected void applyEnabled() {
         for(String id : ids) {
-        	RegistryUtils.register(block.get(), id + "_" + name);
+			ContentBuilder.getInstance().newBlock(id + "_" + name, block.get());
 		}
 	}
 }

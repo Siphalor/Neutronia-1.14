@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "neutronia:block/dark_andesite",
-    "top": "neutronia:block/dark_andesite",
-    "side": "neutronia:block/dark_andesite"
-  }
-}

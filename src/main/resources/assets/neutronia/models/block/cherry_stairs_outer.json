@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "neutronia:block/cherry_planks",
-    "top": "neutronia:block/cherry_planks",
-    "side": "neutronia:block/cherry_planks"
-  }
-}

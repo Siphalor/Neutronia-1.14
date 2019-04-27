@@ -1,7 +1,7 @@
 package team.hollow.module_api.api.features;
 
 import net.minecraft.block.Block;
-import team.hollow.neutronia.utils.registry.RegistryUtils;
+import team.hollow.neutronia.unsure.ContentBuilder;
 
 public class SingleBlockFeature extends OptionalFeature {
     public Block block;
@@ -13,7 +13,7 @@ public class SingleBlockFeature extends OptionalFeature {
 
     @Override
     protected void applyEnabled() {
-        RegistryUtils.register(block, name);
+        block = ContentBuilder.getInstance().newBlock(name, block);
     }
 
 }

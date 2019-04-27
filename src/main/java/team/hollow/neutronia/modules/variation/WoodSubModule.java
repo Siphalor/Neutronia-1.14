@@ -5,6 +5,7 @@ import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Pair;
 import team.hollow.module_api.api.SubModule;
+import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.module_api.api.features.woodtype.WoodTypeBlockFeature;
 import team.hollow.module_api.api.features.woodtype.WoodTypeBlocksFeature;
 import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
@@ -16,7 +17,7 @@ import java.util.function.Supplier;
 
 public class WoodSubModule extends SubModule {
 	public static WoodTypeBlockFeature bookshelves;
-	public static WoodTypeBlockFeature barrels;
+	public static OptionalFeature barrels;
 	public static WoodTypeBlockFeature campfires;
 	public static WoodTypeBlockFeature strippedCampfires;
 	public static WoodTypeBlockFeature lecterns;

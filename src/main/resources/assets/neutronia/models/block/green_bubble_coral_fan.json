@@ -1,6 +1,0 @@
-{
-    "parent": "block/coral_fan",
-    "textures": {
-        "fan": "neutronia:block/green_bubble_coral_fan"
-    }
-}

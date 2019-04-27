@@ -1,7 +1,0 @@
-{
-    "parent": "block/door_top_rh",
-    "textures": {
-        "bottom": "neutronia:block/willow_door_bottom",
-        "top": "neutronia:block/willow_door_top"
-    }
-}

@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "facing=east": { "model": "neutronia:block/antipathes_coral_wall_fan", "y": 90 },
-        "facing=south": { "model": "neutronia:block/antipathes_coral_wall_fan", "y": 180 },
-        "facing=west": { "model": "neutronia:block/antipathes_coral_wall_fan", "y": 270 },
-        "facing=north": { "model": "neutronia:block/antipathes_coral_wall_fan", "y": 0 }
-    }
-}

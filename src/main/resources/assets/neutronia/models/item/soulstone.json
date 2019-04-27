@@ -1,8 +1,0 @@
-{
-  "parent": "block/cube_bottom_top",
-  "textures": {
-    "top": "neutronia:block/soulstone_top",
-    "bottom": "neutronia:block/soulstone_bottom",
-    "side": "neutronia:block/soulstone"
-  }
-}

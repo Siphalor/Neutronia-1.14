@@ -1,7 +1,0 @@
-{
-  "variants": {
-    "axis=y":  { "model": "neutronia:block/prismarine_bricks_pillar" },
-    "axis=z":   { "model": "neutronia:block/prismarine_bricks_pillar", "x": 90 },
-    "axis=x":   { "model": "neutronia:block/prismarine_bricks_pillar", "x": 90, "y": 90 }
-  }
-}

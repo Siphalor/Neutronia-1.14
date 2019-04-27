@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/inner_stairs",
-  "textures": {
-    "bottom": "neutronia:block/lacewood_planks",
-    "top": "neutronia:block/lacewood_planks",
-    "side": "neutronia:block/lacewood_planks"
-  }
-}

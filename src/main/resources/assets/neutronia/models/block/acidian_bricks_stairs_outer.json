@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/outer_stairs",
-  "textures": {
-    "bottom": "neutronia:block/acidian_bricks",
-    "top": "neutronia:block/acidian_bricks",
-    "side": "neutronia:block/acidian_bricks"
-  }
-}

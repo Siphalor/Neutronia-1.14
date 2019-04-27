@@ -1,6 +1,0 @@
-{
-    "parent": "block/button",
-    "textures": {
-        "texture": "neutronia:block/willow_planks"
-    }
-}

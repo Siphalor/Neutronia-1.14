@@ -1,8 +1,0 @@
-{
-  "parent": "minecraft:block/slab_top",
-  "textures": {
-    "bottom": "neutronia:block/smooth_red_nether_brick",
-    "top": "neutronia:block/smooth_red_nether_brick",
-    "side": "neutronia:block/smooth_red_nether_brick"
-  }
-}

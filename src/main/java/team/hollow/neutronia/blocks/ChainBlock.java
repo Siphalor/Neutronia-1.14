@@ -1,5 +1,6 @@
 package team.hollow.neutronia.blocks;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
@@ -10,14 +11,14 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 
-public class ChainBlock extends BaseModBlock {
+public class ChainBlock extends NeutroniaBlock {
 
     public ChainBlock() {
-        super(Material.METAL, "chain");
+        super(Material.METAL);
     }
 
     public ChainBlock(String name) {
-        super(Material.METAL, name + "_chain");
+        super(Material.METAL);
     }
 
     @Override
