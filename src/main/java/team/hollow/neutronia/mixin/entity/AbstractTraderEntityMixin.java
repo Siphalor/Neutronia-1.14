@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Mixin(AbstractTraderEntity.class)
+@Mixin(value = AbstractTraderEntity.class)
 public abstract class AbstractTraderEntityMixin extends PassiveEntity {
 	protected AbstractTraderEntityMixin(EntityType<? extends PassiveEntity> entityType_1, World world_1) {
 		super(entityType_1, world_1);

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/campfire_off",
   "textures": {
-    "log": "neutronia:block/baobab_campfire_logbaobab"
+    "log": "neutronia:block/baobab_campfire_log"
   }
 }

@@ -1,7 +1,7 @@
 {
   "parent": "minecraft:block/campfire",
   "textures": {
-    "log": "neutronia:block/lacewood_campfire_loglacewood",
+    "log": "neutronia:block/lacewood_campfire_log",
     "litlog": "neutronia:block/lacewood_campfire_log_lit"
   }
 }

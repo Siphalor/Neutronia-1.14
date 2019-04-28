@@ -10,6 +10,7 @@ import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.entity.SocialVillager;
 
 import java.util.List;
+import java.util.Objects;
 
 @Environment(EnvType.CLIENT)
 public class SocialScreen extends Screen {
@@ -28,7 +29,7 @@ public class SocialScreen extends Screen {
     public void render(int int_1, int int_2, float float_1) {
         this.renderBackground();
         super.render(int_1, int_2, float_1);
-        this.minecraft.getTextureManager().bindTexture(TEXTURE);
+        Objects.requireNonNull(this.minecraft).getTextureManager().bindTexture(TEXTURE);
         int int_3 = (this.width - 276) / 2;
         int int_4 = (this.height - 166) / 2;
         //blit(x, y, z, u, v, width, height, texHeight, texWidth)
@@ -36,7 +37,7 @@ public class SocialScreen extends Screen {
 
         this.minecraft.getTextureManager().bindTexture(TEXTURE);
         //blit(x, y, z, u, v, width, height, texHeight, texWidth)
-        blit(107, 63, this.blitOffset, 275.0F, 0.0F, 88, 80, 256, 512);
+        blit(107, 62, this.blitOffset, 275.0F, 0.0F, 88, 80, 256, 512);
 
         String quest = "Quests";
         this.font.draw(quest, 100 + this.font.getStringWidth(quest), 51, 4210752);

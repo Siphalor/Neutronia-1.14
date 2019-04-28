@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/door_top_rh",
+  "textures": {
+    "bottom": "neutronia:block/redwood_door_bottom",
+    "top": "neutronia:block/redwood_door_top"
+  }
+}

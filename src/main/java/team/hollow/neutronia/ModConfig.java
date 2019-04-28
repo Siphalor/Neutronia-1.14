@@ -1,16 +1,22 @@
 package team.hollow.neutronia;
 
-import me.sargunvohra.mcmods.autoconfig.api.ConfigData;
-import me.sargunvohra.mcmods.autoconfig.api.ConfigGuiEntry;
-import me.sargunvohra.mcmods.autoconfig.shadowed.blue.endless.jankson.Comment;
+import me.sargunvohra.mcmods.autoconfig1.ConfigData;
+import me.sargunvohra.mcmods.autoconfig1.annotation.Config;
+import me.sargunvohra.mcmods.autoconfig1.annotation.ConfigEntry;
+import me.sargunvohra.mcmods.autoconfig1.serializer.PartitioningSerializer;
+import me.sargunvohra.mcmods.autoconfig1.shadowed.blue.endless.jankson.Comment;
 
-public class ModConfig implements ConfigData {
+@Config(name = Neutronia.MOD_ID)
+@Config.Gui.Background("minecraft:textures/block/oak_planks.png")
+@Config.Gui.CategoryBackground(category = "common", background = "minecraft:textures/block/stone.png")
+public class ModConfig extends PartitioningSerializer.GlobalData {
 
-    @ConfigGuiEntry(category = "client")
-    @ConfigGuiEntry.Transitive
+    @ConfigEntry.Category("client")
+    @ConfigEntry.Gui.TransitiveObject
     public Client client = new Client();
 
-    public static class Client {
+    @Config(name = "client")
+    public static class Client implements ConfigData {
         @Comment("Adds more informative text on the main menu")
         public boolean mainMenuExtra = false;
 
@@ -18,11 +24,12 @@ public class ModConfig implements ConfigData {
         public boolean splashScreenExtra = false;
     }
 
-    @ConfigGuiEntry(category = "common")
-    @ConfigGuiEntry.Transitive
+    @ConfigEntry.Category("common")
+    @ConfigEntry.Gui.TransitiveObject
     public Common common = new Common();
 
-    public static class Common {
+    @Config(name = "common")
+    public static class Common implements ConfigData {
 
         @Comment("Replaces normal biomes with mini biomes")
         public boolean doMiniBiomes = false;

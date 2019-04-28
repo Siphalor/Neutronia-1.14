@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "neutronia:block/redwood_planks",
+    "top": "neutronia:block/redwood_planks",
+    "side": "neutronia:block/redwood_planks"
+  }
+}

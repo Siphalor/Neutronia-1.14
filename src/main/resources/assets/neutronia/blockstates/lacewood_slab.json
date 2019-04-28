@@ -4,7 +4,7 @@
       "model": "neutronia:block/lacewood_slab"
     },
     "type=double": {
-      "model": "neutronia:block/lacewood"
+      "model": "neutronia:block/lacewood_planks"
     },
     "type=top": {
       "model": "neutronia:block/lacewood_slab_top"

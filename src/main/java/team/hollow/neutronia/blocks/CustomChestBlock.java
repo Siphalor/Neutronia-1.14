@@ -27,4 +27,5 @@ public class CustomChestBlock extends ChestBlock {
     public BlockEntity createBlockEntity(BlockView var1) {
         return new CustomChestBlockEntity(CustomChestTypes.getFromName(type));
     }
+
 }

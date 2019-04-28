@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "neutronia:willow_planks"
+    }
+  ],
+  "result": {
+    "item": "neutronia:willow_button"
+  }
+}

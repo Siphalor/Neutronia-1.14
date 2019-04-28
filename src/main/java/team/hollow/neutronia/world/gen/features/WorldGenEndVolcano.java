@@ -9,7 +9,7 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
 import net.minecraft.world.gen.chunk.ChunkGeneratorConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
-import team.hollow.neutronia.utils.FastNoiseAlt;
+import team.hollow.neutronia.utils.noise.FastNoiseAlt;
 
 import java.util.ArrayList;
 import java.util.List;

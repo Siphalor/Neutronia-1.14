@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+	"group": "illuminated",
+    "pattern": [
+        "###",
+        "#L#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:prismarine_bricks"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        }
+    },
+    "result": {
+		"item": "neutronia:illuminated_prismarine_bricks",
+		"count": 8
+	}
+    
+}

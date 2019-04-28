@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:willow_planks"
+    }
+  },
+  "result": {
+    "item": "neutronia:willow_stairs",
+    "count": 4
+  }
+}

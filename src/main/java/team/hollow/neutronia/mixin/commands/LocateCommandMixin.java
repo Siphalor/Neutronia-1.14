@@ -21,7 +21,7 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(LocateCommand.class)
+@Mixin(value = LocateCommand.class)
 public class LocateCommandMixin {
 
     @Final

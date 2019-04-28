@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "neutronia:block/potted_beetroot" }
+  "variants": {
+    "": {
+      "model": "neutronia:block/potted_beetroot"
     }
+  }
 }

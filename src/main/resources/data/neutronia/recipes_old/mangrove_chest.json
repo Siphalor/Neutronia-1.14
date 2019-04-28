@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "chest",
+  "pattern": [
+    "###",
+    "# #",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:mangrove_planks"
+    }
+  },
+  "result": {
+    "item": "neutronia:mangrove_chest"
+  }
+}

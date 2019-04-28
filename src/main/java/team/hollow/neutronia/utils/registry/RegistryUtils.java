@@ -53,6 +53,11 @@ public class RegistryUtils {
         return block;
     }
 
+    public static Block registerNoBI(Block block, Identifier name) {
+        Registry.register(Registry.BLOCK, name, block);
+        return block;
+    }
+
     public static Item registerItem(Item item, String name) {
         Registry.register(Registry.ITEM, new Identifier(Neutronia.MOD_ID, name), item);
         return item;

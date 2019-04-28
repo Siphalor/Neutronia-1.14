@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/potted_melon" }
+    "": {
+      "model": "neutronia:block/potted_melon"
+    }
   }
 }

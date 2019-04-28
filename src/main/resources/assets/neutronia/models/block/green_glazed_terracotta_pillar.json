@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "side": "neutronia:block/glazed_terracotta_pillars/green",
+    "end": "neutronia:block/glazed_terracotta_pillars/green_top"
+  }
+}

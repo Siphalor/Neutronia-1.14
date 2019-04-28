@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "slab",
+  "pattern": [
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:smooth_dirty_bricks"
+    }
+  },
+  "result": {
+    "item": "neutronia:smooth_dirty_brick_slab",
+    "count": 6
+  }
+}

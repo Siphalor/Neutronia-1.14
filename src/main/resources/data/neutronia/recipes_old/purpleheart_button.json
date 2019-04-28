@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "neutronia:purpleheart_planks"
+    }
+  ],
+  "result": {
+    "item": "neutronia:purpleheart_button"
+  }
+}

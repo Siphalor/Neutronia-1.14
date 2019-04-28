@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "sack",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:nether_wart"
+    }
+  },
+  "result": {
+    "item": "neutronia:nether_wart_sack"
+  }
+}

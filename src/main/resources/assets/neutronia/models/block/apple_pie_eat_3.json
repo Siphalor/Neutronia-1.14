@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"bottom": "neutronia:block/apple_pie_top",
+		"bottom": "neutronia:block/apple_pie_bottom",
 		"top": "neutronia:block/apple_pie_top",
 		"side": "neutronia:block/apple_pie_side",
 		"particle": "neutronia:block/apple_pie_side",
@@ -9,16 +9,15 @@
 	},
 	"elements": [
 		{
-			"from": [8, 0, 1],
-			"to": [15, 8, 8],
-			"rotation": {"angle": -180, "axis": "y", "origin": [11.5, 4, 8]},
+			"from": [8, 0, 8],
+			"to": [15, 8, 15],
 			"faces": {
-				"north": {"uv": [1, 8, 8, 16], "texture": "#side"},
-				"east": {"uv": [1, 8, 15, 16], "texture": "#inside"},
-				"south": {"uv": [1, 8, 8, 16], "texture": "#side"},
-				"west": {"uv": [1, 8, 15, 16], "texture": "#side"},
-				"up": {"uv": [1, 1, 8, 15], "texture": "#top"},
-				"down": {"uv": [8, 1, 15, 15], "texture": "#bottom", "cullface": "down"}
+				"north": {"uv": [1, 8, 8, 16], "texture": "#inside"},
+				"east": {"uv": [1, 8, 8, 16], "texture": "#side"},
+				"south": {"uv": [8, 8, 15, 16], "texture": "#side"},
+				"west": {"uv": [8, 8, 15, 16], "texture": "#inside"},
+				"up": {"uv": [1, 1, 8, 8], "rotation": 180, "texture": "#top", "cullface": "down"},
+				"down": {"uv": [1, 1, 8, 8], "rotation": 90, "texture": "#bottom", "cullface": "down"}
 			}
 		}
 	]

@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "button",
+  "ingredients": [
+    {
+      "item": "neutronia:wenge_planks"
+    }
+  ],
+  "result": {
+    "item": "neutronia:wenge_button"
+  }
+}

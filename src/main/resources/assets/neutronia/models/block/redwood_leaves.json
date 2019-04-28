@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/leaves",
+  "textures": {
+    "all": "neutronia:block/redwood_leaves"
+  }
+}

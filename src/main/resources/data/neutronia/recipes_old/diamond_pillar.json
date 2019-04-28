@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pillar",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "result": {
+    "item": "neutronia:diamond_pillar",
+    "count": 2
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "crate",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "minecraft:carrot"
+    }
+  },
+  "result": {
+    "item": "neutronia:carrot_crate"
+  }
+}

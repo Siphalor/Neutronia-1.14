@@ -1,6 +1,5 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/carved_oak_planks" },
-      "inventory": { "model": "neutronia:item/carved_oak_planks" }
+    "": { "model": "neutronia:block/carved_oak_planks" }
   }
 }

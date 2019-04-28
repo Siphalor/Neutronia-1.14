@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stairs",
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:gabon_ebony_planks"
+    }
+  },
+  "result": {
+    "item": "neutronia:gabon_ebony_stairs",
+    "count": 4
+  }
+}

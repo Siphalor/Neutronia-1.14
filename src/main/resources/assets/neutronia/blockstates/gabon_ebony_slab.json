@@ -4,7 +4,7 @@
       "model": "neutronia:block/gabon_ebony_slab"
     },
     "type=double": {
-      "model": "neutronia:block/ebony_planks"
+      "model": "neutronia:block/gabon_ebony_planks"
     },
     "type=top": {
       "model": "neutronia:block/gabon_ebony_slab_top"

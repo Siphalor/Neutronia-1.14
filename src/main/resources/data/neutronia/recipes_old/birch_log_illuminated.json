@@ -1,0 +1,22 @@
+{
+    "type": "minecraft:crafting_shaped",
+	"group": "illuminated",
+    "pattern": [
+        "###",
+        "#L#",
+        "###"
+    ],
+    "key": {
+        "#": {
+            "item": "minecraft:birch_log"
+        },
+        "L": {
+            "item": "minecraft:lava_bucket"
+        }
+    },
+    "result": {
+		"item": "neutronia:illuminated_birch_log",
+		"count": 8
+	}
+    
+}

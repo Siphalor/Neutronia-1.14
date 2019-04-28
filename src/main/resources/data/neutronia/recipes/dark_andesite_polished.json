@@ -1,9 +1,0 @@
-{
-  "type": "minecraft:smelting",
-  "ingredient": {
-    "item": "neutronia:dark_andesite"
-  },
-  "result": "neutronia:polished_dark_andesite",
-  "experience": 0.1,
-  "cookingtime": 200
-}

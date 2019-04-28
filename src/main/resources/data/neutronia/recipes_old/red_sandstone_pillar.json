@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pillar",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:red_sandstone_bricks"
+    }
+  },
+  "result": {
+    "item": "neutronia:red_sandstone_pillar",
+    "count": 2
+  }
+}

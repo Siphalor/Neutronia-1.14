@@ -2,7 +2,7 @@ package team.hollow.neutronia.world.gen.features.totem_poles;
 
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructureStart;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.biome.Biome;
@@ -49,7 +49,7 @@ public class TotemPoleFeature extends StructureFeature<DefaultFeatureConfig> {
             int x = chunkX * 16;
             int z = chunkZ * 16;
             BlockPos startingPos = new BlockPos(x, 0, z);
-            Rotation rotation = Rotation.values()[this.random.nextInt(Rotation.values().length)];
+            BlockRotation rotation = BlockRotation.values()[this.random.nextInt(BlockRotation.values().length)];
             TotemPoleGenerator.addParts(structureManager, startingPos, rotation, this.children, this.random, defaultFeatureConfig);
             this.setBoundingBoxFromChildren();
         }

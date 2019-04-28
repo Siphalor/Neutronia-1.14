@@ -1,5 +1,7 @@
 {
   "variants": {
-    "": { "model": "neutronia:block/potted_tall_grass" }
+    "": {
+      "model": "neutronia:block/potted_tall_grass"
+    }
   }
 }

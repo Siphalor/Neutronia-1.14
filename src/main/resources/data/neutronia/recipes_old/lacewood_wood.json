@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "bark",
+  "pattern": [
+    "##",
+    "##"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:lacewood_log"
+    }
+  },
+  "result": {
+    "item": "neutronia:lacewood_wood",
+    "count": 3
+  }
+}

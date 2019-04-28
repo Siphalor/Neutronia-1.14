@@ -1,65 +1,25 @@
 package team.hollow.neutronia.enums;
 
-import net.minecraft.block.MaterialColor;
 import net.minecraft.util.StringRepresentable;
 
 public enum LadderVariants implements StringRepresentable {
-    SPRUCE(0, "spruce", MaterialColor.SPRUCE),
-    BIRCH(1, "birch", MaterialColor.SAND),
-    JUNGLE(2, "jungle", MaterialColor.DIRT),
-    ACACIA(3, "acacia", MaterialColor.ORANGE),
-    DARK_OAK(4, "dark_oak", MaterialColor.BROWN),
-    BAMBOO(5, "bamboo", MaterialColor.DIRT),
-    MANGROVE(3, "mangrove", MaterialColor.GRAY),
-    RED_MANGROVE(4, "red_mangrove", MaterialColor.PINK),
-    BAOBAB(5, "baobab", MaterialColor.PURPLE),
-    WENGE(6, "wenge", MaterialColor.BROWN),
-    GABON_EBONY(10, "gabon_ebony", MaterialColor.BLACK);
+    SPRUCE(0, "spruce"),
+    BIRCH(1, "birch"),
+    JUNGLE(2, "jungle"),
+    ACACIA(3, "acacia"),
+    DARK_OAK(4, "dark_oak"),
+    BAMBOO(5, "bamboo");
 
-    private static final LadderVariants[] META_LOOKUP = new LadderVariants[values().length];
-
-    static {
-        for (LadderVariants blockplanks$enumtype : values()) {
-            META_LOOKUP[blockplanks$enumtype.getMetadata()] = blockplanks$enumtype;
-        }
-    }
-
-    private final int meta;
+    private final int index;
     private final String name;
-    private final String unlocalizedName;
-    /**
-     * The color that represents this entry on a map.
-     */
-    private final MaterialColor mapColor;
 
-    LadderVariants(int metaIn, String nameIn, MaterialColor mapColorIn) {
-        this(metaIn, nameIn, nameIn, mapColorIn);
-    }
-
-    LadderVariants(int metaIn, String nameIn, String unlocalizedNameIn, MaterialColor mapColorIn) {
-        this.meta = metaIn;
+    LadderVariants(int index, String nameIn) {
+        this.index = index;
         this.name = nameIn;
-        this.unlocalizedName = unlocalizedNameIn;
-        this.mapColor = mapColorIn;
     }
 
-    public static LadderVariants byMetadata(int meta) {
-        if (meta < 0 || meta >= META_LOOKUP.length) {
-            meta = 0;
-        }
-
-        return META_LOOKUP[meta];
-    }
-
-    public int getMetadata() {
-        return this.meta;
-    }
-
-    /**
-     * The color which represents this entry on a map.
-     */
-    public MaterialColor getMaterialColor() {
-        return this.mapColor;
+    public int getIndex() {
+        return this.index;
     }
 
     public String toString() {
@@ -70,7 +30,4 @@ public enum LadderVariants implements StringRepresentable {
         return this.name;
     }
 
-    public String getTranslationKey() {
-        return this.unlocalizedName;
-    }
 }

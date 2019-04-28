@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "neutronia:block/acidian_brick_slab"
+    },
+    "type=double": {
+      "model": "neutronia:block/acidian_bricks"
+    },
+    "type=top": {
+      "model": "neutronia:block/acidian_brick_slab_top"
+    }
+  }
+}

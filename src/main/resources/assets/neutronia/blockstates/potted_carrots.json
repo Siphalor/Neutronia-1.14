@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model": "neutronia:block/potted_carrots" }
+  "variants": {
+    "": {
+      "model": "neutronia:block/potted_carrots"
     }
+  }
 }

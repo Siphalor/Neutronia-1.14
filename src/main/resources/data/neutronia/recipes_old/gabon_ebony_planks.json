@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "group": "planks",
+  "ingredients": [
+    {
+      "item": "neutronia:gabon_ebony_log"
+    }
+  ],
+  "result": {
+    "item": "neutronia:gabon_ebony_planks",
+    "count": 4
+  }
+}

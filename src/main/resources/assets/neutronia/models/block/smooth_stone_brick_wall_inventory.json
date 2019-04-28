@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/wall_inventory",
   "textures": {
-    "wall": "neutronia:block/smooth_stone_brick"
+    "wall": "neutronia:block/smooth_stone_bricks"
   }
 }

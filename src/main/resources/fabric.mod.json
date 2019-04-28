@@ -1,14 +1,12 @@
 {
   "schemaVersion": 1,
   "id": "neutronia",
-  "version": "0.0.4",
+  "version": "${version}",
 
   "name": "Neutronia",
   "description": "Neutronia is a mod that aims to expand upon the vanilla style, including much more variety to all dimensions. The surface, underground, nether and end have upgraded worldgen, more biomes and structures.",
   "authors": [
-    "OliviaTheVampire",
-    "Cameron",
-    "Pugz"
+    "Team Abnormals"
   ],
   "contact": {
     "homepage": "",
@@ -33,17 +31,11 @@
     ]
   },
   "mixins": [
-    "neutronia.mixins.json",
-    "modmenu_api.mixins.json"
+    "neutronia.mixins.json"
   ],
 
   "requires": {
     "fabricloader": ">=0.4.0",
     "fabric": "*"
-  },
-  "custom":{
-    "modmenu:api": false,
-    "modmenu:clientSideOnly": false,
-    "updatechecker:update_link": "https://raw.githubusercontent.com/minecraftabnormals/Neutronia-1.14/master/update_file.json"
   }
 }

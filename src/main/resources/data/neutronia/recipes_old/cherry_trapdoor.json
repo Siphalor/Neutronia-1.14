@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "trapdoor",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:cherry_planks"
+    }
+  },
+  "result": {
+    "item": "neutronia:cherry_trapdoor",
+    "count": 2
+  }
+}

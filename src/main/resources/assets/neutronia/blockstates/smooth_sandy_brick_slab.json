@@ -4,7 +4,7 @@
       "model": "neutronia:block/smooth_sandy_brick_slab"
     },
     "type=double": {
-      "model": "neutronia:block/smooth_sandy_brick"
+      "model": "neutronia:block/smooth_sandy_bricks"
     },
     "type=top": {
       "model": "neutronia:block/smooth_sandy_brick_slab_top"

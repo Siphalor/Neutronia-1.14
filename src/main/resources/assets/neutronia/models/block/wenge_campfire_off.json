@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/campfire_off",
   "textures": {
-    "log": "neutronia:block/wenge_campfire_logwenge"
+    "log": "neutronia:block/wenge_campfire_log"
   }
 }

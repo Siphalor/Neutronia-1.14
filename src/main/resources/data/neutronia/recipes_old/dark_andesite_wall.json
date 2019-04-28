@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "wall",
+  "pattern": [
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:dark_andesite"
+    }
+  },
+  "result": {
+    "item": "neutronia:dark_andesite_wall",
+    "count": 6
+  }
+}

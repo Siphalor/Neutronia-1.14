@@ -1,6 +1,6 @@
 {
-    "parent": "block/flower_pot_cross",
-    "textures": {
-        "plant": "neutronia:block/planted_grass"
-    }
+  "parent": "neutronia:block/tinted_flower_pot_cross",
+  "textures": {
+    "plant": "neutronia:block/planted_grass"
+  }
 }

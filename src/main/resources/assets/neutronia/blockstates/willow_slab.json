@@ -4,7 +4,7 @@
       "model": "neutronia:block/willow_slab"
     },
     "type=double": {
-      "model": "neutronia:block/willow"
+      "model": "neutronia:block/willow_planks"
     },
     "type=top": {
       "model": "neutronia:block/willow_slab_top"

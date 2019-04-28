@@ -76,7 +76,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
     public static final Map<Item, Integer> ITEM_FOOD_VALUES;
     private static final Set<Item> GATHERABLE_ITEMS;
     public static TrackedData<String> genderUnified = DataTracker.registerData(VillagerPlusBase.class, TrackedDataHandlerRegistry.STRING);
-    public static TrackedData<String> professionUnified = DataTracker.registerData(VillagerPlusBase.class, TrackedDataHandlerRegistry.STRING);
+    public static TrackedData<String> socialVillagerDataUnified = DataTracker.registerData(VillagerPlusBase.class, TrackedDataHandlerRegistry.STRING);
     public String firstName;
     public String lastName;
     public String gender;
@@ -108,7 +108,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
         this.setCanPickUpLoot(true);
         setupGender();
         this.dataTracker.set(genderUnified, gender);
-        this.dataTracker.set(professionUnified, this.getVillagerData().getProfession().toString());
+        this.dataTracker.set(socialVillagerDataUnified, this.getVillagerData().getSocialVillagerData().toString());
 
         List<String> sexs = new ArrayList<>();
         sexs.add(0, "Male");
@@ -145,7 +145,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
     }
 
     private void initBrain(Brain<VillagerPlusBase> brain_1) {
-        VillagerPlusProfession villagerProfession_1 = this.getVillagerData().getProfession();
+        VillagerPlusProfession villagerProfession_1 = this.getVillagerData().getSocialVillagerData();
         float float_1 = (float)this.getAttributeInstance(EntityAttributes.MOVEMENT_SPEED).getValue();
         if (this.isChild()) {
             brain_1.setSchedule(Schedule.VILLAGER_BABY);
@@ -296,7 +296,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
         tag.putString("last_name", lastName);
         tag.putString("gender", gender);
         tag.putString("profession", profession.toString());
-        tag.put("VillagerData", this.getVillagerData().serialize(NbtOps.INSTANCE));
+        tag.put("SocialVillagerData", this.getVillagerData().serialize(NbtOps.INSTANCE));
         tag.putByte("FoodLevel", this.foodLevel);
         tag.put("Gossips", this.gossip.serialize(NbtOps.INSTANCE).getValue());
         tag.putInt("Xp", this.experience);
@@ -312,8 +312,8 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
         this.firstName = tag.getString("first_name");
         this.lastName = tag.getString("last_name");
         this.gender = tag.getString("gender");
-        if (tag.containsKey("VillagerData", 10)) {
-            this.setVillagerData(new VillagerPlusData(new Dynamic<>(NbtOps.INSTANCE, tag.getTag("VillagerData"))));
+        if (tag.containsKey("SocialVillagerData", 10)) {
+            this.setVillagerData(new VillagerPlusData(new Dynamic<>(NbtOps.INSTANCE, tag.getTag("SocialVillagerData"))));
         }
 
         if (tag.containsKey("Offers", 10)) {
@@ -330,8 +330,8 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
             this.experience = tag.getInt("Xp");
         } else {
             int int_1 = this.getVillagerData().getLevel();
-            if (VillagerData.isLevelValid(int_1)) {
-                this.experience = VillagerData.getLowerLevelExperience(int_1);
+            if (SocialVillagerData.isLevelValid(int_1)) {
+                this.experience = SocialVillagerData.getLowerLevelExperience(int_1);
             }
         }
 
@@ -365,7 +365,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
     }
 
     public void playWorkSound() {
-        SoundEvent soundEvent_1 = this.getVillagerData().getProfession().getWorkStation().getSound();
+        SoundEvent soundEvent_1 = this.getVillagerData().getSocialVillagerData().getWorkStation().getSound();
         if (soundEvent_1 != null) {
             this.playSound(soundEvent_1, this.getSoundVolume(), this.getSoundPitch());
         }
@@ -374,7 +374,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
 
     public void setVillagerData(VillagerPlusData villagerData_1) {
         VillagerPlusData villagerData_2 = this.getVillagerData();
-        if (villagerData_2.getProfession() != villagerData_1.getProfession()) {
+        if (villagerData_2.getSocialVillagerData() != villagerData_1.getSocialVillagerData()) {
             this.recipes = null;
         }
 
@@ -470,7 +470,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
 
     private boolean canLevelUp() {
         int int_1 = this.getVillagerData().getLevel();
-        return VillagerData.isLevelValid(int_1) && this.experience >= VillagerData.getUpperLevelExperience(int_1);
+        return SocialVillagerData.isLevelValid(int_1) && this.experience >= SocialVillagerData.getUpperLevelExperience(int_1);
     }
 
     private void levelUp() {
@@ -486,7 +486,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
                 style_1.setHoverEvent(this.getComponentHoverEvent()).setInsertion(this.getUuidAsString());
             });
         } else {
-            VillagerPlusProfession villagerProfession_1 = this.getVillagerData().getProfession();
+            VillagerPlusProfession villagerProfession_1 = this.getVillagerData().getSocialVillagerData();
             TextComponent textComponent_2 = (new TranslatableTextComponent(this.getType().getTranslationKey() + '.' + NRegistries.VILLAGER_PROFESSION.getId(villagerProfession_1).getPath())).modifyStyle((style_1) -> {
                 style_1.setHoverEvent(this.getComponentHoverEvent()).setInsertion(this.getUuidAsString());
             });
@@ -563,7 +563,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
     protected void pickupItem(ItemEntity itemEntity_1) {
         ItemStack itemStack_1 = itemEntity_1.getStack();
         Item item_1 = itemStack_1.getItem();
-        VillagerPlusProfession villagerProfession_1 = this.getVillagerData().getProfession();
+        VillagerPlusProfession villagerProfession_1 = this.getVillagerData().getSocialVillagerData();
         if (GATHERABLE_ITEMS.contains(item_1) || villagerProfession_1.getGatherableItems().contains(item_1)) {
             if (villagerProfession_1 == VillagerPlusProfession.FARMER && item_1 == Items.WHEAT) {
                 int int_1 = itemStack_1.getAmount() / 3;
@@ -591,7 +591,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
     }
 
     public boolean canBreed() {
-        boolean boolean_1 = this.getVillagerData().getProfession() == VillagerPlusProfession.FARMER;
+        boolean boolean_1 = this.getVillagerData().getSocialVillagerData() == VillagerPlusProfession.FARMER;
         int int_1 = this.getAvailableFood();
         return boolean_1 ? int_1 < 60 : int_1 < 12;
     }
@@ -608,7 +608,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
 
     protected void fillRecipes() {
         VillagerPlusData villagerData_1 = this.getVillagerData();
-        Int2ObjectMap<Trades.Factory[]> int2ObjectMap_1 = Trades.PROFESSION_TO_LEVELED_TRADE.get(villagerData_1.getProfession());
+        Int2ObjectMap<Trades.Factory[]> int2ObjectMap_1 = Trades.PROFESSION_TO_LEVELED_TRADE.get(villagerData_1.getSocialVillagerData());
         if (int2ObjectMap_1 != null && !int2ObjectMap_1.isEmpty()) {
             Trades.Factory[] trades$Factorys_1 = int2ObjectMap_1.get(villagerData_1.getLevel());
             if (trades$Factorys_1 != null) {
@@ -637,7 +637,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
 
     private void trySpawnGolem() {
         VillagerPlusData villagerData_1 = this.getVillagerData();
-        if (villagerData_1.getProfession() != VillagerPlusProfession.NONE && villagerData_1.getProfession() != VillagerPlusProfession.NITWIT) {
+        if (villagerData_1.getSocialVillagerData() != VillagerPlusProfession.NONE && villagerData_1.getSocialVillagerData() != VillagerPlusProfession.NITWIT) {
             Optional<VillagerPlusBase.GolemSpawnCondition> optional_1 = this.getBrain().getMemory(NMemoryModuleType.GOLEM_SPAWN_CONDITIONS);
             if (optional_1.isPresent()) {
                 if (optional_1.get().canSpawn(this.world.getTime())) {
@@ -804,7 +804,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
         MEMORY_MODULES = ImmutableList.of(MemoryModuleType.HOME, MemoryModuleType.JOB_SITE, MemoryModuleType.MEETING_POINT, MemoryModuleType.MOBS, MemoryModuleType.VISIBLE_MOBS, MemoryModuleType.NEAREST_PLAYERS, MemoryModuleType.NEAREST_VISIBLE_PLAYER, MemoryModuleType.WALK_TARGET, MemoryModuleType.LOOK_TARGET, MemoryModuleType.INTERACTION_TARGET, MemoryModuleType.BREED_TARGET, MemoryModuleType.PATH, MemoryModuleType.INTERACTABLE_DOORS, MemoryModuleType.HURT_BY, MemoryModuleType.HURT_BY_ENTITY, MemoryModuleType.NEAREST_HOSTILE, MemoryModuleType.SECONDARY_JOB_SITE, MemoryModuleType.GOLEM_SPAWN_CONDITIONS);
         SENSORS = (ImmutableList<SensorType<? extends Sensor<? super VillagerPlusBase>>>) ImmutableList.of(SensorType.NEAREST_LIVING_ENTITIES, SensorType.NEAREST_PLAYERS, SensorType.INTERACTABLE_DOORS, SensorType.HURT_BY, SensorType.VILLAGER_HOSTILES, SensorType.SECONDARY_POIS);
         field_18851 = ImmutableMap.of(MemoryModuleType.HOME, (villagerEntity_1, pointOfInterestType_1) -> pointOfInterestType_1 == PointOfInterestType.HOME,
-                MemoryModuleType.JOB_SITE, (villagerEntity_1, pointOfInterestType_1) -> villagerEntity_1.getVillagerData().getProfession().getWorkStation() == pointOfInterestType_1,
+                MemoryModuleType.JOB_SITE, (villagerEntity_1, pointOfInterestType_1) -> villagerEntity_1.getVillagerData().getSocialVillagerData().getWorkStation() == pointOfInterestType_1,
                 MemoryModuleType.MEETING_POINT, (villagerEntity_1, pointOfInterestType_1) -> pointOfInterestType_1 == PointOfInterestType.MEETING);
     }
 

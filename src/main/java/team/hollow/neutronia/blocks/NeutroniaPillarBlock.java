@@ -7,7 +7,7 @@ import net.minecraft.block.Material;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.EnumProperty;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.Direction;
 
 public class NeutroniaPillarBlock extends BaseModBlock {
@@ -34,7 +34,7 @@ public class NeutroniaPillarBlock extends BaseModBlock {
     }
 
     @Override
-    public BlockState rotate(BlockState blockState_1, Rotation rotation_1) {
+    public BlockState rotate(BlockState blockState_1, BlockRotation rotation_1) {
         switch (rotation_1) {
             case ROT_270:
             case ROT_90:

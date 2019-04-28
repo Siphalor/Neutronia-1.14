@@ -13,7 +13,7 @@ import team.hollow.neutronia.LoadingProgressImpl;
 
 import java.util.Iterator;
 
-@Mixin(SpriteAtlasTexture.class)
+@Mixin(value = SpriteAtlasTexture.class)
 public abstract class MixinSpriteAtlasTexture {
 
     @Inject(method = "upload(Lnet/minecraft/client/texture/SpriteAtlasTexture$Data;)V", at = @At("HEAD"))

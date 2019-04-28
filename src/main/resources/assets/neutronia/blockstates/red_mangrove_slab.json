@@ -4,7 +4,7 @@
       "model": "neutronia:block/red_mangrove_slab"
     },
     "type=double": {
-      "model": "neutronia:block/red_mangrove"
+      "model": "neutronia:block/red_mangrove_planks"
     },
     "type=top": {
       "model": "neutronia:block/red_mangrove_slab_top"

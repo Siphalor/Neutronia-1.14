@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "pillar",
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "key": {
+    "#": {
+      "item": "neutronia:sandy_bricks"
+    }
+  },
+  "result": {
+    "item": "neutronia:sandy_bricks_pillar",
+    "count": 2
+  }
+}
