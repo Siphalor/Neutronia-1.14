@@ -4,41 +4,61 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.stream.JsonWriter;
 import net.minecraft.util.Identifier;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.CharEncoding;
 import org.apache.commons.lang3.StringEscapeUtils;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashSet;
+import java.util.Set;
 
 @SuppressWarnings({"WeakerAccess", "unused"})
 public class ResourceGenerator {
-	public static final Path ASSETS_PATH = Paths.get("..", "src", "main", "resources", "assets");
+	public static final Path RESOURCES_PATH = Paths.get("..", "src", "main", "resources");
+    public static final Path ASSETS_PATH = RESOURCES_PATH.resolve("assets");
+    public static final Path DATA_PATH = RESOURCES_PATH.resolve("data");
 	public static Gson GSON = new GsonBuilder().setPrettyPrinting().create();
 
-	public static Path getModPath(String modId) {
+	public static Path getAssetsModPath(String modId) {
 	    return ASSETS_PATH.resolve(modId);
     }
 
-    public static Path getBlockstatesPath(String modId) {
-	    Path path = getModPath(modId).resolve("blockstates");
+    public static Path getDataPath(String modId) {
+	    return DATA_PATH.resolve(modId);
+    }
+
+    public static Path getBlockStatesPath(String modId) {
+	    Path path = getAssetsModPath(modId).resolve("blockstates");
         createPath(path.toFile());
 	    return path;
     }
 
     public static Path getBlockModelsPath(String modId) {
-	    Path path = getModPath(modId).resolve("models").resolve("block");
+	    Path path = getAssetsModPath(modId).resolve("models").resolve("block");
 	    createPath(path.toFile());
 	    return path;
     }
 
     public static Path getItemModelsPath(String modId) {
-	    Path path = getModPath(modId).resolve("models").resolve("item");
+	    Path path = getAssetsModPath(modId).resolve("models").resolve("item");
 	    createPath(path.toFile());
 	    return path;
+    }
+
+    public static Path getLootTablesPath(String modId) {
+	    Path path = getDataPath(modId).resolve("loot_tables");
+	    createPath(path.toFile());
+	    return path;
+    }
+
+    public static Path getBlockTagsPath(String modId) {
+	    return getDataPath(modId).resolve("tags").resolve("blocks");
     }
 
     public static void createPath(File file) {
@@ -58,17 +78,34 @@ public class ResourceGenerator {
         }
     }
 
-    public static void genStair(Identifier identifier, Identifier bottomTexture, Identifier topTexture, Identifier sideTexture) {
+    protected Set<Identifier> fences = new HashSet<>();
+
+    public void finish() {
+        genFencesTag();
+        fences.clear();
+    }
+
+    protected void genFencesTag() {
+        JsonObject root = new JsonObject();
+        root.addProperty("replace", false);
+        JsonArray values = new JsonArray();
+        fences.forEach(identifier -> values.add(identifier.toString()));
+        root.add("values", values);
+
+        writeJsonToFile(getBlockTagsPath("minecraft").resolve("fences.json").toFile(), root);
+    }
+
+    public void genStair(Identifier identifier, Identifier bottomTexture, Identifier topTexture, Identifier sideTexture) {
 
         String text = JsonTemplates.STAIRS.replace("modid", identifier.getNamespace())
                 .replace("block_model", identifier.getPath());
-        writeStringToFile(getBlockstatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
+        writeStringToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
 
         genStairBlockJson(identifier, bottomTexture, topTexture, sideTexture);
         genStairItemModel(identifier);
     }
 
-    public static void genStairBlockJson(Identifier identifier, Identifier bottomTexture, Identifier topTexture, Identifier sideTexture) {
+    public void genStairBlockJson(Identifier identifier, Identifier bottomTexture, Identifier topTexture, Identifier sideTexture) {
         JsonObject textures = new JsonObject();
         textures.addProperty("bottom", String.format("%s:block/%s", bottomTexture.getNamespace(), bottomTexture.getPath()));
         textures.addProperty("top", String.format("%s:block/%s", topTexture.getNamespace(), topTexture.getPath()));
@@ -93,14 +130,14 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_outer.json").toFile(), root);
     }
 
-    public static void genStairItemModel(Identifier identifier) {
+    public void genStairItemModel(Identifier identifier) {
         JsonObject root = new JsonObject();
         root.addProperty("parent", identifier.getNamespace() + ":block/" + identifier.getPath());
 
         writeJsonToFile(getItemModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genSimpleBlockstates(Identifier identifier) {
+    public void genSimpleBlockstates(Identifier identifier) {
         JsonObject root = new JsonObject();
 
         JsonObject variants = new JsonObject();
@@ -111,16 +148,16 @@ public class ResourceGenerator {
         variants.add("", model);
         root.add("variants", variants);
 
-        writeJsonToFile(getBlockstatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        writeJsonToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genSimpleBlock(Identifier identifier, Identifier textureName) {
+    public void genSimpleBlock(Identifier identifier, Identifier textureName) {
         genSimpleBlockstates(identifier);
         genSimpleBlockModel(identifier, textureName);
         genSimpleBlockItemModel(identifier);
     }
 
-    public static void genSimpleBlockModel(Identifier identifier, Identifier textureName) {
+    public void genSimpleBlockModel(Identifier identifier, Identifier textureName) {
         JsonObject root = new JsonObject();
         root.addProperty("parent", "block/cube_all");
 
@@ -131,14 +168,18 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genSimpleBlockItemModel(Identifier identifier) {
+    public void genSimpleBlockItemModel(Identifier identifier) {
+		genBlockItemModel(identifier, identifier);
+    }
+
+    public void genBlockItemModel(Identifier identifier, Identifier blockModelIdentifier) {
         JsonObject root = new JsonObject();
-        root.addProperty("parent", identifier.getNamespace() + ":block/" + identifier.getPath());
+        root.addProperty("parent", blockModelIdentifier.getNamespace() + ":block/" + blockModelIdentifier.getPath());
 
         writeJsonToFile(getItemModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genFlatBlockItemModel(Identifier identifier, Identifier textureName) {
+    public void genFlatBlockItemModel(Identifier identifier, Identifier textureName) {
 	    JsonObject root = new JsonObject();
 	    root.addProperty("parent", "item/generated");
         JsonObject textures = new JsonObject();
@@ -148,7 +189,7 @@ public class ResourceGenerator {
         writeJsonToFile(getItemModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    /*public static void genCustomBlock(Identifier identifier, Identifier modelPath) {
+    /*public void genCustomBlock(Identifier identifier, Identifier modelPath) {
         JsonObject root = new JsonObject();
         root.addProperty("_comment", "Generated using Husky's JSON Generator v4.");
         root.addProperty("forge_marker", 1);
@@ -177,7 +218,7 @@ public class ResourceGenerator {
         }
     }
 
-    public static void genCustomBlockWithTexture(Identifier identifier, Identifier modelPath, Identifier textureLocation) {
+    public void genCustomBlockWithTexture(Identifier identifier, Identifier modelPath, Identifier textureLocation) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -218,13 +259,13 @@ public class ResourceGenerator {
         }
     }*/
 
-    public static void genPlant(Identifier identifier, Identifier textureName) {
+    public void genPlant(Identifier identifier, Identifier textureName) {
         genSimpleBlockstates(identifier);
         genPlantBlockModel(identifier, textureName);
         genFlatBlockItemModel(identifier, textureName);
     }
 
-    public static void genPlantBlockModel(Identifier identifier, Identifier textureName) {
+    public void genPlantBlockModel(Identifier identifier, Identifier textureName) {
         JsonObject root = new JsonObject();
         root.addProperty("parent", "block/cross");
 
@@ -235,7 +276,7 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genOrientedBlock(Identifier identifier, Identifier topTextureName, Identifier frontTextureName, Identifier sidesTextureName) {
+    public void genOrientedBlock(Identifier identifier, Identifier topTextureName, Identifier frontTextureName, Identifier sidesTextureName) {
         JsonObject root = new JsonObject();
 
         JsonObject variants = new JsonObject();
@@ -261,13 +302,13 @@ public class ResourceGenerator {
 
         root.add("variants", variants);
 
-        writeJsonToFile(getBlockstatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        writeJsonToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
 
         genOrientedBlockModel(identifier, topTextureName, frontTextureName, sidesTextureName);
         genSimpleBlockItemModel(identifier);
     }
 
-    public static void genOrientedBlockModel(Identifier identifier, Identifier topTextureName, Identifier frontTextureName, Identifier sidesTextureName) {
+    public void genOrientedBlockModel(Identifier identifier, Identifier topTextureName, Identifier frontTextureName, Identifier sidesTextureName) {
         JsonObject root = new JsonObject();
         root.addProperty("parent", "block/orientable");
         JsonObject textures = new JsonObject();
@@ -279,7 +320,7 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genPillarBlock(Identifier identifier, Identifier endTextureName, Identifier sidesTextureName) {
+    public void genPillarBlock(Identifier identifier, Identifier endTextureName, Identifier sidesTextureName) {
         String model = identifier.getNamespace() + ":block/" + identifier.getPath();
 
         JsonObject root = new JsonObject();
@@ -302,13 +343,13 @@ public class ResourceGenerator {
 
         root.add("variants", variants);
 
-        writeJsonToFile(getBlockstatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        writeJsonToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
 
         genPillarBlockModel(identifier, endTextureName, sidesTextureName);
         genSimpleBlockItemModel(identifier);
     }
 
-    public static void genPillarBlockModel(Identifier identifier, Identifier endTextureName, Identifier sidesTextureName) {
+    public void genPillarBlockModel(Identifier identifier, Identifier endTextureName, Identifier sidesTextureName) {
     	JsonObject textures = new JsonObject();
     	textures.addProperty("end", endTextureName.getNamespace() + ":block/" + endTextureName.getPath());
         textures.addProperty("side", sidesTextureName.getNamespace() + ":block/" + sidesTextureName.getPath());
@@ -321,13 +362,13 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genBottomTopBlock(Identifier identifier, Identifier bottomTextureName, Identifier topTextureName, Identifier sideTextureName) {
+    public void genBottomTopBlock(Identifier identifier, Identifier bottomTextureName, Identifier topTextureName, Identifier sideTextureName) {
         genSimpleBlockstates(identifier);
         genBottomTopBlockModel(identifier, bottomTextureName, topTextureName, sideTextureName);
         genSimpleBlockItemModel(identifier);
     }
 
-    public static void genBottomTopBlockModel(Identifier identifier, Identifier bottomTextureName, Identifier topTextureName, Identifier sidesTextureName) {
+    public void genBottomTopBlockModel(Identifier identifier, Identifier bottomTextureName, Identifier topTextureName, Identifier sidesTextureName) {
     	JsonObject textures = new JsonObject();
         textures.addProperty("bottom", bottomTextureName.getNamespace() + ":block/" + bottomTextureName.getPath());
     	textures.addProperty("top", topTextureName.getNamespace() + ":block/" + topTextureName.getPath());
@@ -341,7 +382,7 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genPressurePlate(Identifier identifier, Identifier textureName) {
+    public void genPressurePlate(Identifier identifier, Identifier textureName) {
         JsonObject root = new JsonObject();
         JsonObject variants = new JsonObject();
 
@@ -354,12 +395,12 @@ public class ResourceGenerator {
         variants.add("powered=true", modelDown);
         root.add("variants", variants);
 
-        writeJsonToFile(getBlockstatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        writeJsonToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
         genPressurePlateBlockModel(identifier, textureName);
         genSimpleBlockItemModel(identifier);
     }
 
-    public static void genPressurePlateBlockModel(Identifier identifier, Identifier textureName) {
+    public void genPressurePlateBlockModel(Identifier identifier, Identifier textureName) {
         JsonObject textures = new JsonObject();
         textures.addProperty("texture", textureName.getNamespace() + ":block/" + textureName.getPath());
 
@@ -373,7 +414,7 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_down.json").toFile(), root);
     }
 
-    public static void genSlab(Identifier identifier, Identifier fullBlock, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
+    public void genSlab(Identifier identifier, Identifier fullBlock, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
         JsonObject root = new JsonObject();
 
         JsonObject variants = new JsonObject();
@@ -392,13 +433,13 @@ public class ResourceGenerator {
 
         root.add("variants", variants);
 
-        writeJsonToFile(getBlockstatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        writeJsonToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
 
         genSlabBlockModel(identifier, topTextureLocation, sideTextureLocation, bottomTextureLocation);
         genSimpleBlockItemModel(identifier);
     }
 
-    /*public static void genSlabColored(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
+    /*public void genSlabColored(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -465,7 +506,7 @@ public class ResourceGenerator {
 
     }*/
 
-    public static void genSlabBlockModel(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
+    public void genSlabBlockModel(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
         JsonObject root = new JsonObject();
         root.addProperty("parent", "minecraft:block/slab");
 
@@ -481,7 +522,25 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_top.json").toFile(), root);
     }
 
-    /*public static void genSlabColoredBlockModel(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
+    public void genSiding(Identifier identifier, Identifier baseIdentifier) {
+        String text = JsonTemplates.SIDING.replace("derived_modid", identifier.getNamespace()).replace("block_model", identifier.getPath())
+            .replace("base_modid", baseIdentifier.getNamespace()).replace("base_model", baseIdentifier.getPath());
+        writeStringToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
+
+        genSidingModel(identifier, baseIdentifier);
+        genSimpleBlockItemModel(identifier);
+    }
+
+    public void genSidingModel(Identifier identifier, Identifier textureName) {
+        JsonObject textures = new JsonObject();
+        textures.addProperty("all", textureName.getNamespace() + ":block/" + textureName.getPath());
+        JsonObject root = new JsonObject();
+        root.addProperty("parent", "neutronia:persistent/siding");
+        root.add("textures", textures);
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+    }
+
+    /*public void genSlabColoredBlockModel(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -520,7 +579,7 @@ public class ResourceGenerator {
         }
 
     }*/
-    /*public static void genLayeredSlab(String modId, String blockName, Identifier mainTexture, Identifier overlayTexture) {
+    /*public void genLayeredSlab(String modId, String blockName, Identifier mainTexture, Identifier overlayTexture) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -582,7 +641,7 @@ public class ResourceGenerator {
 
     }
 
-    public static void genLayeredSlabModel(String modId, String blockName, Identifier mainTexture, Identifier overlayTexture) {
+    public void genLayeredSlabModel(String modId, String blockName, Identifier mainTexture, Identifier overlayTexture) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -622,7 +681,7 @@ public class ResourceGenerator {
 
     }
 
-    public static void genLayeredSlabItemModel(String modId, String blockName) {
+    public void genLayeredSlabItemModel(String modId, String blockName) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -645,7 +704,7 @@ public class ResourceGenerator {
 
     }*/
 
-    public static void genFenceBlock(Identifier identifier, Identifier textureName) {
+    public void genFence(Identifier identifier, Identifier textureName) {
         JsonObject root = new JsonObject();
 
         JsonArray multipart = new JsonArray();
@@ -653,7 +712,7 @@ public class ResourceGenerator {
         JsonObject pole = new JsonObject();
 
         JsonObject applyPost = new JsonObject();
-        applyPost.addProperty("model", identifier.getNamespace() + ":" + identifier.getPath() + "_post");
+        applyPost.addProperty("model", identifier.getNamespace() + ":block/" + identifier.getPath() + "_post");
         pole.add("apply", applyPost);
 
         multipart.add(pole);
@@ -661,11 +720,11 @@ public class ResourceGenerator {
         JsonObject sideNorth = new JsonObject();
 
         JsonObject whenNorth = new JsonObject();
-        whenNorth.addProperty("north", true);
+        whenNorth.addProperty("north", "true");
         sideNorth.add("when", whenNorth);
 
         JsonObject applyNorth = new JsonObject();
-        applyNorth.addProperty("model", identifier.getNamespace() + ":" + identifier.getPath() + "_side");
+        applyNorth.addProperty("model", identifier.getNamespace() + ":block/" + identifier.getPath() + "_side");
         applyNorth.addProperty("uvlock", true);
         sideNorth.add("apply", applyNorth);
 
@@ -674,11 +733,11 @@ public class ResourceGenerator {
         JsonObject sideEast = new JsonObject();
 
         JsonObject whenEast = new JsonObject();
-        whenEast.addProperty("north", true);
+        whenEast.addProperty("east", "true");
         sideEast.add("when", whenEast);
 
         JsonObject applyEast = new JsonObject();
-        applyEast.addProperty("model", identifier.getNamespace() + ":" + identifier.getPath() + "_side");
+        applyEast.addProperty("model", identifier.getNamespace() + ":block/" + identifier.getPath() + "_side");
         applyEast.addProperty("uvlock", true);
         applyEast.addProperty("y", 90);
         sideEast.add("apply", applyEast);
@@ -688,11 +747,11 @@ public class ResourceGenerator {
         JsonObject sideSouth = new JsonObject();
 
         JsonObject whenSouth = new JsonObject();
-        whenSouth.addProperty("north", true);
+        whenSouth.addProperty("south", "true");
         sideSouth.add("when", whenSouth);
 
         JsonObject applySouth = new JsonObject();
-        applySouth.addProperty("model", identifier.getNamespace() + ":" + identifier.getPath() + "_side");
+        applySouth.addProperty("model", identifier.getNamespace() + ":block/" + identifier.getPath() + "_side");
         applySouth.addProperty("uvlock", true);
         applySouth.addProperty("y", 180);
         sideSouth.add("apply", applySouth);
@@ -702,11 +761,11 @@ public class ResourceGenerator {
         JsonObject sideWest = new JsonObject();
 
         JsonObject whenWest = new JsonObject();
-        whenWest.addProperty("west", true);
+        whenWest.addProperty("west", "true");
         sideWest.add("when", whenWest);
 
         JsonObject applyWest = new JsonObject();
-        applyWest.addProperty("model", identifier.getNamespace() + ":" + identifier.getPath() + "_side");
+        applyWest.addProperty("model", identifier.getNamespace() + ":block/" + identifier.getPath() + "_side");
         applyWest.addProperty("uvlock", true);
         applyWest.addProperty("y", 270);
         sideWest.add("apply", applyWest);
@@ -715,13 +774,15 @@ public class ResourceGenerator {
 
         root.add("multipart", multipart);
 
-        writeJsonToFile(getBlockstatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        writeJsonToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
 
-        genBlockFenceModel(identifier, textureName);
-        genSimpleBlockItemModel(new Identifier(identifier.getNamespace(), identifier.getPath() + "_inventory"));
+        fences.add(identifier);
+
+        genFenceModel(identifier, textureName);
+        genBlockItemModel(identifier, new Identifier(identifier.getNamespace(), identifier.getPath() + "_inventory"));
     }
 
-    public static void genBlockFenceModel(Identifier identifier, Identifier textureName) {
+    public void genFenceModel(Identifier identifier, Identifier textureName) {
         JsonObject root = new JsonObject();
 
         JsonObject textures = new JsonObject();
@@ -738,7 +799,87 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_inventory.json").toFile(), root);
     }
 
-    public static void genItemModel(Identifier identifier, Identifier textureName) {
+    public void genDoor(Identifier identifier, Identifier bottomTextureName, Identifier topTextureName) {
+        String text = JsonTemplates.DOOR.replace("modid", identifier.getNamespace()).replace("block_model", identifier.getPath());
+        writeStringToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
+
+        genDoorModels(identifier, bottomTextureName, topTextureName);
+        genItemModel(identifier, identifier);
+    }
+
+    public void genDoorModels(Identifier identifier, Identifier bottomTextureName, Identifier topTextureName) {
+        JsonObject textures = new JsonObject();
+        textures.addProperty("bottom", bottomTextureName.getNamespace() + ":block/" + bottomTextureName.getPath());
+        textures.addProperty("top", topTextureName.getNamespace() + ":block/" + topTextureName.getPath());
+
+        JsonObject root = new JsonObject();
+        root.add("textures", textures);
+
+        root.addProperty("parent", "block/door_bottom");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_bottom.json").toFile(), root);
+
+        root.addProperty("parent", "block/door_bottom_rh");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_bottom_hinge.json").toFile(), root);
+
+        root.addProperty("parent", "block/door_top");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_top.json").toFile(), root);
+
+        root.addProperty("parent", "block/door_top_rh");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_top_hinge.json").toFile(), root);
+    }
+
+    public void genButton(Identifier identifier, Identifier textureName) {
+        String text = JsonTemplates.BUTTON.replace("modid", identifier.getNamespace()).replace("block_model", identifier.getPath());
+        writeStringToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
+
+        genButtonModels(identifier, textureName);
+        genBlockItemModel(identifier, new Identifier(identifier.getNamespace(), identifier.getPath() + "_inventory"));
+    }
+
+    public void genButtonModels(Identifier identifier, Identifier textureName) {
+        JsonObject textures = new JsonObject();
+        textures.addProperty("texture", textureName.getNamespace() + ":block/" + textureName.getPath());
+
+        JsonObject root = new JsonObject();
+        root.add("textures", textures);
+
+        root.addProperty("parent", "block/button");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+
+        root.addProperty("parent", "block/button_pressed");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_pressed.json").toFile(), root);
+
+        root.addProperty("parent", "block/button_inventory");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_inventory.json").toFile(), root);
+    }
+
+    public void genTrapdoor(Identifier identifier, Identifier textureName) {
+        String text = JsonTemplates.TRAPDOOR.replace("modid", identifier.getNamespace()).replace("block_model", identifier.getPath());
+        writeStringToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
+
+        genTrapdoorModels(identifier, textureName);
+        genBlockItemModel(identifier, new Identifier(identifier.getNamespace(), identifier.getPath() + "_bottom"));
+    }
+
+
+    public void genTrapdoorModels(Identifier identifier, Identifier textureName) {
+        JsonObject textures = new JsonObject();
+        textures.addProperty("texture", textureName.getNamespace() + ":block/" + textureName.getPath());
+
+        JsonObject root = new JsonObject();
+        root.add("textures", textures);
+
+        root.addProperty("parent", "block/template_orientable_trapdoor_bottom");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_bottom.json").toFile(), root);
+
+        root.addProperty("parent", "block/template_orientable_trapdoor_open");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_open.json").toFile(), root);
+
+        root.addProperty("parent", "block/template_orientable_trapdoor_top");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_top.json").toFile(), root);
+    }
+
+    public void genItemModel(Identifier identifier, Identifier textureName) {
         JsonObject root = new JsonObject();
         root.addProperty("parent", "item/generated");
         JsonObject textures = new JsonObject();
@@ -747,7 +888,7 @@ public class ResourceGenerator {
         writeJsonToFile(getItemModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    public static void genToolModel(Identifier identifier, Identifier textureName) {
+    public void genToolModel(Identifier identifier, Identifier textureName) {
         JsonObject root = new JsonObject();
         root.addProperty("parent", "item/handheld");
         JsonObject textures = new JsonObject();
@@ -756,7 +897,7 @@ public class ResourceGenerator {
         writeJsonToFile(getItemModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
-    /*private static void genLangFile(String modid, String block_name, String unlocalized_name, String lang_file_name) {
+    /*private void genLangFile(String modid, String block_name, String unlocalized_name, String lang_file_name) {
         Path base = Paths.get("src", "main", "resources", "assets", modid, "lang");
         if (!base.toFile().exists()) {
             base.toFile().mkdirs();
@@ -770,7 +911,7 @@ public class ResourceGenerator {
         }
     }*/
 
-    public static void genAdvancementRootJson(String modId, String advancement_name, String item_name, String title, String desc, String background_texture_name, boolean show_toast, boolean announce_to_chat, boolean hidden) {
+    public void genAdvancementRootJson(String modId, String advancement_name, String item_name, String title, String desc, String background_texture_name, boolean show_toast, boolean announce_to_chat, boolean hidden) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -816,7 +957,7 @@ public class ResourceGenerator {
 
     }
 
-    public static void genAdvancementJson(String modId, String advancement_name, String item_name, String title, String desc, String background_texture_name, boolean show_toast, boolean announce_to_chat, boolean hidden) {
+    public void genAdvancementJson(String modId, String advancement_name, String item_name, String title, String desc, String background_texture_name, boolean show_toast, boolean announce_to_chat, boolean hidden) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
@@ -863,7 +1004,47 @@ public class ResourceGenerator {
 
     }
 
-    public static void genPackMcMeta(String description) {
+    public void genSimpleLootTable(Identifier block, Identifier item) {
+    	File file = getLootTablesPath(block.getNamespace()).resolve("blocks").resolve(block.getPath() + ".json").toFile();
+    	if(!file.exists()) {
+    	    file.getParentFile().mkdirs();
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        try {
+            JsonWriter jsonWriter = new JsonWriter(new FileWriter(file));
+            jsonWriter.beginObject();
+            jsonWriter.name("type"); jsonWriter.value("minecraft:block");
+            jsonWriter.name("pools");
+            jsonWriter.beginArray();
+            jsonWriter.beginObject();
+            jsonWriter.name("rolls"); jsonWriter.value(1);
+            jsonWriter.name("entries");
+            jsonWriter.beginArray();
+            jsonWriter.beginObject();
+            jsonWriter.name("type"); jsonWriter.value("minecraft:item");
+            jsonWriter.name("name"); jsonWriter.value(item.toString());
+            jsonWriter.endObject();
+            jsonWriter.endArray();
+            jsonWriter.name("conditions");
+            jsonWriter.beginArray();
+            jsonWriter.beginObject();
+            jsonWriter.name("condition"); jsonWriter.value("minecraft:survives_explosion");
+            jsonWriter.endObject();
+            jsonWriter.endArray();
+            jsonWriter.endObject();
+            jsonWriter.endArray();
+            jsonWriter.endObject();
+            jsonWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void genPackMcMeta(String description) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
 

@@ -22,7 +22,7 @@ public class WoodTypeBlocksFeature extends WoodTypeFeature {
 	@Override
 	protected void process(WoodType woodType) {
 		for(Pair<String, Supplier<Block>> pair : blocks) {
-			ContentBuilder.getInstance().newBlock(pair.getLeft() + "_" + woodType.getName() + "_" + suffix, pair.getRight().get());
+			ContentBuilder.getInstance().newBlock(pair.getLeft() + "_" + woodType.getIdentifier().getPath() + "_" + suffix, pair.getRight().get());
 		}
 	}
 }

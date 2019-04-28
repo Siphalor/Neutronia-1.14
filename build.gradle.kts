@@ -59,17 +59,45 @@ dependencies {
 }
 
 tasks.getByName<ProcessResources>("processResources") {
-	filesMatching("fabric.mod.json") {
-		expand(
-				mutableMapOf(
-						"version" to version
-				)
-		)
+    doFirst {
+		filesMatching("fabric.mod.json") {
+			expand(
+					mutableMapOf(
+							"version" to version
+					)
+			)
+		}
 	}
 }
 
-tasks.getByName<JavaExec>("runClient") {
-	if(System.getProperty("genResources") != null) {
-		this.systemProperty("genResources", true)
+tasks.register("cleanResources") {
+	group = "resources"
+
+	doFirst {
+		var clearFiles = arrayOf("assets/neutronia/blockstates", "assets/neutronia/models/item", "assets/neutronia/models/block", "data/neutronia/loot_tables/blocks", "run/datapacks/cotton (generated)")
+
+		var resourcesDir = file("src/main/resources")
+
+		for(clear in clearFiles) {
+			resourcesDir.resolve(clear).deleteRecursively()
+		}
+	}
+}
+
+tasks.register("setupGenResources") {
+	group = "resources"
+    doFirst {
+		(tasks.getByPath("runClient") as JavaExec).systemProperty("genResources", true)
+	}
+}
+
+tasks.register("genResources") {
+	group = "resources"
+
+	dependsOn("setupGenResources")
+	dependsOn("runClient").mustRunAfter("setupGenResources")
+
+	doLast {
+		(tasks.getByPath("runClient") as JavaExec).systemProperty("genResources", null)
 	}
 }

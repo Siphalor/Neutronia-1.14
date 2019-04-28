@@ -103,10 +103,8 @@ public class RecipeGenerator {
         JsonObject ingredients = new JsonObject();
         ingredients.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredients.getStack().getItem()).toString());
         root.add("ingredient", ingredients);
-        JsonObject resultName = new JsonObject();
-        resultName.addProperty("item", Registry.ITEM.getId(result.getItem()).toString());
-        if (result.getAmount() > 1) resultName.addProperty("count", result.getAmount());
-        root.add("result", resultName);
+        root.addProperty("result", Registry.ITEM.getId(result.getItem()).toString());
+        if (result.getAmount() > 1) root.addProperty("count", result.getAmount());
         String json = gson.toJson(root);
         try {
             if (!base.resolve(recipeName.getPath() + ".json").toFile().exists())

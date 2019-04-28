@@ -2,27 +2,22 @@ package team.hollow.neutronia;
 
 import generators.ContentResourceBuilder;
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.impl.registry.CompostingChanceRegistryImpl;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import team.hollow.modmenu_api.ModMenuBadgeManager;
-import team.hollow.modmenu_api.api.ModMenuBadges;
 import team.hollow.module_api.ModuleManager;
-import team.hollow.neutronia.init.*;
 import team.hollow.neutronia.modules.EndecorationsModule;
 import team.hollow.neutronia.modules.ExplorationModule;
 import team.hollow.neutronia.modules.OriginsModule;
 import team.hollow.neutronia.modules.VariationModule;
-import team.hollow.neutronia.unsure.ContentRegistryBuilder;
 import team.hollow.neutronia.unsure.ContentBuilder;
+import team.hollow.neutronia.unsure.ContentRegistryBuilder;
 import team.hollow.quest_api.QuestManager;
 import team.hollow.quest_api.api.Quest;
 import team.hollow.quest_api.api.QuestReward;
 import team.hollow.quest_api.api.QuestTask;
-import team.hollow.update_checker_api.VersionChecker;
 
 public class Neutronia implements ModInitializer {
 
@@ -39,12 +34,17 @@ public class Neutronia implements ModInitializer {
     @Override
     public void onInitialize() {
         if(GEN_RESOURCES) {
-            ContentBuilder.setInstance(new ContentResourceBuilder());
+            ContentBuilder.setInstance(new ContentResourceBuilder(Neutronia.MOD_ID));
         } else {
-            ContentBuilder.setInstance(new ContentRegistryBuilder());
+            ContentBuilder.setInstance(new ContentRegistryBuilder(Neutronia.MOD_ID));
         }
 
         setupModules();
+
+        ContentBuilder.getInstance().finish();
+
+        if(GEN_RESOURCES)
+            System.exit(0);
 
         QuestManager.registerQuests(
                 new Quest(
@@ -62,17 +62,17 @@ public class Neutronia implements ModInitializer {
         );
 //        new NBlocks();
 //        new NLightBlocks();
-        NBlockEntities.init();
-        new NEntityTypes();
-        new NPaintingMotives();
-        new NBiomes();
-        new NVillagers();
-        CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
-        CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
-        CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
+        //NBlockEntities.init();
+        //new NEntityTypes();
+        //new NPaintingMotives();
+        //new NBiomes();
+        //new NVillagers();
+        //CompostingChanceRegistryImpl.INSTANCE.add(Items.ROTTEN_FLESH, 0.5F);
+        //CompostingChanceRegistryImpl.INSTANCE.add(Items.CHICKEN, 0.5F);
+        //CompostingChanceRegistryImpl.INSTANCE.add(Items.COOKED_CHICKEN, 0.5F);
 
-        ModMenuBadgeManager.registerBadges(MOD_ID, ModMenuBadges.ALPHA, ModMenuBadges.BETA, new NeutroniaBadge());
-        VersionChecker.startVersionCheck();
+        //ModMenuBadgeManager.registerBadges(MOD_ID, ModMenuBadges.ALPHA, ModMenuBadges.BETA, new NeutroniaBadge());
+        //VersionChecker.startVersionCheck();
     }
 
     public static void setupModules() {

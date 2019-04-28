@@ -10,7 +10,6 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
@@ -19,6 +18,21 @@ public class ContentRegistryBuilder extends ContentBuilder {
     public ItemProvider baseItemProvider;
     private ItemProvider secondaryItemProvider;
     public Identifier baseIdentifier;
+    protected String modId;
+
+    public ContentRegistryBuilder(String modId) {
+        this.modId = modId;
+    }
+
+    @Override
+    public String getModId() {
+        return modId;
+    }
+
+    @Override
+    public void finish() {
+
+    }
 
     @Override
     public Item newItem(String name, Item item) {
@@ -27,7 +41,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block newBlock(String name, Block block) {
-        return RegistryUtils.register(block, new Identifier(Neutronia.MOD_ID, name));
+        return RegistryUtils.register(block, new Identifier(getModId(), name));
     }
 
     @Override
@@ -39,15 +53,15 @@ public class ContentRegistryBuilder extends ContentBuilder {
     public Block newCompressedBlock(String name, Block block) {
         newBlock(name, block);
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(block),
-                new Identifier(Neutronia.MOD_ID, "compress_to_" + name),
+                new Identifier(getModId(), "compress_to_" + name),
                 "compression",
                new String[]{
                    "XXX", "XXX", "XXX"
                }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)))
             .addShapeless(new ItemStack(baseItemProvider, 9),
-                new Identifier(Neutronia.MOD_ID, "decompress_"),
+                new Identifier(getModId(), "decompress_"),
                 "decompression",
                 new ShapelessRecipeIngredients(new ItemStack(block)));
 
@@ -55,8 +69,8 @@ public class ContentRegistryBuilder extends ContentBuilder {
     }
 
     @Override
-    public void setBaseName(String name) {
-        baseIdentifier = new Identifier(Neutronia.MOD_ID, name);
+    public void setBaseName(Identifier name) {
+        baseIdentifier = name;
     }
 
     @Override
@@ -79,7 +93,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block slab = new NeutroniaSlabBlock();
         RegistryUtils.register(slab, extendIdentifier(baseIdentifier, "_slab"), ItemGroup.BUILDING_BLOCKS);
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(slab), extendIdentifier(baseIdentifier, "_slab"), "slabs", new String[]{
                 "XXX"
             }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)));
@@ -92,7 +106,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block stairs = new NeutroniaStairBlock(baseBlock.getDefaultState());
         RegistryUtils.register(stairs, extendIdentifier(baseIdentifier, "_stairs"), ItemGroup.BUILDING_BLOCKS);
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(stairs), extendIdentifier(baseIdentifier, "_stairs"), "stairs", new String[]{
                 "X  ",
                 "XX ",
@@ -107,7 +121,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block fence = new NeutroniaFenceBlock(baseBlock);
         RegistryUtils.register(fence, extendIdentifier(baseIdentifier, "_fence"));
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(
                 new ItemStack(fence),
                 extendIdentifier(baseIdentifier, "_fence"),
@@ -127,7 +141,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block fenceGate = new NeutroniaFenceGateBlock();
         RegistryUtils.register(fenceGate, extendIdentifier(baseIdentifier, "_fence_gate"), ItemGroup.REDSTONE);
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(
                 new ItemStack(fenceGate),
                 extendIdentifier(baseIdentifier, "_fence_gate"),
@@ -148,7 +162,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block wall = new NeutroniaWallBlock(baseBlock.getDefaultState());
         RegistryUtils.register(wall, extendIdentifier(baseIdentifier, "_wall"), ItemGroup.DECORATIONS);
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(
                 new ItemStack(wall),
                 extendIdentifier(baseIdentifier, "_wall"),
@@ -168,7 +182,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block button = new NeutroniaButtonBlock(wooden);
         RegistryUtils.register(button, extendIdentifier(baseIdentifier, "_button"), ItemGroup.REDSTONE);
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShapeless(
                 new ItemStack(button),
                 extendIdentifier(baseIdentifier, "_button"),
@@ -184,7 +198,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block pressurePlate = new NeutroniaPressurePlateBlock(baseBlock.getMaterial(baseBlock.getDefaultState()), type);
         RegistryUtils.register(pressurePlate, extendIdentifier(baseIdentifier, "_pressure_plate"), ItemGroup.REDSTONE);
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(pressurePlate, 6), extendIdentifier(baseIdentifier, "_pressure_plate"), "pressure_plates", new String[]{
                 "XX"
             }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)));
@@ -211,28 +225,28 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block siding = new NeutroniaSidingBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(siding, extendIdentifier(baseIdentifier, "_siding"));
 
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(siding, 6), extendIdentifier(baseIdentifier, "_siding"), "sidings", new String[]{
                 "X",
                 "X",
                 "X"
             }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)));
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShapeless(
                 new ItemStack(siding, 6),
                 extendIdentifier(baseIdentifier, "_siding_to_slab"),
                 "sidings_to_slabs",
                 new ShapelessRecipeIngredients(new ItemStack(siding))
             );
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addShapeless(
                 new ItemStack(siding, 6),
-                extendIdentifier(baseIdentifier, "siding_to_block"),
+                extendIdentifier(baseIdentifier, "_siding_to_block"),
                 "sidings_to_blocks",
                 new ShapelessRecipeIngredients(new ItemStack(siding)),
                 new ShapelessRecipeIngredients(new ItemStack(siding))
             );
-        RecipeGenerator.getInstance(Neutronia.MOD_ID)
+        RecipeGenerator.getInstance(getModId())
             .addStonecutting(
                 new ItemStack(siding, 6),
                 new Identifier(baseIdentifier.getNamespace(), baseIdentifier.getPath() + "_siding_from_" + baseIdentifier.getPath() + "_stonecutting"),

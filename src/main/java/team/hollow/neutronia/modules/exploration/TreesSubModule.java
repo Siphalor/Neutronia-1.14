@@ -41,7 +41,7 @@ public class TreesSubModule extends SubModule {
 		redwood = register(new ColoredLeavesTreeFeature("redwood", new DarkOakSaplingGenerator()));
 		bolivianRosewood = register(new ColoredLeavesTreeFeature("bolivian_rosewood", new OakSaplingGenerator()));
 		gabonEbony = register(new ColoredLeavesTreeFeature("gabon_ebony", new OakSaplingGenerator()));
-		willow = new WaterloggableTreeFeature("willow", new WillowSaplingGenerator());
-		palm = new PalmTreeFeature("palm", new PalmSaplingGenerator());
+		willow = register(new WaterloggableTreeFeature("willow", new WillowSaplingGenerator()));
+		palm = register(new PalmTreeFeature("palm", new PalmSaplingGenerator()));
 	}
 }

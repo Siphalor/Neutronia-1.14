@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "neutronia",
-  "version": "0.0.4",
+  "version": "${version}",
 
   "name": "Neutronia",
   "description": "Neutronia is a mod that aims to expand upon the vanilla style, including much more variety to all dimensions. The surface, underground, nether and end have upgraded worldgen, more biomes and structures.",

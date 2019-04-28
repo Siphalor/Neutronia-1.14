@@ -12,6 +12,7 @@ import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
 import team.hollow.neutronia.blocks.CustomLadderBlock;
 import team.hollow.neutronia.blocks.NeutroniaBaseLectern;
 import team.hollow.neutronia.blocks.NeutroniaBookshelfBlock;
+import team.hollow.neutronia.unsure.ContentBuilder;
 
 import java.util.Collections;
 import java.util.function.Supplier;
@@ -38,21 +39,24 @@ public class WoodSubModule extends SubModule {
 			.ticksRandomly()
 			.build();
 
-		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK, () -> new NeutroniaBookshelfBlock(FabricBlockSettings.of(Material.WOOD))));
+		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK, (woodType) -> {
+			ContentBuilder.getInstance().asBaseBlock(woodType.getBaseBlock(), woodType.getBaseBlockIdentifier());
+			return new NeutroniaBookshelfBlock(FabricBlockSettings.of(Material.WOOD));
+		}));
 		barrels = register(new WoodTypeBlockFeature("barrel", "Adds more barrels", WoodTypeFeature.SKIP_OAK,
-			() -> new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build())
+			(woodType) -> new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build())
 		));
 		campfires = register(new WoodTypeBlockFeature("campfire", "Adds more campfires", WoodTypeFeature.SKIP_OAK,
-			() -> new CampfireBlock(campFireSettings)
+			(woodType) -> new CampfireBlock(campFireSettings)
 		));
 		strippedCampfires = register(new WoodTypeBlockFeature("stripped_campfire", "Adds stripped log campfires", Collections.emptySet(),
-			() -> new CampfireBlock(campFireSettings)
+			(woodType) -> new CampfireBlock(campFireSettings)
 		));
 		lecterns = register(new WoodTypeBlockFeature("lectern", "Adds more lecterns", WoodTypeFeature.SKIP_OAK,
-			NeutroniaBaseLectern::new
+			woodType -> new NeutroniaBaseLectern()
 		));
 		ladders = register(new WoodTypeBlockFeature("ladder", "Adds more ladders", WoodTypeFeature.SKIP_OAK,
-			CustomLadderBlock::new
+			woodType -> new CustomLadderBlock()
 		));
 		//chests = register(new ChestFeature());
 		patternedPlanks = register(new WoodTypeBlocksFeature("patterned-planks", "Adds patterned and carved planks variations",

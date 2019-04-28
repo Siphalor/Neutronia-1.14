@@ -15,7 +15,7 @@ public class SidingsFeature extends WoodTypeFeature {
 	@Override
 	protected void process(WoodType woodType) {
 		ContentBuilder contentBuilder = ContentBuilder.getInstance();
-		contentBuilder.asBaseBlock(woodType.getBaseBlock(), woodType.getBaseBlockName());
+		contentBuilder.asBaseBlock(woodType.getBaseBlock(), woodType.getBaseBlockIdentifier());
 		contentBuilder.siding();
 		contentBuilder.corner();
 	}

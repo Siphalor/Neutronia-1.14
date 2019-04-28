@@ -5,8 +5,10 @@ import net.minecraft.block.*;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
+import net.minecraft.util.Identifier;
 import team.hollow.module_api.api.features.Feature;
 import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.unsure.ContentBuilder;
 import team.hollow.neutronia.unsure.WoodType;
@@ -69,6 +71,6 @@ public class TreeFeature extends OptionalFeature {
 		contentBuilder.fence();
 		contentBuilder.fenceGate();
 
-		woodType = WoodTypeRegistry.registerModded(new WoodType(name, planks));
+		woodType = WoodTypeRegistry.registerModded(new WoodType(new Identifier(Neutronia.MOD_ID, name), planks));
 	}
 }

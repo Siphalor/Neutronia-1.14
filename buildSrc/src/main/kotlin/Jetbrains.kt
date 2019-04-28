@@ -6,7 +6,7 @@ object Jetbrains {
 
 object Fabric {
     object Loader {
-        const val version = "0.4.2+build.132" // https://maven.fabricmc.net/net/fabricmc/fabric-loader/
+        const val version = "0.4.4+build.139" // https://maven.fabricmc.net/net/fabricmc/fabric-loader/
     }
 
     object API {
@@ -30,7 +30,7 @@ object Dependencies {
         const val version = "+"
     }
     object Tweed {
-        const val version = "2.0.7"
+        const val version = "2.0.8"
     }
 }
 

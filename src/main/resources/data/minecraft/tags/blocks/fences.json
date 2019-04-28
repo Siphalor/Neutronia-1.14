@@ -1,19 +1,17 @@
 {
   "replace": false,
   "values": [
-    "neutronia:palm_fence",
-    "neutronia:willow_fence",
-    "neutronia:bamboo_fence",
-    "neutronia:treated_planks_fence",
-    "neutronia:treated_siding_fence",
-    "neutronia:mangrove_fence",
-    "neutronia:red_mangrove_fence",
-    "neutronia:baobab_fence",
-    "neutronia:wenge_fence",
-    "neutronia:purpleheart_fence",
-    "neutronia:lacewood_fence",
-    "neutronia:cherry_fence",
-    "neutronia:bolivian_rosewood_fence",
-    "neutronia:gabon_ebony_fence"
+    "neutronia:mangrove_planks_fence",
+    "neutronia:baobab_planks_fence",
+    "neutronia:gabon_ebony_planks_fence",
+    "neutronia:cherry_planks_fence",
+    "neutronia:redwood_planks_fence",
+    "neutronia:palm_planks_fence",
+    "neutronia:lacewood_planks_fence",
+    "neutronia:willow_planks_fence",
+    "neutronia:purpleheart_planks_fence",
+    "neutronia:wenge_planks_fence",
+    "neutronia:red_mangrove_planks_fence",
+    "neutronia:bolivian_rosewood_planks_fence"
   ]
 }

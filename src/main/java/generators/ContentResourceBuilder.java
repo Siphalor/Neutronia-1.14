@@ -6,12 +6,28 @@ import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemProvider;
 import net.minecraft.util.Identifier;
-import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.unsure.ContentBuilder;
 
 public class ContentResourceBuilder extends ContentBuilder {
 	protected Identifier baseIdentifier;
+	protected String modId;
+	protected ResourceGenerator resourceGenerator;
+
+	public ContentResourceBuilder(String modId) {
+		this.modId = modId;
+		this.resourceGenerator = new ResourceGenerator();
+	}
+
+	@Override
+	public String getModId() {
+		return modId;
+	}
+
+	@Override
+	public void finish() {
+		resourceGenerator.finish();
+	}
 
 	@Override
 	public Item newItem(String name, Item item) {
@@ -26,27 +42,31 @@ public class ContentResourceBuilder extends ContentBuilder {
 
 	@Override
 	public Block newBlock(String name, Block block, String textureName) {
-		Identifier identifier = new Identifier(Neutronia.MOD_ID, name);
-		Identifier textureIdentifier = new Identifier(Neutronia.MOD_ID, textureName);
+		Identifier identifier = new Identifier(getModId(), name);
+		Identifier textureIdentifier = new Identifier(getModId(), textureName);
 
 		if(block instanceof PillarBlock) {
-			ResourceGenerator.genPillarBlock(identifier, extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
+			resourceGenerator.genPillarBlock(identifier, extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
 		} else if(block instanceof NeutroniaBookshelfBlock) {
-			ResourceGenerator.genSimpleBlockstates(identifier);
-			ResourceGenerator.genPillarBlockModel(identifier, baseIdentifier, textureIdentifier);
-			ResourceGenerator.genSimpleBlockItemModel(identifier);
+			resourceGenerator.genSimpleBlockstates(identifier);
+			resourceGenerator.genPillarBlockModel(identifier, baseIdentifier, textureIdentifier);
+			resourceGenerator.genSimpleBlockItemModel(identifier);
 		} else if(block instanceof NeutroniaSaplingBlock) {
-            ResourceGenerator.genPlant(identifier, textureIdentifier);
+            resourceGenerator.genPlant(identifier, textureIdentifier);
 		} else if(block instanceof NeutroniaDoorBlock) {
-			// TODO
+			resourceGenerator.genDoor(identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_top"));
 		} else if(block instanceof NeutroniaTrapdoorBlock) {
-			// TODO
+            resourceGenerator.genTrapdoor(identifier, textureIdentifier);
 		} else if(block instanceof NeutroniaBottomTopBlock) {
-			ResourceGenerator.genBottomTopBlockModel(identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
+			resourceGenerator.genSimpleBlockstates(identifier);
+			resourceGenerator.genBottomTopBlockModel(identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
+			resourceGenerator.genSimpleBlockItemModel(identifier);
 
 		} else {
-			ResourceGenerator.genSimpleBlock(identifier, textureIdentifier);
+			resourceGenerator.genSimpleBlock(identifier, textureIdentifier);
 		}
+
+		resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 
@@ -57,8 +77,8 @@ public class ContentResourceBuilder extends ContentBuilder {
 	}
 
 	@Override
-	public void setBaseName(String name) {
-		baseIdentifier = new Identifier(Neutronia.MOD_ID, name);
+	public void setBaseName(Identifier name) {
+		baseIdentifier = name;
 	}
 
 	@Override
@@ -78,19 +98,25 @@ public class ContentResourceBuilder extends ContentBuilder {
 
 	@Override
 	public Block slab() {
-		ResourceGenerator.genSlab(extendIdentifier(baseIdentifier, "_slab"), baseIdentifier, baseIdentifier, baseIdentifier, baseIdentifier);
+		Identifier identifier = extendIdentifier(baseIdentifier, "_slab");
+		resourceGenerator.genSlab(identifier, baseIdentifier, baseIdentifier, baseIdentifier, baseIdentifier);
+		resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 
 	@Override
 	public Block stairs() {
-		ResourceGenerator.genStair(extendIdentifier(baseIdentifier, "_stairs"), baseIdentifier, baseIdentifier, baseIdentifier);
+		Identifier identifier = extendIdentifier(baseIdentifier, "_stairs");
+		resourceGenerator.genStair(identifier, baseIdentifier, baseIdentifier, baseIdentifier);
+		resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 
 	@Override
 	public Block fence() {
-		ResourceGenerator.genFenceBlock(extendIdentifier(baseIdentifier, "_fence"), baseIdentifier);
+		Identifier identifier = extendIdentifier(baseIdentifier, "_fence");
+		resourceGenerator.genFence(identifier, baseIdentifier);
+        resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 
@@ -108,13 +134,17 @@ public class ContentResourceBuilder extends ContentBuilder {
 
 	@Override
 	public Block button(boolean wooden) {
-        // TODO
+        Identifier identifier = extendIdentifier(baseIdentifier, "_button");
+        resourceGenerator.genButton(identifier, baseIdentifier);
+        resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 
 	@Override
 	public Block pressurePlate(PressurePlateBlock.Type type) {
-        ResourceGenerator.genPressurePlate(extendIdentifier(baseIdentifier, "_pressure_plate"), baseIdentifier);
+		Identifier identifier = extendIdentifier(baseIdentifier, "_pressure_plate");
+        resourceGenerator.genPressurePlate(identifier, baseIdentifier);
+        resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 
@@ -132,7 +162,9 @@ public class ContentResourceBuilder extends ContentBuilder {
 
 	@Override
 	public Block siding() {
-		// TODO
+        Identifier identifier = extendIdentifier(baseIdentifier, "_siding");
+        resourceGenerator.genSiding(identifier, baseIdentifier);
+        resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 }

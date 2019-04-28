@@ -3,6 +3,7 @@ package team.hollow.neutronia.modules.exploration.trees;
 import net.minecraft.block.Block;
 import net.minecraft.block.sapling.SaplingGenerator;
 import team.hollow.neutronia.blocks.NeutroniaWaterloggedSaplingBlock;
+import team.hollow.neutronia.unsure.ContentBuilder;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 public class WaterloggableTreeFeature extends TreeFeature {
@@ -15,6 +16,6 @@ public class WaterloggableTreeFeature extends TreeFeature {
 	@Override
 	protected void applyEnabled() {
 		super.applyEnabled();
-		underwaterSapling = RegistryUtils.register(new NeutroniaWaterloggedSaplingBlock(saplingGenerator), "underwater_" + name + "_sapling");
+		underwaterSapling = ContentBuilder.getInstance().newBlock("underwater_" + name + "_sapling", new NeutroniaWaterloggedSaplingBlock(saplingGenerator));
 	}
 }

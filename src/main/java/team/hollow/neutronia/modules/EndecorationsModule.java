@@ -16,7 +16,7 @@ public class EndecorationsModule extends Module {
 		super("endecorations", "This module contains special decoration blocks by u/Endergy");
 
 		lanterns = register(new WoodTypeBlockFeature("paper_lantern", "Adds full block paper lanterns", Collections.emptySet(),
-			() -> new Block(FabricBlockSettings.of(Material.WOOD).breakByHand(true).ticksRandomly().lightLevel(10).build())
+			(woodType) -> new Block(FabricBlockSettings.of(Material.WOOD).breakByHand(true).ticksRandomly().lightLevel(10).build())
 		));
 
 		setBackgroundTexture(new Identifier("minecraft", "textures/block/end_stone_bricks.png"));

@@ -2,6 +2,7 @@ package team.hollow.neutronia.unsure;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.util.Identifier;
 
 public class WoodType {
 	public static final WoodType SPRUCE = WoodTypeRegistry.registerVanilla(new WoodType("spruce", Blocks.SPRUCE_PLANKS));
@@ -12,20 +13,24 @@ public class WoodType {
 	public static final WoodType DARK_OAK = WoodTypeRegistry.registerVanilla(new WoodType("dark_oak", Blocks.DARK_OAK_PLANKS));
 	public static final WoodType[] VANILLA = new WoodType[]{OAK, SPRUCE, BIRCH, JUNGLE, ACACIA, DARK_OAK};
 
-	protected String name;
+	protected Identifier identifier;
 	protected Block baseBlock;
 
 	public WoodType(String name, Block baseBlock) {
-		this.name = name;
+		this(new Identifier("minecraft", name), baseBlock);
+	}
+
+	public WoodType(Identifier identifier, Block baseBlock) {
+		this.identifier = identifier;
 		this.baseBlock = baseBlock;
 	}
 
-	public String getName() {
-		return name;
+	public Identifier getIdentifier() {
+		return identifier;
 	}
 
-	public String getBaseBlockName() {
-		return name + "_planks";
+	public Identifier getBaseBlockIdentifier() {
+		return new Identifier(identifier.getNamespace(), identifier.getPath() + "_planks");
 	}
 
 	public Block getBaseBlock() {

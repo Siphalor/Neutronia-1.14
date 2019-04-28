@@ -22,7 +22,9 @@ public class RegistryUtils {
 
     public static Block register(Block block, Identifier name, ItemGroup itemGroup) {
         Registry.register(Registry.BLOCK, name, block);
-        Registry.register(Registry.ITEM, name, new BlockItem(block, new Item.Settings().itemGroup(itemGroup)));
+        BlockItem item = new BlockItem(block, new Item.Settings().itemGroup(itemGroup));
+        item.registerBlockItemMap(Item.BLOCK_ITEM_MAP, item);
+        Registry.register(Registry.ITEM, name, item);
         return block;
     }
 

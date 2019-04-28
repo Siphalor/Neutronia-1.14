@@ -38,9 +38,6 @@ public class ModuleManager {
     public static void apply(ConfigEnvironment environment, ConfigScope scope) {
         if(scope.triggers(ConfigScope.GAME)) {
             modules.forEach(Module::apply);
-
-            if(Neutronia.GEN_RESOURCES)
-                System.exit(0);
         }
     }
 }
