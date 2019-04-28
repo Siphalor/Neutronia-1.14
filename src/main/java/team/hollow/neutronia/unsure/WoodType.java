@@ -14,7 +14,11 @@ public class WoodType {
 	public static final WoodType[] VANILLA = new WoodType[]{OAK, SPRUCE, BIRCH, JUNGLE, ACACIA, DARK_OAK};
 
 	protected Identifier identifier;
-	protected Block baseBlock;
+	public Block baseBlock;
+
+	public WoodType(Identifier identifier) {
+		this(identifier, null);
+	}
 
 	public WoodType(String name, Block baseBlock) {
 		this(new Identifier("minecraft", name), baseBlock);

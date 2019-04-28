@@ -12,12 +12,17 @@ import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
 import team.hollow.neutronia.blocks.CustomLadderBlock;
 import team.hollow.neutronia.blocks.NeutroniaBaseLectern;
 import team.hollow.neutronia.blocks.NeutroniaBookshelfBlock;
+import team.hollow.neutronia.modules.variation.wood.BambooWoodFeature;
+import team.hollow.neutronia.modules.variation.wood.TreatedWoodFeature;
 import team.hollow.neutronia.unsure.ContentBuilder;
 
 import java.util.Collections;
 import java.util.function.Supplier;
 
 public class WoodSubModule extends SubModule {
+	public static BambooWoodFeature bamboo;
+	public static TreatedWoodFeature treatedWood;
+
 	public static WoodTypeBlockFeature bookshelves;
 	public static OptionalFeature barrels;
 	public static WoodTypeBlockFeature campfires;
@@ -38,6 +43,9 @@ public class WoodSubModule extends SubModule {
 			.lightLevel(15)
 			.ticksRandomly()
 			.build();
+
+		bamboo = register(new BambooWoodFeature());
+		treatedWood = register(new TreatedWoodFeature());
 
 		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK, (woodType) -> {
 			ContentBuilder.getInstance().asBaseBlock(woodType.getBaseBlock(), woodType.getBaseBlockIdentifier());

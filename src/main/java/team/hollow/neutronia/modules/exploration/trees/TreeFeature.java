@@ -19,11 +19,8 @@ public class TreeFeature extends OptionalFeature {
 	public Block strippedLog;
 	public Block wood;
 	public Block strippedWood;
-	public Block planks;
 	public Block leaves;
 	public Block sapling;
-	public Block door;
-	public Block trapdoor;
 	public WoodType woodType;
 
 	protected SaplingGenerator saplingGenerator;
@@ -58,19 +55,10 @@ public class TreeFeature extends OptionalFeature {
 			"stripped_" + name + "_log"
 		);
 		leaves = contentBuilder.newBlock(name + "_leaves", new NeutroniaLeavesBlock());
-		sapling = contentBuilder.newBlock(name + "_sapling", new NeutroniaSaplingBlock(saplingGenerator));
+		sapling = contentBuilder.newBaseBlock(name + "_sapling", new NeutroniaSaplingBlock(saplingGenerator));
+		contentBuilder.addPotted();
 
-		door = contentBuilder.newBlock(name + "_door", new NeutroniaDoorBlock(Material.WOOD));
-		trapdoor = contentBuilder.newBlock(name + "_trapdoor", new NeutroniaTrapdoorBlock(Material.WOOD));
 
-		planks = contentBuilder.newBaseBlock(name + "_planks", new NeutroniaBlock(Material.WOOD));
-		contentBuilder.slab();
-		contentBuilder.stairs();
-		contentBuilder.button(true);
-		contentBuilder.pressurePlate(PressurePlateBlock.Type.WOOD);
-		contentBuilder.fence();
-		contentBuilder.fenceGate();
-
-		woodType = WoodTypeRegistry.registerModded(new WoodType(new Identifier(Neutronia.MOD_ID, name), planks));
+		woodType = WoodTypeRegistry.registerModded(new WoodType(new Identifier(Neutronia.MOD_ID, name)));
 	}
 }

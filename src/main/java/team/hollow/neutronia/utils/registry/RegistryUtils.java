@@ -50,8 +50,8 @@ public class RegistryUtils {
         return block;
     }
 
-    public static Block registerNoBI(Block block, String name) {
-        Registry.register(Registry.BLOCK, new Identifier(Neutronia.MOD_ID, name), block);
+    public static Block registerNoBI(Block block, Identifier identifier) {
+        Registry.register(Registry.BLOCK, identifier, block);
         return block;
     }
 

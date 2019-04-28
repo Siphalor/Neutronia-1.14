@@ -2,7 +2,7 @@ package generators;
 
 class JsonTemplates {
 
-    static final String STAIRS = "{\n" +
+    static final String STAIRS_STATES = "{\n" +
         "    \"variants\": {\n" +
         "        \"facing=east,half=bottom,shape=straight\":  { \"model\": \"modid:block/block_model\" },\n" +
         "        \"facing=west,half=bottom,shape=straight\":  { \"model\": \"modid:block/block_model\", \"y\": 180, \"uvlock\": true },\n" +
@@ -47,7 +47,7 @@ class JsonTemplates {
         "    }\n" +
         "}\n";
 
-    static final String DOOR = "{\n" +
+    static final String DOOR_STATES = "{\n" +
         "    \"variants\": {\n" +
         "        \"facing=east,half=lower,hinge=left,open=false\":  { \"model\": \"modid:block/block_model_bottom\" },\n" +
         "        \"facing=south,half=lower,hinge=left,open=false\": { \"model\": \"modid:block/block_model_bottom\", \"y\": 90 },\n" +
@@ -84,7 +84,7 @@ class JsonTemplates {
         "    }\n" +
         "}";
 
-    static final String BUTTON = "{\n" +
+    static final String BUTTON_STATES = "{\n" +
         "    \"variants\": {\n" +
         "        \"face=floor,facing=east,powered=false\":  { \"model\": \"modid:block/block_model\", \"y\": 90 },\n" +
         "        \"face=floor,facing=west,powered=false\":  { \"model\": \"modid:block/block_model\", \"y\": 270 },\n" +
@@ -113,7 +113,7 @@ class JsonTemplates {
         "    }\n" +
         "}";
 
-    static final String TRAPDOOR = "{\n" +
+    static final String TRAPDOOR_STATES = "{\n" +
         "    \"variants\": {\n" +
         "        \"facing=north,half=bottom,open=false\": { \"model\": \"modid:block/block_model_bottom\" },\n" +
         "        \"facing=south,half=bottom,open=false\": { \"model\": \"modid:block/block_model_bottom\", \"y\": 180 },\n" +
@@ -134,7 +134,7 @@ class JsonTemplates {
         "    }\n" +
         "}\n";
 
-    static final String SIDING = "{\n" +
+    static final String SIDING_STATES = "{\n" +
         "\t\"variants\": {\n" +
         "\t\t\"facing=west,type=single\": { \"model\": \"derived_modid:block/block_model\" },\n" +
         "\t\t\"facing=east,type=single\": { \"model\": \"derived_modid:block/block_model\", \"y\": 180, \"uvlock\": true },\n" +
@@ -146,4 +146,48 @@ class JsonTemplates {
         "\t\t\"facing=north,type=double\": { \"model\": \"base_modid:block/base_model\" }\n" +
         "\t}\n" +
         "}\n";
+
+    static final String FENCE_GATE_STATES = "{\n" +
+        "    \"variants\": {\n" +
+        "        \"facing=south,in_wall=false,open=false\": { \"model\": \"modid:block/block_model\", \"uvlock\": true },\n" +
+        "        \"facing=west,in_wall=false,open=false\":  { \"model\": \"modid:block/block_model\", \"uvlock\": true, \"y\": 90 },\n" +
+        "        \"facing=north,in_wall=false,open=false\": { \"model\": \"modid:block/block_model\", \"uvlock\": true, \"y\": 180 },\n" +
+        "        \"facing=east,in_wall=false,open=false\":  { \"model\": \"modid:block/block_model\", \"uvlock\": true, \"y\": 270 },\n" +
+        "        \"facing=south,in_wall=false,open=true\": { \"model\": \"modid:block/block_model_open\", \"uvlock\": true },\n" +
+        "        \"facing=west,in_wall=false,open=true\":  { \"model\": \"modid:block/block_model_open\", \"uvlock\": true, \"y\": 90 },\n" +
+        "        \"facing=north,in_wall=false,open=true\": { \"model\": \"modid:block/block_model_open\", \"uvlock\": true, \"y\": 180 },\n" +
+        "        \"facing=east,in_wall=false,open=true\":  { \"model\": \"modid:block/block_model_open\", \"uvlock\": true, \"y\": 270 },\n" +
+        "        \"facing=south,in_wall=true,open=false\": { \"model\": \"modid:block/block_model_wall\", \"uvlock\": true },\n" +
+        "        \"facing=west,in_wall=true,open=false\":  { \"model\": \"modid:block/block_model_wall\", \"uvlock\": true, \"y\": 90 },\n" +
+        "        \"facing=north,in_wall=true,open=false\": { \"model\": \"modid:block/block_model_wall\", \"uvlock\": true, \"y\": 180 },\n" +
+        "        \"facing=east,in_wall=true,open=false\":  { \"model\": \"modid:block/block_model_wall\", \"uvlock\": true, \"y\": 270 },\n" +
+        "        \"facing=south,in_wall=true,open=true\": { \"model\": \"modid:block/block_model_wall_open\", \"uvlock\": true },\n" +
+        "        \"facing=west,in_wall=true,open=true\":  { \"model\": \"modid:block/block_model_wall_open\", \"uvlock\": true, \"y\": 90 },\n" +
+        "        \"facing=north,in_wall=true,open=true\": { \"model\": \"modid:block/block_model_wall_open\", \"uvlock\": true, \"y\": 180 },\n" +
+        "        \"facing=east,in_wall=true,open=true\":  { \"model\": \"modid:block/block_model_wall_open\", \"uvlock\": true, \"y\": 270 }\n" +
+        "    }\n" +
+        "}";
+
+    static final String CAKE_MODEL = "{\n" +
+        "    \"textures\": {\n" +
+        "        \"particle\": \"cake_side\",\n" +
+        "        \"bottom\": \"cake_bottom\",\n" +
+        "        \"top\": \"cake_top\",\n" +
+        "        \"side\": \"cake_side\",\n" +
+		"        \"inside\": \"cake_inner\"\n" +
+        "    },\n" +
+        "    \"elements\": [\n" +
+        "        {   \"from\": [ slice_position, 0, 1 ],\n" +
+        "            \"to\": [ 15, 8, 15 ],\n" +
+        "            \"faces\": {\n" +
+        "                \"down\":  { \"texture\": \"#bottom\", \"cullface\": \"down\" },\n" +
+        "                \"up\":    { \"texture\": \"#top\" },\n" +
+        "                \"north\": { \"texture\": \"#side\" },\n" +
+        "                \"south\": { \"texture\": \"#side\" },\n" +
+        "                \"west\":  { \"texture\": \"#inside\" },\n" +
+        "                \"east\":  { \"texture\": \"#side\" }\n" +
+        "            }\n" +
+        "        }\n" +
+        "    ]\n" +
+        "}";
 }
