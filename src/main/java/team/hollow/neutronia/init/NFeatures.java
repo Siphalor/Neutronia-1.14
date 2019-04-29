@@ -1,13 +1,18 @@
 package team.hollow.neutronia.init;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.FeatureConfig;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.world.gen.feature.*;
+
+import java.util.Random;
 
 public class NFeatures {
 
@@ -29,14 +34,59 @@ public class NFeatures {
 		LARGE_SWAMP_TREE = register("large_swamp_tree", new LargeSwampTreeFeature(DefaultFeatureConfig::deserialize));
 		LARGE_SHRUB = register("large_shrub", new LargeShrubFeature(Blocks.OAK_LEAVES.getDefaultState(), DefaultFeatureConfig::deserialize));
 		LARGE_SPRUCE_SHRUB = register("large_spruce_shrub", new LargeShrubFeature(Blocks.SPRUCE_LEAVES.getDefaultState(), DefaultFeatureConfig::deserialize));
-		REDWOOD = register("redwood", new RedwoodFeature(DefaultFeatureConfig::deserialize));
-		PALM = register("palm", new PalmTreeFeature(DefaultFeatureConfig::deserialize));
-		SMALL_REDWOOD = register("small_redwood", new SmallRedwoodFeature(DefaultFeatureConfig::deserialize));
-		FUNGI = register("small_redwood", new SmallRedwoodFeature(DefaultFeatureConfig::deserialize));
-		WILLOW_TREE = register("small_redwood", new SmallRedwoodFeature(DefaultFeatureConfig::deserialize));
-		SMALL_BOULDER = register("small_redwood", new SmallRedwoodFeature(DefaultFeatureConfig::deserialize));
-		MEDIUM_BOULDER = register("small_redwood", new SmallRedwoodFeature(DefaultFeatureConfig::deserialize));
-		BIG_BOULDER = register("small_redwood", new SmallRedwoodFeature(DefaultFeatureConfig::deserialize));
+		REDWOOD = register("redwood", new RedwoodFeature(DefaultFeatureConfig::deserialize) {
+			@Override
+			protected BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+				return Blocks.DARK_OAK_LEAVES.getDefaultState();
+			}
+
+			@Override
+			protected BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+				return Blocks.DARK_OAK_LOG.getDefaultState();
+			}
+		});
+		PALM = register("palm", new PalmTreeFeature(DefaultFeatureConfig::deserialize) {
+			@Override
+			protected BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+				return Blocks.JUNGLE_LEAVES.getDefaultState();
+			}
+
+			@Override
+			protected BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+				return Blocks.JUNGLE_LOG.getDefaultState();
+			}
+		});
+		SMALL_REDWOOD = register("small_redwood", new SmallRedwoodFeature(DefaultFeatureConfig::deserialize) {
+			@Override
+			protected BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+				return Blocks.DARK_OAK_LEAVES.getDefaultState();
+			}
+
+			@Override
+			protected BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+				return Blocks.DARK_OAK_LOG.getDefaultState();
+			}
+		});
+		FUNGI = register("small_redwood", new FungiFeature());
+		WILLOW_TREE = register("small_redwood", new WillowTreeFeature(DefaultFeatureConfig::deserialize, false));
+		SMALL_BOULDER = register("small_redwood", new BoulderFeature(3) {
+			@Override
+			protected BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double dist, float radiusSquare, Random random) {
+				return Blocks.COARSE_DIRT.getDefaultState();
+			}
+		});
+		MEDIUM_BOULDER = register("small_redwood", new BoulderFeature(7) {
+			@Override
+			protected BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double dist, float radiusSquare, Random random) {
+				return Blocks.COARSE_DIRT.getDefaultState();
+			}
+		});
+		BIG_BOULDER = register("small_redwood", new BoulderFeature(10) {
+			@Override
+			protected BlockState getStateForPlacement(IWorld world, BlockPos origin, BlockPos pos, double dist, float radiusSquare, Random random) {
+				return Blocks.COARSE_DIRT.getDefaultState();
+			}
+		});
 	}
 
 	public static <C extends FeatureConfig, F extends Feature<C>> F register(String string_1, F feature_1) {

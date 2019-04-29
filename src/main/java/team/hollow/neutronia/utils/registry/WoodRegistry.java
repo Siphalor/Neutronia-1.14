@@ -8,14 +8,16 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import team.hollow.abnormalib.blocks.*;
 import team.hollow.abnormalib.utils.registry.RegistryUtils;
 import team.hollow.neutronia.blocks.ChestBaseBlock;
 import team.hollow.neutronia.blocks.NeutroniaWaterloggedSaplingBlock;
+import team.hollow.neutronia.blocks.sapling.CustomSaplingGenerator;
 import team.hollow.neutronia.client.ClientInit;
 import team.hollow.neutronia.client.NeutroniaLeavesColors;
-
-import java.util.Map;
+import team.hollow.neutronia.world.gen.feature.CherryTreeFeature;
 
 public class WoodRegistry {
 
@@ -48,15 +50,25 @@ public class WoodRegistry {
     public Identifier name;
     private SaplingGenerator saplingGenerator;
 
-    public static WoodRegistry getInstance(Identifier name, SaplingGenerator saplingGenerator) {
+    public static WoodRegistry getInstance(Identifier name, CustomSaplingGenerator saplingGenerator) {
         return new WoodRegistry(name, saplingGenerator);
     }
 
-    public static WoodRegistry getInstance(Identifier name, Map<Map<Block, Block>, SaplingGenerator> saplingGenerator) {
-        return new WoodRegistry(name, saplingGenerator.values().stream().findAny().get());
+    public static WoodRegistry getInstance(Identifier name) {
+        return new WoodRegistry(name, new CustomSaplingGenerator(log, leaves, new CherryTreeFeature() {
+            @Override
+            protected BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+                return leaves.getDefaultState();
+            }
+
+            @Override
+            protected BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+                return null;
+            }
+        }));
     }
 
-    private WoodRegistry(Identifier name, SaplingGenerator saplingGenerator) {
+    private WoodRegistry(Identifier name, CustomSaplingGenerator saplingGenerator) {
         this.name = name;
         this.saplingGenerator = saplingGenerator;
     }

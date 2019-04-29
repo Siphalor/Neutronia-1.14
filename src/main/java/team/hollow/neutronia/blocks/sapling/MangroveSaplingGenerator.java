@@ -1,25 +1,26 @@
 package team.hollow.neutronia.blocks.sapling;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.sapling.SaplingGenerator;
-import net.minecraft.world.gen.feature.AbstractTreeFeature;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import team.hollow.neutronia.world.gen.feature.CherryTreeFeature;
 
-import java.util.Random;
+public class MangroveSaplingGenerator extends CustomSaplingGenerator {
 
-public class MangroveSaplingGenerator extends SaplingGenerator {
+    public MangroveSaplingGenerator(Block log, Block leaves) {
+        super(log, leaves, new CherryTreeFeature(DefaultFeatureConfig::deserialize) {
+            @Override
+            protected BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+                return leaves.getDefaultState();
+            }
 
-    private BlockState log, leaves;
-
-    public MangroveSaplingGenerator(BlockState log, BlockState leaves) {
-        this.log = log;
-        this.leaves = leaves;
-    }
-
-    @Override
-    protected AbstractTreeFeature<DefaultFeatureConfig> createTreeFeature(Random var1) {
-        return new CherryTreeFeature(log, leaves, DefaultFeatureConfig::deserialize);
+            @Override
+            protected BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+                return log.getDefaultState();
+            }
+        });
     }
 
 }

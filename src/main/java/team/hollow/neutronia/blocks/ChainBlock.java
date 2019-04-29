@@ -1,23 +1,22 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
+import team.hollow.abnormalib.blocks.BaseModBlock;
 
 public class ChainBlock extends BaseModBlock {
 
     public ChainBlock() {
-        super(Material.METAL, "chain");
-    }
-
-    public ChainBlock(String name) {
-        super(Material.METAL, name + "_chain");
+        super(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.METAL));
     }
 
     @Override

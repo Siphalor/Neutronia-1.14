@@ -23,7 +23,6 @@ public final class CherryForestBiome extends Biome {
         DefaultBiomeFeatures.addMineables(this);
         DefaultBiomeFeatures.addDefaultOres(this);
         DefaultBiomeFeatures.addDefaultDisks(this);
-        CustomBiomeFeatures.addCherryTrees(this);
         DefaultBiomeFeatures.addBirchTrees(this);
         DefaultBiomeFeatures.addDefaultFlowers(this);
         DefaultBiomeFeatures.addForestGrass(this);

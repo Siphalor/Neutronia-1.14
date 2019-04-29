@@ -4,6 +4,7 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.MegaTreeFeature;
@@ -12,11 +13,11 @@ import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-public class SmallRedwoodFeature extends MegaTreeFeature<DefaultFeatureConfig> {
+public abstract class SmallRedwoodFeature extends MegaTreeFeature<DefaultFeatureConfig> {
 
-   public SmallRedwoodFeature(BlockState log, BlockState leaves, Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1)
+   public SmallRedwoodFeature(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1)
    {
-      super(function_1, false, 13, 15, log, leaves);
+      super(function_1, false, 13, 15, null, null);
    }
 
    public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos blockPos_1)
@@ -28,30 +29,32 @@ public class SmallRedwoodFeature extends MegaTreeFeature<DefaultFeatureConfig> {
       }
       else
       {
+         BlockPos origin = blockPos_1.add(0, int_1 - 1, 0);
+
          this.makeTopLeaves(modifiableTestableWorld_1, blockPos_1.getX(), blockPos_1.getZ(), blockPos_1.getY() + int_1, 0, random_1);
 
          for(int int_2 = 0; int_2 < int_1; ++int_2)
          {
             if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_1.up(int_2)))
             {
-               this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.up(int_2), this.log);
+               this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.up(int_2), getLogBlockState((IWorld) modifiableTestableWorld_1, origin, blockPos_1));
             }
 
             if (int_2 < int_1 - 1)
             {
                if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_1.add(1, int_2, 0)))
                {
-                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.add(1, int_2, 0), this.log);
+                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.add(1, int_2, 0), getLogBlockState((IWorld) modifiableTestableWorld_1, origin, blockPos_1));
                }
 
                if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_1.add(1, int_2, 1)))
                {
-                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.add(1, int_2, 1), this.log);
+                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.add(1, int_2, 1), getLogBlockState((IWorld) modifiableTestableWorld_1, origin, blockPos_1));
                }
 
                if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_1.add(0, int_2, 1)))
                {
-                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.add(0, int_2, 1), this.log);
+                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.add(0, int_2, 1), getLogBlockState((IWorld) modifiableTestableWorld_1, origin, blockPos_1));
                }
             }
          }
@@ -74,5 +77,9 @@ public class SmallRedwoodFeature extends MegaTreeFeature<DefaultFeatureConfig> {
       }
 
    }
+
+   protected abstract BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos);
+
+   protected abstract BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos);
 
 }

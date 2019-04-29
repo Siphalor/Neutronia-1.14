@@ -1,7 +1,6 @@
 package team.hollow.neutronia.world.gen.feature;
 
 import com.mojang.datafixers.Dynamic;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.math.BlockPos;
@@ -33,15 +32,15 @@ public class LargeShrubFeature extends AbstractTreeFeature<DefaultFeatureConfig>
 		int height = 3;
 		blockPos_1 = world.getTopPosition(Heightmap.Type.OCEAN_FLOOR, blockPos_1);
 
-		if ((canTreeReplace(world, pos) || world.testBlockState(pos, (blockState_1) -> {
+		/*if ((canTreeReplace(world, blockPos_1) || world.testBlockState(blockPos_1, (blockState_1) -> {
 			Block block = blockState_1.getBlock();
 			return block == Blocks.GRASS;
-		})) && world.testBlockState(pos, (blockState_1) -> {
+		})) && world.testBlockState(blockPos_1, (blockState_1) -> {
 			Block block = blockState_1.getBlock();
 			return block != Blocks.GRASS_BLOCK && block != Blocks.DIRT && block != Blocks.COARSE_DIRT;
-		}))
+		}))*/
 
-		if (blockPos_1.getY() >= 1 && blockPos_1.getY() + height + 1 <= 256 && super.isNaturalDirtOrGrass(world, blockPos_1.down()))
+		if (blockPos_1.getY() >= 1 && blockPos_1.getY() + height + 1 <= 256 && isNaturalDirtOrGrass(world, blockPos_1.down()))
 		{
 			setBlockState(set_1, world, blockPos_1.down(), Blocks.DIRT.getDefaultState());
 			

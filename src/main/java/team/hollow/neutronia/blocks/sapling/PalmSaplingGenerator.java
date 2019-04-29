@@ -2,6 +2,8 @@ package team.hollow.neutronia.blocks.sapling;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.sapling.SaplingGenerator;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import team.hollow.neutronia.world.gen.feature.PalmTreeFeature;
@@ -19,7 +21,17 @@ public class PalmSaplingGenerator extends SaplingGenerator {
 
     @Override
     protected AbstractTreeFeature<DefaultFeatureConfig> createTreeFeature(Random var1) {
-        return new PalmTreeFeature(log, leaves, DefaultFeatureConfig::deserialize);
+        return new PalmTreeFeature(DefaultFeatureConfig::deserialize) {
+            @Override
+            protected BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+                return leaves;
+            }
+
+            @Override
+            protected BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos) {
+                return log;
+            }
+        };
     }
 
 }
