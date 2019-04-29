@@ -3,25 +3,16 @@ package team.hollow.neutronia.init;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.LanternBlock;
 import net.minecraft.block.*;
-import net.minecraft.block.sapling.DarkOakSaplingGenerator;
-import net.minecraft.block.sapling.OakSaplingGenerator;
-import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import team.hollow.abnormalib.blocks.FlowerPotBaseBlock;
 import team.hollow.neutronia.blocks.*;
-import team.hollow.neutronia.blocks.sapling.CustomSaplingGenerator;
-import team.hollow.neutronia.blocks.sapling.MangroveSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.PalmSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.WillowSaplingGenerator;
 import team.hollow.neutronia.enums.*;
 import team.hollow.neutronia.utils.registry.BlockRegistryBuilder;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
-import team.hollow.neutronia.utils.registry.WoodRegistry;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import static team.hollow.neutronia.Neutronia.MOD_ID;
 
@@ -186,7 +177,7 @@ public class NBlocks {
                 .slab().stair()/*.button(true)*/.fence().fenceGate()/*.pressurePlate(PressurePlateBlock.Type.WOOD)*/;
         PALM_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(MOD_ID, "palm_leaves"));
         PALM_LOG_TOP = new NeutroniaBaseBlock(Material.WOOD, "palm_top_log");
-        PALM_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new PalmSaplingGenerator(PALM_LOG.getDefaultState(), PALM_LEAVES.getDefaultState())),
+        PALM_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new PalmSaplingGenerator()),
                 new Identifier(MOD_ID, "palm_sapling"));
 //        COCONUT = new CoconutBlock();
 
@@ -199,59 +190,6 @@ public class NBlocks {
         WILLOW_LEAVES = RegistryUtils.register(new NeutroniaLeavesBlock(), new Identifier(MOD_ID, "willow_leaves"));
         WILLOW_SAPLING = RegistryUtils.register(new NeutroniaSaplingBlock(new WillowSaplingGenerator()), new Identifier(MOD_ID, "willow_sapling"));
         WILLOW_UNDERWATER_SAPLING = RegistryUtils.register(new NeutroniaWaterloggedSaplingBlock(new WillowSaplingGenerator()), new Identifier(MOD_ID, "underwater_willow_sapling"));
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "palm"))
-                .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern()/*.chest().bookshelf()*/;
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "willow"), mapSaplingGeneratorMap)
-                .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor()/*.paperLantern().chest().bookshelf()*/;
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "mangrove"), new MangroveSaplingGenerator(Blocks.SPRUCE_LOG,
-                Blocks.SPRUCE_LEAVES)).planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
-                .bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "red_mangrove"), new MangroveSaplingGenerator(Blocks.SPRUCE_LOG,
-                Blocks.SPRUCE_LEAVES)).planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
-                .bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "baobab"), new DarkOakSaplingGenerator())
-                .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
-                .bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "wenge"), new OakSaplingGenerator())
-                .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
-                .bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "purpleheart"), new OakSaplingGenerator())
-                .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().chest().bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "lacewood"), new OakSaplingGenerator())
-                .planks().log().wood().coloredLeaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().chest().bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "cherry"), new OakSaplingGenerator())
-                .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "bolivian_rosewood"), new OakSaplingGenerator())
-                .planks().log().wood().coloredLeaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().chest().bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "gabon_ebony"), new OakSaplingGenerator())
-                .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().ladder().chest().bookshelf();
-
-        WoodRegistry.getInstance(new Identifier(MOD_ID, "redwood"), new DarkOakSaplingGenerator())
-                .planks().log().wood().coloredLeaves().sapling().fence().fenceGate().slab().stairs()
-                .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
-                .bookshelf();
 
         GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
         IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "iron_grate");
@@ -481,12 +419,12 @@ public class NBlocks {
         FROSTED_GLASS = new FrostedGlassBlock();
         FROSTED_GLASS_PANE = RegistryUtils.register(new FrostedGlassPaneBlock(), new Identifier(MOD_ID, "frosted_glass_pane"));
 
-        CHAIN = new ChainBlock();
-        IRON_CHAIN = new ChainBlock("iron");
-        ICE_CHAIN = new ChainBlock("ice");
-        WROUGHT_IRON_CHAIN = new ChainBlock("wrought_iron");
-        GOLD_CHAIN = new ChainBlock("gold");
-        PRISMARINE_CHAIN = new ChainBlock("prismarine");
+        CHAIN = RegistryUtils.register(new ChainBlock(), "chain");
+        IRON_CHAIN = RegistryUtils.register(new ChainBlock(), "iron_chain");
+        ICE_CHAIN = RegistryUtils.register(new ChainBlock(), "ice_chain");
+        WROUGHT_IRON_CHAIN = RegistryUtils.register(new ChainBlock(), "wrought_iron_chain");
+        GOLD_CHAIN = RegistryUtils.register(new ChainBlock(), "gold_chain");
+        PRISMARINE_CHAIN = RegistryUtils.register(new ChainBlock(), "prismarine_chain");
 
         /*PUMPKIN = CarvedFaceManager.forRegistry("pumpkin", new Identifier("minecraft", "carved_pumpkin"));
 

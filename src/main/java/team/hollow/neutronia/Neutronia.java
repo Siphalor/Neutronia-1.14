@@ -32,6 +32,7 @@ public class Neutronia implements ModInitializer {
         exampleConfig = AutoConfig.getConfigHolder(ExampleConfig.class).getConfig();
         new NBlocks();
         new NLightBlocks();
+        new WoodRegistries();
         new NItems();
         new NBlockEntities();
         new NEntityTypes();

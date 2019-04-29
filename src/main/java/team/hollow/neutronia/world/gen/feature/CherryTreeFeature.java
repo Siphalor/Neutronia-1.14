@@ -1,18 +1,17 @@
 package team.hollow.neutronia.world.gen.feature;
 
 import com.mojang.datafixers.Dynamic;
-import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import team.hollow.neutronia.init.WoodRegistries;
 
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-public abstract class CherryTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
+public class CherryTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
 
    public CherryTreeFeature(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1) {
       super(function_1, false);
@@ -70,7 +69,7 @@ public abstract class CherryTreeFeature extends AbstractTreeFeature<DefaultFeatu
                      if (Math.abs(int_10) != int_8 || Math.abs(int_12) != int_8 || random_1.nextInt(2) != 0 && int_7 != 0) {
                         BlockPos blockPos_2 = new BlockPos(int_9, int_6, int_11);
                         if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_2)) {
-                           this.setBlockState(modifiableTestableWorld_1, blockPos_2, getLeavesBlockState((IWorld) modifiableTestableWorld_1, origin, blockPos_1));
+                           this.setBlockState(modifiableTestableWorld_1, blockPos_2, WoodRegistries.CHERRY.getLog().getDefaultState());
                         }
                      }
                   }
@@ -79,7 +78,7 @@ public abstract class CherryTreeFeature extends AbstractTreeFeature<DefaultFeatu
 
             for(int_6 = 0; int_6 < size; ++int_6) {
                if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_1.up(int_6))) {
-                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.up(int_6), getLogBlockState((IWorld) modifiableTestableWorld_1, origin, blockPos_1));
+                  this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.up(int_6), WoodRegistries.CHERRY.getLog().getDefaultState());
                }
             }
 
@@ -91,9 +90,5 @@ public abstract class CherryTreeFeature extends AbstractTreeFeature<DefaultFeatu
          return false;
       }
    }
-
-   protected abstract BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos);
-
-   protected abstract BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos);
 
 }

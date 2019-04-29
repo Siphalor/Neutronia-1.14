@@ -1,19 +1,18 @@
 package team.hollow.neutronia.world.gen.feature;
 
 import com.mojang.datafixers.Dynamic;
-import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Heightmap;
-import net.minecraft.world.IWorld;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
+import team.hollow.neutronia.init.WoodRegistries;
 
 import java.util.Random;
 import java.util.Set;
 import java.util.function.Function;
 
-public abstract class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureConfig>
+public class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureConfig>
 {
 	public RedwoodFeature(Function<Dynamic<?>, ? extends DefaultFeatureConfig> function_1)
 	{
@@ -43,7 +42,7 @@ public abstract class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureC
 					for (int z = -k; z < k + 1; ++z)
 					{
 						if (Math.sqrt(Math.pow(x, 2) + Math.pow(z, 2)) < k)
-							setBlockState(set_1, world, blockPos_1.add(x, i, z), getLeavesBlockState((IWorld) world, origin, blockPos_1));
+							setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLeaves().getDefaultState());
 					}
 			}
 
@@ -61,7 +60,7 @@ public abstract class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureC
 					for (int z = -k; z < k + 1; ++z)
 					{
 						if (Math.sqrt(Math.pow(x, 2) + Math.pow(z, 2)) < k - 1)
-							setBlockState(set_1, world, blockPos_1.add(x, i, z), getLeavesBlockState((IWorld) world, origin, blockPos_1));
+							setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLeaves().getDefaultState());
 					}
 			}
 
@@ -70,7 +69,7 @@ public abstract class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureC
 			{
 				for (int x = -1; x < 2; ++x)
 					for (int z = -1; z < 2; ++z)
-						setBlockState(set_1, world, blockPos_1.add(x, i, z), getLogBlockState((IWorld) world, origin, blockPos_1));
+						setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLog().getDefaultState());
 			}
 
 			return true;
@@ -80,9 +79,5 @@ public abstract class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureC
 			return false;
 		}
 	}
-
-	protected abstract BlockState getLeavesBlockState(IWorld world, BlockPos origin, BlockPos pos);
-
-	protected abstract BlockState getLogBlockState(IWorld world, BlockPos origin, BlockPos pos);
 
 }

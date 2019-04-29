@@ -14,6 +14,7 @@ import java.util.Random;
 import java.util.function.Function;
 
 public abstract class MidnightAbstractFeature<T extends FeatureConfig> extends Feature<T> implements IMidnightFeature {
+
     public MidnightAbstractFeature(Function<Dynamic<?>, ? extends T> function_1) {
         super(function_1, false);
     }
