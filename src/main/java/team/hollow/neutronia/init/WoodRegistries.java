@@ -71,7 +71,7 @@ public class WoodRegistries {
                 .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
                 .bookshelf().build();
 
-        new WoodRegistry.Builder(new Identifier("minecraft", "spruce"), Blocks.SPRUCE_PLANKS).chest();
+        new WoodRegistry.Builder(new Identifier("minecraft", "spruce"), Blocks.SPRUCE_PLANKS).chest(WoodRegistry.WoodenChestModels.SPRUCE);
     }
 
 }
