@@ -16,7 +16,7 @@ public class NeutroniaLeavesColors implements ClientModInitializer {
 
     @Override
     public void onInitializeClient() {
-        for(Block leavesBlock : COLORED_LEAVES_LIST) {
+        for (Block leavesBlock : COLORED_LEAVES_LIST) {
             ColorProviderRegistry.BLOCK.register((block, world, pos, layer) -> {
                 BlockColorMapper provider = ColorProviderRegistry.BLOCK.get(Blocks.OAK_LEAVES);
                 return provider == null ? -1 : provider.getColor(block, world, pos, layer);

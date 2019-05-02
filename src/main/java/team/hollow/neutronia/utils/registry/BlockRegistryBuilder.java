@@ -68,7 +68,7 @@ public class BlockRegistryBuilder {
     }
 
     public BlockRegistryBuilder corner() {
-        Block corner = new NeutroniaCornerBlock(baseBlock.getDefaultState(),Block.Settings.copy(baseBlock));
+        Block corner = new NeutroniaCornerBlock(baseBlock.getDefaultState(), Block.Settings.copy(baseBlock));
         RegistryUtils.register(modId, corner, name + "_corner");
         return this;
     }

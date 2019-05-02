@@ -4,14 +4,12 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
 import team.hollow.neutronia.blocks.ChestBaseBlock;
-import team.hollow.neutronia.blocks.entity.ChestBaseBlockEntity;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 import team.hollow.neutronia.client.entity.render.BlackBearEntityRenderer;
 import team.hollow.neutronia.client.entity.render.BrownBearEntityRenderer;
 import team.hollow.neutronia.client.entity.render.SocialVillagerRenderer;
 import team.hollow.neutronia.client.entity.render.VillagerEntityRenderer;
-import team.hollow.neutronia.client.renderer.ChestBaseBlockEntityRenderer;
 import team.hollow.neutronia.client.renderer.SignBlockEntityRenderer;
 import team.hollow.neutronia.client.renderer.StoneChestBlockEntityRenderer;
 import team.hollow.neutronia.entity.SocialVillager;
@@ -30,8 +28,6 @@ public class ClientInit implements ClientModInitializer {
     public void onInitializeClient() {
         BlockEntityRendererRegistry.INSTANCE.register(CustomChestBlockEntity.class, new StoneChestBlockEntityRenderer());
         BlockEntityRendererRegistry.INSTANCE.register(SignBlockEntity.class, new SignBlockEntityRenderer());
-
-        BlockEntityRendererRegistry.INSTANCE.register(ChestBaseBlockEntity.class, new ChestBaseBlockEntityRenderer());
 
         EntityRendererRegistry.INSTANCE.register(VillagerPlusEntity.class, (manager, context) -> new VillagerEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(GrizzlyBearEntity.class, (manager, context) -> new BrownBearEntityRenderer(manager));

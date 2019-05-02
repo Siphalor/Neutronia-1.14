@@ -14,6 +14,9 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
     @ConfigEntry.Category("client")
     @ConfigEntry.Gui.TransitiveObject
     public Client client = new Client();
+    @ConfigEntry.Category("common")
+    @ConfigEntry.Gui.TransitiveObject
+    public Common common = new Common();
 
     @Config(name = "client")
     public static class Client implements ConfigData {
@@ -23,10 +26,6 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
         @Comment("Adds more info about progress on splash screen")
         public boolean splashScreenExtra = false;
     }
-
-    @ConfigEntry.Category("common")
-    @ConfigEntry.Gui.TransitiveObject
-    public Common common = new Common();
 
     @Config(name = "common")
     public static class Common implements ConfigData {

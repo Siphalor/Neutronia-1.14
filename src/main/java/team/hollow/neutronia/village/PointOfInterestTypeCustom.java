@@ -38,7 +38,7 @@ public class PointOfInterestTypeCustom {
             pointOfInterestType.setAccessible(true);
             interestType = pointOfInterestType.newInstance(id, workStationStates, ticketCount, sound);
             Map<BlockState, PointOfInterestType> map = (Map<BlockState, PointOfInterestType>) Reflect.getMemberByType(PointOfInterestType.class, Map.class, null);
-            for(BlockState blockState : workStationStates) {
+            for (BlockState blockState : workStationStates) {
                 Objects.requireNonNull(map).put(blockState, interestType);
             }
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {

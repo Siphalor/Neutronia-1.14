@@ -9,6 +9,8 @@ import team.hollow.neutronia.entity.EntityJungleFrog;
 /**
  * Frog - Undefined
  * Created using Tabula 7.0.0
+ * <p>
+ * This is a helper function from Tabula to set the rotation of model parts
  *//*
 
 public class ModelJungleFrog<T extends EntityJungleFrog> extends EntityModel<T> {
@@ -54,8 +56,8 @@ public class ModelJungleFrog<T extends EntityJungleFrog> extends EntityModel<T> 
 
     */
 /**
-     * This is a helper function from Tabula to set the rotation of model parts
-     *//*
+ * This is a helper function from Tabula to set the rotation of model parts
+ *//*
 
     public void setRotateAngle(Cuboid Cuboid, float x, float y, float z) {
         Cuboid.rotationPointX = x;

@@ -10,9 +10,9 @@ import java.util.Random;
 @Mixin(TradeOffers.Factory.class)
 public interface TradeFactoryMixin extends ConditionalTradeFactory {
 
-	@Override
-	default boolean neutronia$isApplicable(AbstractTraderEntity entity, Random random) {
-		return true;
-	}
+    @Override
+    default boolean neutronia$isApplicable(AbstractTraderEntity entity, Random random) {
+        return true;
+    }
 
 }

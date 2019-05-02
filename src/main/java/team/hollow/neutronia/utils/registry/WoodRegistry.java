@@ -2,6 +2,7 @@ package team.hollow.neutronia.utils.registry;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.block.sapling.SaplingGenerator;
@@ -12,11 +13,20 @@ import team.hollow.abnormalib.blocks.*;
 import team.hollow.abnormalib.utils.registry.RegistryUtils;
 import team.hollow.neutronia.blocks.ChestBaseBlock;
 import team.hollow.neutronia.blocks.NeutroniaWaterloggedSaplingBlock;
+import team.hollow.neutronia.blocks.entity.ChestBaseBlockEntity;
 import team.hollow.neutronia.client.ClientInit;
 import team.hollow.neutronia.client.NeutroniaLeavesColors;
+import team.hollow.neutronia.client.entity.render.model.BaseChestModel;
+import team.hollow.neutronia.client.entity.render.model.chests.ModelLargeSpruceChest;
+import team.hollow.neutronia.client.entity.render.model.chests.ModelSpruceChest;
+import team.hollow.neutronia.client.renderer.ChestBaseBlockEntityRenderer;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class WoodRegistry {
 
+    public Identifier name;
     private Block log;
     private Block wood;
     private Block strippedLog;
@@ -42,13 +52,7 @@ public class WoodRegistry {
     private Block button;
     private Block pressurePlate;
     private Block ladder;
-
-    public Identifier name;
     private SaplingGenerator saplingGenerator;
-
-    public static WoodRegistry getInstance(Identifier name, SaplingGenerator saplingGenerator) {
-        return new WoodRegistry(name, saplingGenerator);
-    }
 
     private WoodRegistry(Identifier name, SaplingGenerator saplingGenerator) {
         this.name = name;
@@ -58,6 +62,10 @@ public class WoodRegistry {
     private WoodRegistry(Identifier name) {
         this.name = name;
         this.saplingGenerator = null;
+    }
+
+    public static WoodRegistry getInstance(Identifier name, SaplingGenerator saplingGenerator) {
+        return new WoodRegistry(name, saplingGenerator);
     }
 
     public Block getLog() {
@@ -170,6 +178,12 @@ public class WoodRegistry {
             woodRegistry = new WoodRegistry(name);
         }
 
+        public Builder(Identifier name, Block planks) {
+            this.name = name;
+            woodRegistry = new WoodRegistry(name);
+            woodRegistry.planks = planks;
+        }
+
         public Builder(Identifier name, SaplingGenerator saplingGenerator) {
             this.name = name;
             woodRegistry = new WoodRegistry(name, saplingGenerator);
@@ -239,6 +253,26 @@ public class WoodRegistry {
             return this;
         }
 
+        public Builder chest(Map<Map<BaseChestModel, BaseChestModel>, String> chestType) {
+            ChestBaseBlock chestBaseBlock = new ChestBaseBlock();
+            woodRegistry.chest = team.hollow.abnormalib.utils.registry.RegistryUtils.register(chestBaseBlock, new Identifier(name.getNamespace(), name.getPath() + "_chest"));
+            chestBaseBlock.setChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + ".png"));
+            chestBaseBlock.setDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_double.png"));
+            chestBaseBlock.setTrappedChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped.png"));
+            chestBaseBlock.setTrappedDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped_double.png"));
+            if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+                ClientInit.CHEST_BLOCKS.add(chestBaseBlock);
+                for(Map<BaseChestModel, BaseChestModel> models : chestType.keySet()) {
+                    models.forEach((baseChestModel, baseChestModel2) -> {
+                        chestBaseBlock.setSingleChest(baseChestModel);
+                        chestBaseBlock.setDoubleChest(baseChestModel2);
+                    });
+                }
+                BlockEntityRendererRegistry.INSTANCE.register(ChestBaseBlockEntity.class, new ChestBaseBlockEntityRenderer(chestBaseBlock.getSingleChest(), chestBaseBlock.getDoubleChest()));
+            }
+            return this;
+        }
+
         public Builder chest() {
             ChestBaseBlock chestBaseBlock = new ChestBaseBlock();
             woodRegistry.chest = team.hollow.abnormalib.utils.registry.RegistryUtils.register(chestBaseBlock, new Identifier(name.getNamespace(), name.getPath() + "_chest"));
@@ -246,7 +280,10 @@ public class WoodRegistry {
             chestBaseBlock.setDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_double.png"));
             chestBaseBlock.setTrappedChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped.png"));
             chestBaseBlock.setTrappedDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped_double.png"));
-            if(FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) ClientInit.CHEST_BLOCKS.add(chestBaseBlock);
+            if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
+                ClientInit.CHEST_BLOCKS.add(chestBaseBlock);
+                BlockEntityRendererRegistry.INSTANCE.register(ChestBaseBlockEntity.class, new ChestBaseBlockEntityRenderer(new BaseChestModel(), new BaseChestModel()));
+            }
             return this;
         }
 
@@ -332,6 +369,28 @@ public class WoodRegistry {
 
         public WoodRegistry build() {
             return woodRegistry;
+        }
+
+    }
+
+    public static class WoodenChestModels {
+        private static Map<Map<BaseChestModel, BaseChestModel>, String> CHESTS = new HashMap<>();
+
+        public static Map<Map<BaseChestModel, BaseChestModel>, String> SPRUCE = register(new ModelSpruceChest(), new ModelLargeSpruceChest(), "spruce");
+
+        public static Map<Map<BaseChestModel, BaseChestModel>, String> register(BaseChestModel single, BaseChestModel doubleChest, String name) {
+            CHESTS.forEach((chestModelMap, s) -> {
+                chestModelMap.forEach((baseChestModel, baseChestModel2) -> {
+                    baseChestModel = single;
+                    baseChestModel2 = doubleChest;
+                });
+                s = name;
+            });
+            return CHESTS;
+        }
+
+        public static Map<Map<BaseChestModel, BaseChestModel>, String> getChests() {
+            return CHESTS;
         }
 
     }

@@ -14,6 +14,7 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.util.shape.VoxelShapes;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.ViewableWorld;
@@ -22,13 +23,13 @@ import net.minecraft.world.World;
 public class PieBlock extends Block {
 
     public static final IntegerProperty BITES;
-    protected static final VoxelShape[] field_10738;
+    protected static final VoxelShape[] OUTLINE_SHAPE;
 
     static {
         BITES = IntegerProperty.create("bites", 0, 3);
-        field_10738 = new VoxelShape[]{
+        OUTLINE_SHAPE = new VoxelShape[]{
                 Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
-                Block.createCuboidShape(3.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
+                VoxelShapes.union(Block.createCuboidShape(1.0D, 0.0D, 1.0D, 7.0D, 8.0D, 15.0D), Block.createCuboidShape(8.0D, 0.0D, 1.0D, 6.0D, 8.0D, 7.0D)),
                 Block.createCuboidShape(5.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
                 Block.createCuboidShape(7.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D)
         };
@@ -40,7 +41,7 @@ public class PieBlock extends Block {
     }
 
     public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
-        return field_10738[blockState_1.get(BITES)];
+        return OUTLINE_SHAPE[blockState_1.get(BITES)];
     }
 
     public boolean activate(BlockState blockState_1, World world_1, BlockPos blockPos_1, PlayerEntity playerEntity_1, Hand hand_1, BlockHitResult blockHitResult_1) {

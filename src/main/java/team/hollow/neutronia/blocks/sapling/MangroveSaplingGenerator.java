@@ -5,12 +5,10 @@ import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import team.hollow.neutronia.world.gen.feature.CherryTreeFeature;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 public class MangroveSaplingGenerator extends SaplingGenerator {
 
-    @Nullable
     @Override
     protected AbstractTreeFeature<DefaultFeatureConfig> createTreeFeature(Random var1) {
         return new CherryTreeFeature(DefaultFeatureConfig::deserialize);

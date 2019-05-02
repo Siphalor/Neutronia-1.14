@@ -5,7 +5,6 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 
-import javax.annotation.Nullable;
 import java.util.Random;
 
 public class CustomSaplingGenerator extends SaplingGenerator {
@@ -19,7 +18,6 @@ public class CustomSaplingGenerator extends SaplingGenerator {
         this.treeFeature = treeFeature;
     }
 
-    @Nullable
     @Override
     protected AbstractTreeFeature<DefaultFeatureConfig> createTreeFeature(Random var1) {
         return treeFeature;

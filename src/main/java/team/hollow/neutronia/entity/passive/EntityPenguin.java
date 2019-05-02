@@ -78,10 +78,17 @@ public class EntityPenguin extends AnimalEntity {
 
     */
 /**
-     * Called frequently so the entity can update its state every tick as
-     * required. For example, zombies and skeletons use this to react to
-     * sunlight and start to burn.
-     *//*
+ * Called frequently so the entity can update its state every tick as
+ * required. For example, zombies and skeletons use this to react to
+ * sunlight and start to burn.
+ * <p>
+ * Checks if the parameter is an item which this animal can be fed to breed
+ * it (wheat, carrots or seeds depending on the animal type)
+ * <p>
+ * (abstract) Protected helper method to read subclass entity data from NBT.
+ * <p>
+ * (abstract) Protected helper method to write subclass entity data to NBT.
+ *//*
 
     public void tick() {
         super.tick();
@@ -140,9 +147,9 @@ public class EntityPenguin extends AnimalEntity {
 
     */
 /**
-     * Checks if the parameter is an item which this animal can be fed to breed
-     * it (wheat, carrots or seeds depending on the animal type)
-     *//*
+ * Checks if the parameter is an item which this animal can be fed to breed
+ * it (wheat, carrots or seeds depending on the animal type)
+ *//*
 
     @Override
     public boolean isBreedingItem(ItemStack stack) {
@@ -156,8 +163,8 @@ public class EntityPenguin extends AnimalEntity {
 
     */
 /**
-     * (abstract) Protected helper method to read subclass entity data from NBT.
-     *//*
+ * (abstract) Protected helper method to read subclass entity data from NBT.
+ *//*
 
     public void readCustomDataFromTag(CompoundTag compound) {
         super.readCustomDataFromTag(compound);
@@ -168,8 +175,8 @@ public class EntityPenguin extends AnimalEntity {
 
     */
 /**
-     * (abstract) Protected helper method to write subclass entity data to NBT.
-     *//*
+ * (abstract) Protected helper method to write subclass entity data to NBT.
+ *//*
 
     public void writeCustomDataToTag(CompoundTag compound) {
         super.writeCustomDataToTag(compound);

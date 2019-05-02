@@ -15,16 +15,16 @@ public class NBlockEntities {
     public static BlockEntityType<ChestBaseBlockEntity> CHEST_BASE_BE;
     public static BlockEntityType<SignBlockEntity> TILE_SIGN;
 
-    public static <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType.Builder<T> builder) {
-        BlockEntityType<T> blockEntityType = builder.build(null);
-        Registry.register(Registry.BLOCK_ENTITY, new Identifier(Neutronia.MOD_ID, name), blockEntityType);
-        return blockEntityType;
-    }
-
     static {
         TILE_STONE_CHEST = register("wooden_chest", BlockEntityType.Builder.create(CustomChestBlockEntity::new));
         CHEST_BASE_BE = register("chest_base_be", BlockEntityType.Builder.create(ChestBaseBlockEntity::new));
         TILE_SIGN = register("sign", BlockEntityType.Builder.create(SignBlockEntity::new));
+    }
+
+    public static <T extends BlockEntity> BlockEntityType<T> register(String name, BlockEntityType.Builder<T> builder) {
+        BlockEntityType<T> blockEntityType = builder.build(null);
+        Registry.register(Registry.BLOCK_ENTITY, new Identifier(Neutronia.MOD_ID, name), blockEntityType);
+        return blockEntityType;
     }
 
 }

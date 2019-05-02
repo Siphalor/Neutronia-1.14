@@ -22,7 +22,7 @@ public class NBlocks {
             WOOD = new Block[WoodType.VANILLA_WOODS.size()], CARVED_PLANKS = new Block[WoodType.values().length]/*, BARRELS = new Block[WoodType.VANILLA_WOODS.size()]*/, WOOD_LANTERNS = new Block[WoodType.values().length],
             LADDERS = new Block[LadderVariants.values().length], LOG_CAMPFIRE = new Block[WoodType.values().length],
             STRIPPED_LOGS = new Block[WoodType.values().length], STRIPPED_WOOD = new Block[WoodType.values().length], LECTERNS = new Block[WoodType.VANILLA_WOODS.size()];
-//    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
+    //    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
     public static final Block[] GLAZED_TERRACOTTA_PILLAR = new Block[GTPVariants.values().length], SOUL_STONE = new Block[4];
     public static final Block PALM_LOG, PALM_WOOD, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING/*, COCONUT*/;
     public static final Block WILLOW_LOG, WILLOW_WOOD, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
@@ -51,17 +51,17 @@ public class NBlocks {
     public static final Block PACKED_ICE_BRICKS, PACKED_ICE_PILLAR, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES;
     public static final Block FROSTED_GLASS, FROSTED_GLASS_PANE;
     public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, WROUGHT_IRON_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
-    public static Block[] PUMPKIN = new Block[CarvedFaceTypes.values().length];
     /*public static final Block PUMPKIN = new PumpkinBlock();
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
     public static final Block MELON = new MelonBlock(), MEL_O_LANTERN = new MelOLanternBlock();*/
     public static final Block CHEESE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cheese_cake", ItemGroup.FOOD);
+    public static final Block COCOA_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cocoa_cake", ItemGroup.FOOD);
     public static final Block CHOCOLATE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "chocolate_cake", ItemGroup.FOOD);
-    public static final Block PUMPKIN_PIE = RegistryUtils.register(new PieBlock(), "pumpkin_pie", ItemGroup.FOOD);
+    public static final Block PUMPKIN_PIE = RegistryUtils.register(new PieBlock(), new Identifier("minecraft", "pumpkin_pie"), ItemGroup.FOOD);
     public static final Block BLUEBERRY_PIE = RegistryUtils.register(new PieBlock(), "blueberry_pie", ItemGroup.FOOD);
     public static final Block SWEET_BERRY_PIE = RegistryUtils.register(new PieBlock(), "sweet_berry_pie", ItemGroup.FOOD);
     public static final Block APPLE_PIE = RegistryUtils.register(new PieBlock(), "apple_pie", ItemGroup.FOOD);
-    public static final Block STICK_BUNDLE, CHORUS_BUNDLE, SUGAR_CANE_BUNDLE, BAMBOO_BUNDLE, NETHER_WART_SACK, COCOA_BEAN_SACK, GUNPOWDER_SACK,
+    public static final Block STICK_BUNDLE, CHORUS_BUNDLE, SUGAR_CANE_BUNDLE, BAMBOO_BUNDLE, UNCUT_BAMBOO_BUNDLE, NETHER_WART_SACK, COCOA_BEAN_SACK, GUNPOWDER_SACK,
             EGG_CRATE, BEETROOT_CRATE, POTATO_CRATE, CARROT_CRATE, APPLE_CRATE, GOLDEN_APPLE_CRATE, CACTUS_BUNDLE;
     public static final Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN/*, BAMBOO_TORCH*/, THATCH;
     public static final Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN/*, ACIDIAN_BARS*/;
@@ -76,8 +76,11 @@ public class NBlocks {
     public static final Block DEAD_PILLAR_CORAL_WALL_FAN, DEAD_LIME_BRAIN_CORAL_WALL_FAN, DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, DEAD_ACAN_CORAL_WALL_FAN, DEAD_ANTIPATHES_CORAL_WALL_FAN, DEAD_STAGHORN_CORAL_WALL_FAN;
     public static final Block PILLAR_CORAL, LIME_BRAIN_CORAL, GREEN_BUBBLE_CORAL, ACAN_CORAL, ANTIPATHES_CORAL, STAGHORN_CORAL;
     public static final Block DEAD_PILLAR_CORAL, DEAD_LIME_BRAIN_CORAL, DEAD_GREEN_BUBBLE_CORAL, DEAD_ACAN_CORAL, DEAD_ANTIPATHES_CORAL, DEAD_STAGHORN_CORAL;
-//    public static final Block BLUE_BERRY_BUSH, GOOSEBERRY_BUSH, WITHER_BERRY_BUSH, GREEN_GRAPE_BUSH, PURPLE_GRAPE_BUSH;
+    //    public static final Block BLUE_BERRY_BUSH, GOOSEBERRY_BUSH, WITHER_BERRY_BUSH, GREEN_GRAPE_BUSH, PURPLE_GRAPE_BUSH;
     public static final Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN, ICE_LANTERN;
+    public static Block[] PUMPKIN = new Block[CarvedFaceTypes.values().length];
+    public static final Block ICE_SAW;
+    public static final Block SAWMILL;
 
     static {
         DEAD_PILLAR_CORAL_BLOCK = RegistryUtils.register(new NeutroniaBaseDeadCoralBlockBlock(), new Identifier(MOD_ID, "dead_pillar_coral_block"), ItemGroup.BUILDING_BLOCKS);
@@ -150,6 +153,9 @@ public class NBlocks {
 
         /*REDSTONE_IRON_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_iron_lantern");
         REDSTONE_GOLD_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
+
+        ICE_SAW = RegistryUtils.register(new team.hollow.abnormalib.blocks.BaseModBlock(Material.ICE), new Identifier(MOD_ID, "ice_saw"));
+        SAWMILL = RegistryUtils.register(new team.hollow.abnormalib.blocks.BaseModBlock(Material.ICE), new Identifier(MOD_ID, "sawmill"));
 
         for (WoodType woodType : WoodType.VANILLA_WOODS) {
             if (woodType == WoodType.OAK) continue;
@@ -495,6 +501,7 @@ public class NBlocks {
         CHORUS_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP), "chorus_fruit_bundle");
         SUGAR_CANE_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.ORGANIC).sounds(BlockSoundGroup.CROP), "sugar_cane_bundle");
         BAMBOO_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.BAMBOO).sounds(BlockSoundGroup.BAMBOO), "bamboo_bundle");
+        UNCUT_BAMBOO_BUNDLE = new NeutroniaPillarBlock(FabricBlockSettings.of(Material.BAMBOO).sounds(BlockSoundGroup.BAMBOO), "bamboo_bundle");
         CACTUS_BUNDLE = new CactusBundleBlock();
 
         NETHER_WART_SACK = new NeutroniaBaseBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL), "nether_wart_sack");

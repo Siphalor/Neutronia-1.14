@@ -10,7 +10,9 @@
     "entity.ZombieVillagerEntityMixin",
     "village.TradeFactoryMixin",
     "world.VillageGeneratorMixin",
-    "world.AddHillsLayerMixin"
+    "world.AddHillsLayerMixin",
+    "world.DefaultBiomeFeaturesMixin",
+    "entity.ParrotEntityMixin"
   ],
   "client": [
     "client.ItemDynamicRendererMixin",
@@ -20,7 +22,8 @@
     "client.progress.MixinMinecraftClient",
     "client.progress.MixinModelLoader",
     "client.progress.MixinSpriteAtlasTexture",
-    "client.VillagerResemblingModelMixin"
+    "client.VillagerResemblingModelMixin",
+    "client.ParrotEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

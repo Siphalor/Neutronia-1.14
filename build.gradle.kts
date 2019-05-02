@@ -44,8 +44,8 @@ dependencies {
 	mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+build.${Fabric.Yarn.version}")
 	modCompile(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
 
-	modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
-	include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
+	modCompile(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version + ".+")
+	include(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version + ".+")
 
 	modCompile(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
 	include(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)

@@ -30,7 +30,7 @@ public class ItemDynamicRendererMixin {
         Item item = stack.getItem();
         if (item instanceof BlockItem) {
             Block block = ((BlockItem) item).getBlock();
-            if(block instanceof ChestBaseBlock) {
+            if (block instanceof ChestBaseBlock) {
                 BlockEntityRenderDispatcher.INSTANCE.renderEntity(new ChestBaseBlockEntity((ChestBaseBlock) block));
             }
             if (block == NBlocks.WOODEN_CHESTS[0]) {

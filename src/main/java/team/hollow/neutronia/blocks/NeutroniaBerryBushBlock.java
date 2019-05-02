@@ -34,13 +34,14 @@ public class NeutroniaBerryBushBlock extends PlantBlock implements Fertilizable 
     public static final IntegerProperty AGE;
     private static final VoxelShape SMALL_SHAPE;
     private static final VoxelShape LARGE_SHAPE;
-    private Item berry;
 
     static {
         AGE = Properties.AGE_3;
         SMALL_SHAPE = Block.createCuboidShape(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D);
         LARGE_SHAPE = Block.createCuboidShape(1.0D, 0.0D, 1.0D, 15.0D, 16.0D, 15.0D);
     }
+
+    private Item berry;
 
     public NeutroniaBerryBushBlock(Item berry) {
         super(FabricBlockSettings.of(Material.PLANT).ticksRandomly().noCollision().sounds(BlockSoundGroup.SWEET_BERRY_BUSH).build());

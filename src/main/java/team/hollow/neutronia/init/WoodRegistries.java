@@ -1,5 +1,6 @@
 package team.hollow.neutronia.init;
 
+import net.minecraft.block.Blocks;
 import net.minecraft.block.sapling.OakSaplingGenerator;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.blocks.sapling.*;
@@ -69,6 +70,8 @@ public class WoodRegistries {
                 .planks().log().wood().coloredLeaves().sapling().fence().fenceGate().slab().stairs()
                 .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
                 .bookshelf().build();
+
+        new WoodRegistry.Builder(new Identifier("minecraft", "spruce"), Blocks.SPRUCE_PLANKS).chest();
     }
 
 }

@@ -7,6 +7,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.BlockView;
 import team.hollow.neutronia.blocks.entity.ChestBaseBlockEntity;
+import team.hollow.neutronia.client.entity.render.model.BaseChestModel;
 
 public class ChestBaseBlock extends ChestBlock {
 
@@ -14,6 +15,8 @@ public class ChestBaseBlock extends ChestBlock {
     private Identifier doubleChestTexture;
     private Identifier trappedChestTexture;
     private Identifier trappedDoubleChestTexture;
+    private BaseChestModel singleChest = new BaseChestModel();
+    private BaseChestModel doubleChest = new BaseChestModel();
 
     public ChestBaseBlock() {
         super(FabricBlockSettings.of(Material.STONE).hardness(3.0f).resistance(30.0f).build());
@@ -62,6 +65,24 @@ public class ChestBaseBlock extends ChestBlock {
 
     public ChestBaseBlock setTrappedDoubleChestTexture(Identifier trappedDoubleChestTexture) {
         this.trappedDoubleChestTexture = trappedDoubleChestTexture;
+        return this;
+    }
+
+    public BaseChestModel getSingleChest() {
+        return singleChest;
+    }
+
+    public ChestBaseBlock setSingleChest(BaseChestModel singleChest) {
+        this.singleChest = singleChest;
+        return this;
+    }
+
+    public BaseChestModel getDoubleChest() {
+        return doubleChest;
+    }
+
+    public ChestBaseBlock setDoubleChest(BaseChestModel doubleChest) {
+        this.doubleChest = doubleChest;
         return this;
     }
 

@@ -26,39 +26,40 @@ import org.spongepowered.asm.mixin.injection.Slice;
 
 @Mixin(WorldRenderer.class)
 abstract class WorldRendererMixin {
-  private WorldRendererMixin() {}
+    private WorldRendererMixin() {
+    }
 
-  @Redirect(
-    method = "setUpTerrain",
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;method_3661()Z"
+    @Redirect(
+            method = "setUpTerrain",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;method_3661()Z"
+            )
     )
-  )
-  private boolean setUpTerrain$method_3661(final ChunkRenderer renderer) {
-    return false;
-  }
+    private boolean setUpTerrain$method_3661(final ChunkRenderer renderer) {
+        return false;
+    }
 
-  @ModifyVariable(
-    method = "setUpTerrain",
-    at = @At(
-      value = "INVOKE",
-      target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;method_3661()Z",
-      shift = At.Shift.BEFORE
-    ),
-    slice = @Slice(
-      from = @At(
-        value = "INVOKE",
-        target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;getOrigin()Lnet/minecraft/util/math/BlockPos;"
-      ),
-      to = @At(
-        value = "INVOKE",
-        target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;method_3661()Z"
-      )
-    ),
-    ordinal = 1
-  )
-  private boolean setUpTerrain$boolean(final boolean isInRange) {
-    return false;
-  }
+    @ModifyVariable(
+            method = "setUpTerrain",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;method_3661()Z",
+                    shift = At.Shift.BEFORE
+            ),
+            slice = @Slice(
+                    from = @At(
+                            value = "INVOKE",
+                            target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;getOrigin()Lnet/minecraft/util/math/BlockPos;"
+                    ),
+                    to = @At(
+                            value = "INVOKE",
+                            target = "Lnet/minecraft/client/render/chunk/ChunkRenderer;method_3661()Z"
+                    )
+            ),
+            ordinal = 1
+    )
+    private boolean setUpTerrain$boolean(final boolean isInRange) {
+        return false;
+    }
 }

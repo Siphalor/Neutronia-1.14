@@ -153,8 +153,26 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Returns the volume for the sounds this mob makes.
-     *//*
+ * Returns the volume for the sounds this mob makes.
+ * <p>
+ * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
+ * use this to react to sunlight and start to burn.
+ * <p>
+ * Called to update the entity's position/logic.
+ * <p>
+ * Called when the entity is attacked.
+ * <p>
+ * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
+ * the animal type)
+ * <p>
+ * Will return how many at most can spawn in a chunk at once.
+ * <p>
+ * Determines whether this wolf is angry or not.
+ * <p>
+ * Sets whether this wolf is angry or not.
+ * <p>
+ * Returns true if the mob is currently able to mate with the specified mob.
+ *//*
 
     protected float getSoundVolume() {
         return 0.4F;
@@ -162,9 +180,9 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
-     * use this to react to sunlight and start to burn.
-     *//*
+ * Called frequently so the entity can update its state every tick as required. For example, zombies and skeletons
+ * use this to react to sunlight and start to burn.
+ *//*
 
     public void updateMovement() {
         super.updateMovement();
@@ -183,8 +201,8 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Called to update the entity's position/logic.
-     *//*
+ * Called to update the entity's position/logic.
+ *//*
 
     public void tick() {
         super.tick();
@@ -267,8 +285,8 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Called when the entity is attacked.
-     *//*
+ * Called when the entity is attacked.
+ *//*
 
     public boolean damage(DamageSource source, float amount) {
         if (this.isInvulnerableTo(source)) {
@@ -393,9 +411,9 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
-     * the animal type)
-     *//*
+ * Checks if the parameter is an item which this animal can be fed to breed it (wheat, carrots or seeds depending on
+ * the animal type)
+ *//*
 
     public boolean isBreedingItem(ItemStack stack) {
         Item item_1 = stack.getItem();
@@ -404,8 +422,8 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Will return how many at most can spawn in a chunk at once.
-     *//*
+ * Will return how many at most can spawn in a chunk at once.
+ *//*
 
     public int getMaxSpawnedInChunk() {
         return 8;
@@ -413,8 +431,8 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Determines whether this wolf is angry or not.
-     *//*
+ * Determines whether this wolf is angry or not.
+ *//*
 
     public boolean isAngry() {
         return (this.dataTracker.get(TAMEABLE_FLAGS) & 2) != 0;
@@ -422,8 +440,8 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Sets whether this wolf is angry or not.
-     *//*
+ * Sets whether this wolf is angry or not.
+ *//*
 
     public void setAngry(boolean angry) {
         byte b0 = this.dataTracker.get(TAMEABLE_FLAGS);
@@ -456,8 +474,8 @@ public class ArcticWolfEntity extends TameableEntity {
 
     */
 /**
-     * Returns true if the mob is currently able to mate with the specified mob.
-     *//*
+ * Returns true if the mob is currently able to mate with the specified mob.
+ *//*
 
     public boolean canBreedWith(AnimalEntity otherAnimal) {
         if (otherAnimal == this) {

@@ -1,7 +1,6 @@
 {
   "replace": false,
   "values": [
-    "#minecraft:walls",
     "neutronia:chiseled_prismarine_wall",
     "neutronia:chiseled_prismarine_bricks_wall",
     "neutronia:chiseled_dark_prismarine_wall",

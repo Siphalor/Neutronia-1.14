@@ -47,11 +47,11 @@ public class NModMenuCompat implements ModMenuApi {
         randomCategory.add(new TextListEntry("x", "§eThis is a promotional message brought to you by Danielshe. Shop your favorite Lil Tater at " + TextFormat.BOLD + TextFormat.UNDERLINE + TextFormat.OBFUSCATED + "store.liltater.com!",
                 -1, () -> Optional.of(new String[]{"§kThis is an example tooltip."})));
         randomCategory.add(new SubCategoryListEntry("§9Sub-Sub-Category",
-                ImmutableList.of(
-                        new IntegerSliderEntry("Integer Slider", 2, 99, 99, "text.cloth-config.reset_value",
-                                () -> 2, null),
-                        new IntegerSliderEntry("Integer Slider 2", 2, 99, 99, "text.cloth-config.reset_value",
-                                () -> 4, null)),
+                        ImmutableList.of(
+                                new IntegerSliderEntry("Integer Slider", 2, 99, 99, "text.cloth-config.reset_value",
+                                        () -> 2, null),
+                                new IntegerSliderEntry("Integer Slider 2", 2, 99, 99, "text.cloth-config.reset_value",
+                                        () -> 4, null)),
                         false
                 )
         );

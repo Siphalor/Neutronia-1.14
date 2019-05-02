@@ -6,11 +6,11 @@ object Jetbrains {
 
 object Fabric {
     object Loader {
-        const val version = "0.4.4+build.+" // https://maven.fabricmc.net/net/fabricmc/fabric-loader/
+        const val version = "0.4.6+build.+" // https://maven.fabricmc.net/net/fabricmc/fabric-loader/
     }
 
     object API {
-        const val version = "0.2.7+build"
+        const val version = "0.3.0-pre+build"
     }
 
     object Loom {
