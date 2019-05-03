@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "neutronia:block/birch_corner"
+    },
+    "facing=south": {
+      "model": "neutronia:block/birch_corner",
+      "y": 180
+    },
+    "facing=east": {
+      "model": "neutronia:block/birch_corner",
+      "y": 90
+    },
+    "facing=west": {
+      "model": "neutronia:block/birch_corner",
+      "y": 270
+    }
+  }
+}

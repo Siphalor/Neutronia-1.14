@@ -7,20 +7,16 @@ import net.minecraft.block.ChestBlock;
 import net.minecraft.block.enums.ChestType;
 import net.minecraft.client.block.ChestAnimationProgress;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
+import net.minecraft.client.render.entity.model.ChestDoubleEntityModel;
+import net.minecraft.client.render.entity.model.ChestEntityModel;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import team.hollow.neutronia.blocks.entity.ChestBaseBlockEntity;
-import team.hollow.neutronia.client.entity.render.model.BaseChestModel;
 
 public class ChestBaseBlockEntityRenderer extends BlockEntityRenderer<ChestBaseBlockEntity> {
 
-    private final BaseChestModel single;
-    private final BaseChestModel doubleChest;
-
-    public ChestBaseBlockEntityRenderer(BaseChestModel single, BaseChestModel doubleChest) {
-        this.single = single;
-        this.doubleChest = doubleChest;
-    }
+    private final ChestEntityModel modelSingleChest = new ChestEntityModel();
+    private final ChestEntityModel modelDoubleChest = new ChestDoubleEntityModel();
 
     @Override
     public void render(ChestBaseBlockEntity chestBaseBlockEntity, double var2, double var4, double var6, float var8, int var9) {
@@ -31,7 +27,7 @@ public class ChestBaseBlockEntityRenderer extends BlockEntityRenderer<ChestBaseB
         ChestType chestType = blockState.contains(ChestBlock.CHEST_TYPE) ? blockState.get(ChestBlock.CHEST_TYPE) : ChestType.SINGLE;
         if (chestType != ChestType.LEFT) {
             boolean var12 = chestType != ChestType.SINGLE;
-            BaseChestModel chestEntityModel = this.getTexture(chestBaseBlockEntity, var9, var12);
+            ChestEntityModel chestEntityModel = this.getTexture(chestBaseBlockEntity, var9, var12);
             if (var9 >= 0) {
                 GlStateManager.matrixMode(5890);
                 GlStateManager.pushMatrix();
@@ -54,7 +50,7 @@ public class ChestBaseBlockEntityRenderer extends BlockEntityRenderer<ChestBaseB
             }
 
             this.animate(chestBaseBlockEntity, var8, chestEntityModel);
-            chestEntityModel.render();
+            chestEntityModel.method_2799();
             GlStateManager.disableRescaleNormal();
             GlStateManager.popMatrix();
             GlStateManager.color4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -67,7 +63,7 @@ public class ChestBaseBlockEntityRenderer extends BlockEntityRenderer<ChestBaseB
         }
     }
 
-    private BaseChestModel getTexture(ChestBaseBlockEntity var1, int var2, boolean var3) {
+    private ChestEntityModel getTexture(ChestBaseBlockEntity var1, int var2, boolean var3) {
         Identifier texture;
         if (var2 >= 0) {
             texture = DESTROY_STAGE_TEXTURES[var2];
@@ -75,13 +71,13 @@ public class ChestBaseBlockEntityRenderer extends BlockEntityRenderer<ChestBaseB
             texture = var3 ? var1.baseBlock.getDoubleModelTexture() : var1.baseBlock.getModelTexture();
         }
         this.bindTexture(texture);
-        return var3 ? this.single : this.doubleChest;
+        return var3 ? this.modelDoubleChest : this.modelSingleChest;
     }
 
-    private void animate(ChestBaseBlockEntity chestBaseBlockEntity, float var2, BaseChestModel chestEntityModel) {
+    private void animate(ChestBaseBlockEntity chestBaseBlockEntity, float var2, ChestEntityModel chestEntityModel) {
         float animationProgress = ((ChestAnimationProgress) chestBaseBlockEntity).getAnimationProgress(var2);
         animationProgress = 1.0F - animationProgress;
         animationProgress = 1.0F - animationProgress * animationProgress * animationProgress;
-        chestEntityModel.getLid().pitch = -(animationProgress * 1.5707964F);
+        chestEntityModel.method_2798().pitch = -(animationProgress * 1.5707964F);
     }
 }

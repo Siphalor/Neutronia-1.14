@@ -22,6 +22,13 @@ public class WoodRegistries {
     public static WoodRegistry GABON_EBONY;
     public static WoodRegistry REDWOOD;
 
+    public static WoodRegistry ACACIA;
+    public static WoodRegistry BIRCH;
+    public static WoodRegistry DARK_OAK;
+    public static WoodRegistry JUNGLE;
+    public static WoodRegistry OAK;
+    public static WoodRegistry SPRUCE;
+
     static {
         PALM = new WoodRegistry.Builder(new Identifier(MOD_ID, "palm"), new PalmSaplingGenerator())
                 .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
@@ -41,7 +48,7 @@ public class WoodRegistries {
                 .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
                 .bookshelf().build();
 
-        WENGE = new WoodRegistry.Builder(new Identifier(MOD_ID, "wenge"))
+        WENGE = new WoodRegistry.Builder(new Identifier(MOD_ID, "wenge"), new OakSaplingGenerator())
                 .planks().log().wood().leaves().sapling().fence().fenceGate().slab().stairs()
                 .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
                 .bookshelf().build();
@@ -71,7 +78,29 @@ public class WoodRegistries {
                 .strippedLog().strippedWood().door().trapdoor().paperLantern().ladder().chest()
                 .bookshelf().build();
 
-        new WoodRegistry.Builder(new Identifier("minecraft", "spruce"), Blocks.SPRUCE_PLANKS).chest(WoodRegistry.WoodenChestModels.SPRUCE);
+        ACACIA = new WoodRegistry.Builder(new Identifier(MOD_ID, "acacia"), Blocks.ACACIA_PLANKS)
+                .chest().bookshelf().paperLantern().patternedPlanks().carvedPlanks()
+                .logCampfire().strippedLogCampfire().siding().post().corner().build();
+
+        BIRCH = new WoodRegistry.Builder(new Identifier(MOD_ID, "birch"), Blocks.BIRCH_PLANKS)
+                .chest().bookshelf().paperLantern().patternedPlanks().carvedPlanks()
+                .logCampfire().strippedLogCampfire().siding().post().corner().build();
+
+        DARK_OAK = new WoodRegistry.Builder(new Identifier(MOD_ID, "dark_oak"), Blocks.DARK_OAK_PLANKS)
+                .chest().bookshelf().paperLantern().patternedPlanks().carvedPlanks()
+                .logCampfire().strippedLogCampfire().siding().post().corner().build();
+
+        JUNGLE = new WoodRegistry.Builder(new Identifier(MOD_ID, "jungle"), Blocks.JUNGLE_PLANKS)
+                .chest().bookshelf().paperLantern().patternedPlanks().carvedPlanks()
+                .logCampfire().strippedLogCampfire().siding().post().corner().build();
+
+        OAK = new WoodRegistry.Builder(new Identifier(MOD_ID, "oak"), Blocks.OAK_PLANKS)
+                .paperLantern().patternedPlanks().carvedPlanks().strippedLogCampfire()
+                .siding().post().corner().build();
+
+        SPRUCE = new WoodRegistry.Builder(new Identifier(MOD_ID, "spruce"), Blocks.SPRUCE_PLANKS)
+                .chest().bookshelf().paperLantern().patternedPlanks().carvedPlanks()
+                .logCampfire().strippedLogCampfire().siding().post().corner().build();
     }
 
 }

@@ -8,6 +8,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import team.hollow.abnormalib.blocks.FlowerPotBaseBlock;
 import team.hollow.neutronia.blocks.*;
+import team.hollow.neutronia.blocks.melons.BaseModBlock;
 import team.hollow.neutronia.blocks.sapling.PalmSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.WillowSaplingGenerator;
 import team.hollow.neutronia.enums.*;
@@ -55,7 +56,7 @@ public class NBlocks {
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
     public static final Block MELON = new MelonBlock(), MEL_O_LANTERN = new MelOLanternBlock();*/
     public static final Block CHEESE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cheese_cake", ItemGroup.FOOD);
-    public static final Block COCOA_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cocoa_cake", ItemGroup.FOOD);
+//    public static final Block COCOA_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cocoa_cake", ItemGroup.FOOD);
     public static final Block CHOCOLATE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "chocolate_cake", ItemGroup.FOOD);
     public static final Block PUMPKIN_PIE = RegistryUtils.register(new PieBlock(), new Identifier("minecraft", "pumpkin_pie"), ItemGroup.FOOD);
     public static final Block BLUEBERRY_PIE = RegistryUtils.register(new PieBlock(), "blueberry_pie", ItemGroup.FOOD);
@@ -154,8 +155,8 @@ public class NBlocks {
         /*REDSTONE_IRON_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_iron_lantern");
         REDSTONE_GOLD_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
 
-        ICE_SAW = RegistryUtils.register(new team.hollow.abnormalib.blocks.BaseModBlock(Material.ICE), new Identifier(MOD_ID, "ice_saw"));
-        SAWMILL = RegistryUtils.register(new team.hollow.abnormalib.blocks.BaseModBlock(Material.ICE), new Identifier(MOD_ID, "sawmill"));
+        ICE_SAW = RegistryUtils.register(new BaseModBlock(Material.ICE), new Identifier(MOD_ID, "ice_saw"));
+        SAWMILL = RegistryUtils.register(new BaseModBlock(Material.ICE), new Identifier(MOD_ID, "sawmill"));
 
         for (WoodType woodType : WoodType.VANILLA_WOODS) {
             if (woodType == WoodType.OAK) continue;

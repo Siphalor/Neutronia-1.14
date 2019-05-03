@@ -2,19 +2,23 @@ package team.hollow.neutronia.utils.registry;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.block.*;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
+import team.hollow.abnormalib.blocks.BaseModBlock;
+import team.hollow.abnormalib.blocks.CampfireBaseBlock;
+import team.hollow.abnormalib.blocks.CustomLadderBlock;
 import team.hollow.abnormalib.blocks.*;
 import team.hollow.abnormalib.utils.registry.RegistryUtils;
-import team.hollow.neutronia.blocks.ChestBaseBlock;
-import team.hollow.neutronia.blocks.NeutroniaWaterloggedSaplingBlock;
+import team.hollow.neutronia.Neutronia;
+import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.blocks.entity.ChestBaseBlockEntity;
-import team.hollow.neutronia.client.ClientInit;
 import team.hollow.neutronia.client.NeutroniaLeavesColors;
 import team.hollow.neutronia.client.entity.render.model.BaseChestModel;
 import team.hollow.neutronia.client.entity.render.model.chests.ModelLargeSpruceChest;
@@ -52,6 +56,9 @@ public class WoodRegistry {
     private Block button;
     private Block pressurePlate;
     private Block ladder;
+    private Block corner;
+    private Block post;
+    private Block siding;
     private SaplingGenerator saplingGenerator;
 
     private WoodRegistry(Identifier name, SaplingGenerator saplingGenerator) {
@@ -168,202 +175,222 @@ public class WoodRegistry {
         return ladder;
     }
 
+    public Block getCorner() {
+        return corner;
+    }
+
+    public Block getPost() {
+        return post;
+    }
+
+    public Block getSiding() {
+        return siding;
+    }
+
     public static class Builder {
 
         public Identifier name;
         private WoodRegistry woodRegistry;
+        private ItemGroup itemGroup;
 
         public Builder(Identifier name) {
             this.name = name;
             woodRegistry = new WoodRegistry(name);
+            this.itemGroup = FabricItemGroupBuilder.create(new Identifier(Neutronia.MOD_ID, String.format("%s_blocks", name.getPath()))).icon(() -> new ItemStack(woodRegistry.planks)).build();
         }
 
         public Builder(Identifier name, Block planks) {
             this.name = name;
             woodRegistry = new WoodRegistry(name);
             woodRegistry.planks = planks;
+            this.itemGroup = FabricItemGroupBuilder.create(new Identifier(Neutronia.MOD_ID, String.format("%s_blocks", name.getPath()))).icon(() -> new ItemStack(planks)).build();
+        }
+
+        public Builder(Identifier name, Block planks, ItemGroup itemGroup) {
+            this.name = name;
+            woodRegistry = new WoodRegistry(name);
+            woodRegistry.planks = planks;
+            this.itemGroup = itemGroup;
         }
 
         public Builder(Identifier name, SaplingGenerator saplingGenerator) {
             this.name = name;
             woodRegistry = new WoodRegistry(name, saplingGenerator);
+            this.itemGroup = ItemGroup.BUILDING_BLOCKS;
         }
 
         public Builder log() {
-            woodRegistry.log = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()),
-                    new Identifier(name.getNamespace(), name.getPath() + "_log"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.log = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()),
+                    new Identifier(name.getNamespace(), name.getPath() + "_log"), itemGroup);
             return this;
         }
 
         public Builder wood() {
-            woodRegistry.wood = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).hardness(2.0F).sounds(BlockSoundGroup.WOOD)),
-                    new Identifier(name.getNamespace(), name.getPath() + "_wood"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.wood = RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).hardness(2.0F).sounds(BlockSoundGroup.WOOD)),
+                    new Identifier(name.getNamespace(), name.getPath() + "_wood"), itemGroup);
             return this;
         }
 
         public Builder strippedLog() {
-            woodRegistry.strippedLog = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F).sounds(BlockSoundGroup.WOOD)
-                    .build()), new Identifier(name.getNamespace(), "stripped_" + name.getPath() + "_log"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.strippedLog = RegistryUtils.register(new PillarBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F).sounds(BlockSoundGroup.WOOD)
+                    .build()), new Identifier(name.getNamespace(), "stripped_" + name.getPath() + "_log"), itemGroup);
             return this;
         }
 
         public Builder strippedWood() {
-            woodRegistry.strippedWood = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).hardness(2.0F).sounds(BlockSoundGroup.WOOD)),
-                    new Identifier(name.getNamespace(), "stripped_" + name.getPath() + "_wood"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.strippedWood = RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).hardness(2.0F).sounds(BlockSoundGroup.WOOD)),
+                    new Identifier(name.getNamespace(), "stripped_" + name.getPath() + "_wood"), itemGroup);
             return this;
         }
 
         public Builder stairs() {
-            woodRegistry.stairs = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new StairsBaseBlock(woodRegistry.planks.getDefaultState()), new Identifier(name.getNamespace(), name.getPath() + "_stairs"),
-                    ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.stairs = RegistryUtils.register(new StairsBaseBlock(woodRegistry.planks.getDefaultState()), new Identifier(name.getNamespace(),
+                            name.getPath() + "_stairs"), itemGroup);
             return this;
         }
 
         public Builder slab() {
-            woodRegistry.slab = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new SlabBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_slab"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.slab = RegistryUtils.register(new SlabBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_slab"),
+                    itemGroup);
             return this;
         }
 
         public Builder planks() {
-            woodRegistry.planks = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F)
-                    .sounds(BlockSoundGroup.WOOD).build()), new Identifier(name.getNamespace(), name.getPath() + "_planks"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.planks = RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F)
+                    .sounds(BlockSoundGroup.WOOD).build()), new Identifier(name.getNamespace(), name.getPath() + "_planks"), itemGroup);
             return this;
         }
 
         public Builder patternedPlanks() {
-            woodRegistry.patternedPlanks = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F)
-                    .sounds(BlockSoundGroup.WOOD).build()), new Identifier(name.getNamespace(), "patterned_" + name.getPath() + "_planks"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.patternedPlanks = RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F)
+                    .sounds(BlockSoundGroup.WOOD).build()), new Identifier(name.getNamespace(), "patterned_" + name.getPath() + "_planks"), itemGroup);
             return this;
         }
 
         public Builder carvedPlanks() {
-            woodRegistry.carvedPlanks = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F)
-                    .sounds(BlockSoundGroup.WOOD).build()), new Identifier(name.getNamespace(), "carved_" + name.getPath() + "_planks"), ItemGroup.BUILDING_BLOCKS);
+            woodRegistry.carvedPlanks = RegistryUtils.register(new BaseModBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).strength(2.0F, 3.0F)
+                    .sounds(BlockSoundGroup.WOOD).build()), new Identifier(name.getNamespace(), "carved_" + name.getPath() + "_planks"), itemGroup);
             return this;
         }
 
         public Builder leaves() {
-            woodRegistry.leaves = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new LeavesBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_leaves"));
+            woodRegistry.leaves = RegistryUtils.register(new LeavesBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_leaves"), itemGroup);
             return this;
         }
 
         public Builder coloredLeaves() {
-            woodRegistry.leaves = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new LeavesBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_leaves"));
+            woodRegistry.leaves = RegistryUtils.register(new LeavesBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_leaves"), itemGroup);
             NeutroniaLeavesColors.COLORED_LEAVES_LIST.add(woodRegistry.leaves);
-            return this;
-        }
-
-        public Builder chest(Map<Map<BaseChestModel, BaseChestModel>, String> chestType) {
-            ChestBaseBlock chestBaseBlock = new ChestBaseBlock();
-            woodRegistry.chest = team.hollow.abnormalib.utils.registry.RegistryUtils.register(chestBaseBlock, new Identifier(name.getNamespace(), name.getPath() + "_chest"));
-            chestBaseBlock.setChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + ".png"));
-            chestBaseBlock.setDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_double.png"));
-            chestBaseBlock.setTrappedChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped.png"));
-            chestBaseBlock.setTrappedDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped_double.png"));
-            if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-                ClientInit.CHEST_BLOCKS.add(chestBaseBlock);
-                for(Map<BaseChestModel, BaseChestModel> models : chestType.keySet()) {
-                    models.forEach((baseChestModel, baseChestModel2) -> {
-                        chestBaseBlock.setSingleChest(baseChestModel);
-                        chestBaseBlock.setDoubleChest(baseChestModel2);
-                    });
-                }
-                BlockEntityRendererRegistry.INSTANCE.register(ChestBaseBlockEntity.class, new ChestBaseBlockEntityRenderer(chestBaseBlock.getSingleChest(), chestBaseBlock.getDoubleChest()));
-            }
             return this;
         }
 
         public Builder chest() {
             ChestBaseBlock chestBaseBlock = new ChestBaseBlock();
-            woodRegistry.chest = team.hollow.abnormalib.utils.registry.RegistryUtils.register(chestBaseBlock, new Identifier(name.getNamespace(), name.getPath() + "_chest"));
+            woodRegistry.chest = RegistryUtils.register(chestBaseBlock, new Identifier(name.getNamespace(), name.getPath() + "_chest"), itemGroup);
             chestBaseBlock.setChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + ".png"));
             chestBaseBlock.setDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_double.png"));
             chestBaseBlock.setTrappedChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped.png"));
             chestBaseBlock.setTrappedDoubleChestTexture(new Identifier(name.getNamespace(), "textures/entity/chest/" + name.getPath() + "_trapped_double.png"));
             if (FabricLoader.getInstance().getEnvironmentType() == EnvType.CLIENT) {
-                ClientInit.CHEST_BLOCKS.add(chestBaseBlock);
-                BlockEntityRendererRegistry.INSTANCE.register(ChestBaseBlockEntity.class, new ChestBaseBlockEntityRenderer(new BaseChestModel(), new BaseChestModel()));
+                BlockEntityRendererRegistry.INSTANCE.register(ChestBaseBlockEntity.class, new ChestBaseBlockEntityRenderer());
             }
             return this;
         }
 
         public Builder sapling() {
-            woodRegistry.sapling = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new SaplingBaseBlock(woodRegistry.saplingGenerator), new Identifier(name.getNamespace(), name.getPath() + "_sapling"));
+            woodRegistry.sapling = RegistryUtils.register(new SaplingBaseBlock(woodRegistry.saplingGenerator), new Identifier(name.getNamespace(), name.getPath() + "_sapling"), itemGroup);
             return this;
         }
 
         public Builder waterloggedSapling() {
-            woodRegistry.sapling = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new NeutroniaWaterloggedSaplingBlock(woodRegistry.saplingGenerator), new Identifier(name.getNamespace(), name.getPath() +
-                    "_underwater_sapling"));
+            woodRegistry.sapling = RegistryUtils.register(new NeutroniaWaterloggedSaplingBlock(woodRegistry.saplingGenerator), new Identifier(name.getNamespace(), name.getPath() +
+                    "_underwater_sapling"), itemGroup);
             return this;
         }
 
         public Builder fence() {
-            woodRegistry.fence = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new FenceBaseBlock(woodRegistry.planks.getDefaultState()), new Identifier(name.getNamespace(), name.getPath() + "_fence"));
+            woodRegistry.fence = RegistryUtils.register(new FenceBaseBlock(woodRegistry.planks.getDefaultState()), new Identifier(name.getNamespace(), name.getPath() + "_fence"), itemGroup);
             return this;
         }
 
         public Builder fenceGate() {
-            woodRegistry.fenceGate = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new FenceGateBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_fence_gate"), ItemGroup.REDSTONE);
+            woodRegistry.fenceGate = RegistryUtils.register(new FenceGateBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_fence_gate"), itemGroup);
             return this;
         }
 
         public Builder lectern() {
-            woodRegistry.lectern = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new LecternBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_lectern"));
+            woodRegistry.lectern = RegistryUtils.register(new LecternBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_lectern"), itemGroup);
             return this;
         }
 
         public Builder paperLantern() {
-            woodRegistry.paperLantern = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BaseModBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_paper_lantern"));
+            woodRegistry.paperLantern = RegistryUtils.register(new BaseModBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_paper_lantern"),
+                    itemGroup);
             return this;
         }
 
         public Builder logCampfire() {
-            woodRegistry.logCampfire = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new CampfireBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_campfire"));
+            woodRegistry.logCampfire = RegistryUtils.register(new CampfireBaseBlock(), new Identifier(name.getNamespace(), name.getPath() + "_campfire"), itemGroup);
             return this;
         }
 
         public Builder strippedLogCampfire() {
-            woodRegistry.strippedLogCampfire = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new CampfireBaseBlock(), new Identifier(name.getNamespace(), "stripped_" + name.getPath() +
-                    "_campfire"));
+            woodRegistry.strippedLogCampfire = RegistryUtils.register(new CampfireBaseBlock(), new Identifier(name.getNamespace(), "stripped_" + name.getPath() +
+                    "_campfire"), itemGroup);
             return this;
         }
 
         public Builder barrel() {
-            woodRegistry.barrel = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BarrelBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_barrel"));
+            woodRegistry.barrel = RegistryUtils.register(new BarrelBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_barrel"), itemGroup);
             return this;
         }
 
         public Builder bookshelf() {
-            woodRegistry.bookshelf = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new BaseModBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_bookshelf"));
+            woodRegistry.bookshelf = RegistryUtils.register(new BaseModBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_bookshelf"), itemGroup);
             return this;
         }
 
         public Builder door() {
-            woodRegistry.door = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new DoorBaseBlock(Material.WOOD), new Identifier(name.getNamespace(), name.getPath() + "_door"), ItemGroup.REDSTONE);
+            woodRegistry.door = RegistryUtils.register(new DoorBaseBlock(Material.WOOD), new Identifier(name.getNamespace(), name.getPath() + "_door"), itemGroup);
             return this;
         }
 
         public Builder trapdoor() {
-            woodRegistry.trapdoor = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new TrapdoorBaseBlock(Material.WOOD), new Identifier(name.getNamespace(), name.getPath() + "_trapdoor"),
-                    ItemGroup.REDSTONE);
+            woodRegistry.trapdoor = RegistryUtils.register(new TrapdoorBaseBlock(Material.WOOD), new Identifier(name.getNamespace(), name.getPath() + "_trapdoor"),
+                    itemGroup);
             return this;
         }
 
         public Builder button() {
-            woodRegistry.button = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new ButtonBaseBlock(true), new Identifier(name.getNamespace(), name.getPath() + "_button"), ItemGroup.REDSTONE);
+            woodRegistry.button = RegistryUtils.register(new ButtonBaseBlock(true), new Identifier(name.getNamespace(), name.getPath() + "_button"), itemGroup);
             return this;
         }
 
         public Builder pressurePlate(PressurePlateBlock.Type type) {
-            woodRegistry.pressurePlate = team.hollow.abnormalib.utils.registry.RegistryUtils.register(new PressurePlateBaseBlock(Material.WOOD, type), new Identifier(name.getNamespace(),
-                    name.getPath() + "_pressure_plate"), ItemGroup.REDSTONE);
+            woodRegistry.pressurePlate = RegistryUtils.register(new PressurePlateBaseBlock(Material.WOOD, type), new Identifier(name.getNamespace(),
+                    name.getPath() + "_pressure_plate"), itemGroup);
             return this;
         }
 
         public Builder ladder() {
             woodRegistry.ladder = RegistryUtils.register(new CustomLadderBlock(), new Identifier(name.getNamespace(),
-                    name.getPath() + "_ladder"), ItemGroup.DECORATIONS);
+                    name.getPath() + "_ladder"), itemGroup);
+            return this;
+        }
+
+        public Builder corner() {
+            woodRegistry.corner = RegistryUtils.register(new NeutroniaCornerBlock(woodRegistry.planks.getDefaultState(), Block.Settings.copy(woodRegistry.planks)),
+                    new Identifier(name.getNamespace(), name.getPath() + "_corner"), itemGroup);
+            return this;
+        }
+
+        public Builder post() {
+            woodRegistry.post =  RegistryUtils.register(new NeutroniaPostBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_post"), itemGroup);
+            return this;
+        }
+
+        public Builder siding() {
+            woodRegistry.siding = RegistryUtils.register(new NeutroniaSidingBlock(Block.Settings.copy(woodRegistry.planks)), new Identifier(name.getNamespace(), name.getPath() + "_siding"), itemGroup);
             return this;
         }
 

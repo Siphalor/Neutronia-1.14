@@ -1,0 +1,8 @@
+{
+  "parent": "neutronia:block/corner",
+  "textures": {
+    "side": "neutronia:block/spruce",
+    "top": "neutronia:block/spruce",
+    "bottom": "neutronia:block/spruce"
+  }
+}

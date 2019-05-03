@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=single,facing=north": {
+      "model": "neutronia:block/spruce_siding"
+    },
+    "type=single,facing=south": {
+      "model": "neutronia:block/spruce_siding",
+      "y": 180
+    },
+    "type=single,facing=east": {
+      "model": "neutronia:block/spruce_siding",
+      "y": 90
+    },
+    "type=single,facing=west": {
+      "model": "neutronia:block/spruce_siding",
+      "y": 270
+    },
+    "type=double": {
+      "model": "neutronia:block/spruce_planks"
+    }
+  }
+}

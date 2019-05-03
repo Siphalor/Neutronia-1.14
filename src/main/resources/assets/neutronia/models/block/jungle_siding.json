@@ -1,0 +1,6 @@
+{
+  "parent": "neutronia:block/siding",
+  "textures": {
+    "side": "block/jungle_planks"
+  }
+}

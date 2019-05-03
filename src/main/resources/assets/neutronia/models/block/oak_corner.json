@@ -1,0 +1,8 @@
+{
+  "parent": "neutronia:block/corner",
+  "textures": {
+    "side": "neutronia:block/oak",
+    "top": "neutronia:block/oak",
+    "bottom": "neutronia:block/oak"
+  }
+}

@@ -3,7 +3,6 @@ package team.hollow.neutronia.client;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
-import team.hollow.neutronia.blocks.ChestBaseBlock;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 import team.hollow.neutronia.client.entity.render.BlackBearEntityRenderer;
@@ -17,12 +16,7 @@ import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
 import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ClientInit implements ClientModInitializer {
-
-    public static List<ChestBaseBlock> CHEST_BLOCKS = new ArrayList<>();
 
     @Override
     public void onInitializeClient() {
