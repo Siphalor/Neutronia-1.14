@@ -8,12 +8,9 @@ import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.hollow.module_api.ModuleManager;
-import team.hollow.neutronia.modules.EndecorationsModule;
-import team.hollow.neutronia.modules.ExplorationModule;
-import team.hollow.neutronia.modules.OriginsModule;
-import team.hollow.neutronia.modules.VariationModule;
-import team.hollow.neutronia.unsure.ContentBuilder;
-import team.hollow.neutronia.unsure.ContentRegistryBuilder;
+import team.hollow.neutronia.modules.*;
+import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.neutronia.registry.ContentRegistryBuilder;
 import team.hollow.quest_api.QuestManager;
 import team.hollow.quest_api.api.Quest;
 import team.hollow.quest_api.api.QuestReward;
@@ -80,6 +77,7 @@ public class Neutronia implements ModInitializer {
         ModuleManager.registerModule(new EndecorationsModule());
         ModuleManager.registerModule(new ExplorationModule());
         ModuleManager.registerModule(new VariationModule());
+        ModuleManager.registerModule(new VillagesAndVillagersModule());
         ModuleManager.setup();
     }
 

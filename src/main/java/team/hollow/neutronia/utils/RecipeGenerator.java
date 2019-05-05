@@ -1,4 +1,4 @@
-package generators;
+package team.hollow.neutronia.utils;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

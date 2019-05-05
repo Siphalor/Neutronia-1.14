@@ -7,27 +7,27 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
 import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.unsure.ContentBuilder;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 import java.util.Set;
 
 public class PottedPlantsFeature extends OptionalFeature {
 	private Set<Pair<Block, String>> blocksToPot = ImmutableSet.of(
-		new Pair<>(Blocks.BEETROOTS, "minecraft:block/grass"),
-		new Pair<>(Blocks.CARROTS, "minecraft:block/grass"),
-		new Pair<>(Blocks.CHORUS_FLOWER, "minecraft:block/grass"),
-		new Pair<>(Blocks.GRASS, "minecraft:block/grass"),
-		new Pair<>(Blocks.LILAC, "minecraft:block/grass"),
-		new Pair<>(Blocks.MELON, "minecraft:block/grass"),
-		new Pair<>(Blocks.NETHER_WART, "minecraft:block/grass"),
-		new Pair<>(Blocks.PEONY, "minecraft:block/grass"),
-		new Pair<>(Blocks.POTATOES, "minecraft:block/grass"),
-		new Pair<>(Blocks.PUMPKIN, "minecraft:block/grass"),
-		new Pair<>(Blocks.ROSE_BUSH, "minecraft:block/grass"),
-		new Pair<>(Blocks.SUGAR_CANE, "minecraft:block/grass"),
-		new Pair<>(Blocks.SUNFLOWER, "minecraft:block/grass"),
-		new Pair<>(Blocks.TALL_GRASS, "minecraft:block/grass"),
-		new Pair<>(Blocks.WHEAT, "minecraft:block/grass")
+		new Pair<>(Blocks.BEETROOTS, "minecraft:grass"),
+		new Pair<>(Blocks.CARROTS, "minecraft:grass"),
+		new Pair<>(Blocks.CHORUS_FLOWER, "minecraft:chorus_flower"),
+		new Pair<>(Blocks.GRASS, "minecraft:grass"),
+		new Pair<>(Blocks.LILAC, "minecraft:lilac_top"),
+		new Pair<>(Blocks.MELON, "minecraft:melon_block"),
+		new Pair<>(Blocks.NETHER_WART, "minecraft:grass"),
+		new Pair<>(Blocks.PEONY, "minecraft:peony_top"),
+		new Pair<>(Blocks.POTATOES, "minecraft:grass"),
+		new Pair<>(Blocks.PUMPKIN, "minecraft:pumpkin_block"),
+		new Pair<>(Blocks.ROSE_BUSH, "minecraft:rose_bush_top"),
+		new Pair<>(Blocks.SUGAR_CANE, "minecraft:sugar_cane"),
+		new Pair<>(Blocks.SUNFLOWER, "minecraft:grass"),
+		new Pair<>(Blocks.TALL_GRASS, "minecraft:tall_grass_top"),
+		new Pair<>(Blocks.WHEAT, "minecraft:grass")
 	);
 
 	public PottedPlantsFeature() {
@@ -43,5 +43,9 @@ public class PottedPlantsFeature extends OptionalFeature {
 		ContentBuilder contentBuilder = ContentBuilder.getInstance();
 		contentBuilder.asBaseBlock(block, Registry.BLOCK.getId(block));
 		contentBuilder.addPotted(texture);
+	}
+
+	static class PottablePlant {
+		Block block;
 	}
 }

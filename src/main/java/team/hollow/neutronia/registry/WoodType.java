@@ -1,4 +1,4 @@
-package team.hollow.neutronia.unsure;
+package team.hollow.neutronia.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

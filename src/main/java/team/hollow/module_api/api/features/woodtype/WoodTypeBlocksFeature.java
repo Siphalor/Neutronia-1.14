@@ -2,8 +2,8 @@ package team.hollow.module_api.api.features.woodtype;
 
 import net.minecraft.block.Block;
 import net.minecraft.util.Pair;
-import team.hollow.neutronia.unsure.ContentBuilder;
-import team.hollow.neutronia.unsure.WoodType;
+import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.neutronia.registry.WoodType;
 
 import java.util.Set;
 import java.util.function.Supplier;

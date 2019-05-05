@@ -82,7 +82,7 @@ public class NeutroniaSignBlock extends SignBlock {
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(ROTATION, WATERLOGGED);
+        stateFactory$Builder_1.add(ROTATION, WATERLOGGED);
     }
 
     @Override

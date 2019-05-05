@@ -1,7 +1,6 @@
 package team.hollow.neutronia.blocks;
 
 import net.minecraft.block.AbstractButtonBlock;
-import net.minecraft.block.Material;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 
@@ -9,8 +8,8 @@ public class NeutroniaButtonBlock extends AbstractButtonBlock {
 
     boolean wooden;
 
-    public NeutroniaButtonBlock(boolean wooden) {
-        super(wooden, Settings.of(wooden ? Material.WOOD : Material.STONE));
+    public NeutroniaButtonBlock(boolean wooden, Settings settings) {
+        super(wooden, settings);
         this.wooden = wooden;
     }
 

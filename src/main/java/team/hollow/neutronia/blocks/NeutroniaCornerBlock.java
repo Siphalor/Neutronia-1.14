@@ -151,7 +151,7 @@ public class NeutroniaCornerBlock extends Block implements Waterloggable {
 	}
 
 	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-		stateFactory$Builder_1.with(FACING, WATERLOGGED);
+		stateFactory$Builder_1.add(FACING, WATERLOGGED);
 	}
 
 	public FluidState getFluidState(BlockState blockState_1) {

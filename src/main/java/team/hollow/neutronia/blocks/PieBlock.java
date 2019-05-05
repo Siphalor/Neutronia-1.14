@@ -78,7 +78,7 @@ public class PieBlock extends Block {
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(BITES);
+        stateFactory$Builder_1.add(BITES);
     }
 
     public int getComparatorOutput(BlockState blockState_1, World world_1, BlockPos blockPos_1) {

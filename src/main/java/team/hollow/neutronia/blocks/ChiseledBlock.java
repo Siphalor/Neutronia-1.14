@@ -51,7 +51,7 @@ public class ChiseledBlock extends NeutroniaBlock {
 
     @Override
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(FILLED);
+        stateFactory$Builder_1.add(FILLED);
     }
 
     @Override

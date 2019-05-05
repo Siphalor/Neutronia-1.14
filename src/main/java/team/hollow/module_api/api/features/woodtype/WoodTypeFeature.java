@@ -1,6 +1,6 @@
 package team.hollow.module_api.api.features.woodtype;
 
-import team.hollow.neutronia.unsure.WoodType;
+import team.hollow.neutronia.registry.WoodType;
 
 import java.util.Collections;
 import java.util.Set;

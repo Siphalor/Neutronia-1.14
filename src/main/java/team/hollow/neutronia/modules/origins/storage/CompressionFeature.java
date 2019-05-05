@@ -3,7 +3,7 @@ package team.hollow.neutronia.modules.origins.storage;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemProvider;
 import team.hollow.module_api.api.features.SingleBlockFeature;
-import team.hollow.neutronia.unsure.ContentBuilder;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 public class CompressionFeature extends SingleBlockFeature {
 	protected ItemProvider itemProvider;

@@ -90,7 +90,7 @@ public class NeutroniaWallSignBlock extends SignBlock {
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(FACING, WATERLOGGED);
+        stateFactory$Builder_1.add(FACING, WATERLOGGED);
     }
 
 }

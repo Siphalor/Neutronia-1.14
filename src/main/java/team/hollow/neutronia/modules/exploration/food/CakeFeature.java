@@ -1,12 +1,10 @@
 package team.hollow.neutronia.modules.exploration.food;
 
 import net.minecraft.block.Block;
-import net.minecraft.item.ItemGroup;
 import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.blocks.CakeBaseBlock;
 import team.hollow.neutronia.blocks.PieBlock;
-import team.hollow.neutronia.unsure.ContentBuilder;
-import team.hollow.neutronia.utils.registry.RegistryUtils;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 public class CakeFeature extends OptionalFeature {
 	public static Block cheeseCake;

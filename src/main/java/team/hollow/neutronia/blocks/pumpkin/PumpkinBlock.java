@@ -63,7 +63,7 @@ public class PumpkinBlock extends NeutroniaBlock implements ICarvable {
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(FACING);
+        stateFactory$Builder_1.add(FACING);
     }
 
     @Override

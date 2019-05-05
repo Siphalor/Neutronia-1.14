@@ -6,9 +6,11 @@
     "item.MixinBookOnLectern",
     "commands.LocateCommandMixin",
     "entity.AbstractTraderEntityMixin",
+    "entity.LivingEntityMixin",
     "entity.VillagerEntityMixin",
     "entity.ZombieVillagerEntityMixin",
     "village.TradeFactoryMixin",
+    "village.TypeAwareTradeFactoryMixin",
     "world.VillageGeneratorMixin",
     "world.AddHillsLayerMixin"
   ],

@@ -3,24 +3,16 @@ package team.hollow.neutronia.init;
 import com.google.common.collect.ImmutableMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
-import net.minecraft.item.Items;
-import net.minecraft.item.map.MapIcon;
 import net.minecraft.village.TradeOffers;
-import net.minecraft.village.VillagerProfession;
-import net.minecraft.village.VillagerType;
-import org.apache.commons.lang3.ArrayUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import team.hollow.neutronia.village.TradeOfferFactories.*;
-
-import java.util.Random;
 
 class TradeBuilder {
     private static final Logger LOGGER = LogManager.getLogger();
 
     static void createRecipes() {
 
-        TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(NVillagers.ARTIST, copyToFastUtilMap(
+        /*TradeOffers.PROFESSION_TO_LEVELED_TRADE.put(NVillagers.ARTIST, copyToFastUtilMap(
             ImmutableMap.of(
                 1, new TradeOffers.Factory[]{
                     new BuyItemFactory(Items.RED_DYE, 18, 22, 2),
@@ -141,24 +133,6 @@ class TradeBuilder {
 
     private static Int2ObjectMap<TradeOffers.Factory[]> copyToFastUtilMap(ImmutableMap<Integer, TradeOffers.Factory[]> immutableMap_1) {
         return new Int2ObjectOpenHashMap<>(immutableMap_1);
-    }
-
-    static class PriceRange {
-        final int lower;
-        final int range;
-
-        PriceRange(int int_1, int int_2) {
-            this.lower = int_1;
-            this.range = 1 + Math.max(0, int_2 - int_1);
-            if (int_2 < int_1) {
-                LOGGER.warn("PriceRange({}, {}) invalid, {} smaller than {}", int_1, int_2, int_2, int_1);
-            }
-
-        }
-
-        int getPrice(Random random_1) {
-            return this.lower + random_1.nextInt(this.range);
-        }
     }
 
 }

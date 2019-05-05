@@ -1,4 +1,4 @@
-package generators;
+package team.hollow.neutronia.utils;
 
 import net.minecraft.item.ItemStack;
 

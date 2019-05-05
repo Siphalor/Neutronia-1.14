@@ -1,11 +1,9 @@
 package team.hollow.neutronia.blocks;
 
-import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.LadderBlock;
-import net.minecraft.block.Material;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import team.hollow.neutronia.api.Climbable;
@@ -13,7 +11,7 @@ import team.hollow.neutronia.api.Climbable;
 public class CustomLadderBlock extends LadderBlock implements Climbable {
 
     public CustomLadderBlock() {
-        super(FabricBlockSettings.of(Material.PART).hardness(0.4F).sounds(BlockSoundGroup.LADDER).build());
+        super(Settings.copy(Blocks.LADDER));
         setDefaultState(this.getDefaultState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
     }
 

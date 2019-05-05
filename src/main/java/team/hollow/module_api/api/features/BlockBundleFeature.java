@@ -1,7 +1,7 @@
 package team.hollow.module_api.api.features;
 
 import net.minecraft.block.Block;
-import team.hollow.neutronia.unsure.ContentBuilder;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 import java.util.function.Supplier;
 

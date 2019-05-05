@@ -66,7 +66,7 @@ public class NeutroniaPostBlock extends Block implements Waterloggable {
 	}
 
 	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-		stateFactory$Builder_1.with(AXIS, WATERLOGGED);
+		stateFactory$Builder_1.add(AXIS, WATERLOGGED);
 	}
 
 	public FluidState getFluidState(BlockState blockState_1) {

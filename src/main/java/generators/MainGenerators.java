@@ -1,7 +1,12 @@
 package generators;
 
-import net.minecraft.util.Identifier;
-import team.hollow.neutronia.enums.SoulStoneVariants;
+import de.siphalor.tweed.config.ConfigEnvironment;
+import de.siphalor.tweed.config.ConfigScope;
+import team.hollow.module_api.ModuleManager;
+import team.hollow.neutronia.Neutronia;
+import team.hollow.neutronia.modules.EndecorationsModule;
+import team.hollow.neutronia.modules.VariationModule;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 public class MainGenerators {
 
@@ -9,6 +14,9 @@ public class MainGenerators {
     private static final String MINECRAFT_DOMAIN = "minecraft";
 
     public static void main(String[] args) {
+        ContentBuilder.setInstance(new ContentResourceBuilder(Neutronia.MOD_ID));
+        ModuleManager.registerModule(new EndecorationsModule(), new VariationModule());
+        ModuleManager.apply(ConfigEnvironment.UNIVERSAL, ConfigScope.GAME);
 //        for (CarvedFaceTypes faceTypes : CarvedFaceTypes.values()) {
 //            ModelGenerator.genOrientedBlock(new Identifier(MINECRAFT_DOMAIN, "carved_" + faceTypes.asString() + "_pumpkin"), new Identifier(MINECRAFT_DOMAIN, "pumpkin_top"), new Identifier(NEUTRONIA_DOMAIN, "pumpkins/carved_pumpkin_" + faceTypes.asString()), new Identifier(MINECRAFT_DOMAIN, "pumpkin_side"));
 //            ModelGenerator.genOrientedBlock(new Identifier(MINECRAFT_DOMAIN, "carved_" + faceTypes.asString() + "_jack_o_lantern"), new Identifier(MINECRAFT_DOMAIN, "pumpkin_top"), new Identifier(NEUTRONIA_DOMAIN, "jack_o_lanterns/jack_o_lantern_" + faceTypes.asString()), new Identifier(MINECRAFT_DOMAIN, "pumpkin_side"));

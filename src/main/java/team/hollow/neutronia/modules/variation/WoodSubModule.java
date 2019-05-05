@@ -14,7 +14,7 @@ import team.hollow.neutronia.blocks.NeutroniaBaseLectern;
 import team.hollow.neutronia.blocks.NeutroniaBookshelfBlock;
 import team.hollow.neutronia.modules.variation.wood.BambooWoodFeature;
 import team.hollow.neutronia.modules.variation.wood.TreatedWoodFeature;
-import team.hollow.neutronia.unsure.ContentBuilder;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 import java.util.Collections;
 import java.util.function.Supplier;
@@ -49,16 +49,16 @@ public class WoodSubModule extends SubModule {
 
 		bookshelves = register(new WoodTypeBlockFeature("bookshelf", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK, (woodType) -> {
 			ContentBuilder.getInstance().asBaseBlock(woodType.getBaseBlock(), woodType.getBaseBlockIdentifier());
-			return new NeutroniaBookshelfBlock(FabricBlockSettings.of(Material.WOOD));
+			return new NeutroniaBookshelfBlock(Block.Settings.copy(Blocks.BOOKSHELF));
 		}));
 		barrels = register(new WoodTypeBlockFeature("barrel", "Adds more barrels", WoodTypeFeature.SKIP_OAK,
-			(woodType) -> new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build())
+			woodType -> new BarrelBlock(Block.Settings.copy(Blocks.BARREL))
 		));
 		campfires = register(new WoodTypeBlockFeature("campfire", "Adds more campfires", WoodTypeFeature.SKIP_OAK,
-			(woodType) -> new CampfireBlock(campFireSettings)
+			woodType -> new CampfireBlock(campFireSettings)
 		));
 		strippedCampfires = register(new WoodTypeBlockFeature("stripped_campfire", "Adds stripped log campfires", Collections.emptySet(),
-			(woodType) -> new CampfireBlock(campFireSettings)
+			woodType -> new CampfireBlock(campFireSettings)
 		));
 		lecterns = register(new WoodTypeBlockFeature("lectern", "Adds more lecterns", WoodTypeFeature.SKIP_OAK,
 			woodType -> new NeutroniaBaseLectern()

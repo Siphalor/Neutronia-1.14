@@ -13,7 +13,7 @@ import team.hollow.neutronia.init.NDamageSources;
 public class CactusBundleBlock extends PillarBlock {
 
     public CactusBundleBlock() {
-        super(FabricBlockSettings.of(Material.CACTUS).sounds(BlockSoundGroup.GRASS).breakInstantly().build());
+        super(FabricBlockSettings.of(Material.CACTUS).sounds(BlockSoundGroup.GRASS).strength(0.5F, 2.0F).build());
     }
 
     /**

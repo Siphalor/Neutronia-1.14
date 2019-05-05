@@ -8,7 +8,7 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Pair;
 import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.blocks.NeutroniaBerryBushBlock;
-import team.hollow.neutronia.utils.registry.RegistryUtils;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,10 +23,11 @@ public class BerriesFeature extends OptionalFeature {
 	@Override
 	protected void applyEnabled() {
         Item.Settings itemSettings = new Item.Settings().itemGroup(ItemGroup.FOOD).food(FoodItemSettings.SWEET_BERRIES);
+		ContentBuilder contentBuilder = ContentBuilder.getInstance();
 
         for(BerryType berryType : BerryType.values()) {
-        	Block bush = RegistryUtils.register(new NeutroniaBerryBushBlock(berryType), berryType.singular + "_bush");
-        	Item berries = RegistryUtils.registerItem(new AliasedBlockItem(bush, itemSettings), berryType.plural);
+            Block bush = contentBuilder.newBlock(berryType.singular + "_bush", new NeutroniaBerryBushBlock(berryType));
+            Item berries = contentBuilder.newItem(berryType.plural, new AliasedBlockItem(bush, itemSettings));
 
         	berryMap.put(berryType, new Pair<>(berries, bush));
 		}

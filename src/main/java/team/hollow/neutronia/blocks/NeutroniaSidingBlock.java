@@ -44,7 +44,7 @@ public class NeutroniaSidingBlock extends Block implements Waterloggable {
 	}
 
 	protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-		stateFactory$Builder_1.with(TYPE, FACING_HORIZONTAL, WATERLOGGED);
+		stateFactory$Builder_1.add(TYPE, FACING_HORIZONTAL, WATERLOGGED);
 	}
 
 	public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {

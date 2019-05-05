@@ -3,13 +3,14 @@ package generators;
 import net.minecraft.block.Block;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.block.SweetBerryBushBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemProvider;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.blocks.*;
-import team.hollow.neutronia.unsure.ContentBuilder;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 public class ContentResourceBuilder extends ContentBuilder {
 	protected Identifier baseTextureIdentifier;
@@ -33,7 +34,8 @@ public class ContentResourceBuilder extends ContentBuilder {
 
 	@Override
 	public Item newItem(String name, Item item) {
-        // TODO
+		Identifier identifier = new Identifier(getModId(), name);
+        resourceGenerator.genItemModel(identifier, identifier);
 		return null;
 	}
 
@@ -59,6 +61,12 @@ public class ContentResourceBuilder extends ContentBuilder {
 			resourceGenerator.genSimpleBlockstates(identifier);
 			resourceGenerator.genBottomTopBlockModel(identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
 			resourceGenerator.genSimpleBlockItemModel(identifier);
+		} else if(block instanceof CustomLadderBlock) {
+			resourceGenerator.genOrientedBlockStates(identifier);
+			resourceGenerator.genLadderModel(identifier, textureIdentifier);
+			resourceGenerator.genFlatBlockItemModel(identifier, textureIdentifier);
+		} else if(block instanceof SweetBerryBushBlock) {
+			resourceGenerator.genBush(identifier, textureIdentifier);
 		} else if(block instanceof CakeBaseBlock) {
 			resourceGenerator.genCake(7, identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_side"), extendIdentifier(textureIdentifier, "_inner"), extendIdentifier(textureIdentifier, "_top"));
 		} else if(block instanceof PieBlock) {
@@ -210,7 +218,7 @@ public class ContentResourceBuilder extends ContentBuilder {
 	public Block addPotted(Identifier plantTexture) {
 		Identifier identifier = new Identifier(getModId(), "potted_" + baseNameIdentifier.getPath());
 		resourceGenerator.genPottedBlock(identifier, plantTexture);
-        resourceGenerator.genSimpleLootTable(identifier, baseNameIdentifier, Registry.ITEM.getId(Items.FLOWER_POT));
+        resourceGenerator.genSimpleLootTable(identifier, Registry.ITEM.getId(Item.BLOCK_ITEM_MAP.get(Registry.BLOCK.get(baseNameIdentifier))), Registry.ITEM.getId(Items.FLOWER_POT));
 		return null;
 	}
 }

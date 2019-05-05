@@ -1,7 +1,10 @@
 package team.hollow.neutronia.modules.exploration.trees;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.Material;
+import net.minecraft.block.MaterialColor;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
@@ -9,10 +12,11 @@ import net.minecraft.util.Identifier;
 import team.hollow.module_api.api.features.Feature;
 import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.blocks.*;
-import team.hollow.neutronia.unsure.ContentBuilder;
-import team.hollow.neutronia.unsure.WoodType;
-import team.hollow.neutronia.unsure.WoodTypeRegistry;
+import team.hollow.neutronia.blocks.NeutroniaLeavesBlock;
+import team.hollow.neutronia.blocks.NeutroniaSaplingBlock;
+import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.neutronia.registry.WoodType;
+import team.hollow.neutronia.registry.WoodTypeRegistry;
 
 public class TreeFeature extends OptionalFeature {
 	public Block log;
@@ -58,7 +62,6 @@ public class TreeFeature extends OptionalFeature {
 		sapling = contentBuilder.newBaseBlock(name + "_sapling", new NeutroniaSaplingBlock(saplingGenerator));
 		contentBuilder.addPotted();
 
-
-		woodType = WoodTypeRegistry.registerModded(new WoodType(new Identifier(Neutronia.MOD_ID, name)));
+		woodType = WoodTypeRegistry.registerModded(new WoodType(new Identifier(Neutronia.MOD_ID, name)), 2.0F, 3.0F);
 	}
 }

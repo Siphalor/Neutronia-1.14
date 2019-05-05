@@ -2,10 +2,9 @@ package team.hollow.neutronia.modules.variation;
 
 import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
 import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.unsure.ContentBuilder;
+import team.hollow.neutronia.registry.ContentBuilder;
 
 import java.util.Set;
 

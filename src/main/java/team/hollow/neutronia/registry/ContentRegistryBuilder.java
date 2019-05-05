@@ -1,8 +1,5 @@
-package team.hollow.neutronia.unsure;
+package team.hollow.neutronia.registry;
 
-import generators.RecipeGenerator;
-import generators.ShapedRecipeIngredients;
-import generators.ShapelessRecipeIngredients;
 import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.item.Item;
@@ -11,6 +8,9 @@ import net.minecraft.item.ItemProvider;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.blocks.*;
+import team.hollow.neutronia.utils.RecipeGenerator;
+import team.hollow.neutronia.utils.ShapedRecipeIngredients;
+import team.hollow.neutronia.utils.ShapelessRecipeIngredients;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 public class ContentRegistryBuilder extends ContentBuilder {
@@ -40,6 +40,9 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block newBlock(String name, Block block) {
+        if(block instanceof NoBlockItem) {
+            return RegistryUtils.registerNoBI(block, new Identifier(getModId(), name));
+        }
         return RegistryUtils.register(block, new Identifier(getModId(), name));
     }
 
@@ -94,7 +97,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block slab() {
-        Block slab = new NeutroniaSlabBlock();
+        Block slab = new NeutroniaSlabBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(slab, extendIdentifier("_slab"), ItemGroup.BUILDING_BLOCKS);
 
         RecipeGenerator.getInstance(getModId())
@@ -122,7 +125,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block fence() {
-        Block fence = new NeutroniaFenceBlock(baseBlock);
+        Block fence = new NeutroniaFenceBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(fence, extendIdentifier("_fence"));
 
         RecipeGenerator.getInstance(getModId())
@@ -142,7 +145,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block fenceGate() {
-        Block fenceGate = new NeutroniaFenceGateBlock();
+        Block fenceGate = new NeutroniaFenceGateBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(fenceGate, extendIdentifier("_fence_gate"), ItemGroup.REDSTONE);
 
         RecipeGenerator.getInstance(getModId())
@@ -163,21 +166,21 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block door() {
-        Block door = new NeutroniaDoorBlock(baseBlock.getMaterial(baseBlock.getDefaultState()));
+        Block door = new NeutroniaDoorBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(door, extendIdentifier("_door"));
         return door;
     }
 
     @Override
     public Block trapDoor() {
-        Block trapDoor = new NeutroniaTrapdoorBlock(baseBlock.getMaterial(baseBlock.getDefaultState()));
+        Block trapDoor = new NeutroniaTrapdoorBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(trapDoor, extendIdentifier("_trapdoor"));
         return trapDoor;
     }
 
     @Override
     public Block wall() {
-        Block wall = new NeutroniaWallBlock(baseBlock.getDefaultState());
+        Block wall = new NeutroniaWallBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(wall, extendIdentifier("_wall"), ItemGroup.DECORATIONS);
 
         RecipeGenerator.getInstance(getModId())
@@ -197,7 +200,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block button(boolean wooden) {
-        Block button = new NeutroniaButtonBlock(wooden);
+        Block button = new NeutroniaButtonBlock(wooden, Block.Settings.copy(baseBlock));
         RegistryUtils.register(button, extendIdentifier("_button"), ItemGroup.REDSTONE);
 
         RecipeGenerator.getInstance(getModId())
@@ -213,7 +216,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
 
     @Override
     public Block pressurePlate(PressurePlateBlock.Type type) {
-        Block pressurePlate = new NeutroniaPressurePlateBlock(baseBlock.getMaterial(baseBlock.getDefaultState()), type);
+        Block pressurePlate = new NeutroniaPressurePlateBlock(Block.Settings.copy(baseBlock), type);
         RegistryUtils.register(pressurePlate, extendIdentifier("_pressure_plate"), ItemGroup.REDSTONE);
 
         RecipeGenerator.getInstance(getModId())
@@ -241,7 +244,8 @@ public class ContentRegistryBuilder extends ContentBuilder {
     @Override
     public Block siding() {
         Block siding = new NeutroniaSidingBlock(Block.Settings.copy(baseBlock));
-        RegistryUtils.register(siding, extendIdentifier( "_siding"));
+        Identifier identifier = extendIdentifier("_siding");
+        RegistryUtils.register(siding, identifier);
 
         RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(siding, 6), extendIdentifier( "_siding"), "sidings", new String[]{

@@ -1,8 +1,10 @@
 package team.hollow.neutronia.init;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.LanternBlock;
-import net.minecraft.block.*;
+import net.minecraft.block.Material;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
@@ -18,15 +20,15 @@ public class NBlocks {
 
     public static final Block[] /*GLAZED_TERRACOTTA_PILLAR = new Block[13], */SOUL_STONE = new Block[4];
     // TODO: Metal related stuff:
-    public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
+    //public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
     //    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
-    public static final Block /*WROUGHT_IRON_BLOCK, */WROUGHT_IRON_BARS;
+    //public static final Block /*WROUGHT_IRON_BLOCK, */WROUGHT_IRON_BARS;
 
     // NOTE: Wooden scaffolding?
     // TODO: Wooden chests (refactoring needed)
     public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestType.values().length];
-    public static final Block SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
-    public static final Block SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
+    //public static final Block SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
+    //public static final Block SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
     //public static final Block CHISELED_PRISMARINE, CHISELED_PRISMARINE_BRICKS, CHISELED_DARK_PRISMARINE, CUT_PRISMARINE, CUT_PRISMARINE_BRICKS, CUT_DARK_PRISMARINE, ENGRAVED_PRISMARINE, ENGRAVED_PRISMARINE_BRICKS, ENGRAVED_DARK_PRISMARINE;
     public static final Block OBSIDIAN_BRICKS, OBSIDIAN_COBBLE, OBSIDIAN_PILLAR, CHISELED_OBSIDIAN, GLOWING_OBSIDIAN;
     public static final Block SMOOTH_END_BRICK, SMOOTH_PRISMARINE_BRICKS, SMOOTH_PRISMARINE, SMOOTH_DARK_PRISMARINE, SMOOTH_OBSIDIAN, SMOOTH_PURPUR_BRICK, SMOOTH_NETHER_BRICK, SMOOTH_RED_NETHER_BRICK, SMOOTH_STONE, SMOOTH_STONE_BRICK;
@@ -141,7 +143,7 @@ public class NBlocks {
             WOODEN_CHESTS[woodenChestTypes.getId()] = (CustomChestBlock) RegistryUtils.register(new CustomChestBlock(woodenChestTypes.asString()), new Identifier(Neutronia.MOD_ID, woodenChestTypes.asString()));
         }
 
-        GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
+        /*GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
         IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "iron_grate");
         GOLD_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "gold_grate");
         WROUGHT_IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "wrought_iron_grate");

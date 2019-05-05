@@ -1,8 +1,6 @@
 package team.hollow.neutronia.blocks;
 
-import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.Material;
 import net.minecraft.block.TrapdoorBlock;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.math.BlockPos;
@@ -10,12 +8,8 @@ import team.hollow.neutronia.api.Climbable;
 
 public class NeutroniaTrapdoorBlock extends TrapdoorBlock implements Climbable {
 
-    public NeutroniaTrapdoorBlock() {
-        super(FabricBlockSettings.of(Material.WOOD).strength(3.0F, 1.0F).build());
-    }
-
-    public NeutroniaTrapdoorBlock(Material material) {
-        super(FabricBlockSettings.of(material).strength(3.0F, 10F).friction(material == Material.ICE || material == Material.PACKED_ICE ? 0.98F : 0.0F).build());
+    public NeutroniaTrapdoorBlock(Settings settings) {
+        super(settings);
     }
 
     /**

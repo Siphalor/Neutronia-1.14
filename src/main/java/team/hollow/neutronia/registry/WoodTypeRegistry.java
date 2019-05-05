@@ -1,11 +1,11 @@
-package team.hollow.neutronia.unsure;
+package team.hollow.neutronia.registry;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Material;
+import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.util.StringRepresentable;
 import team.hollow.neutronia.blocks.NeutroniaBlock;
-import team.hollow.neutronia.blocks.NeutroniaDoorBlock;
-import team.hollow.neutronia.blocks.NeutroniaTrapdoorBlock;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -20,11 +20,13 @@ public abstract class WoodTypeRegistry implements StringRepresentable {
         return woodType;
     }
 
-    public static WoodType registerModded(WoodType woodType) {
+    public static WoodType registerModded(WoodType woodType, float hardness, float resistance) {
         registerVanilla(woodType);
 
         ContentBuilder contentBuilder = ContentBuilder.getInstance();
-		woodType.baseBlock = contentBuilder.newBaseBlock(woodType.getIdentifier().getPath() + "_planks", new NeutroniaBlock(Material.WOOD));
+		woodType.baseBlock = contentBuilder.newBaseBlock(woodType.getIdentifier().getPath() + "_planks", new NeutroniaBlock(
+			FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD).hardness(hardness).resistance(resistance)
+		));
 
 		contentBuilder.setBaseName(woodType.getIdentifier());
 		contentBuilder.slab();
