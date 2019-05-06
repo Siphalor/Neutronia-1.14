@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.Shadow;
 @Mixin(ParrotEntityRenderer.class)
 public class ParrotEntityRendererMixin {
 
-    @Shadow @Final public static Identifier[] SKINS = new Identifier[] {
+    @Shadow @Final public static Identifier[] TEXTURES = new Identifier[] {
             new Identifier("textures/entity/parrot/parrot_red_blue.png"),
             new Identifier("textures/entity/parrot/parrot_blue.png"),
             new Identifier("textures/entity/parrot/parrot_green.png"),

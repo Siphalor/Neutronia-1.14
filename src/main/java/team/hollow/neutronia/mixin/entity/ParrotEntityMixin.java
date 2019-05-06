@@ -12,7 +12,6 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.LocalDifficulty;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -32,8 +31,6 @@ public abstract class ParrotEntityMixin extends TameableShoulderEntity implement
     /**
      * @author OliviaTheVampire
      */
-    @javax.annotation.Nullable
-    @Nullable
     @Overwrite
     public EntityData initialize(IWorld iWorld_1, LocalDifficulty localDifficulty_1, SpawnType spawnType_1, EntityData entityData_1, CompoundTag compoundTag_1) {
         setVariant(this.random.nextInt(17));

@@ -7,8 +7,6 @@ import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.client.entity.render.model.WitchModel;
 
-import javax.annotation.Nullable;
-
 public class NewWitchEntityRenderer extends MobEntityRenderer<WitchEntity, WitchModel> {
 
     private static Identifier SKIN = new Identifier("minecraft", "textures/entity/witch.png");
@@ -18,7 +16,6 @@ public class NewWitchEntityRenderer extends MobEntityRenderer<WitchEntity, Witch
         this.addFeature(new WitchHeldItemFeatureRenderer(this));
     }
 
-    @Nullable
     @Override
     protected Identifier getTexture(WitchEntity var1) {
         return SKIN;
