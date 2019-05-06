@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlacementEnvironment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
@@ -47,7 +47,7 @@ public class NeutroniaSidingBlock extends Block implements Waterloggable {
 		stateFactory$Builder_1.add(TYPE, FACING_HORIZONTAL, WATERLOGGED);
 	}
 
-	public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+	public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext) {
 		SidingType slabType_1 = blockState_1.get(TYPE);
 		Direction facing = blockState_1.get(FACING_HORIZONTAL);
 		switch(slabType_1) {
@@ -99,7 +99,7 @@ public class NeutroniaSidingBlock extends Block implements Waterloggable {
 		SidingType slabType_1 = blockState_1.get(TYPE);
 		Direction facing = blockState_1.get(FACING_HORIZONTAL);
 		if (slabType_1 != SidingType.DOUBLE && itemStack_1.getItem() == this.getItem()) {
-			if (itemPlacementContext_1.method_7717()) {
+			if (itemPlacementContext_1.canReplaceHitBlock()) {
 				boolean boolean_1;
 				switch(facing) {
 					case EAST:

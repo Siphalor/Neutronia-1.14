@@ -5,13 +5,13 @@ import net.minecraft.block.Material;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
-import team.hollow.module_api.api.Module;
+import team.hollow.module_api.api.SubModule;
 import team.hollow.module_api.api.features.SingleBlockFeature;
 import team.hollow.neutronia.blocks.CactusBundleBlock;
 import team.hollow.neutronia.blocks.NeutroniaBottomTopBlock;
 import team.hollow.neutronia.modules.origins.storage.CompressionFeature;
 
-public class StorageSubModule extends Module {
+public class StorageSubModule extends SubModule {
 
     public static SingleBlockFeature stickBundle, chorusBundle, sugarCaneBundle, bambooBundle, netherWartSack, cocoaBeanSack, gunpowderSack,
         eggCrate, beetrootCrate, potatoCrate, carrotCrate, appleCrate, goldenAppleCrate, cactusBundle;

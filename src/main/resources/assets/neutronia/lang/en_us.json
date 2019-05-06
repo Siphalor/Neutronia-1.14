@@ -325,19 +325,22 @@
   "tweed.cloth.neutronia": "Neutronia Module Configuration",
 
   "tweed.cloth.neutronia.exploration": "Exploration",
-  "tweed.cloth.neutronia.exploration.enable-exploration": "Enable/Disable the Exploration Module",
+  "tweed.cloth.neutronia.exploration._enable": "Enable/Disable the Exploration Module",
 
   "tweed.cloth.neutronia.exploration.trees": "§2Exploration Module: Trees",
 
   "tweed.cloth.neutronia.endecorations": "Endecorations",
-  "tweed.cloth.neutronia.endecorations.enable-endecorations": "Enable/Disable the Endecorations Module",
+  "tweed.cloth.neutronia.endecorations._enable": "Enable/Disable the Endecorations Module",
   "tweed.cloth.neutronia.endecorations.enable-paper_lantern": "Enables/Disables the wooden paper lanterns",
 
   "tweed.cloth.neutronia.origins": "Origins",
-  "tweed.cloth.neutronia.origins.enable-origins": "Enable/Disable the Origins Module",
+  "tweed.cloth.neutronia.origins._enable": "Enable/Disable the Origins Module",
+
+  "tweed.cloth.neutronia.villages-and-villagers": "Villages & Villagers",
+  "tweed.cloth.neutronia.villages-and-villagers._enable": "Enable/Disable the V&V Module",
 
   "tweed.cloth.neutronia.variation": "Variations",
-  "tweed.cloth.neutronia.variation.enable-variation": "Enable/Disable the Variations Module",
+  "tweed.cloth.neutronia.variation._enable": "Enable/Disable the Variations Module",
 
   "text.social.charmrepeat":"Give it a rest, will you?",
   "text.social.charmfailure":"Am I supposed to be impressed?",

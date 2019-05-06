@@ -17,7 +17,7 @@ public abstract class Module extends OptionalFeature {
     private ConfigCategory configCategory;
 
     public Module(String name, String description) {
-        super(name, "Enable/disable this module.");
+        super("_enable", "Enable/disable this module.");
         this.description = description;
         this.name = name;
         this.features = new ArrayDeque<>();

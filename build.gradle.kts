@@ -98,6 +98,6 @@ tasks.register("genResources") {
 	dependsOn("runClient").mustRunAfter("setupGenResources")
 
 	doLast {
-		(tasks.getByPath("runClient") as JavaExec).systemProperty("genResources", null)
+		(tasks.getByPath("runClient") as JavaExec).systemProperty("genResources", false)
 	}
 }

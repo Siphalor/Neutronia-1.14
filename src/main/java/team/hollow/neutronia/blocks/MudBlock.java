@@ -3,7 +3,7 @@ package team.hollow.neutronia.blocks;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShape;
@@ -25,7 +25,7 @@ public class MudBlock extends FallingBlock {
         super(FabricBlockSettings.of(Material.ORGANIC).hardness(0.5F).sounds(BlockSoundGroup.GRAVEL), name);
     }
 
-    public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+    public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext) {
         return SOUL_SAND_AABB;
     }
 

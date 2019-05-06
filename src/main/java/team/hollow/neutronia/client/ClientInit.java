@@ -1,15 +1,15 @@
 package team.hollow.neutronia.client;
 
+import de.siphalor.tweed.client.TweedClothBridge;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.render.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
+import team.hollow.module_api.ModuleManager;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
-import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 import team.hollow.neutronia.client.entity.render.BlackBearEntityRenderer;
 import team.hollow.neutronia.client.entity.render.BrownBearEntityRenderer;
 import team.hollow.neutronia.client.entity.render.SocialVillagerRenderer;
 import team.hollow.neutronia.client.entity.render.VillagerEntityRenderer;
-import team.hollow.neutronia.client.renderer.SignBlockEntityRenderer;
 import team.hollow.neutronia.client.renderer.StoneChestBlockEntityRenderer;
 import team.hollow.neutronia.entity.SocialVillager;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
@@ -17,12 +17,13 @@ import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
 import team.hollow.neutronia.entity.passive.VillagerPlusEntity;
 
 public class ClientInit implements ClientModInitializer {
+    public static TweedClothBridge tweedClothBridge;
 
     @Override
     public void onInitializeClient() {
+        tweedClothBridge = new TweedClothBridge(ModuleManager.configFile);
 
         BlockEntityRendererRegistry.INSTANCE.register(CustomChestBlockEntity.class, new StoneChestBlockEntityRenderer());
-        BlockEntityRendererRegistry.INSTANCE.register(SignBlockEntity.class, new SignBlockEntityRenderer());
 
         EntityRendererRegistry.INSTANCE.register(VillagerPlusEntity.class, (manager, context) -> new VillagerEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(GrizzlyBearEntity.class, (manager, context) -> new BrownBearEntityRenderer(manager));

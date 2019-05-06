@@ -1,6 +1,5 @@
 package team.hollow.module_api;
 
-import de.siphalor.tweed.client.TweedClothBridge;
 import de.siphalor.tweed.config.ConfigEnvironment;
 import de.siphalor.tweed.config.ConfigFile;
 import de.siphalor.tweed.config.ConfigScope;
@@ -13,8 +12,7 @@ import java.util.Arrays;
 
 public class ModuleManager {
     private static ArrayList<Module> modules = new ArrayList<>();
-    private static ConfigFile configFile;
-    public static TweedClothBridge tweedClothBridge;
+    public static ConfigFile configFile;
 
     public static void registerModule(Module... newModules) {
         modules.addAll(Arrays.asList(newModules));
@@ -28,7 +26,6 @@ public class ModuleManager {
         configFile = TweedRegistry.registerConfigFile(Neutronia.MOD_ID);
 
         modules.forEach(module -> configFile.register(module.name, module.getConfigCategory()));
-        tweedClothBridge = new TweedClothBridge(configFile);
 
         configFile.setReloadListener(ModuleManager::apply);
 

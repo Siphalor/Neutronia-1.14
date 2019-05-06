@@ -15,9 +15,9 @@ import net.minecraft.entity.mob.*;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.particle.ParticleParameters;
 import net.minecraft.particle.ParticleTypes;
-import net.minecraft.text.StringTextComponent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
@@ -80,7 +80,7 @@ public class SocialVillager extends PassiveEntity {
         try {
             this.firstName = generateFirstName(this.gender);
             this.lastName = generateLastName();
-            this.setCustomName(new StringTextComponent(firstName + " " + lastName));
+            this.setCustomName(new TextComponent(firstName + " " + lastName));
 
         } catch (IOException e) {
             e.printStackTrace();

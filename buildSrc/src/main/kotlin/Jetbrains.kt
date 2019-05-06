@@ -30,7 +30,7 @@ object Dependencies {
         const val version = "+"
     }
     object Tweed {
-        const val version = "2.0.8"
+        const val version = "+"
     }
 }
 

@@ -6,13 +6,13 @@ import io.github.prospector.modmenu.util.BadgeRenderer;
 import net.fabricmc.loader.api.metadata.ModMetadata;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;
-import net.minecraft.text.TextComponent;
+import net.minecraft.network.chat.Component;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 import team.hollow.modmenu_api.ModMenuBadgeManager;
-import team.hollow.modmenu_api.api.ModMenuBadges;
 import team.hollow.modmenu_api.api.ModMenuBadge;
+import team.hollow.modmenu_api.api.ModMenuBadges;
 
 @Mixin(value = BadgeRenderer.class, remap = false)
 public abstract class MixinBadgeRenderer {
@@ -71,7 +71,7 @@ public abstract class MixinBadgeRenderer {
         }
     }
 
-    private void drawBadge(int x, int y, int tagWidth, TextComponent text, int outlineColor, int fillColor) {
+    private void drawBadge(int x, int y, int tagWidth, Component text, int outlineColor, int fillColor) {
         DrawableHelper.fill(x + 1, y - 1, x + tagWidth, y, outlineColor);
         DrawableHelper.fill(x, y, x + 1, y + client.textRenderer.fontHeight, outlineColor);
         DrawableHelper.fill(x + 1, y + 1 + client.textRenderer.fontHeight - 1, x + tagWidth, y + client.textRenderer.fontHeight + 1, outlineColor);

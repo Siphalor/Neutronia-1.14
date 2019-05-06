@@ -12,10 +12,10 @@ import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.map.MapIcon;
 import net.minecraft.item.map.MapState;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.BrewingRecipeRegistry;
-import net.minecraft.text.TranslatableTextComponent;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -86,7 +86,7 @@ public class TradeOfferFactories {
                 ItemStack itemStack_1 = FilledMapItem.createMap(world_1, blockPos_1.getX(), blockPos_1.getZ(), (byte)2, true, true);
                 FilledMapItem.fillExplorationMap(world_1, itemStack_1);
                 MapState.addDecorationsTag(itemStack_1, blockPos_1, "+", this.iconType);
-                itemStack_1.setDisplayName(new TranslatableTextComponent("filled_map." + this.structure.toLowerCase(Locale.ROOT)));
+                itemStack_1.setDisplayName(new TranslatableComponent("filled_map." + this.structure.toLowerCase(Locale.ROOT)));
                 return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(Items.COMPASS), itemStack_1, this.maxUses, this.experience, 0.2F);
             } else {
                 return null;

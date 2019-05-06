@@ -4,7 +4,7 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.Screen;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.entity.SocialVillager;
@@ -19,7 +19,7 @@ public class SocialScreen extends Screen {
     private PlayerEntity talker;
 
     public SocialScreen(SocialVillager entity, PlayerEntity player) {
-        super(new TranslatableTextComponent("narrator.screen.title"));
+        super(new TranslatableComponent("narrator.screen.title"));
         this.target = entity;
         this.talker = player;
     }

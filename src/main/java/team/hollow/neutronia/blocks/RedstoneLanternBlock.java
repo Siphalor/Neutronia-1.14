@@ -3,7 +3,7 @@ package team.hollow.neutronia.blocks;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.LanternBlock;
 import net.minecraft.block.*;
-import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.state.StateFactory;
@@ -116,7 +116,7 @@ public class RedstoneLanternBlock extends LanternBlock {
         }
     }
 
-    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext) {
         Vec3d offset = getOffsetPos(blockState_1, blockView_1, blockPos_1);
         switch (blockState_1.get(FACING)) {
             case NORTH:

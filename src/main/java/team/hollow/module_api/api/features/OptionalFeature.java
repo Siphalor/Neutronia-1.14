@@ -10,7 +10,11 @@ public abstract class OptionalFeature extends Feature {
 
 	public OptionalFeature(String name, String enablesDescription) {
 		this.name = name;
-		enabledEntry = register("enable-" + name, new BooleanEntry(true).setComment(enablesDescription).setScope(ConfigScope.GAME).setEnvironment(ConfigEnvironment.SERVER));
+		enabledEntry = register(name, createEnabledEntry(enablesDescription));
+	}
+
+	protected BooleanEntry createEnabledEntry(String description) {
+		return new BooleanEntry(true).setComment(description).setScope(ConfigScope.GAME).setEnvironment(ConfigEnvironment.SERVER);
 	}
 
 	public OptionalFeature disableByDefault() {

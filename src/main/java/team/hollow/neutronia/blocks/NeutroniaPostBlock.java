@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlacementEnvironment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -32,7 +32,7 @@ public class NeutroniaPostBlock extends Block implements Waterloggable {
 		this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.Y).with(WATERLOGGED, false));
 	}
 
-	public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+	public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext) {
 		Direction.Axis axis = blockState_1.get(AXIS);
 		switch(axis) {
 			case X:
@@ -44,10 +44,10 @@ public class NeutroniaPostBlock extends Block implements Waterloggable {
 		}
 	}
 
-	public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+	public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext) {
 		Direction.Axis axis = blockState_1.get(AXIS);
 		if(axis == Direction.Axis.Y) return Y_COLLISION;
-		else return super.getCollisionShape(blockState_1, blockView_1, blockPos_1, verticalEntityPosition_1);
+		else return super.getCollisionShape(blockState_1, blockView_1, blockPos_1, entityContext);
 	}
 
 	public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
