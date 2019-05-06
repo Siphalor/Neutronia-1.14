@@ -12,7 +12,8 @@
     "world.VillageGeneratorMixin",
     "world.AddHillsLayerMixin",
     "world.DefaultBiomeFeaturesMixin",
-    "entity.ParrotEntityMixin"
+    "entity.ParrotEntityMixin",
+    "entity.CatEntityMixin"
   ],
   "client": [
     "client.ItemDynamicRendererMixin",

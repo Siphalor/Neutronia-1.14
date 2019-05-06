@@ -19,12 +19,11 @@ import static team.hollow.neutronia.Neutronia.MOD_ID;
 
 public class NBlocks {
 
-    public static final Block[] BOOKSHELVES = new Block[9], PATTERNED_PLANKS = new Block[WoodType.VANILLA_WOODS.size()],
-            WOOD = new Block[WoodType.VANILLA_WOODS.size()], CARVED_PLANKS = new Block[WoodType.values().length]/*, BARRELS = new Block[WoodType.VANILLA_WOODS.size()]*/, WOOD_LANTERNS = new Block[WoodType.values().length],
-            LADDERS = new Block[LadderVariants.values().length], LOG_CAMPFIRE = new Block[WoodType.values().length],
-            STRIPPED_LOGS = new Block[WoodType.values().length], STRIPPED_WOOD = new Block[WoodType.values().length], LECTERNS = new Block[WoodType.VANILLA_WOODS.size()];
+    public static final Block[] BOOKSHELVES = new Block[9], PATTERNED_PLANKS = new Block[WoodType.VANILLA_WOODS.size()], CARVED_PLANKS = new Block[WoodType.values().length],
+            WOOD_LANTERNS = new Block[WoodType.values().length], LADDERS = new Block[LadderVariants.values().length], LOG_CAMPFIRE = new Block[WoodType.values().length],
+            LECTERNS = new Block[WoodType.VANILLA_WOODS.size()];
     //    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
-    public static final Block[] GLAZED_TERRACOTTA_PILLAR = new Block[GTPVariants.values().length], SOUL_STONE = new Block[4];
+    public static final Block[] GLAZED_TERRACOTTA_PILLAR = new Block[GTPVariants.values().length]/*, SOUL_STONE = new Block[4]*/;
     public static final Block PALM_LOG, PALM_WOOD, PALM_PLANKS, PALM_DOOR, PALM_TRAPDOOR, PALM_LEAVES, PALM_LOG_TOP, PALM_SAPLING/*, COCONUT*/;
     public static final Block WILLOW_LOG, WILLOW_WOOD, WILLOW_PLANKS, WILLOW_DOOR, WILLOW_TRAPDOOR, WILLOW_LEAVES, WILLOW_SAPLING, WILLOW_UNDERWATER_SAPLING;
     public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
@@ -55,7 +54,6 @@ public class NBlocks {
     /*public static final Block PUMPKIN = new PumpkinBlock();
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
     public static final Block MELON = new MelonBlock(), MEL_O_LANTERN = new MelOLanternBlock();*/
-    public static final Block CHEESE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cheese_cake", ItemGroup.FOOD);
 //    public static final Block COCOA_CAKE = RegistryUtils.register(new CakeBaseBlock(), "cocoa_cake", ItemGroup.FOOD);
     public static final Block CHOCOLATE_CAKE = RegistryUtils.register(new CakeBaseBlock(), "chocolate_cake", ItemGroup.FOOD);
     public static final Block PUMPKIN_PIE = RegistryUtils.register(new PieBlock(), new Identifier("minecraft", "pumpkin_pie"), ItemGroup.FOOD);
@@ -64,7 +62,7 @@ public class NBlocks {
     public static final Block APPLE_PIE = RegistryUtils.register(new PieBlock(), "apple_pie", ItemGroup.FOOD);
     public static final Block STICK_BUNDLE, CHORUS_BUNDLE, SUGAR_CANE_BUNDLE, BAMBOO_BUNDLE, UNCUT_BAMBOO_BUNDLE, NETHER_WART_SACK, COCOA_BEAN_SACK, GUNPOWDER_SACK,
             EGG_CRATE, BEETROOT_CRATE, POTATO_CRATE, CARROT_CRATE, APPLE_CRATE, GOLDEN_APPLE_CRATE, CACTUS_BUNDLE;
-    public static final Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN/*, BAMBOO_TORCH*/, THATCH;
+    public static final Block BAMBOO_PLANKS, BAMBOO_SIGN, BAMBOO_WALL_SIGN, /*BAMBOO_TORCH, */THATCH/*, TIKI_TORCH*/;
     public static final Block ACIDIAN, ACIDIAN_BRICKS, ACIDIAN_PILLAR, CHISELED_ACIDIAN/*, ACIDIAN_BARS*/;
     public static final Block TREATED_PLANKS, TREATED_SIDING;
     public static final Block POTTED_BEETROOT, POTTED_CARROTS, POTTED_CHORUS, POTTED_GRASS, POTTED_LILAC, POTTED_MELON, POTTED_NETHER_WART, POTTED_PEONY,
@@ -77,7 +75,6 @@ public class NBlocks {
     public static final Block DEAD_PILLAR_CORAL_WALL_FAN, DEAD_LIME_BRAIN_CORAL_WALL_FAN, DEAD_GREEN_BUBBLE_CORAL_WALL_FAN, DEAD_ACAN_CORAL_WALL_FAN, DEAD_ANTIPATHES_CORAL_WALL_FAN, DEAD_STAGHORN_CORAL_WALL_FAN;
     public static final Block PILLAR_CORAL, LIME_BRAIN_CORAL, GREEN_BUBBLE_CORAL, ACAN_CORAL, ANTIPATHES_CORAL, STAGHORN_CORAL;
     public static final Block DEAD_PILLAR_CORAL, DEAD_LIME_BRAIN_CORAL, DEAD_GREEN_BUBBLE_CORAL, DEAD_ACAN_CORAL, DEAD_ANTIPATHES_CORAL, DEAD_STAGHORN_CORAL;
-    //    public static final Block BLUE_BERRY_BUSH, GOOSEBERRY_BUSH, WITHER_BERRY_BUSH, GREEN_GRAPE_BUSH, PURPLE_GRAPE_BUSH;
     public static final Block GOLD_LANTERN, IRON_LANTERN, WROUGHT_IRON_LANTERN, PRISMARINE_LANTERN, ICE_LANTERN;
     public static Block[] PUMPKIN = new Block[CarvedFaceTypes.values().length];
     public static final Block ICE_SAW;
@@ -140,20 +137,11 @@ public class NBlocks {
         ANTIPATHES_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_ANTIPATHES_CORAL), new Identifier(MOD_ID, "antipathes_coral"));
         STAGHORN_CORAL = RegistryUtils.register(new NeutroniaBaseCoralBlock(DEAD_STAGHORN_CORAL), new Identifier(MOD_ID, "staghorn_coral"));
 
-        /*BLUE_BERRY_BUSH = RegistryUtils.registerNoBI(new NeutroniaBerryBushBlock(), "blueberry_bush");
-        GOOSEBERRY_BUSH = RegistryUtils.registerNoBI(new NeutroniaGooseberryBushBlock(), "gooseberry_bush");
-        WITHER_BERRY_BUSH = RegistryUtils.registerNoBI(new NeutroniaWitherBerryBushBlock(), "wither_berry_bush");
-        GREEN_GRAPE_BUSH = RegistryUtils.registerNoBI(new NeutroniaGreenGrapeBushBlock(), "green_grape_bush");
-        PURPLE_GRAPE_BUSH = RegistryUtils.registerNoBI(new NeutroniaPurpleGrapeBushBlock(), "purple_grape_bush");*/
-
         IRON_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(MOD_ID, "iron_lantern"));
         GOLD_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(MOD_ID, "gold_lantern"));
         WROUGHT_IRON_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.METAL).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(MOD_ID, "wrought_iron_lantern"));
         PRISMARINE_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.GLASS).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(MOD_ID, "prismarine_lantern"));
         ICE_LANTERN = RegistryUtils.register(new LanternBlock(FabricBlockSettings.of(Material.PACKED_ICE).hardness(3.5F).sounds(BlockSoundGroup.LANTERN).lightLevel(15).build()), new Identifier(MOD_ID, "ice_lantern"));
-
-        /*REDSTONE_IRON_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_iron_lantern");
-        REDSTONE_GOLD_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
 
         ICE_SAW = RegistryUtils.register(new BaseModBlock(Material.ICE), new Identifier(MOD_ID, "ice_saw"));
         SAWMILL = RegistryUtils.register(new BaseModBlock(Material.ICE), new Identifier(MOD_ID, "sawmill"));
@@ -161,8 +149,6 @@ public class NBlocks {
         for (WoodType woodType : WoodType.VANILLA_WOODS) {
             if (woodType == WoodType.OAK) continue;
             BOOKSHELVES[woodType.getIndex()] = RegistryUtils.register(new Block(Block.Settings.of(Material.WOOD)), String.format("%s_bookshelf", woodType.asString()), ItemGroup.BUILDING_BLOCKS);
-            /*BARRELS[woodType.getIndex()] = RegistryUtils.register(new BarrelBlock(FabricBlockSettings.of(Material.WOOD).hardness(2.5F).sounds(BlockSoundGroup.WOOD).build()),
-                    new Identifier(MOD_ID, woodType.asString() + "_barrel"), ItemGroup.DECORATIONS);*/
             LOG_CAMPFIRE[woodType.getIndex()] = RegistryUtils.register(new CampfireBlock(FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE).hardness(2.0F)
                     .sounds(BlockSoundGroup.WOOD).lightLevel(15).ticksRandomly().build()), new Identifier(MOD_ID, String.format("%s_campfire", woodType.asString())));
             LECTERNS[woodType.getIndex()] = RegistryUtils.register(new NeutroniaBaseLectern(), new Identifier(MOD_ID, String.format("%s_lectern", woodType.asString())), ItemGroup.REDSTONE);
@@ -223,19 +209,7 @@ public class NBlocks {
 //        WROUGHT_IRON_BLOCK = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL).getModMenuBadge()), new Identifier(Neutronia.MOD_ID, "wrought_iron_block"));
         WROUGHT_IRON_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.METAL, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(MOD_ID, "wrought_iron_bars"));
 
-        for (WoodType newWoodTypes : WoodType.MODDED_WOODS) {
-            if (newWoodTypes == WoodType.BAMBOO) continue;
-            STRIPPED_LOGS[newWoodTypes.getIndex()] = new NeutroniaPillarBlock(Material.WOOD, String.format("stripped_%s_log", newWoodTypes.asString()));
-            STRIPPED_WOOD[newWoodTypes.getIndex()] = RegistryUtils.register(new Block(FabricBlockSettings.of(Material.WOOD, MaterialColor.WOOD)
-                    .hardness(2.0F).sounds(BlockSoundGroup.WOOD).build()), new Identifier(MOD_ID, String.format("stripped_%s_wood", newWoodTypes.asString())), ItemGroup.BUILDING_BLOCKS);
-//            CARVED_PLANKS[newWoodTypes.getIndex()] = new NeutroniaBaseBlock(Material.WOOD, String.format("carved_%s_planks", newWoodTypes.asString()));
-//            STRIPPED_LOG_CAMPFIRE[newWoodTypes.getIndex()] = RegistryUtils.register(new CampfireBaseBlock(), String.format("stripped_%s_campfire", newWoodTypes.asString()));
-        }
-
         for (WoodType woodType : WoodType.values()) {
-            if (woodType == WoodType.BAMBOO) continue;
-            if (woodType == WoodType.CHERRY) continue;
-            if (woodType == WoodType.WILLOW) continue;
             WOOD_LANTERNS[woodType.getIndex()] = new WoodenLanternBlock(woodType);
         }
 
@@ -439,10 +413,10 @@ public class NBlocks {
             RegistryUtils.register(block, "pumpkin");
         }*/
 
-        for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
+        /*for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
             SOUL_STONE[soulStoneTypes.getIndex()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
             BlockRegistryBuilder.getInstance(soulStoneTypes.asString(), SOUL_STONE[soulStoneTypes.getIndex()]).slab().stair().wall();
-        }
+        }*/
 
         BlockRegistryBuilder.getInstance("dark_andesite", DARK_ANDESITE).wall();
         BlockRegistryBuilder.getInstance("polished_dark_andesite", POLISHED_DARK_ANDESITE).wall();

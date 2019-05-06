@@ -28,6 +28,7 @@ public class NVillagers {
 
     public static final VillagerType RED_MUSHROOM;
     public static final VillagerType BROWN_MUSHROOM;
+    public static final VillagerType MUSHROOM;
     public static final VillagerType MOUNTAINS;
     public static final VillagerType COLD_MOUNTAINS;
     public static final VillagerType BADLANDS;
@@ -77,6 +78,7 @@ public class NVillagers {
 
         RED_MUSHROOM = VillagerTypeRegistry.register("red_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
         BROWN_MUSHROOM = VillagerTypeRegistry.register("brown_mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
+        MUSHROOM = VillagerTypeRegistry.register("mushroom", Biomes.MUSHROOM_FIELDS, Biomes.MUSHROOM_FIELD_SHORE);
         MOUNTAINS = VillagerTypeRegistry.register("mountains", Biomes.MOUNTAINS, Biomes.MOUNTAIN_EDGE, Biomes.WOODED_MOUNTAINS);
         COLD_MOUNTAINS = VillagerTypeRegistry.register("cold_mountains", Biomes.SNOWY_MOUNTAINS, Biomes.SNOWY_TAIGA_MOUNTAINS);
         BADLANDS = VillagerTypeRegistry.register("badlands", Biomes.BADLANDS, Biomes.BADLANDS_PLATEAU, Biomes.ERODED_BADLANDS, Biomes.WOODED_BADLANDS_PLATEAU);
