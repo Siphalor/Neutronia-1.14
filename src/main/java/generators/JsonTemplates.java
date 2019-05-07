@@ -140,6 +140,14 @@ class JsonTemplates {
         "\t\t\"facing=east,type=single\": { \"model\": \"derived_modid:block/block_model\", \"y\": 180, \"uvlock\": true },\n" +
         "\t\t\"facing=north,type=single\": { \"model\": \"derived_modid:block/block_model\", \"y\": 90, \"uvlock\": true },\n" +
         "\t\t\"facing=south,type=single\": { \"model\": \"derived_modid:block/block_model\", \"y\": 270, \"uvlock\": true },\n" +
+        "\t\t\"facing=north,type=corner_left\": { \"model\": \"derived_modid:block/block_model_corner\" },\n" +
+        "\t\t\"facing=south,type=corner_left\": { \"model\": \"derived_modid:block/block_model_corner\", \"y\": 180, \"uvlock\": true },\n" +
+        "\t\t\"facing=east,type=corner_left\": { \"model\": \"derived_modid:block/block_model_corner\", \"y\": 90, \"uvlock\": true },\n" +
+        "\t\t\"facing=west,type=corner_left\": { \"model\": \"derived_modid:block/block_model_corner\", \"y\": 270, \"uvlock\": true },\n" +
+        "\t\t\"facing=west,type=corner_right\": { \"model\": \"derived_modid:block/block_model_corner\" },\n" +
+        "\t\t\"facing=east,type=corner_right\": { \"model\": \"derived_modid:block/block_model_corner\", \"y\": 180, \"uvlock\": true },\n" +
+        "\t\t\"facing=north,type=corner_right\": { \"model\": \"derived_modid:block/block_model_corner\", \"y\": 90, \"uvlock\": true },\n" +
+        "\t\t\"facing=south,type=corner_right\": { \"model\": \"derived_modid:block/block_model_corner\", \"y\": 270, \"uvlock\": true },\n" +
         "\t\t\"facing=east,type=double\": { \"model\": \"base_modid:block/base_model\" },\n" +
         "\t\t\"facing=west,type=double\": { \"model\": \"base_modid:block/base_model\" },\n" +
         "\t\t\"facing=south,type=double\": { \"model\": \"base_modid:block/base_model\" },\n" +

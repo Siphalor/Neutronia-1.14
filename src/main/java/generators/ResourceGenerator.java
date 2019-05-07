@@ -553,17 +553,19 @@ public class ResourceGenerator {
             .replace("base_modid", baseIdentifier.getNamespace()).replace("base_model", baseIdentifier.getPath());
         writeStringToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
 
-        genSidingModel(identifier, baseIdentifier);
+        genSidingModels(identifier, baseIdentifier);
         genSimpleBlockItemModel(identifier);
     }
 
-    public void genSidingModel(Identifier identifier, Identifier textureName) {
+    public void genSidingModels(Identifier identifier, Identifier textureName) {
         JsonObject textures = new JsonObject();
         textures.addProperty("all", textureName.getNamespace() + ":block/" + textureName.getPath());
         JsonObject root = new JsonObject();
         root.addProperty("parent", "neutronia:persistent/siding");
         root.add("textures", textures);
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        root.addProperty("parent", "neutronia:persistent/siding_corner");
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_corner.json").toFile(), root);
     }
 
     /*public void genSlabColoredBlockModel(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {

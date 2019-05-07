@@ -198,12 +198,6 @@ public class ContentResourceBuilder extends ContentBuilder {
 	}
 
 	@Override
-	public Block corner() {
-		// TODO
-		return null;
-	}
-
-	@Override
 	public Block post() {
 		// TODO
 		return null;
@@ -237,5 +231,10 @@ public class ContentResourceBuilder extends ContentBuilder {
 		resourceGenerator.genPottedBlock(identifier, plantTexture);
         resourceGenerator.genSimpleLootTable(identifier, Registry.ITEM.getId(Item.BLOCK_ITEM_MAP.get(Registry.BLOCK.get(baseNameIdentifier))), Registry.ITEM.getId(Items.FLOWER_POT));
 		return null;
+	}
+
+	@Override
+	public void runGameTask(Runnable runnable) {
+
 	}
 }

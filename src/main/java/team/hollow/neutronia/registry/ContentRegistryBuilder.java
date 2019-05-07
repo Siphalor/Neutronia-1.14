@@ -234,13 +234,6 @@ public class ContentRegistryBuilder extends ContentBuilder {
     }
 
     @Override
-    public Block corner() {
-        Block corner = new NeutroniaCornerBlock(baseBlock.getDefaultState(),Block.Settings.copy(baseBlock));
-        RegistryUtils.register(corner, extendIdentifier("_corner"));
-        return corner;
-    }
-
-    @Override
     public Block post() {
         Block post = new NeutroniaPostBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(post, extendIdentifier("_post"));
@@ -311,5 +304,10 @@ public class ContentRegistryBuilder extends ContentBuilder {
     @Override
     public Block addPotted(Identifier plantTexture) {
         return RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(baseBlock), new Identifier(getModId(), "potted_" + baseNameIdentifier.getPath()));
+    }
+
+    @Override
+    public void runGameTask(Runnable runnable) {
+        runnable.run();
     }
 }

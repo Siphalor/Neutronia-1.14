@@ -33,7 +33,10 @@ public class PumpkinFacesFeature extends OptionalFeature {
             carvedPumpkins.add(pumpkin);
             jackOLanterns.add(lantern);
 		}
-		BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "carved_pumpkins"), NeutroniaTags.SHEARS, carvedPumpkins);
-		BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "jack_o_lanterns"), NeutroniaTags.SHEARS, jackOLanterns);
+
+		contentBuilder.runGameTask(() -> {
+			BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "carved_pumpkins"), NeutroniaTags.SHEARS, carvedPumpkins);
+			BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "jack_o_lanterns"), NeutroniaTags.SHEARS, jackOLanterns);
+		});
 	}
 }

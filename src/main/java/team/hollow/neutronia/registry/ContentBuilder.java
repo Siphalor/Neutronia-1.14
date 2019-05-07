@@ -76,12 +76,13 @@ public abstract class ContentBuilder {
 	public abstract Block wall();
 	public abstract Block button(boolean wooden);
 	public abstract Block pressurePlate(PressurePlateBlock.Type type);
-	public abstract Block corner();
 	public abstract Block post();
 	public abstract Block siding();
 	public abstract Block sign();
 	public abstract Block addPotted();
 	public abstract Block addPotted(Identifier plantTexture);
+
+	public abstract void runGameTask(Runnable runnable);
 
 	public Identifier extendIdentifier(String suffix) {
 		return extendIdentifier(baseNameIdentifier, suffix);

@@ -45,25 +45,28 @@ public class CarvedMelonsFeature extends OptionalFeature {
             carvedMelons.add(melon);
             melOLanterns.add(lantern);
 		}
-		BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "carved_melons"), NeutroniaTags.SHEARS, carvedMelons);
-		BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "mel_o_lanterns"), NeutroniaTags.SHEARS, melOLanterns);
 
-		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-			ItemStack itemStack_1 = player.getStackInHand(hand);
-			if(itemStack_1.getItem() == Items.SHEARS && world.getBlockState(hitResult.getBlockPos()).getBlock() == Blocks.MELON) {
-				if(!world.isClient) {
-					Direction hitDirection = hitResult.getSide();
-					Direction resultDirection = hitDirection.getAxis() == Direction.Axis.Y ? player.getHorizontalFacing().getOpposite() : hitDirection;
-					world.playSound(null, hitResult.getBlockPos(), SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-					world.setBlockState(hitResult.getBlockPos(), carvedMelon.getDefaultState().with(HorizontalFacingBlock.FACING, resultDirection), 11);
-					ItemEntity itemEntity = new ItemEntity(world, (double) hitResult.getBlockPos().getX() + 0.5D + (double) resultDirection.getOffsetX() * 0.65D, (double) hitResult.getBlockPos().getY() + 0.1D, (double) hitResult.getBlockPos().getZ() + 0.5D + (double) resultDirection.getOffsetZ() * 0.65D, new ItemStack(Items.PUMPKIN_SEEDS, 4));
-					itemEntity.setVelocity(0.05D * (double) resultDirection.getOffsetX() + world.random.nextDouble() * 0.02D, 0.05D, 0.05D * (double) resultDirection.getOffsetZ() + world.random.nextDouble() * 0.02D);
-					world.spawnEntity(itemEntity);
-					itemStack_1.applyDamage(1, player, playerEntity -> playerEntity.sendToolBreakStatus(hand));
+		contentBuilder.runGameTask(() -> {
+			BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "carved_melons"), NeutroniaTags.SHEARS, carvedMelons);
+			BlockChiseler.create(new Identifier(Neutronia.MOD_ID, "mel_o_lanterns"), NeutroniaTags.SHEARS, melOLanterns);
+
+			UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
+				ItemStack itemStack_1 = player.getStackInHand(hand);
+				if (itemStack_1.getItem() == Items.SHEARS && world.getBlockState(hitResult.getBlockPos()).getBlock() == Blocks.MELON) {
+					if (!world.isClient) {
+						Direction hitDirection = hitResult.getSide();
+						Direction resultDirection = hitDirection.getAxis() == Direction.Axis.Y ? player.getHorizontalFacing().getOpposite() : hitDirection;
+						world.playSound(null, hitResult.getBlockPos(), SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						world.setBlockState(hitResult.getBlockPos(), carvedMelon.getDefaultState().with(HorizontalFacingBlock.FACING, resultDirection), 11);
+						ItemEntity itemEntity = new ItemEntity(world, (double) hitResult.getBlockPos().getX() + 0.5D + (double) resultDirection.getOffsetX() * 0.65D, (double) hitResult.getBlockPos().getY() + 0.1D, (double) hitResult.getBlockPos().getZ() + 0.5D + (double) resultDirection.getOffsetZ() * 0.65D, new ItemStack(Items.PUMPKIN_SEEDS, 4));
+						itemEntity.setVelocity(0.05D * (double) resultDirection.getOffsetX() + world.random.nextDouble() * 0.02D, 0.05D, 0.05D * (double) resultDirection.getOffsetZ() + world.random.nextDouble() * 0.02D);
+						world.spawnEntity(itemEntity);
+						itemStack_1.applyDamage(1, player, playerEntity -> playerEntity.sendToolBreakStatus(hand));
+					}
+					return ActionResult.SUCCESS;
 				}
-				return ActionResult.SUCCESS;
-			}
-			return ActionResult.PASS;
+				return ActionResult.PASS;
+			});
 		});
 	}
 }

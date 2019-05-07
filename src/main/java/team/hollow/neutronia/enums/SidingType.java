@@ -4,11 +4,13 @@ import net.minecraft.util.StringRepresentable;
 
 public enum SidingType implements StringRepresentable {
 	SINGLE("single"),
-	DOUBLE("double");
+	DOUBLE("double"),
+	CORNER_RIGHT("corner_right"),
+	CORNER_LEFT("corner_left");
 
 	private final String name;
 
-	private SidingType(String name) {
+	SidingType(String name) {
 		this.name = name;
 	}
 
