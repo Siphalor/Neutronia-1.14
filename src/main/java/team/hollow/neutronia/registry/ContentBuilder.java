@@ -5,6 +5,7 @@ import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemProvider;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 
 public abstract class ContentBuilder {
 	private static ContentBuilder instance;
@@ -32,6 +33,10 @@ public abstract class ContentBuilder {
 		return block;
 	}
 
+	public void asBaseBlock(Block block) {
+		asBaseBlock(block, Registry.BLOCK.getId(block));
+	}
+
 	public void asBaseBlock(Block block, Identifier name) {
 		setBaseTexture(name);
 		setBaseName(name);
@@ -46,11 +51,19 @@ public abstract class ContentBuilder {
 	public abstract Block newCompressedBlock(String name, Block block);
 
 	public abstract void setBaseTexture(Identifier name);
+
+	public void setBaseName(String name) {
+		setBaseName(new Identifier(getModId(), name));
+	}
+
 	public void setBaseName(Identifier name) {
 		baseNameIdentifier = name;
 	}
+
 	public abstract void setBaseBlock(Block block);
+
 	public abstract void setBaseItem(ItemProvider itemProvider);
+
 	public abstract void setSecondaryItem(ItemProvider itemProvider);
 
 	public abstract Block slab();
@@ -59,12 +72,14 @@ public abstract class ContentBuilder {
 	public abstract Block fenceGate();
 	public abstract Block door();
 	public abstract Block trapDoor();
+	public abstract Block grate();
 	public abstract Block wall();
 	public abstract Block button(boolean wooden);
 	public abstract Block pressurePlate(PressurePlateBlock.Type type);
 	public abstract Block corner();
 	public abstract Block post();
 	public abstract Block siding();
+	public abstract Block sign();
 	public abstract Block addPotted();
 	public abstract Block addPotted(Identifier plantTexture);
 

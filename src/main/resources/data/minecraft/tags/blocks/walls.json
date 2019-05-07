@@ -1,4 +1,6 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    "neutronia:cracked_stone_bricks_wall"
+  ]
 }

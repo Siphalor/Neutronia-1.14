@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PressurePlateBlock;
+import net.minecraft.item.Items;
 import net.minecraft.util.StringRepresentable;
 import team.hollow.neutronia.blocks.NeutroniaBlock;
 
@@ -11,11 +12,11 @@ import java.util.ArrayDeque;
 import java.util.ArrayList;
 
 public abstract class WoodTypeRegistry implements StringRepresentable {
-    private static ArrayList<WoodType> woodTypes = new ArrayList<>();
+    public static ArrayList<WoodType> woodTypes = new ArrayList<>();
 
     private static ArrayDeque<ModdedTypeListener> listeners = new ArrayDeque<>();
 
-    public static WoodType registerVanilla(WoodType woodType) {
+    static WoodType registerVanilla(WoodType woodType) {
         woodTypes.add(woodType);
         return woodType;
     }
@@ -37,6 +38,8 @@ public abstract class WoodTypeRegistry implements StringRepresentable {
 		contentBuilder.fenceGate();
 		contentBuilder.door();
 		contentBuilder.trapDoor();
+		contentBuilder.setSecondaryItem(Items.STICK);
+		contentBuilder.sign();
 
         listeners.forEach(listener -> listener.onModdedWoodTypeRegistered(woodType));
         return woodType;

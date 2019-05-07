@@ -12,6 +12,9 @@ public class VariationModule extends Module {
 	public static WoodSubModule woodSubModule;
 
 	public static PottedPlantsFeature pottedPlants;
+	public static PumpkinFacesFeature pumpkinFacesFeature;
+
+	public static GratesFeature grates;
 
 	public VariationModule() {
 		super("variation", "This module contains variations for existing vanilla features.");
@@ -23,6 +26,9 @@ public class VariationModule extends Module {
 		woodSubModule = register(new WoodSubModule());
 
 		pottedPlants = register(new PottedPlantsFeature());
+		pumpkinFacesFeature = register(new PumpkinFacesFeature());
+
+		grates = register(new GratesFeature());
 
 		setBackgroundTexture(new Identifier("minecraft", "textures/block/oak_log.png"));
 	}

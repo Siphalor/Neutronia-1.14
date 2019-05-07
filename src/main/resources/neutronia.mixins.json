@@ -16,6 +16,7 @@
   ],
   "client": [
     "client.ItemDynamicRendererMixin",
+    "client.render.SignBlockEntityRendererMixin",
     "client.screen.MixinGuiMain",
     "client.screen.MixinSplashScreen",
     "client.SettingScreenMixin",

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import team.hollow.module_api.ModuleManager;
 import team.hollow.neutronia.modules.*;
+import team.hollow.neutronia.registry.BlockChiseler;
 import team.hollow.neutronia.registry.ContentBuilder;
 import team.hollow.neutronia.registry.ContentRegistryBuilder;
 import team.hollow.quest_api.QuestManager;
@@ -42,6 +43,8 @@ public class Neutronia implements ModInitializer {
 
         if(GEN_RESOURCES)
             System.exit(0);
+
+        BlockChiseler.setup();
 
         QuestManager.registerQuests(
                 new Quest(

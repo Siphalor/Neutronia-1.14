@@ -932,6 +932,19 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_top.json").toFile(), root);
     }
 
+    public void genSign(Identifier identifier, Identifier wallSignIdentifier, Identifier baseTextureName) {
+        genSimpleBlockstates(identifier);
+
+        JsonObject textures = new JsonObject();
+        textures.addProperty("particle", baseTextureName.getNamespace() + ":blocks/" + baseTextureName.getPath());
+        JsonObject root = new JsonObject();
+        root.add("textures", textures);
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+        writeJsonToFile(getBlockModelsPath(wallSignIdentifier.getNamespace()).resolve(wallSignIdentifier.getPath() + ".json").toFile(), root);
+
+        genItemModel(identifier, identifier);
+    }
+
     public void genCake(int bites, Identifier identifier, Identifier bottomTextureName, Identifier sideTextureName, Identifier innerTextureName, Identifier topTextureName) {
         JsonObject variants = new JsonObject();
         for(int i = 0; i < bites; i++) {

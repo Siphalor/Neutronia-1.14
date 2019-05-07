@@ -1,9 +1,6 @@
 package generators;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.PillarBlock;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.SweetBerryBushBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemProvider;
 import net.minecraft.item.Items;
@@ -51,6 +48,10 @@ public class ContentResourceBuilder extends ContentBuilder {
 
 		if(block instanceof PillarBlock) {
 			resourceGenerator.genPillarBlock(identifier, extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
+		} else if(block instanceof NeutroniaCarvedPumpkinBlock) {
+			resourceGenerator.genOrientedBlock(identifier, new Identifier("pumpkin_top"), textureIdentifier, new Identifier("pumpkin_side"));
+		} else if(block instanceof HorizontalFacingBlock) {
+			resourceGenerator.genOrientedBlock(identifier, extendIdentifier(textureIdentifier, "_top"), extendIdentifier(textureIdentifier, "_front"), extendIdentifier(textureIdentifier, "_sides"));
 		} else if(block instanceof NeutroniaBookshelfBlock) {
 			resourceGenerator.genSimpleBlockstates(identifier);
 			resourceGenerator.genPillarBlockModel(identifier, baseTextureIdentifier, textureIdentifier);
@@ -165,6 +166,14 @@ public class ContentResourceBuilder extends ContentBuilder {
 	}
 
 	@Override
+	public Block grate() {
+		Identifier identifier = extendIdentifier("_grate");
+		resourceGenerator.genTrapdoor(identifier, identifier);
+		resourceGenerator.genSimpleLootTable(identifier, identifier);
+		return null;
+	}
+
+	@Override
 	public Block wall() {
         Identifier identifier = extendIdentifier("_wall");
         resourceGenerator.genFence(identifier, baseTextureIdentifier, true);
@@ -197,6 +206,14 @@ public class ContentResourceBuilder extends ContentBuilder {
 	@Override
 	public Block post() {
 		// TODO
+		return null;
+	}
+
+	@Override
+	public Block sign() {
+		Identifier identifier = extendIdentifier("_sign");
+		resourceGenerator.genSign(identifier, extendIdentifier("_wall_sign"), baseTextureIdentifier);
+		resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}
 

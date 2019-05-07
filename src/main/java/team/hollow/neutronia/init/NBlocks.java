@@ -2,7 +2,6 @@ package team.hollow.neutronia.init;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
 import net.minecraft.block.LanternBlock;
 import net.minecraft.block.Material;
 import net.minecraft.item.ItemGroup;
@@ -10,8 +9,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
-import team.hollow.neutronia.blocks.pumpkin.PumpkinBlock;
-import team.hollow.neutronia.enums.CarvedFaceTypes;
+import team.hollow.neutronia.enums.CarvedFaceType;
 import team.hollow.neutronia.enums.CustomChestType;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
@@ -20,7 +18,7 @@ public class NBlocks {
 
     public static final Block[] /*GLAZED_TERRACOTTA_PILLAR = new Block[13], */SOUL_STONE = new Block[4];
     // TODO: Metal related stuff:
-    //public static final Block GRATE, IRON_GRATE, GOLD_GRATE, WROUGHT_IRON_GRATE;
+    //public static final Block GRATE, WROUGHT_IRON_GRATE;
     //    public static final Block GOLD_SCAFFOLDING, IRON_SCAFFOLDING;
     //public static final Block /*WROUGHT_IRON_BLOCK, */WROUGHT_IRON_BARS;
 
@@ -49,7 +47,7 @@ public class NBlocks {
     public static final Block PACKED_ICE_BRICKS, PACKED_ICE_PILLAR, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES;
     public static final Block FROSTED_GLASS, FROSTED_GLASS_PANE;
     public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, WROUGHT_IRON_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
-    public static final Block[] PUMPKIN = new Block[CarvedFaceTypes.values().length];
+    public static final Block[] PUMPKIN = new Block[CarvedFaceType.values().length];
     /*public static final Block PUMPKIN = new PumpkinBlock();
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
     public static final Block MELON = new MelonBlock(), MEL_O_LANTERN = new MelOLanternBlock();*/
@@ -144,8 +142,6 @@ public class NBlocks {
         }
 
         /*GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
-        IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "iron_grate");
-        GOLD_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "gold_grate");
         WROUGHT_IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "wrought_iron_grate");
 
 //        IRON_SCAFFOLDING = RegistryUtils.registerScaffolding(new NeutroniaScaffolding(FabricBlockSettings.of(Material.METAL, MaterialColor.SAND).noCollision().sounds(BlockSoundGroup.SCAFFOLDING).dynamicBounds().getModMenuBadge()), "iron_scaffolding");
@@ -361,10 +357,6 @@ public class NBlocks {
         GOLD_CHAIN = new ChainBlock("gold");
         PRISMARINE_CHAIN = new ChainBlock("prismarine");
 
-        for(CarvedFaceTypes carvedFaceTypes : CarvedFaceTypes.values()) {
-            PUMPKIN[carvedFaceTypes.ordinal()] = new PumpkinBlock();
-        }
-
         /*
         for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
             SOUL_STONE[soulStoneTypes.getIndex()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
@@ -374,7 +366,6 @@ public class NBlocks {
 
         BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE);
         BlockRegisteringUtils.addWalls("polished_dark_andesite", POLISHED_DARK_ANDESITE);
-        BlockRegisteringUtils.addWalls("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
         BlockRegisteringUtils.addWalls("smooth_endstone_brick", SMOOTH_END_BRICK);
         BlockRegisteringUtils.addWalls("smooth_prismarine_brick", SMOOTH_PRISMARINE_BRICKS);
@@ -392,7 +383,6 @@ public class NBlocks {
 
         BlockRegisteringUtils.addSlabAndStair("dark_andesite", DARK_ANDESITE);
         BlockRegisteringUtils.addSlabAndStair("polished_dark_andesite", POLISHED_DARK_ANDESITE);
-        BlockRegisteringUtils.addSlabAndStair("cracked_stone_brick", Blocks.CRACKED_STONE_BRICKS);
 
         BlockRegisteringUtils.addSlabAndStair("smooth_endstone_brick", SMOOTH_END_BRICK);
         BlockRegisteringUtils.addSlabAndStair("smooth_prismarine_brick", SMOOTH_PRISMARINE_BRICKS);
@@ -410,9 +400,7 @@ public class NBlocks {
 
 //        SAWMILL = new SawmillBlock("sawmill");
 
-        /*BAMBOO_SIGN = RegistryUtils.registerNoBI(new SignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).getModMenuBadge()), "bamboo_sign");
-        BAMBOO_WALL_SIGN = RegistryUtils.registerNoBI(new WallSignBlock(FabricBlockSettings.of(Material.WOOD).noCollision().hardness(1.0F).sounds(BlockSoundGroup.WOOD).getModMenuBadge()), "bamboo_wall_sign");
-        BAMBOO_TORCH = RegistryUtils.register(new NeutroniaTorchBlock(), "bamboo_torch");*/
+        //BAMBOO_TORCH = RegistryUtils.register(new NeutroniaTorchBlock(), "bamboo_torch");*/
         THATCH = new NeutroniaBlock(Material.ORGANIC);
         /*
         BlockDerivativeBuilder.getInstance("thatch", THATCH).slab().stair();
@@ -428,21 +416,6 @@ public class NBlocks {
 //        ACIDIAN_BARS = RegistryUtils.register(new NeutroniaPaneBlock(FabricBlockSettings.of(Material.GLASS, MaterialColor.AIR).strength(5.0F, 6.0F).sounds(BlockSoundGroup.METAL)), new Identifier(Neutronia.MOD_ID, "acidian_bars"));
          */
 
-        /*POTTED_BEETROOT = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.BEETROOTS), "potted_beetroot");
-        POTTED_CARROTS = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.CARROTS), "potted_carrots");
-        POTTED_CHORUS = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.CHORUS_FLOWER), "potted_chorus");
-        POTTED_GRASS = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.GRASS), "potted_grass");
-        POTTED_LILAC = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.LILAC), "potted_lilac");
-        POTTED_MELON = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.MELON), "potted_melon");
-        POTTED_NETHER_WART = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.NETHER_WART), "potted_nether_wart");
-        POTTED_PEONY = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.PEONY), "potted_peony");
-        POTTED_POTATOES = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.POTATOES), "potted_potatoes");
-        POTTED_PUMPKIN = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.PUMPKIN), "potted_pumpkin");
-        POTTED_ROSE_BUSH = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.ROSE_BUSH), "potted_rose_bush");
-        POTTED_SUGAR_CANE = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.SUGAR_CANE), "potted_sugar_cane");
-        POTTED_SUNFLOWER = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.SUNFLOWER), "potted_sunflower");
-        POTTED_TALL_GRASS = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.TALL_GRASS), "potted_tall_grass");
-        POTTED_WHEAT = RegistryUtils.registerNoBI(new NeutroniaFlowerPotBlock(Blocks.WHEAT), "potted_wheat");*/
     }
 
 

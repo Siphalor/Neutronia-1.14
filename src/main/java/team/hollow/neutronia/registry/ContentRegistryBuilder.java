@@ -2,10 +2,9 @@ package team.hollow.neutronia.registry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemProvider;
-import net.minecraft.item.ItemStack;
+import net.minecraft.block.SignBlock;
+import net.minecraft.block.WallSignBlock;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.utils.RecipeGenerator;
@@ -179,6 +178,13 @@ public class ContentRegistryBuilder extends ContentBuilder {
     }
 
     @Override
+    public Block grate() {
+        Block grate = new NeutroniaTrapdoorBlock(Block.Settings.copy(baseBlock));
+        RegistryUtils.register(grate, extendIdentifier("_grate"));
+        return grate;
+    }
+
+    @Override
     public Block wall() {
         Block wall = new NeutroniaWallBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(wall, extendIdentifier("_wall"), ItemGroup.DECORATIONS);
@@ -239,6 +245,24 @@ public class ContentRegistryBuilder extends ContentBuilder {
         Block post = new NeutroniaPostBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(post, extendIdentifier("_post"));
         return post;
+    }
+
+    @Override
+    public Block sign() {
+        Block wallSign = new WallSignBlock(Block.Settings.copy(baseBlock));
+        RegistryUtils.registerNoBI(wallSign, extendIdentifier("_wall_sign"));
+        Block sign = new SignBlock(Block.Settings.copy(baseBlock));
+        RegistryUtils.registerNoBI(sign, extendIdentifier("_sign"));
+        Item signItem = newItem(baseNameIdentifier.getPath() + "_sign", new SignItem(new Item.Settings().itemGroup(ItemGroup.DECORATIONS), sign, wallSign));
+
+        RecipeGenerator.getInstance(getModId()).addShaped(new ItemStack(sign), extendIdentifier("_sign"), "signs", new String[] {
+            "PPP",
+            "PPP",
+            " R "
+        },
+            new ShapedRecipeIngredients("P", new ItemStack(baseItemProvider)),
+            new ShapedRecipeIngredients("R", new ItemStack(secondaryItemProvider)));
+        return sign;
     }
 
     @Override
