@@ -297,6 +297,22 @@ public class ContentRegistryBuilder extends ContentBuilder {
     }
 
     @Override
+    public Block chest() {
+        Block chest = new NeutroniaSimpleChestBlock(baseNameIdentifier);
+        RegistryUtils.register(chest, extendIdentifier("_chest"));
+
+        RecipeGenerator.getInstance(getModId())
+            .addShaped(new ItemStack(chest), extendIdentifier("_chest"), "chests", new String[]{
+                    "PPP",
+                    "P P",
+                    "PPP"
+                },
+                new ShapedRecipeIngredients("P", new ItemStack(baseBlock))
+            );
+        return null;
+    }
+
+    @Override
     public Block addPotted() {
         return addPotted(null);
     }

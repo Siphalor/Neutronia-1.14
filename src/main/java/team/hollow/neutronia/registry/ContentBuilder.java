@@ -79,6 +79,7 @@ public abstract class ContentBuilder {
 	public abstract Block post();
 	public abstract Block siding();
 	public abstract Block sign();
+	public abstract Block chest();
 	public abstract Block addPotted();
 	public abstract Block addPotted(Identifier plantTexture);
 

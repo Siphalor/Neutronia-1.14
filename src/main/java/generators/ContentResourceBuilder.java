@@ -220,6 +220,14 @@ public class ContentResourceBuilder extends ContentBuilder {
 	}
 
 	@Override
+	public Block chest() {
+		Identifier identifier = extendIdentifier("_chest");
+		resourceGenerator.genChest(identifier, baseTextureIdentifier);
+		resourceGenerator.genSimpleLootTable(identifier, identifier);
+		return null;
+	}
+
+	@Override
 	public Block addPotted() {
 		addPotted(new Identifier(baseTextureIdentifier.getNamespace(), "blocks/" + baseTextureIdentifier.getPath()));
 		return null;

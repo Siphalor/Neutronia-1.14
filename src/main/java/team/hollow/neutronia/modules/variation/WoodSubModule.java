@@ -13,6 +13,7 @@ import team.hollow.neutronia.blocks.CustomLadderBlock;
 import team.hollow.neutronia.blocks.NeutroniaBaseLectern;
 import team.hollow.neutronia.blocks.NeutroniaBookshelfBlock;
 import team.hollow.neutronia.modules.variation.wood.BambooWoodFeature;
+import team.hollow.neutronia.modules.variation.wood.ChestFeature;
 import team.hollow.neutronia.modules.variation.wood.TreatedWoodFeature;
 import team.hollow.neutronia.registry.ContentBuilder;
 
@@ -29,8 +30,9 @@ public class WoodSubModule extends SubModule {
 	public static WoodTypeBlockFeature strippedCampfires;
 	public static WoodTypeBlockFeature lecterns;
 	public static WoodTypeBlockFeature ladders;
-	// TODO: refactor custom chests to be more dynamic
-	//public static ChestFeature chests;
+
+	public static ChestFeature chests;
+
 	public static WoodTypeBlocksFeature patternedPlanks;
 
 	public WoodSubModule() {
@@ -66,7 +68,9 @@ public class WoodSubModule extends SubModule {
 		ladders = register(new WoodTypeBlockFeature("ladder", "Adds more ladders", WoodTypeFeature.SKIP_OAK,
 			woodType -> new CustomLadderBlock()
 		));
-		//chests = register(new ChestFeature());
+
+		chests = register(new ChestFeature());
+		
 		patternedPlanks = register(new WoodTypeBlocksFeature("patterned-planks", "Adds patterned and carved planks variations",
 				Collections.emptySet(),
 				"planks",

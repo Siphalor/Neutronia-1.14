@@ -22,17 +22,17 @@ public class SidingsFeature extends WoodTypeFeature {
 	@Override
 	protected void applyEnabled() {
 		super.applyEnabled();
-		sidingBlocks.forEach(block -> process(Registry.BLOCK.getId(block)));
+		sidingBlocks.forEach(block -> process(block, Registry.BLOCK.getId(block)));
 	}
 
 	@Override
 	protected void process(WoodType woodType) {
-        process(woodType.getBaseBlockIdentifier());
+        process(woodType.baseBlock, woodType.getBaseBlockIdentifier());
 	}
 
-	protected void process(Identifier baseBlockIdentifier) {
+	protected void process(Block baseBlock, Identifier baseBlockIdentifier) {
 		ContentBuilder contentBuilder = ContentBuilder.getInstance();
-		contentBuilder.setBaseName(baseBlockIdentifier);
+        contentBuilder.asBaseBlock(baseBlock, baseBlockIdentifier);
 		contentBuilder.siding();
 	}
 }

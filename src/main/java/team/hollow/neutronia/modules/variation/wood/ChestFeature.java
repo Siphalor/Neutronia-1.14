@@ -1,25 +1,21 @@
 package team.hollow.neutronia.modules.variation.wood;
 
-import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.blocks.CustomChestBlock;
-import team.hollow.neutronia.enums.CustomChestType;
-import team.hollow.neutronia.utils.registry.RegistryUtils;
+import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
+import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.neutronia.registry.WoodType;
 
-public class ChestFeature extends OptionalFeature {
+import java.util.Collections;
+
+public class ChestFeature extends WoodTypeFeature {
 	public ChestFeature() {
-		super("chests", "Enables loads of variants for chests");
+		super("chests", "Enables loads of variants for chests", Collections.singleton(WoodType.OAK));
 	}
 
 	@Override
-	protected void applyEnabled() {
-        for(CustomChestType customChestType : CustomChestType.values()) {
-			RegistryUtils.register(new CustomChestBlock(customChestType.asString()), customChestType.asString());
-		}
-	}
-
-	public void applyForModdedWood(String woodName) {
-		if(isEnabled()) {
-			RegistryUtils.register(new CustomChestBlock(woodName), woodName);
-		}
+	protected void process(WoodType woodType) {
+		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+        contentBuilder.asBaseBlock(woodType.baseBlock, woodType.getIdentifier());
+		contentBuilder.setBaseTexture(woodType.getBaseBlockIdentifier());
+		contentBuilder.chest();
 	}
 }

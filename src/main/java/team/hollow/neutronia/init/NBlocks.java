@@ -10,7 +10,6 @@ import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.enums.CarvedFaceType;
-import team.hollow.neutronia.enums.CustomChestType;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
@@ -23,8 +22,6 @@ public class NBlocks {
     //public static final Block /*WROUGHT_IRON_BLOCK, */WROUGHT_IRON_BARS;
 
     // NOTE: Wooden scaffolding?
-    // TODO: Wooden chests (refactoring needed)
-    public static final CustomChestBlock[] WOODEN_CHESTS = new CustomChestBlock[CustomChestType.values().length];
     //public static final Block SANDSTONE_DOOR, RED_SANDSTONE_DOOR, ICE_DOOR, BAMBOO_DOOR, WROUGHT_IRON_DOOR;
     //public static final Block SANDSTONE_TRAPDOOR, RED_SANDSTONE_TRAPDOOR, ICE_TRAPDOOR, BAMBOO_TRAPDOOR;
     //public static final Block CHISELED_PRISMARINE, CHISELED_PRISMARINE_BRICKS, CHISELED_DARK_PRISMARINE, CUT_PRISMARINE, CUT_PRISMARINE_BRICKS, CUT_DARK_PRISMARINE, ENGRAVED_PRISMARINE, ENGRAVED_PRISMARINE_BRICKS, ENGRAVED_DARK_PRISMARINE;
@@ -136,10 +133,6 @@ public class NBlocks {
 
         /*REDSTONE_IRON_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_iron_lantern");
         REDSTONE_GOLD_LANTERN = RegistryUtils.register(new RedstoneLanternBlock(), "redstone_gold_lantern");*/
-
-        for (CustomChestType woodenChestTypes : CustomChestType.values()) {
-            WOODEN_CHESTS[woodenChestTypes.getId()] = (CustomChestBlock) RegistryUtils.register(new CustomChestBlock(woodenChestTypes.asString()), new Identifier(Neutronia.MOD_ID, woodenChestTypes.asString()));
-        }
 
         /*GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "grate");
         WROUGHT_IRON_GRATE = RegistryUtils.register(new NeutroniaTrapdoorBlock(Material.METAL), "wrought_iron_grate");

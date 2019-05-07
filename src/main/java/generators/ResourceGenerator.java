@@ -568,6 +568,19 @@ public class ResourceGenerator {
         writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + "_corner.json").toFile(), root);
     }
 
+    public void genChest(Identifier identifier, Identifier baseTextureName) {
+    	genSimpleBlockstates(identifier);
+
+        JsonObject textures = new JsonObject();
+        textures.addProperty("particle", baseTextureName.getNamespace() + ":block/" + baseTextureName.getPath());
+        JsonObject root = new JsonObject();
+        root.add("textures", textures);
+        writeJsonToFile(getBlockModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+
+        root.addProperty("parent", "item/chest");
+        writeJsonToFile(getItemModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
+    }
+
     /*public void genSlabColoredBlockModel(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
