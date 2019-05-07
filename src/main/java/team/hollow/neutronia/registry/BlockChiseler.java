@@ -45,7 +45,11 @@ public class BlockChiseler {
 					if (!toolToEntries.getKey().contains(heldStack.getItem()))
 						continue;
 					for (ChiselEntry chiselEntry : toolToEntries.getValue()) {
-						Block newBlock = chiselEntry.getNextBlock(hitBlockState.getBlock());
+						Block newBlock;
+						if(player.isSneaking())
+							newBlock = chiselEntry.getPreviosBlock(hitBlockState.getBlock());
+						else
+							newBlock = chiselEntry.getNextBlock(hitBlockState.getBlock());
 						if (newBlock == null) continue;
 
 						world.playSound(null, hitResult.getBlockPos(), SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
@@ -80,11 +84,23 @@ public class BlockChiseler {
 
 		Block getNextBlock(Block oldBlock) {
 			for(Iterator<Block> iterator = chiselDeque.iterator(); iterator.hasNext(); ) {
-				if(iterator.next()  == oldBlock) {
+				if(iterator.next() == oldBlock) {
 					if(iterator.hasNext())
 						return iterator.next();
 					else
-						chiselDeque.getFirst();
+						return chiselDeque.getFirst();
+				}
+			}
+			return null;
+		}
+
+		Block getPreviosBlock(Block oldBlock) {
+			for(Iterator<Block> iterator = chiselDeque.descendingIterator(); iterator.hasNext();) {
+				if(iterator.next() == oldBlock) {
+					if (iterator.hasNext())
+						return iterator.next();
+					else
+						return chiselDeque.getLast();
 				}
 			}
 			return null;
