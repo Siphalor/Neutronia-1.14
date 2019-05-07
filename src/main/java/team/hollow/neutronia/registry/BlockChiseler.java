@@ -38,20 +38,22 @@ public class BlockChiseler {
 
 	public static void setup() {
 		UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
-			BlockState hitBlockState = world.getBlockState(hitResult.getBlockPos());
-			ItemStack heldStack = player.inventory.getMainHandStack();
-			for(Map.Entry<Tag<Item>, Set<ChiselEntry>> toolToEntries : toolsToEntries.entrySet()) {
-				if(!toolToEntries.getKey().contains(heldStack.getItem()))
-					continue;
-                for(ChiselEntry chiselEntry : toolToEntries.getValue()) {
-                	Block newBlock = chiselEntry.getNextBlock(hitBlockState.getBlock());
-                	if(newBlock == null) continue;
+			if(!world.isClient()) {
+				BlockState hitBlockState = world.getBlockState(hitResult.getBlockPos());
+				ItemStack heldStack = player.getStackInHand(hand);
+				for (Map.Entry<Tag<Item>, Set<ChiselEntry>> toolToEntries : toolsToEntries.entrySet()) {
+					if (!toolToEntries.getKey().contains(heldStack.getItem()))
+						continue;
+					for (ChiselEntry chiselEntry : toolToEntries.getValue()) {
+						Block newBlock = chiselEntry.getNextBlock(hitBlockState.getBlock());
+						if (newBlock == null) continue;
 
-                	world.playSound(null, hitResult.getBlockPos(), SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
-                	world.setBlockState(hitResult.getBlockPos(), copyTo(hitBlockState, newBlock.getDefaultState()));
-                	if(heldStack.getItem().canDamage())
-                		heldStack.applyDamage(1, player, playerEntity -> {});
-                	return ActionResult.SUCCESS;
+						world.playSound(null, hitResult.getBlockPos(), SoundEvents.BLOCK_PUMPKIN_CARVE, SoundCategory.BLOCKS, 1.0F, 1.0F);
+						world.setBlockState(hitResult.getBlockPos(), copyTo(hitBlockState, newBlock.getDefaultState()));
+						if (heldStack.getItem().canDamage())
+							heldStack.applyDamage(1, player, playerEntity -> player.sendToolBreakStatus(hand));
+						return ActionResult.SUCCESS;
+					}
 				}
 			}
             return ActionResult.PASS;

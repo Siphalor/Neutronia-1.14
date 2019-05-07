@@ -12,7 +12,8 @@ public class VariationModule extends Module {
 	public static WoodSubModule woodSubModule;
 
 	public static PottedPlantsFeature pottedPlants;
-	public static PumpkinFacesFeature pumpkinFacesFeature;
+	public static PumpkinFacesFeature pumpkinFaces;
+	public static CarvedMelonsFeature carvedMelons;
 
 	public static GratesFeature grates;
 
@@ -26,7 +27,8 @@ public class VariationModule extends Module {
 		woodSubModule = register(new WoodSubModule());
 
 		pottedPlants = register(new PottedPlantsFeature());
-		pumpkinFacesFeature = register(new PumpkinFacesFeature());
+		pumpkinFaces = register(new PumpkinFacesFeature());
+		carvedMelons = register(new CarvedMelonsFeature());
 
 		grates = register(new GratesFeature());
 
