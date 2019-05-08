@@ -8,7 +8,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.Material;
 import net.minecraft.entity.FallingBlockEntity;
-import net.minecraft.particle.BlockStateParticleParameters;
+import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -99,7 +99,7 @@ public class FallingBlock extends BaseModBlock {
                 double double_1 = (double) ((float) blockPos_1.getX() + random_1.nextFloat());
                 double double_2 = (double) blockPos_1.getY() - 0.05D;
                 double double_3 = (double) ((float) blockPos_1.getZ() + random_1.nextFloat());
-                world_1.addParticle(new BlockStateParticleParameters(ParticleTypes.FALLING_DUST, blockState_1), double_1, double_2, double_3, 0.0D, 0.0D, 0.0D);
+                world_1.addParticle(new BlockStateParticleEffect(ParticleTypes.FALLING_DUST, blockState_1), double_1, double_2, double_3, 0.0D, 0.0D, 0.0D);
             }
         }
 

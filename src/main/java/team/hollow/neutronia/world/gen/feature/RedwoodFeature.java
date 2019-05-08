@@ -2,6 +2,7 @@ package team.hollow.neutronia.world.gen.feature;
 
 import com.mojang.datafixers.Dynamic;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.Heightmap;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
@@ -17,7 +18,7 @@ public class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
         super(function_1, false);
     }
 
-    public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld world, Random random_1, BlockPos blockPos_1) {
+    public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld world, Random random_1, BlockPos blockPos_1, MutableIntBoundingBox mutableIntBoundingBox) {
         int height = 25 + random_1.nextInt(45);
 
         blockPos_1 = world.getTopPosition(Heightmap.Type.OCEAN_FLOOR, blockPos_1);
@@ -36,7 +37,7 @@ public class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
                 for (int x = -k; x < k + 1; ++x)
                     for (int z = -k; z < k + 1; ++z) {
                         if (Math.sqrt(Math.pow(x, 2) + Math.pow(z, 2)) < k)
-                            setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLeaves().getDefaultState());
+                            setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLeaves().getDefaultState(), mutableIntBoundingBox);
                     }
             }
 
@@ -52,7 +53,7 @@ public class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
                 for (int x = -k; x < k + 1; ++x)
                     for (int z = -k; z < k + 1; ++z) {
                         if (Math.sqrt(Math.pow(x, 2) + Math.pow(z, 2)) < k - 1)
-                            setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLeaves().getDefaultState());
+                            setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLeaves().getDefaultState(), mutableIntBoundingBox);
                     }
             }
 
@@ -60,7 +61,7 @@ public class RedwoodFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
             for (int i = -2; i < height - 3; ++i) {
                 for (int x = -1; x < 2; ++x)
                     for (int z = -1; z < 2; ++z)
-                        setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLog().getDefaultState());
+                        setBlockState(set_1, world, blockPos_1.add(x, i, z), WoodRegistries.REDWOOD.getLog().getDefaultState(), mutableIntBoundingBox);
             }
 
             return true;

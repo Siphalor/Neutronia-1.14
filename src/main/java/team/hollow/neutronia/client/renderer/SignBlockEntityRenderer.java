@@ -14,8 +14,8 @@ import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.entity.model.SignBlockEntityModel;
 import net.minecraft.client.util.TextComponentUtil;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tag.BlockTags;
-import net.minecraft.text.TextComponent;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.blocks.entity.SignBlockEntity;
 
@@ -66,7 +66,7 @@ public class SignBlockEntityRenderer extends BlockEntityRenderer<SignBlockEntity
         if (int_1 < 0) {
             for (int int_3 = 0; int_3 < 4; ++int_3) {
                 String string_1 = signBlockEntity_1.getTextBeingEditedOnRow(int_3, (textComponent_1) -> {
-                    List<TextComponent> list_1 = TextComponentUtil.wrapLines(textComponent_1, 90, fontRenderer_1, false, true);
+                    List<Component> list_1 = TextComponentUtil.wrapLines(textComponent_1, 90, fontRenderer_1, false, true);
                     return list_1.isEmpty() ? "" : list_1.get(0).getFormattedText();
                 });
                 if (string_1 != null) {

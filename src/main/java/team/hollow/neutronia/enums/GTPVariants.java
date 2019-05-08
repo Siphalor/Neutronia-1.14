@@ -1,8 +1,8 @@
 package team.hollow.neutronia.enums;
 
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.SnakeCaseIdentifiable;
 
-public enum GTPVariants implements StringRepresentable {
+public enum GTPVariants implements SnakeCaseIdentifiable {
 
     WHITE(0, "white"),
     ORANGE(1, "orange"),
@@ -30,7 +30,7 @@ public enum GTPVariants implements StringRepresentable {
     }
 
     @Override
-    public String asString() {
+    public String toSnakeCase() {
         return this.name;
     }
 

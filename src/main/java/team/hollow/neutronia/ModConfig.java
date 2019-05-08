@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia;
 
 import me.sargunvohra.mcmods.autoconfig1.ConfigData;
@@ -34,4 +35,4 @@ public class ModConfig extends PartitioningSerializer.GlobalData {
         public boolean doMiniBiomes = false;
 
     }
-}
+}*/

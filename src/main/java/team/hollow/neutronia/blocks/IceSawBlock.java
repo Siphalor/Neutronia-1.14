@@ -6,14 +6,14 @@ import net.minecraft.client.network.ClientDummyContainerProvider;
 import net.minecraft.container.BlockContext;
 import net.minecraft.container.NameableContainerProvider;
 import net.minecraft.container.StonecutterContainer;
-import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemPlacementContext;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.stat.Stats;
 import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.DirectionProperty;
-import net.minecraft.text.TranslatableTextComponent;
 import net.minecraft.util.BlockMirror;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Hand;
@@ -26,7 +26,7 @@ import net.minecraft.world.World;
 import team.hollow.abnormalib.blocks.BaseModBlock;
 
 public class IceSawBlock extends BaseModBlock {
-    private static final TranslatableTextComponent CONTAINER_NAME = new TranslatableTextComponent("container.neutronia.ice_saw");
+    private static final TranslatableComponent CONTAINER_NAME = new TranslatableComponent("container.neutronia.ice_saw");
     public static final DirectionProperty FACING = HorizontalFacingBlock.FACING;
     protected static final VoxelShape SHAPE = Block.createCuboidShape(0.0D, 0.0D, 0.0D, 16.0D, 9.0D, 16.0D);
 
@@ -50,7 +50,7 @@ public class IceSawBlock extends BaseModBlock {
                 new StonecutterContainer(int_1, playerInventory_1, BlockContext.create(world_1, blockPos_1)), CONTAINER_NAME);
     }
 
-    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext verticalEntityPosition_1) {
         return SHAPE;
     }
 
@@ -79,7 +79,7 @@ public class IceSawBlock extends BaseModBlock {
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(FACING);
+        stateFactory$Builder_1.add(FACING);
     }
 
     public boolean canPlaceAtSide(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, BlockPlacementEnvironment blockPlacementEnvironment_1) {

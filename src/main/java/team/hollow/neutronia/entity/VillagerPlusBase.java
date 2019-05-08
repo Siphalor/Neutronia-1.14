@@ -44,9 +44,9 @@ import net.minecraft.sortme.DebugRendererInfoManager;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.StringStringTextComponent;
 import net.minecraft.text.StringTextComponent;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.text.TranslatableStringTextComponent;
 import net.minecraft.util.GlobalPos;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -117,7 +117,7 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
         try {
             this.firstName = generateFirstName(sexs.get(getRand().nextInt(sexs.size())));
             this.lastName = generateLastName();
-            this.setCustomName(new StringTextComponent(firstName + " " + lastName));
+            this.setCustomName(new StringStringTextComponent(firstName + " " + lastName));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -478,16 +478,16 @@ public class VillagerPlusBase extends AbstractTraderEntity implements Interactio
         this.fillRecipes();
     }
 
-    public TextComponent getDisplayName() {
+    public StringTextComponent getDisplayName() {
         AbstractScoreboardTeam abstractScoreboardTeam_1 = this.getScoreboardTeam();
-        TextComponent textComponent_1 = this.getCustomName();
+        StringTextComponent textComponent_1 = this.getCustomName();
         if (textComponent_1 != null) {
             return ScoreboardTeam.modifyText(abstractScoreboardTeam_1, textComponent_1).modifyStyle((style_1) -> {
                 style_1.setHoverEvent(this.getComponentHoverEvent()).setInsertion(this.getUuidAsString());
             });
         } else {
             VillagerPlusProfession villagerProfession_1 = this.getVillagerData().getSocialVillagerData();
-            TextComponent textComponent_2 = (new TranslatableTextComponent(this.getType().getTranslationKey() + '.' + NRegistries.VILLAGER_PROFESSION.getId(villagerProfession_1).getPath())).modifyStyle((style_1) -> {
+            StringTextComponent textComponent_2 = (new TranslatableStringTextComponent(this.getType().getTranslationKey() + '.' + NRegistries.VILLAGER_PROFESSION.getId(villagerProfession_1).getPath())).modifyStyle((style_1) -> {
                 style_1.setHoverEvent(this.getComponentHoverEvent()).setInsertion(this.getUuidAsString());
             });
             if (abstractScoreboardTeam_1 != null) {

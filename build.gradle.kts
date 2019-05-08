@@ -41,18 +41,11 @@ repositories {
 
 dependencies {
 	minecraft(group = "com.mojang", name = "minecraft", version = Minecraft.version)
-	mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+build.${Fabric.Yarn.version}")
+	mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+build.1")
 	modCompile(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
 
-	modCompile(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version + ".+")
-	include(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version + ".+")
-
-	modCompile(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
-	include(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
-    modCompile(group = "me.sargunvohra.mcmods", name = "auto-config", version = Dependencies.AutoConfig.version)
-    include(group = "me.sargunvohra.mcmods", name = "auto-config", version = Dependencies.AutoConfig.version)
-
-	modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
+	modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
+	include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
 
 	modCompile("org.apache.maven:maven-artifact:3.6.0")
 

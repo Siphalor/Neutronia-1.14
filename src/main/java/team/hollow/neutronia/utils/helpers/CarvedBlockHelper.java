@@ -19,9 +19,9 @@ public class CarvedBlockHelper {
         List<Block> blocks = new ArrayList<>();
         for (CarvedFaceTypes type : CarvedFaceTypes.values()) {
             blocks.add(Registry.BLOCK.get(new Identifier("neutronia",
-                    String.format(carvable.getFormatString(), type.asString()))));
+                    String.format(carvable.getFormatString(), type.toSnakeCase()))));
             carvableBlocks.put(carvable.newInstance(new Identifier("neutronia",
-                    String.format(carvable.getFormatString(), type.asString()))), blocks);
+                    String.format(carvable.getFormatString(), type.toSnakeCase()))), blocks);
         }
     }
 
@@ -29,9 +29,9 @@ public class CarvedBlockHelper {
         List<Block> blocks = new ArrayList<>();
         for (CarvedFaceTypes type : CarvedFaceTypes.values()) {
             blocks.add(Registry.BLOCK.get(new Identifier("minecraft",
-                    String.format(carvable.getFormatString(), type.asString()))));
+                    String.format(carvable.getFormatString(), type.toSnakeCase()))));
             carvableBlocks.put(carvable.newInstance(new Identifier("minecraft",
-                    String.format(carvable.getFormatString(), type.asString()))), blocks);
+                    String.format(carvable.getFormatString(), type.toSnakeCase()))), blocks);
         }
     }
 

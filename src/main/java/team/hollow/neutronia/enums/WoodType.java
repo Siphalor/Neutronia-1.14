@@ -1,12 +1,12 @@
 package team.hollow.neutronia.enums;
 
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.SnakeCaseIdentifiable;
 
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
 
-public enum WoodType implements StringRepresentable {
+public enum WoodType implements SnakeCaseIdentifiable {
 
     OAK(0, "oak"),
     SPRUCE(1, "spruce"),
@@ -29,7 +29,7 @@ public enum WoodType implements StringRepresentable {
         return this.index;
     }
 
-    public String asString() {
+    public String toSnakeCase() {
         return this.name;
     }
 

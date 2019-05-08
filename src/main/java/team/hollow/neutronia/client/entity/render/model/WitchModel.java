@@ -2,6 +2,7 @@ package team.hollow.neutronia.client.entity.render.model;
 
 import net.minecraft.client.model.Cuboid;
 import net.minecraft.client.render.entity.model.EntityModel;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.mob.WitchEntity;
 import net.minecraft.util.math.MathHelper;
 
@@ -9,7 +10,7 @@ import net.minecraft.util.math.MathHelper;
  * ModelWitch - Undefined
  * Created using Tabula 7.0.1
  */
-public class WitchModel extends EntityModel<WitchEntity> {
+public class WitchModel<T extends Entity> extends EntityModel<T> {
     public Cuboid Head;
     public Cuboid Body;
     public Cuboid Cloak;
@@ -35,11 +36,6 @@ public class WitchModel extends EntityModel<WitchEntity> {
         this.MiddleClosedArm.setRotationPoint(0.0F, 3.0F, -1.0F);
         this.MiddleClosedArm.addBox(-4.0F, 2.0F, -2.0F, 8, 4, 4, 0.0F);
         this.setRotateAngle(MiddleClosedArm, -0.7853981633974483F, 0.0F, 0.0F);
-        this.Hat2 = new Cuboid(this, 32, 39);
-        this.Hat2.setRotationPoint(0.0F, -2.0F, 0.0F);
-        this.Hat2.addBox(0.0F, 0.0F, 0.0F, 4, 4, 4);
-        Hat2.pitch = -0.10471976F;
-        Hat2.roll = 0.05235988F;
         this.Nose = new Cuboid(this, 24, 0);
         this.Nose.setRotationPoint(0.0F, -3.0F, -4.0F);
         this.Nose.addBox(-1.0F, 0.0F, -2.0F, 2, 4, 2, 0.0F);
@@ -64,38 +60,42 @@ public class WitchModel extends EntityModel<WitchEntity> {
         this.LeftLeg.mirror = true;
         this.LeftLeg.setRotationPoint(2.0F, 12.0F, 0.0F);
         this.LeftLeg.addBox(-2.0F, 0.0F, -2.0F, 4, 12, 4, 0.0F);
+        this.Hat1 = new Cuboid(this, 24, 52);
+        this.Hat1.setRotationPoint(0.0F, -8.0F, 0.0F);
+        this.Hat1.addBox(-5.0F, -1.0F, -5.0F, 10, 2, 10);
+        Hat1.pitch = -0.05F;
+        this.Hat2 = new Cuboid(this, 32, 39);
+        this.Hat2.setRotationPoint(0.0F, -2.5F, 0.0F);
+        this.Hat2.addBox(-4.0F, -2.50F, -4.0F, 8, 5, 8);
+        Hat2.pitch = -0.2F;
         this.Hat3 = new Cuboid(this, 48, 3);
-        this.Hat3.setRotationPoint(0.0F, -5.0F, 2.0F);
-        this.Hat3.addBox(0.0F, 0.0F, 0.0F, 1, 2, 1, 0.25F);
-        Hat3.pitch = -0.20943952F;
-        Hat3.roll = 0.10471976F;
+        this.Hat3.setRotationPoint(0.0F, -4.0F, 0.0F);
+        this.Hat3.addBox(-2.0F, -2.5F, -1.0F, 4, 5, 4);
+        Hat3.pitch = -0.2F;
         this.Cloak = new Cuboid(this, 0, 34);
         this.Cloak.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.Cloak.addBox(-4.0F, 0.0F, -3.0F, 8, 18, 6, 0.5F);
-        this.Hat1 = new Cuboid(this, 24, 52);
-        this.Hat1.setRotationPoint(0.0F, -7.0F, -4.0F);
-        this.Hat1.addBox(0.0F, 0.0F, 0.0F, 7, 4, 7);
-        Hat1.pitch = -0.05235988F;
-        Hat1.roll = 0.02617994F;
         this.RightClosedArm = new Cuboid(this, 32, 0);
         this.RightClosedArm.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.RightClosedArm.addBox(-8.0F, -2.0F, -2.0F, 4, 8, 4, 0.0F);
-        this.Hat1.addChild(this.Hat2);
-        this.Head.addChild(this.Nose);
         this.MiddleClosedArm.addChild(this.LeftClosedArm);
         this.Hat2.addChild(this.Hat3);
+        this.Hat1.addChild(this.Hat2);
         this.Head.addChild(this.Hat1);
+        this.Head.addChild(this.Nose);
         this.MiddleClosedArm.addChild(this.RightClosedArm);
     }
 
     @Override
-    public void render(WitchEntity entity_1, float float_1, float float_2, float float_3, float float_4, float float_5, float float_6) {
-//        this.setAngles(entity_1, float_1, float_2, float_3, float_4, float_5, float_6);
+    public void render(T entity_1, float float_1, float float_2, float float_3, float float_4, float float_5, float float_6) {
+        this.setAngles(entity_1, float_1, float_2, float_3, float_4, float_5, float_6);
         this.RightLeg.render(float_6);
-        this.MiddleClosedArm.render(float_6);
+//        this.MiddleClosedArm.render(float_6);
         this.Body.render(float_6);
         this.LeftOpenArm.render(float_6);
         this.RightOpenArm.render(float_6);
+//        this.LeftClosedArm.render(float_6);
+//        this.RightClosedArm.render(float_6);
         this.Head.render(float_6);
         this.LeftLeg.render(float_6);
         this.Cloak.render(float_6);
@@ -123,6 +123,10 @@ public class WitchModel extends EntityModel<WitchEntity> {
         this.RightLeg.pitch = MathHelper.cos(float_1 * 0.6662F + 3.1415927F) * 1.4F * float_2 * 0.5F;
         this.LeftLeg.yaw = 0.0F;
         this.RightLeg.yaw = 0.0F;
+    }
+
+    public Cuboid method_2839() {
+        return this.Nose;
     }
 
     /**

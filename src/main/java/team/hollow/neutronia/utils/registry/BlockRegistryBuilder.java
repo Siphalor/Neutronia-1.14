@@ -3,85 +3,133 @@ package team.hollow.neutronia.utils.registry;
 import net.minecraft.block.Block;
 import net.minecraft.block.PressurePlateBlock;
 import net.minecraft.item.ItemGroup;
-import team.hollow.neutronia.Neutronia;
+import net.minecraft.util.Identifier;
 import team.hollow.neutronia.blocks.*;
 
 public class BlockRegistryBuilder {
 
-    public static final BlockRegistryBuilder INSTANCE = new BlockRegistryBuilder();
+    /**
+     * Returns a new instance of this class
+     */
+    private static final ThreadLocal<BlockRegistryBuilder> INSTANCE = ThreadLocal.withInitial(BlockRegistryBuilder::new);
+
+    /**
+     * The base block of this registry
+     */
     private static Block baseBlock;
-    private static String name;
-    private static String modId;
 
-    public static BlockRegistryBuilder getInstance(String nameIn, Block blockIn) {
-        modId = Neutronia.MOD_ID;
+    /**
+     * Name that will be used as a base for all of the blocks
+     */
+    private static Identifier name;
+
+    /**
+     * @param nameIn The name that will be used as a base for all blocks
+     * @param blockIn the base block which will be used for some blocks
+     * @return a new instance of this class
+     */
+    public static BlockRegistryBuilder getInstance(Identifier nameIn, Block blockIn) {
         name = nameIn;
         baseBlock = blockIn;
-        return INSTANCE;
+        return INSTANCE.get();
     }
 
-    public static BlockRegistryBuilder getInstance(String modIdIn, String nameIn, Block blockIn) {
-        modId = modIdIn;
-        name = nameIn;
-        baseBlock = blockIn;
-        return INSTANCE;
-    }
-
+    /**
+     * Adds a new slab block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder slab() {
         Block slab = new NeutroniaSlabBlock();
-        RegistryUtils.register(modId, slab, name + "_slab", ItemGroup.BUILDING_BLOCKS);
+        RegistryUtils.register(slab, new Identifier(name.getNamespace(), name.getPath() + "_slab"), ItemGroup.BUILDING_BLOCKS);
         return this;
     }
 
+    /**
+     * Adds a new stair block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder stair() {
         Block stair = new NeutroniaStairBlock(baseBlock.getDefaultState());
-        RegistryUtils.register(modId, stair, name + "_stairs", ItemGroup.BUILDING_BLOCKS);
+        RegistryUtils.register(stair, new Identifier(name.getNamespace(), name.getPath() + name + "_stairs"), ItemGroup.BUILDING_BLOCKS);
         return this;
     }
 
+    /**
+     * Adds a new fence block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder fence() {
         Block fence = new NeutroniaFenceBlock(baseBlock.getDefaultState());
-        RegistryUtils.register(modId, fence, name + "_fence");
+        RegistryUtils.register(fence, new Identifier(name.getNamespace(), name.getPath() + name + "_fence"));
         return this;
     }
 
+    /**
+     * Adds a new fence gate block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder fenceGate() {
-        RegistryUtils.register(modId, new NeutroniaFenceGateBlock(), name + "_fence_gate", ItemGroup.REDSTONE);
+        RegistryUtils.register(new NeutroniaFenceGateBlock(), new Identifier(name.getNamespace(), name.getPath() + name + "_fence_gate"), ItemGroup.REDSTONE);
         return this;
     }
 
+    /**
+     * Adds a new wall block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder wall() {
         Block wall = new NeutroniaWallBlock(baseBlock.getDefaultState());
-        RegistryUtils.register(modId, wall, name + "_wall", ItemGroup.DECORATIONS);
+        RegistryUtils.register(wall, new Identifier(name.getNamespace(), name.getPath() + name + "_wall"), ItemGroup.DECORATIONS);
         return this;
     }
 
+    /**
+     * Adds a new button block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder button(boolean wooden) {
         Block button = new NeutroniaButtonBlock(wooden);
-        RegistryUtils.register(modId, button, name + "_button", ItemGroup.REDSTONE);
+        RegistryUtils.register(button, new Identifier(name.getNamespace(), name.getPath() + name + "_button"), ItemGroup.REDSTONE);
         return this;
     }
 
-    public BlockRegistryBuilder pressurePlate(PressurePlateBlock.Type type) {
-        RegistryUtils.register(modId, new NeutroniaPressurePlateBlock(baseBlock.getMaterial(baseBlock.getDefaultState()), type), name + "_pressure_plate", ItemGroup.REDSTONE);
+    /**
+     * Adds a new pressure plate block based on the base block properties
+     * @return an instance of this class
+     */
+    public BlockRegistryBuilder pressurePlate(PressurePlateBlock.ActivationRule type) {
+        RegistryUtils.register(new NeutroniaPressurePlateBlock(baseBlock.getMaterial(baseBlock.getDefaultState()), type),
+                new Identifier(name.getNamespace(), name.getPath() + name + "_pressure_plate"), ItemGroup.REDSTONE);
         return this;
     }
 
+    /**
+     * Adds a new corner block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder corner() {
         Block corner = new NeutroniaCornerBlock(baseBlock.getDefaultState(), Block.Settings.copy(baseBlock));
-        RegistryUtils.register(modId, corner, name + "_corner");
+        RegistryUtils.register(corner, new Identifier(name.getNamespace(), name.getPath() + name + "_corner"));
         return this;
     }
 
+    /**
+     * Adds a new post block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder post() {
         Block post = new NeutroniaPostBlock(Block.Settings.copy(baseBlock));
-        RegistryUtils.register(modId, post, name + "_post");
+        RegistryUtils.register(post, new Identifier(name.getNamespace(), name.getPath() + name + "_post"));
         return this;
     }
 
+    /**
+     * Adds a new siding block based on the base block properties
+     * @return an instance of this class
+     */
     public BlockRegistryBuilder siding() {
         Block siding = new NeutroniaSidingBlock(Block.Settings.copy(baseBlock));
-        RegistryUtils.register(modId, siding, name + "_siding");
+        RegistryUtils.register(siding, new Identifier(name.getNamespace(), name.getPath() + name + "_siding"));
         return this;
     }
 

@@ -6,7 +6,7 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.block.entity.SignBlockEntity;
-import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -43,10 +43,10 @@ public class NeutroniaWallSignBlock extends SignBlock {
     }
 
     public String getTranslationKey() {
-        return this.getItem().getTranslationKey();
+        return this.asItem().getTranslationKey();
     }
 
-    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext verticalEntityPosition_1) {
         return FACING_TO_SHAPE.get(blockState_1.get(FACING));
     }
 
@@ -90,7 +90,7 @@ public class NeutroniaWallSignBlock extends SignBlock {
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(FACING, WATERLOGGED);
+        stateFactory$Builder_1.add(FACING, WATERLOGGED);
     }
 
 }

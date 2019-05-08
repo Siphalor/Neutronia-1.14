@@ -1,8 +1,8 @@
 package team.hollow.neutronia.enums;
 
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.SnakeCaseIdentifiable;
 
-public enum LadderVariants implements StringRepresentable {
+public enum LadderVariants implements SnakeCaseIdentifiable {
     SPRUCE(0, "spruce"),
     BIRCH(1, "birch"),
     JUNGLE(2, "jungle"),
@@ -26,7 +26,7 @@ public enum LadderVariants implements StringRepresentable {
         return this.name;
     }
 
-    public String asString() {
+    public String toSnakeCase() {
         return this.name;
     }
 

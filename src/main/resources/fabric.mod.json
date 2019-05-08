@@ -25,9 +25,6 @@
     "client": [
       "team.hollow.neutronia.client.ClientInit",
       "team.hollow.neutronia.client.NeutroniaLeavesColors"
-    ],
-    "modmenu":[
-      "team.hollow.neutronia.init.NModMenuCompat"
     ]
   },
   "mixins": [

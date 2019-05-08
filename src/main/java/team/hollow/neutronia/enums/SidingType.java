@@ -1,8 +1,8 @@
 package team.hollow.neutronia.enums;
 
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.SnakeCaseIdentifiable;
 
-public enum SidingType implements StringRepresentable {
+public enum SidingType implements SnakeCaseIdentifiable {
     SINGLE("single"),
     DOUBLE("double");
 
@@ -16,7 +16,7 @@ public enum SidingType implements StringRepresentable {
         return this.name;
     }
 
-    public String asString() {
+    public String toSnakeCase() {
         return this.name;
     }
 }

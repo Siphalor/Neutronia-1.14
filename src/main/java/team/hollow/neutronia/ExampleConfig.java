@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia;
 
 import me.sargunvohra.mcmods.autoconfig1.ConfigData;
@@ -88,3 +89,4 @@ class ExampleConfig extends PartitioningSerializer.GlobalData {
         }
     }
 }
+*/

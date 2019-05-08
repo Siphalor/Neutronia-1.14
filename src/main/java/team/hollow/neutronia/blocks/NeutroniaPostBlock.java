@@ -4,7 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockPlacementEnvironment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Waterloggable;
-import net.minecraft.entity.VerticalEntityPosition;
+import net.minecraft.entity.EntityContext;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemPlacementContext;
@@ -12,12 +12,12 @@ import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.state.property.Properties;
+import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.IWorld;
-import team.hollow.neutronia.init.ModProperties;
 
 public class NeutroniaPostBlock extends Block implements Waterloggable {
     public static final EnumProperty<Direction.Axis> AXIS;
@@ -28,7 +28,7 @@ public class NeutroniaPostBlock extends Block implements Waterloggable {
     protected static final VoxelShape Y_COLLISION;
 
     static {
-        AXIS = ModProperties.AXIS;
+        AXIS = Properties.AXIS_XYZ;
         WATERLOGGED = Properties.WATERLOGGED;
         Y_SHAPE = Block.createCuboidShape(6f, 0f, 6f, 10f, 16f, 10f);
         Y_COLLISION = Block.createCuboidShape(6f, 0f, 6f, 10f, 24f, 10f);
@@ -41,7 +41,7 @@ public class NeutroniaPostBlock extends Block implements Waterloggable {
         this.setDefaultState(this.getDefaultState().with(AXIS, Direction.Axis.Y).with(WATERLOGGED, false));
     }
 
-    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext verticalEntityPosition_1) {
         Direction.Axis axis = blockState_1.get(AXIS);
         switch (axis) {
             case X:
@@ -53,17 +53,34 @@ public class NeutroniaPostBlock extends Block implements Waterloggable {
         }
     }
 
-    public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, VerticalEntityPosition verticalEntityPosition_1) {
+    public VoxelShape getCollisionShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext verticalEntityPosition_1) {
         Direction.Axis axis = blockState_1.get(AXIS);
         if (axis == Direction.Axis.Y) return Y_COLLISION;
         else return super.getCollisionShape(blockState_1, blockView_1, blockPos_1, verticalEntityPosition_1);
     }
 
+    public BlockState rotate(BlockState blockState_1, BlockRotation rotation_1) {
+        switch (rotation_1) {
+            case COUNTERCLOCKWISE_90:
+            case CLOCKWISE_90:
+                switch (blockState_1.get(AXIS)) {
+                    case X:
+                        return blockState_1.with(AXIS, Direction.Axis.Z);
+                    case Z:
+                        return blockState_1.with(AXIS, Direction.Axis.X);
+                    default:
+                        return blockState_1;
+                }
+            default:
+                return blockState_1;
+        }
+    }
+
     public BlockState getPlacementState(ItemPlacementContext itemPlacementContext_1) {
         BlockPos blockPos_1 = itemPlacementContext_1.getBlockPos();
         FluidState fluidState_1 = itemPlacementContext_1.getWorld().getFluidState(blockPos_1);
-        BlockState blockState_1 = this.getDefaultState().with(AXIS, Direction.Axis.Y).with(WATERLOGGED, fluidState_1.getFluid() == Fluids.WATER);
-        return blockState_1;
+        return this.getDefaultState().with(AXIS, itemPlacementContext_1.getFacing().getAxis()).with(WATERLOGGED, fluidState_1.getFluid() == Fluids.WATER);
+
     }
 
     public BlockState getStateForNeighborUpdate(BlockState blockState_1, Direction direction_1, BlockState blockState_2, IWorld iWorld_1, BlockPos blockPos_1, BlockPos blockPos_2) {
@@ -75,7 +92,7 @@ public class NeutroniaPostBlock extends Block implements Waterloggable {
     }
 
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(AXIS, WATERLOGGED);
+        stateFactory$Builder_1.add(AXIS, WATERLOGGED);
     }
 
     public FluidState getFluidState(BlockState blockState_1) {

@@ -55,8 +55,8 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.StringTextComponent;
-import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.text.StringStringTextComponent;
+import net.minecraft.text.TranslatableStringTextComponent;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -587,7 +587,7 @@ public abstract class EntityDragonBase extends TameableEntity implements IMultip
         this.setModelDead(compound.getBoolean("ModelDead"));
         this.modelDeadProgress = compound.getFloat("DeadProg");
         if (!compound.getString("CustomName").isEmpty()) {
-            this.setCustomName(new StringTextComponent(compound.getString("CustomName")));
+            this.setCustomName(new StringStringTextComponent(compound.getString("CustomName")));
         }
         this.hasHomePosition = compound.getBoolean("HasHomePosition");
         if (hasHomePosition && compound.getInt("HomeAreaX") != 0 && compound.getInt("HomeAreaY") != 0 && compound.getInt("HomeAreaZ") != 0) {
@@ -977,12 +977,12 @@ public abstract class EntityDragonBase extends TameableEntity implements IMultip
                                 BlockPos pos = new BlockPos(this);
                                 this.homePos = pos;
                                 this.hasHomePosition = true;
-                                playerEntity_1.addChatMessage(new TranslatableTextComponent("dragon.command.new_home", homePos.getX(), homePos.getY(), homePos.getZ()), true);
+                                playerEntity_1.addChatMessage(new TranslatableStringTextComponent("dragon.command.new_home", homePos.getX(), homePos.getY(), homePos.getZ()), true);
                                 return true;
                             } else {
                                 this.playSound(SoundEvents.ENTITY_ZOMBIE_INFECT, this.getSoundVolume(), this.getSoundPitch());
                                 this.setSitting(!this.isSitting());
-                                playerEntity_1.addChatMessage(new TranslatableTextComponent("dragon.command." + (this.isSitting() ? "sit" : "stand")), true);
+                                playerEntity_1.addChatMessage(new TranslatableStringTextComponent("dragon.command." + (this.isSitting() ? "sit" : "stand")), true);
                                 return true;
                             }
 

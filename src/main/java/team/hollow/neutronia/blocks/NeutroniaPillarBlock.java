@@ -30,7 +30,7 @@ public class NeutroniaPillarBlock extends BaseModBlock {
 
     @Override
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
-        stateFactory$Builder_1.with(AXIS);
+        stateFactory$Builder_1.add(AXIS);
     }
 
     @Override

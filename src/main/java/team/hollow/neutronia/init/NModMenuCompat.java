@@ -1,3 +1,4 @@
+/*
 package team.hollow.neutronia.init;
 
 import com.google.common.collect.ImmutableList;
@@ -8,9 +9,9 @@ import me.shedaniel.cloth.gui.ClothConfigScreen;
 import me.shedaniel.cloth.gui.entries.*;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.ChatFormat;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.Screen;
-import net.minecraft.text.TextFormat;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 
@@ -44,7 +45,7 @@ public class NModMenuCompat implements ModMenuApi {
         numberZone.addOption(new IntegerSliderEntry("§bInteger Slider", 2, 99, 99, "§cReset",
                 () -> 2, null));
         List<ClothConfigScreen.AbstractListEntry> randomCategory = Lists.newArrayList();
-        randomCategory.add(new TextListEntry("x", "§eThis is a promotional message brought to you by Danielshe. Shop your favorite Lil Tater at " + TextFormat.BOLD + TextFormat.UNDERLINE + TextFormat.OBFUSCATED + "store.liltater.com!",
+        randomCategory.add(new TextListEntry("x", "§eThis is a promotional message brought to you by Danielshe. Shop your favorite Lil Tater at " + ChatFormat.BOLD + ChatFormat.UNDERLINE + ChatFormat.OBFUSCATED + "store.liltater.com!",
                 -1, () -> Optional.of(new String[]{"§kThis is an example tooltip."})));
         randomCategory.add(new SubCategoryListEntry("§9Sub-Sub-Category",
                         ImmutableList.of(
@@ -63,3 +64,4 @@ public class NModMenuCompat implements ModMenuApi {
         return builder.build();
     }
 }
+*/

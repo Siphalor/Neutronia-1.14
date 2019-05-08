@@ -1,10 +1,10 @@
 package team.hollow.neutronia.enums;
 
 import net.minecraft.util.Identifier;
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.SnakeCaseIdentifiable;
 import team.hollow.neutronia.Neutronia;
 
-public enum CustomChestTypes implements StringRepresentable {
+public enum CustomChestTypes implements SnakeCaseIdentifiable {
 
     ACACIA("acacia", "acacia.png", 0),
     BIRCH("birch", "birch.png", 1),
@@ -53,7 +53,7 @@ public enum CustomChestTypes implements StringRepresentable {
     }
 
     @Override
-    public String asString() {
+    public String toSnakeCase() {
         return name;
     }
 }

@@ -12,10 +12,10 @@ import net.minecraft.entity.passive.VillagerEntity;
 import net.minecraft.item.*;
 import net.minecraft.item.map.MapIcon;
 import net.minecraft.item.map.MapState;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionUtil;
 import net.minecraft.recipe.BrewingRecipeRegistry;
-import net.minecraft.text.TranslatableTextComponent;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
@@ -44,11 +44,11 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public ProcessItemFactory(ItemProvider itemProvider_1, int int_1, Item item_1, int int_2, int int_3, int int_4) {
+        public ProcessItemFactory(ItemConvertible itemProvider_1, int int_1, Item item_1, int int_2, int int_3, int int_4) {
             this(itemProvider_1, int_1, 1, item_1, int_2, int_3, int_4);
         }
 
-        public ProcessItemFactory(ItemProvider itemProvider_1, int int_1, int int_2, Item item_1, int int_3, int int_4, int int_5) {
+        public ProcessItemFactory(ItemConvertible itemProvider_1, int int_1, int int_2, Item item_1, int int_3, int int_4, int int_5) {
             this.secondBuy = new ItemStack(itemProvider_1);
             this.secondCount = int_1;
             this.price = int_2;
@@ -88,7 +88,7 @@ public class TradeOfferFactories {
                 ItemStack itemStack_1 = FilledMapItem.createMap(world_1, blockPos_1.getX(), blockPos_1.getZ(), (byte) 2, true, true);
                 FilledMapItem.createCopy(world_1, itemStack_1);
                 MapState.addDecorationsTag(itemStack_1, blockPos_1, "+", this.iconType);
-                itemStack_1.setDisplayName(new TranslatableTextComponent("filled_map." + this.structure.toLowerCase(Locale.ROOT)));
+                itemStack_1.setDisplayName(new TranslatableComponent("filled_map." + this.structure.toLowerCase(Locale.ROOT)));
                 return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(Items.COMPASS), itemStack_1, this.maxUses, this.experience, 0.2F);
             } else {
                 return null;
@@ -307,8 +307,8 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public BuyForOneEmeraldFactory(ItemProvider itemProvider_1, int price, int maxUses, int experience) {
-            this.buy = itemProvider_1.getItem();
+        public BuyForOneEmeraldFactory(ItemConvertible itemProvider_1, int price, int maxUses, int experience) {
+            this.buy = itemProvider_1.asItem();
             this.price = price;
             this.maxUses = maxUses;
             this.experience = experience;
@@ -355,8 +355,8 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public BuyItemFactory(ItemProvider itemProvider, int price, int maxUses, int experience) {
-            this.item = itemProvider.getItem();
+        public BuyItemFactory(ItemConvertible itemProvider, int price, int maxUses, int experience) {
+            this.item = itemProvider.asItem();
             this.price = price;
             this.maxUses = maxUses;
             this.experience = experience;

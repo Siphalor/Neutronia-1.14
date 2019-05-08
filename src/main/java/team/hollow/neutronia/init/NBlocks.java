@@ -154,6 +154,9 @@ public class NBlocks {
             LECTERNS[woodType.getIndex()] = RegistryUtils.register(new NeutroniaBaseLectern(), new Identifier(MOD_ID, String.format("%s_lectern", woodType.asString())), ItemGroup.REDSTONE);
         }
 
+        PumpkinInit.init();
+        MelonInit.init();
+
         for (LadderVariants woodTypes2 : LadderVariants.values()) {
             LADDERS[woodTypes2.getIndex()] = RegistryUtils.register(new CustomLadderBlock(), new Identifier(MOD_ID, woodTypes2.asString() + "_ladder"));
         }

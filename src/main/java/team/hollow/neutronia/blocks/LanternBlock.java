@@ -77,7 +77,7 @@ public class LanternBlock extends net.minecraft.block.LanternBlock {
     protected void appendProperties(StateFactory.Builder<Block, BlockState> stateFactory$Builder_1) {
         stateFactory$Builder_1 = new StateFactory.Builder<>(this);
         super.appendProperties(stateFactory$Builder_1);
-        stateFactory$Builder_1.with(FACING);
+        stateFactory$Builder_1.add(FACING);
     }
 
     @Override

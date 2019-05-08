@@ -5,14 +5,10 @@ import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import net.minecraft.network.chat.*;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.LocateCommand;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TextFormatter;
-import net.minecraft.text.TranslatableTextComponent;
-import net.minecraft.text.event.ClickEvent;
-import net.minecraft.text.event.HoverEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;
@@ -26,7 +22,7 @@ public class LocateCommandMixin {
 
     @Final
     @Shadow
-    private static final SimpleCommandExceptionType FAILED_EXCEPTION = new SimpleCommandExceptionType(new TranslatableTextComponent("commands.locate.failed"));
+    private static final SimpleCommandExceptionType FAILED_EXCEPTION = new SimpleCommandExceptionType(new TranslatableComponent("commands.locate.failed"));
 
     @Redirect(method = "register(Lcom/mojang/brigadier/CommandDispatcher;)V", at = @At(value = "INVOKE", target = "Lcom/mojang/brigadier/CommandDispatcher;register(Lcom/mojang/brigadier/builder/LiteralArgumentBuilder;)Lcom/mojang/brigadier/tree/LiteralCommandNode;"))
     private static LiteralCommandNode register(CommandDispatcher dispatcher, final LiteralArgumentBuilder command) {
@@ -52,10 +48,10 @@ public class LocateCommandMixin {
             throw FAILED_EXCEPTION.create();
         } else {
             int var4 = MathHelper.floor(getDistance(var2.getX(), var2.getZ(), var3.getX(), var3.getZ()));
-            TextComponent var5 = TextFormatter.bracketed(new TranslatableTextComponent("chat.coordinates", var3.getX(), "~", var3.getZ())).modifyStyle((var1x) ->
+            Component var5 = Components.bracketed(new TranslatableComponent("chat.coordinates", var3.getX(), "~", var3.getZ())).modifyStyle((var1x) ->
                     var1x.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/tp @s " + var3.getX() + " ~ " + var3.getZ()))
-                            .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableTextComponent("chat.coordinates.tooltip"))));
-            var0.sendFeedback(new TranslatableTextComponent("commands.locate.success", var1, var5, var4), false);
+                            .setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new TranslatableComponent("chat.coordinates.tooltip"))));
+            var0.sendFeedback(new TranslatableComponent("commands.locate.success", var1, var5, var4), false);
             return var4;
         }
     }

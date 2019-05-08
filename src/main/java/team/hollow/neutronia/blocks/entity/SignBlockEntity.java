@@ -7,15 +7,11 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.network.packet.BlockEntityUpdateS2CPacket;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.*;
 import net.minecraft.server.command.CommandOutput;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.text.StringTextComponent;
-import net.minecraft.text.Style;
-import net.minecraft.text.TextComponent;
-import net.minecraft.text.TextFormatter;
-import net.minecraft.text.event.ClickEvent;
 import net.minecraft.util.DyeColor;
 import net.minecraft.util.math.Vec2f;
 import net.minecraft.util.math.Vec3d;
@@ -25,7 +21,7 @@ import java.util.Objects;
 import java.util.function.Function;
 
 public class SignBlockEntity extends BlockEntity {
-    public final TextComponent[] text = new TextComponent[]{new StringTextComponent(""), new StringTextComponent(""), new StringTextComponent(""), new StringTextComponent("")};
+    public final Component[] text = new TextComponent[]{new TextComponent(""), new TextComponent(""), new TextComponent(""), new TextComponent("")};
     private final String[] textBeingEdited = new String[4];
     @Environment(EnvType.CLIENT)
     private boolean caretVisible;
@@ -60,10 +56,10 @@ public class SignBlockEntity extends BlockEntity {
 
         for (int int_1 = 0; int_1 < 4; ++int_1) {
             String string_1 = compoundTag_1.getString("Text" + (int_1 + 1));
-            TextComponent textComponent_1 = TextComponent.Serializer.fromJsonString(string_1);
+            Component textComponent_1 = TextComponent.Serializer.fromJsonString(string_1);
             if (this.world instanceof ServerWorld) {
                 try {
-                    this.text[int_1] = TextFormatter.resolveAndStyle(this.getCommandSource(null), Objects.requireNonNull(textComponent_1), null);
+                    this.text[int_1] = Components.resolveAndStyle(this.getCommandSource(null), Objects.requireNonNull(textComponent_1), null);
                 } catch (CommandSyntaxException var6) {
                     this.text[int_1] = textComponent_1;
                 }
@@ -77,7 +73,7 @@ public class SignBlockEntity extends BlockEntity {
     }
 
     @Environment(EnvType.CLIENT)
-    public TextComponent getTextOnRow(int int_1) {
+    public Component getTextOnRow(int int_1) {
         return this.text[int_1];
     }
 
@@ -87,7 +83,7 @@ public class SignBlockEntity extends BlockEntity {
     }
 
     @Environment(EnvType.CLIENT)
-    public String getTextBeingEditedOnRow(int int_1, Function<TextComponent, String> function_1) {
+    public String getTextBeingEditedOnRow(int int_1, Function<Component, String> function_1) {
         if (this.textBeingEdited[int_1] == null && this.text[int_1] != null) {
             this.textBeingEdited[int_1] = function_1.apply(this.text[int_1]);
         }
@@ -129,11 +125,10 @@ public class SignBlockEntity extends BlockEntity {
     }
 
     public boolean onActivate(PlayerEntity playerEntity_1) {
-        TextComponent[] var2 = this.text;
+        Component[] var2 = this.text;
         int var3 = var2.length;
 
-        for (int var4 = 0; var4 < var3; ++var4) {
-            TextComponent textComponent_1 = var2[var4];
+        for (Component textComponent_1 : var2) {
             Style style_1 = textComponent_1 == null ? null : textComponent_1.getStyle();
             if (style_1 != null && style_1.getClickEvent() != null) {
                 ClickEvent clickEvent_1 = style_1.getClickEvent();
@@ -148,7 +143,7 @@ public class SignBlockEntity extends BlockEntity {
 
     private ServerCommandSource getCommandSource(ServerPlayerEntity serverPlayerEntity_1) {
         String string_1 = serverPlayerEntity_1 == null ? "Sign" : serverPlayerEntity_1.getName().getString();
-        TextComponent textComponent_1 = serverPlayerEntity_1 == null ? new StringTextComponent("Sign") : serverPlayerEntity_1.getDisplayName();
+        Component textComponent_1 = serverPlayerEntity_1 == null ? new TextComponent("Sign") : serverPlayerEntity_1.getDisplayName();
         return new ServerCommandSource(CommandOutput.DUMMY, new Vec3d((double) this.pos.getX() + 0.5D, (double) this.pos.getY() + 0.5D, (double) this.pos.getZ() + 0.5D), Vec2f.ZERO, (ServerWorld) this.world, 2, string_1, textComponent_1, this.world.getServer(), serverPlayerEntity_1);
     }
 

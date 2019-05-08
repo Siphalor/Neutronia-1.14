@@ -2,7 +2,7 @@ package team.hollow.neutronia.mixin.client;
 
 import net.minecraft.client.gui.Screen;
 import net.minecraft.client.gui.menu.SettingsScreen;
-import net.minecraft.text.TranslatableTextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public abstract class SettingScreenMixin extends Screen {
 
     public SettingScreenMixin() {
-        super(new TranslatableTextComponent("options.title"));
+        super(new TranslatableComponent("options.title"));
     }
 
     @Inject(method = "init", at = @At("RETURN"))

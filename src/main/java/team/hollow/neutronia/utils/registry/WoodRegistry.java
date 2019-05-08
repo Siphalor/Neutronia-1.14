@@ -366,7 +366,7 @@ public class WoodRegistry {
             return this;
         }
 
-        public Builder pressurePlate(PressurePlateBlock.Type type) {
+        public Builder pressurePlate(PressurePlateBlock.ActivationRule type) {
             woodRegistry.pressurePlate = RegistryUtils.register(new PressurePlateBaseBlock(Material.WOOD, type), new Identifier(name.getNamespace(),
                     name.getPath() + "_pressure_plate"), itemGroup);
             return this;
