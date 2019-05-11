@@ -18,7 +18,7 @@ object Fabric {
     }
 
     object Yarn {
-        const val version = "+"
+        const val version = "13"
     }
 }
 

@@ -306,12 +306,12 @@ public class ResourceGenerator {
 
         JsonObject south = new JsonObject();
         south.addProperty("model", String.format("%s:block/%s", identifier.getNamespace(), identifier.getPath()));
-        south.addProperty("y", 90);
+        south.addProperty("y", 180);
         variants.add("facing=south", south);
 
         JsonObject east = new JsonObject();
         east.addProperty("model", String.format("%s:block/%s", identifier.getNamespace(), identifier.getPath()));
-        east.addProperty("y", 180);
+        east.addProperty("y", 90);
         variants.add("facing=east", east);
 
         JsonObject west = new JsonObject();
