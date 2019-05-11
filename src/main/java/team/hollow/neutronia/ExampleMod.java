@@ -2,9 +2,6 @@ package team.hollow.neutronia;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
-import net.minecraft.entity.EntityCategory;
-import net.minecraft.entity.EntitySize;
-import net.minecraft.entity.EntityType;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -57,8 +54,6 @@ public class ExampleMod implements ModInitializer {
             new Identifier(Neutronia.MOD_ID, "totem_pole"),
             TOTEM_POLE_FEATURE
     );
-
-    public static final EntityType FLYING_LANTERN_ENTITY_TYPE = Registry.register(Registry.ENTITY_TYPE, new Identifier(Neutronia.MOD_ID, "flying_lantern"), new EntityType<FlyingLanternEntity>(FlyingLanternEntity::new, EntityCategory.MISC, true, true, true, null, new EntitySize(0.98F, 0.98F, true)));
 
     @Override
     public void onInitialize() {

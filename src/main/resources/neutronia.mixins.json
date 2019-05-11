@@ -6,6 +6,7 @@
     "item.MixinBookOnLectern",
     "commands.LocateCommandMixin",
     "entity.AbstractTraderEntityMixin",
+    "entity.HostileEntityMixin",
     "entity.LivingEntityMixin",
     "entity.VillagerEntityMixin",
     "entity.ZombieVillagerEntityMixin",
@@ -23,7 +24,8 @@
     "client.progress.MixinMinecraftClient",
     "client.progress.MixinModelLoader",
     "client.progress.MixinSpriteAtlasTexture",
-    "client.VillagerResemblingModelMixin"
+    "client.VillagerResemblingModelMixin",
+    "client.MixinClientPlayNetworkHandler"
   ],
   "injectors": {
     "defaultRequire": 1
