@@ -9,6 +9,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
+import team.hollow.neutronia.blocks.vanillish.NeutroniaPillarBlock;
 import team.hollow.neutronia.enums.CarvedFaceType;
 import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.RegistryUtils;

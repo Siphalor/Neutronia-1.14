@@ -8,6 +8,7 @@ import net.minecraft.sound.BlockSoundGroup;
 import team.hollow.module_api.api.SubModule;
 import team.hollow.module_api.api.features.SingleBlockFeature;
 import team.hollow.neutronia.blocks.CactusBundleBlock;
+import team.hollow.neutronia.blocks.GunpowderSackBlock;
 import team.hollow.neutronia.blocks.NeutroniaBottomTopBlock;
 import team.hollow.neutronia.modules.origins.storage.CompressionFeature;
 
@@ -27,7 +28,7 @@ public class StorageSubModule extends SubModule {
 
         netherWartSack = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(1.0F, 2.5F)), "nether_wart_sack", Items.NETHER_WART, "nether warts"));
         cocoaBeanSack = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(1.0F, 2.5F)), "cocoa_bean_sack", Items.COCOA_BEANS, "cocoa beans"));
-        gunpowderSack = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(1.0F, 2.5F)), "gunpowder_sack", Items.GUNPOWDER, "gunpowder"));
+        gunpowderSack = register(new CompressionFeature(new GunpowderSackBlock(), "gunpowder_sack", Items.GUNPOWDER, "gunpowder"));
 
         eggCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(0.7F, 1.8F)), "egg_crate", Items.EGG, "eggs"));
         beetrootCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F)), "beetroot_crate", Items.BEETROOT, "beetroots"));

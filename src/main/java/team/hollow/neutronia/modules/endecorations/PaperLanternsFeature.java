@@ -51,6 +51,8 @@ public class PaperLanternsFeature extends WoodTypeFeature {
 		ContentBuilder contentBuilder = ContentBuilder.getInstance();
 		Block lantern = contentBuilder.newBlock(woodType.getIdentifier().getPath() + "_paper_lantern", new PaperLanternBlock());
 
-		DispenserBlock.registerBehavior(lantern, PaperLanternsFeature::dispense);
+		contentBuilder.runGameTask(() -> {
+			DispenserBlock.registerBehavior(lantern, PaperLanternsFeature::dispense);
+		});
 	}
 }

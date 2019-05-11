@@ -6,7 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import team.hollow.neutronia.blocks.NeutroniaBushBlock;
+import team.hollow.neutronia.blocks.vanillish.NeutroniaPlantBlock;
 
 import java.util.Random;
 
@@ -23,7 +23,7 @@ public class FungiFeature extends MidnightAbstractFeature<DefaultFeatureConfig> 
     @Override
     public boolean placeFeature(IWorld world, Random rand, BlockPos origin) {
         BlockState state = FUNGI_STATES[rand.nextInt(FUNGI_STATES.length)];
-        if (((NeutroniaBushBlock) state.getBlock()).canPlaceAt(state, world, origin)) {
+        if (((NeutroniaPlantBlock) state.getBlock()).canPlaceAt(state, world, origin)) {
             this.setBlockState(world, origin, state);
             return true;
         }

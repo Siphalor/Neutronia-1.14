@@ -176,6 +176,23 @@ class JsonTemplates {
         "    }\n" +
         "}";
 
+    static final String BARREL_STATES = "{\n" +
+        "    \"variants\": {\n" +
+        "        \"facing=down,open=false\": { \"model\": \"modid:block/block_model\", \"x\": 180 },\n" +
+        "        \"facing=up,open=false\": { \"model\": \"modid:block/block_model\" },\n" +
+        "        \"facing=north,open=false\": { \"model\": \"modid:block/block_model\", \"x\": 90 },\n" +
+        "        \"facing=south,open=false\": { \"model\": \"modid:block/block_model\", \"x\": 90, \"y\": 180 },\n" +
+        "        \"facing=west,open=false\": { \"model\": \"modid:block/block_model\", \"x\": 90, \"y\": 270 },\n" +
+        "        \"facing=east,open=false\": { \"model\": \"modid:block/block_model\", \"x\": 90, \"y\": 90 },\n" +
+        "        \"facing=down,open=true\": { \"model\": \"modid:block/block_model_open\", \"x\": 180 },\n" +
+        "        \"facing=up,open=true\": { \"model\": \"modid:block/block_model_open\" },\n" +
+        "        \"facing=north,open=true\": { \"model\": \"modid:block/block_model_open\", \"x\": 90 },\n" +
+        "        \"facing=south,open=true\": { \"model\": \"modid:block/block_model_open\", \"x\": 90, \"y\": 180 },\n" +
+        "        \"facing=west,open=true\": { \"model\": \"modid:block/block_model_open\", \"x\": 90, \"y\": 270 },\n" +
+        "        \"facing=east,open=true\": { \"model\": \"modid:block/block_model_open\", \"x\": 90, \"y\": 90 }\n" +
+        "    }\n" +
+        "}\n";
+
     static final String CAKE_MODEL = "{\n" +
         "    \"textures\": {\n" +
         "        \"particle\": \"cake_side\",\n" +

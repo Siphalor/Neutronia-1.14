@@ -7,7 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Pair;
 import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.blocks.NeutroniaBerryBushBlock;
+import team.hollow.neutronia.blocks.vanillish.NeutroniaBerryBushBlock;
 import team.hollow.neutronia.registry.ContentBuilder;
 
 import java.util.HashMap;

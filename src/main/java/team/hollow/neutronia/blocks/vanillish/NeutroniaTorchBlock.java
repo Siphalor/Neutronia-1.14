@@ -1,13 +1,13 @@
-package team.hollow.neutronia.blocks;
+package team.hollow.neutronia.blocks.vanillish;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.Material;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.TorchBlock;
 
 public class NeutroniaTorchBlock extends TorchBlock {
 
     public NeutroniaTorchBlock() {
-        super(FabricBlockSettings.of(Material.WOOD).build());
+        super(FabricBlockSettings.copy(Blocks.TORCH).build());
     }
 
 }

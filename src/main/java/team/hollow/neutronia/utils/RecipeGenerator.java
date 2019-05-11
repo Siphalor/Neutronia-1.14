@@ -25,7 +25,7 @@ public class RecipeGenerator {
         return INSTANCE;
     }
 
-    public RecipeGenerator addShaped(ItemStack result, Identifier recipeName, String group, String[] rows, ShapedRecipeIngredients... shapedRecipeIngredients) {
+    public RecipeGenerator addShaped(ItemStack result, Identifier recipeName, String group, String[] rows, ShapedRecipeIngredient... shapedRecipeIngredients) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Path base = RecipeUtil.getRecipeLocation(recipeName).toPath();
         if (!base.toFile().exists()) {
@@ -40,11 +40,11 @@ public class RecipeGenerator {
         }
         root.add("pattern", pattern);
         JsonObject key = new JsonObject();
-        for(ShapedRecipeIngredients shapedRecipeIngredients1 : shapedRecipeIngredients) {
-            if (!shapedRecipeIngredients1.getPattern().equalsIgnoreCase("")) {
+        for(ShapedRecipeIngredient shapedRecipeIngredient1 : shapedRecipeIngredients) {
+            if (!shapedRecipeIngredient1.getPattern().equalsIgnoreCase("")) {
                 JsonObject item = new JsonObject();
-                item.addProperty("item", Registry.ITEM.getId(shapedRecipeIngredients1.getStack().getItem()).toString());
-                key.add(shapedRecipeIngredients1.getPattern(), item);
+                item.addProperty("item", Registry.ITEM.getId(shapedRecipeIngredient1.getStack().getItem()).toString());
+                key.add(shapedRecipeIngredient1.getPattern(), item);
             }
         }
         root.add("key", key);
@@ -62,7 +62,7 @@ public class RecipeGenerator {
         return this;
     }
 
-    public void addShapeless(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredients... shapelessRecipeIngredients) {
+    public void addShapeless(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredient... shapelessRecipeIngredients) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Path base = RecipeUtil.getRecipeLocation(recipeName).toPath();
         if (!base.toFile().exists()) {
@@ -73,8 +73,8 @@ public class RecipeGenerator {
         if (!group.equalsIgnoreCase("")) root.addProperty("group", group);
         JsonArray ingredients = new JsonArray();
         JsonObject item = new JsonObject();
-        for(ShapelessRecipeIngredients shapelessRecipeIngredients1 : shapelessRecipeIngredients) {
-            item.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredients1.getStack().getItem()).toString());
+        for(ShapelessRecipeIngredient shapelessRecipeIngredient1 : shapelessRecipeIngredients) {
+            item.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredient1.getStack().getItem()).toString());
         }
         ingredients.add(item);
         root.add("ingredients", ingredients);
@@ -91,7 +91,7 @@ public class RecipeGenerator {
         }
     }
 
-    public RecipeGenerator addStonecutting(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredients shapelessRecipeIngredients) {
+    public RecipeGenerator addStonecutting(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredient shapelessRecipeIngredient) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Path base = RecipeUtil.getRecipeLocation(recipeName).toPath();
         if (!base.toFile().exists()) {
@@ -101,7 +101,7 @@ public class RecipeGenerator {
         root.addProperty("type", "minecraft:stonecutting");
         if (!group.equalsIgnoreCase("")) root.addProperty("group", group);
         JsonObject ingredients = new JsonObject();
-        ingredients.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredients.getStack().getItem()).toString());
+        ingredients.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredient.getStack().getItem()).toString());
         root.add("ingredient", ingredients);
         root.addProperty("result", Registry.ITEM.getId(result.getItem()).toString());
         if (result.getAmount() > 1) root.addProperty("count", result.getAmount());
@@ -115,7 +115,7 @@ public class RecipeGenerator {
         return this;
     }
 
-    public RecipeGenerator addSmelting(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredients... shapelessRecipeIngredients) {
+    public RecipeGenerator addSmelting(ItemStack result, Identifier recipeName, String group, ShapelessRecipeIngredient... shapelessRecipeIngredients) {
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         Path base = RecipeUtil.getRecipeLocation(recipeName).toPath();
         if (!base.toFile().exists()) {
@@ -127,8 +127,8 @@ public class RecipeGenerator {
         JsonObject key = new JsonObject();
         JsonArray ingredients = new JsonArray();
         JsonObject item = new JsonObject();
-        for(ShapelessRecipeIngredients shapelessRecipeIngredients1 : shapelessRecipeIngredients) {
-            item.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredients1.getStack().getItem()).toString());
+        for(ShapelessRecipeIngredient shapelessRecipeIngredient1 : shapelessRecipeIngredients) {
+            item.addProperty("item", Registry.ITEM.getId(shapelessRecipeIngredient1.getStack().getItem()).toString());
         }
         ingredients.add(item);
         root.add("key", key);
