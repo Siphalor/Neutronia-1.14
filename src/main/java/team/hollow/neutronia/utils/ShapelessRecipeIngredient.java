@@ -2,11 +2,11 @@ package team.hollow.neutronia.utils;
 
 import net.minecraft.item.ItemStack;
 
-public class ShapelessRecipeIngredients {
+public class ShapelessRecipeIngredient {
 
     private ItemStack stack;
 
-    public ShapelessRecipeIngredients(ItemStack stack) {
+    public ShapelessRecipeIngredient(ItemStack stack) {
         this.stack = stack;
     }
 
@@ -27,8 +27,8 @@ public class ShapelessRecipeIngredients {
             return this;
         }
 
-        public ShapelessRecipeIngredients build() {
-            return new ShapelessRecipeIngredients(stack);
+        public ShapelessRecipeIngredient build() {
+            return new ShapelessRecipeIngredient(stack);
         }
 
     }

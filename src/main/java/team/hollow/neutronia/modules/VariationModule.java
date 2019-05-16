@@ -17,6 +17,8 @@ public class VariationModule extends Module {
 
 	public static GratesFeature grates;
 
+	public static PaintingMotivesFeature paintingMotives;
+
 	public VariationModule() {
 		super("variation", "This module contains variations for existing vanilla features.");
 
@@ -31,6 +33,8 @@ public class VariationModule extends Module {
 		carvedMelons = register(new CarvedMelonsFeature());
 
 		grates = register(new GratesFeature());
+
+		paintingMotives = register(new PaintingMotivesFeature());
 
 		setBackgroundTexture(new Identifier("minecraft", "textures/block/oak_log.png"));
 	}

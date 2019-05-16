@@ -5,7 +5,7 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.blocks.NeutroniaCarvedPumpkinBlock;
+import team.hollow.neutronia.blocks.vanillish.NeutroniaCarvedPumpkinBlock;
 import team.hollow.neutronia.enums.CarvedFaceType;
 import team.hollow.neutronia.registry.BlockChiseler;
 import team.hollow.neutronia.registry.ContentBuilder;

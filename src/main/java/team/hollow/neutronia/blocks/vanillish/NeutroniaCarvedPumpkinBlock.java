@@ -1,4 +1,4 @@
-package team.hollow.neutronia.blocks;
+package team.hollow.neutronia.blocks.vanillish;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Blocks;

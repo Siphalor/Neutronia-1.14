@@ -1,4 +1,4 @@
-package team.hollow.neutronia.blocks;
+package team.hollow.neutronia.blocks.vanillish;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.block.TrapdoorBlock;

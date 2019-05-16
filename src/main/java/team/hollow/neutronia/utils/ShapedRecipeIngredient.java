@@ -2,12 +2,12 @@ package team.hollow.neutronia.utils;
 
 import net.minecraft.item.ItemStack;
 
-public class ShapedRecipeIngredients {
+public class ShapedRecipeIngredient {
 
     private String pattern;
     private ItemStack stack;
 
-    public ShapedRecipeIngredients(String pattern, ItemStack stack) {
+    public ShapedRecipeIngredient(String pattern, ItemStack stack) {
         this.pattern = pattern;
         this.stack = stack;
     }
@@ -35,8 +35,8 @@ public class ShapedRecipeIngredients {
             return this;
         }
 
-        public ShapedRecipeIngredients build() {
-            return new ShapedRecipeIngredients(pattern, stack);
+        public ShapedRecipeIngredient build() {
+            return new ShapedRecipeIngredient(pattern, stack);
         }
 
     }

@@ -14,7 +14,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
 import team.hollow.module_api.api.features.OptionalFeature;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.blocks.NeutroniaCarvedMelonBlock;
+import team.hollow.neutronia.blocks.CarvedMelonBlock;
 import team.hollow.neutronia.enums.CarvedFaceType;
 import team.hollow.neutronia.registry.BlockChiseler;
 import team.hollow.neutronia.registry.ContentBuilder;
@@ -34,14 +34,14 @@ public class CarvedMelonsFeature extends OptionalFeature {
 	protected void applyEnabled() {
 		ContentBuilder contentBuilder = ContentBuilder.getInstance();
 		List<Block> carvedMelons = new ArrayList<>(CarvedFaceType.values().length + 1);
-		carvedMelon = contentBuilder.newBlock("carved_melon", new NeutroniaCarvedMelonBlock(false), "melons/carved_melon");
+		carvedMelon = contentBuilder.newBlock("carved_melon", new CarvedMelonBlock(false), "melons/carved_melon");
 		carvedMelons.add(carvedMelon);
 		List<Block> melOLanterns = new ArrayList<>(CarvedFaceType.values().length + 1);
-		carvedMelons.add(contentBuilder.newBlock("mel_o_lantern", new NeutroniaCarvedMelonBlock(false), "mel_o_lanterns/mel_o_lantern"));
+		carvedMelons.add(contentBuilder.newBlock("mel_o_lantern", new CarvedMelonBlock(false), "mel_o_lanterns/mel_o_lantern"));
 		for(CarvedFaceType carvedFaceType : CarvedFaceType.values()) {
 			final String name = carvedFaceType.asString();
-			Block melon = contentBuilder.newBlock("carved_melon_" + name, new NeutroniaCarvedMelonBlock(false), "melons/carved_melon_" + name);
-			Block lantern = contentBuilder.newBlock("mel_o_lantern_" + name, new NeutroniaCarvedMelonBlock(true), "mel_o_lanterns/mel_o_lantern_" + name);
+			Block melon = contentBuilder.newBlock("carved_melon_" + name, new CarvedMelonBlock(false), "melons/carved_melon_" + name);
+			Block lantern = contentBuilder.newBlock("mel_o_lantern_" + name, new CarvedMelonBlock(true), "mel_o_lanterns/mel_o_lantern_" + name);
             carvedMelons.add(melon);
             melOLanterns.add(lantern);
 		}

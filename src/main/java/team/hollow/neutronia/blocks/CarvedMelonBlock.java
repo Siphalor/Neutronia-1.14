@@ -11,8 +11,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.world.BlockView;
 
-public class NeutroniaCarvedMelonBlock extends HorizontalFacingBlock {
-	public NeutroniaCarvedMelonBlock(boolean lit) {
+public class CarvedMelonBlock extends HorizontalFacingBlock {
+	public CarvedMelonBlock(boolean lit) {
 		super(FabricBlockSettings.copy(Blocks.MELON).lightLevel(lit ? 15 : 0).build());
 		setDefaultState(getStateFactory().getDefaultState().with(HorizontalFacingBlock.FACING, Direction.NORTH));
 	}

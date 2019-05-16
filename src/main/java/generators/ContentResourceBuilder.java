@@ -7,6 +7,7 @@ import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.blocks.*;
+import team.hollow.neutronia.blocks.vanillish.NeutroniaCarvedPumpkinBlock;
 import team.hollow.neutronia.registry.ContentBuilder;
 
 public class ContentResourceBuilder extends ContentBuilder {
@@ -227,6 +228,14 @@ public class ContentResourceBuilder extends ContentBuilder {
 	public Block chest() {
 		Identifier identifier = extendIdentifier("_chest");
 		resourceGenerator.genChest(identifier, baseTextureIdentifier);
+		resourceGenerator.genSimpleLootTable(identifier, identifier);
+		return null;
+	}
+
+	@Override
+	public Block barrel() {
+		Identifier identifier = extendIdentifier("_barrel");
+		resourceGenerator.genBarrel(identifier, identifier);
 		resourceGenerator.genSimpleLootTable(identifier, identifier);
 		return null;
 	}

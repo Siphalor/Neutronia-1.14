@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "item.MixinBookOnLectern",
+    "block.BarrelBlockEntityMixin",
     "commands.LocateCommandMixin",
     "entity.AbstractTraderEntityMixin",
     "entity.HostileEntityMixin",

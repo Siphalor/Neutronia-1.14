@@ -1,15 +1,14 @@
 package team.hollow.neutronia.registry;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.PressurePlateBlock;
-import net.minecraft.block.SignBlock;
-import net.minecraft.block.WallSignBlock;
+import net.minecraft.block.*;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.registry.Registry;
 import team.hollow.neutronia.blocks.*;
+import team.hollow.neutronia.blocks.vanillish.*;
 import team.hollow.neutronia.utils.RecipeGenerator;
-import team.hollow.neutronia.utils.ShapedRecipeIngredients;
-import team.hollow.neutronia.utils.ShapelessRecipeIngredients;
+import team.hollow.neutronia.utils.ShapedRecipeIngredient;
+import team.hollow.neutronia.utils.ShapelessRecipeIngredient;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 public class ContentRegistryBuilder extends ContentBuilder {
@@ -60,11 +59,11 @@ public class ContentRegistryBuilder extends ContentBuilder {
                 "compression",
                new String[]{
                    "XXX", "XXX", "XXX"
-               }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)))
+               }, new ShapedRecipeIngredient("X", new ItemStack(baseItemProvider)))
             .addShapeless(new ItemStack(baseItemProvider, 9),
                 new Identifier(getModId(), "decompress_"),
                 "decompression",
-                new ShapelessRecipeIngredients(new ItemStack(block)));
+                new ShapelessRecipeIngredient(new ItemStack(block)));
 
         return block;
     }
@@ -102,7 +101,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(slab), extendIdentifier("_slab"), "slabs", new String[]{
                 "XXX"
-            }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)));
+            }, new ShapedRecipeIngredient("X", new ItemStack(baseItemProvider)));
 
         return slab;
     }
@@ -117,7 +116,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
                 "X  ",
                 "XX ",
                 "XXX"
-            }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)));
+            }, new ShapedRecipeIngredient("X", new ItemStack(baseItemProvider)));
 
         return stairs;
     }
@@ -136,8 +135,8 @@ public class ContentRegistryBuilder extends ContentBuilder {
                     "O/O",
                     "O/O"
                 },
-                new ShapedRecipeIngredients("O", new ItemStack(baseItemProvider)),
-                new ShapedRecipeIngredients("/", new ItemStack(secondaryItemProvider))
+                new ShapedRecipeIngredient("O", new ItemStack(baseItemProvider)),
+                new ShapedRecipeIngredient("/", new ItemStack(secondaryItemProvider))
             );
         return fence;
     }
@@ -156,8 +155,8 @@ public class ContentRegistryBuilder extends ContentBuilder {
                     "/O/",
                     "/O/"
                 },
-                new ShapedRecipeIngredients("O", new ItemStack(baseItemProvider)),
-                new ShapedRecipeIngredients("/", new ItemStack(secondaryItemProvider))
+                new ShapedRecipeIngredient("O", new ItemStack(baseItemProvider)),
+                new ShapedRecipeIngredient("/", new ItemStack(secondaryItemProvider))
             );
 
         return fenceGate;
@@ -167,6 +166,19 @@ public class ContentRegistryBuilder extends ContentBuilder {
     public Block door() {
         Block door = new NeutroniaDoorBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(door, extendIdentifier("_door"));
+
+        RecipeGenerator.getInstance(getModId())
+            .addShaped(
+                new ItemStack(door, 3),
+                extendIdentifier("_door"),
+                "doors",
+                new String[]{
+                    "PP",
+                    "PP",
+                    "PP"
+                },
+                new ShapedRecipeIngredient("P", new ItemStack(baseItemProvider))
+            );
         return door;
     }
 
@@ -174,6 +186,18 @@ public class ContentRegistryBuilder extends ContentBuilder {
     public Block trapDoor() {
         Block trapDoor = new NeutroniaTrapdoorBlock(Block.Settings.copy(baseBlock));
         RegistryUtils.register(trapDoor, extendIdentifier("_trapdoor"));
+
+        RecipeGenerator.getInstance(getModId())
+            .addShaped(
+                new ItemStack(trapDoor, 2),
+                extendIdentifier("_trapdoor"),
+                "trapdoors",
+                new String[]{
+                    "PPP",
+                    "PPP"
+                },
+                new ShapedRecipeIngredient("P", new ItemStack(baseItemProvider))
+            );
         return trapDoor;
     }
 
@@ -198,7 +222,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
                     "OOO",
                     "OOO"
                 },
-                new ShapedRecipeIngredients("O", new ItemStack(baseItemProvider))
+                new ShapedRecipeIngredient("O", new ItemStack(baseItemProvider))
             );
 
         return wall;
@@ -214,7 +238,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
                 new ItemStack(button),
                 extendIdentifier("_button"),
                 "buttons",
-                new ShapelessRecipeIngredients(new ItemStack(baseItemProvider))
+                new ShapelessRecipeIngredient(new ItemStack(baseItemProvider))
             );
 
         return button;
@@ -228,7 +252,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
         RecipeGenerator.getInstance(getModId())
             .addShaped(new ItemStack(pressurePlate, 6), extendIdentifier("_pressure_plate"), "pressure_plates", new String[]{
                 "XX"
-            }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)));
+            }, new ShapedRecipeIngredient("X", new ItemStack(baseItemProvider)));
 
         return pressurePlate;
     }
@@ -253,8 +277,8 @@ public class ContentRegistryBuilder extends ContentBuilder {
             "PPP",
             " R "
         },
-            new ShapedRecipeIngredients("P", new ItemStack(baseItemProvider)),
-            new ShapedRecipeIngredients("R", new ItemStack(secondaryItemProvider)));
+            new ShapedRecipeIngredient("P", new ItemStack(baseItemProvider)),
+            new ShapedRecipeIngredient("R", new ItemStack(secondaryItemProvider)));
         return sign;
     }
 
@@ -269,28 +293,28 @@ public class ContentRegistryBuilder extends ContentBuilder {
                 "X",
                 "X",
                 "X"
-            }, new ShapedRecipeIngredients("X", new ItemStack(baseItemProvider)));
+            }, new ShapedRecipeIngredient("X", new ItemStack(baseItemProvider)));
         RecipeGenerator.getInstance(getModId())
             .addShapeless(
                 new ItemStack(siding, 6),
                 extendIdentifier( "_siding_to_slab"),
                 "sidings_to_slabs",
-                new ShapelessRecipeIngredients(new ItemStack(siding))
+                new ShapelessRecipeIngredient(new ItemStack(siding))
             );
         RecipeGenerator.getInstance(getModId())
             .addShapeless(
                 new ItemStack(siding, 6),
                 extendIdentifier( "_siding_to_block"),
                 "sidings_to_blocks",
-                new ShapelessRecipeIngredients(new ItemStack(siding)),
-                new ShapelessRecipeIngredients(new ItemStack(siding))
+                new ShapelessRecipeIngredient(new ItemStack(siding)),
+                new ShapelessRecipeIngredient(new ItemStack(siding))
             );
         RecipeGenerator.getInstance(getModId())
             .addStonecutting(
                 new ItemStack(siding, 6),
                 new Identifier(baseNameIdentifier.getNamespace(), baseNameIdentifier.getPath() + "_siding_from_" + baseNameIdentifier.getPath() + "_stonecutting"),
                 "siding_from_block_stonecutting",
-                new ShapelessRecipeIngredients(new ItemStack(siding))
+                new ShapelessRecipeIngredient(new ItemStack(siding))
             );
 
         return siding;
@@ -307,9 +331,26 @@ public class ContentRegistryBuilder extends ContentBuilder {
                     "P P",
                     "PPP"
                 },
-                new ShapedRecipeIngredients("P", new ItemStack(baseBlock))
+                new ShapedRecipeIngredient("P", new ItemStack(baseBlock))
             );
-        return null;
+        return chest;
+    }
+
+    @Override
+    public Block barrel() {
+        Block barrel = new BarrelBlock(Block.Settings.copy(Blocks.BARREL));
+        RegistryUtils.register(barrel, extendIdentifier("_barrel"));
+
+        RecipeGenerator.getInstance(getModId())
+            .addShaped(new ItemStack(barrel), extendIdentifier("_barrel"), "barrels", new String[]{
+                    "PSP",
+                    "P P",
+                    "PSP"
+                },
+                new ShapedRecipeIngredient("S", new ItemStack(Registry.ITEM.get(extendIdentifier(baseNameIdentifier, "_slab")))),
+                new ShapedRecipeIngredient("P", new ItemStack(baseItemProvider))
+            );
+        return barrel;
     }
 
     @Override

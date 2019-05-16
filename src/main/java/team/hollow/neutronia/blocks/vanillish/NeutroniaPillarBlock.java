@@ -1,4 +1,4 @@
-package team.hollow.neutronia.blocks;
+package team.hollow.neutronia.blocks.vanillish;
 
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.Block;
@@ -9,6 +9,7 @@ import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.math.Direction;
+import team.hollow.neutronia.blocks.NeutroniaBlock;
 
 public class NeutroniaPillarBlock extends NeutroniaBlock {
 

@@ -581,6 +581,21 @@ public class ResourceGenerator {
         writeJsonToFile(getItemModelsPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), root);
     }
 
+    public void genBarrel(Identifier identifier, Identifier baseTextureName) {
+        String text = JsonTemplates.BARREL_STATES.replace("modid", identifier.getNamespace()).replace("block_model", identifier.getPath());
+        writeStringToFile(getBlockStatesPath(identifier.getNamespace()).resolve(identifier.getPath() + ".json").toFile(), text);
+
+        Identifier topTextureName = new Identifier(baseTextureName.getNamespace(), baseTextureName.getPath() + "_top");
+        Identifier topOpenTextureName = new Identifier(baseTextureName.getNamespace(), baseTextureName.getPath() + "_top_open");
+        Identifier sideTextureName = new Identifier(baseTextureName.getNamespace(), baseTextureName.getPath() + "_side");
+        Identifier bottomTextureName = new Identifier(baseTextureName.getNamespace(), baseTextureName.getPath() + "_bottom");
+
+        genBottomTopBlockModel(identifier, bottomTextureName, topTextureName, sideTextureName);
+        genBottomTopBlockModel(new Identifier(identifier.getNamespace(), identifier.getPath() + "_open"), bottomTextureName, topOpenTextureName, sideTextureName);
+
+        genSimpleBlockItemModel(identifier);
+    }
+
     /*public void genSlabColoredBlockModel(Identifier identifier, Identifier topTextureLocation, Identifier sideTextureLocation, Identifier bottomTextureLocation) {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
