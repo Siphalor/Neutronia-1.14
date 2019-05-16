@@ -47,7 +47,7 @@ public class BlockChiseler {
 					for (ChiselEntry chiselEntry : toolToEntries.getValue()) {
 						Block newBlock;
 						if(player.isSneaking())
-							newBlock = chiselEntry.getPreviosBlock(hitBlockState.getBlock());
+							newBlock = chiselEntry.getPreviousBlock(hitBlockState.getBlock());
 						else
 							newBlock = chiselEntry.getNextBlock(hitBlockState.getBlock());
 						if (newBlock == null) continue;
@@ -94,7 +94,7 @@ public class BlockChiseler {
 			return null;
 		}
 
-		Block getPreviosBlock(Block oldBlock) {
+		Block getPreviousBlock(Block oldBlock) {
 			for(Iterator<Block> iterator = chiselDeque.descendingIterator(); iterator.hasNext();) {
 				if(iterator.next() == oldBlock) {
 					if (iterator.hasNext())

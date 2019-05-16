@@ -53,9 +53,9 @@ public class FindDiamondBlockGoal extends MoveToTargetPosGoal {
         World world_1 = this.owner.world;
         BlockState blockState_1 = world_1.getBlockState(this.targetPos);
         if (blockState_1.getBlock() == Blocks.DIAMOND_BLOCK || blockState_1.getBlock() == Blocks.DIAMOND_ORE) {
-            ItemStack itemStack_1 = owner.getEquippedStack(EquipmentSlot.HAND_MAIN);
+            ItemStack itemStack_1 = owner.getEquippedStack(EquipmentSlot.MAINHAND);
             if (itemStack_1.isEmpty()) {
-                owner.setEquippedStack(EquipmentSlot.HAND_MAIN, new ItemStack(Items.SWEET_BERRIES));
+                owner.setEquippedStack(EquipmentSlot.MAINHAND, new ItemStack(Items.SWEET_BERRIES));
             }
             owner.playSound(SoundEvents.ITEM_SWEET_BERRIES_PICK_FROM_BUSH, 1.0F, 1.0F);
             world_1.setBlockState(this.targetPos, Blocks.AIR.getDefaultState(), 2);

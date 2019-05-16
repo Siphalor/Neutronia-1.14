@@ -75,7 +75,7 @@ public abstract class ContentBuilder {
 	public abstract Block grate();
 	public abstract Block wall();
 	public abstract Block button(boolean wooden);
-	public abstract Block pressurePlate(PressurePlateBlock.Type type);
+	public abstract Block pressurePlate(PressurePlateBlock.ActivationRule type);
 	public abstract Block post();
 	public abstract Block siding();
 	public abstract Block sign();

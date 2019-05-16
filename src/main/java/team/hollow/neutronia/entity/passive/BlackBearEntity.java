@@ -184,7 +184,7 @@ public class BlackBearEntity extends AnimalEntity {
             double double_2 = this.getSquaredMaxAttackDistance(livingEntity_1);
             if (double_1 <= double_2 && this.ticksUntilAttack <= 0) {
                 this.ticksUntilAttack = 20;
-                this.entity.tryAttack(livingEntity_1);
+                this.mob.tryAttack(livingEntity_1);
                 BlackBearEntity.this.setWarning(false);
             } else if (double_1 <= double_2 * 2.0D) {
                 if (this.ticksUntilAttack <= 0) {

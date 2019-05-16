@@ -32,8 +32,7 @@
     ]
   },
   "mixins": [
-    "neutronia.mixins.json",
-    "modmenu_api.mixins.json"
+    "neutronia.mixins.json"
   ],
 
   "requires": {
@@ -42,7 +41,6 @@
   },
   "custom":{
     "modmenu:api": false,
-    "modmenu:clientSideOnly": false,
-    "updatechecker:update_link": "https://raw.githubusercontent.com/minecraftabnormals/Neutronia-1.14/master/update_file.json"
+    "modmenu:clientSideOnly": false
   }
 }

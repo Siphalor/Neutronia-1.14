@@ -221,7 +221,7 @@ public class ContentRegistryBuilder extends ContentBuilder {
     }
 
     @Override
-    public Block pressurePlate(PressurePlateBlock.Type type) {
+    public Block pressurePlate(PressurePlateBlock.ActivationRule type) {
         Block pressurePlate = new NeutroniaPressurePlateBlock(Block.Settings.copy(baseBlock), type);
         RegistryUtils.register(pressurePlate, extendIdentifier("_pressure_plate"), ItemGroup.REDSTONE);
 

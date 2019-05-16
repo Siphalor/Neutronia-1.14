@@ -36,8 +36,8 @@ public class NeutroniaPillarBlock extends NeutroniaBlock {
     @Override
     public BlockState rotate(BlockState blockState_1, BlockRotation rotation_1) {
         switch (rotation_1) {
-            case ROT_270:
-            case ROT_90:
+            case CLOCKWISE_180:
+            case CLOCKWISE_90:
                 switch (blockState_1.get(AXIS)) {
                     case X:
                         return blockState_1.with(AXIS, Direction.Axis.Z);

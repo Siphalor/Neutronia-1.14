@@ -72,6 +72,10 @@ public class ContentResourceBuilder extends ContentBuilder {
 			resourceGenerator.genCake(7, identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_side"), extendIdentifier(textureIdentifier, "_inner"), extendIdentifier(textureIdentifier, "_top"));
 		} else if(block instanceof PieBlock) {
 			resourceGenerator.genCake(4, identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_side"), extendIdentifier(textureIdentifier, "_inner"), extendIdentifier(textureIdentifier, "_top"));
+		} else if(block instanceof BarrelBlock) {
+			resourceGenerator.genSimpleBlockstates(identifier);
+			resourceGenerator.genBottomTopBlockModel(identifier, extendIdentifier(textureIdentifier, "_bottom"), extendIdentifier(textureIdentifier, "_top"), textureIdentifier);
+			resourceGenerator.genSimpleBlockItemModel(identifier);
 		} else {
 			resourceGenerator.genSimpleBlock(identifier, textureIdentifier);
 		}
@@ -190,7 +194,7 @@ public class ContentResourceBuilder extends ContentBuilder {
 	}
 
 	@Override
-	public Block pressurePlate(PressurePlateBlock.Type type) {
+	public Block pressurePlate(PressurePlateBlock.ActivationRule type) {
 		Identifier identifier = extendIdentifier("_pressure_plate");
         resourceGenerator.genPressurePlate(identifier, baseTextureIdentifier);
         resourceGenerator.genSimpleLootTable(identifier, identifier);

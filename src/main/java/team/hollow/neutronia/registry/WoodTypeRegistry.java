@@ -33,7 +33,7 @@ public abstract class WoodTypeRegistry implements StringRepresentable {
 		contentBuilder.slab();
 		contentBuilder.stairs();
 		contentBuilder.button(true);
-		contentBuilder.pressurePlate(PressurePlateBlock.Type.WOOD);
+		contentBuilder.pressurePlate(PressurePlateBlock.ActivationRule.EVERYTHING);
 		contentBuilder.fence();
 		contentBuilder.fenceGate();
 		contentBuilder.door();
