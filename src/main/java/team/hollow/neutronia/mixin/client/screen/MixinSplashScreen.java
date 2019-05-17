@@ -5,7 +5,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.FontStorage;
 import net.minecraft.client.font.FontType;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.SplashScreen;
+import net.minecraft.client.gui.screen.SplashScreen;
 import net.minecraft.util.Identifier;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -14,7 +14,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import team.hollow.neutronia.LoadingProgressImpl;
-import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.api.LoadingProgress;
 
 import java.util.Collections;

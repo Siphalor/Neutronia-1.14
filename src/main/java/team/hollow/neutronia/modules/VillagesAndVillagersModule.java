@@ -1,10 +1,10 @@
 package team.hollow.neutronia.modules;
 
-import team.hollow.module_api.api.Module;
+import team.hollow.abnormalib.modules.api.MainModule;
 import team.hollow.neutronia.modules.villagesandvillagers.VillagerProfessionsSubModule;
 import team.hollow.neutronia.modules.villagesandvillagers.VillagerTypesFeature;
 
-public class VillagesAndVillagersModule extends Module {
+public class VillagesAndVillagersModule extends MainModule {
 	public static VillagerTypesFeature villagerTypes;
 	public static VillagerProfessionsSubModule villagerProfessions;
 

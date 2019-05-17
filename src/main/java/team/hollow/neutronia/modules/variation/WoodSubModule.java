@@ -4,22 +4,23 @@ import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Pair;
-import team.hollow.module_api.api.SubModule;
-import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.module_api.api.features.woodtype.WoodTypeBlockFeature;
-import team.hollow.module_api.api.features.woodtype.WoodTypeBlocksFeature;
-import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
+import team.hollow.abnormalib.modules.api.SubModule;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.modules.api.features.woodtype.WoodTypeFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.abnormalib.utils.registry.WoodType;
+import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.CustomLadderBlock;
 import team.hollow.neutronia.blocks.NeutroniaBaseLectern;
 import team.hollow.neutronia.blocks.NeutroniaBookshelfBlock;
+import team.hollow.neutronia.modules.features.WoodTypeBlockFeature;
+import team.hollow.neutronia.modules.features.WoodTypeBlocksFeature;
 import team.hollow.neutronia.modules.variation.wood.BambooWoodFeature;
 import team.hollow.neutronia.modules.variation.wood.ChestFeature;
 import team.hollow.neutronia.modules.variation.wood.TreatedWoodFeature;
-import team.hollow.neutronia.registry.ContentBuilder;
-import team.hollow.neutronia.registry.WoodType;
 
 import java.util.Collections;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 public class WoodSubModule extends SubModule {
 	public static BambooWoodFeature bamboo;
@@ -39,7 +40,9 @@ public class WoodSubModule extends SubModule {
 	public WoodSubModule() {
 		super("wood", "Contains wood related block variations");
 
-		Supplier<Block> simpleWoodenBlockSupplier = () -> new Block(Block.Settings.of(Material.WOOD));
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
+
+		Function<WoodType, Block> simpleWoodenBlockFunction = (woodType) -> new Block(Block.Settings.of(Material.WOOD));
 		Block.Settings campFireSettings = FabricBlockSettings.of(Material.WOOD, MaterialColor.SPRUCE)
 			.hardness(2.0F)
 			.sounds(BlockSoundGroup.WOOD)
@@ -53,15 +56,15 @@ public class WoodSubModule extends SubModule {
 		bookshelves = register(new WoodTypeFeature("bookshelves", "Adds more bookshelves", WoodTypeFeature.SKIP_OAK) {
 			@Override
 			protected void process(WoodType woodType) {
-				ContentBuilder.getInstance().asBaseBlock(woodType.getBaseBlock(), woodType.getIdentifier());
-				ContentBuilder.getInstance().newBlock(woodType.getIdentifier().getPath() + "_bookshelf", new NeutroniaBookshelfBlock(Block.Settings.copy(Blocks.BOOKSHELF)));
+				contentBuilder.asBaseBlock(woodType.getBaseBlock(), woodType.getIdentifier());
+				contentBuilder.newBlock(woodType.getIdentifier().getPath() + "_bookshelf", new NeutroniaBookshelfBlock(Block.Settings.copy(Blocks.BOOKSHELF)));
 			}
 		});
 		barrels = register(new WoodTypeFeature("barrels", "Adds more barrels", WoodTypeFeature.SKIP_OAK) {
 			@Override
 			protected void process(WoodType woodType) {
-				ContentBuilder.getInstance().asBaseBlock(woodType.getBaseBlock(), woodType.getIdentifier());
-				ContentBuilder.getInstance().barrel();
+				contentBuilder.asBaseBlock(woodType.getBaseBlock(), woodType.getIdentifier());
+				contentBuilder.barrel();
 			}
 		});
 		campfires = register(new WoodTypeBlockFeature("campfire", "Adds more campfires", WoodTypeFeature.SKIP_OAK,
@@ -82,8 +85,8 @@ public class WoodSubModule extends SubModule {
 		patternedPlanks = register(new WoodTypeBlocksFeature("patterned-planks", "Adds patterned and carved planks variations",
 				Collections.emptySet(),
 				"planks",
-				new Pair<>("patterned", simpleWoodenBlockSupplier),
-				new Pair<>("carved", simpleWoodenBlockSupplier)
+				new Pair<>("patterned", simpleWoodenBlockFunction),
+				new Pair<>("carved", simpleWoodenBlockFunction)
 		));
 	}
 }

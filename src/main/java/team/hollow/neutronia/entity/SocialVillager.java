@@ -16,7 +16,7 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.TextComponent;
-import net.minecraft.particle.ParticleParameters;
+import net.minecraft.particle.ParticleEffect;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
@@ -221,7 +221,7 @@ public class SocialVillager extends PassiveEntity {
     }
 
     @Environment(EnvType.CLIENT)
-    private void produceParticles(ParticleParameters particleParameters_1) {
+    private void produceParticles(ParticleEffect particleParameters_1) {
         for (int int_1 = 0; int_1 < 5; ++int_1) {
             double double_1 = this.random.nextGaussian() * 0.02D;
             double double_2 = this.random.nextGaussian() * 0.02D;

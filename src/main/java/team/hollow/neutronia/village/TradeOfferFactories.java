@@ -44,12 +44,12 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public ProcessItemFactory(ItemProvider itemProvider_1, int int_1, Item item_1, int int_2, int int_3, int int_4) {
-            this(itemProvider_1, int_1, 1, item_1, int_2, int_3, int_4);
+        public ProcessItemFactory(ItemConvertible itemConvertible_1, int int_1, Item item_1, int int_2, int int_3, int int_4) {
+            this(itemConvertible_1, int_1, 1, item_1, int_2, int_3, int_4);
         }
 
-        public ProcessItemFactory(ItemProvider itemProvider_1, int int_1, int int_2, Item item_1, int int_3, int int_4, int int_5) {
-            this.secondBuy = new ItemStack(itemProvider_1);
+        public ProcessItemFactory(ItemConvertible itemConvertible_1, int int_1, int int_2, Item item_1, int int_3, int int_4, int int_5) {
+            this.secondBuy = new ItemStack(itemConvertible_1);
             this.secondCount = int_1;
             this.price = int_2;
             this.sell = new ItemStack(item_1);
@@ -284,8 +284,8 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public BuyForOneEmeraldFactory(ItemProvider itemProvider_1, int int_1, int int_2, int int_3) {
-            this.buy = itemProvider_1.getItem();
+        public BuyForOneEmeraldFactory(ItemConvertible itemConvertible_1, int int_1, int int_2, int int_3) {
+            this.buy = itemConvertible_1.asItem();
             this.price = int_1;
             this.maxUses = int_2;
             this.experience = int_3;
@@ -331,8 +331,8 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public BuyItemFactory(ItemProvider itemProvider, int price, int maxUses, int experience) {
-            this.item = itemProvider.getItem();
+        public BuyItemFactory(ItemConvertible itemConvertible, int price, int maxUses, int experience) {
+            this.item = itemConvertible.asItem();
             this.price = price;
             this.maxUses = maxUses;
             this.experience = experience;

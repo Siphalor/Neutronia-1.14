@@ -1,10 +1,10 @@
 package team.hollow.neutronia.modules;
 
 import net.minecraft.util.Identifier;
-import team.hollow.module_api.api.Module;
+import team.hollow.abnormalib.modules.api.MainModule;
 import team.hollow.neutronia.modules.variation.*;
 
-public class VariationModule extends Module {
+public class VariationModule extends MainModule {
 	public static StairsAndSlabsFeature stairsAndSlabs;
 	public static FencesAndWallsFeature fencesAndWalls;
 	public static SidingsFeature sidings;

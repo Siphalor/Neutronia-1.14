@@ -5,8 +5,7 @@ import net.minecraft.block.Material;
 import net.minecraft.block.PillarBlock;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
-import team.hollow.module_api.api.SubModule;
-import team.hollow.module_api.api.features.SingleBlockFeature;
+import team.hollow.abnormalib.modules.api.SubModule;
 import team.hollow.neutronia.blocks.CactusBundleBlock;
 import team.hollow.neutronia.blocks.GunpowderSackBlock;
 import team.hollow.neutronia.blocks.NeutroniaBottomTopBlock;
@@ -14,7 +13,7 @@ import team.hollow.neutronia.modules.origins.storage.CompressionFeature;
 
 public class StorageSubModule extends SubModule {
 
-    public static SingleBlockFeature stickBundle, chorusBundle, sugarCaneBundle, bambooBundle, netherWartSack, cocoaBeanSack, gunpowderSack,
+    public static CompressionFeature stickBundle, chorusBundle, sugarCaneBundle, bambooBundle, netherWartSack, cocoaBeanSack, gunpowderSack,
         eggCrate, beetrootCrate, potatoCrate, carrotCrate, appleCrate, goldenAppleCrate, cactusBundle;
 
     public StorageSubModule() {
@@ -26,16 +25,16 @@ public class StorageSubModule extends SubModule {
         bambooBundle = register(new CompressionFeature(new PillarBlock(FabricBlockSettings.of(Material.BAMBOO).sounds(BlockSoundGroup.BAMBOO).strength(1.0F, 2.5F).build()), "bamboo_bundle", Items.BAMBOO, "bamboo"));
         cactusBundle = register(new CompressionFeature(new CactusBundleBlock(), "cactus_bundle", Items.CACTUS, "cacti"));
 
-        netherWartSack = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(1.0F, 2.5F)), "nether_wart_sack", Items.NETHER_WART, "nether warts"));
-        cocoaBeanSack = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(1.0F, 2.5F)), "cocoa_bean_sack", Items.COCOA_BEANS, "cocoa beans"));
+        netherWartSack = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(1.0F, 2.5F).build()), "nether_wart_sack", Items.NETHER_WART, "nether warts"));
+        cocoaBeanSack = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOL).sounds(BlockSoundGroup.WOOL).strength(1.0F, 2.5F).build()), "cocoa_bean_sack", Items.COCOA_BEANS, "cocoa beans"));
         gunpowderSack = register(new CompressionFeature(new GunpowderSackBlock(), "gunpowder_sack", Items.GUNPOWDER, "gunpowder"));
 
-        eggCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(0.7F, 1.8F)), "egg_crate", Items.EGG, "eggs"));
-        beetrootCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F)), "beetroot_crate", Items.BEETROOT, "beetroots"));
-        potatoCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F)), "potato_crate", Items.POTATO, "potatoes"));
-        carrotCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F)), "carrot_crate", Items.CARROT, "carrots"));
-        appleCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F)), "apple_crate", Items.APPLE, "apples"));
-        goldenAppleCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F)), "golden_apple_crate", Items.GOLDEN_APPLE, "golden apples"));
+        eggCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(0.7F, 1.8F).build()), "egg_crate", Items.EGG, "eggs"));
+        beetrootCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F).build()), "beetroot_crate", Items.BEETROOT, "beetroots"));
+        potatoCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F).build()), "potato_crate", Items.POTATO, "potatoes"));
+        carrotCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F).build()), "carrot_crate", Items.CARROT, "carrots"));
+        appleCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F).build()), "apple_crate", Items.APPLE, "apples"));
+        goldenAppleCrate = register(new CompressionFeature(new NeutroniaBottomTopBlock(FabricBlockSettings.of(Material.WOOD).sounds(BlockSoundGroup.WOOD).strength(1.0F, 2.5F).build()), "golden_apple_crate", Items.GOLDEN_APPLE, "golden apples"));
     }
 
 }

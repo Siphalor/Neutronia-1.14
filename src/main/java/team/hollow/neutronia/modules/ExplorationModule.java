@@ -1,12 +1,12 @@
 package team.hollow.neutronia.modules;
 
 import net.minecraft.util.Identifier;
-import team.hollow.module_api.api.Module;
+import team.hollow.abnormalib.modules.api.MainModule;
 import team.hollow.neutronia.modules.exploration.FoodSubModule;
 import team.hollow.neutronia.modules.exploration.TreesSubModule;
 
 @SuppressWarnings("WeakerAccess")
-public class ExplorationModule extends Module {
+public class ExplorationModule extends MainModule {
 
 	TreesSubModule trees;
 	FoodSubModule food;

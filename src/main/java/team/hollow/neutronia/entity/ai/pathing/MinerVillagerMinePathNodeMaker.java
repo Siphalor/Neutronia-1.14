@@ -19,7 +19,7 @@ public class MinerVillagerMinePathNodeMaker extends PathNodeMaker {
     }
 
     @Override
-    public int getPathNodes(PathNode[] pathNodes, PathNode pathNode, PathNode pathNode1, float v) {
+    public int getPathNodes(PathNode[] pathNodes, PathNode pathNode) {
         return 0;
     }
 

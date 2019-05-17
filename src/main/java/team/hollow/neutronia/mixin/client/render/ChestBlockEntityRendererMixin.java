@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
-import team.hollow.neutronia.blocks.NeutroniaSimpleChestBlock;
+import team.hollow.abnormalib.blocks.SimpleChestBaseBlock;
 import team.hollow.neutronia.client.renderer.ClientRenderUtils;
 
 @Mixin(ChestBlockEntityRenderer.class)
@@ -23,8 +23,8 @@ public class ChestBlockEntityRendererMixin extends BlockEntityRenderer {
             return;
         }
         Block block = blockEntity.getWorld().getBlockState(blockEntity.getPos()).getBlock();
-        if(block instanceof NeutroniaSimpleChestBlock) {
-            bindTexture(getSimpleChestTexture(((NeutroniaSimpleChestBlock) block).type, doubleChest));
+        if(block instanceof SimpleChestBaseBlock) {
+            bindTexture(getSimpleChestTexture(((SimpleChestBaseBlock) block).type, doubleChest));
         }
     }
     

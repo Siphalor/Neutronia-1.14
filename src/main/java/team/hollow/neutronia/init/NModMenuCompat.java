@@ -3,7 +3,7 @@ package team.hollow.neutronia.init;
 import io.github.prospector.modmenu.api.ModMenuApi;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.gui.Screen;
+import net.minecraft.client.gui.screen.Screen;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.client.ClientInit;
 

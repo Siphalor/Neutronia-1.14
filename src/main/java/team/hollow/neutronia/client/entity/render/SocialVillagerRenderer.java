@@ -60,7 +60,7 @@ public class SocialVillagerRenderer extends MobEntityRenderer<SocialVillager, Pl
     @Override
     protected void scale(SocialVillager livingEntity_1, float float_1) {
         float float_2 = 0.9375F;
-        if (livingEntity_1.isChild()) {
+        if (livingEntity_1.isBaby()) {
             float_2 = (float) ((double) float_2 * 0.5D);
             this.field_4673 = 0.25F;
         } else {

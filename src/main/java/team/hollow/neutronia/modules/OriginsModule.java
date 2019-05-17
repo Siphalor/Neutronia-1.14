@@ -1,11 +1,11 @@
 package team.hollow.neutronia.modules;
 
 import net.minecraft.util.Identifier;
-import team.hollow.module_api.api.Module;
+import team.hollow.abnormalib.modules.api.MainModule;
 import team.hollow.neutronia.modules.origins.CompostablesFeature;
 import team.hollow.neutronia.modules.origins.StorageSubModule;
 
-public class OriginsModule extends Module {
+public class OriginsModule extends MainModule {
 	public static StorageSubModule storage;
 	public static CompostablesFeature compostables;
 

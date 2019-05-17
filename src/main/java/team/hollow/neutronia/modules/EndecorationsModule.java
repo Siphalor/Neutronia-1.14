@@ -1,10 +1,10 @@
 package team.hollow.neutronia.modules;
 
 import net.minecraft.util.Identifier;
-import team.hollow.module_api.api.Module;
+import team.hollow.abnormalib.modules.api.MainModule;
 import team.hollow.neutronia.modules.endecorations.PaperLanternsFeature;
 
-public class EndecorationsModule extends Module {
+public class EndecorationsModule extends MainModule {
     public static PaperLanternsFeature paperLanterns;
 
 	public EndecorationsModule() {

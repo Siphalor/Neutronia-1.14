@@ -6,9 +6,10 @@ import net.minecraft.item.FoodItemSettings;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Pair;
-import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.vanillish.NeutroniaBerryBushBlock;
-import team.hollow.neutronia.registry.ContentBuilder;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -23,7 +24,7 @@ public class BerriesFeature extends OptionalFeature {
 	@Override
 	protected void applyEnabled() {
         Item.Settings itemSettings = new Item.Settings().itemGroup(ItemGroup.FOOD).food(FoodItemSettings.SWEET_BERRIES);
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 
         for(BerryType berryType : BerryType.values()) {
             Block bush = contentBuilder.newBlock(berryType.singular + "_bush", new NeutroniaBerryBushBlock(berryType));

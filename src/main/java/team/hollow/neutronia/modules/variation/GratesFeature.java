@@ -2,8 +2,9 @@ package team.hollow.neutronia.modules.variation;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
-import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.neutronia.Neutronia;
 
 public class GratesFeature extends OptionalFeature {
 	public GratesFeature() {
@@ -17,7 +18,7 @@ public class GratesFeature extends OptionalFeature {
 	}
 
 	public void addGrate(Block baseBlock, String baseName) {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 		contentBuilder.setBaseBlock(baseBlock);
 		contentBuilder.setBaseName(baseName);
 		contentBuilder.grate();

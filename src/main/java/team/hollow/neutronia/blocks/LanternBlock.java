@@ -82,7 +82,7 @@ public class LanternBlock extends net.minecraft.block.LanternBlock {
 
     @Override
     public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.MIPPED_CUTOUT;
+        return BlockRenderLayer.CUTOUT_MIPPED;
     }
 
 }

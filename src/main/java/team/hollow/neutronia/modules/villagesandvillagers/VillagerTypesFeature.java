@@ -2,7 +2,7 @@ package team.hollow.neutronia.modules.villagesandvillagers;
 
 import net.minecraft.village.VillagerType;
 import net.minecraft.world.biome.Biomes;
-import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
 import team.hollow.neutronia.village.VillagerTypeRegistry;
 
 public class VillagerTypesFeature extends OptionalFeature {

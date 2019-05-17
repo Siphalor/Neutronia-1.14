@@ -1,8 +1,8 @@
 package team.hollow.neutronia.enums;
 
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.StringIdentifiable;
 
-public enum GlazedTerracottaPillarVariants implements StringRepresentable {
+public enum GlazedTerracottaPillarVariants implements StringIdentifiable {
 
     BLACK("black", 0),
     BLUE("blue", 1),

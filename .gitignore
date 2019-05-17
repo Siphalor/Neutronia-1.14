@@ -27,3 +27,4 @@ run/
 src/main/resources/assets/neutronia/blockstates/
 src/main/resources/assets/neutronia/models/
 src/main/resources/data/neutronia/loot_tables/blocks/
+/logs/

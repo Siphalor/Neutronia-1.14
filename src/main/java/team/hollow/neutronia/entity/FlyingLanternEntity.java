@@ -55,8 +55,8 @@ public class FlyingLanternEntity extends Entity {
 	}
 
 	@Override
-	public BoundingBox method_5827() {
-		return this.getBoundingBox();
+	public BoundingBox getCollisionBox() {
+		return super.getBoundingBox();
 	}
 
 	@Override

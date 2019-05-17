@@ -9,14 +9,13 @@ import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.item.Items;
 import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.Identifier;
-import team.hollow.module_api.api.features.Feature;
-import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.abnormalib.blocks.SaplingBaseBlock;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.abnormalib.utils.registry.WoodType;
+import team.hollow.abnormalib.utils.registry.WoodTypeRegistry;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.NeutroniaLeavesBlock;
-import team.hollow.neutronia.blocks.NeutroniaSaplingBlock;
-import team.hollow.neutronia.registry.ContentBuilder;
-import team.hollow.neutronia.registry.WoodType;
-import team.hollow.neutronia.registry.WoodTypeRegistry;
 
 public class TreeFeature extends OptionalFeature {
 	public Block log;
@@ -30,14 +29,14 @@ public class TreeFeature extends OptionalFeature {
 	protected SaplingGenerator saplingGenerator;
 
 	public TreeFeature(String name, SaplingGenerator saplingGenerator) {
-		super(name, "Enable " + Feature.formatName(name) + " trees and wood.");
+		super(name, "Enable " + formatName(name) + " trees and wood.");
 
 		this.saplingGenerator = saplingGenerator;
 	}
 
 	@Override
 	protected void applyEnabled() {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 		contentBuilder.setSecondaryItem(Items.STICK);
 
 		log = contentBuilder.newBlock(name + "_log", new PillarBlock(FabricBlockSettings.of(Material.WOOD).build()));
@@ -59,7 +58,7 @@ public class TreeFeature extends OptionalFeature {
 			"stripped_" + name + "_log"
 		);
 		leaves = contentBuilder.newBlock(name + "_leaves", new NeutroniaLeavesBlock());
-		sapling = contentBuilder.newBaseBlock(name + "_sapling", new NeutroniaSaplingBlock(saplingGenerator));
+		sapling = contentBuilder.newBaseBlock(name + "_sapling", new SaplingBaseBlock(saplingGenerator));
 		contentBuilder.addPotted();
 
 		woodType = WoodTypeRegistry.registerModded(new WoodType(new Identifier(Neutronia.MOD_ID, name)), 2.0F, 3.0F);

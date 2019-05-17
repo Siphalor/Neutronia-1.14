@@ -15,10 +15,11 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
+import team.hollow.abnormalib.utils.generators.blockmodel.BottomTopBlockModel;
 
-public class GunpowderSackBlock extends NeutroniaBottomTopBlock {
+public class GunpowderSackBlock extends Block implements BottomTopBlockModel {
 	public GunpowderSackBlock() {
-		super(FabricBlockSettings.of(Material.WOOL).strength(1.0F, 2.5F));
+		super(FabricBlockSettings.of(Material.WOOL).strength(1.0F, 2.5F).build());
 	}
 
 	@Override

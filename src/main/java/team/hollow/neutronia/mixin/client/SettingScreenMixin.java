@@ -1,7 +1,7 @@
 package team.hollow.neutronia.mixin.client;
 
-import net.minecraft.client.gui.Screen;
-import net.minecraft.client.gui.menu.SettingsScreen;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.SettingsScreen;
 import net.minecraft.network.chat.TranslatableComponent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

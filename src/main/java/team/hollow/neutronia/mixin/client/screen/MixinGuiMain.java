@@ -1,14 +1,14 @@
 package team.hollow.neutronia.mixin.client.screen;
 
-import net.minecraft.client.gui.MainMenuScreen;
-import net.minecraft.client.gui.Screen;
+import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.network.chat.TranslatableComponent;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(value = MainMenuScreen.class)
+@Mixin(value = TitleScreen.class)
 public abstract class MixinGuiMain extends Screen {
 
     protected MixinGuiMain() {

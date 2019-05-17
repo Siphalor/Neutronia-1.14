@@ -1,10 +1,10 @@
 package team.hollow.neutronia.modules.variation.wood;
 
 import net.minecraft.util.Identifier;
-import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.registry.WoodType;
+import team.hollow.abnormalib.utils.registry.WoodTypeRegistry;
 import team.hollow.neutronia.Neutronia;
-import team.hollow.neutronia.registry.WoodType;
-import team.hollow.neutronia.registry.WoodTypeRegistry;
 
 public class BambooWoodFeature extends OptionalFeature {
 	public WoodType woodType;

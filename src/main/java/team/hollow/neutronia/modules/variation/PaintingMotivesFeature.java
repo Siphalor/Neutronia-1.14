@@ -3,7 +3,7 @@ package team.hollow.neutronia.modules.variation;
 import net.minecraft.entity.decoration.painting.PaintingMotive;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
 import team.hollow.neutronia.Neutronia;
 
 public class PaintingMotivesFeature extends OptionalFeature {

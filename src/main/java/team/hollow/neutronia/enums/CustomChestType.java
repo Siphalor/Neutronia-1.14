@@ -1,10 +1,10 @@
 package team.hollow.neutronia.enums;
 
 import net.minecraft.util.Identifier;
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.StringIdentifiable;
 import team.hollow.neutronia.Neutronia;
 
-public enum CustomChestType implements StringRepresentable {
+public enum CustomChestType implements StringIdentifiable {
 
     ACACIA("acacia", "acacia.png", 0),
     BIRCH("birch", "birch.png", 1),

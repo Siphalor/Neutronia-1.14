@@ -4,11 +4,11 @@ import com.mojang.datafixers.Dynamic;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import team.hollow.neutronia.modules.ExplorationModule;
 import team.hollow.neutronia.modules.exploration.TreesSubModule;
 
 import java.util.Random;
@@ -31,7 +31,7 @@ public class PalmTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
         super(function_1, boolean_1);
     }
 
-    public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos position) {
+    public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos position, MutableIntBoundingBox mutableIntBoundingBox) {
         int int_1 = random_1.nextInt(3) + random_1.nextInt(3) + 5;
         boolean boolean_1 = true;
         if (position.getY() >= 1 && position.getY() + int_1 + 1 <= 256) {
@@ -84,7 +84,7 @@ public class PalmTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
 
                     BlockPos blockPos_2 = new BlockPos(int_8, int_17, int_9);
                     if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_2)) {
-                        this.placeLog(set_1, modifiableTestableWorld_1, blockPos_2);
+                        this.placeLog(set_1, modifiableTestableWorld_1, blockPos_2, mutableIntBoundingBox);
                         int_10 = int_17;
                     }
                 }
@@ -128,7 +128,7 @@ public class PalmTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
                             int_9 += direction_2.getOffsetZ();
                             BlockPos blockPos_4 = new BlockPos(int_8, int_23, int_9);
                             if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_4)) {
-                                this.placeTopLog(set_1, modifiableTestableWorld_1, blockPos_4);
+                                this.placeTopLog(set_1, modifiableTestableWorld_1, blockPos_4, mutableIntBoundingBox);
                                 int_10 = int_23;
                             }
                         }
@@ -167,12 +167,12 @@ public class PalmTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig> {
         }
     }
 
-    private void placeLog(Set<BlockPos> set_1, ModifiableWorld modifiableWorld_1, BlockPos position) {
-        this.setBlockState(set_1, modifiableWorld_1, position, LOG);
+    private void placeLog(Set<BlockPos> set_1, ModifiableWorld modifiableWorld_1, BlockPos position, MutableIntBoundingBox mutableIntBoundingBox) {
+        this.setBlockState(set_1, modifiableWorld_1, position, LOG, mutableIntBoundingBox);
     }
 
-    private void placeTopLog(Set<BlockPos> set_1, ModifiableWorld modifiableWorld_1, BlockPos position) {
-        this.setBlockState(set_1, modifiableWorld_1, position, LOG_TOP);
+    private void placeTopLog(Set<BlockPos> set_1, ModifiableWorld modifiableWorld_1, BlockPos position, MutableIntBoundingBox mutableIntBoundingBox) {
+        this.setBlockState(set_1, modifiableWorld_1, position, LOG_TOP, mutableIntBoundingBox);
     }
 
     private void placeLeaves(ModifiableTestableWorld modifiableTestableWorld_1, BlockPos position) {
