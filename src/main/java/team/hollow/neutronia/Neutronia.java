@@ -1,7 +1,10 @@
 package team.hollow.neutronia;
 
+import de.siphalor.tweed.config.ConfigEnvironment;
+import de.siphalor.tweed.config.ConfigLoader;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.block.FabricBlockSettings;
+import net.fabricmc.fabric.api.registry.CommandRegistry;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.PressurePlateBlock;
@@ -17,6 +20,7 @@ import team.hollow.abnormalib.utils.ContentRegistryBuilder;
 import team.hollow.abnormalib.utils.generators.ContentResourceBuilder;
 import team.hollow.abnormalib.utils.registry.BlockChiseler;
 import team.hollow.abnormalib.utils.registry.WoodTypeRegistry;
+import team.hollow.neutronia.command.FindBiomeCommand;
 import team.hollow.neutronia.modules.*;
 import team.hollow.quest_api.QuestManager;
 import team.hollow.quest_api.api.Quest;
@@ -33,6 +37,7 @@ public class Neutronia implements ModInitializer {
     public static final ModuleManager MODULE_MANAGER = new ModuleManager(MOD_ID);
 
     private static ContentBuilder contentBuilder;
+    public static boolean doMiniBiomes = false;
 
     public static Logger getLogger() {
         return LOGGER;
@@ -71,8 +76,10 @@ public class Neutronia implements ModInitializer {
 
         contentBuilder.finish();
 
-        if(GEN_RESOURCES)
+        if(GEN_RESOURCES) {
+            ConfigLoader.initialReload(ConfigEnvironment.UNIVERSAL);
             System.exit(0);
+        }
 
         BlockChiseler.setup();
 
@@ -103,6 +110,8 @@ public class Neutronia implements ModInitializer {
 
         //ModMenuBadgeManager.registerBadges(MOD_ID, ModMenuBadges.ALPHA, ModMenuBadges.BETA, new NeutroniaBadge());
         //VersionChecker.startVersionCheck();
+
+		CommandRegistry.INSTANCE.register(false, FindBiomeCommand::register);
     }
 
     public static void setupModules() {

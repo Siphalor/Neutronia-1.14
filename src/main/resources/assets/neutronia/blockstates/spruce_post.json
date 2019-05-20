@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "block/spruce_fence_post"
+    },
+    "axis=x": {
+      "model": "block/spruce_fence_post",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z": {
+      "model": "block/spruce_fence_post",
+      "x": 90
+    }
+  }
+}

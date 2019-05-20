@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=y": {
+      "model": "neutronia:block/gabon_ebony_paper_lantern"
+    },
+    "axis=z": {
+      "x": 90,
+      "model": "neutronia:block/gabon_ebony_paper_lantern"
+    },
+    "axis=x": {
+      "x": 90,
+      "y": 90,
+      "model": "neutronia:block/gabon_ebony_paper_lantern"
+    }
+  }
+}

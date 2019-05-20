@@ -1,19 +1,4 @@
 {
   "replace": false,
-  "values": [
-    "neutronia:mangrove_fence",
-    "neutronia:purpleheart_fence",
-    "neutronia:treated_wood_fence",
-    "neutronia:baobab_fence",
-    "neutronia:gabon_ebony_fence",
-    "neutronia:willow_fence",
-    "neutronia:cherry_fence",
-    "neutronia:redwood_fence",
-    "neutronia:bolivian_rosewood_fence",
-    "neutronia:bamboo_fence",
-    "neutronia:lacewood_fence",
-    "neutronia:palm_fence",
-    "neutronia:wenge_fence",
-    "neutronia:red_mangrove_fence"
-  ]
+  "values": []
 }

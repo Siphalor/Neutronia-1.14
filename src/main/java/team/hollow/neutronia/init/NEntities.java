@@ -75,7 +75,7 @@ public class NEntities {
                 createBuilder("jungle_frog").entity(EntityJungleFrog.class).tracker(64, 3, true).egg(0xFFFFFF, 0x00FF00).getModMenuBadge()
         };
         event.getRegistry().registerAll(entries);
-        if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT) {
+        if (FMLCommonHandler.getInstance().getEffectiveSide() == Side.CLIENT) {
             registerEntityRenders();
         }
         addSpawns();

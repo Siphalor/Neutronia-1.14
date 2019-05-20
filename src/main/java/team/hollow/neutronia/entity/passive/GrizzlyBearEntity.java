@@ -219,7 +219,7 @@ public class GrizzlyBearEntity extends AnimalEntity {
         }
 
         protected double getSquaredMaxAttackDistance(LivingEntity livingEntity_1) {
-            return (double)(4.0F + livingEntity_1.getWidth());
+            return (double) (4.0F + livingEntity_1.getWidth());
         }
     }
 

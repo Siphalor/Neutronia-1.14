@@ -7,20 +7,20 @@ import net.minecraft.structure.PoolStructurePiece;
 import net.minecraft.structure.StructureManager;
 import net.minecraft.structure.StructurePiece;
 import net.minecraft.structure.pool.*;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.gen.ChunkRandom;
 import net.minecraft.world.gen.chunk.ChunkGenerator;
-import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.ExampleMod;
+import team.hollow.neutronia.Neutronia;
 
 import java.util.List;
 
 public class PillagerMansionGenerator {
     static {
-        StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MOD_ID, "pillager_mansion/base_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_mansion/base_plate"), 1)), StructurePool.Projection.TERRAIN_MATCHING));
+        StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MOD_ID, "pillager_mansion/base_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_mansion/base_plate"), 1)), StructurePool.Projection.RIGID));
         StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MOD_ID, "pillager_mansion/feature_plates"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_mansion/feature_plate"), 1)), StructurePool.Projection.TERRAIN_MATCHING));
         StructurePoolBasedGenerator.REGISTRY.add(new StructurePool(new Identifier(Neutronia.MOD_ID, "pillager_mansion/features"), new Identifier("empty"), ImmutableList.of(Pair.of(new SinglePoolElement("neutronia:pillager_mansion/feature_cage1"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_mansion/feature_cage2"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_mansion/feature_logs"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_mansion/feature_tent1"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_mansion/feature_tent2"), 1), Pair.of(new SinglePoolElement("neutronia:pillager_mansion/feature_targets"), 1), Pair.of(EmptyPoolElement.INSTANCE, 6)), StructurePool.Projection.TERRAIN_MATCHING));
     }

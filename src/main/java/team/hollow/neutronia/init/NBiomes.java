@@ -19,7 +19,6 @@ public class NBiomes {
      * TODO: Peat Bogs, Snowy Mega Taiga, Alpines, Mountain Ranges, Freshwater Swamp Forests
      */
 
-
     /*public static final Biome BLUE_MESA = new BlueMesaBiome(false, false, (new Biome.BiomeProperties("Blue Mesa")).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled());
     public static final Biome BLUE_MESA_ROCK = new BlueMesaBiome(false, true, (new Biome.BiomeProperties("Blue Mesa Plateau F")).setBaseHeight(1.5F).setHeightVariation(0.025F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled());
     public static final Biome BLUE_MESA_CLEAR_ROCK = new BlueMesaBiome(false, false, (new Biome.BiomeProperties("Blue Mesa Plateau")).setBaseHeight(1.5F).setHeightVariation(0.025F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled());
@@ -34,7 +33,7 @@ public class NBiomes {
     public static final Biome MUTATED_WHITE_MESA_ROCK = new SilverMesaBiome(false, true, (new Biome.BiomeProperties("Silver Mesa Plateau F M")).setBaseBiome("silver_mesa_rock").setBaseHeight(0.45F).setHeightVariation(0.3F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled());
     public static final Biome MUTATED_WHITE_MESA_CLEAR_ROCK = new SilverMesaBiome(false, false, (new Biome.BiomeProperties("Silver Mesa Plateau M")).setBaseBiome("silver_mesa_clear_rock").setBaseHeight(0.45F).setHeightVariation(0.3F).setTemperature(2.0F).setRainfall(0.0F).setRainDisabled());
 
-    public static final Biome RED_DESERT = new RedDesertBiome();
+    /*public static final Biome RED_DESERT = new RedDesertBiome();
     public static final Biome MARSHLANDS = new MarshlandsBiome();
 
     //WARM

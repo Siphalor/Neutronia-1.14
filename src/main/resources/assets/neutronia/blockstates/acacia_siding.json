@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "type=single,facing=north": {
+      "model": "neutronia:block/acacia_siding"
+    },
+    "type=single,facing=south": {
+      "model": "neutronia:block/acacia_siding",
+      "y": 180
+    },
+    "type=single,facing=east": {
+      "model": "neutronia:block/acacia_siding",
+      "y": 90
+    },
+    "type=single,facing=west": {
+      "model": "neutronia:block/acacia_siding",
+      "y": 270
+    },
+    "type=double": {
+      "model": "block/acacia_planks"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "neutronia:block/white_glazed_terracotta_pillar",
+      "x": 90
+    },
+    "axis=x": {
+      "model": "neutronia:block/white_glazed_terracotta_pillar",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "neutronia:block/white_glazed_terracotta_pillar"
+    }
+  }
+}

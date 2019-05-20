@@ -1,9 +1,11 @@
 package team.hollow.neutronia.blocks;
 
+import net.fabricmc.fabric.api.block.FabricBlockSettings;
 import net.minecraft.block.BlockRenderLayer;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.entity.EntityContext;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.shape.VoxelShape;
@@ -13,11 +15,7 @@ import net.minecraft.world.BlockView;
 public class ChainBlock extends NeutroniaBlock {
 
     public ChainBlock() {
-        super(Material.METAL);
-    }
-
-    public ChainBlock(String name) {
-        super(Material.METAL);
+        super(FabricBlockSettings.of(Material.METAL).sounds(BlockSoundGroup.METAL));
     }
 
     @Override

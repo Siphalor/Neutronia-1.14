@@ -19,8 +19,12 @@ public class ArcticWolfEntityRenderer extends MobEntityRenderer<ArcticWolfEntity
 
     */
 /**
-     * Defines what float the third param in setRotationAngles of ModelBase is
-     *//*
+ * Defines what float the third param in setRotationAngles of ModelBase is
+ * <p>
+ * Renders the desired {@code T} type Entity.
+ * <p>
+ * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+ *//*
 
     protected float method_4045(ArcticWolfEntity livingBase, float partialTicks) {
         return livingBase.method_6714();
@@ -28,8 +32,8 @@ public class ArcticWolfEntityRenderer extends MobEntityRenderer<ArcticWolfEntity
 
     */
 /**
-     * Renders the desired {@code T} type Entity.
-     *//*
+ * Renders the desired {@code T} type Entity.
+ *//*
 
     @Override
     public void render(ArcticWolfEntity entity, double x, double y, double z, float entityYaw, float partialTicks) {
@@ -42,8 +46,8 @@ public class ArcticWolfEntityRenderer extends MobEntityRenderer<ArcticWolfEntity
 
     */
 /**
-     * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
-     *//*
+ * Returns the location of an entity's texture. Doesn't seem to be called unless you call Render.bindEntityTexture.
+ *//*
 
     protected Identifier getTexture(ArcticWolfEntity entity) {
         return FOX_TEXTURES;

@@ -14,7 +14,10 @@
     "village.TradeFactoryMixin",
     "village.TypeAwareTradeFactoryMixin",
     "world.VillageGeneratorMixin",
-    "world.AddHillsLayerMixin"
+    "world.AddHillsLayerMixin",
+    "world.DefaultBiomeFeaturesMixin",
+    "entity.ParrotEntityMixin",
+    "entity.CatEntityMixin"
   ],
   "client": [
     "client.ItemDynamicRendererMixin",
@@ -27,7 +30,8 @@
     "client.progress.MixinModelLoader",
     "client.progress.MixinSpriteAtlasTexture",
     "client.VillagerResemblingModelMixin",
-    "client.MixinClientPlayNetworkHandler"
+    "client.MixinClientPlayNetworkHandler",
+    "client.ParrotEntityRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -55,10 +55,6 @@ public abstract class MixinSplashScreen {
 
     @Inject(method = "render(IIF)V", at = @At("RETURN"))
     private void draw(int int_1, int int_2, float float_1, CallbackInfo ci) {
-        // TODO
-        /*if (Neutronia.config.client.splashScreenExtra) {
-
-        }*/
         drawProgress();
     }
 

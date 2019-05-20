@@ -10,7 +10,6 @@ import net.minecraft.util.Identifier;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.*;
 import team.hollow.neutronia.enums.CarvedFaceType;
-import team.hollow.neutronia.utils.registry.BlockRegisteringUtils;
 import team.hollow.neutronia.utils.registry.RegistryUtils;
 
 public class NBlocks {
@@ -43,7 +42,7 @@ public class NBlocks {
     //public static final Block MUD, MUD_BRICKS, DRIED_MUD, DRIED_MUD_BRICKS;
     public static final Block PACKED_ICE_BRICKS, SMALL_SNOW_BRICKS, SNOW_BRICKS, ICE_TILES; // PILLAR
     public static final Block FROSTED_GLASS, FROSTED_GLASS_PANE;
-    public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, WROUGHT_IRON_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
+    //public static final Block CHAIN, IRON_CHAIN, ICE_CHAIN, WROUGHT_IRON_CHAIN, GOLD_CHAIN, PRISMARINE_CHAIN;
     public static final Block[] PUMPKIN = new Block[CarvedFaceType.values().length];
     /*public static final Block PUMPKIN = new PumpkinBlock();
     public static final Block JACK_O_LANTERN = new JackOLanternBlock();
@@ -348,13 +347,14 @@ public class NBlocks {
         FROSTED_GLASS = new FrostedGlassBlock();
         FROSTED_GLASS_PANE = RegistryUtils.register(new FrostedGlassPaneBlock(), new Identifier(Neutronia.MOD_ID, "frosted_glass_pane"));
 
-        CHAIN = new ChainBlock();
+        /*CHAIN = new ChainBlock();
         IRON_CHAIN = new ChainBlock("iron");
         ICE_CHAIN = new ChainBlock("ice");
         WROUGHT_IRON_CHAIN = new ChainBlock("wrought_iron");
         GOLD_CHAIN = new ChainBlock("gold");
         PRISMARINE_CHAIN = new ChainBlock("prismarine");
 
+*/
         /*
         for (SoulStoneVariants soulStoneTypes : SoulStoneVariants.values()) {
             SOUL_STONE[soulStoneTypes.getIndex()] = new NeutroniaBaseBlock(Material.STONE, soulStoneTypes.asString());
@@ -362,7 +362,7 @@ public class NBlocks {
         }
         */
 
-        BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE);
+        /*BlockRegisteringUtils.addWalls("dark_andesite", DARK_ANDESITE);
         BlockRegisteringUtils.addWalls("polished_dark_andesite", POLISHED_DARK_ANDESITE);
 
         BlockRegisteringUtils.addWalls("smooth_endstone_brick", SMOOTH_END_BRICK);
@@ -394,7 +394,7 @@ public class NBlocks {
         BlockRegisteringUtils.addSlabAndStair("dirty_brick", DIRTY_BRICKS);
         BlockRegisteringUtils.addSlabAndStair("sandy_brick", SANDY_BRICKS);
         BlockRegisteringUtils.addSlabAndStair("smooth_dirty_brick", SMOOTH_DIRTY_BRICK);
-        BlockRegisteringUtils.addSlabAndStair("smooth_sandy_brick", SMOOTH_SANDY_BRICK);
+        BlockRegisteringUtils.addSlabAndStair("smooth_sandy_brick", SMOOTH_SANDY_BRICK);*/
 
 //        SAWMILL = new SawmillBlock("sawmill");
 

@@ -6,9 +6,7 @@
   "name": "Neutronia",
   "description": "Neutronia is a mod that aims to expand upon the vanilla style, including much more variety to all dimensions. The surface, underground, nether and end have upgraded worldgen, more biomes and structures.",
   "authors": [
-    "OliviaTheVampire",
-    "Cameron",
-    "Pugz"
+    "Team Abnormals"
   ],
   "contact": {
     "homepage": "",
@@ -32,8 +30,7 @@
     ]
   },
   "mixins": [
-    "neutronia.mixins.json",
-    "modmenu_api.mixins.json"
+    "neutronia.mixins.json"
   ],
 
   "requires": {

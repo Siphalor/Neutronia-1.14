@@ -11,10 +11,9 @@ import java.util.Random;
 @Mixin(AddHillsLayer.class)
 public class AddHillsLayerMixin {
 
-    //@ModifyConstant(method = "sample", constant = @Constant(ordinal = 0))
-    //private int sample(int int_3) {
-        // TODO
-        //return Neutronia.config.common.doMiniBiomes ? new Random().nextInt(10000) : int_3;
-    //}
+    @ModifyConstant(method = "sample", constant = @Constant(ordinal = 0))
+    private int sample(int int_3) {
+        return Neutronia.doMiniBiomes ? new Random().nextInt(10000) : int_3;
+    }
 
 }

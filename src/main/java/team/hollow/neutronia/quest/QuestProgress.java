@@ -17,9 +17,16 @@ public enum QuestProgress {
     private final String id;
     private final int texV;
 
-    private QuestProgress(String string_1, int int_1) {
+    QuestProgress(String string_1, int int_1) {
         this.id = string_1;
         this.texV = int_1;
+    }
+
+    public static QuestProgress forName(String string_1) {
+        for (QuestProgress questProgress_1 : values()) {
+            if (questProgress_1.id.equals(string_1)) return questProgress_1;
+        }
+        throw new IllegalArgumentException("Unknown frame type '" + string_1 + "'");
     }
 
     public String getId() {
@@ -29,13 +36,6 @@ public enum QuestProgress {
     @Environment(EnvType.CLIENT)
     public int texV() {
         return this.texV;
-    }
-
-    public static QuestProgress forName(String string_1) {
-        for (QuestProgress questProgress_1 : values()) {
-            if (questProgress_1.id.equals(string_1)) return questProgress_1;
-        }
-        throw new IllegalArgumentException("Unknown frame type '" + string_1 + "'");
     }
 
 }

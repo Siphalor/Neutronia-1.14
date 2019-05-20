@@ -31,8 +31,6 @@ public class TotemPoleGenerator {
         private BlockRotation rotation;
         private Identifier template;
 
-
-
         public Piece(StructureManager structureManager, Identifier identifier, BlockPos blockPos, BlockRotation rotation) {
             super(ExampleMod.TOTEM_POLE_PIECE_TYPE, 0);
 

@@ -1,6 +1,6 @@
 package team.hollow.neutronia.utils.registry;
 
-import net.fabricmc.fabric.api.entity.EntityTrackingRegistry;
+import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntitySize;
@@ -31,7 +31,7 @@ public class EntityRegistryBuilder<E extends Entity> {
 
     public static <E extends Entity> EntityRegistryBuilder<E> createBuilder(String nameIn) {
         name = nameIn;
-        return new EntityRegistryBuilder<E>();
+        return new EntityRegistryBuilder<>();
     }
 
     public EntityRegistryBuilder<E> entity(EntityType.EntityFactory<E> class_4049) {
@@ -63,11 +63,11 @@ public class EntityRegistryBuilder<E extends Entity> {
     }
 
     public EntityType<E> build() {
-        EntityType<E> entityBuilder = EntityType.Builder.create(class_4049, category).setSize(size.width, size.height).disableSaving().build(name);
+        EntityType<E> entityBuilder = FabricEntityTypeBuilder.<E>create(category, EntityType::create).size(size).disableSaving().build();
         EntityType<E> entityType = Registry.register(Registry.ENTITY_TYPE, new Identifier(Neutronia.MOD_ID, name), entityBuilder);
         if ((this.alwaysUpdateVelocity)) {
             if (this.updateIntervalTicks != 0 & this.trackingDistance != 0)
-                EntityTrackingRegistry.INSTANCE.register(entityType, trackingDistance, updateIntervalTicks, alwaysUpdateVelocity);
+                FabricEntityTypeBuilder.create(category, EntityType::create).size(size).trackable(trackingDistance, updateIntervalTicks, alwaysUpdateVelocity).disableSaving().build();
         }
         RegistryUtils.registerItem(new SpawnEggItem(entityType, primaryColor, secondaryColor, new Item.Settings().itemGroup(ItemGroup.MISC)), String.format("%s_spawn_egg", name));
         return entityType;

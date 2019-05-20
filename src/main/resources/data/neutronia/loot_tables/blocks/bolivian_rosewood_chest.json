@@ -1,0 +1,1 @@
+{"type":"minecraft:block","pools":[{"rolls":1,"entries":[{"type":"minecraft:item","name":"neutronia:bolivian_rosewood_chest"}],"conditions":[{"condition":"minecraft:survives_explosion"}]}]}

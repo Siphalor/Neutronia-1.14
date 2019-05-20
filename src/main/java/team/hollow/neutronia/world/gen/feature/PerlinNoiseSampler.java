@@ -1,6 +1,7 @@
 package team.hollow.neutronia.world.gen.feature;
 
 import net.minecraft.util.math.MathHelper;
+import team.hollow.neutronia.world.gen.noise.INoiseSampler;
 
 import java.util.Random;
 

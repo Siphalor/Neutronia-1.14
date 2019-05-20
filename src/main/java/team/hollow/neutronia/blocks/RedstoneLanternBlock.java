@@ -116,7 +116,7 @@ public class RedstoneLanternBlock extends LanternBlock {
         }
     }
 
-    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext entityContext) {
+    public VoxelShape getOutlineShape(BlockState blockState_1, BlockView blockView_1, BlockPos blockPos_1, EntityContext verticalEntityPosition_1) {
         Vec3d offset = getOffsetPos(blockState_1, blockView_1, blockPos_1);
         switch (blockState_1.get(FACING)) {
             case NORTH:

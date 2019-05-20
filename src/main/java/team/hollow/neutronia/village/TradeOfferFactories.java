@@ -83,8 +83,8 @@ public class TradeOfferFactories {
             World world_1 = entity_1.world;
             BlockPos blockPos_1 = world_1.locateStructure(this.structure, new BlockPos(entity_1), 100, true);
             if (blockPos_1 != null) {
-                ItemStack itemStack_1 = FilledMapItem.createMap(world_1, blockPos_1.getX(), blockPos_1.getZ(), (byte)2, true, true);
-                FilledMapItem.fillExplorationMap(world_1, itemStack_1);
+                ItemStack itemStack_1 = FilledMapItem.createMap(world_1, blockPos_1.getX(), blockPos_1.getZ(), (byte) 2, true, true);
+                FilledMapItem.createCopy(world_1, itemStack_1);
                 MapState.addDecorationsTag(itemStack_1, blockPos_1, "+", this.iconType);
                 itemStack_1.setDisplayName(new TranslatableComponent("filled_map." + this.structure.toLowerCase(Locale.ROOT)));
                 return new TradeOffer(new ItemStack(Items.EMERALD, this.price), new ItemStack(Items.COMPASS), itemStack_1, this.maxUses, this.experience, 0.2F);
@@ -118,6 +118,26 @@ public class TradeOfferFactories {
         }
     }
 
+    public static class TwoItemsForOneItemFactory implements TradeOffers.Factory {
+        private final ItemStack buyItem, buyItem2, sellItem;
+        private final int maxUses;
+        private final int experience;
+        private final float multiplier;
+
+        public TwoItemsForOneItemFactory(ItemStack buyItem, ItemStack buyItem2, ItemStack sellItem, int maxUses, int experience) {
+            this.buyItem = buyItem;
+            this.buyItem2 = buyItem2;
+            this.sellItem = sellItem;
+            this.maxUses = maxUses;
+            this.experience = experience;
+            this.multiplier = 0.05F;
+        }
+
+        public TradeOffer create(Entity entity_1, Random random_1) {
+            return new TradeOffer(buyItem, buyItem2, sellItem, maxUses, experience, multiplier);
+        }
+    }
+
     static class SellDyedArmorFactory implements TradeOffers.Factory {
         private final Item sell;
         private final int price;
@@ -133,6 +153,10 @@ public class TradeOfferFactories {
             this.price = int_1;
             this.maxUses = int_2;
             this.experience = int_3;
+        }
+
+        private static DyeItem getDye(Random random_1) {
+            return DyeItem.fromColor(DyeColor.byId(random_1.nextInt(16)));
         }
 
         public TradeOffer create(Entity entity_1, Random random_1) {
@@ -153,10 +177,6 @@ public class TradeOfferFactories {
             }
 
             return new TradeOffer(itemStack_1, itemStack_2, this.maxUses, this.experience, 0.2F);
-        }
-
-        private static DyeItem getDye(Random random_1) {
-            return DyeItem.fromColor(DyeColor.byId(random_1.nextInt(16)));
         }
     }
 
@@ -284,11 +304,11 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public BuyForOneEmeraldFactory(ItemConvertible itemConvertible_1, int int_1, int int_2, int int_3) {
-            this.buy = itemConvertible_1.asItem();
-            this.price = int_1;
-            this.maxUses = int_2;
-            this.experience = int_3;
+        public BuyForOneEmeraldFactory(ItemConvertible itemProvider_1, int price, int maxUses, int experience) {
+            this.buy = itemProvider_1.asItem();
+            this.price = price;
+            this.maxUses = maxUses;
+            this.experience = experience;
             this.multiplier = 0.05F;
         }
 
@@ -316,7 +336,7 @@ public class TradeOfferFactories {
 
         public TradeOffer create(Entity entity_1, Random random_1) {
             if (entity_1 instanceof VillagerDataContainer) {
-                ItemStack itemStack_1 = new ItemStack(this.map.get(((VillagerDataContainer)entity_1).getVillagerData().getType()), this.count);
+                ItemStack itemStack_1 = new ItemStack(this.map.get(((VillagerDataContainer) entity_1).getVillagerData().getType()), this.count);
                 return new TradeOffer(itemStack_1, new ItemStack(Items.EMERALD), this.maxUses, this.experience, 0.05F);
             } else {
                 return null;
@@ -331,8 +351,8 @@ public class TradeOfferFactories {
         private final int experience;
         private final float multiplier;
 
-        public BuyItemFactory(ItemConvertible itemConvertible, int price, int maxUses, int experience) {
-            this.item = itemConvertible.asItem();
+        public BuyItemFactory(ItemConvertible itemProvider, int price, int maxUses, int experience) {
+            this.item = itemProvider.asItem();
             this.price = price;
             this.maxUses = maxUses;
             this.experience = experience;

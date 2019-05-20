@@ -23,10 +23,10 @@ public class Reflect {
                 Class<?> c_type = types[t];
                 if (args[t] == null)
                     continue;
-			    if(isInstanceOf(c_type, args[t].getClass()))
-			        continue;
-			    match = false;
-			    break;
+                if (isInstanceOf(c_type, args[t].getClass()))
+                    continue;
+                match = false;
+                break;
             }
             if (match) {
                 c.setAccessible(true);
@@ -48,7 +48,7 @@ public class Reflect {
         Field[] fields = object_class.getDeclaredFields();
         for (Field f : fields) {
             f.setAccessible(true);
-            if(isInstanceOf(f.getType(), field_class))
+            if (isInstanceOf(f.getType(), field_class))
                 return f;
         }
         return null;
@@ -110,12 +110,13 @@ public class Reflect {
 
     public static boolean isInstanceOf(Class clazz, Class possibleInstance) {
         if (clazz.isAssignableFrom(possibleInstance))
-        	return true;
+            return true;
         if (clazz.isPrimitive()) {
             try {
                 if (clazz.getField("TYPE").get(null).equals(possibleInstance))
                     return true;
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) {
+            }
         }
         return false;
     }

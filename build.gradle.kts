@@ -1,3 +1,6 @@
+import net.fabricmc.loom.task.RemapJar
+import net.fabricmc.loom.task.RemapSourcesJar
+
 plugins {
 	wrapper
 	idea
@@ -21,12 +24,13 @@ base {
 	archivesBaseName = Constants.name
 }
 
-version = "v${Constants.version}+${Constants.minecraftVersionVer}"
+version = "${Constants.version}+${Constants.minecraftVersionVer}"
 group = "team.hollow"
 
 repositories {
 	mavenCentral()
 	mavenLocal()
+	maven("https://jitpack.io")
 	maven("https://tehnut.info/maven")
 	maven("https://maven.fabricmc.net")
 	maven("https://minecraft.curseforge.com/api/maven")
@@ -97,5 +101,54 @@ tasks.register("genResources") {
 
 	doLast {
 		(tasks.getByPath("runClient") as JavaExec).systemProperty("genResources", false)
+	}
+}
+
+
+val javaCompile = tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
+val sourcesJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
+}
+
+val jar = tasks.getByName<Jar>("jar") {
+    from("LICENSE")
+}
+
+val remapJar = tasks.getByName<RemapJar>("remapJar")
+
+val remapSourcesJar = tasks.getByName<RemapSourcesJar>("remapSourcesJar")
+
+publishing {
+	publications {
+		create<MavenPublication>("mavenJava") {
+			artifactId = "Neutronia"
+			artifact(jar) {
+				builtBy(remapJar)
+			}
+			artifact(sourcesJar.get()) {
+				builtBy(remapSourcesJar)
+			}
+			pom {
+				name.set("Neutronia")
+				description.set(Constants.description)
+				url.set(Constants.url)
+				licenses {
+					license {
+						name.set("The Apache License, Version 2.0")
+						url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+					}
+				}
+				developers {
+					developer {
+						id.set("minecraft_abnormals")
+						name.set("Minecraft Abnormals")
+					}
+				}
+			}
+		}
 	}
 }

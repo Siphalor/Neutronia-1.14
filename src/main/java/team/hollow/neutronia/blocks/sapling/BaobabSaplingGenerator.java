@@ -11,7 +11,7 @@ public class BaobabSaplingGenerator extends SaplingGenerator {
 
     @Override
     protected AbstractTreeFeature<DefaultFeatureConfig> createTreeFeature(Random var1) {
-        return new PalmTreeFeature(DefaultFeatureConfig::deserialize, true);
+        return new PalmTreeFeature(DefaultFeatureConfig::deserialize);
     }
 
 }
