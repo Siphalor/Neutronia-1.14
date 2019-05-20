@@ -3,17 +3,16 @@ package team.hollow.neutronia.world.gen.feature;
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import team.hollow.neutronia.blocks.NeutroniaLeavesBlock;
-import team.hollow.neutronia.modules.ExplorationModule;
 import team.hollow.neutronia.modules.exploration.TreesSubModule;
 
 import java.util.Random;
 import java.util.Set;
-import java.util.TreeSet;
 
 public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> {
     private static final BlockState LOG = TreesSubModule.palm.log.getDefaultState();
@@ -28,7 +27,7 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> 
     }
 
     @Override
-    public boolean generate(Set<BlockPos> pos, ModifiableTestableWorld modifiableTestableWorld, Random random_1, BlockPos blockPos_1) {
+    public boolean generate(Set<BlockPos> pos, ModifiableTestableWorld modifiableTestableWorld, Random random_1, BlockPos blockPos_1, MutableIntBoundingBox mutableIntBoundingBox) {
         int int_1 = random_1.nextInt(3) + random_1.nextInt(3) + 5;
         boolean boolean_1 = true;
         if (blockPos_1.getY() >= 1 && blockPos_1.getY() + int_1 + 1 <= 256) {
@@ -81,7 +80,7 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> 
 
                     BlockPos blockPos_2 = new BlockPos(int_8, int_17, int_9);
                     if (isAirOrLeaves(modifiableTestableWorld, blockPos_2)) {
-                        this.addLog(pos, modifiableTestableWorld, blockPos_2);
+                        this.addLog(pos, modifiableTestableWorld, blockPos_2, mutableIntBoundingBox);
                         int_10 = int_17;
                     }
                 }
@@ -125,7 +124,7 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> 
                             int_9 += direction_2.getOffsetZ();
                             BlockPos blockPos_4 = new BlockPos(int_8, int_23, int_9);
                             if (isAirOrLeaves(modifiableTestableWorld, blockPos_4)) {
-                                this.addLog(pos, modifiableTestableWorld, blockPos_4);
+                                this.addLog(pos, modifiableTestableWorld, blockPos_4, mutableIntBoundingBox);
                                 int_10 = int_23;
                             }
                         }
@@ -164,8 +163,8 @@ public class WorldGenPalmTree extends AbstractTreeFeature<DefaultFeatureConfig> 
         }
     }
 
-    private void addLog(Set<BlockPos> set_1, ModifiableWorld modifiableWorld_1, BlockPos blockPos_1) {
-        this.setBlockState(set_1, modifiableWorld_1, blockPos_1, LOG);
+    private void addLog(Set<BlockPos> set_1, ModifiableWorld modifiableWorld_1, BlockPos blockPos_1, MutableIntBoundingBox mutableIntBoundingBox) {
+        this.setBlockState(set_1, modifiableWorld_1, blockPos_1, LOG, mutableIntBoundingBox);
     }
 
     private void addLeaves(ModifiableTestableWorld modifiableTestableWorld, BlockPos blockPos_1) {

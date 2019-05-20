@@ -1,6 +1,5 @@
 package team.hollow.neutronia.mixin.entity;
 
-import net.minecraft.entity.ai.RangedAttackMob;
 import net.minecraft.entity.ai.goal.FleeEntityGoal;
 import net.minecraft.entity.mob.DrownedEntity;
 import net.minecraft.entity.mob.ZombieEntity;
@@ -12,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(DrownedEntity.class)
-public abstract class DrownedEntityMixin extends ZombieEntity implements RangedAttackMob {
+public abstract class DrownedEntityMixin extends ZombieEntity {
 
     public DrownedEntityMixin(World world_1) {
         super(world_1);

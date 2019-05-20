@@ -1,18 +1,10 @@
 package team.hollow.neutronia.blocks;
 
-import net.fabricmc.fabric.api.block.FabricBlockSettings;
-import net.minecraft.block.Material;
+import net.minecraft.block.Block;
+import team.hollow.abnormalib.utils.generators.blockmodel.BottomTopBlockModel;
 
-public class NeutroniaBottomTopBlock extends NeutroniaBlock {
-	public NeutroniaBottomTopBlock(Material material) {
-		super(material);
-	}
-
-	public NeutroniaBottomTopBlock(Material material, float hardness, float resistant) {
-		super(material, hardness, resistant);
-	}
-
-	public NeutroniaBottomTopBlock(FabricBlockSettings builder) {
-		super(builder);
+public class NeutroniaBottomTopBlock extends Block implements BottomTopBlockModel {
+	public NeutroniaBottomTopBlock(Settings block$Settings_1) {
+		super(block$Settings_1);
 	}
 }

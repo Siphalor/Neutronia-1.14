@@ -2,7 +2,7 @@ package team.hollow.neutronia.modules.exploration;
 
 import net.minecraft.block.sapling.DarkOakSaplingGenerator;
 import net.minecraft.block.sapling.OakSaplingGenerator;
-import team.hollow.module_api.api.SubModule;
+import team.hollow.abnormalib.modules.api.SubModule;
 import team.hollow.neutronia.blocks.sapling.BaobabSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.MangroveSaplingGenerator;
 import team.hollow.neutronia.blocks.sapling.PalmSaplingGenerator;

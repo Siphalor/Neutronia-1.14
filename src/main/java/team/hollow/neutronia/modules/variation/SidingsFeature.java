@@ -4,9 +4,10 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Block;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
-import team.hollow.neutronia.registry.ContentBuilder;
-import team.hollow.neutronia.registry.WoodType;
+import team.hollow.abnormalib.modules.api.features.woodtype.WoodTypeFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.abnormalib.utils.registry.WoodType;
+import team.hollow.neutronia.Neutronia;
 
 import java.util.Collections;
 import java.util.Set;
@@ -31,7 +32,7 @@ public class SidingsFeature extends WoodTypeFeature {
 	}
 
 	protected void process(Block baseBlock, Identifier baseBlockIdentifier) {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
         contentBuilder.asBaseBlock(baseBlock, baseBlockIdentifier);
 		contentBuilder.siding();
 	}

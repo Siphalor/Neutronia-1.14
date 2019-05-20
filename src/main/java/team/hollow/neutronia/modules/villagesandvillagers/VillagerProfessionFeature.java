@@ -7,7 +7,7 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.village.PointOfInterestType;
 import net.minecraft.village.TradeOffers;
 import net.minecraft.village.VillagerProfession;
-import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
 import team.hollow.neutronia.village.PointOfInterestRegistry;
 import team.hollow.neutronia.village.PointOfInterestTypeCustom;
 import team.hollow.neutronia.village.VillagerProfessionRegistry;

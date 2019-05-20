@@ -1,8 +1,8 @@
 package team.hollow.neutronia.enums;
 
-import net.minecraft.util.StringRepresentable;
+import net.minecraft.util.StringIdentifiable;
 
-public enum SoulStoneVariants implements StringRepresentable {
+public enum SoulStoneVariants implements StringIdentifiable {
 
     NORMAL_SOULSTONE(0, "soulstone"),
     CHISELED_SOULSTONE(1, "carved_soulstone"),

@@ -15,8 +15,8 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
+import team.hollow.abnormalib.utils.NoBlockItem;
 import team.hollow.neutronia.modules.exploration.food.BerriesFeature;
-import team.hollow.neutronia.registry.NoBlockItem;
 
 public class NeutroniaBerryBushBlock extends SweetBerryBushBlock implements NoBlockItem {
     private final BerriesFeature.BerryType berryType;

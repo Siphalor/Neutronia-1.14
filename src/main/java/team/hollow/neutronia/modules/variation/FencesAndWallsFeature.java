@@ -4,8 +4,9 @@ import com.google.common.collect.ImmutableSet;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.util.registry.Registry;
-import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.neutronia.Neutronia;
 
 import java.util.Set;
 
@@ -21,7 +22,7 @@ public class FencesAndWallsFeature extends OptionalFeature {
 
 	@Override
 	protected void applyEnabled() {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+        ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 		wallBlocks.forEach(block -> {
 			contentBuilder.asBaseBlock(block, Registry.BLOCK.getId(block));
             contentBuilder.wall();

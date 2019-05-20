@@ -12,12 +12,12 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.Direction;
-import team.hollow.module_api.api.features.OptionalFeature;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.abnormalib.utils.registry.BlockChiseler;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.CarvedMelonBlock;
 import team.hollow.neutronia.enums.CarvedFaceType;
-import team.hollow.neutronia.registry.BlockChiseler;
-import team.hollow.neutronia.registry.ContentBuilder;
 import team.hollow.neutronia.utils.NeutroniaTags;
 
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class CarvedMelonsFeature extends OptionalFeature {
 
 	@Override
 	protected void applyEnabled() {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+        ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 		List<Block> carvedMelons = new ArrayList<>(CarvedFaceType.values().length + 1);
 		carvedMelon = contentBuilder.newBlock("carved_melon", new CarvedMelonBlock(false), "melons/carved_melon");
 		carvedMelons.add(carvedMelon);

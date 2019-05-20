@@ -6,8 +6,9 @@ import net.minecraft.block.Blocks;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Pair;
 import net.minecraft.util.registry.Registry;
-import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.neutronia.Neutronia;
 
 import java.util.Set;
 
@@ -36,11 +37,11 @@ public class PottedPlantsFeature extends OptionalFeature {
 
 	@Override
 	protected void applyEnabled() {
-		blocksToPot.forEach(pair -> add(pair.getLeft(), Identifier.create(pair.getRight())));
+		blocksToPot.forEach(pair -> add(pair.getLeft(), Identifier.ofNullable(pair.getRight())));
 	}
 
 	public void add(Block block, Identifier texture) {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 		contentBuilder.asBaseBlock(block, Registry.BLOCK.getId(block));
 		contentBuilder.addPotted(texture);
 	}

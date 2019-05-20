@@ -44,18 +44,16 @@ dependencies {
 	modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
 	include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
 
+	modCompile(group = "team.hollow", name = "AbnormaLib", version = "+")
+
 	modCompile(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
 	include(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
-    modCompile(group = "com.github.siphalor", name = "tweed-api", version = Dependencies.Tweed.version)
-	include(group = "com.github.siphalor", name = "tweed-api", version = Dependencies.Tweed.version)
 
 	modCompile(group = "io.github.prospector.modmenu", name = "ModMenu", version = Dependencies.ModMenu.version)
 
 	modCompile("org.apache.maven:maven-artifact:3.6.0")
 
 	modCompile(group = "io.github.cottonmc", name = "cotton", version = "0.6.1+1.14-SNAPSHOT")
-
-	//modCompile(group = "team.hollow", name = "AbnormaLib", version = "+")
 }
 
 tasks.getByName<ProcessResources>("processResources") {

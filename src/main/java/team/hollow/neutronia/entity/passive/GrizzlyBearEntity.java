@@ -89,7 +89,7 @@ public class GrizzlyBearEntity extends AnimalEntity {
     }
 
     protected SoundEvent getAmbientSound() {
-        return this.isChild() ? SoundEvents.ENTITY_POLAR_BEAR_AMBIENT_BABY : SoundEvents.ENTITY_POLAR_BEAR_AMBIENT;
+        return this.isBaby() ? SoundEvents.ENTITY_POLAR_BEAR_AMBIENT_BABY : SoundEvents.ENTITY_POLAR_BEAR_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSource_1) {
@@ -181,7 +181,7 @@ public class GrizzlyBearEntity extends AnimalEntity {
         }
 
         public boolean canStart() {
-            return (GrizzlyBearEntity.this.isChild() || GrizzlyBearEntity.this.isOnFire()) && super.canStart();
+            return (GrizzlyBearEntity.this.isBaby() || GrizzlyBearEntity.this.isOnFire()) && super.canStart();
         }
     }
 
@@ -229,14 +229,14 @@ public class GrizzlyBearEntity extends AnimalEntity {
         }
 
         public boolean canStart() {
-            if (GrizzlyBearEntity.this.isChild()) {
+            if (GrizzlyBearEntity.this.isBaby()) {
                 return false;
             } else {
                 if (super.canStart()) {
                     List<GrizzlyBearEntity> list_1 = GrizzlyBearEntity.this.world.getEntities(GrizzlyBearEntity.class, GrizzlyBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
 
                     for (GrizzlyBearEntity grizzlyBearEntity_1 : list_1) {
-                        if (grizzlyBearEntity_1.isChild()) {
+                        if (grizzlyBearEntity_1.isBaby()) {
                             return true;
                         }
                     }
@@ -259,7 +259,7 @@ public class GrizzlyBearEntity extends AnimalEntity {
 
         public void start() {
             super.start();
-            if (GrizzlyBearEntity.this.isChild()) {
+            if (GrizzlyBearEntity.this.isBaby()) {
                 this.callSameTypeForRevenge();
                 this.stop();
             }
@@ -267,7 +267,7 @@ public class GrizzlyBearEntity extends AnimalEntity {
         }
 
         protected void setMobEntityTarget(MobEntity mobEntityWithAi_1, LivingEntity livingEntity_1) {
-            if (mobEntityWithAi_1 instanceof GrizzlyBearEntity && !mobEntityWithAi_1.isChild()) {
+            if (mobEntityWithAi_1 instanceof GrizzlyBearEntity && !mobEntityWithAi_1.isBaby()) {
                 super.setMobEntityTarget(mobEntityWithAi_1, livingEntity_1);
             }
         }

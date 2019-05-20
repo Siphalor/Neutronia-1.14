@@ -1,6 +1,6 @@
 package team.hollow.neutronia.modules.exploration;
 
-import team.hollow.module_api.api.SubModule;
+import team.hollow.abnormalib.modules.api.SubModule;
 import team.hollow.neutronia.modules.exploration.food.BerriesFeature;
 import team.hollow.neutronia.modules.exploration.food.CakeFeature;
 

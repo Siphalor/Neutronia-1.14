@@ -1,10 +1,10 @@
 package team.hollow.neutronia.modules.exploration.food;
 
 import net.minecraft.block.Block;
-import team.hollow.module_api.api.features.OptionalFeature;
-import team.hollow.neutronia.blocks.CakeBaseBlock;
-import team.hollow.neutronia.blocks.PieBlock;
-import team.hollow.neutronia.registry.ContentBuilder;
+import team.hollow.abnormalib.blocks.CakeBaseBlock;
+import team.hollow.abnormalib.modules.api.features.OptionalFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.neutronia.Neutronia;
 
 public class CakeFeature extends OptionalFeature {
 	public static Block cheeseCake;
@@ -20,12 +20,12 @@ public class CakeFeature extends OptionalFeature {
 
 	@Override
 	protected void applyEnabled() {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 		cheeseCake = contentBuilder.newBlock("cheese_cake", new CakeBaseBlock());
 		chocolateCake = contentBuilder.newBlock("chocolate_cake", new CakeBaseBlock());
-		pumpkinPie = contentBuilder.newBlock("pumpkin_pie", new PieBlock());
-		blueberryPie = contentBuilder.newBlock("blueberry_pie", new PieBlock());
-		sweetBerryPie = contentBuilder.newBlock("sweet_berry_pie", new PieBlock());
-		applePie = contentBuilder.newBlock("apple_pie", new PieBlock());
+		pumpkinPie = contentBuilder.newBlock("pumpkin_pie", new CakeBaseBlock(4));
+		blueberryPie = contentBuilder.newBlock("blueberry_pie", new CakeBaseBlock(4));
+		sweetBerryPie = contentBuilder.newBlock("sweet_berry_pie", new CakeBaseBlock(4));
+		applePie = contentBuilder.newBlock("apple_pie", new CakeBaseBlock(4));
 	}
 }

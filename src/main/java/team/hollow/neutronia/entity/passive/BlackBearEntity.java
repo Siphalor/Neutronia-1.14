@@ -89,7 +89,7 @@ public class BlackBearEntity extends AnimalEntity {
     }
 
     protected SoundEvent getAmbientSound() {
-        return this.isChild() ? SoundEvents.ENTITY_POLAR_BEAR_AMBIENT_BABY : SoundEvents.ENTITY_POLAR_BEAR_AMBIENT;
+        return this.isBaby() ? SoundEvents.ENTITY_POLAR_BEAR_AMBIENT_BABY : SoundEvents.ENTITY_POLAR_BEAR_AMBIENT;
     }
 
     protected SoundEvent getHurtSound(DamageSource damageSource_1) {
@@ -219,14 +219,14 @@ public class BlackBearEntity extends AnimalEntity {
         }
 
         public boolean canStart() {
-            if (BlackBearEntity.this.isChild()) {
+            if (BlackBearEntity.this.isBaby()) {
                 return false;
             } else {
                 if (super.canStart()) {
                     List<BlackBearEntity> list_1 = BlackBearEntity.this.world.getEntities(BlackBearEntity.class, BlackBearEntity.this.getBoundingBox().expand(8.0D, 4.0D, 8.0D));
 
                     for (BlackBearEntity grizzlyBearEntity_1 : list_1) {
-                        if (grizzlyBearEntity_1.isChild()) {
+                        if (grizzlyBearEntity_1.isBaby()) {
                             return true;
                         }
                     }
@@ -249,7 +249,7 @@ public class BlackBearEntity extends AnimalEntity {
 
         public void start() {
             super.start();
-            if (BlackBearEntity.this.isChild()) {
+            if (BlackBearEntity.this.isBaby()) {
                 this.callSameTypeForRevenge();
                 this.stop();
             }
@@ -257,7 +257,7 @@ public class BlackBearEntity extends AnimalEntity {
         }
 
         protected void setMobEntityTarget(MobEntity mobEntityWithAi_1, LivingEntity livingEntity_1) {
-            if (mobEntityWithAi_1 instanceof BlackBearEntity && !mobEntityWithAi_1.isChild()) {
+            if (mobEntityWithAi_1 instanceof BlackBearEntity && !mobEntityWithAi_1.isBaby()) {
                 super.setMobEntityTarget(mobEntityWithAi_1, livingEntity_1);
             }
         }

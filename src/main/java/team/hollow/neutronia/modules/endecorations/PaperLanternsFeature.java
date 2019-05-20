@@ -11,12 +11,12 @@ import net.minecraft.util.math.BlockPointer;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Position;
 import net.minecraft.util.registry.Registry;
-import team.hollow.module_api.api.features.woodtype.WoodTypeFeature;
+import team.hollow.abnormalib.modules.api.features.woodtype.WoodTypeFeature;
+import team.hollow.abnormalib.utils.ContentBuilder;
+import team.hollow.abnormalib.utils.registry.WoodType;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.PaperLanternBlock;
 import team.hollow.neutronia.entity.FlyingLanternEntity;
-import team.hollow.neutronia.registry.ContentBuilder;
-import team.hollow.neutronia.registry.WoodType;
 
 import java.util.Collections;
 
@@ -48,7 +48,7 @@ public class PaperLanternsFeature extends WoodTypeFeature {
 
 	@Override
 	protected void process(WoodType woodType) {
-		ContentBuilder contentBuilder = ContentBuilder.getInstance();
+		ContentBuilder contentBuilder = Neutronia.getContentBuilder();
 		Block lantern = contentBuilder.newBlock(woodType.getIdentifier().getPath() + "_paper_lantern", new PaperLanternBlock());
 
 		contentBuilder.runGameTask(() -> {

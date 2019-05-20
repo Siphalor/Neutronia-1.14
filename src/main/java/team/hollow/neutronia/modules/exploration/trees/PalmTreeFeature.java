@@ -3,7 +3,7 @@ package team.hollow.neutronia.modules.exploration.trees;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
 import net.minecraft.block.sapling.SaplingGenerator;
-import team.hollow.neutronia.blocks.NeutroniaBlock;
+import team.hollow.abnormalib.blocks.BaseModBlock;
 
 public class PalmTreeFeature extends TreeFeature {
 	// TODO: Add coconut
@@ -17,6 +17,6 @@ public class PalmTreeFeature extends TreeFeature {
 	protected void applyEnabled() {
 		super.applyEnabled();
 
-        topLog = new NeutroniaBlock(Material.WOOD);
+        topLog = new BaseModBlock(Material.WOOD);
 	}
 }

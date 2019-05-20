@@ -26,7 +26,7 @@ public class VillagerEntityRenderer extends MobEntityRenderer<VillagerPlusEntity
 
     protected void scale(VillagerPlusEntity villagerEntity_1, float float_1) {
         float float_2 = 0.9375F;
-        if (villagerEntity_1.isChild()) {
+        if (villagerEntity_1.isBaby()) {
             float_2 = (float) ((double) float_2 * 0.5D);
             this.field_4673 = 0.25F;
         } else {

@@ -15,11 +15,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockPos.Mutable;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.Direction.Type;
+import net.minecraft.util.math.MutableIntBoundingBox;
 import net.minecraft.world.ModifiableTestableWorld;
 import net.minecraft.world.ModifiableWorld;
 import net.minecraft.world.gen.feature.AbstractTreeFeature;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
-import team.hollow.neutronia.modules.ExplorationModule;
 import team.hollow.neutronia.modules.exploration.TreesSubModule;
 
 import java.util.Iterator;
@@ -53,7 +53,8 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
         this.hasVinesAndCocoa = boolean_2;
     }
 
-    public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos blockPos_1) {
+    @Override
+    public boolean generate(Set<BlockPos> set_1, ModifiableTestableWorld modifiableTestableWorld_1, Random random_1, BlockPos blockPos_1, MutableIntBoundingBox mutableIntBoundingBox) {
         int int_1 = this.getTreeHeight(random_1);
         boolean boolean_1 = true;
         if (blockPos_1.getY() >= 1 && blockPos_1.getY() + int_1 + 1 <= 256) {
@@ -114,7 +115,7 @@ public class WillowTreeFeature extends AbstractTreeFeature<DefaultFeatureConfig>
 
                 for (int_21 = 0; int_21 < int_1; ++int_21) {
                     if (isAirOrLeaves(modifiableTestableWorld_1, blockPos_1.up(int_21)) || isReplaceablePlant(modifiableTestableWorld_1, blockPos_1.up(int_21))) {
-                        this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.up(int_21), this.log);
+                        this.setBlockState(set_1, modifiableTestableWorld_1, blockPos_1.up(int_21), this.log, mutableIntBoundingBox);
                         if (this.hasVinesAndCocoa && int_21 > 0) {
                             if (random_1.nextInt(3) > 0 && isAir(modifiableTestableWorld_1, blockPos_1.add(-1, int_21, 0))) {
                                 this.makeVine(modifiableTestableWorld_1, blockPos_1.add(-1, int_21, 0), VineBlock.EAST);

@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import net.minecraft.block.Blocks;
 import net.minecraft.item.Items;
 import net.minecraft.village.TradeOffers;
-import team.hollow.module_api.api.SubModule;
+import team.hollow.abnormalib.modules.api.SubModule;
 import team.hollow.neutronia.village.TradeOfferFactories.BuyItemFactory;
 import team.hollow.neutronia.village.TradeOfferFactories.SellItemFactory;
 

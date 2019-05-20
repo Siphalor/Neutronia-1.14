@@ -25,7 +25,7 @@ public class FlyingLanternEntityRenderer extends EntityRenderer<FlyingLanternEnt
 		GlStateManager.translatef(-0.5F, -0.5F, 0.5F);
 		blockRenderManager.renderDynamic(flyingLanternEntity.getBlockState(), 1.0F);
 		GlStateManager.translatef(0.0F, 0.0F, 1.0F);
-		if (this.field_4674) {
+		if (this.renderOutlines) {
 			GlStateManager.enableColorMaterial();
 			GlStateManager.setupSolidRenderingTextureCombine(this.getOutlineColor(flyingLanternEntity));
 			blockRenderManager.renderDynamic(flyingLanternEntity.getBlockState(), 1.0F);
