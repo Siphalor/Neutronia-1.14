@@ -1,5 +1,5 @@
-import net.fabricmc.loom.task.RemapJar
-import net.fabricmc.loom.task.RemapSourcesJar
+import net.fabricmc.loom.task.RemapJarTask
+import net.fabricmc.loom.task.RemapSourcesJarTask
 
 plugins {
 	wrapper
@@ -42,13 +42,13 @@ repositories {
 
 dependencies {
 	minecraft(group = "com.mojang", name = "minecraft", version = Minecraft.version)
-	mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+build.${Fabric.Yarn.version}")
+	mappings(group = "net.fabricmc", name = "yarn", version = "${Minecraft.version}+${Fabric.Yarn.version}")
 	modCompile(group = "net.fabricmc", name = "fabric-loader", version = Fabric.Loader.version)
 
-	modCompile(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
-	include(group = "net.fabricmc", name = "fabric", version = Fabric.API.version + ".+")
+	modCompile(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version)
+	include(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version)
 
-	modCompile(group = "team.hollow", name = "AbnormaLib", version = "+")
+	modCompile(group = "team.hollow", name = "AbnormaLib", version = "0.4.0-1.14.2_Pre3-SNAPSHOT")
 
 	modCompile(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
 	include(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
@@ -57,7 +57,7 @@ dependencies {
 
 	modCompile("org.apache.maven:maven-artifact:3.6.0")
 
-	modCompile(group = "io.github.cottonmc", name = "cotton", version = "0.6.1+1.14-SNAPSHOT")
+	modCompile(group = "io.github.cottonmc", name = "cotton", version = "0.6.7+1.14.1-SNAPSHOT")
 }
 
 tasks.getByName<ProcessResources>("processResources") {
@@ -118,9 +118,9 @@ val jar = tasks.getByName<Jar>("jar") {
     from("LICENSE")
 }
 
-val remapJar = tasks.getByName<RemapJar>("remapJar")
+val remapJar = tasks.getByName<RemapJarTask>("remapJar")
 
-val remapSourcesJar = tasks.getByName<RemapSourcesJar>("remapSourcesJar")
+val remapSourcesJar = tasks.getByName<RemapSourcesJarTask>("remapSourcesJar")
 
 publishing {
 	publications {
