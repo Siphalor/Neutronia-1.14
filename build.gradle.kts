@@ -48,7 +48,8 @@ dependencies {
 	modCompile(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version)
 	include(group = "net.fabricmc.fabric-api", name = "fabric-api", version = Fabric.API.version)
 
-	modCompile(group = "team.hollow", name = "AbnormaLib", version = "0.4.0-1.14.2_Pre3-SNAPSHOT")
+	modCompile(group = "team.hollow", name = "AbnormaLib", version = Dependencies.AbnormaLib.version)
+	include(group = "team.hollow", name = "AbnormaLib", version = Dependencies.AbnormaLib.version)
 
 	modCompile(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)
 	include(group = "cloth-config", name = "ClothConfig", version = Dependencies.ClothConfig.version)

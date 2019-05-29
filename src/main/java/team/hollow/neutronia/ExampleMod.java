@@ -1,7 +1,6 @@
 package team.hollow.neutronia;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.render.EntityRendererRegistry;
 import net.minecraft.structure.StructurePieceType;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
@@ -13,8 +12,6 @@ import net.minecraft.world.gen.decorator.NopeDecoratorConfig;
 import net.minecraft.world.gen.feature.DefaultFeatureConfig;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.StructureFeature;
-import team.hollow.neutronia.client.renderer.FlyingLanternEntityRenderer;
-import team.hollow.neutronia.entity.FlyingLanternEntity;
 import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeature;
 import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionFeatureConfig;
 import team.hollow.neutronia.world.gen.features.pillager_mansion.PillagerMansionGenerator;
@@ -57,8 +54,6 @@ public class ExampleMod implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        EntityRendererRegistry.INSTANCE.register(FlyingLanternEntity.class, (entityRenderDispatcher, context) -> new FlyingLanternEntityRenderer(entityRenderDispatcher));
-
         Feature.STRUCTURES.put("neutronia:pillager_mansion", PILLAGER_MANSION_FEATURE);
         Feature.STRUCTURES.put("neutronia:totem_pole", TOTEM_POLE_FEATURE);
 

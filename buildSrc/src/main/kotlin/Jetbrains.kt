@@ -23,6 +23,9 @@ object Dependencies {
     object ModMenu {
         const val version = "+"
     }
+    object AbnormaLib {
+        const val version = "0.4.4+1.14.2_Pre3-SNAPSHOT"
+    }
 }
 
 object Minecraft {

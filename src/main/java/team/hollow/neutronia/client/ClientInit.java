@@ -10,7 +10,9 @@ import team.hollow.abnormalib.modules.api.MainModule;
 import team.hollow.neutronia.Neutronia;
 import team.hollow.neutronia.blocks.entity.CustomChestBlockEntity;
 import team.hollow.neutronia.client.entity.render.*;
+import team.hollow.neutronia.client.renderer.FlyingLanternEntityRenderer;
 import team.hollow.neutronia.client.renderer.StoneChestBlockEntityRenderer;
+import team.hollow.neutronia.entity.FlyingLanternEntity;
 import team.hollow.neutronia.entity.SocialVillager;
 import team.hollow.neutronia.entity.passive.BlackBearEntity;
 import team.hollow.neutronia.entity.passive.GrizzlyBearEntity;
@@ -31,6 +33,7 @@ public class ClientInit implements ClientModInitializer {
         EntityRendererRegistry.INSTANCE.register(BlackBearEntity.class, (manager, context) -> new BlackBearEntityRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(SocialVillager.class, (manager, context) -> new SocialVillagerRenderer(manager));
         EntityRendererRegistry.INSTANCE.register(WitchEntity.class, (manager, context) -> new NewWitchEntityRenderer(manager));
+        EntityRendererRegistry.INSTANCE.register(FlyingLanternEntity.class, (entityRenderDispatcher, context) -> new FlyingLanternEntityRenderer(entityRenderDispatcher));
         /*EntityRendererRegistry.INSTANCE.register(EntityOlDiggy.class, (manager, context) -> new RenderOlDiggy(manager));
         EntityRendererRegistry.INSTANCE.register(EntityShadowPhantom.class, (manager, context) -> new RenderShadowPhantom(manager));
         EntityRendererRegistry.INSTANCE.register(EntityEnderPhantom.class, (manager, context) -> new RenderEnderPhantom(manager));
